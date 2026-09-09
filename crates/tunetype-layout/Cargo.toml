@@ -1,0 +1,9 @@
+[package]
+name = "tunetype-layout"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+tunetype-core = { path = "../tunetype-core" }
+xkbcommon = { version = "0.7", features = ["x11"] }
+tracing = "0.1"

@@ -1,0 +1,13 @@
+[package]
+name = "tunetype-tray"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+tunetype-core = { path = "../tunetype-core" }
+tunetype-config = { path = "../tunetype-config" }
+ksni = "0.2"
+tracing = "0.1"
+zbus = { version = "3", default-features = false, features = ["tokio"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+libc = "0.2"

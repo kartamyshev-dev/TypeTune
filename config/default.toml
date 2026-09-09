@@ -1,0 +1,35 @@
+[general]
+log_level = "info"
+pid_file = "/tmp/tunetype.pid"
+
+[input]
+discovery = "auto"
+device_paths = []
+exclude_names = ["Power Button", "Sleep Button"]
+
+[corrector]
+enabled = true
+min_word_length = 3
+layouts = ["us", "ru"]
+dict_dir = "~/.config/tunetype/dict/"
+exclude_classes = ["Alacritty", "kitty", "Code"]
+exclude_titles = []
+
+[chatter]
+enabled = true
+debounce_ms = 50
+modifier_debounce_ms = 30
+
+[snippets]
+enabled = true
+trigger_prefix = ":"
+word_separators = [" ", "\t", "\n", "\r"]
+
+[snippets.entries]
+date = "{{date}}"
+time = "{{time}}"
+
+[typography]
+enabled = false
+smart_quotes = true
+em_dash = true

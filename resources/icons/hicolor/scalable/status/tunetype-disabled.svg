@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <rect x="1" y="4" width="14" height="10" rx="1.5" fill="#9a9996" stroke="#77767b" stroke-width="0.5"/>
+  <rect x="2.5" y="5.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="5" y="5.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="7.5" y="5.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="10" y="5.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="2.5" y="7.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="5" y="7.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="7.5" y="7.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="10" y="7.5" width="2" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <rect x="3.5" y="9.5" width="9" height="1.5" rx="0.3" fill="#fff" opacity="0.5"/>
+  <circle cx="13" cy="3" r="3" fill="#e01b24"/>
+  <line x1="11.5" y1="1.5" x2="14.5" y2="4.5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+  <line x1="14.5" y1="1.5" x2="11.5" y2="4.5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+</svg>

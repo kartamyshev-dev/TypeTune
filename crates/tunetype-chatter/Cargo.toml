@@ -1,0 +1,8 @@
+[package]
+name = "tunetype-chatter"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+tunetype-core = { path = "../tunetype-core" }
+tracing = "0.1"

@@ -1,0 +1,28 @@
+[package]
+name = "tunetype-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "tunetype"
+path = "src/main.rs"
+
+[dependencies]
+tunetype-core = { path = "../tunetype-core" }
+tunetype-input = { path = "../tunetype-input" }
+tunetype-inject = { path = "../tunetype-inject" }
+tunetype-layout = { path = "../tunetype-layout" }
+tunetype-corrector = { path = "../tunetype-corrector" }
+tunetype-chatter = { path = "../tunetype-chatter" }
+tunetype-snippets = { path = "../tunetype-snippets" }
+tunetype-config = { path = "../tunetype-config" }
+tunetype-tray = { path = "../tunetype-tray" }
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+signal-hook = "0.3"
+libc = "0.2"
+shellexpand = "3"
+zbus = { version = "3", default-features = false, features = ["tokio"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
+serde = { version = "1", features = ["derive"] }
