@@ -14,6 +14,8 @@ layouts = ["us", "ru"]
 dict_dir = "~/.config/typetune/dict/"
 exclude_classes = ["Alacritty", "kitty", "Code"]
 exclude_titles = []
+double_shift_corrects = true
+double_shift_window_ms = 400
 
 [chatter]
 enabled = true

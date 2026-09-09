@@ -1,9 +1,10 @@
 use std::collections::HashMap;
+use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant};
 use typetune_core::event::{InputEvent, KeyState};
 use typetune_core::pipeline::PipelineStage;
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct ChatterStats {
     pub total_events: u64,
     pub suppressed_events: u64,
@@ -15,7 +16,7 @@ pub struct AntiChatter {
     debounce_window: Duration,
     modifier_debounce_window: Duration,
     modifier_keys: Vec<u32>,
-    stats: ChatterStats,
+    shared_stats: Arc<Mutex<ChatterStats>>,
 }
 
 impl AntiChatter {
@@ -30,8 +31,13 @@ impl AntiChatter {
                 56, 100, // LEFT_ALT, RIGHT_ALT
                 125, // LEFT_META
             ],
-            stats: ChatterStats::default(),
+            shared_stats: Arc::new(Mutex::new(ChatterStats::default())),
         }
+    }
+
+    pub fn with_shared_stats(mut self, stats: Arc<Mutex<ChatterStats>>) -> Self {
+        self.shared_stats = stats;
+        self
     }
 
     fn is_modifier(&self, keycode: u32) -> bool {
@@ -46,8 +52,8 @@ impl AntiChatter {
         }
     }
 
-    pub fn stats(&self) -> &ChatterStats {
-        &self.stats
+    pub fn stats(&self) -> ChatterStats {
+        self.shared_stats.lock().unwrap().clone()
     }
 }
 
@@ -57,19 +63,21 @@ impl PipelineStage for AntiChatter {
     }
 
     fn process(&mut self, event: InputEvent) -> Vec<InputEvent> {
-        self.stats.total_events += 1;
+        {
+            let mut stats = self.shared_stats.lock().unwrap();
+            stats.total_events += 1;
+        }
 
         if event.state == KeyState::Pressed {
             let window = self.get_window(event.keycode);
 
             if let Some(last) = self.last_press.get(&event.keycode) {
                 if event.timestamp.duration_since(*last) < window {
-                    self.stats.suppressed_events += 1;
-                    *self
-                        .stats
-                        .per_key_suppressed
-                        .entry(event.keycode)
-                        .or_insert(0) += 1;
+                    {
+                        let mut stats = self.shared_stats.lock().unwrap();
+                        stats.suppressed_events += 1;
+                        *stats.per_key_suppressed.entry(event.keycode).or_insert(0) += 1;
+                    }
                     tracing::trace!(
                         keycode = event.keycode,
                         "Chatter suppressed ({}ms < {}ms)",

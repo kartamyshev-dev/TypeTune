@@ -108,6 +108,12 @@ fn build_ui(app: &Application) {
     )));
     content.append(&min_word_label);
 
+    let double_shift_switch = gtk::CheckButton::builder()
+        .label("Double-Shift manually corrects last word")
+        .active(config.corrector.double_shift_corrects)
+        .build();
+    content.append(&double_shift_switch);
+
     let chatter_label = gtk::Label::builder()
         .label("Anti-Chatter")
         .css_classes(["title-2"])
@@ -159,6 +165,7 @@ fn build_ui(app: &Application) {
         cfg.corrector.enabled = corrector_switch.is_active();
         cfg.chatter.enabled = chatter_switch.is_active();
         cfg.snippets.enabled = snippets_switch.is_active();
+        cfg.corrector.double_shift_corrects = double_shift_switch.is_active();
 
         match toml::to_string_pretty(&cfg) {
             Ok(toml_str) => {

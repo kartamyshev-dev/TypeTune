@@ -19,6 +19,9 @@ impl DaemonInterface {
         }
         if cfg.corrector.enabled {
             features.push("layout-corrector".into());
+            if cfg.corrector.double_shift_corrects {
+                features.push("double-shift-correct".into());
+            }
         }
         if cfg.snippets.enabled {
             features.push("snippets".into());

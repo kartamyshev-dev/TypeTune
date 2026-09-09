@@ -141,11 +141,17 @@ impl EvdevSource {
         })
     }
 
-    pub fn grab_all(&mut self) -> Result<()> {
-        for dev in &mut self.devices {
-            dev.grab()?;
+    pub fn grab_all(&mut self) -> Vec<usize> {
+        let mut grabbed = Vec::new();
+        for (i, dev) in self.devices.iter_mut().enumerate() {
+            match dev.grab() {
+                Ok(_) => grabbed.push(i),
+                Err(e) => {
+                    tracing::warn!("Skipping device {}: {}", dev.path(), e);
+                }
+            }
         }
-        Ok(())
+        grabbed
     }
 
     pub fn ungrab_all(&mut self) {
@@ -155,7 +161,12 @@ impl EvdevSource {
     }
 
     pub fn run(&mut self, callback: Box<dyn Fn(InputEvent) + Send>) -> Result<()> {
-        self.grab_all()?;
+        let grabbed_indices = self.grab_all();
+
+        if grabbed_indices.is_empty() {
+            return Err(anyhow::anyhow!("No devices could be grabbed"));
+        }
+
         self.running
             .store(true, std::sync::atomic::Ordering::SeqCst);
 
@@ -164,7 +175,8 @@ impl EvdevSource {
             return Err(anyhow::anyhow!("epoll_create1 failed"));
         }
 
-        for (i, dev) in self.devices.iter().enumerate() {
+        for &i in &grabbed_indices {
+            let dev = &self.devices[i];
             let mut ev: libc::epoll_event = unsafe { std::mem::zeroed() };
             ev.events = libc::EPOLLIN as u32;
             ev.u64 = i as u64;
@@ -173,7 +185,11 @@ impl EvdevSource {
             }
         }
 
-        tracing::info!("Event loop started ({} devices, epoll)", self.devices.len());
+        tracing::info!(
+            "Event loop started ({} grabbed of {} devices, epoll)",
+            grabbed_indices.len(),
+            self.devices.len()
+        );
 
         let mut epoll_events: [libc::epoll_event; 16] = unsafe { std::mem::zeroed() };
 

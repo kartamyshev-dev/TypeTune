@@ -32,6 +32,8 @@ pub struct CorrectorConfig {
     pub dict_dir: String,
     pub exclude_classes: Vec<String>,
     pub exclude_titles: Vec<String>,
+    pub double_shift_corrects: bool,
+    pub double_shift_window_ms: u64,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]

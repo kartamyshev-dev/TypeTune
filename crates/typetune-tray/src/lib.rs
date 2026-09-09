@@ -113,6 +113,8 @@ impl Tray for TypeTuneTray {
 }
 
 pub fn run_tray(config: Arc<Mutex<typetune_config::Config>>, enabled: Arc<Mutex<bool>>) {
-    let tray = TypeTuneTray { config, enabled };
-    ksni::TrayService::new(tray).spawn();
+    std::thread::spawn(move || {
+        let tray = TypeTuneTray { config, enabled };
+        ksni::TrayService::new(tray).spawn();
+    });
 }

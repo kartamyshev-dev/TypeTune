@@ -185,19 +185,32 @@ fn daemon_mode(config: Config) {
     let mut pipeline = Pipeline::new();
 
     if config.chatter.enabled {
-        pipeline.add_stage(Box::new(AntiChatter::new(
-            config.chatter.debounce_ms,
-            config.chatter.modifier_debounce_ms,
-        )));
+        pipeline.add_stage(Box::new(
+            AntiChatter::new(
+                config.chatter.debounce_ms,
+                config.chatter.modifier_debounce_ms,
+            )
+            .with_shared_stats(stats.clone()),
+        ));
     }
 
     if config.corrector.enabled {
         let dict_dir = shellexpand::tilde(&config.corrector.dict_dir);
         let dict_path = PathBuf::from(dict_dir.as_ref());
+
+        let ru_dict_path = find_dict_file(&dict_path, "ru.txt")
+            .or_else(|| find_dict_file(&PathBuf::from("/usr/share/typetune/dict"), "ru.txt"))
+            .unwrap_or_else(|| dict_path.join("ru.txt"));
+        let en_dict_path = find_dict_file(&dict_path, "en.txt")
+            .or_else(|| find_dict_file(&PathBuf::from("/usr/share/typetune/dict"), "en.txt"))
+            .unwrap_or_else(|| dict_path.join("en.txt"));
+
         pipeline.add_stage(Box::new(LayoutCorrector::new(
-            Dictionary::load(&dict_path.join("ru.txt")),
-            Dictionary::load(&dict_path.join("en.txt")),
+            Dictionary::load(&ru_dict_path),
+            Dictionary::load(&en_dict_path),
             config.corrector.min_word_length,
+            config.corrector.double_shift_corrects,
+            config.corrector.double_shift_window_ms,
         )));
     }
 
@@ -235,13 +248,15 @@ fn daemon_mode(config: Config) {
     let vkb_clone = vkb.clone();
 
     let result = source.run(Box::new(move |event| {
-        if *enabled_clone.lock().unwrap() {
-            let events = pipeline_clone.lock().unwrap().process(event);
-            let vkb = vkb_clone.lock().unwrap();
-            for e in events {
-                if let Err(err) = vkb.emit(&e) {
-                    tracing::error!("Failed to emit event: {}", err);
-                }
+        let events = if *enabled_clone.lock().unwrap() {
+            pipeline_clone.lock().unwrap().process(event)
+        } else {
+            vec![event]
+        };
+        let vkb = vkb_clone.lock().unwrap();
+        for e in events {
+            if let Err(err) = vkb.emit(&e) {
+                tracing::error!("Failed to emit event: {}", err);
             }
         }
     }));
@@ -377,4 +392,13 @@ fn open_editor(config_path: &PathBuf) {
         .arg(config_path)
         .status()
         .expect("Failed to open editor");
+}
+
+fn find_dict_file(dir: &std::path::Path, filename: &str) -> Option<PathBuf> {
+    let path = dir.join(filename);
+    if path.exists() {
+        Some(path)
+    } else {
+        None
+    }
 }

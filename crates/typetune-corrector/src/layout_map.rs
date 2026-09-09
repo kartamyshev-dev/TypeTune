@@ -1,4 +1,5 @@
 pub const RU_TO_EN: &[(char, char)] = &[
+    ('ё', '`'),
     ('й', 'q'),
     ('ц', 'w'),
     ('у', 'e'),
@@ -63,9 +64,11 @@ pub const RU_TO_EN: &[(char, char)] = &[
     ('Ь', 'M'),
     ('Б', '<'),
     ('Ю', '>'),
+    ('Ё', '~'),
 ];
 
 pub const EN_TO_RU: &[(char, char)] = &[
+    ('`', 'ё'),
     ('q', 'й'),
     ('w', 'ц'),
     ('e', 'у'),
@@ -119,7 +122,7 @@ pub const EN_TO_RU: &[(char, char)] = &[
     ('J', 'О'),
     ('K', 'Л'),
     ('L', 'Д'),
-    (';', 'Ж'),
+    (':', 'Ж'),
     ('"', 'Э'),
     ('Z', 'Я'),
     ('X', 'Ч'),
@@ -130,6 +133,7 @@ pub const EN_TO_RU: &[(char, char)] = &[
     ('M', 'Ь'),
     ('<', 'Б'),
     ('>', 'Ю'),
+    ('~', 'Ё'),
 ];
 
 pub fn transliterate(input: &str, map: &[(char, char)]) -> String {

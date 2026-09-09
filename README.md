@@ -5,8 +5,10 @@ Keyboard daemon for Linux (Wayland/X11). Auto-correction of RU/EN layout, key de
 ## Features
 
 - **Layout Correction** — automatically fixes words typed in wrong layout (`ghbdtn` → `привет`, `руддщ` → `hello`)
+- **Double-Shift Correction** — manually correct the last typed word by double-tapping Shift
 - **Anti-Chatter** — filters duplicate key presses from mechanical keyboards (configurable debounce window)
 - **Text Snippets** — expands triggers into text/commands (`:date` → current date, `:myip` → your IP)
+- **Smart Device Detection** — automatically detects keyboards and ignores mice/touchpads/composite devices
 - **System Tray** — icon with context menu (enable/disable, settings, exit)
 - **GTK4 Settings GUI** — graphical interface for configuration
 - **D-Bus IPC** — daemon communicates with tray and GUI via D-Bus
@@ -19,7 +21,7 @@ evdev grab → Pipeline → uinput emit
 
 Pipeline stages:
   1. AntiChatter     — key debounce filtering
-  2. LayoutCorrector — RU↔EN auto-correction
+  2. LayoutCorrector — RU↔EN auto-correction + double-Shift manual correction
   3. SnippetExpander — text snippet expansion
 ```
 
@@ -32,6 +34,13 @@ pub trait PipelineStage: Send {
     fn reset(&mut self) {}
 }
 ```
+
+### How It Works
+
+1. **Input Grab**: TypeTune grabs keyboard devices exclusively via `EVIOCGRAB` ioctl, intercepting all key events before they reach the system
+2. **Pipeline Processing**: Events pass through the pipeline stages (anti-chatter → corrector → snippets)
+3. **Output Emit**: Processed events are emitted through a virtual keyboard (`/dev/uinput`)
+4. **Pass-Through**: When the daemon is disabled, all grabbed events are passed through unchanged
 
 ### Crate Structure
 
@@ -59,8 +68,9 @@ typetune/
 ### Key Implementation Details
 
 - **Input**: Raw evdev via `libc::read()` with `O_NONBLOCK`, epoll for efficient multi-device polling
-- **Grab**: `EVIOCGRAB` ioctl to exclusively capture keyboard input
+- **Grab**: `EVIOCGRAB` ioctl to exclusively capture keyboard input (gracefully skips devices that can't be grabbed)
 - **Output**: Raw uinput via `libc::write()` to `/dev/uinput` (no evdev crate dependency for injection)
+- **Device Detection**: Smart filtering excludes mice, touchpads, trackpoints, and composite devices by checking for relative/absolute axes and mouse buttons
 - **IPC**: D-Bus interface `org.typetune.Daemon` via zbus (get_status, set_enabled, get_stats, reload_config)
 - **Config**: TOML with hot-reload via SIGHUP signal
 - **Cleanup**: `Drop` impl on devices for automatic ungrab, PID file management
@@ -161,6 +171,8 @@ layouts = ["us", "ru"]
 dict_dir = "~/.config/typetune/dict/"
 exclude_classes = ["Alacritty", "kitty", "Code"]
 exclude_titles = []
+double_shift_corrects = true         # double-Shift manually corrects last word
+double_shift_window_ms = 400         # max time between Shift presses (ms)
 
 [chatter]
 enabled = true
@@ -183,6 +195,22 @@ enabled = false
 smart_quotes = true
 em_dash = true
 ```
+
+### Layout Correction
+
+TypeTune automatically detects when you type a word in the wrong layout and corrects it:
+- Type `ghbdtn` → corrected to `привет`
+- Type `руддщ` → corrected to `hello`
+
+The corrector buffers characters into words and checks them against dictionaries (10,000 words each for Russian and English). If a word doesn't match the current layout's dictionary, it tries transliterating to the other layout.
+
+### Double-Shift Manual Correction
+
+Double-tap Shift to manually correct the last word you typed. This is useful when the automatic correction doesn't trigger (e.g., the word exists in both dictionaries). The timing window is configurable via `double_shift_window_ms`.
+
+### CapsLock and Layout Switching
+
+TypeTune does not intercept CapsLock. CapsLock works as configured by your desktop environment (typically for layout switching or caps lock). TypeTune detects the current layout by analyzing the characters you type, so it works regardless of how CapsLock is configured.
 
 ### Dynamic Variables in Snippets
 

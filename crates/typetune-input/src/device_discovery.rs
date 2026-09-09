@@ -38,22 +38,51 @@ pub fn discover_keyboards(exclude_names: &[String]) -> Vec<(String, String)> {
 }
 
 fn is_keyboard(device: &Device) -> bool {
-    use evdev::KeyCode;
+    use evdev::{AbsoluteAxisCode, KeyCode, RelativeAxisCode};
 
     let supported = match device.supported_keys() {
         Some(keys) => keys,
         None => return false,
     };
 
-    let has_letters = supported.contains(KeyCode::KEY_A)
-        && supported.contains(KeyCode::KEY_Z)
-        && supported.contains(KeyCode::KEY_SPACE);
-
-    let is_mouse = name_contains(device, "mouse")
+    if name_contains(device, "mouse")
         || name_contains(device, "touchpad")
-        || name_contains(device, "trackpoint");
+        || name_contains(device, "trackpoint")
+        || name_contains(device, "g305")
+        || name_contains(device, "g502")
+        || name_contains(device, "g pro")
+        || name_contains(device, "typetune")
+    {
+        return false;
+    }
 
-    has_letters && !is_mouse
+    if device.supported_relative_axes().is_some_and(|axes| {
+        axes.contains(RelativeAxisCode::REL_X) || axes.contains(RelativeAxisCode::REL_Y)
+    }) {
+        return false;
+    }
+
+    if device.supported_absolute_axes().is_some_and(|axes| {
+        axes.contains(AbsoluteAxisCode::ABS_X) || axes.contains(AbsoluteAxisCode::ABS_Y)
+    }) {
+        return false;
+    }
+
+    if supported.contains(KeyCode::BTN_LEFT)
+        || supported.contains(KeyCode::BTN_RIGHT)
+        || supported.contains(KeyCode::BTN_TOOL_MOUSE)
+    {
+        return false;
+    }
+
+    supported.contains(KeyCode::KEY_A)
+        && supported.contains(KeyCode::KEY_Z)
+        && supported.contains(KeyCode::KEY_0)
+        && supported.contains(KeyCode::KEY_9)
+        && supported.contains(KeyCode::KEY_SPACE)
+        && supported.contains(KeyCode::KEY_ENTER)
+        && supported.contains(KeyCode::KEY_BACKSPACE)
+        && supported.contains(KeyCode::KEY_LEFTSHIFT)
 }
 
 fn name_contains(device: &Device, pattern: &str) -> bool {
