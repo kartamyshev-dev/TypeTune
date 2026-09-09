@@ -26,3 +26,27 @@ shellexpand = "3"
 zbus = { version = "3", default-features = false, features = ["tokio"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
 serde = { version = "1", features = ["derive"] }
+
+[package.metadata.deb]
+name = "typetune"
+maintainer = "Kartamyshev <kartamyshev-dev@github.com>"
+copyright = "2026 Kartamyshev"
+license-file = ["../../LICENSE", "0"]
+extended-description = """\
+Keyboard daemon with layout correction, anti-chatter and snippets. \
+Provides automatic RU/EN layout switching, hardware key debounce \
+for mechanical keyboards, and text snippet expansion."""
+section = "utils"
+priority = "optional"
+depends = "libgtk-4-1 (>= 4.0), libadwaita-1-0 (>= 1.0), libevdev2, libudev1, libxkbcommon0, libdbus-1-2"
+assets = [
+    ["target/release/typetune", "usr/bin/", "755"],
+    ["target/release/typetune-gui", "usr/bin/", "755"],
+    ["../../packaging/typetune.desktop", "usr/share/applications/", "644"],
+    ["../../resources/icons/hicolor/scalable/status/typetune-active.svg", "usr/share/icons/hicolor/scalable/status/", "644"],
+    ["../../resources/icons/hicolor/scalable/status/typetune-disabled.svg", "usr/share/icons/hicolor/scalable/status/", "644"],
+    ["../../dict/ru.txt", "usr/share/typetune/dict/", "644"],
+    ["../../dict/en.txt", "usr/share/typetune/dict/", "644"],
+    ["../../config/default.toml", "etc/typetune/config.toml", "644"],
+    ["../../packaging/typetune.service", "usr/lib/systemd/user/", "644"],
+]

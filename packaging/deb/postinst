@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+    configure)
+        getent group input >/dev/null || groupadd input
+
+        if [ -n "$SUDO_USER" ]; then
+            usermod -aG input "$SUDO_USER"
+        fi
+
+        mkdir -p /etc/typetune
+
+        systemctl daemon-reload 2>/dev/null || true
+
+        echo ""
+        echo "=== TypeTune installed ==="
+        echo "1. Log out and back in for the input group to take effect"
+        echo "2. Run: systemctl --user enable --now typetune"
+        echo "3. Or: typetune daemon"
+        echo ""
+        ;;
+esac

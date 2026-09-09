@@ -1,4 +1,4 @@
-.PHONY: build release install uninstall clean deb
+.PHONY: build release install uninstall clean deb test-deb
 
 build:
 	cargo build
@@ -28,3 +28,11 @@ uninstall:
 
 clean:
 	cargo clean
+	rm -rf target/debian/
+
+deb: release
+	cargo deb --no-build
+
+test-deb: deb
+	dpkg-deb --info target/debian/typetune_*.deb
+	dpkg-deb --contents target/debian/typetune_*.deb
