@@ -1,6 +1,6 @@
 [general]
 log_level = "info"
-pid_file = "/tmp/tunetype.pid"
+pid_file = "/tmp/typetune.pid"
 
 [input]
 discovery = "auto"
@@ -11,7 +11,7 @@ exclude_names = ["Power Button", "Sleep Button"]
 enabled = true
 min_word_length = 3
 layouts = ["us", "ru"]
-dict_dir = "~/.config/tunetype/dict/"
+dict_dir = "~/.config/typetune/dict/"
 exclude_classes = ["Alacritty", "kitty", "Code"]
 exclude_titles = []
 

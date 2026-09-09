@@ -1,0 +1,28 @@
+[package]
+name = "typetune-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "typetune"
+path = "src/main.rs"
+
+[dependencies]
+typetune-core = { path = "../typetune-core" }
+typetune-input = { path = "../typetune-input" }
+typetune-inject = { path = "../typetune-inject" }
+typetune-layout = { path = "../typetune-layout" }
+typetune-corrector = { path = "../typetune-corrector" }
+typetune-chatter = { path = "../typetune-chatter" }
+typetune-snippets = { path = "../typetune-snippets" }
+typetune-config = { path = "../typetune-config" }
+typetune-tray = { path = "../typetune-tray" }
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+signal-hook = "0.3"
+libc = "0.2"
+shellexpand = "3"
+zbus = { version = "3", default-features = false, features = ["tokio"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
+serde = { version = "1", features = ["derive"] }

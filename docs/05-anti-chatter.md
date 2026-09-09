@@ -24,13 +24,13 @@ Per-key debounce на основе временных меток:
 
 ## Шаг 5.2: Реализация
 
-### tunetype-chatter/src/lib.rs
+### typetune-chatter/src/lib.rs
 
 ```rust
 use std::collections::HashMap;
 use std::time::{Duration, Instant};
-use tunetype_core::event::{InputEvent, KeyState};
-use tunetype_core::pipeline::PipelineStage;
+use typetune_core::event::{InputEvent, KeyState};
+use typetune_core::pipeline::PipelineStage;
 
 pub struct AntiChatter {
     last_press: HashMap<u32, Instant>,
@@ -122,7 +122,7 @@ modifier_debounce_ms = 30
 
 ## Шаг 5.4: Статистика
 
-CLI-команда `tunetype stats` показывает:
+CLI-команда `typetune stats` показывает:
 ```
 Anti-Chatter Statistics:
   Total events:      15,432

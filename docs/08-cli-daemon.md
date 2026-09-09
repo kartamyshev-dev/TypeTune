@@ -5,26 +5,26 @@
 
 ## Шаг 8.1: CLI на clap
 
-### tunetype-cli/Cargo.toml
+### typetune-cli/Cargo.toml
 ```toml
 [package]
-name = "tunetype-cli"
+name = "typetune-cli"
 version.workspace = true
 edition.workspace = true
 
 [[bin]]
-name = "tunetype"
+name = "typetune"
 path = "src/main.rs"
 
 [dependencies]
-tunetype-core = { path = "../tunetype-core" }
-tunetype-input = { path = "../tunetype-input" }
-tunetype-inject = { path = "../tunetype-inject" }
-tunetype-layout = { path = "../tunetype-layout" }
-tunetype-corrector = { path = "../tunetype-corrector" }
-tunetype-chatter = { path = "../tunetype-chatter" }
-tunetype-snippets = { path = "../tunetype-snippets" }
-tunetype-config = { path = "../tunetype-config" }
+typetune-core = { path = "../typetune-core" }
+typetune-input = { path = "../typetune-input" }
+typetune-inject = { path = "../typetune-inject" }
+typetune-layout = { path = "../typetune-layout" }
+typetune-corrector = { path = "../typetune-corrector" }
+typetune-chatter = { path = "../typetune-chatter" }
+typetune-snippets = { path = "../typetune-snippets" }
+typetune-config = { path = "../typetune-config" }
 clap = { version = "4", features = ["derive"] }
 tracing = "0.1"
 tracing-subscriber = "0.3"
@@ -37,7 +37,7 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 
 #[derive(Parser)]
-#[command(name = "tunetype", about = "Keyboard daemon: layout correction, anti-chatter, snippets")]
+#[command(name = "typetune", about = "Keyboard daemon: layout correction, anti-chatter, snippets")]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -144,7 +144,7 @@ fn daemon_mode(config: Config) {
     });
 
     // 9. Run event loop
-    tracing::info!("TuneType daemon started (PID: {})", std::process::id());
+    tracing::info!("TypeTune daemon started (PID: {})", std::process::id());
     source.run(Box::new(move |event| {
         if *enabled.lock().unwrap() {
             let events = pipeline.process(event);
@@ -158,16 +158,16 @@ fn daemon_mode(config: Config) {
 
 ## Шаг 8.3: Systemd service
 
-### tunetype.service
+### typetune.service
 ```ini
 [Unit]
-Description=TuneType Keyboard Daemon
+Description=TypeTune Keyboard Daemon
 After=graphical-session.target
 PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/tunetype daemon
+ExecStart=/usr/local/bin/typetune daemon
 Restart=on-failure
 RestartSec=5
 Environment=WAYLAND_DISPLAY=wayland-0
@@ -180,10 +180,10 @@ WantedBy=default.target
 Установка:
 ```bash
 mkdir -p ~/.config/systemd/user/
-cp tunetype.service ~/.config/systemd/user/
+cp typetune.service ~/.config/systemd/user/
 systemctl --user daemon-reload
-systemctl --user enable tunetype
-systemctl --user start tunetype
+systemctl --user enable typetune
+systemctl --user start typetune
 ```
 
 ## Шаг 8.4: Graceful shutdown
@@ -211,22 +211,22 @@ tracing::info!("Daemon stopped");
 
 | Команда | Описание |
 |---|---|
-| `tunetype daemon` | Запуск в foreground |
-| `tunetype start` | Запуск в background |
-| `tunetype stop` | Остановка демона |
-| `tunetype status` | Статус (PID, uptime, активные фичи) |
-| `tunetype stats` | Статистика anti-chatter |
-| `tunetype config path` | Путь к конфигу |
-| `tunetype config edit` | Открыть конфиг в $EDITOR |
-| `tunetype list-devices` | Список обнаруженных устройств |
-| `tunetype reload` | Перезагрузка конфига (SIGHUP) |
-| `tunetype version` | Версия |
+| `typetune daemon` | Запуск в foreground |
+| `typetune start` | Запуск в background |
+| `typetune stop` | Остановка демона |
+| `typetune status` | Статус (PID, uptime, активные фичи) |
+| `typetune stats` | Статистика anti-chatter |
+| `typetune config path` | Путь к конфигу |
+| `typetune config edit` | Открыть конфиг в $EDITOR |
+| `typetune list-devices` | Список обнаруженных устройств |
+| `typetune reload` | Перезагрузка конфига (SIGHUP) |
+| `typetune version` | Версия |
 
 ## Проверочный лист
-- [ ] `tunetype daemon` запускает в foreground
-- [ ] `tunetype start` запускает в background
-- [ ] `tunetype stop` корректно завершает
-- [ ] `tunetype status` показывает статус
-- [ ] `tunetype list-devices` показывает клавиатуры
+- [ ] `typetune daemon` запускает в foreground
+- [ ] `typetune start` запускает в background
+- [ ] `typetune stop` корректно завершает
+- [ ] `typetune status` показывает статус
+- [ ] `typetune list-devices` показывает клавиатуры
 - [ ] PID-файл создаётся и удаляется
 - [ ] Systemd service работает

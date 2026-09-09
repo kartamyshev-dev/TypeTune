@@ -9,7 +9,7 @@
 ```toml
 [general]
 log_level = "info"
-pid_file = "/tmp/tunetype.pid"
+pid_file = "/tmp/typetune.pid"
 
 [input]
 discovery = "auto"
@@ -20,7 +20,7 @@ exclude_names = ["Power Button", "Sleep Button"]
 enabled = true
 min_word_length = 3
 layouts = ["us", "ru"]
-dict_dir = "~/.config/tunetype/dict/"
+dict_dir = "~/.config/typetune/dict/"
 exclude_classes = ["Alacritty", "kitty", "Code"]
 exclude_titles = []
 
@@ -45,17 +45,17 @@ smart_quotes = true
 em_dash = true
 ```
 
-## Шаг 6.2: tunetype-config crate
+## Шаг 6.2: typetune-config crate
 
 ### Cargo.toml
 ```toml
 [package]
-name = "tunetype-config"
+name = "typetune-config"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
-tunetype-core = { path = "../tunetype-core" }
+typetune-core = { path = "../typetune-core" }
 serde = { version = "1", features = ["derive"] }
 toml = "0.8"
 tracing = "0.1"
@@ -130,7 +130,7 @@ use std::path::PathBuf;
 pub fn config_path() -> PathBuf {
     dirs::config_dir()
         .unwrap_or_else(|| PathBuf::from("/etc"))
-        .join("tunetype")
+        .join("typetune")
         .join("config.toml")
 }
 
@@ -181,9 +181,9 @@ std::thread::spawn(move || {
 | Приоритет | Путь |
 |---|---|
 | 1. CLI flag | `--config /path/to/config.toml` |
-| 2. XDG | `$XDG_CONFIG_HOME/tunetype/config.toml` |
-| 3. Default | `~/.config/tunetype/config.toml` |
-| 4. System | `/etc/tunetype/config.toml` |
+| 2. XDG | `$XDG_CONFIG_HOME/typetune/config.toml` |
+| 3. Default | `~/.config/typetune/config.toml` |
+| 4. System | `/etc/typetune/config.toml` |
 
 ## Проверочный лист
 - [ ] Конфиг загружается из XDG-пути

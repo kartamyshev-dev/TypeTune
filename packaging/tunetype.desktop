@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=TuneType
-Comment=Keyboard daemon with layout correction, anti-chatter and snippets
-Exec=tunetype-gui
-Icon=input-keyboard
-Terminal=false
-Type=Application
-Categories=Utility;Settings;
-Keywords=keyboard;layout;chatter;snippets;autocorrect;

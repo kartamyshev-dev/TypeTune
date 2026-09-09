@@ -1,0 +1,9 @@
+[package]
+name = "typetune-snippets"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+typetune-core = { path = "../typetune-core" }
+typetune-config = { path = "../typetune-config" }
+tracing = "0.1"

@@ -3,17 +3,17 @@
 ## Цель
 Перехват клавиатуры, обработка через pipeline, инжект в виртуальное устройство.
 
-## Шаг 3.1: tunetype-input — evdev перехватчик
+## Шаг 3.1: typetune-input — evdev перехватчик
 
 ### Cargo.toml
 ```toml
 [package]
-name = "tunetype-input"
+name = "typetune-input"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
-tunetype-core = { path = "../tunetype-core" }
+typetune-core = { path = "../typetune-core" }
 evdev = "0.13"
 udev = "0.9"
 tracing = "0.1"
@@ -25,7 +25,7 @@ pub mod evdev_source;
 pub mod device_discovery;
 
 pub trait InputSource {
-    fn run(&mut self, callback: Box<dyn Fn(tunetype_core::event::InputEvent) + Send>) -> Result<(), Box<dyn std::error::Error>>;
+    fn run(&mut self, callback: Box<dyn Fn(typetune_core::event::InputEvent) + Send>) -> Result<(), Box<dyn std::error::Error>>;
     fn stop(&mut self);
 }
 ```
@@ -75,7 +75,7 @@ impl EvdevSource {
         self.running.store(true, Ordering::SeqCst);
 
         // 2. Event loop: fetch_events() → convert → callback
-        // 3. Конвертация evdev::InputEvent → tunetype_core::InputEvent
+        // 3. Конвертация evdev::InputEvent → typetune_core::InputEvent
         // 4. Вызов callback
     }
 
@@ -100,17 +100,17 @@ fn convert_event(ev: evdev::InputEvent) -> Option<InputEvent> {
 }
 ```
 
-## Шаг 3.2: tunetype-inject — uinput виртуальное устройство
+## Шаг 3.2: typetune-inject — uinput виртуальное устройство
 
 ### Cargo.toml
 ```toml
 [package]
-name = "tunetype-inject"
+name = "typetune-inject"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
-tunetype-core = { path = "../tunetype-core" }
+typetune-core = { path = "../typetune-core" }
 evdev = "0.13"
 tracing = "0.1"
 ```
@@ -119,7 +119,7 @@ tracing = "0.1"
 ```rust
 use evdev::uinput::VirtualDeviceBuilder;
 use evdev::{AttributeSet, KeyCode, InputEvent as EvdevInputEvent, EventType, SynchronizationCode};
-use tunetype_core::event::{InputEvent, KeyState};
+use typetune_core::event::{InputEvent, KeyState};
 
 pub struct VirtualKeyboard {
     device: evdev::uinput::VirtualDevice,
@@ -135,7 +135,7 @@ impl VirtualKeyboard {
         }
 
         let device = VirtualDeviceBuilder::new()?
-            .name("TuneType Virtual Keyboard")
+            .name("TypeTune Virtual Keyboard")
             .with_keys(&keys)?
             .build()?;
 
@@ -160,11 +160,11 @@ impl VirtualKeyboard {
 }
 ```
 
-## Шаг 3.3: tunetype-cli — Сборка pipeline (скелет)
+## Шаг 3.3: typetune-cli — Сборка pipeline (скелет)
 
 ### src/main.rs
 ```rust
-use tunetype_core::pipeline::Pipeline;
+use typetune_core::pipeline::Pipeline;
 
 fn main() {
     // 1. Инициализация логирования (tracing)
@@ -206,14 +206,14 @@ async fn main() {
 ## Шаг 3.5: Тестирование
 
 ### Ручной тест
-1. Запустить `cargo run --bin tunetype -- daemon`
+1. Запустить `cargo run --bin typetune -- daemon`
 2. Нажать клавиши — проверить прохождение через pipeline
 3. Проверить что оригинальный ввод подавляется (grab)
 4. Проверить что виртуальное устройство генерирует события
 
 ### Проверка uinput устройства
 ```bash
-cat /proc/bus/input/devices | grep -A 5 "TuneType"
+cat /proc/bus/input/devices | grep -A 5 "TypeTune"
 evtest  # найти виртуальное устройство
 ```
 

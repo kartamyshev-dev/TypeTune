@@ -1,31 +1,31 @@
 # 10 — Сборка deb-пакета
 
 ## Цель
-Установка TuneType через `sudo dpkg -i tunetype.deb`.
+Установка TypeTune через `sudo dpkg -i typetune.deb`.
 
 ## Шаг 10.1: Структура deb-пакета
 
 ```
-tunetype_0.1.0_amd64.deb
+typetune_0.1.0_amd64.deb
 ├── usr/
 │   ├── bin/
-│   │   ├── tunetype              # CLI + daemon
-│   │   └── tunetype-gui          # GUI настроек
+│   │   ├── typetune              # CLI + daemon
+│   │   └── typetune-gui          # GUI настроек
 │   ├── share/
 │   │   ├── applications/
-│   │   │   └── tunetype.desktop
+│   │   │   └── typetune.desktop
 │   │   ├── icons/hicolor/
-│   │   │   ├── 16x16/status/tunetype-*.png
-│   │   │   ├── 24x24/status/tunetype-*.png
-│   │   │   └── scalable/tunetype-*.svg
-│   │   └── tunetype/
+│   │   │   ├── 16x16/status/typetune-*.png
+│   │   │   ├── 24x24/status/typetune-*.png
+│   │   │   └── scalable/typetune-*.svg
+│   │   └── typetune/
 │   │       └── dict/
 │   │           ├── ru.txt
 │   │           └── en.txt
 │   └── lib/systemd/user/
-│       └── tunetype.service
+│       └── typetune.service
 ├── etc/
-│   └── tunetype/
+│   └── typetune/
 │       └── config.toml           # конфиг по умолчанию
 └── DEBIAN/
     ├── control
@@ -38,7 +38,7 @@ tunetype_0.1.0_amd64.deb
 
 ### DEBIAN/control
 ```
-Package: tunetype
+Package: typetune
 Version: 0.1.0
 Section: utils
 Priority: optional
@@ -47,12 +47,12 @@ Depends: libgtk-4-1 (>= 4.0), libadwaita-1-0 (>= 1.0), libevdev2, libudev1, libx
 Recommends: libappindicator3-1
 Maintainer: Kartamyshev <kartamyshev-dev@github.com>
 Description: Keyboard daemon with layout correction, anti-chatter and snippets
- TuneType is a lightweight keyboard daemon that provides:
+ TypeTune is a lightweight keyboard daemon that provides:
   - Automatic RU/EN layout correction (ghbdtn → привет)
   - Hardware key chatter filtering for mechanical keyboards
   - Text snippet expansion
   - System tray integration with GTK4 settings GUI
-Homepage: https://github.com/kartamyshev-dev/tunetype
+Homepage: https://github.com/kartamyshev-dev/TypeTune
 ```
 
 ### DEBIAN/postinst
@@ -71,16 +71,16 @@ case "$1" in
         fi
 
         # Создать директорию конфига
-        mkdir -p /etc/tunetype
+        mkdir -p /etc/typetune
 
         # Перезагрузить systemd
         systemctl daemon-reload 2>/dev/null || true
 
         echo ""
-        echo "=== TuneType установлен ==="
+        echo "=== TypeTune установлен ==="
         echo "1. Перелогиньтесь для применения группы input"
-        echo "2. Запустите: systemctl --user enable --now tunetype"
-        echo "3. Или: tunetype daemon"
+        echo "2. Запустите: systemctl --user enable --now typetune"
+        echo "3. Или: typetune daemon"
         echo ""
         ;;
 esac
@@ -94,15 +94,15 @@ set -e
 case "$1" in
     remove|upgrade)
         # Остановить сервис
-        systemctl --user stop tunetype.service 2>/dev/null || true
-        systemctl --user disable tunetype.service 2>/dev/null || true
+        systemctl --user stop typetune.service 2>/dev/null || true
+        systemctl --user disable typetune.service 2>/dev/null || true
         ;;
 esac
 ```
 
 ### DEBIAN/conffiles
 ```
-/etc/tunetype/config.toml
+/etc/typetune/config.toml
 ```
 
 ## Шаг 10.3: Сборка через cargo-deb
@@ -123,21 +123,21 @@ priority = "optional"
 depends = "libgtk-4-1 (>= 4.0), libadwaita-1-0 (>= 1.0), libevdev2, libudev1, libxkbcommon0"
 assets = [
     # Бинарники
-    ["target/release/tunetype", "usr/bin/", "755"],
-    ["target/release/tunetype-gui", "usr/bin/", "755"],
+    ["target/release/typetune", "usr/bin/", "755"],
+    ["target/release/typetune-gui", "usr/bin/", "755"],
     # Десктоп-файл
-    ["packaging/tunetype.desktop", "usr/share/applications/", "644"],
+    ["packaging/typetune.desktop", "usr/share/applications/", "644"],
     # Иконки
     ["resources/icons/hicolor/16x16/status/*.png", "usr/share/icons/hicolor/16x16/status/", "644"],
     ["resources/icons/hicolor/24x24/status/*.png", "usr/share/icons/hicolor/24x24/status/", "644"],
     ["resources/icons/hicolor/scalable/*.svg", "usr/share/icons/hicolor/scalable/", "644"],
     # Словари
-    ["dict/ru.txt", "usr/share/tunetype/dict/", "644"],
-    ["dict/en.txt", "usr/share/tunetype/dict/", "644"],
+    ["dict/ru.txt", "usr/share/typetune/dict/", "644"],
+    ["dict/en.txt", "usr/share/typetune/dict/", "644"],
     # Конфиг
-    ["config/default.toml", "etc/tunetype/config.toml", "644"],
+    ["config/default.toml", "etc/typetune/config.toml", "644"],
     # Systemd service
-    ["packaging/tunetype.service", "usr/lib/systemd/user/", "644"],
+    ["packaging/typetune.service", "usr/lib/systemd/user/", "644"],
 ]
 
 [workspace.metadata.deb.systemd]
@@ -155,9 +155,9 @@ cargo build --release
 cargo deb --no-build
 
 # Проверка
-ls -la target/debian/tunetype_*.deb
-dpkg-deb --info target/debian/tunetype_*.deb
-dpkg-deb --contents target/debian/tunetype_*.deb
+ls -la target/debian/typetune_*.deb
+dpkg-deb --info target/debian/typetune_*.deb
+dpkg-deb --contents target/debian/typetune_*.deb
 ```
 
 ## Шаг 10.4: Альтернативная сборка (Makefile)
@@ -172,49 +172,49 @@ deb: build
 	cargo deb --no-build
 
 install: deb
-	sudo dpkg -i target/debian/tunetype_*.deb
+	sudo dpkg -i target/debian/typetune_*.deb
 
 clean:
 	cargo clean
 	rm -rf target/debian/
 
 uninstall:
-	sudo dpkg -r tunetype
+	sudo dpkg -r typetune
 
 test-deb:
-	dpkg-deb --info target/debian/tunetype_*.deb
-	dpkg-deb --contents target/debian/tunetype_*.deb
-	lintian target/debian/tunetype_*.deb || true
+	dpkg-deb --info target/debian/typetune_*.deb
+	dpkg-deb --contents target/debian/typetune_*.deb
+	lintian target/debian/typetune_*.deb || true
 ```
 
 ## Шаг 10.5: Путь установки
 
 | Файл | Путь |
 |---|---|
-| Бинарник daemon | `/usr/bin/tunetype` |
-| Бинарник GUI | `/usr/bin/tunetype-gui` |
-| Конфиг | `/etc/tunetype/config.toml` |
-| Словари | `/usr/share/tunetype/dict/{ru,en}.txt` |
-| Иконки | `/usr/share/icons/hicolor/*/status/tunetype-*.png` |
-| Десктоп-файл | `/usr/share/applications/tunetype.desktop` |
-| Systemd unit | `/usr/lib/systemd/user/tunetype.service` |
+| Бинарник daemon | `/usr/bin/typetune` |
+| Бинарник GUI | `/usr/bin/typetune-gui` |
+| Конфиг | `/etc/typetune/config.toml` |
+| Словари | `/usr/share/typetune/dict/{ru,en}.txt` |
+| Иконки | `/usr/share/icons/hicolor/*/status/typetune-*.png` |
+| Десктоп-файл | `/usr/share/applications/typetune.desktop` |
+| Systemd unit | `/usr/lib/systemd/user/typetune.service` |
 
 ## Шаг 10.6: Установка и удаление
 
 ```bash
 # Установка
-sudo dpkg -i tunetype_0.1.0_amd64.deb
+sudo dpkg -i typetune_0.1.0_amd64.deb
 sudo apt-get install -f  # если не хватает зависимостей
 
 # Проверка
-tunetype version
-tunetype list-devices
+typetune version
+typetune list-devices
 
 # Включить автозапуск
-systemctl --user enable --now tunetype
+systemctl --user enable --now typetune
 
 # Удаление
-sudo dpkg -r tunetype
+sudo dpkg -r typetune
 ```
 
 ## Проверочный лист

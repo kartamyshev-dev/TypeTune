@@ -1,23 +1,23 @@
 [workspace]
 resolver = "2"
 members = [
-    "crates/tunetype-core",
-    "crates/tunetype-input",
-    "crates/tunetype-inject",
-    "crates/tunetype-layout",
-    "crates/tunetype-corrector",
-    "crates/tunetype-chatter",
-    "crates/tunetype-snippets",
-    "crates/tunetype-config",
-    "crates/tunetype-tray",
-    "crates/tunetype-gui",
-    "crates/tunetype-cli",
+    "crates/typetune-core",
+    "crates/typetune-input",
+    "crates/typetune-inject",
+    "crates/typetune-layout",
+    "crates/typetune-corrector",
+    "crates/typetune-chatter",
+    "crates/typetune-snippets",
+    "crates/typetune-config",
+    "crates/typetune-tray",
+    "crates/typetune-gui",
+    "crates/typetune-cli",
 ]
 
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/kartamyshev-dev/tunetype"
+repository = "https://github.com/kartamyshev-dev/TypeTune"
 authors = ["Kartamyshev"]
 description = "Keyboard daemon: layout correction, anti-chatter, snippets"

@@ -6,7 +6,7 @@
 ## Шаг 2.1: Инициализация workspace
 
 ```bash
-cd /home/kartamyshev/Git/TuneType/tunetype
+cd /home/kartamyshev/Git/TypeTune/typetune
 ```
 
 ### Cargo.toml (workspace root)
@@ -14,22 +14,22 @@ cd /home/kartamyshev/Git/TuneType/tunetype
 [workspace]
 resolver = "2"
 members = [
-    "crates/tunetype-core",
-    "crates/tunetype-input",
-    "crates/tunetype-inject",
-    "crates/tunetype-layout",
-    "crates/tunetype-corrector",
-    "crates/tunetype-chatter",
-    "crates/tunetype-snippets",
-    "crates/tunetype-config",
-    "crates/tunetype-cli",
+    "crates/typetune-core",
+    "crates/typetune-input",
+    "crates/typetune-inject",
+    "crates/typetune-layout",
+    "crates/typetune-corrector",
+    "crates/typetune-chatter",
+    "crates/typetune-snippets",
+    "crates/typetune-config",
+    "crates/typetune-cli",
 ]
 
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/kartamyshev-dev/tunetype"
+repository = "https://github.com/kartamyshev-dev/TypeTune"
 authors = ["Kartamyshev"]
 description = "Keyboard daemon: layout correction, anti-chatter, snippets"
 ```
@@ -37,13 +37,13 @@ description = "Keyboard daemon: layout correction, anti-chatter, snippets"
 ## Шаг 2.2: Создание crates
 
 ```bash
-mkdir -p crates/{tunetype-core,tunetype-input,tunetype-inject,tunetype-layout,tunetype-corrector,tunetype-chatter,tunetype-snippets,tunetype-config,tunetype-cli}/src
+mkdir -p crates/{typetune-core,typetune-input,typetune-inject,typetune-layout,typetune-corrector,typetune-chatter,typetune-snippets,typetune-config,typetune-cli}/src
 ```
 
-### tunetype-core/Cargo.toml
+### typetune-core/Cargo.toml
 ```toml
 [package]
-name = "tunetype-core"
+name = "typetune-core"
 version.workspace = true
 edition.workspace = true
 
@@ -51,13 +51,13 @@ edition.workspace = true
 tracing = "0.1"
 ```
 
-### tunetype-core/src/lib.rs
+### typetune-core/src/lib.rs
 ```rust
 pub mod event;
 pub mod pipeline;
 ```
 
-### tunetype-core/src/event.rs
+### typetune-core/src/event.rs
 ```rust
 use std::time::Instant;
 
@@ -92,7 +92,7 @@ impl InputEvent {
 }
 ```
 
-### tunetype-core/src/pipeline.rs
+### typetune-core/src/pipeline.rs
 ```rust
 use crate::event::InputEvent;
 

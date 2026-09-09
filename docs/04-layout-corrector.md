@@ -5,7 +5,7 @@
 
 ## Шаг 4.1: Маппинг символов
 
-### tunetype-corrector/src/layout_map.rs
+### typetune-corrector/src/layout_map.rs
 
 ```rust
 /// RU → EN маппинг (стандартная QWERTY ↔ ЙЦУКЕН)
@@ -84,7 +84,7 @@ impl Dictionary {
 
 ## Шаг 4.3: Логика коррекции
 
-### tunetype-corrector/src/lib.rs — PipelineStage
+### typetune-corrector/src/lib.rs — PipelineStage
 
 ```rust
 pub struct LayoutCorrector {
@@ -161,7 +161,7 @@ fn inject_correction(&self, wrong: &str, correct: &str) -> Vec<InputEvent> {
 
 ## Шаг 4.5: Определение текущей раскладки
 
-### tunetype-layout/src/lib.rs
+### typetune-layout/src/lib.rs
 
 ```rust
 use xkbcommon::xkb;
@@ -232,7 +232,7 @@ fn get_active_window_class() -> Option<String> {
 enabled = true
 min_word_length = 3
 layouts = ["us", "ru"]
-dict_dir = "~/.config/tunetype/dict/"
+dict_dir = "~/.config/typetune/dict/"
 exclude_classes = ["Alacritty", "kitty", "Code", "jetbrains-idea"]
 exclude_titles = ["vim", "nano", "emacs"]
 ```

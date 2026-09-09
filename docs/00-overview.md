@@ -1,4 +1,4 @@
-# TuneType — Обзор проекта
+# TypeTune — Обзор проекта
 
 ## Описание
 Универсальный фоновый демон для перехвата и обработки клавиатурного ввода.
@@ -41,20 +41,20 @@ pub trait PipelineStage {
 ## Cargo Workspace
 
 ```
-tunetype/
+typetune/
 ├── Cargo.toml                    # [workspace]
 ├── crates/
-│   ├── tunetype-core/            # типы событий, трейты, pipeline
-│   ├── tunetype-input/           # evdev перехват (grab)
-│   ├── tunetype-inject/          # uinput виртуальное устройство
-│   ├── tunetype-layout/          # xkbcommon маппинг
-│   ├── tunetype-corrector/       # автокоррекция RU↔EN
-│   ├── tunetype-chatter/         # антидребезг
-│   ├── tunetype-snippets/        # текстовые сниппеты
-│   ├── tunetype-config/          # TOML-конфиг
-│   ├── tunetype-tray/            # иконка в трее + контекстное меню
-│   ├── tunetype-gui/             # GTK4 графический интерфейс настроек
-│   └── tunetype-cli/             # бинарник, CLI + daemon + tray + GUI
+│   ├── typetune-core/            # типы событий, трейты, pipeline
+│   ├── typetune-input/           # evdev перехват (grab)
+│   ├── typetune-inject/          # uinput виртуальное устройство
+│   ├── typetune-layout/          # xkbcommon маппинг
+│   ├── typetune-corrector/       # автокоррекция RU↔EN
+│   ├── typetune-chatter/         # антидребезг
+│   ├── typetune-snippets/        # текстовые сниппеты
+│   ├── typetune-config/          # TOML-конфиг
+│   ├── typetune-tray/            # иконка в трее + контекстное меню
+│   ├── typetune-gui/             # GTK4 графический интерфейс настроек
+│   └── typetune-cli/             # бинарник, CLI + daemon + tray + GUI
 ├── config/
 │   └── default.toml              # конфиг по умолчанию
 ├── dict/
@@ -108,7 +108,7 @@ tunetype/
 
 ## Текущий статус
 - [x] Git-репозиторий инициализирован
-- [x] Remote: https://github.com/kartamyshev-dev/tunetype.git
+- [x] Remote: https://github.com/kartamyshev-dev/TypeTune.git
 - [ ] Rust toolchain
 - [ ] Системные dev-пакеты
 - [ ] Структура проекта

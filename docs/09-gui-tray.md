@@ -6,12 +6,12 @@
 ## Архитектура
 
 ```
-tunetype (daemon)
+typetune (daemon)
   ├── Pipeline (evdev → stages → uinput)
   ├── TrayIcon (ksni → D-Bus StatusNotifierItem)
   └── IPC Server (zbus → unix socket)
 
-tunetype-gui (запускается по запросу из трее)
+typetune-gui (запускается по запросу из трее)
   ├── GTK4 + libadwaita окно настроек
   └── IPC Client (zbus → подключение к daemon)
 ```
@@ -20,18 +20,18 @@ tunetype-gui (запускается по запросу из трее)
 
 ---
 
-## Шаг 9.1: tunetype-tray — иконка в трее
+## Шаг 9.1: typetune-tray — иконка в трее
 
 ### Cargo.toml
 ```toml
 [package]
-name = "tunetype-tray"
+name = "typetune-tray"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
-tunetype-core = { path = "../tunetype-core" }
-tunetype-config = { path = "../tunetype-config" }
+typetune-core = { path = "../typetune-core" }
+typetune-config = { path = "../typetune-config" }
 ksni = "0.2"
 tracing = "0.1"
 ```
@@ -42,38 +42,38 @@ tracing = "0.1"
 use ksni::{MenuItem, StatusNotifierItem, TrayMethods};
 use std::sync::{Arc, Mutex};
 
-pub struct TuneTypeTray {
-    config: Arc<Mutex<tunetype_config::Config>>,
+pub struct TypeTuneTray {
+    config: Arc<Mutex<typetune_config::Config>>,
     enabled: Arc<Mutex<bool>>,
 }
 
-impl StatusNotifierItem for TuneTypeTray {
-    fn id(&self) -> String { "tunetype".into() }
-    fn title(&self) -> String { "TuneType".into() }
+impl StatusNotifierItem for TypeTuneTray {
+    fn id(&self) -> String { "typetune".into() }
+    fn title(&self) -> String { "TypeTune".into() }
     fn icon_name(&self) -> String {
         if *self.enabled.lock().unwrap() {
-            "tunetype-active".into()
+            "typetune-active".into()
         } else {
-            "tunetype-disabled".into()
+            "typetune-disabled".into()
         }
     }
     fn icon_theme_path(&self) -> String {
-        "/usr/share/tunetype/icons".into()
+        "/usr/share/typetune/icons".into()
     }
 
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let enabled = *self.enabled.lock().unwrap();
         vec![
             MenuItem::Standard {
-                label: if enabled { "TuneType: Включён" } else { "TuneType: Выключен" }.into(),
+                label: if enabled { "TypeTune: Включён" } else { "TypeTune: Выключен" }.into(),
                 ..Default::default()
             },
             MenuItem::Separator,
             MenuItem::Standard {
                 label: "Настройки...".into(),
                 activate: Box::new(|_| {
-                    // Запустить tunetype-gui
-                    std::process::Command::new("tunetype-gui").spawn().ok();
+                    // Запустить typetune-gui
+                    std::process::Command::new("typetune-gui").spawn().ok();
                 }),
                 ..Default::default()
             },
@@ -98,7 +98,7 @@ impl StatusNotifierItem for TuneTypeTray {
                 label: "Выход".into(),
                 activate: Box::new(|_| {
                     // Отправить SIGTERM демону
-                    std::process::Command::new("tunetype")
+                    std::process::Command::new("typetune")
                         .arg("stop")
                         .spawn()
                         .ok();
@@ -110,10 +110,10 @@ impl StatusNotifierItem for TuneTypeTray {
 }
 
 pub async fn run_tray(
-    config: Arc<Mutex<tunetype_config::Config>>,
+    config: Arc<Mutex<typetune_config::Config>>,
     enabled: Arc<Mutex<bool>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    let tray = TuneTypeTray { config, enabled };
+    let tray = TypeTuneTray { config, enabled };
     let service = TrayMethods::spawn(tray).await?;
     // Держать сервис живым
     futures::future::pending::<()>().await;
@@ -125,17 +125,17 @@ pub async fn run_tray(
 
 ```
 resources/icons/hicolor/
-├── 16x16/status/tunetype-active.png
-├── 16x16/status/tunetype-disabled.png
-├── 24x24/status/tunetype-active.png
-├── 24x24/status/tunetype-disabled.png
-├── scalable/tunetype-active.svg
-└── scalable/tunetype-disabled.svg
+├── 16x16/status/typetune-active.png
+├── 16x16/status/typetune-disabled.png
+├── 24x24/status/typetune-active.png
+├── 24x24/status/typetune-disabled.png
+├── scalable/typetune-active.svg
+└── scalable/typetune-disabled.svg
 ```
 
 Установка:
 ```bash
-sudo cp -r resources/icons /usr/share/tunetype/icons
+sudo cp -r resources/icons /usr/share/typetune/icons
 ```
 
 ---
@@ -144,11 +144,11 @@ sudo cp -r resources/icons /usr/share/tunetype/icons
 
 ### Протокол через zbus (D-Bus)
 
-Интерфейс `org.tunetype.Daemon`:
+Интерфейс `org.typetune.Daemon`:
 
 ```xml
 <node>
-  <interface name="org.tunetype.Daemon">
+  <interface name="org.typetune.Daemon">
     <method name="GetStatus">
       <arg name="enabled" type="b" direction="out"/>
       <arg name="active_features" type="as" direction="out"/>
@@ -166,7 +166,7 @@ sudo cp -r resources/icons /usr/share/tunetype/icons
 </node>
 ```
 
-### tunetype-ipc crate (опционально, или внутри daemon)
+### typetune-ipc crate (опционально, или внутри daemon)
 
 ```rust
 use zbus::{connection, interface};
@@ -176,7 +176,7 @@ struct DaemonInterface {
     stats: Arc<Mutex<ChatterStats>>,
 }
 
-#[interface(name = "org.tunetype.Daemon")]
+#[interface(name = "org.typetune.Daemon")]
 impl DaemonInterface {
     async fn get_status(&self) -> (bool, Vec<String>) {
         let e = *self.enabled.lock().unwrap();
@@ -200,21 +200,21 @@ impl DaemonInterface {
 
 ---
 
-## Шаг 9.3: tunetype-gui — GTK4 окно настроек
+## Шаг 9.3: typetune-gui — GTK4 окно настроек
 
 ### Cargo.toml
 ```toml
 [package]
-name = "tunetype-gui"
+name = "typetune-gui"
 version.workspace = true
 edition.workspace = true
 
 [[bin]]
-name = "tunetype-gui"
+name = "typetune-gui"
 path = "src/main.rs"
 
 [dependencies]
-tunetype-config = { path = "../tunetype-config" }
+typetune-config = { path = "../typetune-config" }
 gtk = { version = "0.9", package = "gtk4" }
 adw = { version = "0.7", package = "libadwaita" }
 zbus = "4"
@@ -233,7 +233,7 @@ use gtk::prelude::*;
 
 fn main() {
     let app = Application::builder()
-        .application_id("dev.kartamyshev.tunetype")
+        .application_id("dev.kartamyshev.typetune")
         .build();
 
     app.activate(|app| {
@@ -245,11 +245,11 @@ fn main() {
 
 fn build_ui(app: &Application) {
     // Загрузить конфиг
-    let config = tunetype_config::load(&tunetype_config::config_path()).unwrap();
+    let config = typetune_config::load(&typetune_config::config_path()).unwrap();
 
     // Header bar
     let header = HeaderBar::builder()
-        .title_widget(&adw::WindowTitle::new("TuneType", "Настройки"))
+        .title_widget(&adw::WindowTitle::new("TypeTune", "Настройки"))
         .build();
 
     // === Страница: Общие ===
@@ -376,7 +376,7 @@ fn build_ui(app: &Application) {
 
     let window = ApplicationWindow::builder()
         .application(app)
-        .title("TuneType")
+        .title("TypeTune")
         .default_width(600)
         .default_height(700)
         .content(&toolbar_view)
@@ -390,7 +390,7 @@ fn build_ui(app: &Application) {
 
 ## Шаг 9.4: Интеграция в daemon
 
-В `tunetype-cli/src/main.rs` daemon mode запускает tray в отдельном потоке:
+В `typetune-cli/src/main.rs` daemon mode запускает tray в отдельном потоке:
 
 ```rust
 fn daemon_mode(config: Config) {
@@ -422,13 +422,13 @@ fn daemon_mode(config: Config) {
 
 ## Шаг 9.5: Десктоп-файл
 
-### tunetype.desktop
+### typetune.desktop
 ```desktop
 [Desktop Entry]
-Name=TuneType
+Name=TypeTune
 Comment=Keyboard daemon with layout correction, anti-chatter and snippets
-Exec=tunetype-gui
-Icon=tunetype
+Exec=typetune-gui
+Icon=typetune
 Terminal=false
 Type=Application
 Categories=Utility;Settings;
@@ -437,13 +437,13 @@ Keywords=keyboard;layout;chatter;snippets;
 
 Установка:
 ```bash
-sudo cp tunetype.desktop /usr/share/applications/
+sudo cp typetune.desktop /usr/share/applications/
 ```
 
 ---
 
 ## Проверочный лист
-- [ ] Иконка TuneType видна в системном трее
+- [ ] Иконка TypeTune видна в системном трее
 - [ ] Контекстное меню: Включить/Выключить, Настройки, Выход
 - [ ] Клик "Настройки" открывает GTK4 окно
 - [ ] Окно показывает текущие настройки из конфига

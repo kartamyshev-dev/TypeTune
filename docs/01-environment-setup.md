@@ -1,7 +1,7 @@
 # 01 — Настройка окружения разработки
 
 ## Цель
-Подготовить Ubuntu 26.04 к сборке TuneType.
+Подготовить Ubuntu 26.04 к сборке TypeTune.
 
 ## Шаг 1.1: Установка системных зависимостей
 
@@ -56,7 +56,7 @@ ls -la /dev/input/event9
 ### Вариант B: udev rule для конкретного устройства
 ```bash
 # Создать правило:
-sudo tee /etc/udev/rules.d/99-tunetype.rules << 'EOF'
+sudo tee /etc/udev/rules.d/99-typetune.rules << 'EOF'
 SUBSYSTEM=="input", ATTRS{name}=="YICHIP Wireless Device", MODE="0660", GROUP="input"
 EOF
 

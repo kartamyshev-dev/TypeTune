@@ -1,0 +1,15 @@
+[Unit]
+Description=TypeTune Keyboard Daemon
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/typetune daemon
+Restart=on-failure
+RestartSec=5
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+[Install]
+WantedBy=default.target

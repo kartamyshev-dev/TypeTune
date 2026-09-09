@@ -1,4 +1,4 @@
-# TuneType
+# TypeTune
 
 Keyboard daemon for Linux (Wayland/X11). Auto-correction of RU/EN layout, key debounce for mechanical keyboards, text snippets.
 
@@ -36,20 +36,20 @@ pub trait PipelineStage: Send {
 ### Crate Structure
 
 ```
-tunetype/
+typetune/
 ├── Cargo.toml                    # workspace root
 ├── crates/
-│   ├── tunetype-core/            # InputEvent, PipelineStage trait, Pipeline
-│   ├── tunetype-input/           # evdev grab, epoll event loop, device discovery
-│   ├── tunetype-inject/          # uinput virtual keyboard (raw ioctl)
-│   ├── tunetype-layout/          # xkbcommon keycode→char mapping
-│   ├── tunetype-corrector/       # RU↔EN layout correction with dictionaries
-│   ├── tunetype-chatter/         # anti-chatter (per-key debounce)
-│   ├── tunetype-snippets/        # text snippet expansion
-│   ├── tunetype-config/          # TOML config with XDG paths
-│   ├── tunetype-tray/            # system tray icon (ksni/StatusNotifierItem)
-│   ├── tunetype-gui/             # GTK4 settings window
-│   └── tunetype-cli/             # binary, CLI + daemon + IPC
+│   ├── typetune-core/            # InputEvent, PipelineStage trait, Pipeline
+│   ├── typetune-input/           # evdev grab, epoll event loop, device discovery
+│   ├── typetune-inject/          # uinput virtual keyboard (raw ioctl)
+│   ├── typetune-layout/          # xkbcommon keycode→char mapping
+│   ├── typetune-corrector/       # RU↔EN layout correction with dictionaries
+│   ├── typetune-chatter/         # anti-chatter (per-key debounce)
+│   ├── typetune-snippets/        # text snippet expansion
+│   ├── typetune-config/          # TOML config with XDG paths
+│   ├── typetune-tray/            # system tray icon (ksni/StatusNotifierItem)
+│   ├── typetune-gui/             # GTK4 settings window
+│   └── typetune-cli/             # binary, CLI + daemon + IPC
 ├── config/default.toml           # default configuration
 ├── dict/{ru,en}.txt              # dictionaries (10K words each)
 ├── packaging/                    # systemd service, desktop file
@@ -61,7 +61,7 @@ tunetype/
 - **Input**: Raw evdev via `libc::read()` with `O_NONBLOCK`, epoll for efficient multi-device polling
 - **Grab**: `EVIOCGRAB` ioctl to exclusively capture keyboard input
 - **Output**: Raw uinput via `libc::write()` to `/dev/uinput` (no evdev crate dependency for injection)
-- **IPC**: D-Bus interface `org.tunetype.Daemon` via zbus (get_status, set_enabled, get_stats, reload_config)
+- **IPC**: D-Bus interface `org.typetune.Daemon` via zbus (get_status, set_enabled, get_stats, reload_config)
 - **Config**: TOML with hot-reload via SIGHUP signal
 - **Cleanup**: `Drop` impl on devices for automatic ungrab, PID file management
 
@@ -96,8 +96,8 @@ source $HOME/.cargo/env
 ### From Source
 
 ```bash
-git clone https://github.com/kartamyshev-dev/tunetype.git
-cd tunetype
+git clone https://github.com/kartamyshev-dev/TypeTune.git
+cd TypeTune
 make build
 sudo make install DESTDIR=/
 ```
@@ -106,7 +106,7 @@ sudo make install DESTDIR=/
 
 ```bash
 systemctl --user daemon-reload
-systemctl --user enable --now tunetype
+systemctl --user enable --now typetune
 ```
 
 ## Usage
@@ -115,39 +115,39 @@ systemctl --user enable --now tunetype
 
 | Command | Description |
 |---|---|
-| `tunetype daemon` | Start daemon in foreground |
-| `tunetype start` | Start daemon in background |
-| `tunetype stop` | Stop running daemon |
-| `tunetype status` | Show daemon status (PID) |
-| `tunetype stats` | Show anti-chatter statistics |
-| `tunetype list-devices` | List detected keyboard devices |
-| `tunetype reload` | Reload config (send SIGHUP) |
-| `tunetype config path` | Show config file path |
-| `tunetype config edit` | Open config in $EDITOR |
-| `tunetype version` | Show version |
+| `typetune daemon` | Start daemon in foreground |
+| `typetune start` | Start daemon in background |
+| `typetune stop` | Stop running daemon |
+| `typetune status` | Show daemon status (PID) |
+| `typetune stats` | Show anti-chatter statistics |
+| `typetune list-devices` | List detected keyboard devices |
+| `typetune reload` | Reload config (send SIGHUP) |
+| `typetune config path` | Show config file path |
+| `typetune config edit` | Open config in $EDITOR |
+| `typetune version` | Show version |
 
 ### Quick Start
 
 ```bash
 # Start daemon (foreground, for testing)
-tunetype daemon
+typetune daemon
 
 # Or start as background service
-tunetype start
-tunetype status
+typetune start
+typetune status
 
 # Open GUI settings
-tunetype-gui
+typetune-gui
 ```
 
 ## Configuration
 
-Config location: `~/.config/tunetype/config.toml`
+Config location: `~/.config/typetune/config.toml`
 
 ```toml
 [general]
 log_level = "info"
-pid_file = "/tmp/tunetype.pid"
+pid_file = "/tmp/typetune.pid"
 
 [input]
 discovery = "auto"           # auto-detect keyboards
@@ -158,7 +158,7 @@ exclude_names = ["Power Button", "Sleep Button"]
 enabled = true
 min_word_length = 3          # don't correct words shorter than this
 layouts = ["us", "ru"]
-dict_dir = "~/.config/tunetype/dict/"
+dict_dir = "~/.config/typetune/dict/"
 exclude_classes = ["Alacritty", "kitty", "Code"]
 exclude_titles = []
 
