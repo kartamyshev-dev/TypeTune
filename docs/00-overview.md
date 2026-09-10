@@ -1,115 +1,51 @@
-# TypeTune — Обзор проекта
+# TypeTune — обзор проекта и документации
 
-## Описание
-Универсальный фоновый демон для перехвата и обработки клавиатурного ввода.
-Автокоррекция раскладки (RU/EN), антидребезг, текстовые сниппеты.
+Обновлено 2026-09-10 по исходникам `8cc19d0`. Цель: помощник ввода для Linux, Windows и macOS с коррекцией раскладки, сниппетами и доступным на конкретной платформе физическим фильтром клавиш.
 
-Устанавливается deb-пакетом. Имеет графический интерфейс настроек и иконку в системном трее.
+## Результат исследования
 
-## Целевая среда
-- **ОС:** Ubuntu 26.04.1 LTS, ядро 7.0.0-31
-- **Дисплей:** Wayland (wayland-0) + XWayland (:0)
-- **Клавиатура:** YICHIP Wireless Device → /dev/input/event9
-- **Язык:** Rust (stable)
-- **GUI:** GTK4 + libadwaita (native для GNOME)
-- **Трей:** libappindicator / StatusNotifierItem (SNI)
-- **Формат конфига:** TOML
-- **Дистрибуция:** deb-пакет
+Подход к реализации нужно изменить. Текущий единственный pipeline смешивает физический транспорт и текстовое редактирование, хотя у них разные источники состояния, требования к задержке и способы отказа. Недостаток тестов позволил попасть в код ошибкам keycode, repeat, shutdown и взаимоисключающим правилам буферизации/удаления.
 
-## Архитектура (Pipeline)
+Сохранить Rust и модульность. Переработать контракты событий, выделить text engine с планами замены и независимый Linux anti-chatter helper. Заимствовать у Espanso принципы разделения detector, matcher и executor, затем проверить собственные гарантии в TypeTune.
 
-Каждое событие клавиатуры проходит через цепочку этапов:
+## Фактическая готовность
 
-```
-[evdev grab] → InputEvent → Pipeline:
-  1. AntiChatter      — фильтрация дребезга
-  2. LayoutCorrector   — автокоррекция раскладки
-  3. SnippetExpander   — раскрытие сниппетов
-  4. TypographyEngine  — типографские замены
-→ [uinput emit] → виртуальная клавиатура → приложение
-```
-
-Каждый этап — отдельный crate с трейтом `PipelineStage`:
-
-```rust
-pub trait PipelineStage {
-    fn process(&mut self, event: InputEvent) -> Vec<InputEvent>;
-    fn name(&self) -> &str;
-}
-```
-
-## Cargo Workspace
-
-```
-typetune/
-├── Cargo.toml                    # [workspace]
-├── crates/
-│   ├── typetune-core/            # типы событий, трейты, pipeline
-│   ├── typetune-input/           # evdev перехват (grab)
-│   ├── typetune-inject/          # uinput виртуальное устройство
-│   ├── typetune-layout/          # xkbcommon маппинг
-│   ├── typetune-corrector/       # автокоррекция RU↔EN
-│   ├── typetune-chatter/         # антидребезг
-│   ├── typetune-snippets/        # текстовые сниппеты
-│   ├── typetune-config/          # TOML-конфиг
-│   ├── typetune-tray/            # иконка в трее + контекстное меню
-│   ├── typetune-gui/             # GTK4 графический интерфейс настроек
-│   └── typetune-cli/             # бинарник, CLI + daemon + tray + GUI
-├── config/
-│   └── default.toml              # конфиг по умолчанию
-├── dict/
-│   ├── ru.txt                    # словарь RU (топ-10K слов)
-│   └── en.txt                    # словарь EN (топ-10K слов)
-├── packaging/
-│   ├── deb/                      # debian-пакет (control, postinst, systemd)
-│   └── Makefile                  # сборка deb через cargo-deb или dpkg-buildpackage
-└── docs/                         # документация
-```
-
-## Зависимости
-
-### Rust-крейты
-| Крейт | Версия | Назначение |
+| Область | Состояние на baseline | Что нужно для готовности |
 |---|---|---|
-| evdev | 0.13 | Чтение input-устройств + uinput |
-| xkbcommon | 0.9 | Маппинг keycode → символ (Wayland/X11) |
-| tokio | 1.x | Async runtime |
-| clap | 4.x | CLI-парсер |
-| serde | 1.x | Сериализация конфига |
-| toml | 0.8 | Парсинг TOML |
-| tracing | 0.1 | Логирование |
-| tracing-subscriber | 0.3 | Подписчик логов |
-| signal-hook | 0.3 | Обработка сигналов (SIGTERM, SIGHUP) |
-| udev | 0.9 | Поиск input-устройств |
-| gtk4 | 0.9 | GTK4 bindings для GUI |
-| libadwaita | 0.7 | GNOME HIG виджеты |
-| ksni | 0.2 | StatusNotifierItem (трей, D-Bus) |
-| zbus | 4.x | D-Bus IPC (для IPC между daemon и GUI) |
+| Portable crates | Сборка выбранных библиотек на macOS прошла, существующих тестов нет | Contract tests + CI Linux/macOS/Windows |
+| Linux input/output | Реализован raw evdev/uinput путь с P0/P1 дефектами | Identity, lifecycle, resync, hotplug и fault tests |
+| Layout/text bridge | `LayoutManager` не подключён; `character=None` | Живой platform state и достоверность text observations |
+| Corrector/snippets | Есть алгоритмы; daemon не передаёт им текст; latent defects воспроизведены | Новая модель истории, Unicode executor, guards |
+| Словари | 10K строк на язык, качество/происхождение не подтверждены | Provenance, curated corpus, negative cases |
+| Config/UI/tray | Заготовки; reload расходится с effective state | Один controller, atomic apply, visible errors |
+| Linux X11 | Native acceptance не выполнялась | Отдельный профиль и live результаты |
+| GNOME/KDE Wayland | Реальные возможности ещё не измерены | Ранний capability prototype по desktop-ам |
+| Windows/macOS приложение | Backend-ов нет | Native adapters, permissions, lifecycle и установка |
+| Packaging/CI | Файлы есть; готовность установленного продукта не установлена | Clean package/install/upgrade/remove tests |
 
-### Системные пакеты (apt)
-| Пакет | Назначение |
+Ни одна ОС пока не имеет статуса принятой runtime-платформы. Кроссплатформенная сборка части логики и кроссплатформенная работа приложения — разные milestones.
+
+## Как читать документы
+
+| Документ | Назначение |
 |---|---|
-| build-essential | gcc, g++, make |
-| pkg-config | Поиск .pc файлов |
-| libevdev-dev | Заголовки evdev |
-| libudev-dev | Заголовки udev |
-| libxkbcommon-dev | Заголовки xkbcommon |
-| libxkbcommon-x11-dev | X11 расширение xkbcommon |
-| clang | Компилятор (для bindgen) |
-| libgtk-4-dev | GTK4 dev-библиотеки |
-| libadwaita-1-dev | libadwaita dev-библиотеки |
-| cargo-deb | Сборка deb-пакетов из Cargo |
+| [11 — Linux audit](11-linux-audit.md) | 11 findings о транспорте, событиях, остановке и anti-chatter |
+| [12 — Feature audit](12-feature-audit.md) | 16 findings о функциях, ресурсах, GUI, IPC и поставке |
+| [13 — Target architecture](13-target-architecture.md) | Контракты компонентов, событий и замены; платформенные стратегии; ADR |
+| [14 — Development plan](14-development-plan.md) | Фазы G0–G6, зависимости, тестовая матрица и критерии готовности |
+| [15 — Espanso reference](15-espanso-reference.md) | Проверенные ссылки на конкретную upstream revision и переносимые принципы |
+| [16 — Product spec](16-product-spec.md) | Поведение ручной/автоматической коррекции, сниппетов, debounce и настроек |
+| [17 — Validation record](17-validation-record.md) | Что реально запускалось, результаты, ограничения и точка продолжения |
+| [Архив первоначального плана](archive/initial-plan/README.md) | История без статуса действующей инструкции |
 
-### Инструменты сборки
-| Инструмент | Назначение |
-|---|---|
-| cargo-deb | `cargo deb` — сборка .deb из Cargo.toml метаданных |
-| dpkg-deb | Проверка собранного .deb |
+Номера 01–10 сохранены как страницы-переадресации для старых ссылок. Источник истины для реализации — 13/14/16; audits 11/12 описывают baseline и сохраняются как свидетельство, а не автоматически обновляемая оценка будущего кода.
 
-## Текущий статус
-- [x] Git-репозиторий инициализирован
-- [x] Remote: https://github.com/kartamyshev-dev/TypeTune.git
-- [ ] Rust toolchain
-- [ ] Системные dev-пакеты
-- [ ] Структура проекта
-- [ ] Исходный код
+## Среда исследования и неизвестные
+
+Аудит выполнялся в `/Users/kartamyshev/Git/TypeTune` на macOS arm64, Rust/Cargo 1.89.0. Живой Linux desktop и периферия не исследовались. Прежний документ называл Ubuntu 26.04.1, ядро 7.0.0-31, Wayland и YICHIP `/dev/input/event9`; это исторические записи, не проверенные текущей задачей.
+
+До реализации нужно установить конкретный Linux-стенд и доступные session APIs, источник качественных словарей, минимальные поддерживаемые версии ОС и подход к GUI после headless прототипов. Эти неизвестные не мешают начать G1 и не оправдывают обещание универсального Wayland API.
+
+## Следующий шаг
+
+Первый срез — regression fixtures и контракты физического/text события, затем identity relay с управляемым выходом. Параллельно — исследование возможностей целевого Wayland desktop. Автоматическую коррекцию и shell-сниппеты не подключать к текущему grab callback после одного исправления offset: этим активируются подтверждённые ошибки следующего слоя.
