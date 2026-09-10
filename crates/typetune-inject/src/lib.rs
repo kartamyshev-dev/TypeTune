@@ -11,7 +11,6 @@ const UI_DEV_DESTROY: libc::c_ulong = 0x5502;
 const EV_KEY: c_uint = 1;
 const EV_SYN: c_uint = 0;
 const SYN_REPORT: u16 = 0;
-const EVDEV_OFFSET: u16 = 8;
 
 #[repr(C)]
 struct UInputUserDev {
@@ -121,7 +120,7 @@ impl VirtualKeyboard {
             KeyState::Pressed => 1i32,
             KeyState::Released => 0i32,
         };
-        self.emit_raw(EV_KEY as u16, event.keycode as u16 + EVDEV_OFFSET, value)?;
+        self.emit_raw(EV_KEY as u16, event.keycode as u16, value)?;
         self.emit_raw(EV_SYN as u16, SYN_REPORT, 0)?;
         Ok(())
     }

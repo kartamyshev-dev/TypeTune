@@ -9,6 +9,7 @@ use thiserror::Error;
 use typetune_core::event::{InputEvent, KeyState};
 
 const EV_KEY: u16 = 1;
+const EVDEV_OFFSET: u32 = 8;
 
 pub struct EvdevDevice {
     path: String,
@@ -88,7 +89,7 @@ impl EvdevDevice {
                         KeyState::Released
                     };
                     events.push(EvdevRawEvent {
-                        keycode: ev.code as u32,
+                        keycode: ev.code as u32 - EVDEV_OFFSET,
                         state,
                     });
                 }
