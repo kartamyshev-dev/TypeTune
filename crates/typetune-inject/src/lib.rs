@@ -11,6 +11,7 @@ const UI_DEV_DESTROY: libc::c_ulong = 0x5502;
 const EV_KEY: c_uint = 1;
 const EV_SYN: c_uint = 0;
 const SYN_REPORT: u16 = 0;
+const EVDEV_OFFSET: u16 = 8;
 
 #[repr(C)]
 struct UInputUserDev {
@@ -120,7 +121,7 @@ impl VirtualKeyboard {
             KeyState::Pressed => 1i32,
             KeyState::Released => 0i32,
         };
-        self.emit_raw(EV_KEY as u16, event.keycode as u16, value)?;
+        self.emit_raw(EV_KEY as u16, event.keycode as u16 + EVDEV_OFFSET, value)?;
         self.emit_raw(EV_SYN as u16, SYN_REPORT, 0)?;
         Ok(())
     }
@@ -160,9 +161,42 @@ fn char_to_press_release(ch: char) -> Option<(InputEvent, InputEvent)> {
 
 fn char_to_keycode(ch: char) -> Option<u32> {
     match ch {
-        'a'..='z' => Some((ch as u32) - ('a' as u32) + 30),
-        'A'..='Z' => Some((ch.to_lowercase().next()? as u32) - ('a' as u32) + 30),
-        '0'..='9' => Some((ch as u32) - ('0' as u32) + 2),
+        'q' | 'Q' => Some(16),
+        'w' | 'W' => Some(17),
+        'e' | 'E' => Some(18),
+        'r' | 'R' => Some(19),
+        't' | 'T' => Some(20),
+        'y' | 'Y' => Some(21),
+        'u' | 'U' => Some(22),
+        'i' | 'I' => Some(23),
+        'o' | 'O' => Some(24),
+        'p' | 'P' => Some(25),
+        'a' | 'A' => Some(30),
+        's' | 'S' => Some(31),
+        'd' | 'D' => Some(32),
+        'f' | 'F' => Some(33),
+        'g' | 'G' => Some(34),
+        'h' | 'H' => Some(35),
+        'j' | 'J' => Some(36),
+        'k' | 'K' => Some(37),
+        'l' | 'L' => Some(38),
+        'z' | 'Z' => Some(44),
+        'x' | 'X' => Some(45),
+        'c' | 'C' => Some(46),
+        'v' | 'V' => Some(47),
+        'b' | 'B' => Some(48),
+        'n' | 'N' => Some(49),
+        'm' | 'M' => Some(50),
+        '0' => Some(11),
+        '1' => Some(2),
+        '2' => Some(3),
+        '3' => Some(4),
+        '4' => Some(5),
+        '5' => Some(6),
+        '6' => Some(7),
+        '7' => Some(8),
+        '8' => Some(9),
+        '9' => Some(10),
         ' ' => Some(57),
         '\n' => Some(28),
         '\t' => Some(15),
@@ -174,9 +208,9 @@ fn char_to_keycode(ch: char) -> Option<u32> {
         '\'' => Some(40),
         '`' => Some(41),
         '\\' => Some(43),
-        ',' => Some(44),
-        '.' => Some(45),
-        '/' => Some(46),
+        ',' => Some(51),
+        '.' => Some(52),
+        '/' => Some(53),
         _ => None,
     }
 }

@@ -8,7 +8,6 @@ use std::os::unix::io::AsRawFd;
 use thiserror::Error;
 use typetune_core::event::{InputEvent, KeyState};
 
-const EVDEV_OFFSET: u32 = 8;
 const EV_KEY: u16 = 1;
 
 pub struct EvdevDevice {
@@ -89,7 +88,7 @@ impl EvdevDevice {
                         KeyState::Released
                     };
                     events.push(EvdevRawEvent {
-                        keycode: ev.code as u32 + EVDEV_OFFSET,
+                        keycode: ev.code as u32,
                         state,
                     });
                 }
