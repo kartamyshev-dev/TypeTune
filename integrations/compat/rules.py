@@ -1,0 +1,18 @@
+"""In-process inferred suggestion API; never fabricate a committed Snapshot."""
+import ctypes
+import json
+from pathlib import Path
+class Rules:
+    def __init__(self):
+        local=Path(__file__).resolve().parent.parent/'libtypetune_ibus.so'
+        self.lib=ctypes.CDLL(str(local if local.exists() else Path(__file__).resolve().parents[2]/'target/debug/libtypetune_ibus.so'))
+        self.lib.typetune_ibus_new.restype=ctypes.c_void_p
+        self.lib.typetune_ibus_free.argtypes=[ctypes.c_void_p]
+        self.lib.typetune_ibus_call.argtypes=[ctypes.c_void_p,ctypes.c_char_p,ctypes.c_size_t,ctypes.c_void_p]
+        self.lib.typetune_ibus_call.restype=ctypes.c_size_t
+        self.handle=self.lib.typetune_ibus_new()
+    def suggest(self,text,automatic):
+        request=json.dumps(dict(op='infer',text=text,automatic=automatic)).encode()
+        output=ctypes.create_string_buffer(32768)
+        size=self.lib.typetune_ibus_call(self.handle,request,len(request),output)
+        return json.loads(output.raw[:size]) if size else {'status':'ignored'}

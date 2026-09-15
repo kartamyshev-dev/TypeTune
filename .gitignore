@@ -5,3 +5,7 @@
 *~
 .idea/
 .vscode/
+
+# Python runtime/test caches
+__pycache__/
+*.py[cod]

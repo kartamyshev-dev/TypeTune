@@ -1,19 +1,13 @@
+#[cfg(target_os = "linux")]
 mod ipc;
+#[cfg(target_os = "linux")]
+use typetune_input::watchdog;
+#[cfg(target_os = "linux")]
+mod helper;
 
 use clap::{Parser, Subcommand};
 use std::path::PathBuf;
-use std::sync::atomic::AtomicBool;
-use std::sync::{Arc, Mutex};
-use typetune_chatter::AntiChatter;
-use typetune_chatter::ChatterStats;
 use typetune_config::Config;
-use typetune_core::pipeline::Pipeline;
-use typetune_corrector::dictionary::Dictionary;
-use typetune_corrector::LayoutCorrector;
-use typetune_inject::VirtualKeyboard;
-use typetune_input::device_discovery::discover_keyboards;
-use typetune_input::EvdevSource;
-use typetune_snippets::SnippetExpander;
 
 #[derive(Parser)]
 #[command(
@@ -29,16 +23,35 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
+    /// Read-only session capability diagnostics; independent of config and daemon.
+    #[cfg(target_os = "linux")]
+    Doctor {
+        /// Probe the current session without opening input devices.
+        #[arg(long, required = true)]
+        session: bool,
+    },
+    #[cfg(target_os = "linux")]
+    #[command(hide = true)]
+    Watchdog {
+        #[arg(long)]
+        parent: u32,
+    },
+    #[cfg(target_os = "linux")]
     Daemon,
+    #[cfg(target_os = "linux")]
     Start,
+    #[cfg(target_os = "linux")]
     Stop,
     Status,
+    #[cfg(target_os = "linux")]
     Stats,
     Config {
         #[command(subcommand)]
         action: Option<ConfigAction>,
     },
+    #[cfg(target_os = "linux")]
     ListDevices,
+    #[cfg(target_os = "linux")]
     Reload,
     Version,
 }
@@ -51,6 +64,28 @@ enum ConfigAction {
 
 fn main() {
     let cli = Cli::parse();
+    #[cfg(target_os = "linux")]
+    if let Commands::Watchdog { parent } = cli.command {
+        if let Err(error) = watchdog::monitor(parent) {
+            eprintln!("watchdog: {error}");
+            std::process::exit(1);
+        }
+        return;
+    }
+
+    #[cfg(target_os = "linux")]
+    if matches!(cli.command, Commands::Doctor { .. }) {
+        let runtime = tokio::runtime::Builder::new_current_thread()
+            .enable_all()
+            .build()
+            .expect("cannot initialize diagnostic runtime");
+        let report = runtime.block_on(typetune_session::probe());
+        println!(
+            "{}",
+            serde_json::to_string_pretty(&report).expect("session report serialization")
+        );
+        return;
+    }
 
     let config_path = cli
         .config
@@ -67,17 +102,25 @@ fn main() {
     init_logging(&config.general.log_level);
 
     match cli.command {
+        #[cfg(target_os = "linux")]
+        Commands::Watchdog { .. } | Commands::Doctor { .. } => unreachable!(),
+        #[cfg(target_os = "linux")]
         Commands::Daemon => daemon_mode(config),
-        Commands::Start => start_daemon(),
+        #[cfg(target_os = "linux")]
+        Commands::Start => start_daemon(&config_path, &config),
+        #[cfg(target_os = "linux")]
         Commands::Stop => stop_daemon(&config),
         Commands::Status => show_status(&config),
+        #[cfg(target_os = "linux")]
         Commands::Stats => show_stats(),
         Commands::Config { action } => match action {
             Some(ConfigAction::Path) => println!("{}", config_path.display()),
             Some(ConfigAction::Edit) => open_editor(&config_path),
             None => println!("{}", config_path.display()),
         },
+        #[cfg(target_os = "linux")]
         Commands::ListDevices => list_devices(&config),
+        #[cfg(target_os = "linux")]
         Commands::Reload => reload_config(&config),
         Commands::Version => println!("typetune {}", env!("CARGO_PKG_VERSION")),
     }
@@ -89,6 +132,7 @@ fn init_logging(level: &str) {
     tracing_subscriber::fmt().with_env_filter(filter).init();
 }
 
+#[cfg(target_os = "linux")]
 fn write_pid_file(path: &std::path::Path) {
     if let Some(parent) = path.parent() {
         let _ = std::fs::create_dir_all(parent);
@@ -96,6 +140,7 @@ fn write_pid_file(path: &std::path::Path) {
     let _ = std::fs::write(path, std::process::id().to_string());
 }
 
+#[cfg(target_os = "linux")]
 fn remove_pid_file(path: &std::path::Path) {
     let _ = std::fs::remove_file(path);
 }
@@ -106,12 +151,21 @@ fn read_pid(path: &std::path::Path) -> Option<i32> {
         .and_then(|s| s.trim().parse::<i32>().ok())
 }
 
+#[cfg(target_os = "linux")]
 fn process_alive(pid: i32) -> bool {
     unsafe { libc::kill(pid, 0) == 0 }
 }
 
+#[cfg(target_os = "linux")]
 fn daemon_mode(config: Config) {
-    tracing::info!("Starting TypeTune daemon...");
+    use std::sync::{Arc, Mutex};
+    use typetune_chatter::ChatterStats;
+
+    if let Err(reason) = validate_relay_config(&config) {
+        eprintln!("Cannot start daemon: {}", reason);
+        std::process::exit(1);
+    }
+    tracing::info!("Starting TypeTune physical relay; text and debounce backends unavailable");
 
     let pid_path = config.general.pid_file.clone();
     if let Some(existing_pid) = read_pid(&pid_path) {
@@ -123,179 +177,92 @@ fn daemon_mode(config: Config) {
 
     write_pid_file(&pid_path);
 
-    let running = Arc::new(AtomicBool::new(true));
-
-    signal_hook::flag::register(signal_hook::consts::SIGTERM, running.clone()).unwrap();
-    signal_hook::flag::register(signal_hook::consts::SIGINT, running.clone()).unwrap();
-
-    let config_arc = Arc::new(Mutex::new(config));
-    let enabled = Arc::new(Mutex::new(true));
+    let enabled = Arc::new(Mutex::new(false));
     let stats = Arc::new(Mutex::new(ChatterStats::default()));
 
-    let sighup_config = config_arc.clone();
     std::thread::spawn(move || {
         let mut signals = signal_hook::iterator::Signals::new([libc::SIGHUP]).unwrap();
         for _ in signals.forever() {
-            tracing::info!("SIGHUP received, reloading config...");
-            let config_path = typetune_config::config_path();
-            match typetune_config::load(&config_path) {
-                Ok(new_config) => {
-                    *sighup_config.lock().unwrap() = new_config;
-                    tracing::info!("Config reloaded");
-                }
-                Err(e) => {
-                    tracing::error!("Config reload failed: {}", e);
-                }
-            }
+            tracing::error!(
+                "restart-required: live configuration apply is not supported by physical relay"
+            );
         }
     });
 
     let dbus_enabled = enabled.clone();
     let dbus_stats = stats.clone();
-    let dbus_config = config_arc.clone();
     std::thread::spawn(move || {
         let rt = tokio::runtime::Runtime::new().unwrap();
         rt.block_on(async {
-            if let Err(e) = ipc::run_dbus_server(dbus_enabled, dbus_stats, dbus_config).await {
+            if let Err(e) = ipc::run_dbus_server(dbus_enabled, dbus_stats).await {
                 tracing::error!("D-Bus server error: {}", e);
             }
         });
     });
 
-    let config = config_arc.lock().unwrap().clone();
-    let devices = if config.input.discovery == "auto" {
-        discover_keyboards(&config.input.exclude_names)
-    } else {
-        config
-            .input
-            .device_paths
-            .iter()
-            .map(|p| (p.clone(), String::new()))
-            .collect()
-    };
-
-    if devices.is_empty() {
-        tracing::error!("No keyboard devices found!");
-        remove_pid_file(&pid_path);
-        std::process::exit(1);
-    }
-
-    tracing::info!("Found {} keyboard device(s)", devices.len());
-
-    let mut pipeline = Pipeline::new();
-
-    if config.chatter.enabled {
-        pipeline.add_stage(Box::new(
-            AntiChatter::new(
-                config.chatter.debounce_ms,
-                config.chatter.modifier_debounce_ms,
-            )
-            .with_shared_stats(stats.clone()),
-        ));
-    }
-
-    if config.corrector.enabled {
-        let dict_dir = shellexpand::tilde(&config.corrector.dict_dir);
-        let dict_path = PathBuf::from(dict_dir.as_ref());
-
-        let ru_dict_path = find_dict_file(&dict_path, "ru.txt")
-            .or_else(|| find_dict_file(&PathBuf::from("/usr/share/typetune/dict"), "ru.txt"))
-            .unwrap_or_else(|| dict_path.join("ru.txt"));
-        let en_dict_path = find_dict_file(&dict_path, "en.txt")
-            .or_else(|| find_dict_file(&PathBuf::from("/usr/share/typetune/dict"), "en.txt"))
-            .unwrap_or_else(|| dict_path.join("en.txt"));
-
-        pipeline.add_stage(Box::new(LayoutCorrector::new(
-            Dictionary::load(&ru_dict_path),
-            Dictionary::load(&en_dict_path),
-            config.corrector.min_word_length,
-            config.corrector.double_shift_corrects,
-            config.corrector.double_shift_window_ms,
-        )));
-    }
-
-    if config.snippets.enabled {
-        pipeline.add_stage(Box::new(SnippetExpander::from_config(&config.snippets)));
-    }
-
-    let mut source = match EvdevSource::new(&devices) {
-        Ok(s) => s,
-        Err(e) => {
-            tracing::error!("Failed to create input source: {}", e);
-            remove_pid_file(&pid_path);
-            std::process::exit(1);
-        }
-    };
-
-    let vkb = match VirtualKeyboard::new() {
-        Ok(v) => Arc::new(Mutex::new(v)),
-        Err(e) => {
-            tracing::error!("Failed to create virtual keyboard: {}", e);
-            remove_pid_file(&pid_path);
-            std::process::exit(1);
-        }
-    };
-
-    let tray_config = config_arc.clone();
-    let tray_enabled = enabled.clone();
-    typetune_tray::run_tray(tray_config, tray_enabled);
-
-    tracing::info!("TypeTune daemon started (PID: {})", std::process::id());
-
-    let pipeline = Arc::new(Mutex::new(pipeline));
-    let pipeline_clone = pipeline.clone();
-    let enabled_clone = enabled.clone();
-    let vkb_clone = vkb.clone();
-
-    let result = source.run(Box::new(move |event| {
-        let events = if *enabled_clone.lock().unwrap() {
-            pipeline_clone.lock().unwrap().process(event)
-        } else {
-            vec![event]
-        };
-        let vkb = vkb_clone.lock().unwrap();
-        for e in events {
-            if let Err(err) = vkb.emit(&e) {
-                tracing::error!("Failed to emit event: {}", err);
-            }
-        }
-    }));
+    let stop_token = Arc::new(std::sync::atomic::AtomicBool::new(false));
+    signal_hook::flag::register(libc::SIGTERM, stop_token.clone()).unwrap();
+    signal_hook::flag::register(libc::SIGINT, stop_token.clone()).unwrap();
+    let result = helper::run(&config.input.device_paths, stop_token, || {
+        *enabled.lock().unwrap() = true;
+        tracing::info!(
+            "TypeTune physical relay started (PID: {})",
+            std::process::id()
+        );
+    });
+    *enabled.lock().unwrap() = false;
 
     if let Err(e) = result {
         tracing::error!("Event loop error: {}", e);
+        remove_pid_file(&pid_path);
+        std::process::exit(1);
     }
 
     remove_pid_file(&pid_path);
     tracing::info!("TypeTune daemon stopped");
 }
 
+#[cfg(target_os = "linux")]
 #[allow(clippy::zombie_processes)]
-fn start_daemon() {
-    let pid_path = typetune_config::config_path()
-        .parent()
-        .unwrap_or(&std::path::PathBuf::from("/tmp"))
-        .join("typetune.pid");
-
-    if let Some(existing_pid) = read_pid(&pid_path) {
+fn start_daemon(config_path: &std::path::Path, config: &Config) {
+    if let Err(reason) = validate_relay_config(config) {
+        eprintln!("Cannot start daemon: {}", reason);
+        std::process::exit(1);
+    }
+    if let Some(existing_pid) = read_pid(&config.general.pid_file) {
         if process_alive(existing_pid) {
             println!("Daemon already running (PID: {})", existing_pid);
             return;
         }
     }
-
-    println!("Starting daemon in background...");
-    let child = std::process::Command::new("typetune")
+    let executable = std::env::current_exe().expect("Failed to locate current executable");
+    let mut child = std::process::Command::new(executable)
+        .arg("--config")
+        .arg(config_path)
         .arg("daemon")
         .stdin(std::process::Stdio::null())
         .stdout(std::process::Stdio::null())
-        .stderr(std::process::Stdio::null())
+        .stderr(std::process::Stdio::inherit())
         .spawn()
-        .expect("Failed to start daemon");
-
+        .expect("Failed to spawn daemon");
     std::thread::sleep(std::time::Duration::from_millis(500));
-    println!("Daemon started (PID: {})", child.id());
+    match child.try_wait() {
+        Ok(Some(status)) => {
+            eprintln!("Daemon exited during startup: {}", status);
+            std::process::exit(1);
+        }
+        Ok(None) => println!(
+            "Daemon process spawned (PID: {}); runtime acceptance is not implied",
+            child.id()
+        ),
+        Err(error) => {
+            eprintln!("Cannot check daemon startup: {}", error);
+            std::process::exit(1);
+        }
+    }
 }
 
+#[cfg(target_os = "linux")]
 fn stop_daemon(config: &Config) {
     let pid_path = &config.general.pid_file;
     match read_pid(pid_path) {
@@ -324,11 +291,19 @@ fn stop_daemon(config: &Config) {
 fn show_status(config: &Config) {
     let pid_path = &config.general.pid_file;
     match read_pid(pid_path) {
-        Some(pid) if process_alive(pid) => {
-            println!("TypeTune is running (PID: {})", pid);
-        }
-        Some(_) => {
-            println!("TypeTune is not running (stale PID file)");
+        Some(pid) => {
+            #[cfg(target_os = "linux")]
+            {
+                if process_alive(pid) {
+                    println!("TypeTune is running (PID: {})", pid);
+                } else {
+                    println!("TypeTune is not running (stale PID file)");
+                }
+            }
+            #[cfg(not(target_os = "linux"))]
+            {
+                println!("TypeTune PID file found (PID: {}), status check not available on this platform", pid);
+            }
         }
         None => {
             println!("TypeTune is not running");
@@ -336,6 +311,7 @@ fn show_status(config: &Config) {
     }
 }
 
+#[cfg(target_os = "linux")]
 fn show_stats() {
     let rt = tokio::runtime::Runtime::new().unwrap();
     rt.block_on(async {
@@ -362,8 +338,9 @@ fn show_stats() {
     });
 }
 
+#[cfg(target_os = "linux")]
 fn list_devices(config: &Config) {
-    let devices = discover_keyboards(&config.input.exclude_names);
+    let devices = typetune_input::device_discovery::discover_keyboards(&config.input.exclude_names);
     if devices.is_empty() {
         println!("No keyboard devices found");
     } else {
@@ -374,16 +351,10 @@ fn list_devices(config: &Config) {
     }
 }
 
-fn reload_config(config: &Config) {
-    let pid_path = &config.general.pid_file;
-    match read_pid(pid_path) {
-        Some(pid) if process_alive(pid) => {
-            unsafe { libc::kill(pid, libc::SIGHUP) };
-            println!("Sent SIGHUP to PID {}", pid);
-        }
-        Some(_) => println!("Daemon not running"),
-        None => println!("No PID file found"),
-    }
+#[cfg(target_os = "linux")]
+fn reload_config(_config: &Config) {
+    eprintln!("restart-required: physical relay configuration cannot be applied live");
+    std::process::exit(1);
 }
 
 fn open_editor(config_path: &PathBuf) {
@@ -394,11 +365,60 @@ fn open_editor(config_path: &PathBuf) {
         .expect("Failed to open editor");
 }
 
-fn find_dict_file(dir: &std::path::Path, filename: &str) -> Option<PathBuf> {
-    let path = dir.join(filename);
-    if path.exists() {
-        Some(path)
-    } else {
-        None
+/// Fail before opening or grabbing any device. Legacy text/chatter stages have
+/// no accepted runtime backend and must not be advertised as effective.
+fn validate_relay_config(config: &Config) -> Result<(), String> {
+    let mut unavailable = Vec::new();
+    if config.chatter.enabled {
+        unavailable.push("chatter");
+    }
+    if config.corrector.enabled {
+        unavailable.push("corrector");
+    }
+    if config.snippets.enabled {
+        unavailable.push("snippets");
+    }
+    if config.typography.enabled {
+        unavailable.push("typography");
+    }
+    if !unavailable.is_empty() {
+        return Err(format!("unavailable backends: {}. Only physical relay is currently supported; explicitly disable these features to test it", unavailable.join(", ")));
+    }
+    if config.input.discovery != "manual" || config.input.device_paths.is_empty() {
+        return Err("physical relay requires input.discovery=manual and explicit device_paths; automatic grab is disabled".into());
+    }
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn config() -> Config {
+        typetune_config::load(
+            &PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../config/default.toml"),
+        )
+        .unwrap()
+    }
+
+    #[test]
+    fn unavailable_features_fail_before_device_access() {
+        let cfg = config();
+        let reason = validate_relay_config(&cfg).unwrap_err();
+        assert!(reason.contains("corrector"));
+        assert!(reason.contains("snippets"));
+        assert!(reason.contains("chatter"));
+    }
+
+    #[test]
+    fn relay_requires_explicit_device_selection() {
+        let mut cfg = config();
+        cfg.corrector.enabled = false;
+        cfg.snippets.enabled = false;
+        cfg.chatter.enabled = false;
+        assert!(validate_relay_config(&cfg).is_err());
+        cfg.input.discovery = "manual".into();
+        cfg.input.device_paths = vec!["/synthetic/test-device".into()];
+        assert!(validate_relay_config(&cfg).is_ok());
     }
 }

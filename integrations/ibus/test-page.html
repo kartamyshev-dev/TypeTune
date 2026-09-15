@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><title>TypeTune — ручная проверка</title>
+<style>
+body{max-width:780px;margin:48px auto;padding:0 24px;font:18px/1.5 system-ui;color:#253246;background:#f4f6fa}
+h1{font-size:32px}textarea,input{box-sizing:border-box;width:100%;padding:16px;font:22px/1.5 system-ui;border:1px solid #9eacc0;border-radius:10px;background:white}
+textarea{height:150px}code,kbd{background:#e4eaf3;padding:2px 6px;border-radius:4px}small{font-size:15px}label{display:block;margin-top:22px}aside{margin-top:28px;padding:18px;background:#e6edf7;border-radius:10px}
+</style>
+<h1>TypeTune: попробуйте сами</h1>
+<p>Начальный источник ввода — <b>TypeTune US</b>. Коррекция работает в поддерживаемых текстовых полях.</p>
+<ol><li>Наберите <code>ghbdtn</code> без пробела.</li>
+<li>Дважды коротко нажмите и отпустите один и тот же <kbd>Shift</kbd>. Получится <b>привет</b>, дальнейший ввод станет русским.</li>
+<li>Для проверки автокоррекции выберите <b>TypeTune US</b> в меню раскладок, очистите поле, наберите <code>ghbdtn</code> и пробел. Получится <b>привет </b>, источник сменится на TypeTune RU.</li>
+<li>При выделении, смене поля или щелчке между нажатиями жест отменяется.</li></ol>
+<label>Поле для проверки<textarea autofocus spellcheck="false" autocomplete="off" placeholder="Наберите ghbdtn здесь"></textarea></label>
+<label>Второе поле<textarea spellcheck="false" placeholder="Переход в другое поле не должен переносить слово из первого"></textarea></label>
+<label>Тестовое поле пароля<input type="password" autocomplete="off" placeholder="Только выдуманный текст; коррекция отключена"></label>
+<aside>Остановка: <code>./scripts/typetune-test stop</code><br>
+Пауза: <code>./scripts/typetune-test pause</code><br>
+Возобновление: <code>./scripts/typetune-test resume</code></aside>
+<p><small>Страница локальная, без скриптов, отправки или сохранения текста. Можно проверить простые поля и на других страницах этого окна Chrome. Автокоррекция включена по умолчанию; пока используется небольшой словарь. Отключить её: ./scripts/typetune-test auto-off. Не все приложения поддержаны.</small></p>
+</html>

@@ -1,0 +1,61 @@
+   Compiling typetune-engine v0.1.0 (/home/kartamyshev/git/TypeTune/crates/typetune-engine)
+   Compiling typetune-ibus v0.1.0 (/home/kartamyshev/git/TypeTune/crates/typetune-ibus)
+    Finished `release` profile [optimized] target(s) in 0.81s
+
+(ibus write-cache:124267): IBUS-WARNING **: 01:37:18.806: Engines exec:/usr/libexec/ibus-engine-table --xml is failed:
+Установлено в /tmp/typetune-gnome-p1v34122/data/typetune-test
+Нужен выход из сеанса GNOME и повторный вход: Shell должен загрузить новое расширение, IBus — новый источник.
+После входа: ./scripts/typetune-test start
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS SWITCH-01: guarded RU/US command and readback; same evdev key yields Cyrillic/Latin in client
+PASS SWITCH-02: unavailable source, stale focus/generation refuse; current source no-op
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+TypeTune включён. Chrome/Wayland: ghbdtn → F8 → привет; F9 — обратно.
+Обычный ввод: US. Пауза: ./scripts/typetune-test pause. Остановка: ./scripts/typetune-test stop
+PASS RUNTIME-01: installed component starts; existing source preserved
+PASS IBUS-01: pass-through GTK input and surrounding text; {"instances": 1, "focus_in": 2, "focus_out": 1, "reset": 0, "down": 6, "up": 6, "surrounding": 7, "fixture_seen": false, "selection_seen": false, "capabilities": 41, "purpose": null, "sensitive": 0, "content_type_events": 0, "last_purpose": null, "navigation": 0, "selection_events": 0, "last_cursor": 8, "last_anchor": 8, "manual_completed": 0, "manual_rejected": 0, "manual_indeterminate": 0, "manual_edits": 0}
+
+(process:124852): dbind-WARNING **: 01:37:23.487: AT-SPI: Error in GetItems, sender=:1.2, error=Object does not exist at path “/org/a11y/atspi/cache”
+PASS IBUS-02: unmodified GNOME Text Editor receives all keys; exact text/caret via independent AT-SPI readback
+PASS EDITOR-MANUAL: real GNOME Text Editor corrected through IBus, independent AT-SPI text/caret readback
+PASS EDITOR-SELECTION: hidden IBus selection refused by AT-SPI, no edit calls
+IBUS editor context evidence {"instances": 1, "focus_in": 4, "focus_out": 3, "reset": 2, "down": 15, "up": 15, "surrounding": 16, "fixture_seen": false, "selection_seen": false, "capabilities": 41, "purpose": 0, "sensitive": 0, "content_type_events": 1, "last_purpose": 0, "navigation": 0, "selection_events": 0, "last_cursor": 13, "last_anchor": 13, "manual_completed": 1, "manual_rejected": 1, "manual_indeterminate": 0, "manual_edits": 1}
+PASS IBUS-03: password fixture ordinary input intact; observer delta {"down": 0, "up": 0, "surrounding": 1, "sensitive": 1, "content_type_events": 2}
+Runtime app identity: google-chrome.desktop
+PASS IBUS-MANUAL-DEFAULT: F8/F9 exact DOM text and caret; two Rust-confirmed edits
+PASS IBUS-REFUSE-DEFAULT: selection, new field and password preserve DOM text; no edit calls
+PASS BROWSER-DEFAULT: DOM text/caret/navigation/selection/focus/password intact; IBus {"keys_seen": 6, "surrounding_updates": 6, "purpose": 0, "navigation_seen": 1, "selection_events": 1, "selection_cursor": 5, "selection_anchor": 4, "field_focus_in": 2, "field_resets": 3, "password_keys_seen": 0, "password_purpose": null, "password_source": "us"}
+Runtime app identity: google-chrome.desktop
+PASS IBUS-MANUAL-IME: F8/F9 exact DOM text and caret; two Rust-confirmed edits
+PASS IBUS-REFUSE-IME: selection, new field and password preserve DOM text; no edit calls
+PASS BROWSER-IME: DOM text/caret/navigation/selection/focus/password intact; IBus {"keys_seen": 6, "surrounding_updates": 6, "purpose": 0, "navigation_seen": 1, "selection_events": 1, "selection_cursor": 5, "selection_anchor": 4, "field_focus_in": 2, "field_resets": 3, "password_keys_seen": 0, "password_purpose": null, "password_source": "us"}
+Runtime app identity: google-chrome.desktop
+PASS SMART-MOUSE: same-field pointer click between Shift taps preserves original text and cancels gesture
+Автокоррекция выключена.
+Автокоррекция включена.
+PASS SMART-01: both Shift keys; RU/US correction and layout; Space auto; subsequent native Cyrillic input; auto setting acknowledged
+TypeTune включён. Chrome/Wayland: ghbdtn → F8 → привет; F9 — обратно.
+Обычный ввод: US. Пауза: ./scripts/typetune-test pause. Остановка: ./scripts/typetune-test stop
+Открыта локальная страница проверки в отдельном профиле Chrome.
+PASS RUNTIME-04: browser command opens installed local page; native F8 confirmed by common engine readback
+Коррекция на паузе; обычный ввод продолжается.
+Коррекция включена.
+TypeTune остановлен; его источник убран, остальные раскладки сохранены.
+PASS RUNTIME-02: effective pause/resume/stop, TypeTune source removed, normal source restored
+TypeTune включён. Chrome/Wayland: ghbdtn → F8 → привет; F9 — обратно.
+Обычный ввод: US. Пауза: ./scripts/typetune-test pause. Остановка: ./scripts/typetune-test stop
+TypeTune остановлен; его источник убран, остальные раскладки сохранены.
+PASS RUNTIME-05: second start after shutdown works; stop restores prior RU source
+PASS SWITCH-04: extension restart rejects previous instance
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS SWITCH-03: screen shield rejects switching
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+
+(ibus write-cache:126988): IBUS-WARNING **: 01:37:42.486: Engines exec:/usr/libexec/ibus-engine-table --xml is failed:
+TypeTune остановлен; его источник убран, остальные раскладки сохранены.
+Пользовательская установка удалена. Перезагрузка списка IBus завершится при следующем входе.
+PASS RUNTIME-03: uninstall removes owned files and preserves ordinary sources
+GNOME NATIVE STAND PASS (isolated headless compositor)

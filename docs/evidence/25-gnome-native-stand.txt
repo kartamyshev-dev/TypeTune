@@ -1,0 +1,8 @@
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+GNOME NATIVE STAND PASS (isolated headless compositor)

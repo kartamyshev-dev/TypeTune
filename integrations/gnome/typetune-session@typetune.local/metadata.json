@@ -1,0 +1,13 @@
+{
+  "uuid": "typetune-session@typetune.local",
+  "name": "TypeTune Session Bridge",
+  "description": "Source, application identity and lock guards for TypeTune; explicit input source control. No text capture.",
+  "shell-version": [
+    "50"
+  ],
+  "session-modes": [
+    "user",
+    "unlock-dialog"
+  ],
+  "version": 4
+}

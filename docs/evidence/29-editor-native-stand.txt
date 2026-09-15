@@ -1,0 +1,14 @@
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+PASS EDITOR-01: real GNOME Text Editor PID, bounded text read, Unicode exact
+PASS EDITOR-02: scalar caret and selection round trip
+EDITOR capability EditableText=True
+PASS EDITOR-03: synthetic delete/Unicode insert/readback; NOT atomic guarded replacement
+EDITOR profile: replacement unavailable; composition=unknown; conditional_range=unavailable
+GNOME TEXT EDITOR PROBE PASS (synthetic private session; no saved edits)
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+GNOME NATIVE STAND PASS (isolated headless compositor)

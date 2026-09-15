@@ -1,0 +1,21 @@
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+
+(process:60167): Gtk-WARNING **: 23:44:48.131: Unable to acquire the address of the accessibility bus: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files. If you are attempting to run GTK without a11y support, GTK_A11Y should be set to 'none'.
+PASS TEXT-01: committed trigger visible first; RU/EN/case/emoji/combining/newline, exact caret
+PASS TEXT-02: surrounding text and one delimiter preserved
+PASS TEXT-03: field focus changes before edit; source intact
+PASS TEXT-04: selection, preedit signal and unknown modifiers refuse without edit
+PASS TEXT-05: unavailable range output and intervening input refuse
+PASS TEXT-06: reentrant edit after deletion stops insertion; no retry, caret verified
+PASS TEXT-08: sensitive input purpose refuses snapshot before reading text
+PASS MANUAL-01: GTK button callback, mixed case, spaces, surrounding text and caret
+PASS MANUAL-02: button callback refuses other-field focus, source intact
+PASS TEXT-07: compositor keyboard -> GTK commit -> automatic static snippet; Unicode/caret read back
+GTK TEXT STAND PASS (cooperating field, synthetic commits)
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+GNOME NATIVE STAND PASS (isolated headless compositor)

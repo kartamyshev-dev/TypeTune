@@ -1,0 +1,35 @@
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS SWITCH-01: guarded RU/US command and readback; same evdev key yields Cyrillic/Latin in client
+PASS SWITCH-02: unavailable source, stale focus/generation refuse; current source no-op
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+
+(process:82087): Gtk-WARNING **: 00:32:57.992: Unable to acquire the address of the accessibility bus: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files. If you are attempting to run GTK without a11y support, GTK_A11Y should be set to 'none'.
+PASS TEXT-01: committed trigger visible first; RU/EN/case/emoji/combining/newline, exact caret
+PASS TEXT-02: surrounding text and one delimiter preserved
+PASS TEXT-03: field focus changes before edit; source intact
+PASS TEXT-04: selection, preedit signal and unknown modifiers refuse without edit
+PASS TEXT-05: unavailable range output and intervening input refuse
+PASS TEXT-06: reentrant edit after deletion stops insertion; no retry, caret verified
+PASS TEXT-08: sensitive input purpose refuses snapshot before reading text
+PASS MANUAL-01: GTK button callback, mixed case, spaces, surrounding text and caret
+PASS MANUAL-02: button callback refuses other-field focus, source intact
+PASS TEXT-07: compositor keyboard -> GTK commit -> automatic static snippet; Unicode/caret read back
+PASS LOCAL-01: real pointer clicks in both directions, focus/text/caret verified
+PASS LOCAL-02: F8/F9 release executes once; no edit while held
+PASS LOCAL-03: Shift+F8 and intervening input refuse, exact text/caret
+PASS LOCAL-04: expired hold and focus round trip refuse, source/caret intact
+GTK TEXT STAND PASS (cooperating field, synthetic commits)
+PASS EDITOR-01: real GNOME Text Editor PID, bounded text read, Unicode exact
+PASS EDITOR-02: scalar caret and selection round trip
+EDITOR capability EditableText=True
+PASS EDITOR-03: synthetic delete/Unicode insert/readback; NOT atomic guarded replacement
+EDITOR profile: replacement unavailable; composition=unknown; conditional_range=unavailable
+GNOME TEXT EDITOR PROBE PASS (synthetic private session; no saved edits)
+PASS SWITCH-04: extension restart rejects previous instance
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS SWITCH-03: screen shield rejects switching
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+GNOME NATIVE STAND PASS (isolated headless compositor)

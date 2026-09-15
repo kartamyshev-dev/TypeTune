@@ -1,0 +1,6 @@
+2026-09-16; Ubuntu 26.04.1; main GNOME Wayland session.
+Installed release compat_transport; no emit commands sent, no exclusive grab.
+Key events discarded in memory, never printed or written to artifacts.
+PASS COMPAT-TRANSPORT-STOP: physical devices opened without grab; no key injection; clean output removal; devices=2
+PASS COMPAT-TRANSPORT-WATCHDOG: physical devices opened without grab; no key injection; clean output removal; devices=2
+PASS active layout unchanged

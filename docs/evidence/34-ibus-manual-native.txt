@@ -1,0 +1,24 @@
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS SWITCH-01: guarded RU/US command and readback; same evdev key yields Cyrillic/Latin in client
+PASS SWITCH-02: unavailable source, stale focus/generation refuse; current source no-op
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+PASS IBUS-01: pass-through GTK input and surrounding text; {"instances": 1, "focus_in": 2, "focus_out": 1, "reset": 0, "down": 6, "up": 6, "surrounding": 7, "fixture_seen": false, "selection_seen": false, "capabilities": 41, "purpose": null, "sensitive": 0, "content_type_events": 0, "last_purpose": null, "navigation": 0, "selection_events": 0, "last_cursor": 8, "last_anchor": 8, "manual_completed": 0, "manual_rejected": 0, "manual_indeterminate": 0, "manual_edits": 0}
+
+(process:92977): dbind-WARNING **: 00:53:58.030: AT-SPI: Error in GetItems, sender=:1.2, error=Object does not exist at path “/org/a11y/atspi/cache”
+PASS IBUS-02: unmodified GNOME Text Editor receives all keys; exact text/caret via independent AT-SPI readback
+IBUS editor context evidence {"instances": 1, "focus_in": 4, "focus_out": 3, "reset": 2, "down": 13, "up": 13, "surrounding": 14, "fixture_seen": true, "selection_seen": false, "capabilities": 41, "purpose": 0, "sensitive": 0, "content_type_events": 1, "last_purpose": 0, "navigation": 0, "selection_events": 0, "last_cursor": 13, "last_anchor": 13, "manual_completed": 0, "manual_rejected": 0, "manual_indeterminate": 0, "manual_edits": 0}
+PASS IBUS-03: password fixture ordinary input intact; observer delta {"down": 6, "up": 6, "surrounding": 7, "sensitive": 1, "content_type_events": 2}
+PASS IBUS-MANUAL-DEFAULT: F8/F9 exact DOM text and caret; two Rust-confirmed edits
+PASS IBUS-REFUSE-DEFAULT: selection, new field and password preserve DOM text; no edit calls
+PASS BROWSER-DEFAULT: DOM text/caret/navigation/selection/focus/password intact; IBus {"keys_seen": 6, "surrounding_updates": 6, "purpose": 0, "navigation_seen": 1, "selection_events": 1, "selection_cursor": 5, "selection_anchor": 4, "field_focus_in": 2, "field_resets": 3, "password_keys_seen": 6, "password_purpose": 8}
+PASS IBUS-MANUAL-IME: F8/F9 exact DOM text and caret; two Rust-confirmed edits
+PASS IBUS-REFUSE-IME: selection, new field and password preserve DOM text; no edit calls
+PASS BROWSER-IME: DOM text/caret/navigation/selection/focus/password intact; IBus {"keys_seen": 6, "surrounding_updates": 6, "purpose": 0, "navigation_seen": 1, "selection_events": 1, "selection_cursor": 5, "selection_anchor": 4, "field_focus_in": 2, "field_resets": 3, "password_keys_seen": 6, "password_purpose": 8}
+PASS SWITCH-04: extension restart rejects previous instance
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS SWITCH-03: screen shield rejects switching
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+GNOME NATIVE STAND PASS (isolated headless compositor)

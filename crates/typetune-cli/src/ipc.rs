@@ -5,33 +5,19 @@ use zbus::{dbus_interface, dbus_proxy, ConnectionBuilder};
 pub struct DaemonInterface {
     pub enabled: Arc<Mutex<bool>>,
     pub stats: Arc<Mutex<ChatterStats>>,
-    pub config: Arc<Mutex<typetune_config::Config>>,
 }
 
 #[dbus_interface(name = "org.typetune.Daemon")]
 impl DaemonInterface {
     fn get_status(&self) -> (bool, Vec<String>) {
         let e = *self.enabled.lock().unwrap();
-        let mut features = Vec::new();
-        let cfg = self.config.lock().unwrap();
-        if cfg.chatter.enabled {
-            features.push("anti-chatter".into());
-        }
-        if cfg.corrector.enabled {
-            features.push("layout-corrector".into());
-            if cfg.corrector.double_shift_corrects {
-                features.push("double-shift-correct".into());
-            }
-        }
-        if cfg.snippets.enabled {
-            features.push("snippets".into());
-        }
-        (e, features)
+        (e, vec!["physical-relay".into()])
     }
 
-    fn set_enabled(&self, enabled: bool) {
-        *self.enabled.lock().unwrap() = enabled;
-        tracing::info!("Daemon {}", if enabled { "enabled" } else { "disabled" });
+    fn set_enabled(&self, _enabled: bool) -> zbus::fdo::Result<()> {
+        Err(zbus::fdo::Error::NotSupported(
+            "physical relay has no optional processing to pause; stop the daemon to detach".into(),
+        ))
     }
 
     fn get_stats(&self) -> (u64, u64) {
@@ -39,30 +25,18 @@ impl DaemonInterface {
         (s.total_events, s.suppressed_events)
     }
 
-    fn reload_config(&self) {
-        let config_path = typetune_config::config_path();
-        match typetune_config::load(&config_path) {
-            Ok(new_config) => {
-                *self.config.lock().unwrap() = new_config;
-                tracing::info!("Config reloaded via D-Bus");
-            }
-            Err(e) => {
-                tracing::error!("Failed to reload config: {}", e);
-            }
-        }
+    fn reload_config(&self) -> zbus::fdo::Result<()> {
+        Err(zbus::fdo::Error::NotSupported(
+            "restart-required: physical relay configuration cannot be applied live".into(),
+        ))
     }
 }
 
 pub async fn run_dbus_server(
     enabled: Arc<Mutex<bool>>,
     stats: Arc<Mutex<ChatterStats>>,
-    config: Arc<Mutex<typetune_config::Config>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    let iface = DaemonInterface {
-        enabled,
-        stats,
-        config,
-    };
+    let iface = DaemonInterface { enabled, stats };
 
     let _conn = ConnectionBuilder::session()?
         .name("org.typetune.Daemon")?
@@ -86,4 +60,24 @@ pub trait Daemon {
     fn set_enabled(&self, enabled: bool) -> zbus::Result<()>;
     fn get_stats(&self) -> zbus::Result<(u64, u64)>;
     fn reload_config(&self) -> zbus::Result<()>;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn status_and_reload_do_not_claim_unavailable_features() {
+        let interface = DaemonInterface {
+            enabled: Arc::new(Mutex::new(true)),
+            stats: Arc::new(Mutex::new(ChatterStats::default())),
+        };
+        assert_eq!(
+            interface.get_status(),
+            (true, vec!["physical-relay".into()])
+        );
+        let error = interface.reload_config().unwrap_err().to_string();
+        assert!(error.contains("restart-required"));
+        assert!(interface.set_enabled(false).is_err());
+        assert!(interface.get_status().0);
+    }
 }

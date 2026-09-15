@@ -1,0 +1,13 @@
+PASS GNOME-01: real Shell exported bridge
+PASS GNOME-02: US to RU from real input source manager; generation changed
+PASS GNOME-03: two native GTK windows, distinct focus tokens and generation
+PASS SWITCH-01: guarded RU/US command and readback; same evdev key yields Cyrillic/Latin in client
+PASS SWITCH-02: unavailable source, stale focus/generation refuse; current source no-op
+PASS GLOBAL-PROBE-01: Shell stage cannot observe client letters; compositor virtual keyboard replaces exact GTK text with RU without IBus
+PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse
+PASS SWITCH-04: extension restart rejects previous instance
+PASS GNOME-05: disable removes endpoint; re-enable changes instance
+PASS SWITCH-03: screen shield rejects switching
+PASS GNOME-06: screen shield redacts window and source
+PASS GNOME-07: shield deactivation restores source with new generation
+GNOME NATIVE STAND PASS (isolated headless compositor)

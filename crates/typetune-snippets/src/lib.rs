@@ -159,6 +159,153 @@ impl PipelineStage for SnippetExpander {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use typetune_config::SnippetsConfig;
+
+    fn make_snippets_config(entries: Vec<(&str, &str)>) -> SnippetsConfig {
+        SnippetsConfig {
+            enabled: true,
+            trigger_prefix: ":".to_string(),
+            word_separators: vec![" ".to_string()],
+            entries: entries
+                .into_iter()
+                .map(|(k, v)| (k.to_string(), v.to_string()))
+                .collect(),
+        }
+    }
+
+    fn make_expander(entries: Vec<(&str, &str)>) -> SnippetExpander {
+        SnippetExpander::new(
+            entries
+                .into_iter()
+                .map(|(trigger, replacement)| Snippet {
+                    trigger: format!(":{}", trigger),
+                    replacement: replacement.to_string(),
+                    word_boundary: true,
+                })
+                .collect(),
+        )
+    }
+
+    fn pressed_char(keycode: u32, ch: char) -> InputEvent {
+        InputEvent::new(keycode, KeyState::Pressed)
+            .with_character(ch)
+            .with_timestamp(std::time::Instant::now())
+    }
+
+    // Regression: audit R4 — `:a` with replacement `A:Привет!`
+    // Current behavior: only key30 without Shift; Unicode/punctuation lost
+    // This test DOCUMENTS the current broken behavior
+    #[test]
+    fn r4_snippet_loses_unicode_and_shift() {
+        let mut expander = make_expander(vec![("a", "A:Привет!")]);
+
+        // Type ":a " (expansion fires when last trigger char 'a' is processed)
+        expander.process(pressed_char(39, ':'));
+        let result = expander.process(pressed_char(30, 'a'));
+
+        // Current behavior: text_to_events skips non-ASCII and chars without keycode
+        // Only 'A' maps to keycode 30 (no Shift), rest is lost
+        let pressed: Vec<u32> = result
+            .iter()
+            .filter(|e| e.state == KeyState::Pressed)
+            .map(|e| e.keycode)
+            .collect();
+
+        // BUG: 'A' should need Shift, ':' needs Shift, Cyrillic chars are lost entirely
+        // Only bare key30 ('a' without Shift) and possibly some ASCII survive
+        assert!(
+            !pressed.is_empty(),
+            "Some events should be generated (current partial behavior)"
+        );
+    }
+
+    // Regression: audit R5 — `:a<Backspace>b` with trigger `:ab`
+    // Current behavior: erroneous expansion because Backspace doesn't clear buffer
+    #[test]
+    fn r5_backspace_does_not_clear_buffer() {
+        let mut expander = make_expander(vec![("ab", "expanded")]);
+
+        // Type ":a"
+        expander.process(pressed_char(39, ':'));
+        expander.process(pressed_char(30, 'a'));
+
+        // Backspace — does NOT update buffer in current implementation
+        let backspace =
+            InputEvent::new(14, KeyState::Pressed).with_timestamp(std::time::Instant::now());
+        expander.process(backspace);
+
+        // Type "b" — buffer still has ":ab" (Backspace didn't remove 'a')
+        let result = expander.process(pressed_char(48, 'b'));
+
+        let pressed: Vec<u32> = result
+            .iter()
+            .filter(|e| e.state == KeyState::Pressed && e.keycode != 14)
+            .map(|e| e.keycode)
+            .collect();
+
+        // BUG: expansion happens right on 'b' even though user deleted 'a' via Backspace
+        assert!(
+            !pressed.is_empty(),
+            "Erroneous expansion occurred because Backspace didn't clear buffer"
+        );
+    }
+
+    // Regression: audit R6 — `:a`, reset(), `b`
+    // Buffer not cleared by reset, expansion still occurs
+    #[test]
+    fn r6_reset_does_not_clear_buffer() {
+        let mut expander = make_expander(vec![("ab", "expanded")]);
+
+        expander.process(pressed_char(39, ':'));
+        expander.process(pressed_char(30, 'a'));
+
+        // Reset should clear buffer but current SnippetExpander doesn't override reset()
+        expander.reset();
+
+        let result = expander.process(pressed_char(48, 'b'));
+
+        let pressed: Vec<u32> = result
+            .iter()
+            .filter(|e| e.state == KeyState::Pressed && e.keycode != 14)
+            .map(|e| e.keycode)
+            .collect();
+
+        // BUG: buffer still has ":ab" after reset, expansion triggers
+        assert!(
+            !pressed.is_empty(),
+            "Expansion occurred after reset() because buffer was not cleared"
+        );
+    }
+
+    // Verify that a simple ASCII snippet works
+    #[test]
+    fn simple_ascii_snippet_works() {
+        let mut expander = make_expander(vec![("hi", "hello")]);
+
+        expander.process(pressed_char(39, ':'));
+        expander.process(pressed_char(35, 'h'));
+        // Expansion fires on the last trigger char ('i'), not on the delimiter
+        let result = expander.process(pressed_char(23, 'i'));
+
+        // Should have 2 Backspace Down+Up for trigger ":hi" (3 chars)
+        let backspace_count = result.iter().filter(|e| e.keycode == 14).count();
+        assert_eq!(backspace_count, 6, "3 Backspace Down+Up for trigger ':hi'");
+    }
+
+    // Verify from_config works
+    #[test]
+    fn from_config_creates_expander() {
+        let config = make_snippets_config(vec![("date", "2024-01-01")]);
+        let expander = SnippetExpander::from_config(&config);
+        assert_eq!(expander.snippets.len(), 1);
+        assert_eq!(expander.snippets[0].trigger, ":date");
+        assert_eq!(expander.snippets[0].replacement, "2024-01-01");
+    }
+}
+
 fn char_to_keycode(ch: char) -> Option<u32> {
     match ch {
         'q' | 'Q' => Some(16),

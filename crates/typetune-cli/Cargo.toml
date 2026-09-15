@@ -8,24 +8,29 @@ name = "typetune"
 path = "src/main.rs"
 
 [dependencies]
+anyhow = "1"
+serde_json = "1"
 typetune-core = { path = "../typetune-core" }
-typetune-input = { path = "../typetune-input" }
-typetune-inject = { path = "../typetune-inject" }
-typetune-layout = { path = "../typetune-layout" }
 typetune-corrector = { path = "../typetune-corrector" }
 typetune-chatter = { path = "../typetune-chatter" }
 typetune-snippets = { path = "../typetune-snippets" }
 typetune-config = { path = "../typetune-config" }
-typetune-tray = { path = "../typetune-tray" }
 clap = { version = "4", features = ["derive"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+shellexpand = "3"
+serde = { version = "1", features = ["derive"] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+typetune-session = { path = "../typetune-session" }
+typetune-input = { path = "../typetune-input" }
+typetune-inject = { path = "../typetune-inject" }
+typetune-layout = { path = "../typetune-layout" }
+typetune-tray = { path = "../typetune-tray" }
 signal-hook = "0.3"
 libc = "0.2"
-shellexpand = "3"
 zbus = { version = "3", default-features = false, features = ["tokio"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
-serde = { version = "1", features = ["derive"] }
 
 [package.metadata.deb]
 name = "typetune"
@@ -41,6 +46,7 @@ priority = "optional"
 depends = "libgtk-4-1 (>= 4.0), libadwaita-1-0 (>= 1.0), libevdev2, libudev1, libxkbcommon0, libdbus-1-2"
 assets = [
     ["target/release/typetune", "usr/bin/", "755"],
+    ["target/release/typetune-helper", "usr/bin/", "755"],
     ["target/release/typetune-gui", "usr/bin/", "755"],
     ["../../packaging/typetune.desktop", "usr/share/applications/", "644"],
     ["../../resources/icons/hicolor/scalable/status/typetune-active.svg", "usr/share/icons/hicolor/scalable/status/", "644"],

@@ -2,16 +2,33 @@
 resolver = "2"
 members = [
     "crates/typetune-core",
+    "crates/typetune-engine",
     "crates/typetune-input",
+    "crates/typetune-helper",
     "crates/typetune-inject",
     "crates/typetune-layout",
+    "crates/typetune-session",
     "crates/typetune-corrector",
     "crates/typetune-chatter",
     "crates/typetune-snippets",
     "crates/typetune-config",
     "crates/typetune-tray",
     "crates/typetune-gui",
+    "crates/typetune-gtk",
+    "crates/typetune-ibus",
     "crates/typetune-cli",
+]
+
+# Platform-independent core: must build on Linux, Windows and macOS from the start.
+# The Linux-only adapters (input/inject/layout/tray/gui) are excluded from the
+# default build so `cargo build`/`cargo test` on any OS only touches portable code.
+default-members = [
+    "crates/typetune-core",
+    "crates/typetune-engine",
+    "crates/typetune-chatter",
+    "crates/typetune-config",
+    "crates/typetune-corrector",
+    "crates/typetune-snippets",
 ]
 
 [workspace.package]
@@ -21,3 +38,4 @@ license = "MIT"
 repository = "https://github.com/kartamyshev-dev/TypeTune"
 authors = ["Kartamyshev"]
 description = "Keyboard daemon: layout correction, anti-chatter, snippets"
+rust-version = "1.75"

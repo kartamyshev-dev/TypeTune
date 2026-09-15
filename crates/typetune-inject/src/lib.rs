@@ -1,8 +1,8 @@
 use anyhow::Result;
-use libc::{c_uint, close, ioctl, open, write, O_NONBLOCK, O_WRONLY};
+use libc::{c_uint, close, ioctl, open, write, O_CLOEXEC, O_NONBLOCK, O_WRONLY};
 use std::ffi::CString;
 use thiserror::Error;
-use typetune_core::event::{InputEvent, KeyState};
+use typetune_core::event::{InputEvent, KeyAction, KeyState, NativeCode, PhysicalKeyEvent};
 
 const UI_SET_EVBIT: libc::c_ulong = 0x40045564;
 const UI_SET_KEYBIT: libc::c_ulong = 0x40045565;
@@ -39,16 +39,62 @@ struct UInputEvent {
     value: i32,
 }
 
+/// Writes the full buffer to the fd, restarting on EINTR and looping through
+/// partial writes. Short writes are an error condition for raw uinput framing.
+fn write_all_fd(fd: i32, buf: *const libc::c_void, len: usize) -> Result<()> {
+    let mut written = 0usize;
+    while written < len {
+        let n = unsafe {
+            write(
+                fd,
+                (buf as *const u8).add(written) as *const libc::c_void,
+                len - written,
+            )
+        };
+        if n < 0 {
+            let errno = std::io::Error::last_os_error();
+            if errno.kind() == std::io::ErrorKind::Interrupted {
+                continue;
+            }
+            return Err(anyhow::anyhow!("write failed: errno {}", errno));
+        }
+        if n == 0 {
+            return Err(anyhow::anyhow!("write returned 0"));
+        }
+        written += n as usize;
+    }
+    Ok(())
+}
+
 pub struct VirtualKeyboard {
     fd: i32,
 }
 
 impl VirtualKeyboard {
+    pub fn fd(&self) -> i32 {
+        self.fd
+    }
+
     pub fn new() -> Result<Self> {
-        let uinput_path = CString::new("/dev/uinput")?;
-        let fd = unsafe { open(uinput_path.as_ptr(), O_WRONLY | O_NONBLOCK) };
+        Self::with_name("TypeTune Virtual Keyboard")
+    }
+
+    pub fn with_name(name: &str) -> Result<Self> {
+        Self::with_name_at_path(name, std::path::Path::new("/dev/uinput"))
+    }
+
+    /// Explicit device path also permits isolated open-failure acceptance tests.
+    pub fn with_name_at_path(name: &str, path: &std::path::Path) -> Result<Self> {
+        use std::os::unix::ffi::OsStrExt;
+        anyhow::ensure!(
+            !name.is_empty() && name.len() < 80 && !name.contains('\0'),
+            "invalid uinput device name"
+        );
+        let uinput_path = CString::new(path.as_os_str().as_bytes())?;
+        let fd = unsafe { open(uinput_path.as_ptr(), O_WRONLY | O_NONBLOCK | O_CLOEXEC) };
         if fd < 0 {
-            return Err(VirtualKeyboardError::OpenFailed.into());
+            return Err(anyhow::Error::new(std::io::Error::last_os_error())
+                .context(format!("cannot open output {}", path.display())));
         }
 
         unsafe {
@@ -57,7 +103,11 @@ impl VirtualKeyboard {
                 return Err(VirtualKeyboardError::SetEvBitFailed.into());
             }
 
-            for code in 0..256u32 {
+            // Full evdev keycode range up to KEY_MAX (0x2ff). A virtual
+            // keyboard must be able to carry media/extended codes (>255);
+            // a narrower keybit set would silently reject them in the input
+            // core (is_event_supported at the disposition stage).
+            for code in 0..=0x2ffu32 {
                 if ioctl(fd, UI_SET_KEYBIT, code) != 0 {
                     close(fd);
                     return Err(VirtualKeyboardError::SetKeyBitFailed.into());
@@ -65,19 +115,18 @@ impl VirtualKeyboard {
             }
 
             let mut uidev: UInputUserDev = std::mem::zeroed();
-            let name = b"TypeTune Virtual Keyboard\0";
-            uidev.name[..name.len()].copy_from_slice(name);
+            uidev.name[..name.len()].copy_from_slice(name.as_bytes());
             uidev.id.bustype = 0x03;
             uidev.id.vendor = 0x1234;
             uidev.id.product = 0x5678;
             uidev.id.version = 1;
 
-            let ret = write(
+            let ret = write_all_fd(
                 fd,
                 &uidev as *const UInputUserDev as *const libc::c_void,
                 std::mem::size_of::<UInputUserDev>(),
             );
-            if ret < 0 {
+            if ret.is_err() {
                 close(fd);
                 return Err(VirtualKeyboardError::WriteFailed.into());
             }
@@ -102,17 +151,11 @@ impl VirtualKeyboard {
             code,
             value,
         };
-        let ret = unsafe {
-            write(
-                self.fd,
-                &ev as *const UInputEvent as *const libc::c_void,
-                std::mem::size_of::<UInputEvent>(),
-            )
-        };
-        if ret < 0 {
-            return Err(anyhow::anyhow!("emit failed"));
-        }
-        Ok(())
+        write_all_fd(
+            self.fd,
+            &ev as *const UInputEvent as *const libc::c_void,
+            std::mem::size_of::<UInputEvent>(),
+        )
     }
 
     pub fn emit(&self, event: &InputEvent) -> Result<()> {
@@ -122,6 +165,38 @@ impl VirtualKeyboard {
         };
         self.emit_raw(EV_KEY as u16, event.keycode as u16, value)?;
         self.emit_raw(EV_SYN as u16, SYN_REPORT, 0)?;
+        Ok(())
+    }
+
+    /// Physical identity relay: Down is written as value 1, Up as 0, Repeat as 2.
+    /// This is the native frame boundary; text stages operate above it.
+    pub fn emit_physical(&self, event: &PhysicalKeyEvent) -> Result<()> {
+        self.emit_frame(std::slice::from_ref(event))
+    }
+
+    /// Preserve one nonempty source key frame with exactly one SYN_REPORT.
+    pub fn emit_frame(&self, events: &[PhysicalKeyEvent]) -> Result<()> {
+        for event in events {
+            anyhow::ensure!(
+                matches!(event.native_code, NativeCode::Evdev(c) if c.0 > 0 && c.0 <= 0x2ff && c.0 == event.physical_key.0),
+                "unsupported native code"
+            );
+        }
+        for event in events {
+            let code = match event.native_code {
+                NativeCode::Evdev(c) => c.0,
+                _ => return Err(anyhow::anyhow!("unsupported native code")),
+            };
+            let value = match event.action {
+                KeyAction::Down => 1i32,
+                KeyAction::Up => 0i32,
+                KeyAction::Repeat => 2i32,
+            };
+            self.emit_raw(EV_KEY as u16, code, value)?;
+        }
+        if !events.is_empty() {
+            self.emit_raw(EV_SYN as u16, SYN_REPORT, 0)?;
+        }
         Ok(())
     }
 

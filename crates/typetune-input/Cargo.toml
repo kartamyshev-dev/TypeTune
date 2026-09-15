@@ -11,3 +11,6 @@ tracing = "0.1"
 libc = "0.2"
 anyhow = "1"
 thiserror = "1"
+
+[dev-dependencies]
+typetune-inject = { path = "../typetune-inject" }

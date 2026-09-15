@@ -218,6 +218,158 @@ impl PipelineStage for LayoutCorrector {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use dictionary::Dictionary;
+    fn make_corrector(dict_content_ru: &str, dict_content_en: &str) -> LayoutCorrector {
+        let unique = std::process::id().to_string()
+            + &std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+                .to_string();
+        let tmp = std::env::temp_dir().join(format!("typetune-test-dicts-{}", unique));
+        let _ = std::fs::create_dir_all(&tmp);
+        std::fs::write(tmp.join("ru.txt"), dict_content_ru).unwrap();
+        std::fs::write(tmp.join("en.txt"), dict_content_en).unwrap();
+        LayoutCorrector::new(
+            Dictionary::load(&tmp.join("ru.txt")),
+            Dictionary::load(&tmp.join("en.txt")),
+            2,
+            true,
+            400,
+        )
+    }
+
+    fn pressed_with_char(keycode: u32, ch: char) -> InputEvent {
+        InputEvent::new(keycode, KeyState::Pressed)
+            .with_character(ch)
+            .with_timestamp(Instant::now())
+    }
+
+    fn released(keycode: u32) -> InputEvent {
+        InputEvent::new(keycode, KeyState::Released).with_timestamp(Instant::now())
+    }
+
+    fn separator(ch: char) -> InputEvent {
+        pressed_with_char(57, ch)
+    }
+
+    // Regression: audit F09
+    // Input: g↓ h↓ b↓ d↓ t↓ n↓ (each with character), then Space↓
+    // Expected by current code: 6 Pressed suppressed (buffered), then
+    // 6 Backspace + 6 letter keycodes + Space
+    // BUG: Backspaces delete text BEFORE the word because letters were never
+    // sent to the application. The corrector assumes letters are already visible.
+    // This test DOCUMENTS the current broken behavior.
+    #[test]
+    fn f09_corrector_deletes_before_word() {
+        let mut corrector = make_corrector("привет", "hello");
+
+        // Type "ghbdtn" — each letter is buffered, nothing returned
+        let letters = vec![
+            pressed_with_char(34, 'g'),
+            pressed_with_char(35, 'h'),
+            pressed_with_char(48, 'b'),
+            pressed_with_char(32, 'd'),
+            pressed_with_char(20, 't'),
+            pressed_with_char(49, 'n'),
+        ];
+
+        let mut buffered_count = 0;
+        for ev in &letters {
+            let result = corrector.process(ev.clone());
+            if result.is_empty() {
+                buffered_count += 1;
+            }
+        }
+        assert_eq!(
+            buffered_count, 6,
+            "All 6 letters are buffered (not forwarded)"
+        );
+
+        // Space triggers correction
+        let space = separator(' ');
+        let result = corrector.process(space);
+
+        // Current behavior: 6 Backspace Down+Up + 6 letter Down+Up + Space Down+Up
+        // = 12 + 12 + 2 = 26 events... but Backspaces delete pre-existing text!
+        let backspace_count = result.iter().filter(|e| e.keycode == 14).count();
+        let letter_press_count = result
+            .iter()
+            .filter(|e| e.keycode != 14 && e.keycode != 57 && e.state == KeyState::Pressed)
+            .count();
+
+        assert_eq!(backspace_count, 12, "6 Backspace Down+Up generated");
+        assert_eq!(
+            letter_press_count, 6,
+            "6 replacement letter Down+Up generated"
+        );
+
+        // This is the documented bug: Backspaces will delete 6 chars before the cursor
+        // that were never part of this word
+    }
+
+    // Regression: audit F10
+    // Pressed with character, Released without character → orphan Up
+    #[test]
+    fn f10_orphan_release_without_character() {
+        let mut corrector = make_corrector("привет", "hello");
+
+        // Down with character — buffered
+        let down = pressed_with_char(30, 'a');
+        let result = corrector.process(down);
+        assert!(result.is_empty(), "Letter Down is buffered");
+
+        // Up without character — passes through None branch
+        let up = released(30);
+        let result = corrector.process(up);
+        assert_eq!(result.len(), 1, "Release passes through");
+        assert_eq!(result[0].state, KeyState::Released);
+        assert_eq!(result[0].keycode, 30);
+    }
+
+    // Verify that non-matching words are flushed as-is
+    #[test]
+    fn non_matching_word_flushed() {
+        let mut corrector = make_corrector("привет", "hello");
+
+        let result = corrector.process(pressed_with_char(30, 'x'));
+        assert!(result.is_empty(), "First letter buffered");
+
+        let result = corrector.process(pressed_with_char(31, 'z'));
+        assert!(result.is_empty(), "Second letter buffered");
+
+        // Space after unknown word — flush buffered letters
+        let result = corrector.process(separator(' '));
+        assert!(!result.is_empty(), "Buffered letters flushed on separator");
+        // Should contain the original letters + space
+        let pressed: Vec<u32> = result
+            .iter()
+            .filter(|e| e.state == KeyState::Pressed)
+            .map(|e| e.keycode)
+            .collect();
+        // Buffered chars are converted via char_to_keycode on flush:
+        // 'x' -> 45, 'z' -> 44, ' ' -> 57
+        assert!(pressed.contains(&45), "Flushed keycode for 'x'");
+        assert!(pressed.contains(&44), "Flushed keycode for 'z'");
+        assert!(pressed.contains(&57), "Space keycode");
+    }
+
+    // Verify short words are not corrected
+    #[test]
+    fn short_word_not_corrected() {
+        let mut corrector = make_corrector("привет", "hi");
+
+        corrector.process(pressed_with_char(34, 'g'));
+        let result = corrector.process(separator(' '));
+        // 'g' is only 1 char, min_word_length=2, so no correction
+        let has_backspace = result.iter().any(|e| e.keycode == 14);
+        assert!(!has_backspace, "Short word should not trigger correction");
+    }
+}
+
 fn char_to_keycode(ch: char) -> Option<u32> {
     match ch {
         'q' | 'Q' => Some(16),

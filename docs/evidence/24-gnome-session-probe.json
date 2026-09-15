@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "session_hint": "wayland",
+  "xwayland_display_hint": true,
+  "session_bus": {
+    "status": "observed",
+    "value": true
+  },
+  "gnome_shell_version": {
+    "status": "observed",
+    "value": "50.1"
+  },
+  "gnome_screen_shield_active": {
+    "status": "observed",
+    "value": false
+  },
+  "portals": {
+    "remote_desktop_version": {
+      "status": "observed",
+      "value": 2
+    },
+    "input_capture_version": {
+      "status": "observed",
+      "value": 1
+    },
+    "global_shortcuts_version": {
+      "status": "observed",
+      "value": 1
+    },
+    "permission_requested": false
+  },
+  "context": {
+    "epoch": 0,
+    "target": {
+      "state": "unknown"
+    },
+    "unlocked": {
+      "state": "unknown"
+    },
+    "sensitive": {
+      "state": "unknown"
+    },
+    "selection_empty": {
+      "state": "unknown"
+    },
+    "composing": {
+      "state": "unknown"
+    },
+    "layout": {
+      "state": "unknown"
+    }
+  },
+  "text_capabilities": {
+    "observe_committed_text": {
+      "state": "unavailable",
+      "reason": "No accepted committed-text observer"
+    },
+    "read_layout": {
+      "state": "unavailable",
+      "reason": "No live compositor keymap/group adapter; local XKB defaults are not evidence"
+    },
+    "read_focus": {
+      "state": "unavailable",
+      "reason": "No accepted focused-field adapter; XWayland cannot stand in for native Wayland"
+    },
+    "detect_sensitive_field": {
+      "state": "unavailable",
+      "reason": "No accepted field-sensitivity adapter"
+    },
+    "replace_range": {
+      "state": "unavailable",
+      "reason": "No accepted range replacement backend"
+    },
+    "inject_unicode": {
+      "state": "unavailable",
+      "reason": "No accepted Unicode backend; portal advertisement is not permission or delivery"
+    }
+  },
+  "replacement_blockers": [
+    "focus_unknown",
+    "locked_or_unknown",
+    "sensitive_or_unknown",
+    "selection_present_or_unknown",
+    "composition_active_or_unknown",
+    "layout_unknown",
+    "unicode_unavailable"
+  ],
+  "elapsed_ms": 3
+}
