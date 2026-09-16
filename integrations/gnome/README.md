@@ -102,10 +102,11 @@ python3 integrations/gnome/switch_source.py us
 
 ## Исследование IBus
 
-Отдельный проходной engine и проверка неизменённого редактора: `python3 integrations/gnome/tests/native_stand.py --ibus-stand`.
-[Описание и границы](../ibus/README.md). Основная сессия не меняется.
+Исторические результаты: [checkpoint 32](../../docs/32-ibus-observation-checkpoint.md).
+IBus engine и флаг --ibus-stand удалены в [этапе 54](../../docs/54-remove-ibus.md).
+Текущий runtime и controller: [integrations/app](../app/README.md).
 
-## Bridge v3 (checkpoint 36)
+## Bridge v3 (checkpoint 36, исторический API)
 
 `GetTextContext` также возвращает PID активного приложения для AT-SPI proof.
 `SetTypeTuneMode` принимает ожидаемые instance/generation/window и target us/ru;
