@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import sys,time
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'ibus'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'app'))
 from suggestion_editor import SuggestionEditor,Gtk,GLib
 from gi.repository import Gio
 app=Gtk.Application(application_id='dev.kartamyshev.TypeTune.SuggestionsStand',flags=Gio.ApplicationFlags.NON_UNIQUE)
 app.register(None);parent=Gtk.ApplicationWindow(application=app)
-proposals=[dict(id='one',source='ghbdtn',word='привет',backend='compatibility'),dict(id='two',source='rfr',word='как',backend='compatibility')]
+proposals=[dict(id='one',source='ghbdtn',word='привет',backend='compatibility'),dict(id='two',source='nbgn.y',word='типтюн',kind='word',backend='compatibility')]
 resolved=[]
 def exchange(command,value):
     if command=='suggestions-get':return dict(proposals=list(proposals))
@@ -23,6 +23,9 @@ def settle():
 settle()
 assert not editor.get_visible() and not resolved # Loading never presents or resolves.
 editor.present();assert len(editor.rows)==2
+first=editor.list.get_first_child()
+assert first.get_first_child().get_text().startswith('Не исправлять')
+assert first.get_next_sibling().get_first_child().get_text().startswith('Исправлять')
 if len(sys.argv)>1:
     from gi.repository import Graphene
     ready=[];GLib.timeout_add(200,lambda:ready.append(True) and False)

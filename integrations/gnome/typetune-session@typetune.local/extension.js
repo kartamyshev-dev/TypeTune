@@ -11,8 +11,6 @@ import {BridgeState, sourceRequest} from './state.js';
 const XML = `<node><interface name="org.typetune.Session1">
 <method name="GetCompatContext"><arg type="s" direction="out"/></method>
 <method name="GetTextContext"><arg type="s" direction="out" name="context"/></method>
-<method name="SetTypeTuneMode"><arg type="s" direction="in"/><arg type="b" direction="out"/></method>
-<method name="ActivateTypeTune"><arg type="b" direction="out" name="activated"/></method>
 <method name="GetSnapshot"><arg type="s" direction="out" name="snapshot"/></method>
 <method name="RequestSource"><arg type="s" direction="in" name="request"/><arg type="s" direction="out" name="result"/></method>
 <signal name="Changed"><arg type="s" name="instance"/><arg type="t" name="generation"/></signal>
@@ -98,38 +96,6 @@ export default class TypeTuneSessionBridge extends Extension {
         const app = snapshot.window ? Shell.WindowTracker.get_default().get_window_app(window) : null;
         // Desktop identity only: never a title, URL or document name.
         return JSON.stringify({snapshot, app_id: app?.get_id() ?? '', pid: snapshot.window ? window.get_pid() : 0});
-    }
-
-    SetTypeTuneMode(json) {
-        if (json.length > 1024)
-            return false;
-        let request;
-        try { request = JSON.parse(json); } catch (_) { return false; }
-        const state = JSON.parse(this.GetSnapshot());
-        if (!request || !['us', 'ru'].includes(request.target) || state.locked ||
-            state.shield_active || state.overview || !state.user_session || state.external_source ||
-            state.source_type !== 'ibus' || !['typetune-test', 'typetune-test-ru'].includes(state.source_id) ||
-            !state.window || request.instance !== state.instance || request.generation !== state.generation ||
-            request.window !== state.window)
-            return false;
-        const id = request.target === 'ru' ? 'typetune-test-ru' : 'typetune-test';
-        const sources = Object.values(this._sources.inputSources).filter(source => source.type === 'ibus' && source.id === id);
-        if (sources.length !== 1)
-            return false;
-        sources[0].activate(true);
-        return true;
-    }
-
-    ActivateTypeTune() {
-        const state = JSON.parse(this.GetSnapshot());
-        if (state.locked || state.shield_active || state.overview || !state.user_session)
-            return false;
-        const sources = Object.values(this._sources.inputSources).filter(source =>
-            source.type === 'ibus' && source.id === 'typetune-test');
-        if (sources.length !== 1)
-            return false;
-        sources[0].activate(true);
-        return true; // Request accepted; controller must read back actual source.
     }
 
     RequestSource(json) {

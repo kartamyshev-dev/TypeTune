@@ -1,5 +1,5 @@
 [package]
-name = "typetune-ibus"
+name = "typetune-bridge"
 version.workspace = true
 edition.workspace = true
 

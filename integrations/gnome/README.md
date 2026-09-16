@@ -21,9 +21,9 @@ overview и вне user mode source/window скрываются. External keymap
 Это **не текстовый адаптер**: window не идентифицирует поле, input source не
 содержит полную keymap/modifier state, selection/sensitivity/IME неизвестны.
 Расширение не читает текст, titles или clipboard и не инжектирует текстовый ввод.
-`GetTextContext()` дополнительно возвращает application desktop ID для допуска
-проверенного профиля; при ограничении сессии он скрывается. `ActivateTypeTune()`
-принимает явную команду активации установленного источника; caller проверяет readback.
+`GetTextContext()` дополнительно возвращает application desktop ID для исключений приложений; при ограничении сессии он скрывается.
+В v5 удалены `ActivateTypeTune` и `SetTypeTuneMode` прежнего IBus-режима.
+`RequestSource` управляет обычными XKB US/RU с readback.
 Пользовательская установка — [preview guide](../../docs/35-user-test.md).
 Rust-клиент сохраняет `read_layout`/`read_focus` как Limited, запрет замены остаётся.
 API доступен через session bus текущего пользователя; это не security boundary

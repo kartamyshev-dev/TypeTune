@@ -15,7 +15,7 @@ members = [
     "crates/typetune-tray",
     "crates/typetune-gui",
     "crates/typetune-gtk",
-    "crates/typetune-ibus",
+    "crates/typetune-bridge",
     "crates/typetune-cli",
 ]
 

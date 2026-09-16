@@ -8,19 +8,19 @@ def run(args,**kwargs):return subprocess.run(args,check=True,**kwargs)
 def build(version,output):
     if not re.fullmatch(r'[0-9][A-Za-z0-9.+~:-]*',version):raise ValueError('Invalid Debian version')
     arch=subprocess.check_output(['dpkg','--print-architecture'],text=True).strip()
-    for args in [('typetune-ibus',),('typetune-cli','--example','compat_transport')]:
+    for args in [('typetune-bridge',),('typetune-cli','--example','compat_transport')]:
         run(['cargo','build','-p',*args,'--release','--locked','--offline'],cwd=REPO)
     output.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='typetune-deb-') as temporary:
         base=Path(temporary);root=base/'root';payload=root/'usr/lib/typetune-preview';payload.mkdir(parents=True)
         def copy(source,target,mode=0o644):
             target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target);target.chmod(mode)
-        tree=ast.parse((REPO/'integrations/ibus/controller.py').read_text())
+        tree=ast.parse((REPO/'integrations/app/controller.py').read_text())
         files=next(ast.literal_eval(node.value) for node in tree.body if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='FILES' for t in node.targets))
-        for name in (*files,'package_launcher.py'):copy(REPO/'integrations/ibus'/name,payload/name)
+        for name in (*files,'package_launcher.py'):copy(REPO/'integrations/app'/name,payload/name)
         for source in (REPO/'integrations/compat').glob('*.py'):
             if not source.name.startswith('test_'):copy(source,payload/'compat'/source.name)
-        copy(REPO/'target/release/libtypetune_ibus.so',payload/'libtypetune_ibus.so')
+        copy(REPO/'target/release/libtypetune_bridge.so',payload/'libtypetune_bridge.so')
         copy(REPO/'target/release/examples/compat_transport',payload/'compat/compat_transport',0o755)
         shutil.copytree(REPO/'integrations/gnome',payload/'gnome',ignore=shutil.ignore_patterns('__pycache__'))
         (payload/'package.json').write_text(json.dumps(dict(version=version,architecture=arch,profile='gnome50',source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip(),source_dirty=bool(subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=REPO,text=True).strip())))+'\n')
@@ -35,7 +35,9 @@ def build(version,output):
         module=root/'usr/lib/modules-load.d/typetune-preview.conf';module.parent.mkdir(parents=True);module.write_text('uinput\n')
         docs=root/'usr/share/doc/typetune-preview';docs.mkdir(parents=True)
         copy(REPO/'LICENSE',docs/'copyright')
-        copy(REPO/'docs/51-debian-package.md',docs/'README.md')
+        copy(REPO/'docs/35-user-test.md',docs/'README.md')
+        for name in ('51-debian-package.md','53-dictionary-suggestions.md','54-remove-ibus.md'):
+            copy(REPO/'docs'/name,docs/name)
         copy(REPO/'docs/evidence/51-package.txt',docs/'evidence/51-package.txt')
         shutil.copytree(REPO/'crates/typetune-engine/data/frequency',docs/'frequencywords',ignore=shutil.ignore_patterns('*.txt','*.tsv'))
         # The frequency data is compiled into the library; retain upstream licence too.
@@ -58,7 +60,7 @@ def build(version,output):
             index.append(dict(name=crate['name'],version=crate['version'],license=crate['license'],authors=crate['authors'],repository=crate['repository']))
         (notices/'manifest.json').write_text(json.dumps(index,ensure_ascii=False,indent=2)+'\n')
         debian=base/'debian';debian.mkdir();(debian/'control').write_text('Source: typetune-preview\n\nPackage: typetune-preview\nArchitecture: any\nDescription: TypeTune preview\n')
-        dependencies=subprocess.check_output(['dpkg-shlibdeps','-O','-e'+str(payload/'libtypetune_ibus.so'),'-e'+str(payload/'compat/compat_transport')],cwd=base,text=True).strip().split('=',1)[1]
+        dependencies=subprocess.check_output(['dpkg-shlibdeps','-O','-e'+str(payload/'libtypetune_bridge.so'),'-e'+str(payload/'compat/compat_transport')],cwd=base,text=True).strip().split('=',1)[1]
         metadata=root/'DEBIAN';metadata.mkdir()
         installed_size=sum(p.stat().st_size for p in root.rglob('*') if p.is_file())//1024
         (metadata/'control').write_text(f'''Package: typetune-preview
@@ -68,7 +70,7 @@ Maintainer: TypeTune contributors <noreply@typetune.local>
 Section: utils
 Priority: optional
 Installed-Size: {installed_size}
-Depends: {dependencies}, python3, python3-gi, gir1.2-gtk-4.0, gir1.2-ibus-1.0, gir1.2-atspi-2.0, ibus, gnome-shell (>= 50), gnome-shell (<< 51), dconf-gsettings-backend, pkexec, policykit-1 | polkitd, passwd, kmod, udev
+Depends: {dependencies}, python3, python3-gi, gir1.2-gtk-4.0, gnome-shell (>= 50), gnome-shell (<< 51), dconf-gsettings-backend, pkexec, policykit-1 | polkitd, passwd, kmod, udev
 Recommends: gnome-shell-ubuntu-extensions | gnome-shell-extension-appindicator
 Description: RU/EN layout correction preview for GNOME 50
  Prebuilt user-session application with Double Shift, automatic correction,
@@ -83,5 +85,5 @@ Description: RU/EN layout correction preview for GNOME 50
         run(['dpkg-deb','--root-owner-group','--build',str(root),str(artifact)])
         return artifact
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--version',default='0.1.0~preview52-1');parser.add_argument('--output',type=Path,default=REPO/'dist')
+    parser=argparse.ArgumentParser();parser.add_argument('--version',default='0.1.0~preview55-1');parser.add_argument('--output',type=Path,default=REPO/'dist')
     args=parser.parse_args();print(build(args.version,args.output))

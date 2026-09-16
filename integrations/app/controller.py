@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Single user-facing controller for the experimental IBus session runtime."""
+"""Single user-facing controller for the GNOME compatibility runtime."""
 import argparse
 import json
 import os
@@ -10,7 +10,6 @@ import subprocess
 import sys
 import tempfile
 import time
-from xml.sax.saxutils import escape
 import gi
 gi.require_version('Gio', '2.0')
 from gi.repository import Gio, GLib
@@ -29,7 +28,7 @@ EXTENSION = DATA / 'gnome-shell/extensions' / UUID
 CONFIG = Path(os.environ.get('XDG_CONFIG_HOME', str(Path.home() / '.config')))
 ENVIRONMENT = CONFIG / 'environment.d/90-typetune-ibus.conf'
 DESKTOP = DATA / 'applications/dev.kartamyshev.TypeTune.Preview.desktop'
-FILES = ('correction_feedback.py', 'suggestion_editor.py', 'application_rules.py', 'application_editor.py', 'app_settings.py', 'preferences.py', 'word_editor.py', 'tray.py', 'gui.py', 'gui_model.py', 'runtime_engine.py', 'probe_engine.py', 'session_guard.py', 'manual.py', 'controller.py', 'test-page.html', 'gesture.py', 'editor_guard.py')
+FILES = ('correction_feedback.py', 'suggestion_editor.py', 'application_rules.py', 'application_editor.py', 'app_settings.py', 'preferences.py', 'word_editor.py', 'tray.py', 'gui.py', 'gui_model.py', 'controller.py', 'test-page.html', 'gesture.py')
 
 
 def call(name, path, interface, method, parameters=None, timeout=1000):
@@ -43,10 +42,6 @@ def bridge(method='GetTextContext'):
     return json.loads(result[0]) if method == 'GetTextContext' else result[0]
 
 
-def control(method='GetStatus', enabled=None):
-    params = None if enabled is None else GLib.Variant('(b)', (enabled,))
-    result = call('org.typetune.IBus', '/org/typetune/IBus1', 'org.typetune.IBus1', method, params)
-    return json.loads(result[0]) if method == 'GetStatus' else (result[0] if result else None)
 
 
 def sources():
@@ -59,12 +54,12 @@ def install(repo):
         raise RuntimeError('Установку запускайте из checkout: ./scripts/typetune-test install')
     if (EXTENSION.exists() or ENVIRONMENT.exists()) and not (STATE / 'installed.json').exists():
         raise RuntimeError('Расширение TypeTune уже существует вне этой установки; файлы сохранены.')
-    subprocess.run(['cargo', 'build', '-p', 'typetune-ibus', '--release', '--offline'], cwd=repo, check=True)
+    subprocess.run(['cargo', 'build', '-p', 'typetune-bridge', '--release', '--offline'], cwd=repo, check=True)
     subprocess.run(['cargo','build','-p','typetune-cli','--example','compat_transport','--release','--offline'],cwd=repo,check=True)
     PACKAGE.mkdir(parents=True, exist_ok=True)
     # Atomic replacement keeps a loaded shared library's old inode intact.
-    for name, source in [(name, repo / 'integrations/ibus' / name) for name in FILES] + [
-            ('libtypetune_ibus.so', repo / 'target/release/libtypetune_ibus.so')]:
+    for name, source in [(name, repo / 'integrations/app' / name) for name in FILES] + [
+            ('libtypetune_bridge.so', repo / 'target/release/libtypetune_bridge.so')]:
         with tempfile.NamedTemporaryFile(dir=PACKAGE, delete=False) as temp:
             temporary = Path(temp.name)
         try:
@@ -81,30 +76,7 @@ def install(repo):
 
 def register_user():
     STATE.mkdir(parents=True,exist_ok=True)
-    command = '/usr/bin/python3 ' + shlex.quote(str(PACKAGE / 'runtime_engine.py'))
-    COMPONENT.parent.mkdir(parents=True, exist_ok=True)
-    COMPONENT.write_text(f'''<component>
-<name>org.freedesktop.IBus.TypeTuneTest</name><description>TypeTune layout correction preview</description>
-<exec>{escape(command)}</exec><version>0.1</version><author>TypeTune</author>
-<license>MIT</license><homepage></homepage><textdomain></textdomain>
-<engines><engine><name>typetune-test</name><longname>TypeTune — US</longname>
-<description>Double Shift correction; automatic correction on Space.</description>
-<language>en</language><license>MIT</license><author>TypeTune</author><layout>us</layout>
-<symbol>TT EN</symbol></engine>
-<engine><name>typetune-test-ru</name><longname>TypeTune — RU</longname>
-<description>Double Shift correction; automatic correction on Space.</description>
-<language>ru</language><license>MIT</license><author>TypeTune</author><layout>ru</layout>
-<symbol>TT RU</symbol></engine></engines></component>''')
-    previous_component_path = os.environ.get('IBUS_COMPONENT_PATH')
-    component_paths = list(dict.fromkeys([*(previous_component_path or '/usr/share/ibus/component').split(':'), str(COMPONENT.parent)]))
-    component_path = ':'.join(component_paths)
-    if any(char in component_path for char in ('\n', '\r', '$', '"', '\\')):
-        raise RuntimeError('Путь компонентов нельзя записать в environment.d без изменения смысла')
-    ENVIRONMENT.parent.mkdir(parents=True, exist_ok=True)
-    ENVIRONMENT.write_text('# TypeTune user IBus component discovery; managed by typetune-test\nIBUS_COMPONENT_PATH="' + component_path + '"\n')
-    subprocess.run(['ibus', 'write-cache'], env=dict(os.environ, IBUS_COMPONENT_PATH=component_path), check=True)
-    if 'TYPETUNE_NESTED_STAND' not in os.environ:
-        subprocess.run(['systemctl', '--user', 'daemon-reload'], check=True)
+    cleanup_legacy_registration()
     shell = Gio.Settings.new('org.gnome.shell')
     enabled = shell.get_strv('enabled-extensions')
     disabled = shell.get_strv('disabled-extensions')
@@ -114,7 +86,7 @@ def register_user():
         shell.set_strv('disabled-extensions', [x for x in disabled if x != UUID])
     Gio.Settings.sync()
     manifest = STATE / 'installed.json'
-    metadata=json.loads(manifest.read_text()) if manifest.exists() else dict(extension_was_enabled=UUID in enabled,extension_was_disabled=UUID in disabled,previous_component_path=previous_component_path)
+    metadata=json.loads(manifest.read_text()) if manifest.exists() else dict(extension_was_enabled=UUID in enabled,extension_was_disabled=UUID in disabled,previous_component_path=None)
     if PACKAGED:metadata['package_version']=json.loads((PACKAGE/'package.json').read_text())['version']
     manifest.write_text(json.dumps(metadata))
     DESKTOP.parent.mkdir(parents=True, exist_ok=True)
@@ -127,8 +99,8 @@ def register_user():
         with DESKTOP.open('a') as desktop:
             desktop.write('TryExec=/usr/bin/typetune-preview\nActions=Setup;\n\n[Desktop Action Setup]\nName=Настроить доступ и сеанс\nExec=/usr/bin/python3 "'+gui_path+'" --setup\n')
     print('Установлено в ' + str(PACKAGE))
-    print('После установки или обновления выйдите из сеанса GNOME и войдите снова: Shell и IBus должны загрузить новую версию.')
-    print('После входа откройте TypeTune из меню приложений.' if PACKAGED else 'После входа: ./scripts/typetune-test browser')
+    print('После установки или обновления выйдите из сеанса GNOME и войдите снова: Shell должен загрузить новую версию.')
+    print('После входа откройте TypeTune из меню приложений.' if PACKAGED else 'После входа: ./scripts/typetune-test start')
 
 
 def stop_gui():
@@ -187,7 +159,7 @@ def compat_stop():
 
 def active_runtime_control():
     connection = Gio.bus_get_sync(Gio.BusType.SESSION,None)
-    for name, runtime in [('org.typetune.Compat',compat_control),('org.typetune.IBus',control)]:
+    for name, runtime in [('org.typetune.Compat',compat_control)]:
         owned = connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus',
             'org.freedesktop.DBus','NameHasOwner',GLib.Variant('(s)',(name,)),None,
             Gio.DBusCallFlags.NONE,1000,None).unpack()[0]
@@ -218,7 +190,7 @@ def compat_start():
     if not (PACKAGE/'compat/compat_transport').is_file():raise RuntimeError('Сначала выполните install')
     try:
         call('org.gnome.Shell','/org/typetune/Session1','org.typetune.Session1','GetCompatContext')
-    except GLib.Error as error:raise RuntimeError('Нужен GNOME bridge v4: install и повторный вход') from error
+    except GLib.Error as error:raise RuntimeError('Нужен GNOME bridge TypeTune: install и повторный вход') from error
     stop()  # One active correction executor; return to ordinary XKB sources.
     settings=sources();before=[tuple(s) for s in settings.get_value('sources').unpack()]
     required=[('xkb','us'),('xkb','ru')]
@@ -240,53 +212,6 @@ def compat_start():
     raise RuntimeError('Нет готовых физических клавиатур: отпустите клавиши; проверьте права input/uinput')
 
 
-def start():
-    import app_settings
-    app_settings.load()
-    compat_stop()
-    # Fail before modifying source settings if the mandatory guard is absent.
-    try:
-        initial_context = bridge()['snapshot']
-    except GLib.Error as error:
-        raise RuntimeError('GNOME bridge не загружен. Выполните install, затем выйдите из сеанса и войдите снова.') from error
-    import gi
-    gi.require_version('IBus', '1.0')
-    from gi.repository import IBus
-    IBus.init()
-    bus = IBus.Bus.new()
-    if not bus.is_connected() or not {SOURCE[1], RU_SOURCE[1]}.issubset({e.get_name() for e in bus.list_engines()}):
-        raise RuntimeError('IBus ещё не обнаружил TypeTune. После install нужен повторный вход в сеанс.')
-    settings = sources()
-    before = [tuple(item) for item in settings.get_value('sources').unpack()]
-    if any(source not in before for source in SOURCES):
-        settings.set_value('sources', GLib.Variant('a(ss)', before + [s for s in SOURCES if s not in before]))
-        Gio.Settings.sync()
-    deadline = time.monotonic() + 4
-    activated = False
-    while time.monotonic() < deadline:
-        if not activated:
-            activated = bridge('ActivateTypeTune')
-        state = bridge()['snapshot']
-        if (state['source_type'], state['source_id']) == SOURCE:
-            try:
-                assert control('SetEnabled', True)
-                apply_saved_automatic(control)
-                app_settings.update({'mode':'ibus'})
-                restore = STATE / 'previous-source.json'
-                if not restore.exists() and initial_context['source_type'] == 'xkb' and initial_context['source_id'] in ('us', 'ru'):
-                    temporary = restore.with_suffix('.tmp')
-                    temporary.write_text(json.dumps({'source': initial_context['source_id']}))
-                    temporary.replace(restore)
-                print('TypeTune включён: двойной Shift исправляет слово и меняет язык дальнейшего ввода.')
-                print('Обычный ввод: US. Пауза: ./scripts/typetune-test pause. Остановка: ./scripts/typetune-test stop')
-                return
-            except GLib.Error:
-                pass  # Runtime has not acquired its control name yet.
-        time.sleep(.1)
-    # Roll back only our entry, preserving edits made by other settings clients.
-    if SOURCE not in before:
-        remove_source()
-    raise RuntimeError('Источник не активировался. Закройте overview/экран блокировки и повторите start; проверьте status.')
 
 
 def remove_source():
@@ -298,52 +223,26 @@ def remove_source():
         Gio.Settings.sync()
 
 
+def cleanup_legacy_registration():
+    """Remove only this product's old registrations, never other IBus engines."""
+    if not (STATE/'installed.json').is_file():return
+    try:
+        call('org.typetune.IBus','/org/typetune/IBus1','org.typetune.IBus1','Quit')
+    except GLib.Error:pass
+    remove_source()
+    COMPONENT.unlink(missing_ok=True)
+    ENVIRONMENT.unlink(missing_ok=True)
+    (STATE/'previous-source.json').unlink(missing_ok=True)
+    for name in ('runtime_engine.py','probe_engine.py','manual.py','session_guard.py','editor_guard.py','libtypetune_ibus.so'):
+        (STATE/name).unlink(missing_ok=True)
+    if 'TYPETUNE_NESTED_STAND' not in os.environ:
+        subprocess.run(['systemctl','--user','daemon-reload'],check=True)
+
+
 def stop():
     compat_stop()
-    try:
-        before = bridge()['snapshot']
-        was_active = (before['source_type'], before['source_id']) in SOURCES
-    except GLib.Error:
-        was_active = False
-    try:
-        control('SetEnabled', False)
-    except GLib.Error:
-        pass
-    remove_source()
-    deadline = time.monotonic() + 2
-    while time.monotonic() < deadline:
-        try:
-            state = bridge()['snapshot']
-            if (state['source_type'], state['source_id']) not in SOURCES:
-                break
-        except GLib.Error:
-            break
-        time.sleep(.05)
-    restore = STATE / 'previous-source.json'
-    if restore.exists():
-        try:
-            previous = json.loads(restore.read_text()).get('source')
-            if was_active and previous in ('us', 'ru'):
-                state = bridge()['snapshot']
-                if state['source_type'] == 'xkb' and state['source_id'] in ('us', 'ru') and state['source_id'] != previous:
-                    request = {key: state[key] for key in ('instance', 'generation', 'window')}
-                    request['target'] = previous
-                    answer = json.loads(call('org.gnome.Shell', '/org/typetune/Session1', 'org.typetune.Session1',
-                                             'RequestSource', GLib.Variant('(s)', (json.dumps(request),)))[0])
-                    if answer.get('status') in ('requested', 'unchanged'):
-                        deadline = time.monotonic() + 1
-                        while time.monotonic() < deadline and bridge()['snapshot']['source_id'] != previous:
-                            time.sleep(.05)
-                    if bridge()['snapshot']['source_id'] != previous:
-                        print('Коррекция отключена; прежнюю раскладку ' + previous + ' выберите вручную.')
-        except (GLib.Error, ValueError, OSError):
-            print('Коррекция отключена; восстановление прежнего источника не подтверждено.')
-        restore.unlink(missing_ok=True)
-    try:
-        control('Quit')
-    except GLib.Error:
-        pass
-    print('TypeTune остановлен; его источник убран, остальные раскладки сохранены.')
+    cleanup_legacy_registration()
+    print('TypeTune остановлен; обычный ввод продолжается.')
 
 
 def uninstall():
@@ -366,14 +265,9 @@ def uninstall():
     DESKTOP.unlink(missing_ok=True)
     COMPONENT.unlink(missing_ok=True)
     ENVIRONMENT.unlink(missing_ok=True)
-    env = os.environ.copy()
-    env['IBUS_COMPONENT_PATH'] = previous.get('previous_component_path') or '/usr/share/ibus/component'
-    subprocess.run(['ibus', 'write-cache'], env=env, check=True)
-    if 'TYPETUNE_NESTED_STAND' not in os.environ:
-        subprocess.run(['systemctl', '--user', 'daemon-reload'], check=True)
     if EXTENSION.exists():shutil.rmtree(EXTENSION)
     if STATE.exists():shutil.rmtree(STATE)
-    print('Пользовательская установка удалена. Перезагрузка списка IBus завершится при следующем входе.')
+    print('Пользовательская установка удалена. Настройки сохранены.')
 
 
 def status():
@@ -389,55 +283,9 @@ def status():
     except GLib.Error:
         result['bridge'] = False
         result['action'] = 'install / logout / login'
-    try:
-        result['runtime'] = control()
-    except GLib.Error:
-        result['runtime'] = 'not-running'
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
-def browser():
-    if not os.environ.get('WAYLAND_DISPLAY'):
-        raise RuntimeError('Команду browser нужно выполнять в терминале вашего Wayland-сеанса.')
-    if not (PACKAGE / 'test-page.html').exists():
-        raise RuntimeError('Сначала выполните install')
-    executable = shutil.which('google-chrome')
-    if not executable:
-        raise RuntimeError('Нужен установленный Google Chrome; остальные браузеры ещё не приняты')
-    try:
-        bridge()
-    except GLib.Error as error:
-        raise RuntimeError('После install выйдите из сеанса GNOME и войдите снова, затем повторите browser.') from error
-    cache = Path(os.environ.get('XDG_CACHE_HOME', str(Path.home() / '.cache'))) / 'typetune-test/chrome'
-    cache.mkdir(parents=True, exist_ok=True)
-    env = os.environ.copy()
-    # Match the tested native Wayland route, not a forced GTK/XIM module.
-    for key in ('GTK_IM_MODULE', 'QT_IM_MODULE', 'XMODIFIERS'):
-        env.pop(key, None)
-    app = subprocess.Popen([executable, '--ozone-platform=wayland', '--gtk-version=3',
-                      '--user-data-dir=' + str(cache), '--no-first-run', '--no-default-browser-check',
-                      '--password-store=basic', '--new-window', (PACKAGE / 'test-page.html').as_uri()],
-                     env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                     start_new_session='TYPETUNE_NESTED_STAND' not in os.environ)
-    deadline = time.monotonic() + 5
-    while time.monotonic() < deadline:
-        if app.poll() not in (None, 0):
-            raise RuntimeError('Chrome завершился с ошибкой запуска')
-        context = bridge()
-        if context['app_id'] == 'google-chrome.desktop' and context['snapshot']['window_backend'] == 'wayland':
-            break
-        time.sleep(.1)
-    else:
-        raise RuntimeError('Окно Chrome не прошло проверку профиля. Выполните status; коррекция остаётся запрещена.')
-    start()
-    deadline = time.monotonic() + 3
-    while time.monotonic() < deadline:
-        if control()['available']:
-            break
-        time.sleep(.1)
-    else:
-        raise RuntimeError('IBus не подтвердил профиль Chrome; проверьте status.')
-    print('Открыта локальная страница проверки в отдельном профиле Chrome.')
 
 
 def login_start():
@@ -462,8 +310,7 @@ def login_start():
             except GLib.Error:ready=False
             if ready:
                 if active_runtime_control() is None:
-                    if settings['mode']=='compatibility':compat_start()
-                    else:start()
+                    compat_start()
                 subprocess.Popen(['/usr/bin/python3',str(PACKAGE/'gui.py'),'--background'],
                     stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
                 return 0
@@ -509,8 +356,7 @@ def save_list(value, preferences, method, field):
     applied = []
     errors = []
     for name, path, interface in [
-        ('org.typetune.Compat','/org/typetune/Compat1','org.typetune.Compat1'),
-        ('org.typetune.IBus','/org/typetune/IBus1','org.typetune.IBus1')]:
+        ('org.typetune.Compat','/org/typetune/Compat1','org.typetune.Compat1')]:
         try:
             connection = Gio.bus_get_sync(Gio.BusType.SESSION, None)
             exists = connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus',
@@ -531,7 +377,6 @@ def save_list(value, preferences, method, field):
 
 SUGGESTION_BACKENDS = {
     'compatibility': ('org.typetune.Compat','/org/typetune/Compat1','org.typetune.Compat1'),
-    'ibus': ('org.typetune.IBus','/org/typetune/IBus1','org.typetune.IBus1'),
 }
 
 
@@ -555,21 +400,24 @@ def suggestions(command):
     if value['action']=='accept':
         import preferences
         document=preferences.load()
-        if selected['word'] not in document['exclusions']:
-            document['exclusions'].append(selected['word'])
+        field='words' if selected.get('kind')=='word' else 'exclusions'
+        if field=='words' and any(w in document['exclusions'] for w in (selected['source'],selected['word'])):
+            raise ValueError('Слово уже исключено. Сначала измените «Слова и исключения»')
+        if selected['word'] not in document[field]:
+            document[field].append(selected['word'])
         result=save_list(document,preferences,'ReloadWords','words_generation')
         if result['error']:return dict(error=True,message=result['message'])
     try:
         acknowledged=call(*endpoint,'DismissSuggestion',GLib.Variant('(s)',(value['id'],)))[0]
         if acknowledged is not True:raise RuntimeError('Не подтверждено')
     except (GLib.Error,RuntimeError):
-        return dict(error=True,message='Исключение сохранено; обновите список предложений.' if value['action']=='accept' else 'Отклонение не подтверждено. Обновите список.')
+        return dict(error=True,message='Изменение сохранено; обновите список предложений.' if value['action']=='accept' else 'Отклонение не подтверждено. Обновите список.')
     return dict(error=False,message='Добавлено в «Слова и исключения».' if value['action']=='accept' else 'Предложение отклонено до перезапуска TypeTune.')
 
 
 def main():
-    parser = argparse.ArgumentParser(description='TypeTune: коррекция раскладки через IBus (GNOME 50 / Wayland)')
-    parser.add_argument('command', choices=['package-configure', 'package-stop', 'package-remove', 'install', 'start', 'pause', 'resume', 'stop', 'status', 'uninstall', 'browser', 'auto-on', 'auto-off', 'compat-on', 'compat-off', 'gui', 'words-get', 'words-save', 'apps-get', 'apps-save', 'suggestions-get', 'suggestions-resolve', 'autostart-on', 'autostart-off', 'autostart', 'mode-compat', 'mode-ibus'])
+    parser = argparse.ArgumentParser(description='TypeTune: общесистемная коррекция раскладки (GNOME 50 / Wayland)')
+    parser.add_argument('command', choices=['package-configure', 'package-stop', 'package-remove', 'install', 'start', 'pause', 'resume', 'stop', 'status', 'uninstall', 'auto-on', 'auto-off', 'compat-on', 'compat-off', 'gui', 'words-get', 'words-save', 'apps-get', 'apps-save', 'suggestions-get', 'suggestions-resolve', 'autostart-on', 'autostart-off', 'autostart'])
     args = parser.parse_args()
     repo = Path(__file__).resolve().parents[2]
     try:
@@ -581,9 +429,6 @@ def main():
         elif args.command in ('autostart-on','autostart-off'):
             import app_settings
             app_settings.set_autostart(args.command=='autostart-on',PACKAGE/'controller.py')
-        elif args.command in ('mode-compat','mode-ibus'):
-            import app_settings
-            app_settings.update({'mode':'compatibility' if args.command=='mode-compat' else 'ibus'})
         elif args.command in ('words-get', 'words-save', 'apps-get', 'apps-save'): user_words(args.command)
         elif args.command == 'gui':
             from gui import main as gui_main
@@ -591,11 +436,10 @@ def main():
         elif args.command == 'install': install(repo)
         elif args.command == 'compat-on': compat_start()
         elif args.command == 'compat-off': compat_stop(); print('Режим совместимости выключен.')
-        elif args.command == 'start': start()
-        elif args.command == 'browser': browser()
+        elif args.command == 'start': compat_start()
         elif args.command in ('pause', 'resume'):
             enabled = args.command == 'resume'
-            if (compat_control if compat_running() else control)('SetEnabled', enabled) != enabled:
+            if compat_control('SetEnabled', enabled) != enabled:
                 raise RuntimeError('Runtime не подтвердил настройку')
             print('Коррекция включена.' if enabled else 'Коррекция на паузе; обычный ввод продолжается.')
         elif args.command in ('auto-on', 'auto-off'):
@@ -615,7 +459,7 @@ def main():
             stop()
         elif args.command == 'uninstall': uninstall()
         else: status()
-        if args.command in ('compat-on', 'start', 'browser') and 'TYPETUNE_NESTED_STAND' not in os.environ:
+        if args.command in ('compat-on', 'start') and 'TYPETUNE_NESTED_STAND' not in os.environ:
             gui_path = PACKAGE / 'gui.py'
             if gui_path.exists():
                 subprocess.Popen(['/usr/bin/python3', str(gui_path), '--background'],

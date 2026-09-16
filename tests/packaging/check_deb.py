@@ -10,9 +10,15 @@ with tempfile.TemporaryDirectory(prefix='typetune-dpkg-') as temporary:
     user=root/'home/fixture/.config/typetune';user.mkdir(parents=True)
     for name in ('settings.json','words.json','applications.json'):(user/name).write_text('fixture-preserved\n')
     original={p.name:p.read_bytes() for p in user.iterdir()}
+    if len(sys.argv)>2:
+        run([*dpkg,'--install',str(Path(sys.argv[2]).resolve())])
     run([*dpkg,'--install',str(artifact)])
     payload=root/'usr/lib/typetune-preview'
-    assert (payload/'libtypetune_ibus.so').is_file()
+    assert (payload/'libtypetune_bridge.so').is_file()
+    for legacy in ('libtypetune_ibus.so','runtime_engine.py','probe_engine.py','manual.py','session_guard.py','editor_guard.py'):
+        assert not (payload/legacy).exists(), legacy
+    depends=subprocess.check_output(['dpkg-deb','-f',str(artifact),'Depends'],text=True)
+    assert 'ibus' not in depends and 'gir1.2-atspi' not in depends
     assert (payload/'compat/compat_transport').stat().st_mode & 0o111
     assert not (root/'usr/lib/systemd/system/typetune.service').exists()
     assert not list(root.rglob('*.pyc'))

@@ -8,7 +8,7 @@ def version(ref,tag):
         if not match:raise ValueError('Expected tag vMAJOR.MINOR.PATCH-previewN-REVISION')
         base,preview,revision=match.groups()
         return f'{base}~preview{preview}-{revision}'
-    return '0.1.0~preview52-1'
+    return '0.1.0~preview55-1'
 
 if __name__=='__main__':
     print('DEB_VERSION='+version(os.environ.get('REF',''),os.environ.get('TAG','')))

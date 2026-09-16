@@ -10,9 +10,9 @@ import time
 import gi
 from gi.repository import Gio, GLib
 HERE=Path(__file__).resolve().parent
-sys.path.insert(0,str(HERE.parent/'ibus'))
+sys.path.insert(0,str(HERE.parent/'app'))
 sys.path.insert(0,str(HERE.parent))
-from history import History, key_plan
+from history import History, key_plan, CODES
 from rules import Rules
 import preferences
 import app_settings
@@ -201,7 +201,11 @@ class Runtime:
             self.invalidate();return
         if self.pending is not None and event['value']!=0:self.invalidate()
         if event['value']!=0:
-            if event['code'] not in (42,54) and hasattr(self,'feedback_tracker'):self.feedback_tracker.reset()
+            if event['code'] not in (42,54) and hasattr(self,'feedback_tracker'):
+                if (self.allowed() and event['code'] in CODES+[57]
+                    and not any(c not in (42,54) for _,c in self.history.held)):
+                    self.feedback_tracker.advance(event['code']==57)
+                else:self.feedback_tracker.reset()
             self.armed=None
             if event['code'] not in (42,54):self.revision+=1
         allowed=self.allowed()
@@ -238,7 +242,7 @@ class Runtime:
             if keys is None:self.last='rejected';return
             self.action+=1;identifier=self.action;self.pending=identifier;self.phase='switching'
             self.replacement=suggestion['replacement']
-            self.feedback_edit=(trigger,text,self.replacement)
+            self.feedback_edit=(trigger,text,self.replacement,trigger=='manual' and self.auto_allowed() and correction_feedback.learnable(self.rules.call,text,self.replacement))
             self.last='pending'
             app_id=self.value.get('app_id')
             token=context(self.value);source=self.value['snapshot'];mode=suggestion['mode']

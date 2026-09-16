@@ -17,9 +17,9 @@ class Checks(unittest.TestCase):
 
     def test_defaults_and_field_updates_preserve_each_other(self):
         self.assertFalse(settings.load(self.path)['autostart'])
-        settings.update({'mode':'ibus'},self.path)
+        settings.update({'mode':'compatibility'},self.path)
         settings.update({'automatic':False},self.path)
-        self.assertEqual(settings.load(self.path),dict(version=1,mode='ibus',automatic=False,autostart=False))
+        self.assertEqual(settings.load(self.path),dict(version=1,mode='compatibility',automatic=False,autostart=False))
 
     def test_autostart_enable_disable_and_real_desktop_parser(self):
         from gi.repository import Gio
@@ -66,9 +66,14 @@ class Checks(unittest.TestCase):
 
     def test_login_restores_selected_mode_and_rechecks_opt_in(self):
         snapshot=dict(locked=False,shield_active=False,overview=False,user_session=True)
-        with patch.dict(controller.os.environ,{'XDG_RUNTIME_DIR':str(self.root)}),patch.object(settings,'load',return_value=dict(settings.DEFAULT,autostart=True,mode='ibus')),patch.object(controller,'bridge',return_value={'snapshot':snapshot}),patch.object(controller,'active_runtime_control',return_value=None),patch.object(controller,'start') as start,patch.object(controller.subprocess,'Popen'):
+        with patch.dict(controller.os.environ,{'XDG_RUNTIME_DIR':str(self.root)}),patch.object(settings,'load',return_value=dict(settings.DEFAULT,autostart=True,mode='ibus')),patch.object(controller,'bridge',return_value={'snapshot':snapshot}),patch.object(controller,'active_runtime_control',return_value=None),patch.object(controller,'compat_start') as start,patch.object(controller.subprocess,'Popen'):
             self.assertEqual(controller.login_start(),0)
             start.assert_called_once()
         with patch.dict(controller.os.environ,{'XDG_RUNTIME_DIR':str(self.root)}),patch.object(settings,'load',side_effect=[dict(settings.DEFAULT,autostart=True),dict(settings.DEFAULT)]),patch.object(controller,'bridge',return_value={'snapshot':dict(snapshot,locked=True)}),patch.object(controller.time,'sleep'),patch.object(controller,'compat_start') as start:
             self.assertEqual(controller.login_start(),0)
             start.assert_not_called()
+
+    def test_legacy_ibus_settings_migrate_without_losing_choices(self):
+        self.path.write_text('{"version":1,"mode":"ibus","automatic":false,"autostart":true}')
+        self.assertEqual(settings.load(self.path),dict(version=1,mode='compatibility',automatic=False,autostart=True))
+        with self.assertRaises(ValueError):settings.update({'mode':'ibus'},self.path)

@@ -1,4 +1,4 @@
-//! Bounded in-process protocol for the experimental GI IBus adapter. No I/O,
+//! Bounded in-process protocol for the Python frontend. No I/O,
 //! callbacks, key mapping, or native editing here: the common engine owns plans.
 use serde::Deserialize;
 use serde_json::{json, Value};
@@ -208,13 +208,13 @@ impl Bridge {
 }
 
 #[no_mangle]
-pub extern "C" fn typetune_ibus_new() -> *mut Bridge {
+pub extern "C" fn typetune_bridge_new() -> *mut Bridge {
     Box::into_raw(Box::default())
 }
 /// # Safety
-/// `handle` is an exclusively owned live result of typetune_ibus_new, freed once.
+/// `handle` is an exclusively owned live result of typetune_bridge_new, freed once.
 #[no_mangle]
-pub unsafe extern "C" fn typetune_ibus_free(handle: *mut Bridge) {
+pub unsafe extern "C" fn typetune_bridge_free(handle: *mut Bridge) {
     if !handle.is_null() {
         drop(Box::from_raw(handle));
     }
@@ -225,7 +225,7 @@ pub unsafe extern "C" fn typetune_ibus_free(handle: *mut Bridge) {
 /// Handle is live and exclusively borrowed; input references `len` readable bytes;
 /// output references at least 32768 writable bytes, disjoint from input and handle.
 #[no_mangle]
-pub unsafe extern "C" fn typetune_ibus_call(
+pub unsafe extern "C" fn typetune_bridge_call(
     handle: *mut Bridge,
     input: *const u8,
     len: usize,

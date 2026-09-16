@@ -49,7 +49,7 @@ class Checks(unittest.TestCase):
         self.assertEqual(menu_rows(self.tray.state,'',False)[3][2],'resume')
         self.tray.state = describe(dict(installed=True,bridge=True))
         self.assertEqual(self.tray.icon(),'media-playback-stop-symbolic')
-        self.assertEqual(menu_rows(self.tray.state,'',False)[5][2],'compat-on')
+        self.assertEqual(menu_rows(self.tray.state,'',False)[5][2],'start')
         self.tray.state = None
         self.assertFalse(menu_rows(None,'',False)[3][1])
         self.assertEqual(self.tray.icon(),'dialog-warning-symbolic')

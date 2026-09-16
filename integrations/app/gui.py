@@ -35,11 +35,8 @@ class Window(Gtk.ApplicationWindow):
         self.stop = Gtk.Button(label='Остановить'); self.stop.connect('clicked', lambda _: self.dispatch('stop'))
         actions.append(self.pause); actions.append(self.stop); box.append(actions)
         self.start_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.mode = Gtk.DropDown.new_from_strings(['Совместимость — для разных приложений', 'IBus — ограниченный профиль'])
-        self.mode.connect('notify::selected', self.choose_mode)
-        self.start_box.append(self.mode)
         self.start = Gtk.Button(label='Запустить TypeTune'); self.start.add_css_class('suggested-action')
-        self.start.connect('clicked', lambda _: self.dispatch('compat-on' if self.mode.get_selected() == 0 else 'start'))
+        self.start.connect('clicked', lambda _: self.dispatch('start'))
         self.start_box.append(self.start); box.append(self.start_box)
         box.append(Gtk.Separator())
         auto_row = Gtk.Box(spacing=16)
@@ -61,7 +58,7 @@ class Window(Gtk.ApplicationWindow):
         box.append(words)
         self.word_editor = None
         self.suggestion_editor = None
-        self.suggestions = Gtk.Button(label='Предложения исключений…')
+        self.suggestions = Gtk.Button(label='Предложения для словаря…')
         self.suggestions.connect('clicked', self.open_suggestions)
         box.append(self.suggestions)
         self.application_editor = None
@@ -137,11 +134,6 @@ class Window(Gtk.ApplicationWindow):
             self.dispatch('autostart-on' if enabled else 'autostart-off')
         return True
 
-    def choose_mode(self, *_):
-        if not self.rendering and not self.controls_busy and self.state and self.state.configurable:
-            mode = 'compatibility' if self.mode.get_selected() == 0 else 'ibus'
-            if mode != self.state.saved_mode:
-                self.dispatch('mode-compat' if mode == 'compatibility' else 'mode-ibus')
 
     def render(self):
         view = (self.state, self.error_text, self.controls_busy)
@@ -151,7 +143,7 @@ class Window(Gtk.ApplicationWindow):
         self.rendering = True
         state = self.state
         if state:
-            self.suggestions.set_label(f'Предложения исключений ({state.suggestion_count})…')
+            self.suggestions.set_label(f'Предложения для словаря ({state.suggestion_count})…')
             self.title.set_label(state.title)
             self.detail.set_label(state.detail)
             self.pause.set_label('Пауза' if state.enabled else 'Продолжить')
@@ -159,7 +151,6 @@ class Window(Gtk.ApplicationWindow):
             self.auto.set_active(state.automatic)
             self.login.set_state(state.autostart)
             self.login.set_active(state.autostart)
-            self.mode.set_selected(0 if state.saved_mode=='compatibility' else 1)
         self.start_box.set_visible(not state or not state.running)
         self.pause.set_visible(bool(state and state.running))
         self.stop.set_visible(state is None or state.running)
@@ -167,7 +158,6 @@ class Window(Gtk.ApplicationWindow):
         self.auto.set_sensitive(bool(state and (state.running or state.configurable) and not self.controls_busy))
         self.login.set_sensitive(bool(state and state.configurable and not self.controls_busy))
         self.start.set_sensitive(bool(state and state.can_start and not self.controls_busy))
-        self.mode.set_sensitive(not self.controls_busy)
         self.stop.set_sensitive(not self.controls_busy)
         self.refresh.set_sensitive(not self.controls_busy)
         self.error.set_label(self.error_text)

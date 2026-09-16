@@ -2,7 +2,7 @@
 """GTK vocabulary editor acceptance with isolated persistent storage."""
 import sys,time,tempfile
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'ibus'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'app'))
 from gui import Gtk,Gio,GLib
 from word_editor import WordEditor
 import preferences

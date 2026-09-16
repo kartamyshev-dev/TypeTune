@@ -2,9 +2,12 @@ import contextlib,json,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
 import controller
+from gi.repository import GLib
 
 class Settings:
-    def __init__(self):self.values={'enabled-extensions':['unrelated'],'disabled-extensions':[]}
+    def __init__(self):self.values={'enabled-extensions':['unrelated'],'disabled-extensions':[], 'sources':[('xkb','us'),('ibus','typetune-test'),('ibus','other-engine'),('xkb','ru')]}
+    def get_value(self,key):return GLib.Variant('a(ss)',self.values[key])
+    def set_value(self,key,value):self.values[key]=value.unpack()
     def get_strv(self,key):return self.values[key]
     def set_strv(self,key,value):self.values[key]=value
 
@@ -18,7 +21,10 @@ class Checks(unittest.TestCase):
             (state/'installed.json').write_text(json.dumps(previous))
             config=base/'config';config.mkdir();settings=config/'settings.json';settings.write_text('{"user":"keep"}')
             for key,value in dict(PACKAGED=True,PACKAGE=payload,STATE=state,EXTENSION=base/'extension',COMPONENT=base/'ibus/component.xml',ENVIRONMENT=base/'env/typetune.conf',DESKTOP=base/'applications/typetune.desktop').items():stack.enter_context(patch.object(controller,key,value))
+            controller.COMPONENT.parent.mkdir(parents=True);controller.COMPONENT.write_text('legacy component')
+            controller.ENVIRONMENT.parent.mkdir(parents=True);controller.ENVIRONMENT.write_text('legacy environment')
             shell=Settings()
+            stack.enter_context(patch.object(controller,'call',side_effect=GLib.Error('absent')))
             stack.enter_context(patch.object(controller.Gio.Settings,'new',return_value=shell))
             stack.enter_context(patch.object(controller.Gio.Settings,'sync'))
             commands=stack.enter_context(patch.object(controller.subprocess,'run'))
@@ -28,7 +34,8 @@ class Checks(unittest.TestCase):
             stack.enter_context(patch('app_settings.AUTOSTART',base/'autostart.desktop'))
             controller.configure_package()
             self.assertEqual(json.loads((state/'installed.json').read_text()),dict(previous,package_version='1'))
-            self.assertIn(str(payload/'runtime_engine.py'),controller.COMPONENT.read_text())
+            self.assertFalse(controller.COMPONENT.exists());self.assertFalse(controller.ENVIRONMENT.exists())
+            self.assertEqual(shell.values['sources'],[('xkb','us'),('ibus','other-engine'),('xkb','ru')])
             self.assertIn('package_launcher.py',controller.DESKTOP.read_text())
             (payload/'package.json').write_text(json.dumps(dict(version='2')))
             controller.configure_package()
@@ -38,7 +45,7 @@ class Checks(unittest.TestCase):
             self.assertFalse(state.exists());self.assertFalse(controller.EXTENSION.exists())
             self.assertTrue(payload.exists());self.assertEqual(settings.read_text(),'{"user":"keep"}')
             self.assertEqual(shell.get_strv('enabled-extensions'),['unrelated'])
-            self.assertFalse(any(call.args[0][0]=='cargo' for call in commands.call_args_list))
+            self.assertFalse(any(call.args[0][0] in ('cargo','ibus') for call in commands.call_args_list))
     def test_removal_does_not_touch_unrelated_checkout_install(self):
         with tempfile.TemporaryDirectory() as directory:
             state=Path(directory);(state/'installed.json').write_text('{}')

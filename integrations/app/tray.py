@@ -44,7 +44,7 @@ def menu_rows(state, error, busy):
             'pause' if state and state.enabled else 'resume'),
         4: ('Автокоррекция', running and not busy, 'auto-off' if state and state.automatic else 'auto-on'),
         5: ('Остановить' if running else 'Запустить TypeTune',
-            not busy and (running or bool(state and state.can_start)), 'stop' if running else ('start' if state and state.saved_mode=='ibus' else 'compat-on')),
+            not busy and (running or bool(state and state.can_start)), 'stop' if running else 'start'),
     }
 
 

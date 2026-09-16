@@ -17,18 +17,14 @@ UUID = 'typetune-session@typetune.local'
 
 
 def outer():
-    runtime_stand = '--runtime-stand' in sys.argv
-    ibus_stand = '--ibus-stand' in sys.argv or runtime_stand
-    if ibus_stand and any(flag in sys.argv for flag in ('--text-stand', '--editor-stand')):
-        raise SystemExit('--ibus-stand runs separately from text/editor stands')
+    if '--ibus-stand' in sys.argv or '--runtime-stand' in sys.argv:
+        raise SystemExit('IBus adapter was removed; use --compat-stand or --compat-xwayland')
     with tempfile.TemporaryDirectory(prefix='typetune-gnome-') as temp:
         base = Path(temp)
         for name in ('data', 'config', 'runtime', 'cache'):
             (base / name).mkdir(mode=0o700)
         extension_dir = base / 'data/gnome-shell/extensions' / UUID
-        if runtime_stand:
-            pass  # The real installer supplies the extension below.
-        elif '--bundle' in sys.argv:
+        if '--bundle' in sys.argv:
             extension_dir.mkdir(parents=True)
             with zipfile.ZipFile(sys.argv[sys.argv.index('--bundle') + 1]) as archive:
                 for name in ('metadata.json', 'extension.js', 'state.js'):
@@ -36,7 +32,7 @@ def outer():
         else:
             shutil.copytree(ROOT / 'integrations/gnome' / UUID, extension_dir)
         if '--global-input-probe' in sys.argv or '--compat-stand' in sys.argv or '--compat-xwayland' in sys.argv:
-            if runtime_stand or ibus_stand or '--bundle' in sys.argv:
+            if '--bundle' in sys.argv:
                 raise SystemExit('global input probe must run separately')
             from global_input_probe import instrument
             instrument(extension_dir / 'extension.js')
@@ -45,21 +41,6 @@ def outer():
                     'IBUS_ADDRESS', 'IBUS_COMPONENT_PATH', 'AT_SPI_BUS_ADDRESS',
                     'GTK_IM_MODULE', 'QT_IM_MODULE', 'XMODIFIERS'):
             env.pop(key, None)
-        if ibus_stand:
-            from xml.sax.saxutils import escape
-            component_dir = base / 'components'
-            component_dir.mkdir()
-            engine_path = ROOT / 'integrations/ibus/probe_engine.py'
-            (component_dir / 'typetune.xml').write_text(f"""<component>
-<name>org.freedesktop.IBus.TypeTuneProbe</name><description>TypeTune isolated probe</description>
-<exec>{escape(sys.executable)} {escape(str(engine_path))}</exec><version>0.1</version>
-<author>TypeTune</author><license>MIT</license><homepage></homepage><textdomain></textdomain>
-<engines><engine><name>typetune-probe</name><longname>TypeTune Probe</longname>
-<description>Isolated pass-through probe</description><language>en</language>
-<license>MIT</license><author>TypeTune</author><layout>us</layout></engine></engines></component>""")
-            env['TYPETUNE_IBUS_STAND'] = '1'
-            env['IBUS_ADDRESS'] = 'unix:path=' + str(base / 'runtime/ibus')
-            env['IBUS_COMPONENT_PATH'] = str(component_dir) + ':/usr/share/ibus/component'
         if '--compat-xwayland' in sys.argv:
             env['TYPETUNE_COMPAT_XWAYLAND'] = '1'
         if '--compat-stand' in sys.argv or '--compat-xwayland' in sys.argv:
@@ -75,15 +56,6 @@ def outer():
                    GSETTINGS_BACKEND='keyfile', XDG_SESSION_TYPE='wayland',
                    XDG_CURRENT_DESKTOP='GNOME', GNOME_SHELL_SESSION_MODE='user',
                    TYPETUNE_NESTED_STAND=str(base))
-        if runtime_stand:
-            env['TYPETUNE_RUNTIME_STAND'] = '1'
-            env.pop('IBUS_COMPONENT_PATH', None)
-            subprocess.run(['/usr/bin/python3', str(ROOT / 'integrations/ibus/controller.py'), 'install'],
-                           env=env, check=True)
-            generated = subprocess.check_output(['/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator'], env=env, text=True)
-            line = next(line for line in generated.splitlines() if line.startswith('IBUS_COMPONENT_PATH='))
-            env['IBUS_COMPONENT_PATH'] = line.partition('=')[2].strip('"')
-            assert str(base / 'data/ibus/component') in env['IBUS_COMPONENT_PATH']
         with subprocess.Popen(['dbus-run-session', '--config-file',
                                str(ROOT / 'crates/typetune-session/examples/private-bus.conf'),
                                '--', sys.executable, __file__, '--inside'], env=env,
@@ -147,18 +119,10 @@ def inside():
         setting('org.gnome.shell', 'enabled-extensions', "['" + UUID + "']")
         setting('org.gnome.shell', 'disable-user-extensions', 'false')
         setting('org.gnome.desktop.input-sources', 'sources', "[('xkb', 'us')]")
-        ibus_daemon = None
-        if 'TYPETUNE_IBUS_STAND' in os.environ:
-            ibus_daemon = subprocess.Popen(['ibus-daemon', '--single', '--panel=disable',
-                                           '--emoji-extension=disable', '--config=disable',
-                                           '--address=' + os.environ['IBUS_ADDRESS']],
-                                          stdout=log, stderr=log)
         shell = subprocess.Popen(['gnome-shell' , '--headless', '--wayland', *([] if 'TYPETUNE_COMPAT_XWAYLAND' in os.environ else ['--no-x11']),
                                   '--virtual-monitor', '800x600', '--wayland-display', 'typetune-test'],
                                  stdout=log, stderr=log)
         children.append(shell)
-        if ibus_daemon is not None:
-            children.append(ibus_daemon)
         first = wait(snapshot, 'bridge startup')
         assert first['protocol'] == 1
         print('PASS GNOME-01: real Shell exported bridge', flush=True)
@@ -330,6 +294,30 @@ GLib.MainLoop().run()
             tap(42);tap(42)
             time.sleep(.2)
             assert output.read_text()==before_pause
+            compat('SetEnabled',GLib.Variant('(b)',(True,)))
+            for occurrence in range(3):
+                edge(29,True);tap(30);edge(29,False);tap(14)
+                wait(lambda: output.read_text()=='','learning cleared fixture')
+                request_source(snapshot(),'ru')
+                wait(lambda:snapshot()['source_id']=='ru','learning RU source')
+                time.sleep(.2)
+                for code in [34,23,20,35,22,48]:tap(code)
+                wait(lambda:output.read_text()=='пшерги','learning source word')
+                if occurrence:tap(57)  # A word already ended before the gesture counts immediately.
+                tap(42);tap(42)
+                wait(lambda:output.read_text()==('github ' if occurrence else 'github'),'learning corrected word')
+                wait(lambda:compat()['last_result']=='injected-unverified','learning output completed')
+                if not occurrence:tap(57)
+                wait(lambda:output.read_text()=='github ','learning retained word')
+                wait(lambda:compat()['suggestion_count']==int(occurrence==2),'learning proposal threshold')
+            tap(42);tap(42)
+            wait(lambda:output.read_text()=='пшерги ','learning inverse edit')
+            wait(lambda:compat()['suggestion_count']==0,'learning inverse withdraws proposal')
+            tap(42);tap(42)
+            wait(lambda:output.read_text()=='github ','learning retoggle edit')
+            wait(lambda:compat()['last_result']=='injected-unverified','learning retoggle completed')
+            assert compat()['suggestion_count']==0
+            print('PASS LEARN-GITHUB: Space before/after gesture counts once; inverse withdraws; retoggle never counts again',flush=True)
             compat('Quit')
             runtime.wait(timeout=3)
             call(remote_switch, 'org.gnome.Mutter.RemoteDesktop.Session', 'Stop', destination='org.gnome.Mutter.RemoteDesktop')
@@ -340,321 +328,6 @@ GLib.MainLoop().run()
         assert 'unicode_unavailable' in report['replacement_blockers']
         print('PASS GNOME-04: Rust client reads real bridge; field/Unicode guards still refuse', flush=True)
 
-        if 'TYPETUNE_IBUS_STAND' in os.environ:
-            runtime_stand = 'TYPETUNE_RUNTIME_STAND' in os.environ
-            engine_name = 'typetune-test' if runtime_stand else 'typetune-probe'
-            controller = ['/usr/bin/python3', str(base / 'data/typetune-test/controller.py')]
-            if runtime_stand:
-                subprocess.run(controller + ['start'], check=True)
-                assert ('xkb', 'us') in current_sources()
-                print('PASS RUNTIME-01: installed component starts; existing source preserved', flush=True)
-            else:
-                setting('org.gnome.desktop.input-sources', 'sources', repr([('ibus', engine_name)]))
-            wait(lambda: snapshot()['source_id'] == engine_name, 'IBus probe source')
-            stats_file = base / 'ibus-stats.json'
-            wait(stats_file.exists, 'IBus engine startup')
-            def stats():
-                return json.loads(stats_file.read_text())
-            wait(lambda: stats()['focus_in'] > 0, 'IBus input focus')
-            time.sleep(.5)  # Fixture setup: allow asynchronous Shell engine selection to settle.
-            before_ibus = stats()
-            remote_ibus = call('/org/gnome/Mutter/RemoteDesktop', 'org.gnome.Mutter.RemoteDesktop',
-                               'CreateSession', destination='org.gnome.Mutter.RemoteDesktop')[0]
-            call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'Start',
-                 destination='org.gnome.Mutter.RemoteDesktop')
-            for down in (True, False):
-                call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                     GLib.Variant('(ub)', (42, down)), destination='org.gnome.Mutter.RemoteDesktop')
-            time.sleep(.1)
-            for key in (34, 35, 48, 32, 20, 49):  # evdev: ghbdtn
-                for down in (True, False):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                         GLib.Variant('(ub)', (key, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                    time.sleep(.03)
-            time.sleep(.3)
-            wait(lambda: output.read_text() == expected_text + 'ghbdtn', 'IBus normal input delivered')
-            wait(lambda: stats()['down'] > before_ibus['down'], 'IBus observes keys')
-            assert stats()['down'] - before_ibus['down'] >= 6
-            assert stats()['surrounding'] > before_ibus['surrounding']
-            print('PASS IBUS-01: pass-through GTK input and surrounding text; ' + json.dumps(stats()), flush=True)
-            launcher = subprocess.Popen(['/usr/libexec/at-spi-bus-launcher', '--launch-immediately'],
-                                        stdout=log, stderr=log)
-            children.append(launcher)
-            address = wait(lambda: call('/org/a11y/bus', 'org.a11y.Bus', 'GetAddress',
-                                        destination='org.a11y.Bus')[0], 'IBus oracle accessibility bus')
-            editor_env = dict(child_env, AT_SPI_BUS_ADDRESS=address, GTK_A11Y='atspi')
-            editor = subprocess.Popen([sys.executable, str(ROOT / 'integrations/ibus/editor_client.py')],
-                                      env=editor_env)
-            children.append(editor)
-            wait(lambda: (base / 'ibus-editor-ready').exists(), 'IBus editor ready')
-            before_editor = stats()
-            for key in (34, 35, 48, 32, 20, 49):
-                for down in (True, False):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                         GLib.Variant('(ub)', (key, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                    time.sleep(.03)
-            if runtime_stand:
-                wait(lambda: (base / 'ibus-editor-correct').exists(), 'editor correction ready')
-                for down in (True, False):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                         GLib.Variant('(ub)', (66, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                    time.sleep(.03)
-            wait(lambda: (base / 'ibus-editor-selected').exists(), 'IBus editor readback')
-            wait(lambda: stats()['down'] >= before_editor['down'] + 6, 'IBus editor observation')
-            for down in (True, False):
-                call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                     GLib.Variant('(ub)', (42, down)), destination='org.gnome.Mutter.RemoteDesktop')
-            time.sleep(.2)
-            if runtime_stand:
-                selected_editor = stats()
-                for down in (True, False):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                         GLib.Variant('(ub)', (66, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                    time.sleep(.03)
-                wait(lambda: stats()['manual_rejected'] > selected_editor['manual_rejected'], 'AT-SPI selection guard refusal')
-                assert stats()['manual_edits'] == selected_editor['manual_edits']
-                print('PASS EDITOR-SELECTION: hidden IBus selection refused by AT-SPI, no edit calls', flush=True)
-            print('IBUS editor context evidence ' + json.dumps(stats()), flush=True)
-            (base / 'ibus-editor-finish').write_text('done')
-            assert editor.wait(timeout=5) == 0
-            password_gtk = gtk.replace("e.set_text('');", "e.set_input_purpose(Gtk.InputPurpose.PASSWORD); e.set_visibility(False); e.set_text('');")
-            before_password = stats()
-            old_window = snapshot()['window']
-            password = subprocess.Popen([sys.executable, '-c', password_gtk], env=child_env,
-                                        stdout=log, stderr=log)
-            children.append(password)
-            password_output = base / ('input-' + str(password.pid))
-            wait(lambda: snapshot()['window'] not in (0, old_window), 'password fixture focus')
-            for key in (34, 35, 48, 32, 20, 49):
-                for down in (True, False):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                         GLib.Variant('(ub)', (key, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                    time.sleep(.03)
-            wait(lambda: password_output.exists() and password_output.read_text() == 'ghbdtn',
-                 'password fixture ordinary input')
-            time.sleep(.1)
-            assert stats()['sensitive'] > before_password['sensitive']
-            print('PASS IBUS-03: password fixture ordinary input intact; observer delta ' +
-                  json.dumps({key: stats()[key] - before_password[key]
-                              for key in ('down', 'up', 'surrounding', 'sensitive', 'content_type_events')}), flush=True)
-
-            def browser_key(code, down):
-                call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyKeyboardKeycode',
-                     GLib.Variant('(ub)', (code, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                time.sleep(.03)
-            def type_fixture():
-                for key in (34, 35, 48, 32, 20, 49):
-                    browser_key(key, True)
-                    browser_key(key, False)
-            for profile in (('default', 'ime', 'smart') if runtime_stand else ('default', 'ime')):
-                if not runtime_stand:
-                    (base / 'manual-browser-profile').touch()
-                time.sleep(.1)
-                folder = base / ('browser-' + profile)
-                browser = subprocess.Popen([sys.executable, str(ROOT / 'integrations/ibus/browser_client.py'), profile],
-                                           env=child_env)
-                children.append(browser)
-                def page():
-                    return json.loads((folder / 'state.json').read_text())
-                wait(lambda: page()['focused'] and page()['active'] == 'a', 'browser field focus')
-                assert snapshot()['window_backend'] == 'wayland'
-                time.sleep(.2)
-                if runtime_stand:
-                    def runtime_status():
-                        return json.loads(call('/org/typetune/IBus1', 'org.typetune.IBus1', 'GetStatus',
-                                               destination='org.typetune.IBus')[0])
-                    def context_status():
-                        return json.loads(call('/org/typetune/Session1', 'org.typetune.Session1', 'GetTextContext')[0])
-                    print('Runtime app identity: ' + context_status()['app_id'], flush=True)
-                    wait(lambda: runtime_status()['available'], 'runtime Chrome profile')
-                initial = stats()
-                type_fixture()
-                wait(lambda: page()['text_ok'] and page()['caret'] == page()['anchor'] == 6, 'browser typed text/caret')
-                time.sleep(.15)
-                typed = stats()
-                def manual_key(code):
-                    browser_key(code, True)
-                    browser_key(code, False)
-                if profile == 'smart':
-                    def double_shift(code):
-                        for _ in range(2):
-                            browser_key(code, True)
-                            browser_key(code, False)
-                    # Same-field mouse click between Shift taps must cancel the
-                    # gesture even when text and caret do not change.
-                    target = page()['target_a']
-                    move(-10000., -10000.)
-                    move(target['x'], target['y'])
-                    wait(lambda: page()['pointer'] is not None, 'smart pointer ready')
-                    for _ in range(8):
-                        pointer = page()['pointer']
-                        dx, dy = target['x'] - pointer['x'], target['y'] - pointer['y']
-                        if abs(dx) < 2 and abs(dy) < 2:
-                            break
-                        move(dx, dy)
-                    before_mouse = stats()
-                    manual_key(42)
-                    for down in (True, False):
-                        call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyPointerButton',
-                             GLib.Variant('(ib)', (272, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                    manual_key(42)
-                    time.sleep(.6)
-                    assert page()['text_ok'] and stats()['manual_edits'] == before_mouse['manual_edits']
-                    assert page()['caret'] == page()['anchor'] == 6
-                    manual_key(14)
-                    manual_key(49)
-                    wait(lambda: page()['text_ok'], 'retype after pointer invalidation')
-                    print('PASS SMART-MOUSE: same-field pointer click between Shift taps preserves original text and cancels gesture', flush=True)
-                    double_shift(42)
-                    wait(lambda: page()['smart_ru'] and snapshot()['source_id'] == 'typetune-test-ru', 'double left Shift RU correction and layout')
-                    manual_key(57)
-                    for key in (35, 18, 38, 38, 24):
-                        manual_key(key)  # Physical hello in RU -> руддщ.
-                    double_shift(54)
-                    wait(lambda: page()['smart_us'] and snapshot()['source_id'] == 'typetune-test', 'double right Shift US correction and layout')
-                    manual_key(57)
-                    type_fixture()
-                    manual_key(57)
-                    wait(lambda: page()['auto_ok'] and snapshot()['source_id'] == 'typetune-test-ru', 'automatic correction with one Space and RU layout')
-                    manual_key(34)
-                    wait(lambda: page()['next_ru'], 'next physical letter follows new RU layout')
-                    assert stats().get('auto_completed', 0) > 0
-                    subprocess.run(controller + ['auto-off'], check=True)
-                    assert runtime_status()['automatic'] is False
-                    subprocess.run(controller + ['auto-on'], check=True)
-                    assert runtime_status()['automatic'] is True
-                    print('PASS SMART-01: both Shift keys; RU/US correction and layout; Space auto; subsequent native Cyrillic input; auto setting acknowledged', flush=True)
-                    (folder / 'finish').write_text('done')
-                    assert browser.wait(timeout=5) == 0
-                    continue
-                manual_key(66)  # F8: common engine US -> RU through IBus.
-                wait(lambda: page()['corrected'] and page()['caret'] == page()['anchor'] == 6, 'IBus manual correction DOM readback')
-                wait(lambda: stats()['manual_completed'] == typed['manual_completed'] + 1, 'IBus Rust completion')
-                manual_key(67)  # F9: inverse mapping; leave the observation fixture intact.
-                wait(lambda: page()['text_ok'] and page()['caret'] == page()['anchor'] == 6, 'IBus inverse correction')
-                wait(lambda: stats()['manual_completed'] == typed['manual_completed'] + 2, 'IBus inverse Rust completion')
-                assert stats()['manual_edits'] == typed['manual_edits'] + 2
-                assert stats()['manual_indeterminate'] == typed['manual_indeterminate']
-                print('PASS IBUS-MANUAL-' + profile.upper() + ': F8/F9 exact DOM text and caret; two Rust-confirmed edits', flush=True)
-                browser_key(105, True)  # Left: ordinary navigation, no DOM editing.
-                browser_key(105, False)
-                wait(lambda: page()['caret'] == page()['anchor'] == 5, 'browser left navigation')
-                time.sleep(.15)
-                navigated = stats()
-                browser_key(42, True)
-                browser_key(105, True)
-                browser_key(105, False)
-                browser_key(42, False)
-                wait(lambda: page()['caret'] == 4 and page()['anchor'] == 5, 'browser keyboard selection')
-                time.sleep(.15)
-                selected = stats()
-                manual_key(66)
-                wait(lambda: stats()['manual_rejected'] > selected['manual_rejected'], 'IBus selection refusal')
-                assert page()['text_ok'] and page()['caret'] == 4 and page()['anchor'] == 5
-                assert stats()['manual_edits'] == selected['manual_edits']
-                (folder / 'phase').write_text('focus')
-                target = page()['target_b']
-                def move(dx, dy):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyPointerMotionRelative',
-                         GLib.Variant('(dd)', (dx, dy)), destination='org.gnome.Mutter.RemoteDesktop')
-                    time.sleep(.1)
-                move(-10000., -10000.)
-                move(target['x'], target['y'])
-                wait(lambda: page()['pointer'] is not None, 'browser pointer on page')
-                for _ in range(8):
-                    pointer = page()['pointer']
-                    dx, dy = target['x'] - pointer['x'], target['y'] - pointer['y']
-                    if abs(dx) < 2 and abs(dy) < 2:
-                        break
-                    move(dx, dy)
-                assert abs(page()['pointer']['x'] - target['x']) < 2
-                assert abs(page()['pointer']['y'] - target['y']) < 2
-                for down in (True, False):
-                    call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'NotifyPointerButton',
-                         GLib.Variant('(ib)', (272, down)), destination='org.gnome.Mutter.RemoteDesktop')
-                wait(lambda: page()['active'] == 'b' and page()['second_empty'], 'browser field change')
-                time.sleep(.15)
-                focused = stats()
-                manual_key(66)
-                wait(lambda: stats()['manual_rejected'] > focused['manual_rejected'], 'IBus new-field refusal')
-                assert page()['second_empty'] and page()['text_ok']
-                assert stats()['manual_edits'] == focused['manual_edits']
-                (folder / 'phase').write_text('password')
-                wait(lambda: page()['active'] == 'p', 'browser password focus')
-                time.sleep(.15)
-                password_before = stats()
-                type_fixture()
-                wait(lambda: page()['password_ok'] and page()['text_ok'], 'browser password input')
-                time.sleep(.15)
-                password_after = stats()
-                manual_key(66)
-                if runtime_stand:
-                    # With US also configured, GNOME switches away from the IBus
-                    # engine in password fields; no shortcut reaches it.
-                    assert not runtime_status()['available']
-                else:
-                    wait(lambda: stats()['manual_rejected'] > password_after['manual_rejected'], 'IBus password refusal')
-                assert page()['password_ok'] and page()['text_ok']
-                assert stats()['manual_edits'] == password_after['manual_edits']
-                print('PASS IBUS-REFUSE-' + profile.upper() + ': selection, new field and password preserve DOM text; no edit calls', flush=True)
-                evidence = {
-                    'keys_seen': typed['down'] - initial['down'],
-                    'surrounding_updates': typed['surrounding'] - initial['surrounding'],
-                    'purpose': typed['purpose'],
-                    'navigation_seen': navigated['navigation'] - typed['navigation'],
-                    'selection_events': selected['selection_events'] - navigated['selection_events'],
-                    'selection_cursor': selected['last_cursor'], 'selection_anchor': selected['last_anchor'],
-                    'field_focus_in': focused['focus_in'] - selected['focus_in'],
-                    'field_resets': focused['reset'] - selected['reset'],
-                    'password_keys_seen': password_after['down'] - password_before['down'],
-                    'password_purpose': password_after['purpose'],
-                    'password_source': snapshot()['source_id'],
-                }
-                assert evidence['keys_seen'] == 6
-                assert typed['up'] - initial['up'] == 6
-                assert evidence['surrounding_updates'] > 0 and evidence['purpose'] == 0
-                assert evidence['navigation_seen'] >= 1
-                assert evidence['selection_events'] >= 1
-                assert {evidence['selection_cursor'], evidence['selection_anchor']} == {4, 5}
-                assert evidence['field_focus_in'] > 0 or evidence['field_resets'] > 0
-                if runtime_stand:
-                    assert evidence['password_source'] == 'us'
-                else:
-                    assert evidence['password_purpose'] == 8
-                print('PASS BROWSER-' + profile.upper() + ': DOM text/caret/navigation/selection/focus/password intact; IBus ' + json.dumps(evidence), flush=True)
-                (folder / 'finish').write_text('done')
-                assert browser.wait(timeout=5) == 0
-                if not runtime_stand:
-                    (base / 'manual-browser-profile').unlink()
-
-            if runtime_stand:
-                subprocess.run(controller + ['browser'], env=child_env, check=True)
-                wait(lambda: runtime_status()['available'], 'user test browser ready')
-                time.sleep(.3)
-                before_preview = stats()
-                type_fixture()
-                manual_key(66)
-                wait(lambda: stats()['manual_completed'] == before_preview['manual_completed'] + 1, 'installed user page correction')
-                print('PASS RUNTIME-04: browser command opens installed local page; native F8 confirmed by common engine readback', flush=True)
-                subprocess.run(controller + ['pause'], check=True)
-                assert not runtime_status()['enabled']
-                subprocess.run(controller + ['resume'], check=True)
-                assert runtime_status()['enabled']
-                subprocess.run(controller + ['stop'], check=True)
-                assert ('ibus', 'typetune-test') not in current_sources()
-                wait(lambda: snapshot()['source_id'] == 'us', 'runtime stop restores ordinary source')
-                print('PASS RUNTIME-02: effective pause/resume/stop, TypeTune source removed, normal source restored', flush=True)
-                setting('org.gnome.desktop.input-sources', 'sources', "[('xkb', 'us'), ('xkb', 'ru')]")
-                wait(lambda: request_source(snapshot(), 'ru')['status'] in ('requested', 'unchanged'), 'runtime initial RU source')
-                wait(lambda: snapshot()['source_id'] == 'ru', 'runtime initial RU readback')
-                subprocess.run(controller + ['start'], check=True)
-                subprocess.run(controller + ['stop'], check=True)
-                wait(lambda: snapshot()['source_id'] == 'ru', 'runtime stop restores previous RU source')
-                print('PASS RUNTIME-05: second start after shutdown works; stop restores prior RU source', flush=True)
-            call(remote_ibus, 'org.gnome.Mutter.RemoteDesktop.Session', 'Stop',
-                 destination='org.gnome.Mutter.RemoteDesktop')
-            setting('org.gnome.desktop.input-sources', 'sources', "[('xkb', 'us')]")
-            wait(lambda: snapshot()['source_id'] == 'us', 'restore source after IBus probe')
         if 'TYPETUNE_TEXT_STAND_PATH' in os.environ:
             setting('org.gnome.desktop.input-sources', 'sources', "[('xkb', 'us')]")
             wait(lambda: snapshot()['source_id'] == 'us', 'text keyboard layout')
@@ -760,15 +433,6 @@ GLib.MainLoop().run()
         wait(lambda: not snapshot()['shield_active'] and snapshot()['source_id'] == 'ru', 'shield deactivate')
         assert snapshot()['generation'] > locked['generation']
         print('PASS GNOME-07: shield deactivation restores source with new generation', flush=True)
-        if 'TYPETUNE_RUNTIME_STAND' in os.environ:
-            before_uninstall = current_sources()
-            subprocess.run(controller + ['uninstall'], check=True)
-            assert current_sources() == before_uninstall
-            assert not (base / 'config/environment.d/90-typetune-ibus.conf').exists()
-            assert not (base / 'data/typetune-test').exists()
-            assert not (base / 'data/ibus/component/typetune-test.xml').exists()
-            assert not (base / 'data/gnome-shell/extensions' / UUID).exists()
-            print('PASS RUNTIME-03: uninstall removes owned files and preserves ordinary sources', flush=True)
         print('GNOME NATIVE STAND PASS (isolated headless compositor)', flush=True)
     except Exception:
         log.flush()

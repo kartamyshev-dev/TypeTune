@@ -28,7 +28,7 @@ jobs:
       - name: Install build and test dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential pkg-config dpkg-dev desktop-file-utils libevdev-dev libudev-dev libxkbcommon-dev libxkbcommon-x11-dev libdbus-1-dev libgtk-4-dev libadwaita-1-dev python3-gi gir1.2-gtk-4.0 gir1.2-ibus-1.0 gir1.2-atspi-2.0 dbus-x11 xvfb xauth
+          sudo apt-get install -y build-essential pkg-config dpkg-dev desktop-file-utils libevdev-dev libudev-dev libxkbcommon-dev libxkbcommon-x11-dev libdbus-1-dev libgtk-4-dev libadwaita-1-dev python3-gi gir1.2-gtk-4.0 dbus-x11 xvfb xauth
       - name: Select Rust toolchain
         run: |
           rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
@@ -49,10 +49,10 @@ jobs:
       - name: Rust behavior tests and Python ABI
         run: |
           cargo test --workspace --all-targets --locked --offline
-          cargo build -p typetune-ibus --locked --offline
+          cargo build -p typetune-bridge --locked --offline
       - name: Python behavior tests
         run: |
-          /usr/bin/python3 -m unittest discover -s integrations/ibus -p 'test_*.py'
+          /usr/bin/python3 -m unittest discover -s integrations/app -p 'test_*.py'
           /usr/bin/python3 -m unittest discover -s integrations/compat -p 'test_*.py'
           /usr/bin/python3 -m unittest discover -s tests/packaging -p 'test_*.py'
       - name: GTK controlled fixtures

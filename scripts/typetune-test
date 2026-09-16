@@ -1,4 +1,4 @@
 #!/bin/sh
-# Repository entry point; the installed IBus component runs independently.
+# Repository entry point; the installed runtime runs independently.
 TYPETUNE_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-exec /usr/bin/python3 "$TYPETUNE_ROOT/integrations/ibus/controller.py" "$@"
+exec /usr/bin/python3 "$TYPETUNE_ROOT/integrations/app/controller.py" "$@"

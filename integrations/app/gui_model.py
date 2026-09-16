@@ -14,7 +14,6 @@ class State:
     automatic: bool = False
     can_start: bool = False
     backend: str = ''
-    saved_mode: str = 'compatibility'
     autostart: bool = False
     configurable: bool = False
     suggestion_count: int = 0
@@ -23,10 +22,8 @@ class State:
 def _describe(data):
     if not isinstance(data, dict):
         raise ValueError('Некорректный ответ controller')
-    compat = data.get('compatibility')
-    ibus = data.get('runtime')
-    runtime = compat if isinstance(compat, dict) else ibus
-    backend = 'Режим совместимости' if isinstance(compat, dict) else 'IBus'
+    runtime = data.get('compatibility')
+    backend = 'Режим совместимости'
     if isinstance(runtime, dict):
         if not all(type(runtime.get(key)) is bool for key in ('enabled', 'automatic')):
             raise ValueError('Runtime не сообщил состояние настроек')
@@ -34,7 +31,7 @@ def _describe(data):
         automatic = runtime.get('automatic') is True
         available = runtime.get('available') is True
         title = 'На паузе' if not enabled else ('Работает' if available else 'Ожидает подходящее поле')
-        mode = {'us': 'EN', 'ru': 'RU', 'typetune-test': 'EN', 'typetune-test-ru': 'RU'}.get(runtime.get('mode'), 'не определён')
+        mode = {'us': 'EN', 'ru': 'RU'}.get(runtime.get('mode'), 'не определён')
         detail = f'{backend} · Язык: {mode}'
         if runtime.get('words_error'): detail += '\n' + runtime['words_error']
         if runtime.get('applications_error'): detail += '\n' + runtime['applications_error']
@@ -61,12 +58,11 @@ def describe(data):
     if settings.get('autostart_mismatch'): detail += '\nАвтозапуск не настроен: выключите и включите переключатель повторно.'
     return replace(state, detail=detail, can_start=state.can_start and not data.get('settings_error'),
         automatic=state.automatic if state.running else settings.get('automatic', True) is True,
-        saved_mode=settings.get('mode', 'compatibility'),
         autostart=settings.get('autostart_effective') is True,
         configurable=data.get('installed') is True and not data.get('settings_error'))
 
 
-COMMANDS = {'status', 'compat-on', 'start', 'pause', 'resume', 'stop', 'auto-on', 'auto-off', 'autostart-on', 'autostart-off', 'mode-compat', 'mode-ibus'}
+COMMANDS = {'status', 'compat-on', 'start', 'pause', 'resume', 'stop', 'auto-on', 'auto-off', 'autostart-on', 'autostart-off'}
 
 
 def request(command, runner=subprocess.run):
@@ -95,11 +91,9 @@ def request(command, runner=subprocess.run):
                     'auto-off': not state.automatic,
                     'autostart-on': state.autostart,
                     'autostart-off': not state.autostart,
-                    'mode-compat': state.saved_mode=='compatibility',
-                    'mode-ibus': state.saved_mode=='ibus',
                     'stop': not state.running,
                     'compat-on': state.running and state.backend == 'Режим совместимости',
-                    'start': state.running and state.backend == 'IBus'}
+                    'start': state.running and state.backend == 'Режим совместимости'}
         if command in expected and not expected[command]:
             error = 'Изменение не подтверждено. Показано фактическое состояние.'
     return state, error

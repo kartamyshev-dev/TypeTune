@@ -2,7 +2,7 @@
 """GTK application picker with isolated storage; no real input injection."""
 import sys,time,tempfile
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'ibus'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'app'))
 from gui import Gtk,Gio,GLib
 from application_editor import ApplicationEditor
 import application_rules as rules

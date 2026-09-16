@@ -4,7 +4,7 @@ import sys
 import time
 import threading
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'ibus'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'app'))
 from gui import Gtk, Gio, GLib, Window
 from gui_model import describe
 
@@ -21,9 +21,8 @@ def requester(command):
         assert block_status.wait(3)
     r = current['compatibility']
     if command in ('autostart-on','autostart-off'): current['settings']['autostart_effective'] = command=='autostart-on'
-    if command in ('mode-compat','mode-ibus'): current['settings']['mode'] = 'compatibility' if command=='mode-compat' else 'ibus'
     if command == 'stop': current['compatibility'] = 'not-running'
-    if command == 'compat-on': current['compatibility'] = dict(enabled=True, automatic=True, available=True, mode='ru')
+    if command == 'start': current['compatibility'] = dict(enabled=True, automatic=True, available=True, mode='ru')
     if command == 'auto-off': r['automatic'] = False
     if command == 'pause': r['enabled'] = False
     if command == 'resume': r['enabled'] = True
@@ -80,7 +79,7 @@ assert w.title.get_label() == 'Работает'
 w.stop.emit('clicked'); settle()
 assert w.title.get_label() == 'Остановлен' and w.start.get_sensitive()
 w.start.emit('clicked'); settle()
-assert w.title.get_label() == 'Работает' and calls.count('compat-on') == 1
+assert w.title.get_label() == 'Работает' and calls.count('start') == 1
 w.stop.emit('clicked'); settle()
 current['bridge'] = False
 w.refresh.emit('clicked'); settle()
@@ -93,10 +92,6 @@ assert w.login.get_active() and calls.count('autostart-on') == 1
 w.login.set_active(False); settle()
 assert not w.login.get_active() and calls.count('autostart-off') == 1
 w.stop.emit('clicked'); settle()
-w.mode.set_selected(1); settle()
-assert w.state.saved_mode == 'ibus'
-w.mode.set_selected(0); settle()
-assert w.state.saved_mode == 'compatibility'
 w.start.emit('clicked'); settle()
 assert w.get_width() > 0 and w.get_height() > 0
 print('GUI-43 controlled GTK: status/pause/resume/auto-off/stop/start/missing-bridge/failure/recovery PASS')

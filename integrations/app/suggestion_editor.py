@@ -7,12 +7,12 @@ from word_editor import exchange
 
 class SuggestionEditor(Gtk.Window):
     def __init__(self,parent,requester=exchange):
-        super().__init__(title='Предложения исключений',transient_for=parent,modal=False,default_width=570,default_height=480)
+        super().__init__(title='Предложения для словаря',transient_for=parent,modal=False,default_width=570,default_height=480)
         self.parent_window=parent;self.requester=requester;self.busy=False;self.closed=False;self.rows=[]
         self.set_titlebar(Gtk.HeaderBar())
         box=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=14,margin_top=20,margin_bottom=20,margin_start=24,margin_end=24)
         self.set_child(box)
-        box.append(Gtk.Label(label='После трёх возвратов одной автозамены TypeTune предлагает исключение. Ничего не добавляется без вашего подтверждения.',wrap=True,xalign=0))
+        box.append(Gtk.Label(label='После трёх возвратов автозамены предлагается исключение. После трёх отдельных ручных исправлений — слово для автокоррекции. Пробел можно нажать до или после Double Shift. Ничего не добавляется без вашего подтверждения.',wrap=True,xalign=0))
         self.list=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=18)
         scroll=Gtk.ScrolledWindow(vexpand=True,hscrollbar_policy=Gtk.PolicyType.NEVER);scroll.set_child(self.list);box.append(scroll)
         self.message=Gtk.Label(wrap=True,xalign=0);box.append(self.message)
@@ -44,7 +44,8 @@ class SuggestionEditor(Gtk.Window):
                 self.list.append(Gtk.Label(label='Пока нет предложений. Одного ручного переключения недостаточно.',wrap=True,xalign=0))
             for proposal in data['proposals']:
                 row=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=8)
-                row.append(Gtk.Label(label=f'Не исправлять «{proposal["source"]}» → «{proposal["word"]}» автоматически?',wrap=True,xalign=0))
+                verb='Исправлять' if proposal.get('kind')=='word' else 'Не исправлять'
+                row.append(Gtk.Label(label=f'{verb} «{proposal["source"]}» → «{proposal["word"]}» автоматически?',wrap=True,xalign=0))
                 buttons=Gtk.Box(spacing=10)
                 for action,label in [('accept','Добавить'),('dismiss','Отклонить')]:
                     button=Gtk.Button(label=label)

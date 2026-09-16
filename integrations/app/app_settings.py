@@ -20,6 +20,7 @@ def load(path=PATH):
     except (UnicodeError,ValueError): raise ValueError('Файл настроек TypeTune повреждён') from None
     if not isinstance(value,dict) or set(value)!=set(DEFAULT) or type(value['version']) is not int or value['version']!=1 or value['mode'] not in ('compatibility','ibus') or any(type(value[k]) is not bool for k in ('automatic','autostart')):
         raise ValueError('Неверный формат настроек TypeTune')
+    value['mode']='compatibility'  # Read legacy v1 settings without enabling another adapter.
     return value
 
 
@@ -44,7 +45,7 @@ def atomic(path, text):
 
 def update(changes, path=PATH, apply=None):
     if set(changes)-{'mode','automatic'}: raise ValueError('Unsupported settings change')
-    if 'mode' in changes and changes['mode'] not in ('compatibility','ibus'):raise ValueError('Unknown mode')
+    if 'mode' in changes and changes['mode'] != 'compatibility':raise ValueError('Unknown mode')
     if 'automatic' in changes and type(changes['automatic']) is not bool:raise ValueError('Invalid automatic state')
     with locked(path):
         value=load(path);value.update(changes)

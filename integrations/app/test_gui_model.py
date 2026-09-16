@@ -18,7 +18,7 @@ class Checks(unittest.TestCase):
         self.assertFalse(describe(dict(installed=True, bridge=None)).can_start)
         self.assertTrue(describe(dict(installed=True, bridge=True)).can_start)
         self.assertFalse(describe({}).can_start)
-        self.assertEqual(describe(dict(runtime=state()['compatibility'])).backend, 'IBus')
+        self.assertFalse(describe(dict(runtime=state()['compatibility'])).running)
         with self.assertRaises(ValueError): describe(state(enabled=None))
 
     def test_mutation_is_followed_by_effective_state(self):
@@ -57,6 +57,7 @@ class Checks(unittest.TestCase):
             return subprocess.CompletedProcess(argv, 0, 'invalid', '')
         with self.assertRaises(ValueError): request('status', runner)
         with self.assertRaises(ValueError): request('uninstall', runner)
+        with self.assertRaises(ValueError): request('mode-ibus', runner)
 
     def test_saved_settings_and_effective_runtime_remain_distinct(self):
         data=state()
@@ -64,7 +65,6 @@ class Checks(unittest.TestCase):
         live=describe(data)
         self.assertTrue(live.automatic)  # runtime readback wins over saved intent
         self.assertTrue(live.autostart)
-        self.assertEqual(live.saved_mode,'ibus')
         data['compatibility']='not-running'
         stopped=describe(data)
         self.assertFalse(stopped.automatic)

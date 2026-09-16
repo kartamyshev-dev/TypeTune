@@ -32,6 +32,11 @@ class Checks(unittest.TestCase):
                 self.assertEqual(original_load(path)['words'],['hello'])
                 self.assertEqual(original_load(path)['exclusions'],['мир','привет'])
                 self.assertEqual(feedback.pending(),[])
+                for _ in range(3):feedback.record('nbgn.y','типтюн','word')
+                new=feedback.pending()[0]['id']
+                self.assertFalse(resolve('accept',new)['error'])
+                self.assertEqual(original_load(path)['words'],['hello','типтюн'])
+                self.assertEqual(original_load(path)['exclusions'],['мир','привет'])
                 for _ in range(3):feedback.record('rfr','как')
                 other=feedback.pending()[0]['id'];before=original_load(path)
                 self.assertFalse(resolve('dismiss',other)['error'])

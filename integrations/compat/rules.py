@@ -5,18 +5,18 @@ import preferences
 from pathlib import Path
 class Rules:
     def __init__(self):
-        local=Path(__file__).resolve().parent.parent/'libtypetune_ibus.so'
-        self.lib=ctypes.CDLL(str(local if local.exists() else Path(__file__).resolve().parents[2]/'target/debug/libtypetune_ibus.so'))
-        self.lib.typetune_ibus_new.restype=ctypes.c_void_p
-        self.lib.typetune_ibus_free.argtypes=[ctypes.c_void_p]
-        self.lib.typetune_ibus_call.argtypes=[ctypes.c_void_p,ctypes.c_char_p,ctypes.c_size_t,ctypes.c_void_p]
-        self.lib.typetune_ibus_call.restype=ctypes.c_size_t
-        self.handle=self.lib.typetune_ibus_new()
+        local=Path(__file__).resolve().parent.parent/'libtypetune_bridge.so'
+        self.lib=ctypes.CDLL(str(local if local.exists() else Path(__file__).resolve().parents[2]/'target/debug/libtypetune_bridge.so'))
+        self.lib.typetune_bridge_new.restype=ctypes.c_void_p
+        self.lib.typetune_bridge_free.argtypes=[ctypes.c_void_p]
+        self.lib.typetune_bridge_call.argtypes=[ctypes.c_void_p,ctypes.c_char_p,ctypes.c_size_t,ctypes.c_void_p]
+        self.lib.typetune_bridge_call.restype=ctypes.c_size_t
+        self.handle=self.lib.typetune_bridge_new()
         self.generation=None
     def call(self, value):
         request=json.dumps(value,ensure_ascii=False).encode()
         output=ctypes.create_string_buffer(32768)
-        size=self.lib.typetune_ibus_call(self.handle,request,len(request),output)
+        size=self.lib.typetune_bridge_call(self.handle,request,len(request),output)
         return json.loads(output.raw[:size]) if size else {'status':'ignored'}
 
     def suggest(self,text,automatic):
