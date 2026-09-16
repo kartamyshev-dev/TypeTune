@@ -1,0 +1,37 @@
+PKG-51 / 2026-09-16
+Base: 18f366ed58ddb08799e527f0d4599a0bcf513f29 + uncommitted stages 40–51.
+Ubuntu 26.04.1 LTS, GNOME Shell 50.1, Wayland, GTK 4.22.4, amd64.
+
+PKG-51-UNIT: integrations/ibus 63, integrations/compat 18, tests/packaging 2 PASS.
+PKG-51-GTK: package_smoke configure/open and cancelled system auth PASS.
+Existing main GUI smoke PASS; own setup-window screenshot inspected.
+
+PKG-51-DPKG: real dpkg in unshare user namespace, isolated root:
+install 0.1.0~preview51-1 -> upgrade +test1 -> remove -> purge -> reinstall PASS.
+Runtime and launcher removed; synthetic user configuration files unchanged.
+Hooks skip host session access with DPKG_ROOT. Missing dependencies in empty root
+were bypassed explicitly; not a clean Ubuntu VM installation claim.
+
+PKG-51-DEPS: apt-get -s install local .deb on current Ubuntu:
+0 upgraded, 1 newly installed (typetune-preview), 0 removed.
+Runtime libs computed with dpkg-shlibdeps: libc6 >= 2.34, libgcc-s1 >= 4.2.
+GNOME dependency explicitly >=50 and <51.
+
+No build toolchain needed in runtime Depends.
+No automatic usermod, daemon startup or exclusive grab during package install.
+Privileged helper has fixed input-access/remove actions only, Polkit auth_admin.
+Project, frequency data and Cargo graph licence notices included.
+
+Graphical snap-store launched through registered .deb MIME handler.
+System installation/authentication and new user-session login NOT CONFIRMED.
+Existing checkout runtime and user settings were not removed by these tests.
+Rust core unchanged: prior 120 Rust tests not rerun.
+
+PKG-51-NATIVE (after user authenticated Polkit):
+APT installation exit 0; dpkg install ok installed, version 0.1.0~preview51-1.
+System package-configure migration exit 0; settings/words/applications JSON equal
+before/after (content not logged). autostart_effective true, mismatch false.
+Processes: /usr/lib/typetune-preview/gui.py, compat/runtime.py, compat_transport.
+Desktop file validation PASS; package GUI log has no startup errors.
+Existing GNOME bridge v4 remains available; no relogin needed for current migration.
+Actual logout/login, native package upgrade/removal and text-input acceptance NOT RUN.

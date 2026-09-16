@@ -1,0 +1,8 @@
+TWO-42 baseline: regression FAILED at ,s -> бы as expected
+TWO-42 controlled editor/fake clock/inferred: 22 text cases + 3 context refusals PASS
+Installed release C ABI: 7 replacements with direction/remove count + 15 unchanged PASS
+Compatibility keyboard fixture: comma/S/Space history, caret/text and balanced keys PASS
+Rust workspace/all-targets/locked/offline: 118 PASS
+Python: 13 compatibility + 23 IBus PASS
+Ubuntu 26.04.1; Rust 1.98.1; base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + stages 40-42
+Native GUI acceptance: NOT RUN

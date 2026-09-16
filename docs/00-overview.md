@@ -12,7 +12,7 @@ sensitivity/composition. Работа во всех существующих п�
 Повторный жест проверен в изолированных Wayland/XWayland fixtures.
 
 - [Руководство](35-user-test.md)
-- [Последний checkpoint 39](39-repeat-double-shift.md)
+- [Последний checkpoint 52 — GitHub Releases](52-github-releases.md)
 - [Сводный протокол и границы доказательств](17-validation-record.md)
 - [Оставшаяся работа](18-linux-completion-plan.md)
 

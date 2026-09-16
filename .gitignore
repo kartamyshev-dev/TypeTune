@@ -9,3 +9,6 @@
 # Python runtime/test caches
 __pycache__/
 *.py[cod]
+
+# Built Debian artifacts
+/dist/

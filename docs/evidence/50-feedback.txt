@@ -1,0 +1,24 @@
+FEEDBACK-50 / 2026-09-16
+Base: 18f366ed58ddb08799e527f0d4599a0bcf513f29 + uncommitted stages 40–50
+Ubuntu 26.04.1 / GNOME Shell 50.1 / Wayland / GTK 4.22.4
+Installed compatibility: passive evdev/uinput, no exclusive grab.
+
+Test-first: test_feedback.py failed before implementation (missing module).
+Final Python unittest discover:
+  integrations/ibus: 61 PASS
+  integrations/compat: 18 PASS
+Controlled editors: text/caret/balanced key states, distinct edits, invalidation,
+failed output, exact inverse, no double counting. Clock: fake deadline tests.
+Controller: UUID validation, no persistent write before accept, preserve other words,
+readback generation, reject without changing dictionary.
+GTK: suggestions_smoke/main smoke/words_smoke/applications_smoke PASS.
+Own-window main and suggestion snapshots inspected.
+Release installer PASS; known ibus-engine-table cache warning unchanged.
+Python compile, markdown file links and git diff --check PASS.
+Installed compatibility GetStatus/GetSuggestions and new GUI opened PASS.
+Preserved auto=true, autostart=true and user lists; did not approve any real proposal.
+
+Rust not changed; 120 PASS from stage 47, not rerun.
+Native external-app three-cycle typing acceptance: NOT RUN.
+IBus source/engine transfer and XWayland feedback acceptance: NOT RUN.
+Words only in explicit suggestion UI, not normal status/logs or these evidence files.

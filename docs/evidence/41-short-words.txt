@@ -1,0 +1,7 @@
+SHORT-41: old engine regression FAILED at rfr -> как as expected
+SHORT-41: new engine controlled editor/fake clock + inferred parity PASS (26 cases)
+Installed release C ABI: PASS (8 replacements including layout direction, 18 unchanged)
+Rust workspace/all-targets/locked/offline: 117 PASS
+Ubuntu 26.04.1; Rust 1.98.1; base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + working changes 40/41
+Native GUI acceptance: NOT RUN
+Installer initially encountered running executable (ETXTBSY); stopped runtime, reinstalled, resumed compatibility.

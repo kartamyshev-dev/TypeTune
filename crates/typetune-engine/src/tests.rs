@@ -350,3 +350,238 @@ fn external_editor_without_composition_evidence_refuses_manual_correction() {
     assert!(e.state == before);
     assert_eq!(e.calls, 0);
 }
+
+#[test]
+fn autocorrection_corpus_editor_and_inferred_agree() {
+    let clock = FakeClock::at_zero();
+    let mut missed = 0;
+    let mut false_changes = 0;
+    let mut positive = 0;
+    let mut negative = 0;
+    for row in include_str!("../data/auto-corpus.tsv")
+        .lines()
+        .filter(|r| !r.starts_with('#'))
+    {
+        let cols: Vec<_> = row.split('\t').collect();
+        let before = format!("{} ", cols[2]);
+        let expected = format!("{} ", cols[3]);
+        let mut e = editor(&format!("prefix {before}"));
+        if let Some((plan, _)) =
+            prepare_automatic(e.state.clone(), clock.now(), Duration::from_secs(1)).unwrap()
+        {
+            assert_eq!(execute(&mut e, plan, || clock.now()), Outcome::Completed);
+        }
+        let inferred = inferred::suggest(&before, true)
+            .map(|s| s.replacement)
+            .unwrap_or(before);
+        assert_eq!(e.state.text, format!("prefix {inferred}"));
+        assert_eq!(e.state.caret, e.state.text.chars().count());
+        assert_eq!(e.state.anchor, e.state.caret);
+        if cols[1] == "positive" {
+            let deferred = [
+                "клавиатуры",
+                "настройками",
+                "исправления",
+                "сохранение",
+                "переключения",
+                "keyboards",
+            ]
+            .contains(&cols[3]);
+            assert_eq!(
+                inferred,
+                if deferred {
+                    format!("{} ", cols[2])
+                } else {
+                    expected.clone()
+                },
+                "{}",
+                cols[3]
+            );
+            positive += 1;
+            if inferred != expected {
+                missed += 1;
+                eprintln!("MISS {} {}", cols[0], cols[3]);
+            }
+        } else {
+            negative += 1;
+            if inferred != expected {
+                false_changes += 1;
+                eprintln!("FALSE {}", cols[2]);
+            }
+        }
+    }
+    eprintln!(
+        "AUTO-CORPUS positive={positive} missed={missed} negative={negative} false={false_changes}"
+    );
+    assert_eq!(false_changes, 0);
+    // Frozen policy rollout: do not widen the rank cutoff to fit holdout misses.
+    assert_eq!(missed, 6);
+}
+
+#[test]
+fn short_frequent_words_preserve_editor_state_and_inferred_parity() {
+    let clock = FakeClock::at_zero();
+    for (input, expected) in [
+        ("rfr ", "как "),
+        ("Rfr ", "Как "),
+        ("RFR ", "КАК "),
+        ("xnj ", "что "),
+        ("ult ", "где "),
+        ("rnj ", "кто "),
+        ("'nj ", "это "),
+        ("еру ", "the "),
+        ("cat ", "cat "),
+        ("yet ", "yet "),
+        ("как ", "как "),
+        ("the ", "the "),
+        ("нет ", "нет "),
+        ("да ", "да "),
+        ("lf ", "lf "),
+        ("z ", "z "),
+        ("сфе ", "сфе "),
+        ("rFr ", "rFr "),
+        ("rfr", "rfr"),
+        ("rfr  ", "rfr  "),
+        ("rfr42 ", "rfr42 "),
+        ("rfr_ ", "rfr_ "),
+        ("https://rfr ", "https://rfr "),
+        ("/rfr ", "/rfr "),
+        ("a@rfr ", "a@rfr "),
+        ("foo::rfr ", "foo::rfr "),
+    ] {
+        let mut e = editor(&format!("prefix {input}suffix"));
+        e.state.caret = "prefix ".chars().count() + input.chars().count();
+        e.state.anchor = e.state.caret;
+        if let Some((plan, _)) =
+            prepare_automatic(e.state.clone(), clock.now(), Duration::from_secs(1)).unwrap()
+        {
+            assert_eq!(execute(&mut e, plan, || clock.now()), Outcome::Completed);
+        }
+        assert_eq!(e.state.text, format!("prefix {expected}suffix"), "{input}");
+        assert_eq!(
+            e.state.caret,
+            "prefix ".chars().count() + expected.chars().count()
+        );
+        assert_eq!(e.state.anchor, e.state.caret);
+        assert_eq!(
+            inferred::suggest(input, true)
+                .map(|s| s.replacement)
+                .unwrap_or(input.into()),
+            expected
+        );
+    }
+}
+
+#[test]
+fn two_letter_words_preserve_context_and_reject_ambiguous_input() {
+    let clock = FakeClock::at_zero();
+    for (input, expected) in [
+        (",s ", "бы "),
+        ("<s ", "Бы "),
+        ("<S ", "БЫ "),
+        ("yt ", "не "),
+        ("jy ", "он "),
+        ("ещ ", "to "),
+        ("шт ", "in "),
+        ("ye ", "ye "),
+        ("lf ", "lf "),
+        ("vs ", "vs "),
+        ("бы ", "бы "),
+        ("to ", "to "),
+        ("in ", "in "),
+        ("да ", "да "),
+        ("z ", "z "),
+        (",s", ",s"),
+        (",s  ", ",s  "),
+        (",s42 ", ",s42 "),
+        ("/,s ", "/,s "),
+        ("https://,s ", "https://,s "),
+        ("a@,s ", "a@,s "),
+        (",s_ ", ",s_ "),
+    ] {
+        let mut e = editor(&format!("prefix {input}suffix"));
+        e.state.caret = 7 + input.chars().count();
+        e.state.anchor = e.state.caret;
+        if let Some((plan, direction)) =
+            prepare_automatic(e.state.clone(), clock.now(), Duration::from_secs(1)).unwrap()
+        {
+            assert!(matches!(
+                (direction, expected),
+                (Direction::RuToUs, "to " | "in ")
+                    | (Direction::UsToRu, "бы " | "Бы " | "БЫ " | "не " | "он ")
+            ));
+            assert_eq!(execute(&mut e, plan, || clock.now()), Outcome::Completed);
+        }
+        assert_eq!(e.state.text, format!("prefix {expected}suffix"), "{input}");
+        assert_eq!(e.state.caret, 7 + expected.chars().count());
+        assert_eq!(e.state.anchor, e.state.caret);
+        assert_eq!(
+            inferred::suggest(input, true)
+                .map(|s| s.replacement)
+                .unwrap_or(input.into()),
+            expected,
+            "{input}"
+        );
+    }
+    for (focused, composing, anchor) in [
+        (None, Some(false), 3),
+        (Some(true), None, 3),
+        (Some(true), Some(false), 0),
+    ] {
+        let mut e = editor(",s ");
+        e.state.focused = focused;
+        e.state.composing = composing;
+        e.state.anchor = anchor;
+        let before = e.state.clone();
+        assert!(prepare_automatic(before.clone(), clock.now(), Duration::from_secs(1)).is_err());
+        assert!(e.state == before);
+        assert_eq!(e.calls, 0);
+    }
+}
+
+#[test]
+fn user_words_and_exclusions_apply_to_both_profiles_without_changing_manual() {
+    let clock = FakeClock::at_zero();
+    let custom = UserDictionary::new(vec!["Клавиатуры".into()], vec![]).unwrap();
+    let excluded = UserDictionary::new(vec![], vec!["Привет".into()]).unwrap();
+    let protected = UserDictionary::new(vec!["ghbdtn".into()], vec![]).unwrap();
+    for (dictionary, input, expected) in [
+        (&custom, "rkfdbfnehs ", "клавиатуры "),
+        (&custom, "клавиатуры ", "клавиатуры "),
+        (&excluded, "ghbdtn ", "ghbdtn "),
+        (&protected, "ghbdtn ", "ghbdtn "),
+    ] {
+        let mut e = editor(&format!("prefix {input}suffix"));
+        e.state.caret = 7 + input.chars().count();
+        e.state.anchor = e.state.caret;
+        if let Some((plan, _)) = prepare_automatic_with_dictionary(
+            e.state.clone(),
+            clock.now(),
+            Duration::from_secs(1),
+            dictionary,
+        )
+        .unwrap()
+        {
+            assert_eq!(execute(&mut e, plan, || clock.now()), Outcome::Completed);
+        }
+        assert_eq!(e.state.text, format!("prefix {expected}suffix"));
+        assert_eq!(e.state.caret, 7 + expected.chars().count());
+        assert_eq!(e.state.anchor, e.state.caret);
+        assert_eq!(
+            inferred::suggest_with_dictionary(input, true, dictionary)
+                .map(|s| s.replacement)
+                .unwrap_or(input.into()),
+            expected
+        );
+    }
+    assert!(inferred::suggest("rkfdbfnehs ", true).is_none());
+    assert_eq!(
+        inferred::suggest_with_dictionary("ghbdtn ", false, &excluded)
+            .unwrap()
+            .replacement,
+        "привет "
+    );
+    assert!(UserDictionary::new(vec!["привеt".into()], vec![]).is_err());
+    assert!(UserDictionary::new(vec![], vec!["x".into()]).is_err());
+    assert!(UserDictionary::new(vec!["hello".into(); 501], vec![]).is_err());
+}

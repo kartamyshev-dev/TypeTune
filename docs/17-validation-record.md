@@ -2,6 +2,52 @@
 
 ## Текущий срез — 2026-09-16
 
+[51 — пакет Debian](51-debian-package.md): 83 Python PASS; GTK setup, isolated-root
+dpkg install/upgrade/remove/purge/reinstall и APT dependency simulation PASS.
+После авторизации пользователя native APT install и миграция на системный payload
+PASS: JSON настроек/слов/приложений сохранены, GUI/runtime/helper запущены, автозапуск
+переведён на пакет. Новый login и native upgrade/remove ещё не подтверждены.
+
+[50 — предложения исключений](50-correction-feedback.md): 79 Python PASS;
+controlled editor, controller и GTK explicit confirmation PASS. Установлено в compatibility;
+native три отмены в стороннем приложении и перенос IBus context не приняты.
+
+[49 — исключения приложений](49-application-exclusions.md): 72 Python PASS; GTK picker,
+установленный controller/runtime ACK и реальный GNOME desktop ID policy PASS.
+Native замены в сторонних приложениях с новым списком ещё не приняты.
+
+[48 — настройки и автозапуск](48-persistent-settings.md): 62 Python PASS;
+installed GUI→XDG on/off и auto-off после runtime restart PASS. Полный logout/login
+автоматизированным стендом не выполнялся; позднее пользователь подтвердил автозапуск
+после перезагрузки компьютера в своём GNOME сеансе. Прежние 120 Rust PASS относятся к неизменённому ядру.
+
+[47 — слова и исключения](47-user-dictionaries.md): 120 Rust + 54 Python PASS;
+GTK isolated storage, installed controller/live generation ack и restart load PASS.
+Custom-word correction в сторонних приложениях ещё не проверена.
+
+[46 — свойства меню индикатора](46-tray-menu-properties.md): regression caching host
+и 33 IBus/controller/tray tests PASS; исправлено уведомление enabled/label/checkbox.
+
+[45 — индикатор](45-tray-indicator.md): 45 Python PASS, регистрация в GNOME host
+и команды DBusMenu с runtime readback PASS; визуальное подтверждение ожидается.
+
+[44 — опрос GUI без мигания](44-gui-polling.md): delayed-read GTK regression PASS;
+28 IBus/controller tests PASS. Обновлено только окно.
+
+[43 — графическое управление](43-preview-gui.md): 28 IBus/controller + 13 compatibility
+Python PASS; GTK fixture, live compatibility control и desktop launch PASS.
+Rust не изменён, предыдущая проверка 118 PASS.
+
+[42 — двухбуквенные слова](42-two-letter-correction.md): 118 Rust + 36 Python PASS;
+контролируемый editor и keyboard plan, без новой native GUI приемки.
+
+[41 — частые трёхбуквенные слова](41-short-word-correction.md): 117 Rust PASS,
+26 дополнительных simulated случаев; повторная native GUI приемка не выполнялась.
+
+[40 — частотные словари](40-autocorrection-lexicons.md): 116 Rust + 35 Python PASS;
+174 corpus cases через controlled editor/inferred и установленную release C ABI.
+Охват 37/76 → 70/76, ошибочные замены 0/98; новая native GUI приемка не проводилась.
+
 - Рабочая платформа preview: Ubuntu 26.04.1, kernel 7.0.0-31-generic,
   GNOME/Mutter 50.1 / Wayland; GTK 4.22.4, IBus 1.5.34-rc2, Rust 1.98.1.
 - [39 — повторный Double Shift](39-repeat-double-shift.md): слово и источник
@@ -13,7 +59,7 @@
   evdev/uinput без grab; Unknown text/selection/sensitivity/composition сохраняются.
 - [36 — IBus auto/Shift](36-auto-shift-checkpoint.md): отдельные Chrome/editor cases.
 
-Перед публикацией накопленного checkout повторно выполнены:
+Перед предыдущей публикацией накопленного checkout выполнены:
 `cargo test --workspace --all-targets --locked --offline` — **115 PASS**;
 Python unittest discover — **12 compatibility + 23 IBus/gesture/profile PASS**.
 Нулевые test targets не включены в число поведенческих проверок.

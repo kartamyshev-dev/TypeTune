@@ -1,0 +1,7 @@
+GUI-44 before: FAIL Background polling must not disable controls
+GUI-44 after: PASS delayed poll preserves sensitivity, queued pause executes, unchanged poll has no sensitivity notifications
+GTK prior action/error/recovery cases: PASS
+IBus/controller Python unit tests: 28 PASS
+Ubuntu 26.04.1 / GNOME Wayland / GTK4
+Base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + working stages 40-44
+Only installed GUI updated/restarted. User visual confirmation pending.

@@ -1,0 +1,11 @@
+GUI-43-MODEL: 5 tests PASS (included in 28 IBus/controller tests)
+GUI-43-GTK: status/pause/resume/auto-off/stop/start/missing-bridge/failure/recovery PASS
+GUI-43-LIVE: installed GTK window -> controller -> compatibility; pause/resume, auto-off/on PASS; initial state restored
+GUI-43-DESKTOP: installed Gio desktop entry launch PASS
+Visual: own controlled window snapshot inspected, 540x660, no clipped content
+Python: 28 IBus/controller + 13 compatibility PASS
+Rust: unchanged; previous 118 PASS, not rerun in GUI stage
+Ubuntu 26.04.1; GNOME Wayland; GTK 4.22; system Python/GI
+Base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + working stages 40-43
+IBus backend live control through GUI: NOT RUN
+New third-party application text-correction acceptance: NOT RUN

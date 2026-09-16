@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+"""Fixed privileged actions only; installed root-owned, never executes user code."""
+import os,pwd,subprocess,sys
+if os.geteuid()!=0:raise SystemExit('Требуется системная авторизация')
+try:uid=int(os.environ['PKEXEC_UID']);user=pwd.getpwuid(uid)
+except (KeyError,ValueError):raise SystemExit('Запускайте через окно TypeTune')
+if uid<1000:raise SystemExit('Нужна обычная пользовательская учётная запись')
+if sys.argv[1:]==['input-access']:
+    subprocess.run(['/usr/sbin/modprobe','uinput'],check=True)
+    subprocess.run(['/usr/sbin/usermod','-aG','input','--',user.pw_name],check=True)
+    subprocess.run(['/usr/bin/udevadm','control','--reload-rules'],check=True)
+    subprocess.run(['/usr/bin/udevadm','trigger','--subsystem-match=misc','--sysname-match=uinput'],check=True)
+elif sys.argv[1:]==['remove']:
+    subprocess.run(['/usr/bin/apt-get','-y','remove','typetune-preview'],check=True)
+else:raise SystemExit('Неизвестное действие')

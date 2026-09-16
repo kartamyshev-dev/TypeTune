@@ -1,0 +1,13 @@
+WORDS-47-ENGINE + WORDS-47-ABI: PASS (workspace Rust total 120)
+WORDS-47-STORE + CONTROLLER + IBus adapter: PASS (IBus/controller Python total 40)
+Compatibility Rules generation/override/error and prior tests: PASS (Python total 14)
+WORDS-47-GTK isolated storage: save/reopen/normalization/invalid/stale conflict PASS
+Existing GTK smoke: controls/errors/nonblinking poll/hide/reopen PASS
+Visual: fixture WordEditor 600x660 inspected; content and save button fit
+WORDS-47-LIVE: unchanged vocabulary saved, running compatibility generation ack PASS
+Compatibility restart reloads saved generation: PASS
+User dictionary contents not included in this evidence; fixture words only in tests
+Ubuntu 26.04.1 / GNOME Wayland / GTK4 / Rust 1.98.1
+Base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + stages 40-47 working changes
+Third-party application correction with custom words: NOT RUN
+Native IBus ReloadWords: NOT RUN

@@ -1,3 +1,7 @@
+# Auto-correction data
+
+The engine now combines these original pilot fixtures with [pinned frequency lists](frequency/README.md). The frequency data and derived tables have a separate CC BY-SA 4.0 license.
+
 # Pilot auto-correction lexicons
 
 Created 2026-09-16 for TypeTune from manually selected common words during this
@@ -12,3 +16,7 @@ pilot matcher, not frequency-ranked or corpus-validated dictionaries.
 
 Both lists are embedded at build time. Unit tests verify uniqueness, script and
 length constraints. No external files or services are consulted while typing.
+
+`auto-corpus.tsv` is an original, synthetic TypeTune test fixture (MIT).
+It contains development and holdout labels chosen before the frequency matcher
+was evaluated; this small corpus does not establish population-wide accuracy.

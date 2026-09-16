@@ -5,6 +5,8 @@ No file, subprocess, network or synchronous D-Bus calls in key callbacks.
 """
 import ctypes
 import json
+import preferences
+import correction_feedback
 import time
 from gesture import DoubleShift
 from pathlib import Path
@@ -25,6 +27,8 @@ class Manual:
         self.automatic = automatic
         self.switch_mode = switch_mode
         self.now = now
+        self.feedback_tracker = correction_feedback.Tracker(correction_feedback.FEEDBACK, lambda:self.now())
+        self.feedback_edit = None
         self.gesture = DoubleShift()
         self.auto_expected = None
         self.plain_expected = None
@@ -32,6 +36,7 @@ class Manual:
         self.action_kind = "manual"
         self.smart_blocked = False
         self.handle = LIB.typetune_ibus_new()
+        self.dictionary_generation = None
         self.epoch = self.revision = 1
         self.focused = False
         self.purpose = None
@@ -46,6 +51,10 @@ class Manual:
         engine.connect('destroy', lambda *_: self.close())
 
     def call(self, op, **kwargs):
+        if op == 'smart' and self.dictionary_generation != preferences.CURRENT['generation']:
+            result = self.call('configure', words=preferences.CURRENT['words'], exclusions=preferences.CURRENT['exclusions'])
+            if result['status'] != 'configured': return {'status':'rejected'}
+            self.dictionary_generation = preferences.CURRENT['generation']
         raw = json.dumps(dict(op=op, **kwargs), ensure_ascii=False).encode()
         output = ctypes.create_string_buffer(32768)
         size = LIB.typetune_ibus_call(self.handle, raw, len(raw), output)
@@ -63,6 +72,10 @@ class Manual:
                 self.context = None
                 self.clear = False
                 self.epoch += 1
+            if status == 'completed' and self.feedback_edit:
+                self.feedback_tracker.completed(*self.feedback_edit)
+            elif status != 'completed':self.feedback_tracker.reset()
+            self.feedback_edit = None
             if status == 'completed' and self.next_mode and self.switch_mode:
                 mode = self.next_mode
                 self.next_mode = None
@@ -75,6 +88,8 @@ class Manual:
         return status
 
     def cancel(self):
+        self.feedback_tracker.reset()
+        self.feedback_edit = None
         self.plain_expected = None
         self.gesture.reset()
         self.auto_expected = None
@@ -113,6 +128,7 @@ class Manual:
         if self.context is not None and self.context != (value, int(cursor), int(anchor)):
             self.gesture.reset()
             if not self.pending:
+                self.feedback_tracker.reset()
                 self.clear = False
         if self.plain_expected is not None:
             expected, expected_caret, epoch, deadline = self.plain_expected
@@ -153,6 +169,7 @@ class Manual:
                 GLib.idle_add(self.request_smart, False, self.epoch, self.revision)
             return False  # Both Down/Up continue normally; Shift typing stays intact.
         if not release:
+            self.feedback_tracker.reset()
             self.gesture.reset()
             self.auto_expected = None
         if keyval in (IBus.KEY_F8, IBus.KEY_F9):
@@ -245,11 +262,14 @@ class Manual:
     def _authorize(self):
         if self.closed or not self.pending:
             return False
-        if not self.profile():
+        if not self.profile() or (self.action_kind == 'auto' and not self.automatic()):
             self.cancel()
             return False
         response = self.call('authorize', state=self.snapshot())
         if self.result(response) == 'edit':
+            value,caret,_ = self.context
+            start = caret + response['offset']
+            self.feedback_edit = (self.action_kind, value[start:start+response['length']], response['replacement'])
             try:
                 # Both requests are asynchronous. There is no atomicity promise.
                 self.engine.delete_surrounding_text(response['offset'], response['length'])

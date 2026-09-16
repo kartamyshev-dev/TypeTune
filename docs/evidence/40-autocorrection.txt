@@ -1,0 +1,8 @@
+AUTO-40 installed release C ABI corpus: PASS
+{'dev positives': 26, 'dev corrected': 23, 'dev negatives': 26, 'dev false corrections': 0, 'holdout positives': 50, 'holdout corrected': 47, 'holdout negatives': 72, 'holdout false corrections': 0}
+Rust workspace/all-targets: 116 PASS
+Python compatibility: 12 PASS; IBus/profile: 23 PASS
+Baseline corpus: 76 positives, 37 corrected, 39 missed; 98 negatives, 0 false corrections
+New corpus: 76 positives, 70 corrected, 6 missed; 98 negatives, 0 false corrections
+Environment: Ubuntu 26.04.1; Rust 1.98.1; base commit 18f366ed58ddb08799e527f0d4599a0bcf513f29 + working changes
+Backend: controlled range editor/fake clock, inferred engine, installed release C ABI. No new native GUI acceptance.

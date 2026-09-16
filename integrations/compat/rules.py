@@ -1,6 +1,7 @@
 """In-process inferred suggestion API; never fabricate a committed Snapshot."""
 import ctypes
 import json
+import preferences
 from pathlib import Path
 class Rules:
     def __init__(self):
@@ -11,8 +12,17 @@ class Rules:
         self.lib.typetune_ibus_call.argtypes=[ctypes.c_void_p,ctypes.c_char_p,ctypes.c_size_t,ctypes.c_void_p]
         self.lib.typetune_ibus_call.restype=ctypes.c_size_t
         self.handle=self.lib.typetune_ibus_new()
-    def suggest(self,text,automatic):
-        request=json.dumps(dict(op='infer',text=text,automatic=automatic)).encode()
+        self.generation=None
+    def call(self, value):
+        request=json.dumps(value,ensure_ascii=False).encode()
         output=ctypes.create_string_buffer(32768)
         size=self.lib.typetune_ibus_call(self.handle,request,len(request),output)
         return json.loads(output.raw[:size]) if size else {'status':'ignored'}
+
+    def suggest(self,text,automatic):
+        if automatic and preferences.ERROR: return {'status':'ignored'}
+        if self.generation != preferences.CURRENT['generation']:
+            result=self.call(dict(op='configure',words=preferences.CURRENT['words'],exclusions=preferences.CURRENT['exclusions']))
+            if result['status']!='configured': return {'status':'ignored'}
+            self.generation=preferences.CURRENT['generation']
+        return self.call(dict(op='infer',text=text,automatic=automatic))

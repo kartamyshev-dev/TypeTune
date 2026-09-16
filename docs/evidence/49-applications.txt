@@ -1,0 +1,35 @@
+APPS-49 / 2026-09-16
+base commit: 18f366ed58ddb08799e527f0d4599a0bcf513f29 + uncommitted stages 40–49
+OS: Ubuntu 26.04.1 LTS; GNOME Shell 50.1; Wayland; GTK 4.22.4
+backend: installed compatibility (passive evdev/uinput, no exclusive grab)
+
+Regression before fix:
+test_auto_permission_revoked_after_prepare_keeps_text_and_caret FAIL
+expected synthetic ('ghbdtn ', 7, []), actual ('привет ', 7, ['delete', 'commit'])
+After fix PASS.
+
+APPS-49-UNIT:
+PYTHONWARNINGS=ignore /usr/bin/python3 -m unittest discover -s integrations/ibus -p 'test_*.py'
+56 tests PASS
+PYTHONWARNINGS=ignore /usr/bin/python3 -m unittest discover -s integrations/compat -p 'test_*.py'
+16 tests PASS
+
+APPS-49-GTK:
+integrations/gui/applications_smoke.py PASS
+search/hidden selections/save/reopen/stale conflict/remove missing app
+integrations/gui/smoke.py PASS
+integrations/gui/words_smoke.py PASS
+Own-window snapshots inspected: main window and application picker.
+
+APPS-49-LIVE:
+Release installer completed; existing ibus-engine-table write-cache warning unchanged.
+Installed GTK -> controller -> compatibility generation ACK PASS
+Real GNOME desktop identity exclusion/status/restore PASS
+automatic=false, autostart=true, excluded list preserved PASS
+No real user text read, logged or injected by this acceptance.
+
+Python compile: PASS. Local markdown targets: PASS. git diff --check: PASS.
+Rust core unchanged; 120 PASS from stage 47, not rerun here.
+Native browser/editor/terminal text edits with exclusions: NOT RUN.
+Native IBus exclusions and XWayland exclusions: NOT RUN.
+User confirmed stage 48 GNOME autostart after computer reboot in conversation.

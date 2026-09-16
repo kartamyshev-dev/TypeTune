@@ -4,7 +4,8 @@ use serde::Deserialize;
 use serde_json::{json, Value};
 use std::time::{Duration, Instant};
 use typetune_engine::{
-    prepare_automatic, prepare_manual, prepare_toggle, Direction, InFlight, Plan, Snapshot,
+    prepare_automatic_with_dictionary, prepare_manual, prepare_toggle, Direction, InFlight, Plan,
+    Snapshot,
 };
 
 #[derive(Deserialize)]
@@ -42,15 +43,33 @@ impl From<State> for Snapshot {
 #[derive(Deserialize)]
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 enum Request {
-    Prepare { state: State, reverse: bool },
-    Smart { state: State, automatic: bool },
-    Authorize { state: State },
-    Observe { state: State },
-    Infer { text: String, automatic: bool },
+    Prepare {
+        state: State,
+        reverse: bool,
+    },
+    Smart {
+        state: State,
+        automatic: bool,
+    },
+    Authorize {
+        state: State,
+    },
+    Observe {
+        state: State,
+    },
+    Infer {
+        text: String,
+        automatic: bool,
+    },
+    Configure {
+        words: Vec<String>,
+        exclusions: Vec<String>,
+    },
     Cancel,
 }
 #[derive(Default)]
 pub struct Bridge {
+    dictionary: typetune_engine::UserDictionary,
     plan: Option<Plan>,
     flight: Option<InFlight>,
     deadline: Option<Instant>,
@@ -97,7 +116,12 @@ impl Bridge {
                     return self.cancel();
                 }
                 let result = if automatic {
-                    prepare_automatic(state.into(), now, Duration::from_millis(500))
+                    prepare_automatic_with_dictionary(
+                        state.into(),
+                        now,
+                        Duration::from_millis(500),
+                        &self.dictionary,
+                    )
                 } else {
                     prepare_toggle(state.into(), now, Duration::from_millis(500)).map(Some)
                 };
@@ -155,11 +179,27 @@ impl Bridge {
                 if self.plan.is_some() || self.flight.is_some() {
                     return self.cancel();
                 }
-                match typetune_engine::inferred::suggest(&text, automatic) {
+                match typetune_engine::inferred::suggest_with_dictionary(
+                    &text,
+                    automatic,
+                    &self.dictionary,
+                ) {
                     Some(candidate) => json!({"status":"inferred", "remove": candidate.remove,
                         "replacement":candidate.replacement, "mode":match candidate.direction {
                             Direction::UsToRu=>"ru",Direction::RuToUs=>"us"}}),
                     None => json!({"status":"ignored"}),
+                }
+            }
+            Request::Configure { words, exclusions } => {
+                if self.plan.is_some() || self.flight.is_some() {
+                    return json!({"status":"busy"});
+                }
+                match typetune_engine::UserDictionary::new(words, exclusions) {
+                    Ok(dictionary) => {
+                        self.dictionary = dictionary;
+                        json!({"status":"configured"})
+                    }
+                    Err(_) => json!({"status":"invalid-dictionary"}),
                 }
             }
             Request::Cancel => self.cancel(),
@@ -331,5 +371,57 @@ mod tests {
         );
         authorize(&mut b, now);
         assert_eq!(b.request(b"{}", now)["status"], "indeterminate");
+    }
+
+    #[test]
+    fn dictionary_configuration_is_validated_and_never_replaces_pending_edit() {
+        let now = Instant::now();
+        let mut bridge = Bridge::default();
+        let custom = json!({"op":"configure","words":["клавиатуры"],"exclusions":["привет"]});
+        assert_eq!(
+            call(&mut bridge, custom.clone(), now)["status"],
+            "configured"
+        );
+        assert_eq!(
+            call(
+                &mut bridge,
+                json!({"op":"infer","text":"rkfdbfnehs ","automatic":true}),
+                now
+            )["replacement"],
+            "клавиатуры "
+        );
+        assert_eq!(
+            call(
+                &mut bridge,
+                json!({"op":"configure","words":["bad word"],"exclusions":[]}),
+                now
+            )["status"],
+            "invalid-dictionary"
+        );
+        assert_eq!(
+            call(
+                &mut bridge,
+                json!({"op":"infer","text":"ghbdtn ","automatic":true}),
+                now
+            )["status"],
+            "ignored"
+        );
+        assert_eq!(
+            call(
+                &mut bridge,
+                json!({"op":"smart","state":state("rkfdbfnehs ",1),"automatic":true}),
+                now
+            )["status"],
+            "ready"
+        );
+        assert_eq!(call(&mut bridge, custom, now)["status"], "busy");
+        assert_eq!(
+            call(
+                &mut bridge,
+                json!({"op":"authorize","state":state("rkfdbfnehs ",1)}),
+                now
+            )["replacement"],
+            "клавиатуры "
+        );
     }
 }

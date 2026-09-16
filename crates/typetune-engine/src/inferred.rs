@@ -1,12 +1,19 @@
 //! Explicit compatibility profile: suggestions from keymap-inferred history.
 //! This is NOT a committed Snapshot, authorized range Plan, or confirmed edit.
-use crate::{automatic::known_correction, manual::convert_suffix, Direction};
+use crate::{automatic::known_correction, manual::convert_suffix, Direction, UserDictionary};
 pub struct Suggestion {
     pub remove: usize,
     pub replacement: String,
     pub direction: Direction,
 }
 pub fn suggest(text: &str, automatic: bool) -> Option<Suggestion> {
+    suggest_with_dictionary(text, automatic, &UserDictionary::default())
+}
+pub fn suggest_with_dictionary(
+    text: &str,
+    automatic: bool,
+    dictionary: &UserDictionary,
+) -> Option<Suggestion> {
     if text.is_empty() || text.chars().count() > 128 {
         return None;
     }
@@ -21,6 +28,7 @@ pub fn suggest(text: &str, automatic: bool) -> Option<Suggestion> {
                     original.trim_end_matches(' '),
                     replacement.trim_end_matches(' '),
                     direction,
+                    dictionary,
                 )
             {
                 return None;

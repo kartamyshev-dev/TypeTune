@@ -14,6 +14,10 @@ sys.path.insert(0,str(HERE.parent/'ibus'))
 sys.path.insert(0,str(HERE.parent))
 from history import History, key_plan
 from rules import Rules
+import preferences
+import app_settings
+import application_rules
+import correction_feedback
 PATH='/org/typetune/Session1'
 IFACE='org.typetune.Session1'
 
@@ -35,11 +39,16 @@ def context(value):
 
 class Runtime:
     def __init__(self,stand=False):
+        preferences.initialize()
+        application_rules.initialize()
+        self.feedback=correction_feedback.Feedback()
+        self.feedback_tracker=correction_feedback.Tracker(self.feedback)
+        self.feedback_edit=None
         self.loop=GLib.MainLoop(); self.history=History();self.rules=Rules()
         self.seq=0;self.revision=0;self.action=0;self.pending=None;self.phase=None
         self.armed=None;self.replacement=None;self.now=time.monotonic
         self.stats=dict(keys_seen=0,stale_events=0,auto_triggers=0,manual_triggers=0,plans=0,invalidations=0)
-        self.enabled=True;self.automatic=True;self.value=None;self.fresh=0;self.owner=None
+        self.enabled=True;self.automatic=app_settings.initial_automatic();self.value=None;self.fresh=0;self.owner=None
         self.last='idle';self.devices=0;self.closed=False;self.refreshing=False
         self.connection=Gio.bus_get_sync(Gio.BusType.SESSION,None)
         self.proxy=Gio.DBusProxy.new_sync(self.connection,Gio.DBusProxyFlags.NONE,None,'org.gnome.Shell',PATH,IFACE,None)
@@ -62,9 +71,11 @@ class Runtime:
 <method name="GetStatus"><arg type="s" direction="out"/></method>
 <method name="SetEnabled"><arg type="b" direction="in"/><arg type="b" direction="out"/></method>
 <method name="SetAutomatic"><arg type="b" direction="in"/><arg type="b" direction="out"/></method>
+<method name="ReloadApplications"><arg type="s" direction="in"/><arg type="s" direction="out"/></method>
+<method name="ReloadWords"><arg type="s" direction="in"/><arg type="s" direction="out"/></method>
 <method name="Quit"/>'''
         if stand: xml+='<method name="Feed"><arg type="s" direction="in"/></method>'
-        xml+='</interface></node>'
+        xml+=correction_feedback.XML+'</interface></node>'
         self.connection.register_object('/org/typetune/Compat1',Gio.DBusNodeInfo.new_for_xml(xml).interfaces[0],self.method,None,None)
         self.name=Gio.bus_own_name_on_connection(self.connection,'org.typetune.Compat',Gio.BusNameOwnerFlags.NONE,None,lambda *_:self.close())
         GLib.timeout_add(50,self.poll)
@@ -72,12 +83,23 @@ class Runtime:
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGINT,self.close)
     def allowed(self):
         return self.enabled and self.devices>0 and self.value is not None and time.monotonic()-self.fresh<.2 and context(self.value) is not None and not self.value['modifiers'] & ~16
+    def auto_allowed(self):
+        return self.automatic and not preferences.ERROR and application_rules.allows((self.value or {}).get('app_id'))
     def method(self,connection,sender,path,interface,name,parameters,invocation):
+        if hasattr(self,'feedback') and correction_feedback.method(self.feedback,name,parameters,invocation):return
         if name=='GetStatus':
-            s=dict(enabled=self.enabled,automatic=self.automatic,available=self.allowed(),devices=self.devices,
+            s=dict(suggestion_count=len(self.feedback.pending()),**application_rules.status((self.value or {}).get('app_id')),words_generation=preferences.CURRENT['generation'],words_error=preferences.ERROR,enabled=self.enabled,automatic=self.automatic and not preferences.ERROR and not application_rules.ERROR,available=self.allowed(),devices=self.devices,
                    counters=self.stats,proof='keymap-inferred',last_result=self.last,mode=(self.value or {}).get('snapshot',{}).get('source_id'),
                    limitations=['text-unverified','selection-unknown','sensitivity-unknown','composition-unknown'])
             invocation.return_value(GLib.Variant('(s)',(json.dumps(s),)))
+        elif name in ('ReloadWords','ReloadApplications'):
+            try:
+                config=preferences if name=='ReloadWords' else application_rules
+                generation=config.reload(parameters.unpack()[0])
+                self.invalidate()
+                invocation.return_value(GLib.Variant('(s)',(generation,)))
+            except (ValueError,OSError) as error:
+                invocation.return_dbus_error('org.typetune.Error.Words',str(error))
         elif name in ('SetEnabled','SetAutomatic'):
             value=parameters.unpack()[0];self.invalidate()
             if name=='SetEnabled':self.enabled=value
@@ -93,6 +115,8 @@ class Runtime:
             if self.phase!='switching':self.invalidate()
             self.poll()
     def invalidate(self):
+        if hasattr(self,'feedback_tracker'):self.feedback_tracker.reset()
+        self.feedback_edit=None
         self.revision+=1;self.history.reset();self.armed=None;self.replacement=None
         if hasattr(self,'stats'):self.stats['invalidations']+=1
         if self.pending is not None:
@@ -112,7 +136,7 @@ class Runtime:
                 if owner is None or owner!=proxy.get_name_owner():raise ValueError()
                 old=context(self.value) if self.value else None
                 current=context(value)
-                if current!=old and self.phase!='switching':self.invalidate()
+                if (current!=old or value.get('app_id')!=(self.value or {}).get('app_id')) and self.phase!='switching':self.invalidate()
                 self.value=value;self.owner=owner;self.fresh=time.monotonic()
             except Exception:self.value=None;self.invalidate()
             done()
@@ -157,6 +181,10 @@ class Runtime:
                 # allowing an explicit new gesture; never retry failed output.
                 if self.last=='injected-unverified' and self.replacement is not None:
                     self.history.text=self.replacement
+                edit=getattr(self,'feedback_edit',None)
+                if edit and self.last=='injected-unverified' and hasattr(self,'feedback_tracker'):self.feedback_tracker.completed(*edit)
+                elif hasattr(self,'feedback_tracker'):self.feedback_tracker.reset()
+                self.feedback_edit=None
                 self.replacement=None
             return
         if kind!='key':return
@@ -173,6 +201,7 @@ class Runtime:
             self.invalidate();return
         if self.pending is not None and event['value']!=0:self.invalidate()
         if event['value']!=0:
+            if event['code'] not in (42,54) and hasattr(self,'feedback_tracker'):self.feedback_tracker.reset()
             self.armed=None
             if event['code'] not in (42,54):self.revision+=1
         allowed=self.allowed()
@@ -183,7 +212,7 @@ class Runtime:
             allowed=context(copy) is not None
         mode=(self.value or {}).get('snapshot',{}).get('source_id')
         trigger=self.history.event(event,mode,allowed)
-        if trigger=='auto' and not self.automatic:trigger=None
+        if trigger=='auto' and not self.auto_allowed():trigger=None
         if trigger:
             self.stats[trigger+'_triggers']+=1
             self.armed=(trigger,self.revision,self.now()+.5)
@@ -201,6 +230,7 @@ class Runtime:
         text=self.history.text
         def ready():
             if revision!=self.revision or not self.allowed() or self.history.held:return
+            if trigger=='auto' and not self.auto_allowed():return
             suggestion=self.rules.suggest(text,trigger=='auto')
             if suggestion['status']!='inferred':self.last='no-candidate';return
             self.stats['plans']+=1
@@ -208,13 +238,15 @@ class Runtime:
             if keys is None:self.last='rejected';return
             self.action+=1;identifier=self.action;self.pending=identifier;self.phase='switching'
             self.replacement=suggestion['replacement']
+            self.feedback_edit=(trigger,text,self.replacement)
             self.last='pending'
+            app_id=self.value.get('app_id')
             token=context(self.value);source=self.value['snapshot'];mode=suggestion['mode']
             request={k:source[k] for k in ('instance','generation','window')};request['target']=mode
             deadline=time.monotonic()+.7
             def check():
                 if self.pending!=identifier:return
-                if (time.monotonic()>deadline or context(self.value)!=token or not self.allowed() or revision!=self.revision):
+                if (time.monotonic()>deadline or context(self.value)!=token or self.value.get('app_id')!=app_id or not self.allowed() or revision!=self.revision or (trigger=='auto' and not self.auto_allowed())):
                     self.last='rejected';self.invalidate();return
                 if self.value['snapshot']['source_id']!=mode:
                     GLib.timeout_add(20,lambda:(self.refresh(check),False)[1]);return

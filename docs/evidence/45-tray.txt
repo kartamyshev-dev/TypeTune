@@ -1,0 +1,12 @@
+TRAY-45-UNIT: 4 new tests PASS; 32 IBus/controller/GUI/tray total PASS
+Compatibility Python: 13 PASS
+GTK fixture: actions/error/recovery + nonblinking delayed poll + hide/reopen PASS
+TRAY-45-LIVE: registered with actual org.kde.StatusNotifierWatcher PASS
+Actual DBusMenu GetLayout: 5 entries PASS
+Actual DBusMenu Event: pause/resume/automatic + runtime readback PASS; prior values restored
+Repeated background activation: same application/one watcher item PASS
+GUI stderr: no errors
+Ubuntu 26.04.1 / GNOME Wayland / GTK 4.22 / ubuntu-appindicators extension
+Base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + working stages 40-45
+User visual confirmation: pending. IBus live menu control and watcher restart: NOT RUN
+Rust/text engine: unchanged, tests not rerun

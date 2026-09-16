@@ -1,9 +1,11 @@
 //! Committed-text/range profile for cooperating editors. No keycode injection,
 //! layout inference, clipboard, shell, network or global keyboard hooks.
 mod automatic;
+mod user_dictionary;
+pub use user_dictionary::UserDictionary;
 pub mod inferred;
 mod manual;
-pub use automatic::{prepare_automatic, prepare_toggle};
+pub use automatic::{prepare_automatic, prepare_automatic_with_dictionary, prepare_toggle};
 pub use manual::{prepare_manual, Direction};
 
 use std::ops::Range;

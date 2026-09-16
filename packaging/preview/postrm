@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+if [ "${DPKG_ROOT:-/}" != / ]; then exit 0; fi
+case "$1" in remove|purge) udevadm control --reload-rules || true ;; esac

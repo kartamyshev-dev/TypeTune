@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=TypeTune — настройка
+Comment=Первоначальная настройка, доступ к клавиатуре и удаление
+Exec=/usr/bin/typetune-preview --setup
+TryExec=/usr/bin/typetune-preview
+Icon=input-keyboard
+Terminal=false
+Categories=Settings;Accessibility;
+StartupNotify=true
+StartupWMClass=dev.kartamyshev.TypeTune.Setup

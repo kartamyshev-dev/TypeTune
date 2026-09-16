@@ -205,6 +205,70 @@ class Tests(unittest.TestCase):
         clock[0]=.14;self.manual.key(IBus.KEY_Shift_L,int(IBus.ModifierType.RELEASE_MASK))
         self.drain();self.assertEqual(self.editor.calls,[])
 
+    def test_dictionary_reload_suppresses_auto_but_manual_still_works(self):
+        import preferences
+        from unittest.mock import patch
+        config=dict(version=1,generation='fixture',words=[],exclusions=['привет'])
+        with patch.object(preferences,'CURRENT',config):
+            self.manual.automatic=lambda:True
+            self.manual.key(IBus.KEY_space,0)
+            self.editor.text+=' ';self.editor.caret+=1
+            self.surrounding();self.drain()
+            self.assertEqual(self.editor.calls,[])
+            self.assertEqual(self.editor.text,'ghbdtn ')
+            self.manual.request_smart(False,self.manual.epoch,self.manual.revision)
+            self.drain()
+            self.assertEqual((self.editor.text,self.editor.caret),('привет ',7))
+
+
+    def test_auto_permission_revoked_after_prepare_keeps_text_and_caret(self):
+        self.manual.automatic=lambda:True
+        self.manual.key(IBus.KEY_space,0)
+        self.editor.text+=' ';self.editor.caret+=1
+        self.surrounding()
+        self.manual.request_smart(True,self.manual.epoch,self.manual.revision)
+        self.assertTrue(self.manual.pending)
+        self.manual.automatic=lambda:False
+        self.manual.authorize()
+        self.assertEqual((self.editor.text,self.editor.caret,self.editor.calls),('ghbdtn ',7,[]))
+
+
+
+    def test_application_exclusion_blocks_auto_preserves_manual(self):
+        import application_rules
+        from unittest.mock import patch
+        config=dict(version=1,generation='fixture',excluded=['code.desktop'])
+        with patch.object(application_rules,'CURRENT',config):
+            self.manual.automatic=lambda:application_rules.allows('code.desktop')
+            self.manual.key(IBus.KEY_space,0)
+            self.editor.text+=' ';self.editor.caret+=1
+            self.surrounding();self.drain()
+            self.assertEqual((self.editor.text,self.editor.caret,self.editor.calls),('ghbdtn ',7,[]))
+            self.manual.request_smart(False,self.manual.epoch,self.manual.revision)
+            self.drain()
+            self.assertEqual((self.editor.text,self.editor.caret),('привет ',7))
+
+
+
+    def test_completed_auto_and_manual_inverse_offer_only_after_three(self):
+        from correction_feedback import Feedback,Tracker
+        feedback=Feedback();self.manual.feedback_tracker=Tracker(feedback,lambda:0)
+        self.manual.automatic=lambda:True
+        for i in range(3):
+            if i:
+                self.manual.cancel()
+                self.editor.text='ghbdt';self.editor.caret=5;self.surrounding()
+                self.manual.key(ord('n'),0)
+                self.editor.text='ghbdtn';self.editor.caret=6;self.surrounding()
+            self.manual.key(IBus.KEY_space,0)
+            self.editor.text+=' ';self.editor.caret+=1;self.surrounding();self.drain()
+            self.surrounding();self.manual.observe();self.drain()
+            self.assertEqual(self.editor.text,'привет ')
+            self.manual.request_smart(False,self.manual.epoch,self.manual.revision);self.drain()
+            self.surrounding();self.manual.observe();self.drain()
+            self.assertEqual((self.editor.text,self.editor.caret),('ghbdtn ',7))
+            self.assertEqual(len(feedback.pending()),int(i==2))
+
 
 if __name__ == '__main__':
     unittest.main()

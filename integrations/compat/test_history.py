@@ -41,4 +41,23 @@ class Checks(unittest.TestCase):
         self.assertIsNone(key_plan(6,'привет😀','ru'))
         self.assertIsNone(key_plan(129,'a','us'))
         self.assertEqual(len(CODES),len(US));self.assertEqual(len(RU),len(UPPER_US))
+
+    def test_two_letter_punctuation_history_and_balanced_replacement(self):
+        self.tap(51); self.tap(31)
+        self.assertEqual(self.tap(57), 'auto')
+        self.assertEqual(self.h.text, ',s ')
+        self.assertFalse(self.h.held)
+        text = 'prefix ,s suffix'; caret = len('prefix ,s '); held = set()
+        for code, down in key_plan(3, 'бы ', 'ru'):
+            if not down:
+                held.remove(code); continue
+            self.assertNotIn(code, held)
+            held.add(code)
+            if code == 42: continue
+            if code == 14:
+                text = text[:caret-1] + text[caret:]; caret -= 1; continue
+            char = ' ' if code == 57 else (RU.upper() if 42 in held else RU)[CODES.index(code)]
+            text = text[:caret] + char + text[caret:]; caret += 1
+        self.assertEqual((text, caret, held), ('prefix бы suffix', len('prefix бы '), set()))
+
 if __name__=='__main__':unittest.main()

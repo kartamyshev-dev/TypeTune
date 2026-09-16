@@ -1,0 +1,13 @@
+SETTINGS-48-UNIT: 7 new settings/controller tests + 1 GUI model case PASS
+IBus/controller/GUI/tray Python: 48 PASS
+Compatibility Python: 14 PASS
+GTK smoke: autostart on/off, saved mode selection and prior actions/errors/polling PASS
+Own-window visual: 540x740 fixture snapshot inspected
+SETTINGS-48-LIVE: installed GTK autostart switch -> XDG entry create/remove PASS
+Installed GUI auto-off -> stop/start compatibility -> automatic=false PASS
+Login command while runtime already running: PASS, no restart/resume
+Initial mode/automatic/autostart settings restored. Autostart remains disabled.
+Ubuntu 26.04.1 / GNOME Wayland / GTK4
+Base 18f366ed58ddb08799e527f0d4599a0bcf513f29 + working stages 40-48
+Rust/text engine unchanged; previous 120 PASS, not rerun
+Full logout/login and IBus login startup: NOT RUN
