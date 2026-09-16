@@ -38,3 +38,16 @@ GitHub создаёт Source code архивы автоматически; он�
 короткие слова, GUI/tray, сохранение настроек, автозапуск, application exclusions,
 feedback с явным подтверждением, Debian setup и native migration.
 Это GNOME 50 preview, не универсальный стабильный Linux-релиз.
+
+## Проверка первого релиза
+
+Коммит пакета: `bb1a407ddb852e430ca1248302e0e0d836df8fc5`, тег
+`v0.1.0-preview52-1`. Main CI и tag CI прошли: 120 Rust / 84 Python tests,
+GTK fixtures, isolated dpkg lifecycle. Скачанный release-пакет содержит тот же
+source_commit и source_dirty=false.
+
+GitHub при загрузке Assets заменил `~` в имени файла на точку. Содержимое `.deb`
+не изменилось; Debian version внутри остаётся `0.1.0~preview52-1`. Первоначальный
+SHA256SUMS исправлен под фактическое имя Assets без замены пакета или тега.
+Workflow теперь заранее нормализует имя перед вычислением суммы и после публикации
+повторно скачивает Assets и проверяет SHA256SUMS.

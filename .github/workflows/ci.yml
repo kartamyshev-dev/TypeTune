@@ -64,6 +64,10 @@ jobs:
         run: |
           python3 scripts/build-preview-deb.py --version "$DEB_VERSION"
           sudo /usr/bin/python3 tests/packaging/check_deb.py "dist/typetune-preview_${DEB_VERSION}_amd64.deb"
+          # GitHub normalizes ~ in asset names to a dot. Keep checksums downloadable as-is.
+          for package in dist/*.deb; do
+            mv "$package" "${package//\~/\.}"
+          done
           (cd dist && sha256sum *.deb > SHA256SUMS)
           cp docs/releases/preview.md dist/RELEASE_NOTES.md
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -94,3 +98,6 @@ jobs:
           cd dist
           sha256sum --check SHA256SUMS
           gh release create "$TAG" ./*.deb SHA256SUMS --verify-tag --prerelease --title "TypeTune $TAG — GNOME Linux preview" --notes-file RELEASE_NOTES.md
+          mkdir downloaded
+          gh release download "$TAG" --dir downloaded
+          (cd downloaded && sha256sum --check SHA256SUMS)
