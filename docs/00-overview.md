@@ -1,18 +1,19 @@
 # TypeTune — обзор проекта и документации
 
-## Текущий статус — 2026-09-16
+## Текущий статус — 2026-09-17
 
 Linux preview для GNOME 50 / Wayland: Double Shift с повторным переключением
 слова и раскладки, консервативная автокоррекция на пробеле, controller и установка.
-Два режима: opt-in evdev/uinput compatibility и ограниченный IBus/AT-SPI профиль.
+Один режим: opt-in evdev/uinput compatibility. IBus-адаптер удалён в этапе 54.
 Compatibility не ограничен списком приложений, но не подтверждает текст/selection/
 sensitivity/composition. Работа во всех существующих приложениях не гарантируется.
 
 Пользователь подтвердил работу в браузере после исправления evdev latency.
 Повторный жест проверен в изолированных Wayland/XWayland fixtures.
 
+- [План Windows/macOS на основе Linux-preview](56-cross-platform-roadmap.md)
 - [Руководство](35-user-test.md)
-- [Последний checkpoint 52 — GitHub Releases](52-github-releases.md)
+- [Последний checkpoint 55 — пробел перед Double Shift](55-feedback-word-boundary.md)
 - [Сводный протокол и границы доказательств](17-validation-record.md)
 - [Оставшаяся работа](18-linux-completion-plan.md)
 

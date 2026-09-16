@@ -1,11 +1,12 @@
 # План доведения Linux-версии TypeTune
 
-## Точка продолжения — 2026-09-16
+## Точка продолжения — 2026-09-17
 
-Реализованы два preview режима: IBus и opt-in compatibility evdev/uinput.
-Последний checkpoint — [пакет Debian](51-debian-package.md).
+Текущий preview использует только opt-in compatibility evdev/uinput; IBus удалён ([этап 54](54-remove-ibus.md)).
+Последний Linux checkpoint — [пробел до/после Double Shift](55-feedback-word-boundary.md).
+План других ОС выделен в [документ 56](56-cross-platform-roadmap.md).
 Физический ввод в браузере подтверждён пользователем после [исправления latency](38-compat-input-latency.md).
-Сводные результаты: [120 Rust + 83 Python tests и native cases](17-validation-record.md).
+Сводные результаты: [120 Rust + 68 Python tests и native cases](17-validation-record.md).
 
 ### Приоритет пользователя: установка без терминала
 
@@ -24,7 +25,7 @@
 и применение через controller. Выполнено [сохранение режима/auto и opt-in автозапуск](48-persistent-settings.md).
 Выполнены [исключения приложений](49-application-exclusions.md); пользователь подтвердил
 автозапуск после reboot в GNOME. Реализованы [предложения по ручным возвратам с подтверждением](50-correction-feedback.md).
-Следом — native feedback acceptance и перенос IBus context, расширение корпуса качества и native app/login matrix (IBus, сбои, другие desktops).
+Следом — native feedback acceptance, расширение корпуса качества и native app/login matrix (сбои, другие desktops).
 
 ### Следующий этап: качество автокоррекции RU/EN
 
@@ -36,7 +37,7 @@
 символа и запуск после Space. Подробный контракт — [спецификация](16-product-spec.md).
 
 Цель: повысить охват обычного текста без роста ошибочных замен корректных слов.
-Область: общий text engine, затем оба текущих Linux preview режима — IBus и compatibility.
+Область: общий text engine и compatibility runtime.
 
 Порядок реализации:
 
@@ -90,7 +91,7 @@
 
 ## Поправка 2026-09-15
 
-Актуальная точка продолжения: [пользовательский preview IBus](35-user-test.md).
+Исторический срез до удаления IBus; актуальные инструкции — [руководство](35-user-test.md).
 Добавлены portable range executor, cooperating GTK text-field adapter и статический
 snippet :hi + Space. Native Wayland typing в собственном поле проверен.
 IBus manual adapter принят в ограниченном профиле Chrome Wayland; добавлена пользовательская установка.

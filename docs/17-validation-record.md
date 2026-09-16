@@ -1,6 +1,24 @@
 # Протокол проверок и точка продолжения
 
-## Текущий срез — 2026-09-16
+## Текущий срез — 2026-09-17
+
+Этапы [53](53-dictionary-suggestions.md), [54](54-remove-ibus.md),
+[55](55-feedback-word-boundary.md): 120 Rust и 68 Python tests PASS;
+GTK fixtures, clippy/fmt, isolated dpkg upgrade/remove/purge/reinstall PASS.
+IBus-адаптер удалён; уменьшение числа Python tests в этапе 54 отражает удалённый
+adapter-only набор, не падение проверки compatibility. Общие правила сохранены.
+
+Native nested Wayland/XWayland COMPAT-01 проверили ручные/автоматические замены,
+повторный жест и guards в этапе 54. LEARN-GITHUB после этапа 55 проверен на
+Wayland: пробел до/после жеста, порог 0/0/1 и отзыв при обратном переключении.
+Пользователь подтвердил появление предложения в preview54 с пробелом после жеста;
+preview55 со вторым порядком собран, пользовательская приёмка ещё не подтверждена.
+Установленный preview54 и актуальность его runtime проверены read-only.
+
+Windows/macOS native acceptance не выполнялась. [План 56](56-cross-platform-roadmap.md)
+задаёт будущие gates, не добавляет работающие платформы.
+
+## Предыдущие срезы — история проверок
 
 [51 — пакет Debian](51-debian-package.md): 83 Python PASS; GTK setup, isolated-root
 dpkg install/upgrade/remove/purge/reinstall и APT dependency simulation PASS.
