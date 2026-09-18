@@ -238,3 +238,12 @@ Linux `.deb` и macOS `.zip`, проверить обе платформы, оп
 в одном GitHub Release. Системные разрешения и ad-hoc/notarization ограничения
 macOS сохранены в release notes. Создание тега и проверка публикации выполняются
 отдельно; этот checkpoint фиксирует намерение до запуска release workflow.
+
+Общий prerelease [v0.1.0-preview57-1](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.0-preview57-1)
+опубликован 2026-09-18 из commit `7913b7f9dcb478d3c701dcb275f5d4f56d3ea9a3`.
+[Release run 35353451385](https://github.com/kartamyshev-dev/TypeTune/actions/runs/35353451385)
+завершился success: Linux build/tests/package lifecycle, macOS build/tests/package
+и release job. Публичные assets `.deb`, `.zip`, SHA256SUMS и MACOS-SHA256SUMS
+скачаны повторно; обе суммы совпали. Подпись распакованной TypeTune.app проверена,
+TypeTuneSourceCommit совпал с тегом. Это подтверждает публикацию и упаковку,
+а не полную native-приёмку ввода. Пользовательская установленная копия не изменялась.
