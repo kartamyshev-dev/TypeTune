@@ -205,3 +205,9 @@ Rust закреплён на проверенном 1.89.0. Проверяютс
 YAML/встроенные shell scripts и `cargo fmt --all -- --check` PASS.
 Hosted runner: [официальный образ](https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md),
 public preview; его обновления могут требовать адаптации. Первый remote run pending.
+
+CI-изменения сохранены локально: `9430975`; актуальный main `8580836` включён merge
+`76fa770`, Linux release notes сохранены. Отправка в публичный origin была отклонена
+автоматической проверкой разрешений: нужен явный допуск публикации новых исходников
+macOS вместе с workflow. Push не выполнен, remote CI и публикация artifacts не
+проверены. Ветка: `codex/macos-hosted-ci`; до согласия пользователя не отправлять.
