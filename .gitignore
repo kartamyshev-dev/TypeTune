@@ -12,3 +12,4 @@ __pycache__/
 
 # Built Debian artifacts
 /dist/
+integrations/macos/.build/

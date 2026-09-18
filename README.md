@@ -6,6 +6,17 @@
 Версия **preview55-2** включает предложения для словаря, пробел до/после Double Shift,
 удаление IBus-режима и один ярлык в меню приложений.
 
+## Локальная версия для macOS
+
+Добавлен нативный preview для **Apple Silicon / macOS 27.0**, ABC ↔ Русская — ПК:
+SwiftUI/AppKit, общее Rust-ядро, Double Shift, автоматика, словари и строка меню.
+Сборка и установка: `bash scripts/build-macos.sh --install`.
+Приложение: `~/Applications/TypeTune.app`; Python/GTK для запуска не нужны.
+Общесистемная коррекция **ещё не прошла native acceptance** — требуются выданные
+пользователем разрешения macOS и проверки в редакторах.
+[Инструкция](integrations/macos/README.md) · [Проверки и ограничения](docs/57-macos-checkpoint.md).
+Остальные инструкции ниже относятся к Linux preview.
+
 ## Установка пакетом .deb
 
 Скачать `.deb`: **[GitHub Releases](https://github.com/kartamyshev-dev/TypeTune/releases)** → Assets.

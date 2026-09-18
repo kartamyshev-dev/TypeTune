@@ -263,7 +263,7 @@ Hook callback только фиксирует минимальное событ�
 
 Кандидат observation — CGEvent tap в run loop; permissions и восстановление отключённого tap — часть lifecycle. Уточнять фактическую необходимость Accessibility/Input Monitoring по выбранным API и версии ОС. Unicode injection — CGEvent/clipboard backend, layout — platform input-source adapter. Испытать смену input source, удержанные modifiers, Secure Input и отзыв доступа. Не считать event tap источником committed IME-текста.
 
-Ориентиры API: [CGEvent tapCreate](https://developer.apple.com/documentation/coregraphics/cgevent/tapcreate(tap:place:options:eventsofinterest:callback:userinfo:)), [keyboardSetUnicodeString](https://developer.apple.com/documentation/coregraphics/cgevent/keyboardsetunicodestring(stringlength:unicodestring:)). Поведение разрешений, фокуса и Secure Input требует native-проверки; на этой стадии backend не реализован. Физический anti-chatter с выбором устройства также исключён из macOS MVP.
+Ориентиры API: [CGEvent tapCreate](https://developer.apple.com/documentation/coregraphics/cgevent/tapcreate(tap:place:options:eventsofinterest:callback:userinfo:)), [keyboardSetUnicodeString](https://developer.apple.com/documentation/coregraphics/cgevent/keyboardsetunicodestring(stringlength:unicodestring:)). Поведение разрешений, фокуса и Secure Input требует native-проверки. Локальная реализация macOS 27 добавлена в [этапе 57](57-macos-checkpoint.md); native text acceptance ещё не пройдена. Физический anti-chatter с выбором устройства также исключён из macOS MVP.
 
 ## 8. Runtime, конфигурация и UI
 
