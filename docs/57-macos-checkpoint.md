@@ -211,3 +211,20 @@ CI-изменения сохранены локально: `9430975`; актуа
 автоматической проверкой разрешений: нужен явный допуск публикации новых исходников
 macOS вместе с workflow. Push не выполнен, remote CI и публикация artifacts не
 проверены. Ветка: `codex/macos-hosted-ci`; до согласия пользователя не отправлять.
+
+
+### Hosted macOS подтверждён — 2026-09-18
+
+После явного разрешения пользователя ветка `codex/macos-hosted-ci` опубликована,
+создан [PR #1](https://github.com/kartamyshev-dev/TypeTune/pull/1).
+[Run 35347690287](https://github.com/kartamyshev-dev/TypeTune/actions/runs/35347690287)
+собрал commit `a905ae8d43e6e617c4c85d663512596bd32933e5` на macOS 27.0
+(26A5406e), Xcode 27.0, Swift 6.4, Rust 1.89.0. macOS job PASS: 37 Rust,
+13 Python, 12 Swift тестов, release build, ZIP и codesign после распаковки.
+[Артефакт macos-preview](https://github.com/kartamyshev-dev/TypeTune/actions/runs/35347690287/artifacts/10547258892)
+скачан обратно; SHA-256 сверена, подпись распакованной `.app` проверена,
+TypeTuneSourceCommit совпал с commit run. Установленная пользовательская копия не
+заменялась. Публикация prerelease по тегу настроена, но новый тег не создавался
+и release-upload ещё не проверялся. Native-приёмка клавиатуры остаётся отдельной.
+Полный run завершился success: Linux build/tests/package lifecycle PASS,
+macOS PASS; release ожидаемо skipped, поскольку это push ветки, а не тега.
