@@ -98,4 +98,13 @@ struct ObserverTests {
         #expect(received.map{$0.revision} == (1...10000).map{UInt64($0)})
     }
 
+    @Test func capsLockLatchIsNotAChordModifier() {
+        let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
+        buffer.push(event(code:0,flags:CGEventFlags.maskAlphaShift.rawValue),type:.keyDown)
+        #expect(buffer.drain().0.first?.modifiers == 0)
+        buffer.push(event(code:0,flags:CGEventFlags.maskAlphaShift.rawValue | CGEventFlags.maskShift.rawValue),type:.keyDown)
+        #expect(buffer.drain().0.first?.modifiers == 1)
+        buffer.push(event(code:0,flags:CGEventFlags.maskAlphaShift.rawValue | CGEventFlags.maskCommand.rawValue),type:.keyDown)
+        #expect(buffer.drain().0.first?.modifiers == 2)
+    }
 }

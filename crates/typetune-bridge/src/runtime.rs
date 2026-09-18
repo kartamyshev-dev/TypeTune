@@ -339,9 +339,12 @@ impl Runtime {
         let Some(p) = self.pending.take() else {
             return json!({"status":"stale"});
         };
+        // Covers macOS held-key wait (800ms) plus paired inject sleeps; elapsed
+        // duration is added to the source timestamp, not a second clock domain.
+        const RESULT_DEADLINE_MS: u64 = 2500;
         if p.id != id
             || time < p.time
-            || time - p.time > 1000
+            || time - p.time > RESULT_DEADLINE_MS
             || (outcome != Outcome::Verified && outcome != Outcome::Submitted)
         {
             self.reset();
@@ -626,7 +629,7 @@ mod tests {
             r.result(
                 p["id"].as_u64().unwrap(),
                 Outcome::Verified,
-                t + 1001,
+                t + 2501,
                 &UserDictionary::default()
             )["status"],
             "reset"
@@ -635,6 +638,23 @@ mod tests {
         word(&mut r, "ghbdtn", &mut t);
         r.event(serde_json::from_value(json!({"key":"command","action":"down","text":null,"time_ms":t+1,"device":null,"origin":"physical","modifiers":2})).unwrap(),true,&UserDictionary::default());
         assert_eq!(gesture(&mut r, &mut t)["status"], "ignored");
+    }
+    #[test]
+    fn result_accepts_source_elapsed_deadline_and_keeps_retoggle() {
+        let mut r = Runtime::default();
+        let mut t = 0;
+        word(&mut r, "ghbdtn", &mut t);
+        let p = gesture(&mut r, &mut t);
+        assert_eq!(
+            r.result(
+                p["id"].as_u64().unwrap(),
+                Outcome::Verified,
+                t + 2500,
+                &UserDictionary::default()
+            )["status"],
+            "verified"
+        );
+        assert_eq!(gesture(&mut r, &mut t)["replacement"], "ghbdtn");
     }
     #[test]
     fn dismiss_survives_eviction_and_clock_or_context_never_teaches() {

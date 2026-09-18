@@ -19,7 +19,12 @@ final class Controller: ObservableObject {
     init() {
         runtime.publish = { [weak self] message,items in self?.status=message;self?.suggestions=items }
         do {settings=try store.load()} catch {self.error=error.localizedDescription;running=false;runtime.setEnabled(false)}
-        runtime.configure(settings) { [weak self] ok in if !ok {self?.error="Движок отклонил настройки"} }
+        runtime.configure(settings) { [weak self] ok in
+            guard let self, !ok else {return}
+            self.error="Движок отклонил настройки"
+            self.running=false
+            self.runtime.setEnabled(false)
+        }
         runtime.start()
         let center=NSWorkspace.shared.notificationCenter
         for name in [NSWorkspace.willSleepNotification,NSWorkspace.sessionDidResignActiveNotification] {
@@ -57,8 +62,10 @@ final class Controller: ObservableObject {
                 self.applying=false
             } catch {
                 self.error=error.localizedDescription
+                if let restore=LoginItemIntent.rollbackTarget(desired:proposed.autostart,previous:previous.autostart) {
+                    if restore {try? SMAppService.mainApp.register()} else {try? SMAppService.mainApp.unregister()}
+                }
                 self.runtime.configure(previous) { _ in self.applying=false }
-                // Registration has its own effective state, visible independently of saved intent.
             }
         }
     }

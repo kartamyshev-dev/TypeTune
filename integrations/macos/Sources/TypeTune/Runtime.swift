@@ -68,11 +68,16 @@ final class Runtime {
             }
             let reply=engine.call(["op":"key_event","event":event,"automatic":settings.automatic && !settings.applications.contains(context.bundle)])
             if reply["status"] as? String == "inferred_edit" {
+                observer.buffer.accepting.store(false,ordering:.relaxed)
+                let started=DispatchTime.now().uptimeNanoseconds
                 let result=execute(reply,observation:observation,context:context)
-                _=engine.call(["op":"edit_result","id":reply["id"]!,"outcome":result,"time_ms":DispatchTime.now().uptimeNanoseconds/1_000_000])
+                let elapsed=(DispatchTime.now().uptimeNanoseconds-started)/1_000_000
+                let ack=engine.call(["op":"edit_result","id":reply["id"]!,"outcome":result,"time_ms":EditAcknowledgement.resultTime(sourceMs:observation.time,elapsedMs:elapsed)])
+                _=observer.buffer.drain()
                 identity=Native.context().identity
-                if result=="indeterminate" {lastIssue="Результат последней замены не определён; история очищена";report(lastIssue!);return}
                 if result=="rejected" {report("Замена отменена: контекст изменился");return}
+                let visible=EditAcknowledgement.visibleOutcome(native:result,engine:ack["status"] as? String ?? "reset")
+                if result=="indeterminate" || visible=="reset" {lastIssue="Результат последней замены не определён; история очищена";report(lastIssue!);return}
                 lastIssue=nil
                 report(result=="verified" ? "Замена проверена по тексту" : "Совместимость: события отправлены, текст не подтверждён")
                 return // discard stale batch after one edit
@@ -101,8 +106,10 @@ final class Runtime {
         // Select and read back BEFORE editing so a missing layout cannot erase text.
         guard Native.select(mode) else {return "rejected"}
         let changed=Native.context()
-        guard changed.bundle==context.bundle,changed.element.map({CFHash($0)})==context.element.map({CFHash($0)}),unchanged(changed.identity),Native.text(changed)==old else {return "rejected"}
-        return ReplacementExecutor.run(remove:count,replacement:replacement,guardCheck:{unchanged(changed.identity)},emit:{ action in
+        guard changed.bundle==context.bundle,changed.element.map({CFHash($0)})==context.element.map({CFHash($0)}),unchanged(changed.identity),Native.text(changed)==old else {
+            return LayoutRestore.after("rejected",original:context.layout,select:Native.select)
+        }
+        let outcome=ReplacementExecutor.run(remove:count,replacement:replacement,guardCheck:{unchanged(changed.identity)},emit:{ action in
             switch action {case .backspace:return Native.pair(51);case .text(let text):return Native.pair(0,unicode:text)}
         },verify:{
             guard let old else {return nil}
@@ -115,5 +122,6 @@ final class Runtime {
             }
             return false
         }).rawValue
+        return LayoutRestore.after(outcome,original:context.layout,select:Native.select)
     }
 }

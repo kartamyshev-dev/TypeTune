@@ -33,7 +33,8 @@ final class InputBuffer {
         let code = event.getIntegerValueField(.keyboardEventKeycode)
         let flags = event.flags
         var modifiers: UInt32 = flags.contains(.maskShift) ? 1 : 0
-        if !flags.intersection([.maskCommand, .maskControl, .maskAlternate, .maskAlphaShift]).isEmpty { modifiers |= 2 }
+        // Caps Lock is a latch, not a chord; treating it as modifiers&2 wipes history.
+        if !flags.intersection([.maskCommand, .maskControl, .maskAlternate]).isEmpty { modifiers |= 2 }
         var key = "mac:\(code)"
         var action = type == .keyUp ? "up" : (event.getIntegerValueField(.keyboardEventAutorepeat) != 0 ? "repeat" : "down")
         var text: String?

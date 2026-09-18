@@ -63,14 +63,21 @@ enum Native {
         return TISSelectInputSource(source)==noErr && inputSource().1==mode
     }
     static func modifiersHeld() -> Bool {
-        !CGEventSource.flagsState(.combinedSessionState).intersection([.maskShift,.maskCommand,.maskControl,.maskAlternate,.maskAlphaShift]).isEmpty
+        !CGEventSource.flagsState(.combinedSessionState).intersection([.maskShift,.maskCommand,.maskControl,.maskAlternate]).isEmpty
     }
-    static func pair(_ code: CGKeyCode, unicode: String? = nil) -> Bool {
-        guard let down=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:true),let up=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:false) else {return false}
+    static func keyboardEvents(_ code: CGKeyCode, unicode: String? = nil) -> (CGEvent, CGEvent)? {
+        guard let down=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:true),let up=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:false) else {return nil}
         for event in [down,up] {
             event.flags=[];event.setIntegerValueField(.eventSourceUserData,value:ownMarker)
-            if let unicode {let units=Array(unicode.utf16);event.keyboardSetUnicodeString(stringLength:units.count,unicodeString:units)}
         }
+        if let unicode {
+            let units=Array(unicode.utf16)
+            down.keyboardSetUnicodeString(stringLength:units.count,unicodeString:units)
+        }
+        return (down,up)
+    }
+    static func pair(_ code: CGKeyCode, unicode: String? = nil) -> Bool {
+        guard let (down,up)=keyboardEvents(code,unicode:unicode) else {return false}
         down.post(tap:.cgSessionEventTap);up.post(tap:.cgSessionEventTap)
         Thread.sleep(forTimeInterval:0.003)
         return true

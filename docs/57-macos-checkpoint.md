@@ -1,5 +1,21 @@
 # 57 — macOS local preview
 
+## Caps Lock, откат раскладки и edit_result — 2026-09-18
+
+Исправления относительно `619f049` / preview57-2:
+
+- Caps Lock больше не кодируется как аккорд (`modifiers&2`) и не блокирует
+  `modifiersHeld()`: история и замена работают при включённой защёлке.
+- Before-edit отказ после `TISSelectInputSource` возвращает исходный ABC/RussianWin.
+- Наблюдение ставится на паузу на время execute; `edit_result` получает
+  `source_time + elapsed`, окно 2500 ms; UI не объявляет verified после `reset`.
+- Unicode-строка ставится только на Down. Отказ configure выключает runtime;
+  сбой сохранения после смены login item откатывает и пункт входа.
+
+Это simulated/regression правки, не новая native-приёмка ввода.
+Локально: `bash scripts/test-macos.sh` — 38 Rust + 13 Python + 18 Swift = 69 PASS;
+`python3 -m unittest tests.packaging.test_release_version` PASS.
+
 ## Индикация паузы в строке меню — 2026-09-18
 
 Baseline `d4db2fd` + незакоммиченные изменения; macOS 27.0 (26A428),
