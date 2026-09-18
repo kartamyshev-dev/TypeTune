@@ -138,6 +138,7 @@ final class AppDelegate:NSObject,NSApplicationDelegate {
     private var item:NSStatusItem!
     private var window:NSWindow!
     private var controller:Controller!
+    private var statusMenu:StatusMenu?
     func applicationDidFinishLaunching(_ notification:Notification) {
         let directory=FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/TypeTune")
         do {try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true,attributes:[.posixPermissions:0o700])} catch {NSApp.terminate(nil);return}
@@ -148,10 +149,14 @@ final class AppDelegate:NSObject,NSApplicationDelegate {
         window.title="TypeTune — настройки";window.isReleasedWhenClosed=false
         window.contentView=NSHostingView(rootView:PreferencesView(controller:controller));window.center()
         item=NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
-        item.button?.title="TT";item.button?.toolTip="TypeTune — RU/EN"
         let menu=NSMenu()
-        for (title,action) in [("Настройки…",#selector(show)),("Пауза / продолжить",#selector(toggle)),("Завершить TypeTune",#selector(quit))] {
+        for (title,action) in [("Настройки…",#selector(show)),("Пауза",#selector(toggle)),("Завершить TypeTune",#selector(quit))] {
             let entry=NSMenuItem(title:title,action:action,keyEquivalent:"");entry.target=self;menu.addItem(entry)
+            if action == #selector(toggle), let button=item.button {
+                statusMenu=StatusMenu(button:button,toggle:entry,
+                    running:controller.$running.eraseToAnyPublisher(),
+                    status:controller.$status.eraseToAnyPublisher())
+            }
         }
         item.menu=menu
         if !controller.settings.compatibility || !controller.error.isEmpty {show()}
