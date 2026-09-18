@@ -85,5 +85,5 @@ Description: RU/EN layout correction preview for GNOME 50
         run(['dpkg-deb','--root-owner-group','--build',str(root),str(artifact)])
         return artifact
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--version',default='0.1.0~preview55-1');parser.add_argument('--output',type=Path,default=REPO/'dist')
+    parser=argparse.ArgumentParser();parser.add_argument('--version',default='0.1.0~preview55-2');parser.add_argument('--output',type=Path,default=REPO/'dist')
     args=parser.parse_args();print(build(args.version,args.output))
