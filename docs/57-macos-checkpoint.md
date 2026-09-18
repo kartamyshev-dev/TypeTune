@@ -228,3 +228,13 @@ TypeTuneSourceCommit совпал с commit run. Установленная по
 и release-upload ещё не проверялся. Native-приёмка клавиатуры остаётся отдельной.
 Полный run завершился success: Linux build/tests/package lifecycle PASS,
 macOS PASS; release ожидаемо skipped, поскольку это push ветки, а не тега.
+
+
+## Общий выпуск preview57-1
+
+По поручению пользователя подготовлен тег `v0.1.0-preview57-1` на актуальном main.
+Это общий prerelease, не объявление полной native-готовности. CI должен собрать
+Linux `.deb` и macOS `.zip`, проверить обе платформы, опубликовать файлы и SHA-256
+в одном GitHub Release. Системные разрешения и ad-hoc/notarization ограничения
+macOS сохранены в release notes. Создание тега и проверка публикации выполняются
+отдельно; этот checkpoint фиксирует намерение до запуска release workflow.
