@@ -293,10 +293,22 @@ LaunchServices и Spotlight после очистки возвращают то�
 и снимать с регистрации, чтобы не оставлять вторую запускаемую копию.
 
 
-## Выпуск preview57-2 — подготовка
+## Выпуск preview57-2 — опубликован
 
 Пользователь подтвердил, что исправление паузы работает, и поручил публикацию
 на GitHub и новую сборку. Выпуск `v0.1.0-preview57-2` содержит StatusMenu,
 regression test и инструкции обновления без дублирования установленных копий.
 Локальные 63 теста и сборка прошли ранее; исходники после проверок не менялись.
 Remote CI, публикация и проверка скачанных assets фиксируются после завершения.
+
+
+Выпуск [v0.1.0-preview57-2](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.0-preview57-2)
+опубликован из `9cd07e06517bb7a76e9f2db02632789f22d67a1c`.
+[Run 35385523712](https://github.com/kartamyshev-dev/TypeTune/actions/runs/35385523712)
+завершился success: Linux tests/GTK/package lifecycle, macOS tests/build/package,
+release upload и повторное скачивание. macOS runner: 27.0 (26A5406e), Xcode 27.0,
+Swift 6.4; 37 Rust + 13 Python + 13 Swift = 63 теста PASS.
+После публикации ZIP и DEB скачаны локально: обе SHA-256 совпали с release sums;
+подпись распакованной `.app` проверена, SourceCommit совпал с тегом, SourceDirty=false.
+Временная распакованная проверочная копия удалена; пользовательское приложение не
+заменялось. Физический ввод в hosted CI не проверяется.
