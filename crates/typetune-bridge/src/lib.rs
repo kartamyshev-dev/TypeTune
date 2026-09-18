@@ -7,6 +7,7 @@ use typetune_engine::{
     prepare_automatic_with_dictionary, prepare_manual, prepare_toggle, Direction, InFlight, Plan,
     Snapshot,
 };
+mod runtime;
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -43,6 +44,21 @@ impl From<State> for Snapshot {
 #[derive(Deserialize)]
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 enum Request {
+    Protocol,
+    KeyEvent {
+        event: runtime::Event,
+        automatic: bool,
+    },
+    ResetContext,
+    EditResult {
+        id: u64,
+        outcome: runtime::Outcome,
+        time_ms: u64,
+    },
+    Suggestions,
+    DismissSuggestion {
+        id: u64,
+    },
     Prepare {
         state: State,
         reverse: bool,
@@ -69,6 +85,7 @@ enum Request {
 }
 #[derive(Default)]
 pub struct Bridge {
+    runtime: runtime::Runtime,
     dictionary: typetune_engine::UserDictionary,
     plan: Option<Plan>,
     flight: Option<InFlight>,
@@ -76,6 +93,7 @@ pub struct Bridge {
 }
 impl Bridge {
     fn cancel(&mut self) -> Value {
+        self.runtime.reset();
         self.plan = None;
         self.deadline = None;
         json!({"status": if self.flight.take().is_some() { "indeterminate" } else { "rejected" }})
@@ -87,7 +105,35 @@ impl Bridge {
         if self.deadline.is_some_and(|deadline| now >= deadline) {
             return self.cancel();
         }
+        if self.runtime.is_pending()
+            && matches!(
+                request,
+                Request::Prepare { .. } | Request::Smart { .. } | Request::Infer { .. }
+            )
+        {
+            return self.cancel();
+        }
         match request {
+            Request::Protocol => {
+                json!({"version":2,"profile":"inferred-history","max_response_bytes":32768})
+            }
+            Request::KeyEvent { event, automatic } => {
+                if self.plan.is_some() || self.flight.is_some() {
+                    return self.cancel();
+                }
+                self.runtime.event(event, automatic, &self.dictionary)
+            }
+            Request::ResetContext => {
+                self.runtime.reset();
+                json!({"status":"reset"})
+            }
+            Request::EditResult {
+                id,
+                outcome,
+                time_ms,
+            } => self.runtime.result(id, outcome, time_ms, &self.dictionary),
+            Request::Suggestions => self.runtime.suggestions(&self.dictionary),
+            Request::DismissSuggestion { id } => self.runtime.dismiss(id),
             Request::Prepare { state, reverse } => {
                 // Never replace an outstanding transaction with a new one.
                 if self.plan.is_some() || self.flight.is_some() {
@@ -191,11 +237,12 @@ impl Bridge {
                 }
             }
             Request::Configure { words, exclusions } => {
-                if self.plan.is_some() || self.flight.is_some() {
+                if self.plan.is_some() || self.flight.is_some() || self.runtime.is_pending() {
                     return json!({"status":"busy"});
                 }
-                match typetune_engine::UserDictionary::new(words, exclusions) {
+                match typetune_engine::UserDictionary::new(words.clone(), exclusions.clone()) {
                     Ok(dictionary) => {
+                        self.runtime.configure(words, exclusions);
                         self.dictionary = dictionary;
                         json!({"status":"configured"})
                     }

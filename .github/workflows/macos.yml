@@ -1,0 +1,43 @@
+name: macOS build and test
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: xcode-27
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check Apple Silicon and macOS 27 environment
+        run: |
+          test "$(uname -m)" = arm64
+          test "$(sw_vers -productVersion | cut -d. -f1)" = 27
+          sw_vers
+          xcodebuild -version
+          xcrun swift --version
+          rustup toolchain install 1.89.0 --profile minimal
+          rustup override set 1.89.0
+          rustc --version
+      - name: Test engine, parity and Swift adapter
+        run: bash scripts/test-macos.sh
+      - name: Build and verify app bundle
+        run: bash scripts/build-macos.sh
+      - name: Package downloadable app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent dist/TypeTune.app dist/TypeTune-macos-arm64.zip
+          (cd dist && shasum -a 256 TypeTune-macos-arm64.zip > MACOS-SHA256SUMS)
+          mkdir -p target/macos-package-check
+          ditto -x -k dist/TypeTune-macos-arm64.zip target/macos-package-check
+          codesign --verify --deep --strict target/macos-package-check/TypeTune.app
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: macos-preview
+          path: |
+            dist/TypeTune-macos-arm64.zip
+            dist/MACOS-SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14

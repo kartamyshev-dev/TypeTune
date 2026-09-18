@@ -1,0 +1,5 @@
+module CTypeTune [system] {
+    header "include/typetune.h"
+    link "typetune_bridge"
+    export *
+}

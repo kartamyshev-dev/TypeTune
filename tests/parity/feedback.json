@@ -1,0 +1,8 @@
+[
+ {"name":"three-undos","cycles":3,"trace":[{"kind":"auto","before":"ghbdtn ","after":"привет "},{"kind":"manual","before":"привет ","after":"ghbdtn "},{"action":"reset"}],"expected":[["exclusion","привет"]]},
+ {"name":"space-before","cycles":3,"trace":[{"kind":"manual","before":"пшерги ","after":"github ","learn":true},{"action":"reset"}],"expected":[["word","github"]]},
+ {"name":"space-after","cycles":3,"trace":[{"kind":"manual","before":"пшерги","after":"github","learn":true},{"action":"advance","boundary":true}],"expected":[["word","github"]]},
+ {"name":"retoggle-does-not-teach","cycles":3,"trace":[{"kind":"manual","before":"пшерги ","after":"github ","learn":true},{"kind":"manual","before":"github ","after":"пшерги "},{"action":"reset"}],"expected":[]},
+ {"name":"context-loss-does-not-teach","cycles":3,"trace":[{"kind":"manual","before":"пшерги","after":"github","learn":true},{"action":"reset"},{"action":"advance","boundary":true}],"expected":[]},
+ {"name":"typing-inside-does-not-teach","cycles":3,"trace":[{"kind":"manual","before":"пшерги","after":"github","learn":true},{"action":"advance","boundary":false}],"expected":[]}
+]

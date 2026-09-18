@@ -10,8 +10,10 @@ Linux baseline — этапы 53–55: единый compatibility runtime, бе�
 точные границы — [протокол](17-validation-record.md).
 
 **Актуальный план других платформ:** [56 — перенос Linux-поведения на Windows/macOS](56-cross-platform-roadmap.md).
-Порядок: общие контракты/CI → Windows parity → macOS parity → signed release assets.
-Нативные Windows/macOS adapters и установка ещё не реализованы.
+Порядок уточнён 2026-09-18: общие контракты/CI → локальный macOS preview →
+native macOS acceptance → Windows parity → signed release assets.
+macOS-адаптер и локальная `.app` реализованы; состояние проверок и открытые gates:
+[57 — macOS checkpoint](57-macos-checkpoint.md). Windows-адаптера пока нет.
 Оставшиеся Linux задачи — [план завершения](18-linux-completion-plan.md).
 
 Ниже сохранены архитектурные фазы G0–G6 после аудита baseline `8cc19d0`.
