@@ -152,9 +152,12 @@ impl Runtime {
         json!({"status":"cleared"})
     }
     pub fn layout_notice(&mut self, source: &str, layout: &str) -> Value {
+        // Anti-loop only after an *external* layout change. Our own rewrite+switch
+        // must not suppress the next automatic correction (that made auto fire
+        // only on every other word).
         if layout != self.last_layout {
             self.last_layout = layout.to_string();
-            if self.policy.dont_correct_after_layout_change {
+            if source != "own" && self.policy.dont_correct_after_layout_change {
                 self.suppress_auto_until_word = true;
             }
         }
@@ -311,7 +314,8 @@ impl Runtime {
             "us"
         };
         if s.layout_only {
-            self.suppress_auto_until_word = true;
+            // Layout-only is our own switch: only skip auto when policy asks and
+            // treat it like `source: own` so the next word can still correct.
             return json!({"status":"layout_only","id":self.next,"mode":mode,"switch_layout":true});
         }
         let response = json!({"status":"inferred_edit","id":self.next,"before":self.text,
@@ -348,8 +352,9 @@ impl Runtime {
         }
         self.text = p.after.clone();
         self.held.clear();
-        self.suppress_auto_until_word = true; // anti-loop after our own rewrite+switch
-                                              // Auto-learn the target form after a successful rewrite.
+        // Own rewrite intentionally continues in the target language — do not
+        // suppress the next auto word (anti-loop is for external layout changes).
+        // Auto-learn the target form after a successful rewrite.
         let target = p.after.trim().to_lowercase();
         if UserDictionary::new(vec![target.clone()], vec![]).is_ok()
             && !self.learned.contains(&target)
@@ -510,7 +515,7 @@ mod tests {
     }
 
     #[test]
-    fn anti_loop_skips_first_auto_word_after_ok() {
+    fn own_rewrite_does_not_suppress_next_auto_word() {
         let mut r = Runtime::default();
         let mut t = 0;
         word(&mut r, "ghbdtn", &mut t);
@@ -523,15 +528,28 @@ mod tests {
             t,
             &UserDictionary::default(),
         );
-        // Next auto word is suppressed once.
+        // Regression: anti-loop after ok made auto fire only every other word.
         r.reset();
         word(&mut r, "руддщ", &mut t);
         t += 1;
         assert_eq!(
             event(&mut r, "space", "down", None, t, true)["status"],
+            "inferred_edit"
+        );
+    }
+
+    #[test]
+    fn external_layout_change_skips_first_auto_word_only() {
+        let mut r = Runtime::default();
+        r.layout_notice("user", "us");
+        r.layout_notice("user", "ru");
+        let mut t = 10;
+        word(&mut r, "ghbdtn", &mut t);
+        t += 1;
+        assert_eq!(
+            event(&mut r, "space", "down", None, t, true)["status"],
             "ignored"
         );
-        // Following word auto-fires again.
         r.reset();
         word(&mut r, "руддщ", &mut t);
         t += 1;

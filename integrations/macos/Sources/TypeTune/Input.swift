@@ -41,8 +41,15 @@ final class InputBuffer {
         if type == .flagsChanged {
             if code == 56 || code == 60 {
                 key = code == 56 ? "left_shift" : "right_shift"
-                let side: UInt64 = code == 56 ? 0x2 : 0x4
-                action = flags.rawValue & side != 0 ? "down" : "up"
+                // Prefer device-dependent bits when present (tests + some OS builds);
+                // otherwise HID key state (device bits are not reliable everywhere).
+                let deviceBit: UInt64 = code == 56 ? 0x2 : 0x4
+                let raw = flags.rawValue
+                if raw & 0x6 != 0 {
+                    action = raw & deviceBit != 0 ? "down" : "up"
+                } else {
+                    action = CGEventSource.keyState(.hidSystemState, key: CGKeyCode(code)) ? "down" : "up"
+                }
             } else { key="context" }
         } else if type == .keyDown || type == .keyUp {
             if code == 51 { key="backspace" }
@@ -89,8 +96,12 @@ final class Observer {
             let mask: CGEventMask = types.reduce(0) { $0 | (1 << $1.rawValue) }
             let callback: CGEventTapCallBack = { _,type,event,ref in
                 let observer=Unmanaged<Observer>.fromOpaque(ref!).takeUnretainedValue()
-                if type == .tapDisabledByTimeout || type == .tapDisabledByUserInput { observer.buffer.invalidate() }
-                else { observer.buffer.push(event,type:type) }
+                if type == .tapDisabledByTimeout || type == .tapDisabledByUserInput {
+                    observer.buffer.invalidate()
+                    // Re-enable immediately so Double Shift does not stay dead
+                    // until the next runtime tick.
+                    if let tap = observer.tapPort() { CGEvent.tapEnable(tap: tap, enable: true) }
+                } else { observer.buffer.push(event,type:type) }
                 return Unmanaged.passUnretained(event)
             }
             guard let port=CGEvent.tapCreate(tap:.cgSessionEventTap,place:.tailAppendEventTap,options:.listenOnly,eventsOfInterest:mask,callback:callback,userInfo:Unmanaged.passUnretained(self).toOpaque()) else {
@@ -109,6 +120,10 @@ final class Observer {
         guard let tap else {return false}
         if !CGEvent.tapIsEnabled(tap:tap) {buffer.invalidate();CGEvent.tapEnable(tap:tap,enable:true);return false}
         return true
+    }
+    func tapPort() -> CFMachPort? {
+        stateLock.lock();defer{stateLock.unlock()}
+        return tap
     }
     func stop() {
         stateLock.lock();active=false;let current=loop;stateLock.unlock()

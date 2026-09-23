@@ -68,7 +68,9 @@ enum Native {
         if let element {AXUIElementSetMessagingTimeout(element,0.05)}
         let subrole=element.flatMap{attribute($0,kAXSubroleAttribute)} as? String
         let secure=IsSecureEventInputEnabled() || subrole==kAXSecureTextFieldSubrole
-        let identity="\(app.processIdentifier):\(element.map{CFHash($0)} ?? 0):\(source.0)"
+        // Layout is tracked separately; including it in identity dropped gesture
+        // batches and reset history on every input-source switch.
+        let identity="\(app.processIdentifier):\(element.map{CFHash($0)} ?? 0)"
         return NativeContext(identity:identity,bundle:app.bundleIdentifier ?? "",layout:source.1,element:element,secure:secure,permitted:permitted)
     }
     static func text(_ context: NativeContext) -> TextState? {

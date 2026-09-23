@@ -69,7 +69,12 @@ final class Runtime {
         guard context.usable, context.bundle != Bundle.main.bundleIdentifier else {
             reset();report(context.secure ? "Приостановлено: защищённый ввод" : (context.layout.isEmpty ? "Поддерживаются ABC и Русская — ПК":"Коррекция отключена для приложения"));return
         }
-        if identity != context.identity {reset();identity=context.identity;return}
+        // Focus/app change only — layout switches must not drop this batch
+        // (that lost Double Shift taps after every auto rewrite).
+        if identity != context.identity {
+            _=engine.call(["op":"reset_context"])
+            identity=context.identity
+        }
         for observation in batch {
             var event: [String:Any] = ["key":observation.key,"action":observation.action,"text":observation.text as Any? ?? NSNull(),"time_ms":observation.time,"device":NSNull(),"origin":observation.origin,"modifiers":observation.modifiers]
             if observation.action=="up", ["left_shift","right_shift"].contains(observation.key),
