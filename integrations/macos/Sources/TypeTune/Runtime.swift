@@ -145,12 +145,9 @@ final class Runtime {
                 }
             }
             let auto=settings.autoSwitching && !settings.autoDisabledIn.contains(context.bundle)
-            // Cooldown: one Double Shift must not fire twice in the same gesture
-            // burst (we used to rewrite, flip back, and look “random”).
-            let isShiftUp = observation.action=="up" && ["left_shift","right_shift"].contains(observation.key)
-            if isShiftUp && Date().timeIntervalSince(lastEditAt) < 0.45 {
-                continue
-            }
+            // No post-edit cooldown here: rapid Double Shift retoggle is a
+            // feature. execute() returns and accepting=false already prevents
+            // one gesture from firing twice.
             let reply=engine.call(["op":"key_event","event":event,"automatic":auto])
             let status=reply["status"] as? String ?? "?"
             if status != "ignored" { DiagLog.write("engine \(status) auto=\(auto)") }
