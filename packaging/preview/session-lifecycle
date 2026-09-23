@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+"""Root package hook: cleanup only registered active user sessions, as that user."""
+import os,pwd,stat,subprocess,sys
+from pathlib import Path
+# dpkg isolated-root tests must never touch sessions of the host.
+if os.environ.get('DPKG_ROOT','/').rstrip('/'):raise SystemExit(0)
+if sys.argv[1:] not in (['stop'],['remove']):raise SystemExit(2)
+for directory in Path('/run/user').glob('[0-9]*'):
+    try:
+        uid=int(directory.name);user=pwd.getpwuid(uid)
+        if uid<1000 or directory.stat().st_uid!=uid or not stat.S_ISSOCK((directory/'bus').stat().st_mode):continue
+        result=subprocess.run(['/usr/sbin/runuser','-u',user.pw_name,'--','/usr/bin/env',
+            'HOME='+user.pw_dir,'XDG_RUNTIME_DIR='+str(directory),
+            'DBUS_SESSION_BUS_ADDRESS=unix:path='+str(directory/'bus'),
+            '/usr/bin/python3','/usr/lib/typetune-preview/controller.py','package-'+sys.argv[1]],
+            timeout=20,check=False)
+        if result.returncode:raise SystemExit(result.returncode)
+    except (KeyError,FileNotFoundError):continue
+    except subprocess.TimeoutExpired:raise SystemExit('TypeTune: session cleanup timed out; package operation stopped')

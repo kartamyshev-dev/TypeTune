@@ -1,0 +1,15 @@
+# Corpus metrics baseline for plan 60 (aggressive lang-id + yo/e pick).
+# Updated only together with a deliberate data/matcher change.
+# Format: key=value (usize)
+all_positive=435
+all_missed=6
+all_negative=502
+all_false=0
+dev_positive=175
+dev_missed=3
+dev_negative=204
+dev_false=0
+holdout_positive=260
+holdout_missed=3
+holdout_negative=298
+holdout_false=0

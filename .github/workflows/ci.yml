@@ -1,0 +1,194 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CARGO_BUILD_JOBS: '2'
+  CARGO_PROFILE_DEV_DEBUG: '0'
+  CARGO_PROFILE_TEST_DEBUG: '0'
+  PYTHONWARNINGS: ignore
+
+jobs:
+  linux-lint:
+    name: Linux / lint
+    runs-on: ubuntu-26.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libevdev-dev libudev-dev libxkbcommon-dev libxkbcommon-x11-dev libdbus-1-dev libgtk-4-dev libadwaita-1-dev
+      - name: Select Rust 1.98.1
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          rustup override set 1.98.1
+          cargo fetch --locked --target x86_64-unknown-linux-gnu
+      - name: Frequency data
+        run: python3 scripts/verify-frequency-data.py
+      - name: Format and clippy
+        run: |
+          cargo fmt --all -- --check
+          cargo clippy --workspace --locked --offline -- -D warnings
+
+  linux-tests:
+    name: Linux / tests
+    runs-on: ubuntu-26.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libevdev-dev libudev-dev libxkbcommon-dev libxkbcommon-x11-dev libdbus-1-dev libgtk-4-dev libadwaita-1-dev python3-gi gir1.2-gtk-4.0 dbus-x11 xvfb xauth
+      - name: Select Rust 1.98.1
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal
+          rustup override set 1.98.1
+          cargo fetch --locked --target x86_64-unknown-linux-gnu
+      - name: Rust tests
+        run: |
+          cargo test --workspace --all-targets --locked --offline
+          cargo build -p typetune-bridge --locked --offline
+      - name: Python tests
+        run: |
+          /usr/bin/python3 -m unittest discover -s integrations/app -p 'test_*.py'
+          /usr/bin/python3 -m unittest discover -s integrations/compat -p 'test_*.py'
+          /usr/bin/python3 -m unittest discover -s tests/packaging -p 'test_*.py'
+      - name: GTK smoke fixtures
+        run: |
+          for fixture in smoke words_smoke applications_smoke suggestions_smoke package_smoke; do
+            xvfb-run -a dbus-run-session -- env GTK_A11Y=none /usr/bin/python3 "integrations/gui/$fixture.py"
+          done
+
+  linux-package:
+    name: Linux / package
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config dpkg-dev desktop-file-utils libevdev-dev libudev-dev libxkbcommon-dev libxkbcommon-x11-dev libdbus-1-dev libgtk-4-dev libadwaita-1-dev
+      - name: Select Rust 1.98.1
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal
+          rustup override set 1.98.1
+          cargo fetch --locked --target x86_64-unknown-linux-gnu
+      - name: Validate release version
+        env:
+          REF: ${{ github.ref }}
+          TAG: ${{ github.ref_name }}
+        run: python3 scripts/release-version.py >> "$GITHUB_ENV"
+      - name: Build Debian package and verify
+        run: |
+          python3 scripts/build-preview-deb.py --version "$DEB_VERSION"
+          sudo /usr/bin/python3 tests/packaging/check_deb.py "dist/typetune-preview_${DEB_VERSION}_amd64.deb"
+          for package in dist/*.deb; do
+            mv "$package" "${package//\~/\.}"
+          done
+          (cd dist && sha256sum *.deb > SHA256SUMS)
+          cp docs/releases/0.1.0.md dist/RELEASE_NOTES.md
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: linux-package
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
+
+  macos-tests:
+    name: macOS / tests
+    runs-on: xcode-27
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Environment (Apple Silicon, macOS 27)
+        run: |
+          test "$(uname -m)" = arm64
+          test "$(sw_vers -productVersion | cut -d. -f1)" = 27
+          sw_vers
+          xcodebuild -version
+          xcrun swift --version
+          rustup toolchain install 1.89.0 --profile minimal
+          rustup override set 1.89.0
+          rustc --version
+      - name: Engine, bridge, and Swift tests
+        run: bash scripts/test-macos.sh
+
+  macos-package:
+    name: macOS / package
+    runs-on: xcode-27
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Environment (Apple Silicon, macOS 27)
+        run: |
+          test "$(uname -m)" = arm64
+          test "$(sw_vers -productVersion | cut -d. -f1)" = 27
+          rustup toolchain install 1.89.0 --profile minimal
+          rustup override set 1.89.0
+      - name: Build and verify app bundle
+        run: bash scripts/build-macos.sh
+      - name: Package downloadable app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent dist/TypeTune.app dist/TypeTune-macos-arm64.zip
+          (cd dist && shasum -a 256 TypeTune-macos-arm64.zip > MACOS-SHA256SUMS)
+          mkdir -p target/macos-package-check
+          ditto -x -k dist/TypeTune-macos-arm64.zip target/macos-package-check
+          codesign --verify --deep --strict target/macos-package-check/TypeTune.app
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: macos-package
+          path: |
+            dist/TypeTune-macos-arm64.zip
+            dist/MACOS-SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    name: Release / publish
+    if: startsWith(github.ref, 'refs/tags/v') && github.event_name == 'push'
+    needs: [linux-lint, linux-tests, linux-package, macos-tests, macos-package]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: linux-package
+          path: dist
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: macos-package
+          path: dist
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          cd dist
+          sha256sum --check SHA256SUMS
+          sha256sum --check MACOS-SHA256SUMS
+          gh release create "$TAG" ./*.deb ./*.zip SHA256SUMS MACOS-SHA256SUMS \
+            --verify-tag \
+            --prerelease \
+            --title "TypeTune $TAG" \
+            --notes-file RELEASE_NOTES.md
+          mkdir downloaded
+          gh release download "$TAG" --dir downloaded
+          (cd downloaded && sha256sum --check SHA256SUMS && sha256sum --check MACOS-SHA256SUMS)

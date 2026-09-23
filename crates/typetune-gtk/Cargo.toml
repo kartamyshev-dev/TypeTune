@@ -1,0 +1,8 @@
+[package]
+name = "typetune-gtk"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+typetune-engine = { path = "../typetune-engine" }
+gtk = { version = "0.9", package = "gtk4" }

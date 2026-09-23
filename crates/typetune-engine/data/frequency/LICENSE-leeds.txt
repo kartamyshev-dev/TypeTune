@@ -1,0 +1,9 @@
+University of Leeds Internet Corpus frequency list (Russian)
+Repository mirror: https://github.com/hingston/russian
+Upstream: http://corpus.leeds.ac.uk/frqc/internet-ru.num
+License: Creative Commons Attribution 2.5 (CC BY 2.5)
+https://creativecommons.org/licenses/by/2.5/
+Corpus editing and cleanup by hingston.
+
+This file (leeds_ru_50k.txt) is the 50000-russian-words-cyrillic-only
+list from the mirror, unmodified.

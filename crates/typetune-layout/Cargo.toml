@@ -1,0 +1,9 @@
+[package]
+name = "typetune-layout"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+typetune-core = { path = "../typetune-core" }
+xkbcommon = { version = "0.7", features = ["x11"] }
+tracing = "0.1"

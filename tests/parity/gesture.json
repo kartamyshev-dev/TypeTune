@@ -1,0 +1,9 @@
+[
+ {"name":"left","events":[["left",false,0],["left",true,50],["left",false,150],["left",true,200]],"fires":true},
+ {"name":"right","events":[["right",false,0],["right",true,50],["right",false,150],["right",true,200]],"fires":true},
+ {"name":"held","events":[["left",false,0],["left",true,300],["left",false,350],["left",true,400]],"fires":false},
+ {"name":"different","events":[["left",false,0],["left",true,50],["right",false,150],["right",true,200]],"fires":false},
+ {"name":"overlap","events":[["left",false,0],["right",false,10],["right",true,20],["left",true,30]],"fires":false},
+ {"name":"timeout","events":[["left",false,0],["left",true,50],["left",false,500],["left",true,550]],"fires":false},
+ {"name":"clock","events":[["left",false,1000],["left",true,0]],"fires":false}
+]

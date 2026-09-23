@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/hermitdave/FrequencyWords",
+  "revision": "525f9b560de45753a5ea01069454e72e9aa541c6",
+  "license": "CC-BY-SA-4.0",
+  "files": {
+    "en": {
+      "path": "content/2018/en/en_50k.txt",
+      "sha256": "5351ff405b1126ef555791dd4d9798a48e3e9a501a9fc481a9da957752cfb458"
+    },
+    "ru": {
+      "path": "content/2018/ru/ru_50k.txt",
+      "sha256": "6095f507cc167488ec66ada5a85ac50433503a08ad24a07c6eabdf54352c4e7f"
+    }
+  },
+  "leeds": {
+    "repository": "https://github.com/hingston/russian",
+    "path": "50000-russian-words-cyrillic-only.txt",
+    "url": "https://raw.githubusercontent.com/hingston/russian/master/50000-russian-words-cyrillic-only.txt",
+    "upstream": "http://corpus.leeds.ac.uk/frqc/internet-ru.num",
+    "license": "CC-BY-2.5",
+    "sha256": "57fe4356417987c1d0221f32e20b5afeaf45fb7b6c318a9f8f55fb119b81c05f"
+  },
+  "tech": {
+    "ru": {
+      "license": "MIT",
+      "sha256": "f787a52142ed2fd53032dd94d82fba2cf993e9a492f3f6a4591c7e0e07e17a53"
+    },
+    "en": {
+      "license": "MIT",
+      "sha256": "95789c10afea9da23d15fe9eab5aed915bfb7959ab3be3d5b294bfbc6348567a"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+case "$1" in
+  upgrade|deconfigure) "${DPKG_ROOT:-}/usr/lib/typetune-preview/session-lifecycle" stop ;;
+  remove) "${DPKG_ROOT:-}/usr/lib/typetune-preview/session-lifecycle" remove ;;
+esac

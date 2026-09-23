@@ -1,0 +1,15 @@
+/target
+**/*.rs.bk
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Python runtime/test caches
+__pycache__/
+*.py[cod]
+
+# Built Debian artifacts
+/dist/
+integrations/macos/.build/

@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=TypeTune
+Comment=Исправление раскладки RU/EN
+Exec=/usr/bin/typetune-preview
+TryExec=/usr/bin/typetune-preview
+Icon=input-keyboard
+Terminal=false
+Categories=Utility;Accessibility;
+StartupNotify=true
+StartupWMClass=dev.kartamyshev.TypeTune.Preview
+Actions=Setup;
+
+[Desktop Action Setup]
+Name=Настроить доступ и сеанс
+Exec=/usr/bin/typetune-preview --setup
