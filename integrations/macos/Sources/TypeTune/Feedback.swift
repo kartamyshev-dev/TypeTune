@@ -7,13 +7,19 @@ enum LayoutFlag {
     static let hidden = "•"
     static let allDisabled = "✕"
 
+    /// `activeKeyboards` filters auto-correction; the flag always reflects a
+    /// known us/ru layout so the menu bar is never blank after TIS readback.
     static func label(native: (String, String), activeKeyboards: [String]) -> String {
-        let (id, mapped) = native
-        guard !activeKeyboards.isEmpty, activeKeyboards.contains(id) else { return unknown }
+        let (_, mapped) = native
         switch mapped {
         case "us": return "EN"
         case "ru": return "RU"
-        default: return unknown
+        default:
+            // Fall back: recognized pair IDs even if language mapping is empty.
+            let id = native.0
+            if id == "com.apple.keylayout.ABC" || id == "com.apple.keylayout.US" { return "EN" }
+            if id == "com.apple.keylayout.RussianWin" || id == "com.apple.keylayout.Russian" { return "RU" }
+            return unknown
         }
     }
 

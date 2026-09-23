@@ -61,9 +61,18 @@ final class StatusMenu: NSObject {
         self.state = state
         let settings = state.settings
         let title = Self.statusTitle(flag: state.flag, displayLayoutFlag: settings.displayLayoutFlag, running: state.running)
-        button?.title = title
-        button?.toolTip = "TypeTune — \(title)"
-        button?.setAccessibilityLabel("TypeTune — \(title)")
+        if let button {
+            // Explicit font + attributed title: bare `title` can collapse to 0-width.
+            button.font = NSFont.systemFont(ofSize: 13, weight: .semibold)
+            button.title = title
+            button.attributedTitle = NSAttributedString(string: title, attributes: [
+                .font: NSFont.systemFont(ofSize: 13, weight: .semibold),
+                .foregroundColor: NSColor.labelColor
+            ])
+            button.sizeToFit()
+            button.toolTip = "TypeTune — \(title)"
+            button.setAccessibilityLabel("TypeTune — \(title)")
+        }
         header.title = state.running ? state.flag : LayoutFlag.allDisabled
         autoSwitching.state = settings.autoSwitching ? .on : .off
         manualSwitching.state = settings.manualSwitching ? .on : .off

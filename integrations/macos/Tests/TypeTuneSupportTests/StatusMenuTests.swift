@@ -153,8 +153,10 @@ struct StatusMenuTests {
     @Test func layoutFlagLabelMapsKnownPairOnly() {
         #expect(LayoutFlag.label(native: ("com.apple.keylayout.ABC", "us"), activeKeyboards: ["com.apple.keylayout.ABC", "com.apple.keylayout.RussianWin"]) == "EN")
         #expect(LayoutFlag.label(native: ("com.apple.keylayout.RussianWin", "ru"), activeKeyboards: ["com.apple.keylayout.ABC", "com.apple.keylayout.RussianWin"]) == "RU")
+        // Flag follows TIS language even when the source is not in the auto-correction list.
+        #expect(LayoutFlag.label(native: ("com.apple.keylayout.Dvorak", "us"), activeKeyboards: ["com.apple.keylayout.ABC"]) == "EN")
+        #expect(LayoutFlag.label(native: ("com.apple.keylayout.RussianWin", "ru"), activeKeyboards: []) == "RU")
         #expect(LayoutFlag.label(native: ("com.apple.keylayout.Dvorak", ""), activeKeyboards: ["com.apple.keylayout.ABC"]) == "?")
-        #expect(LayoutFlag.label(native: ("com.apple.keylayout.ABC", "us"), activeKeyboards: []) == "?")
     }
 
     @Test func switchSoundMutesWhenPausedSensitiveUnknown() {

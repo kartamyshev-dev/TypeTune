@@ -31,7 +31,31 @@ enum Native {
         if !Thread.isMainThread {return DispatchQueue.main.sync {inputSource()}}
         guard let source=TISCopyCurrentKeyboardInputSource()?.takeRetainedValue() else {return ("","")}
         let id=sourceID(source)
-        return (id,id=="com.apple.keylayout.ABC" ? "us" : (id=="com.apple.keylayout.RussianWin" ? "ru":""))
+        return (id,languageCode(source,id:id))
+    }
+    /// Map a TIS source to `us` / `ru` (or empty when unknown).
+    /// Accepts common macOS layout names, not only ABC / RussianWin.
+    static func languageCode(_ source: TISInputSource, id: String) -> String {
+        switch id {
+        case "com.apple.keylayout.ABC", "com.apple.keylayout.US", "com.apple.keylayout.USExtended-Software":
+            return "us"
+        case "com.apple.keylayout.Russian", "com.apple.keylayout.RussianWin", "com.apple.keylayout.Russian-Phonetic":
+            return "ru"
+        default:
+            break
+        }
+        if let raw=TISGetInputSourceProperty(source,kTISPropertyLocalizedName) {
+            let name=(Unmanaged<CFString>.fromOpaque(raw).takeUnretainedValue() as String).lowercased()
+            if name.contains("russian") || name.contains("рус") { return "ru" }
+            if name.contains("u.s.") || name.contains("abc") || name == "us" || name.contains("qwerty") { return "us" }
+        }
+        if let raw=TISGetInputSourceProperty(source,kTISPropertyInputSourceLanguages),
+           let langs=Unmanaged<CFArray>.fromOpaque(raw).takeUnretainedValue() as? [String],
+           let first=langs.first {
+            if first.hasPrefix("ru") { return "ru" }
+            if first.hasPrefix("en") { return "us" }
+        }
+        return ""
     }
     static func context() -> NativeContext {
         let permitted=CGPreflightListenEventAccess() && CGPreflightPostEventAccess() && AXIsProcessTrusted()
@@ -58,9 +82,19 @@ enum Native {
     }
     static func select(_ mode: String) -> Bool {
         if !Thread.isMainThread {return DispatchQueue.main.sync {select(mode)}}
-        let id=mode=="us" ? "com.apple.keylayout.ABC":"com.apple.keylayout.RussianWin"
-        guard let sources=TISCreateInputSourceList([kTISPropertyInputSourceID as String:id] as CFDictionary,false)?.takeRetainedValue() as? [TISInputSource],let source=sources.first else {return false}
-        return TISSelectInputSource(source)==noErr && inputSource().1==mode
+        // Prefer the classic pair; fall back to any enabled source with that language.
+        let preferred=mode=="us" ? "com.apple.keylayout.ABC":"com.apple.keylayout.RussianWin"
+        var candidates=[preferred]
+        if mode=="us" { candidates += ["com.apple.keylayout.US"] }
+        else { candidates += ["com.apple.keylayout.Russian","com.apple.keylayout.Russian-Phonetic"] }
+        for id in candidates {
+            if let sources=TISCreateInputSourceList([kTISPropertyInputSourceID as String:id] as CFDictionary,false)?.takeRetainedValue() as? [TISInputSource],
+               let source=sources.first,
+               TISSelectInputSource(source)==noErr && inputSource().1==mode {
+                return true
+            }
+        }
+        return false
     }
     static func modifiersHeld() -> Bool {
         !CGEventSource.flagsState(.combinedSessionState).intersection([.maskShift,.maskCommand,.maskControl,.maskAlternate]).isEmpty
