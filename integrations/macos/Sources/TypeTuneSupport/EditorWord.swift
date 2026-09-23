@@ -14,6 +14,11 @@ public enum EditorWord {
         return word
     }
     public static func matches(_ before: String, in value: String, selection: NSRange) -> Bool {
-        beforeCaret(in:value,selection:selection)==before
+        // Engine `before` includes the trailing delimiter space on auto (Space);
+        // AX `beforeCaret` is the bare token. Compare the word, not the padding.
+        guard let word = beforeCaret(in: value, selection: selection) else { return false }
+        let expected = before.trimmingCharacters(in: .whitespaces)
+        let actual = word.trimmingCharacters(in: .whitespaces)
+        return !actual.isEmpty && expected == actual
     }
 }

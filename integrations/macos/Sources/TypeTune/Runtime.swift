@@ -185,30 +185,32 @@ final class Runtime {
         report(lastIssue ?? "Работает · \(context.layout.uppercased())")
     }
     private func execute(_ plan:[String:Any],observation:KeyObservation,context:NativeContext)->String {
+        func fail(_ why: String) -> String {
+            DiagLog.write("execute-reject \(why) key=\(observation.key)")
+            return "rejected"
+        }
         guard let before=plan["before"] as? String,let replacement=plan["replacement"] as? String,let count=plan["remove"] as? Int,let mode=plan["mode"] as? String,
-              (1...128).contains(count), replacement.count<=128,count==before.count else {return "rejected"}
+              (1...128).contains(count), replacement.count<=128,count==before.count else {return fail("plan")}
         let deadline=DispatchTime.now().uptimeNanoseconds+800_000_000
-        // Allow this edit when the user is already typing the next word (batch
-        // may contain later keys). Only abort if *new* events arrive during
-        // execute or the focused element / session moves.
         let fence = observer.buffer.currentRevision()
         func unchanged(_ expected: String) -> Bool {
             guard observer.buffer.currentRevision()==fence,DispatchTime.now().uptimeNanoseconds<deadline,!Native.modifiersHeld() else {return false}
             let current=Native.context()
             return current.usable && current.identity==expected
         }
-        guard unchanged(context.identity) else {return "rejected"}
+        guard unchanged(context.identity) else {return fail("unchanged0")}
         // Never send a synthetic Up for a key the user still holds.
         // Skip Caps/Fn (layout switch / latch) — they are not typing keys.
         while Native.typingKeyHeld() {
-            guard unchanged(context.identity) else {return "rejected"};Thread.sleep(forTimeInterval:0.002)
+            if !unchanged(context.identity) {return fail("held-wait")}
+            Thread.sleep(forTimeInterval:0.002)
         }
         let old=Native.text(context)
         if let old {
-            guard EditorWord.matches(before,in:old.value,selection:NSRange(location:old.range.location,length:old.range.length)) else {return "rejected"}
+            guard EditorWord.matches(before,in:old.value,selection:NSRange(location:old.range.location,length:old.range.length)) else {return fail("word-mismatch")}
         }
         // Select and read back BEFORE editing so a missing layout cannot erase text.
-        guard Native.select(mode) else {return "rejected"}
+        guard Native.select(mode) else {return fail("select")}
         let changed=Native.context()
         guard changed.bundle==context.bundle,changed.element.map({CFHash($0)})==context.element.map({CFHash($0)}),unchanged(changed.identity),Native.text(changed)==old else {
             return LayoutRestore.after("rejected",original:context.layout,select:Native.select)

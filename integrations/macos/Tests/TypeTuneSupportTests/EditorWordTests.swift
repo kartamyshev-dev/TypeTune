@@ -7,6 +7,9 @@ struct EditorWordTests {
         #expect(!EditorWord.matches("r",in:"frr",selection:NSRange(location:3,length:0)))
         #expect(!EditorWord.matches("r ",in:"frr ",selection:NSRange(location:4,length:0)))
         #expect(EditorWord.matches("frr",in:"frr",selection:NSRange(location:3,length:0)))
+        // Auto (Space): engine `before` has a trailing delimiter; AX token does not.
+        #expect(EditorWord.matches("frr ",in:"frr ",selection:NSRange(location:4,length:0)))
+        #expect(EditorWord.matches("frr ",in:"prefix frr ",selection:NSRange(location:11,length:0)))
         #expect(EditorWord.beforeCaret(in:"prefix frr suffix",selection:NSRange(location:10,length:0)) == "frr")
     }
     @Test func boundariesSelectionAndUnicode() {
