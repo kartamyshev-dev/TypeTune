@@ -78,13 +78,20 @@ final class Runtime {
         let accepting = enabled && !suspended && settings.compatibility && context.usable && context.bundle != Bundle.main.bundleIdentifier
         // Recover the tap BEFORE drain: a lost-queue return used to skip recover()
         // forever and leave Double Shift / auto dead after the first tap disable.
+        let listenOK = CGPreflightListenEventAccess()
+        let postOK = CGPreflightPostEventAccess()
+        if !listenOK || !postOK || !context.permitted {
+            // Surface the real TCC state of *this* process (CLI --doctor can lie).
+            report("Нужны разрешения: мониторинг ввода\(listenOK ? "" : " (listen)") и универсальный доступ")
+            DiagLog.write("perm gate listen=\(listenOK) post=\(postOK) ax=\(context.permitted)")
+        }
         if !observer.isActive {
             observer.start()
             DiagLog.write("observer start")
         }
         if !observer.recover() {
             _ = observer.buffer.drain()
-            report("Восстановление наблюдения…")
+            report(listenOK ? "Восстановление наблюдения…" : "Нужны разрешения: мониторинг ввода")
             return
         }
         observer.buffer.accepting.store(accepting,ordering:.relaxed)

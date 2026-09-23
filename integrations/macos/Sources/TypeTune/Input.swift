@@ -116,8 +116,11 @@ final class Observer {
                 return Unmanaged.passUnretained(event)
             }
             guard let port=CGEvent.tapCreate(tap:.cgSessionEventTap,place:.tailAppendEventTap,options:.listenOnly,eventsOfInterest:mask,callback:callback,userInfo:Unmanaged.passUnretained(self).toOpaque()) else {
-                stateLock.lock();active=false;stateLock.unlock();buffer.invalidate();return
+                stateLock.lock();active=false;stateLock.unlock();buffer.invalidate()
+                DiagLog.write("tapCreate FAILED listen=\(CGPreflightListenEventAccess()) post=\(CGPreflightPostEventAccess()) ax=\(AXIsProcessTrusted())")
+                return
             }
+            DiagLog.write("tapCreate ok listen=\(CGPreflightListenEventAccess())")
             let runloop=CFRunLoopGetCurrent()!
             let source=CFMachPortCreateRunLoopSource(nil,port,0)!
             stateLock.lock();tap=port;self.source=source;loop=runloop;let shouldRun=active;stateLock.unlock()
@@ -126,17 +129,31 @@ final class Observer {
             stateLock.lock();tap=nil;self.source=nil;loop=nil;active=false;stateLock.unlock()
         }
     }
+    private var lastRecoverDiag=Date.distantPast
+    private var enableFails=0
     func recover() -> Bool {
-        stateLock.lock();let port=tap;stateLock.unlock()
-        guard let port else {return false}
+        stateLock.lock();let port=tap;let isOn=active;stateLock.unlock()
+        guard let port else {
+            if Date().timeIntervalSince(lastRecoverDiag) > 1.5 {
+                lastRecoverDiag = Date()
+                DiagLog.write("recover: no tap port active=\(isOn)")
+            }
+            return false
+        }
         let flagged=needsReenable.exchange(false,ordering:.acquiringAndReleasing)
         if flagged || !CGEvent.tapIsEnabled(tap:port) {
-            // Re-enable without marking the whole queue lost — that prevented
-            // recover() from ever running (drain returned early on `lost`).
             CGEvent.tapEnable(tap:port,enable:true)
             _ = buffer.drain()
-            return CGEvent.tapIsEnabled(tap:port)
+            let on = CGEvent.tapIsEnabled(tap:port)
+            if !on { enableFails += 1 } else { enableFails = 0 }
+            if Date().timeIntervalSince(lastRecoverDiag) > 1.5 {
+                lastRecoverDiag = Date()
+                DiagLog.write("recover: reenable flagged=\(flagged) now=\(on) fails=\(enableFails) listen=\(CGPreflightListenEventAccess())")
+            }
+            // Without Input Monitoring, tapEnable is a no-op forever.
+            return on
         }
+        enableFails = 0
         return true
     }
     func stop() {

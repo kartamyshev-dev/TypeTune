@@ -65,6 +65,14 @@ final class Controller: ObservableObject {
         _ = CGRequestListenEventAccess(); _ = CGRequestPostEventAccess()
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true] as CFDictionary
         _ = AXIsProcessTrustedWithOptions(options)
+        // Deep links after ad-hoc rebuild: TCC grants follow the old cdhash.
+        let base = "x-apple.systempreferences:com.apple.preference.security?Privacy_"
+        if !CGPreflightListenEventAccess() {
+            NSWorkspace.shared.open(URL(string: base + "ListenEvent")!)
+        }
+        if !AXIsProcessTrusted() {
+            NSWorkspace.shared.open(URL(string: base + "Accessibility")!)
+        }
     }
 
     /// Single apply path: generation ACK, engine configure, autostart side effects.
