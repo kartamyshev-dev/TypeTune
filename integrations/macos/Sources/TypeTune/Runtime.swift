@@ -30,6 +30,7 @@ final class Runtime {
     private var status=""
     private var lastIssue: String?
     private var lastLayout=""
+    private var lastDiagAt=Date.distantPast
     var publish: ((String) -> Void)?
     func configure(_ value: Settings, completion: @escaping (Bool)->Void) {
         queue.async {
@@ -45,7 +46,7 @@ final class Runtime {
                 ] as [String:Any]
             ])
             let ok=reply["status"] as? String == "configured"
-            if ok { self.settings=value;self.identity="";self.lastIssue=nil;self.observer.buffer.invalidate() }
+            if ok { self.settings=value;self.identity="";self.lastIssue=nil }
             DispatchQueue.main.async {completion(ok)}
         }
     }
@@ -75,15 +76,28 @@ final class Runtime {
         let context=Native.context()
         noteLayout(context.layout, source:"user")
         let accepting = enabled && !suspended && settings.compatibility && context.usable && context.bundle != Bundle.main.bundleIdentifier
+        // Recover the tap BEFORE drain: a lost-queue return used to skip recover()
+        // forever and leave Double Shift / auto dead after the first tap disable.
+        if !observer.isActive {
+            observer.start()
+            DiagLog.write("observer start")
+        }
+        if !observer.recover() {
+            _ = observer.buffer.drain()
+            report("Восстановление наблюдения…")
+            return
+        }
         observer.buffer.accepting.store(accepting,ordering:.relaxed)
         let (batch,lost)=observer.buffer.drain()
-        if lost {DiagLog.write("lost queue reset");reset();return}
+        if !accepting && Date().timeIntervalSince(lastDiagAt) > 1.5 {
+            lastDiagAt = Date()
+            DiagLog.write("accepting=0 layout=\(context.layout) secure=\(context.secure) bundle=\(context.bundle) enabled=\(enabled) suspended=\(suspended) compat=\(settings.compatibility) permitted=\(context.permitted)")
+        }
+        if lost {DiagLog.write("lost queue reset batch=\(batch.count)");reset()}
         guard enabled, !suspended, settings.compatibility else {
             reset();report(!settings.compatibility ? "Включите режим совместимости" : "На паузе");return
         }
         guard context.permitted else {reset();report("Нужны разрешения: мониторинг ввода и универсальный доступ");return}
-        if !observer.isActive {observer.start();reset();report("Подключение наблюдателя…");return}
-        guard observer.recover() else {reset();report("Восстановление наблюдения…");return}
         guard context.usable, context.bundle != Bundle.main.bundleIdentifier else {
             DiagLog.write("not-usable layout=\(context.layout) secure=\(context.secure) bundle=\(context.bundle) permitted=\(context.permitted)")
             reset();report(context.secure ? "Приостановлено: защищённый ввод" : (context.layout.isEmpty ? "Поддерживаются ABC и Русская — ПК":"Коррекция отключена для приложения"));return

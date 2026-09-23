@@ -131,9 +131,11 @@ final class Observer {
         guard let port else {return false}
         let flagged=needsReenable.exchange(false,ordering:.acquiringAndReleasing)
         if flagged || !CGEvent.tapIsEnabled(tap:port) {
-            buffer.invalidate()
+            // Re-enable without marking the whole queue lost — that prevented
+            // recover() from ever running (drain returned early on `lost`).
             CGEvent.tapEnable(tap:port,enable:true)
-            return false
+            _ = buffer.drain()
+            return CGEvent.tapIsEnabled(tap:port)
         }
         return true
     }
