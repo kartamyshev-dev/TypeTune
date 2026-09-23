@@ -186,14 +186,15 @@ impl Runtime {
         if e.origin == Origin::Own {
             return ignored;
         }
-        // Caps / Fn (layout switch, latch) must not invalidate keyboard history.
+        // Caps / Fn / modifier edges (layout switch, latch) must not invalidate
+        // keyboard history.
         if e.key == "lock_key" {
             return ignored;
         }
-        // Pointer click: end the current word / gesture without treating the
-        // event as a failed keystroke.
+        // Pointer: abandon a half-finished Double Shift, but keep the word —
+        // a click in the same field used to wipe history and kill auto.
         if e.key == "pointer" {
-            self.reset();
+            self.gesture = Gesture::default();
             return ignored;
         }
         if e.origin != Origin::Physical

@@ -49,12 +49,13 @@ final class InputBuffer {
                 // HID key state is authoritative. Device-dependent bits (0x2/0x4)
                 // disagree on some macOS builds and inverted every Shift up.
                 action = keyStateProvider(CGKeyCode(code)) ? "down" : "up"
-            } else if code == 57 || code == 63 {
-                // Caps / Fn — often used as layout switch. Not a text key and must
-                // not wipe keyboard history (`key="context"` resets the runtime).
+            } else {
+                // Caps / Fn / Command / Option / Control / globe: not text.
+                // Never map these to `context` — the engine resets history on
+                // `context` and every modifier edge wiped the current word.
                 key = "lock_key"
                 action = "up"
-            } else { key="context" }
+            }
         } else if type == .keyDown || type == .keyUp {
             if code == 51 { key="backspace" }
             else if code == 49 { key="space" }
