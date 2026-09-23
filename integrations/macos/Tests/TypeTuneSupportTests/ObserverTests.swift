@@ -12,10 +12,14 @@ struct ObserverTests {
     }
     @Test func overlappingShiftSidesPreserveIndividualEdges() {
         let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
-        buffer.push(event(code:56,flags:0x20002),type:.flagsChanged)
-        buffer.push(event(code:60,flags:0x20006),type:.flagsChanged)
-        buffer.push(event(code:56,flags:0x20004),type:.flagsChanged)
-        buffer.push(event(code:60,flags:0),type:.flagsChanged)
+        // Drive Shift edges with an injectable HID state (synthetic CGEvents
+        // do not update the real key state).
+        var held: Set<CGKeyCode> = []
+        buffer.keyStateProvider = { held.contains($0) }
+        held.insert(56); buffer.push(event(code:56,flags:0x20002),type:.flagsChanged)
+        held.insert(60); buffer.push(event(code:60,flags:0x20006),type:.flagsChanged)
+        held.remove(56); buffer.push(event(code:56,flags:0x20004),type:.flagsChanged)
+        held.remove(60); buffer.push(event(code:60,flags:0),type:.flagsChanged)
         let (events,lost)=buffer.drain()
         #expect(!lost)
         #expect(events.map{$0.key}==["left_shift","right_shift","left_shift","right_shift"])
@@ -46,6 +50,7 @@ struct ObserverTests {
     }
     @Test func revisionReadsMustNotDropGestureEdges() {
         let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
+        buffer.keyStateProvider = { _ in true }
         let done=Atomic<Bool>(false)
         let started=DispatchSemaphore(value:0)
         let finished=DispatchSemaphore(value:0)
@@ -73,6 +78,7 @@ struct ObserverTests {
         let finished=DispatchSemaphore(value:0)
         let done=Atomic<Bool>(false)
         DispatchQueue.global().async {
+            buffer.keyStateProvider = { _ in true }
             let value=event(code:56,flags:0x20002)
             for index in 1...10000 {
                 room.wait()

@@ -11,6 +11,8 @@ struct KeyObservation {
     let modifiers: UInt32
     let revision: UInt64
     let origin: String
+    /// Diagnostic only — never user text.
+    let meta: String
 }
 final class InputBuffer {
     // One producer (tap run loop), one consumer (runtime queue). Release/acquire
@@ -24,6 +26,9 @@ final class InputBuffer {
     deinit {slots.deinitialize(count:256);slots.deallocate()}
     private let lost = Atomic<Bool>(false)
     let accepting = Atomic<Bool>(false)
+    /// Injectable so tests can drive Shift edges; production uses HID state.
+    /// Per-instance: Swift Testing runs tests in parallel.
+    var keyStateProvider: (CGKeyCode) -> Bool = { CGEventSource.keyState(.hidSystemState, key: $0) }
     func push(_ event: CGEvent, type: CGEventType) {
         guard accepting.load(ordering:.relaxed), event.getIntegerValueField(.eventSourceUserData) != ownMarker else { return }
         var stamp=revision.load(ordering:.relaxed)
@@ -41,15 +46,9 @@ final class InputBuffer {
         if type == .flagsChanged {
             if code == 56 || code == 60 {
                 key = code == 56 ? "left_shift" : "right_shift"
-                // Prefer device-dependent bits when present (tests + some OS builds);
-                // otherwise HID key state (device bits are not reliable everywhere).
-                let deviceBit: UInt64 = code == 56 ? 0x2 : 0x4
-                let raw = flags.rawValue
-                if raw & 0x6 != 0 {
-                    action = raw & deviceBit != 0 ? "down" : "up"
-                } else {
-                    action = CGEventSource.keyState(.hidSystemState, key: CGKeyCode(code)) ? "down" : "up"
-                }
+                // HID key state is authoritative. Device-dependent bits (0x2/0x4)
+                // disagree on some macOS builds and inverted every Shift up.
+                action = keyStateProvider(CGKeyCode(code)) ? "down" : "up"
             } else if code == 57 || code == 63 {
                 // Caps / Fn — often used as layout switch. Not a text key and must
                 // not wipe keyboard history (`key="context"` resets the runtime).
@@ -64,9 +63,15 @@ final class InputBuffer {
                 event.keyboardGetUnicodeString(maxStringLength: chars.count, actualStringLength: &length, unicodeString: &chars)
                 if length > 0 && length < chars.count { text=String(utf16CodeUnits: chars, count:length) }
             }
-        } else { key="context" }
-        let origin=event.getIntegerValueField(.eventSourceUnixProcessID)==0 ? "physical":"unknown"
-        slots[Int(write % capacity)] = KeyObservation(key:key,action:action,text:text,time:event.timestamp/1_000_000,modifiers:modifiers,revision:stamp,origin:origin)
+        } else { key="pointer" }
+        let pid = event.getIntegerValueField(.eventSourceUnixProcessID)
+        let hid = CGEventSource(event: event)?.sourceStateID == .hidSystemState
+        // HID hardware: pid 0 and/or hidSystemState. A non-zero pid alone is not
+        // enough — some builds stamp WindowServer pid on real keys (that marked
+        // every keystroke `unknown` and reset history).
+        let origin = (pid == 0 || hid) ? "physical" : "unknown"
+        let meta = "pid=\(pid) hid=\(hid) flags=\(flags.rawValue) type=\(type.rawValue)"
+        slots[Int(write % capacity)] = KeyObservation(key:key,action:action,text:text,time:event.timestamp/1_000_000,modifiers:modifiers,revision:stamp,origin:origin,meta:meta)
         head.store(write &+ 1,ordering:.releasing)
     }
     func invalidate() { lost.store(true,ordering:.relaxed) }

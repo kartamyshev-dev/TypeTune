@@ -190,6 +190,12 @@ impl Runtime {
         if e.key == "lock_key" {
             return ignored;
         }
+        // Pointer click: end the current word / gesture without treating the
+        // event as a failed keystroke.
+        if e.key == "pointer" {
+            self.reset();
+            return ignored;
+        }
         if e.origin != Origin::Physical
             || e.key.len() > 64
             || e.device.as_ref().is_some_and(|v| v.len() > 128)
@@ -199,8 +205,8 @@ impl Runtime {
             return ignored;
         }
         if self.pending.is_some() {
-            self.reset();
-            return json!({"status":"invalidated"});
+            // In-flight replacement: drop extra keys without wiping history/pending.
+            return ignored;
         }
         self.time = Some(e.time_ms);
         let identity = format!("{}:{}", e.device.as_deref().unwrap_or("unknown"), e.key);

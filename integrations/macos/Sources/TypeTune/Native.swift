@@ -14,7 +14,11 @@ struct NativeContext {
     let element: AXUIElement?
     let secure: Bool
     let permitted: Bool
-    var usable: Bool {permitted && !secure && !bundle.isEmpty && (layout=="us" || layout=="ru")}
+    var usableOverride: Bool? = nil
+    var usable: Bool {
+        if let usableOverride { return usableOverride }
+        return permitted && !secure && !bundle.isEmpty && (layout=="us" || layout=="ru")
+    }
 }
 enum Native {
     static func attribute(_ element: AXUIElement,_ key: String) -> CFTypeRef? {
@@ -67,11 +71,14 @@ enum Native {
         if let raw=attribute(ax,kAXFocusedUIElementAttribute),CFGetTypeID(raw)==AXUIElementGetTypeID() {element=(raw as! AXUIElement)}
         if let element {AXUIElementSetMessagingTimeout(element,0.05)}
         let subrole=element.flatMap{attribute($0,kAXSubroleAttribute)} as? String
-        let secure=IsSecureEventInputEnabled() || subrole==kAXSecureTextFieldSubrole
-        // Layout is tracked separately; including it in identity dropped gesture
-        // batches and reset history on every input-source switch.
+        // Do not use global IsSecureEventInputEnabled() alone: a stuck password
+        // manager flag would mark *every* field secure and disable the tap path.
+        let elementSecure = subrole == kAXSecureTextFieldSubrole
+        let secure = elementSecure || (IsSecureEventInputEnabled() && element == nil)
+        // History/acceptance: only the focused element’s security, not a global latch.
+        let usable = permitted && !elementSecure && !(app.bundleIdentifier ?? "").isEmpty && (source.1=="us" || source.1=="ru")
         let identity="\(app.processIdentifier):\(element.map{CFHash($0)} ?? 0)"
-        return NativeContext(identity:identity,bundle:app.bundleIdentifier ?? "",layout:source.1,element:element,secure:secure,permitted:permitted)
+        return NativeContext(identity:identity,bundle:app.bundleIdentifier ?? "",layout:source.1,element:element,secure:secure,permitted:permitted,usableOverride:usable)
     }
     static func text(_ context: NativeContext) -> TextState? {
         guard let element=context.element,

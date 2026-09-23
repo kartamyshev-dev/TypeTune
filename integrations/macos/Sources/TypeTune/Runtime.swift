@@ -1,6 +1,23 @@
 import AppKit
 import TypeTuneSupport
 
+/// Lightweight decision log (no typed text). Helps diagnose live input failures.
+enum DiagLog {
+    static let url = FileManager.default.homeDirectoryForCurrentUser
+        .appendingPathComponent("Library/Application Support/TypeTune/diag.log")
+    static func write(_ line: String) {
+        let stamped = ISO8601DateFormatter().string(from: Date()) + " " + line + "\n"
+        guard let data = stamped.data(using: .utf8) else { return }
+        if let handle = try? FileHandle(forWritingTo: url) {
+            defer { try? handle.close() }
+            _ = try? handle.seekToEnd()
+            try? handle.write(contentsOf: data)
+        } else {
+            try? data.write(to: url)
+        }
+    }
+}
+
 final class Runtime {
     let queue=DispatchQueue(label:"dev.kartamyshev.TypeTune.runtime",qos:.userInteractive)
     private let observer=Observer()
@@ -57,9 +74,10 @@ final class Runtime {
     private func tick() {
         let context=Native.context()
         noteLayout(context.layout, source:"user")
-        observer.buffer.accepting.store(enabled && !suspended && settings.compatibility && context.usable && context.bundle != Bundle.main.bundleIdentifier,ordering:.relaxed)
+        let accepting = enabled && !suspended && settings.compatibility && context.usable && context.bundle != Bundle.main.bundleIdentifier
+        observer.buffer.accepting.store(accepting,ordering:.relaxed)
         let (batch,lost)=observer.buffer.drain()
-        if lost {reset();return} // never replay a partial queue after observation loss
+        if lost {DiagLog.write("lost queue reset");reset();return}
         guard enabled, !suspended, settings.compatibility else {
             reset();report(!settings.compatibility ? "Включите режим совместимости" : "На паузе");return
         }
@@ -67,15 +85,18 @@ final class Runtime {
         if !observer.isActive {observer.start();reset();report("Подключение наблюдателя…");return}
         guard observer.recover() else {reset();report("Восстановление наблюдения…");return}
         guard context.usable, context.bundle != Bundle.main.bundleIdentifier else {
+            DiagLog.write("not-usable layout=\(context.layout) secure=\(context.secure) bundle=\(context.bundle) permitted=\(context.permitted)")
             reset();report(context.secure ? "Приостановлено: защищённый ввод" : (context.layout.isEmpty ? "Поддерживаются ABC и Русская — ПК":"Коррекция отключена для приложения"));return
         }
         // Focus/app change only — layout switches must not drop this batch
         // (that lost Double Shift taps after every auto rewrite).
         if identity != context.identity {
+            DiagLog.write("identity-change \(context.identity)")
             _=engine.call(["op":"reset_context"])
             identity=context.identity
         }
         for observation in batch {
+            DiagLog.write("key \(observation.key) \(observation.action) origin=\(observation.origin) \(observation.meta) hasText=\(observation.text != nil)")
             var event: [String:Any] = ["key":observation.key,"action":observation.action,"text":observation.text as Any? ?? NSNull(),"time_ms":observation.time,"device":NSNull(),"origin":observation.origin,"modifiers":observation.modifiers]
             // Always try AX word on Shift up so Double Shift recovers even when
             // a few later keys already entered the same drain batch.
@@ -87,6 +108,8 @@ final class Runtime {
             }
             let auto=settings.autoSwitching && !settings.autoDisabledIn.contains(context.bundle)
             let reply=engine.call(["op":"key_event","event":event,"automatic":auto])
+            let status=reply["status"] as? String ?? "?"
+            if status != "ignored" { DiagLog.write("engine \(status) auto=\(auto)") }
             if let status=reply["status"] as? String, status=="layout_only" {
                 if let mode=reply["mode"] as? String { _=Native.select(mode) }
                 noteLayout((reply["mode"] as? String) ?? "", source:"own")
@@ -97,6 +120,7 @@ final class Runtime {
                 observer.buffer.accepting.store(false,ordering:.relaxed)
                 let started=DispatchTime.now().uptimeNanoseconds
                 let result=execute(reply,observation:observation,context:context)
+                DiagLog.write("execute \(result) key=\(observation.key)")
                 let elapsed=(DispatchTime.now().uptimeNanoseconds-started)/1_000_000
                 // Bridge tri-state: ok | failed_before | unknown_after (legacy aliases accepted).
                 let outcome:String = (result=="verified"||result=="submitted") ? "ok" : (result=="rejected" ? "failed_before" : "unknown_after")
