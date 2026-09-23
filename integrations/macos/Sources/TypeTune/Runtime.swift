@@ -31,6 +31,7 @@ final class Runtime {
     private var lastIssue: String?
     private var lastLayout=""
     private var lastDiagAt=Date.distantPast
+    private var lastEditAt=Date.distantPast
     var publish: ((String) -> Void)?
     func configure(_ value: Settings, completion: @escaping (Bool)->Void) {
         queue.async {
@@ -111,11 +112,25 @@ final class Runtime {
             DiagLog.write("not-usable layout=\(context.layout) secure=\(context.secure) bundle=\(context.bundle) permitted=\(context.permitted)")
             reset();report(context.secure ? "Приостановлено: защищённый ввод" : (context.layout.isEmpty ? "Поддерживаются ABC и Русская — ПК":"Коррекция отключена для приложения"));return
         }
-        // Focus/app change only — layout switches must not drop this batch
-        // (that lost Double Shift taps after every auto rewrite).
+        // Focus/app change only. AX briefly returns element hash 0 (unknown
+        // field) — that must not wipe the word being typed or a half-finished
+        // Double Shift. Reset only on bundle change or a real different field.
         if identity != context.identity {
-            DiagLog.write("identity-change \(context.identity)")
-            _=engine.call(["op":"reset_context"])
+            let prev = identity.split(separator: ":")
+            let next = context.identity.split(separator: ":")
+            let prevBundle = prev.first.map(String.init) ?? ""
+            let nextBundle = next.first.map(String.init) ?? ""
+            let prevHash = prev.last.map(String.init) ?? "0"
+            let nextHash = next.last.map(String.init) ?? "0"
+            let sameApp = prevBundle == nextBundle && !prevBundle.isEmpty
+            let flicker = prevHash == "0" || nextHash == "0"
+            let realMove = !sameApp || (!flicker && prevHash != nextHash)
+            if realMove {
+                DiagLog.write("identity-reset \(identity) -> \(context.identity)")
+                _=engine.call(["op":"reset_context"])
+            } else {
+                DiagLog.write("identity-flicker \(identity) -> \(context.identity)")
+            }
             identity=context.identity
         }
         for observation in batch {
@@ -130,6 +145,12 @@ final class Runtime {
                 }
             }
             let auto=settings.autoSwitching && !settings.autoDisabledIn.contains(context.bundle)
+            // Cooldown: one Double Shift must not fire twice in the same gesture
+            // burst (we used to rewrite, flip back, and look “random”).
+            let isShiftUp = observation.action=="up" && ["left_shift","right_shift"].contains(observation.key)
+            if isShiftUp && Date().timeIntervalSince(lastEditAt) < 0.45 {
+                continue
+            }
             let reply=engine.call(["op":"key_event","event":event,"automatic":auto])
             let status=reply["status"] as? String ?? "?"
             if status != "ignored" { DiagLog.write("engine \(status) auto=\(auto)") }
@@ -144,6 +165,7 @@ final class Runtime {
                 let started=DispatchTime.now().uptimeNanoseconds
                 let result=execute(reply,observation:observation,context:context)
                 DiagLog.write("execute \(result) key=\(observation.key)")
+                lastEditAt = Date()
                 let elapsed=(DispatchTime.now().uptimeNanoseconds-started)/1_000_000
                 // Bridge tri-state: ok | failed_before | unknown_after (legacy aliases accepted).
                 let outcome:String = (result=="verified"||result=="submitted") ? "ok" : (result=="rejected" ? "failed_before" : "unknown_after")
