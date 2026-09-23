@@ -313,8 +313,13 @@ fn lang_id_core(core: &str, dictionary: &UserDictionary) -> Option<(Direction, S
         if dictionary.excluded(core, &converted) || dictionary.excluded(&core_alt, &converted) {
             continue;
         }
-        // User/learned target always wins that direction.
+        // User/learned target wins only when the source is not already a known
+        // word in its typed language (do not "learn" hello → garbage).
         if dictionary.contains(&converted) {
+            let score_s = source_score(core, direction).max(source_score(&core_alt, direction));
+            if score_s > SCORE_UNKNOWN {
+                continue;
+            }
             let delta = SCORE_USER;
             if best.as_ref().is_none_or(|(_, _, d)| delta > *d) {
                 best = Some((direction, converted, delta));

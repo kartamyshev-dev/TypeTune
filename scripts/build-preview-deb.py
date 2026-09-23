@@ -35,10 +35,9 @@ def build(version,output):
         module=root/'usr/lib/modules-load.d/typetune-preview.conf';module.parent.mkdir(parents=True);module.write_text('uinput\n')
         docs=root/'usr/share/doc/typetune-preview';docs.mkdir(parents=True)
         copy(REPO/'LICENSE',docs/'copyright')
-        copy(REPO/'docs/35-user-test.md',docs/'README.md')
-        for name in ('51-debian-package.md','53-dictionary-suggestions.md','54-remove-ibus.md'):
+        copy(REPO/'docs/user-guide.md',docs/'README.md')
+        for name in ('install.md','troubleshooting.md','security-privacy.md'):
             copy(REPO/'docs'/name,docs/name)
-        copy(REPO/'docs/evidence/51-package.txt',docs/'evidence/51-package.txt')
         shutil.copytree(REPO/'crates/typetune-engine/data/frequency',docs/'frequencywords',ignore=shutil.ignore_patterns('*.txt','*.tsv'))
         # The frequency data is compiled into the library; retain upstream licence too.
         for source in (REPO/'crates/typetune-engine/data/frequency').rglob('*'):
