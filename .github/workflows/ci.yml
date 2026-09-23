@@ -97,8 +97,12 @@ jobs:
         run: |
           python3 scripts/build-preview-deb.py --version "$DEB_VERSION"
           sudo /usr/bin/python3 tests/packaging/check_deb.py "dist/typetune-preview_${DEB_VERSION}_amd64.deb"
+          # GitHub normalizes ~ in asset names to a dot. Only rename when needed.
           for package in dist/*.deb; do
-            mv "$package" "${package//\~/\.}"
+            target="${package//\~/\.}"
+            if [ "$package" != "$target" ]; then
+              mv "$package" "$target"
+            fi
           done
           (cd dist && sha256sum *.deb > SHA256SUMS)
           cp docs/releases/0.1.0.md dist/RELEASE_NOTES.md
