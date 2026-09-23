@@ -81,9 +81,11 @@ final class Runtime {
         let listenOK = CGPreflightListenEventAccess()
         let postOK = CGPreflightPostEventAccess()
         if !listenOK || !postOK || !context.permitted {
-            // Surface the real TCC state of *this* process (CLI --doctor can lie).
-            report("Нужны разрешения: мониторинг ввода\(listenOK ? "" : " (listen)") и универсальный доступ")
-            DiagLog.write("perm gate listen=\(listenOK) post=\(postOK) ax=\(context.permitted)")
+            if Date().timeIntervalSince(lastDiagAt) > 1.5 {
+                lastDiagAt = Date()
+                DiagLog.write("perm gate listen=\(listenOK) post=\(postOK) ax=\(context.permitted)")
+            }
+            report("Нужны разрешения: мониторинг ввода и универсальный доступ")
         }
         if !observer.isActive {
             observer.start()
