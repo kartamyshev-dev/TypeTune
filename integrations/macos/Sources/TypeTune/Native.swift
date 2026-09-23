@@ -101,6 +101,15 @@ enum Native {
     static func modifiersHeld() -> Bool {
         !CGEventSource.flagsState(.combinedSessionState).intersection([.maskShift,.maskCommand,.maskControl,.maskAlternate]).isEmpty
     }
+    /// Caps Lock / Fn used as layout switch (or latched Caps) must not block
+    /// the held-key wait — `keyState` for 57 stays true while Caps is on.
+    static func typingKeyHeld() -> Bool {
+        let locks: Set<CGKeyCode> = [57, 63]
+        return (0..<128).contains { code in
+            let key = CGKeyCode(code)
+            return !locks.contains(key) && CGEventSource.keyState(.hidSystemState, key: key)
+        }
+    }
     static func keyboardEvents(_ code: CGKeyCode, unicode: String? = nil) -> (CGEvent, CGEvent)? {
         guard let down=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:true),let up=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:false) else {return nil}
         for event in [down,up] {

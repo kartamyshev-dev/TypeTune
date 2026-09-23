@@ -50,6 +50,11 @@ final class InputBuffer {
                 } else {
                     action = CGEventSource.keyState(.hidSystemState, key: CGKeyCode(code)) ? "down" : "up"
                 }
+            } else if code == 57 || code == 63 {
+                // Caps / Fn — often used as layout switch. Not a text key and must
+                // not wipe keyboard history (`key="context"` resets the runtime).
+                key = "lock_key"
+                action = "up"
             } else { key="context" }
         } else if type == .keyDown || type == .keyUp {
             if code == 51 { key="backspace" }
@@ -88,6 +93,8 @@ final class Observer {
     private var loop: CFRunLoop?
     private let stateLock=NSLock()
     private var active=false
+    /// Set from the tap callback (no lock) when macOS disables the tap.
+    private let needsReenable=Atomic<Bool>(false)
     var isActive: Bool {stateLock.lock();defer{stateLock.unlock()};return active}
     func start() {
         stateLock.lock();guard !active else {stateLock.unlock();return};active=true;stateLock.unlock()
@@ -97,10 +104,9 @@ final class Observer {
             let callback: CGEventTapCallBack = { _,type,event,ref in
                 let observer=Unmanaged<Observer>.fromOpaque(ref!).takeUnretainedValue()
                 if type == .tapDisabledByTimeout || type == .tapDisabledByUserInput {
+                    // Never lock here: recover() may hold stateLock and call tapEnable.
                     observer.buffer.invalidate()
-                    // Re-enable immediately so Double Shift does not stay dead
-                    // until the next runtime tick.
-                    if let tap = observer.tapPort() { CGEvent.tapEnable(tap: tap, enable: true) }
+                    observer.needsReenable.store(true,ordering:.releasing)
                 } else { observer.buffer.push(event,type:type) }
                 return Unmanaged.passUnretained(event)
             }
@@ -116,14 +122,15 @@ final class Observer {
         }
     }
     func recover() -> Bool {
-        stateLock.lock();defer{stateLock.unlock()}
-        guard let tap else {return false}
-        if !CGEvent.tapIsEnabled(tap:tap) {buffer.invalidate();CGEvent.tapEnable(tap:tap,enable:true);return false}
+        stateLock.lock();let port=tap;stateLock.unlock()
+        guard let port else {return false}
+        let flagged=needsReenable.exchange(false,ordering:.acquiringAndReleasing)
+        if flagged || !CGEvent.tapIsEnabled(tap:port) {
+            buffer.invalidate()
+            CGEvent.tapEnable(tap:port,enable:true)
+            return false
+        }
         return true
-    }
-    func tapPort() -> CFMachPort? {
-        stateLock.lock();defer{stateLock.unlock()}
-        return tap
     }
     func stop() {
         stateLock.lock();active=false;let current=loop;stateLock.unlock()

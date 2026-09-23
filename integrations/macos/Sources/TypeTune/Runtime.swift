@@ -77,8 +77,9 @@ final class Runtime {
         }
         for observation in batch {
             var event: [String:Any] = ["key":observation.key,"action":observation.action,"text":observation.text as Any? ?? NSNull(),"time_ms":observation.time,"device":NSNull(),"origin":observation.origin,"modifiers":observation.modifiers]
-            if observation.action=="up", ["left_shift","right_shift"].contains(observation.key),
-               observer.buffer.currentRevision()==observation.revision {
+            // Always try AX word on Shift up so Double Shift recovers even when
+            // a few later keys already entered the same drain batch.
+            if observation.action=="up", ["left_shift","right_shift"].contains(observation.key) {
                 let current=Native.context()
                 if current.usable, current.identity==context.identity, let snapshot=Native.text(current) {
                     event["editor_word"]=EditorWord.beforeCaret(in:snapshot.value,selection:NSRange(location:snapshot.range.location,length:snapshot.range.length)) ?? ""
@@ -118,14 +119,19 @@ final class Runtime {
         guard let before=plan["before"] as? String,let replacement=plan["replacement"] as? String,let count=plan["remove"] as? Int,let mode=plan["mode"] as? String,
               (1...128).contains(count), replacement.count<=128,count==before.count else {return "rejected"}
         let deadline=DispatchTime.now().uptimeNanoseconds+800_000_000
+        // Allow this edit when the user is already typing the next word (batch
+        // may contain later keys). Only abort if *new* events arrive during
+        // execute or the focused element / session moves.
+        let fence = observer.buffer.currentRevision()
         func unchanged(_ expected: String) -> Bool {
-            guard observer.buffer.currentRevision()==observation.revision,DispatchTime.now().uptimeNanoseconds<deadline,!Native.modifiersHeld() else {return false}
+            guard observer.buffer.currentRevision()==fence,DispatchTime.now().uptimeNanoseconds<deadline,!Native.modifiersHeld() else {return false}
             let current=Native.context()
             return current.usable && current.identity==expected
         }
         guard unchanged(context.identity) else {return "rejected"}
         // Never send a synthetic Up for a key the user still holds.
-        while (0..<128).contains(where:{CGEventSource.keyState(.hidSystemState,key:CGKeyCode($0))}) {
+        // Skip Caps/Fn (layout switch / latch) — they are not typing keys.
+        while Native.typingKeyHeld() {
             guard unchanged(context.identity) else {return "rejected"};Thread.sleep(forTimeInterval:0.002)
         }
         let old=Native.text(context)

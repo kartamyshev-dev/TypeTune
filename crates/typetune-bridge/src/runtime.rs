@@ -186,6 +186,10 @@ impl Runtime {
         if e.origin == Origin::Own {
             return ignored;
         }
+        // Caps / Fn (layout switch, latch) must not invalidate keyboard history.
+        if e.key == "lock_key" {
+            return ignored;
+        }
         if e.origin != Origin::Physical
             || e.key.len() > 64
             || e.device.as_ref().is_some_and(|v| v.len() > 128)
