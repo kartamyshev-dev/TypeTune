@@ -254,7 +254,14 @@ def learnable(call, before, after):
     if source in current['exclusions'] or target in current['exclusions']:return False
     try:preferences.validate(dict(version=1,generation='0',words=[target],exclusions=[]))
     except ValueError:return False
-    configure=dict(op='configure',words=current['words'],exclusions=current['exclusions'])
+    # Keep the live policy; a bare configure would reset it to engine defaults.
+    try:
+        import rules
+        policy=rules.Rules.policy()
+    except Exception:
+        policy={}
+    configure=dict(op='configure',words=current['words'],exclusions=current['exclusions'],
+                   learned=[],policy=policy)
     if call(configure).get('status')!='configured':return False
     text=before.rstrip(' ')+' '
     if call(dict(op='infer',text=text,automatic=True)).get('status')!='ignored':return False

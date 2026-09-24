@@ -56,7 +56,7 @@ class Runtime:
         self.enabled=True;self.automatic=settings.get('automatic',False);self.value=None;self.fresh=0;self.owner=None
         self.last='idle';self.devices=0;self.closed=False;self.refreshing=False
         self._skip_auto_once=False;self._window_zero_since=None
-        self._helper_rescues=0;self._helper_path=None
+        self._helper_rescues=0;self._helper_path=None;self._rescue_pending=False
         self._diag=None
         if os.environ.get('TYPETUNE_DIAG'):
             try:
@@ -93,6 +93,8 @@ class Runtime:
         GLib.timeout_add(50,self.poll)
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGTERM,self.close)
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGINT,self.close)
+    def allowed(self):
+        return self.enabled and self.devices>0 and self.value is not None and time.monotonic()-self.fresh<.2 and context(self.value) is not None and not self.value['modifiers'] & ~16
     def diag(self,reason,**fields):
         """Decision-only trace; never typed text or clipboard."""
         if getattr(self,'_diag',None) is None:return
@@ -103,6 +105,7 @@ class Runtime:
         except Exception:pass
     def _spawn_helper(self):
         self.helper=subprocess.Popen([str(self._helper_path)],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL)
+        self.buffer=b''
         os.set_blocking(self.helper.stdout.fileno(),False)
         GLib.io_add_watch(self.helper.stdout.fileno(),GLib.IO_IN|GLib.IO_HUP|GLib.IO_ERR,self.read)
         GLib.timeout_add(250,self.ping)
@@ -117,6 +120,7 @@ class Runtime:
         if self.closed or self.stand or self._helper_rescues>=3:
             self.close();return False
         self._helper_rescues+=1
+        self._rescue_pending=True
         if self.helper:
             try:self.helper.stdin.close()
             except OSError:pass
@@ -125,6 +129,7 @@ class Runtime:
             self.helper=None
         delay=min(2.0*self._helper_rescues,10.0)
         def rescue():
+            self._rescue_pending=False
             if self.closed:return False
             try:
                 self._spawn_helper()
@@ -270,7 +275,9 @@ class Runtime:
             else: self.close()
     def ping(self):
         if self.closed:return False
-        if self.helper is None:return True
+        if self.helper is None:
+            # Rescue in flight; a stale watch must not kill the runtime.
+            return True
         if self.helper.poll() is not None:
             self._helper_lost();return False
         self.send(dict(op='ping'));return not self.closed
@@ -279,6 +286,7 @@ class Runtime:
             data=os.read(fd,65536)
             if not data:
                 if self.helper: self._helper_lost()
+                elif self._rescue_pending: pass  # stale EOF; rescue already scheduled
                 else: self.close()
                 return False
             self.buffer+=data
@@ -290,6 +298,7 @@ class Runtime:
         except BlockingIOError:pass
         except Exception:
             if self.helper: self._helper_lost()
+            elif self._rescue_pending: pass
             else: self.close()
             return False
         return not self.closed

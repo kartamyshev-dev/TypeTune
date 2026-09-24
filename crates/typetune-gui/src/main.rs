@@ -4,7 +4,7 @@ mod settings;
 use adw::prelude::*;
 use adw::{Application, ApplicationWindow, HeaderBar, WindowTitle};
 use settings::Settings;
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
 fn main() {
@@ -139,12 +139,17 @@ fn build_ui(app: &Application) {
         autostart: autostart.clone(),
     };
 
-    spawn_refresh(model.clone(), widgets.clone());
+    let rendering = Rc::new(Cell::new(false));
+    spawn_refresh(model.clone(), widgets.clone(), rendering.clone());
 
     // Policy toggles: mutate settings, persist, keep mutex UI in sync.
     {
         let model = model.clone();
+        let rendering = rendering.clone();
         automatic.connect_state_set(move |_, on| {
+            if rendering.get() {
+                return glib::Propagation::Proceed;
+            }
             {
                 let mut m = model.borrow_mut();
                 m.settings.automatic = on;
@@ -160,25 +165,27 @@ fn build_ui(app: &Application) {
             glib::Propagation::Proceed
         });
     }
-    bind_switch(
-        &manual,
-        model.clone(),
-        |m, on| {
-            m.settings.manual_switching = on;
-        },
-        None,
-    );
+    bind_switch(&manual, model.clone(), rendering.clone(), |m, on| {
+        m.settings.manual_switching = on;
+    });
     {
         let model = model.clone();
         let dont_words = dont_words.clone();
+        let rendering = rendering.clone();
         only_last.connect_state_set(move |_, on| {
-            {
+            if rendering.get() {
+                return glib::Propagation::Proceed;
+            }
+            let sibling = {
                 let mut m = model.borrow_mut();
                 m.settings.toggling_switch_only_last_word(on);
                 if let Err(error) = m.settings.save() {
                     eprintln!("TypeTune: {error}");
                 }
-                dont_words.set_active(m.settings.dont_switch_words);
+                m.settings.dont_switch_words
+            };
+            if dont_words.is_active() != sibling {
+                dont_words.set_active(sibling);
             }
             glib::Propagation::Proceed
         });
@@ -186,53 +193,40 @@ fn build_ui(app: &Application) {
     {
         let model = model.clone();
         let only_last = only_last.clone();
+        let rendering = rendering.clone();
         dont_words.connect_state_set(move |_, on| {
-            {
+            if rendering.get() {
+                return glib::Propagation::Proceed;
+            }
+            let sibling = {
                 let mut m = model.borrow_mut();
                 m.settings.toggling_dont_switch_words(on);
                 if let Err(error) = m.settings.save() {
                     eprintln!("TypeTune: {error}");
                 }
-                only_last.set_active(m.settings.switch_only_last_word);
+                m.settings.switch_only_last_word
+            };
+            if only_last.is_active() != sibling {
+                only_last.set_active(sibling);
             }
             glib::Propagation::Proceed
         });
     }
-    bind_switch(
-        &anti_loop,
-        model.clone(),
-        |m, on| {
-            m.settings.dont_correct_after_layout_change = on;
-        },
-        None,
-    );
-    bind_switch(
-        &sound,
-        model.clone(),
-        |m, on| {
-            m.settings.play_switching_sound = on;
-        },
-        None,
-    );
-    bind_switch(
-        &show_flag,
-        model.clone(),
-        |m, on| {
-            m.settings.display_layout_flag = on;
-        },
-        None,
-    );
-    bind_switch(
-        &autostart,
-        model.clone(),
-        |m, on| {
-            m.settings.autostart = on;
-            if let Err(error) = settings::write_autostart(on) {
-                eprintln!("TypeTune: {error}");
-            }
-        },
-        None,
-    );
+    bind_switch(&anti_loop, model.clone(), rendering.clone(), |m, on| {
+        m.settings.dont_correct_after_layout_change = on;
+    });
+    bind_switch(&sound, model.clone(), rendering.clone(), |m, on| {
+        m.settings.play_switching_sound = on;
+    });
+    bind_switch(&show_flag, model.clone(), rendering.clone(), |m, on| {
+        m.settings.display_layout_flag = on;
+    });
+    bind_switch(&autostart, model.clone(), rendering.clone(), |m, on| {
+        m.settings.autostart = on;
+        if let Err(error) = settings::write_autostart(on) {
+            eprintln!("TypeTune: {error}");
+        }
+    });
 
     pause.connect_clicked(|_| {
         glib::MainContext::default().spawn_local(async {
@@ -256,7 +250,10 @@ fn build_ui(app: &Application) {
     {
         let model = model.clone();
         let widgets = widgets.clone();
-        refresh.connect_clicked(move |_| spawn_refresh(model.clone(), widgets.clone()));
+        let rendering = rendering.clone();
+        refresh.connect_clicked(move |_| {
+            spawn_refresh(model.clone(), widgets.clone(), rendering.clone())
+        });
     }
 
     window.present();
@@ -280,15 +277,20 @@ struct Widgets {
     autostart: gtk::Switch,
 }
 
-fn spawn_refresh(model: Shared, widgets: Widgets) {
+fn spawn_refresh(model: Shared, widgets: Widgets, rendering: Rc<Cell<bool>>) {
     glib::MainContext::default().spawn_local(async move {
         let status = bus::fetch_status().await;
         {
             let mut m = model.borrow_mut();
             m.status = status;
         }
-        let m = model.borrow();
-        render(&m, &widgets);
+        // set_active during render emits state-set; handlers must not re-enter.
+        rendering.set(true);
+        {
+            let m = model.borrow();
+            render(&m, &widgets);
+        }
+        rendering.set(false);
     });
 }
 
@@ -316,12 +318,14 @@ fn switch_row(parent: &gtk::Box, label: &str) -> gtk::Switch {
     sw
 }
 
-fn bind_switch<F>(sw: &gtk::Switch, model: Shared, mutate: F, _after: Option<()>)
+fn bind_switch<F>(sw: &gtk::Switch, model: Shared, rendering: Rc<Cell<bool>>, mutate: F)
 where
     F: Fn(&mut Model, bool) + 'static,
 {
-    let model = model.clone();
     sw.connect_state_set(move |_, on| {
+        if rendering.get() {
+            return glib::Propagation::Proceed;
+        }
         {
             let mut m = model.borrow_mut();
             mutate(&mut m, on);
