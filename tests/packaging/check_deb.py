@@ -16,6 +16,7 @@ with tempfile.TemporaryDirectory(prefix='typetune-dpkg-') as temporary:
     payload=root/'usr/lib/typetune-preview'
     assert (payload/'libtypetune_bridge.so').is_file()
     assert (payload/'switch_sound.py').is_file(), 'switch_sound.py must ship'
+    assert (payload/'layout-switch.wav').is_file(), 'switch sound sample must ship'
     # Native shell (0.2.0) ships alongside the Python payload.
     assert (root/'usr/bin/typetune-gui').stat().st_mode & 0o111, 'typetune-gui missing'
     assert (root/'usr/bin/typetune').stat().st_mode & 0o111, 'typetune missing'

@@ -3,7 +3,7 @@ mod settings;
 
 use adw::prelude::*;
 use adw::{Application, ApplicationWindow, HeaderBar, WindowTitle};
-use settings::Settings;
+use settings::Store;
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
@@ -16,7 +16,7 @@ fn main() {
 }
 
 struct Model {
-    settings: Settings,
+    store: Store,
     status: bus::RuntimeStatus,
 }
 
@@ -24,7 +24,7 @@ type Shared = Rc<RefCell<Model>>;
 
 fn build_ui(app: &Application) {
     let model: Shared = Rc::new(RefCell::new(Model {
-        settings: Settings::load(),
+        store: Store::load(),
         status: bus::RuntimeStatus::default(),
     }));
 
@@ -152,8 +152,8 @@ fn build_ui(app: &Application) {
             }
             {
                 let mut m = model.borrow_mut();
-                m.settings.automatic = on;
-                if let Err(error) = m.settings.save() {
+                m.store.settings.automatic = on;
+                if let Err(error) = m.store.save() {
                     eprintln!("TypeTune: {error}");
                 }
             }
@@ -166,7 +166,7 @@ fn build_ui(app: &Application) {
         });
     }
     bind_switch(&manual, model.clone(), rendering.clone(), |m, on| {
-        m.settings.manual_switching = on;
+        m.store.settings.manual_switching = on;
     });
     {
         let model = model.clone();
@@ -178,11 +178,11 @@ fn build_ui(app: &Application) {
             }
             let sibling = {
                 let mut m = model.borrow_mut();
-                m.settings.toggling_switch_only_last_word(on);
-                if let Err(error) = m.settings.save() {
+                m.store.settings.toggling_switch_only_last_word(on);
+                if let Err(error) = m.store.save() {
                     eprintln!("TypeTune: {error}");
                 }
-                m.settings.dont_switch_words
+                m.store.settings.dont_switch_words
             };
             if dont_words.is_active() != sibling {
                 dont_words.set_active(sibling);
@@ -200,11 +200,11 @@ fn build_ui(app: &Application) {
             }
             let sibling = {
                 let mut m = model.borrow_mut();
-                m.settings.toggling_dont_switch_words(on);
-                if let Err(error) = m.settings.save() {
+                m.store.settings.toggling_dont_switch_words(on);
+                if let Err(error) = m.store.save() {
                     eprintln!("TypeTune: {error}");
                 }
-                m.settings.switch_only_last_word
+                m.store.settings.switch_only_last_word
             };
             if only_last.is_active() != sibling {
                 only_last.set_active(sibling);
@@ -213,16 +213,16 @@ fn build_ui(app: &Application) {
         });
     }
     bind_switch(&anti_loop, model.clone(), rendering.clone(), |m, on| {
-        m.settings.dont_correct_after_layout_change = on;
+        m.store.settings.dont_correct_after_layout_change = on;
     });
     bind_switch(&sound, model.clone(), rendering.clone(), |m, on| {
-        m.settings.play_switching_sound = on;
+        m.store.settings.play_switching_sound = on;
     });
     bind_switch(&show_flag, model.clone(), rendering.clone(), |m, on| {
-        m.settings.display_layout_flag = on;
+        m.store.settings.display_layout_flag = on;
     });
     bind_switch(&autostart, model.clone(), rendering.clone(), |m, on| {
-        m.settings.autostart = on;
+        m.store.settings.autostart = on;
         if let Err(error) = settings::write_autostart(on) {
             eprintln!("TypeTune: {error}");
         }
@@ -329,7 +329,7 @@ where
         {
             let mut m = model.borrow_mut();
             mutate(&mut m, on);
-            if let Err(error) = m.settings.save() {
+            if let Err(error) = m.store.save() {
                 eprintln!("TypeTune: {error}");
             }
         }
@@ -362,6 +362,9 @@ fn render(model: &Model, w: &Widgets) {
     w.title.set_label(&format!("{flag}  {head}"));
 
     let mut lines = vec!["Режим совместимости".to_string()];
+    if let Some(error) = &model.store.error {
+        lines.push(format!("Настройки: {error}"));
+    }
     if status.helper_ok && status.devices == 0 {
         lines.push("Нет доступа к /dev/input — откройте «Настроить доступ».".into());
     }
@@ -380,7 +383,22 @@ fn render(model: &Model, w: &Widgets) {
     w.start.set_sensitive(!status.helper_ok || !status.enabled);
     w.stop.set_sensitive(status.helper_ok);
 
-    let s = &model.settings;
+    let settings_ok = model.store.error.is_none();
+    let controls_on = settings_ok;
+    for sw in [
+        &w.automatic,
+        &w.manual,
+        &w.only_last,
+        &w.dont_words,
+        &w.anti_loop,
+        &w.sound,
+        &w.show_flag,
+        &w.autostart,
+    ] {
+        sw.set_sensitive(controls_on);
+    }
+
+    let s = &model.store.settings;
     set_switch(&w.automatic, s.automatic);
     set_switch(&w.manual, s.manual_switching);
     set_switch(&w.only_last, s.switch_only_last_word);

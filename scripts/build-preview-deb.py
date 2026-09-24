@@ -17,7 +17,7 @@ def build(version,output):
             target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target);target.chmod(mode)
         tree=ast.parse((REPO/'integrations/app/controller.py').read_text())
         files=next(ast.literal_eval(node.value) for node in tree.body if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='FILES' for t in node.targets))
-        for name in (*files,'package_launcher.py'):copy(REPO/'integrations/app'/name,payload/name)
+        for name in (*files,'package_launcher.py','layout-switch.wav'):copy(REPO/'integrations/app'/name,payload/name)
         for source in (REPO/'integrations/compat').glob('*.py'):
             if not source.name.startswith('test_'):copy(source,payload/'compat'/source.name)
         copy(REPO/'target/release/libtypetune_bridge.so',payload/'libtypetune_bridge.so')

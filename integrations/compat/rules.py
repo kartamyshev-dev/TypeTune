@@ -31,6 +31,7 @@ class Rules:
         if (self.generation != preferences.CURRENT['generation']
                 or self.settings_generation != settings_generation):
             result=self.call(dict(op='configure',words=preferences.CURRENT['words'],exclusions=preferences.CURRENT['exclusions'],
+                # Linux learned words live in words.json (`words`); bridge `learned` stays empty.
                 learned=[],policy=self.policy(settings)))
             if result['status']!='configured': return {'status':'ignored'}
             self.generation=preferences.CURRENT['generation']

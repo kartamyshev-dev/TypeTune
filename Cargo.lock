@@ -2202,6 +2202,7 @@ dependencies = [
  "glib",
  "gtk4",
  "libadwaita",
+ "libc",
  "serde",
  "serde_json",
  "tokio",

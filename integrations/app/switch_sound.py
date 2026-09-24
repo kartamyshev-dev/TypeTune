@@ -4,7 +4,11 @@ import subprocess
 from pathlib import Path
 
 _CANDIDATES = ('paplay', 'pw-play', 'canberra-gtk-play')
-_SOUND = Path(__file__).resolve().parent / 'layout-switch.ogg'
+_HERE = Path(__file__).resolve().parent
+_SOUND = next(
+    (p for p in (_HERE / 'layout-switch.wav', _HERE / 'layout-switch.ogg') if p.is_file()),
+    _HERE / 'layout-switch.wav',
+)
 
 
 def play_if_allowed(allowed=True):
