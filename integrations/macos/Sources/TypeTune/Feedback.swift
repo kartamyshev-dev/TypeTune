@@ -36,21 +36,37 @@ enum LayoutFlag {
 
 /// Drawn national flags for the status item (no third-party assets).
 enum FlagBadge {
-    /// Menu-bar badge, ~18×12 pt.
+    /// Menu-bar badge with side padding so it does not collide with neighbours.
     static func image(for flag: String) -> NSImage? {
+        // Transparent gutters mimic standard status-item spacing.
+        let padX: CGFloat = 5
+        let padY: CGFloat = 1
+        let inner = NSSize(width: 18, height: 12)
+        let canvas = NSSize(width: inner.width + padX * 2, height: inner.height + padY * 2)
+        let stripe: NSImage?
         switch flag {
-        case "us": return drawUS(size: NSSize(width: 18, height: 12))
-        case "ru": return drawRU(size: NSSize(width: 18, height: 12))
+        case "us": stripe = drawUS(size: inner)
+        case "ru": stripe = drawRU(size: inner)
         default: return nil
         }
+        guard let stripe else { return nil }
+        let image = NSImage(size: canvas)
+        image.lockFocus()
+        NSColor.clear.setFill()
+        NSRect(origin: .zero, size: canvas).fill()
+        stripe.draw(in: NSRect(x: padX, y: padY, width: inner.width, height: inner.height))
+        image.unlockFocus()
+        image.isTemplate = false
+        return image
     }
 
     /// Larger icon for the disabled menu header.
     static func menuImage(for flag: String) -> NSImage? {
         guard let base = image(for: flag) else { return nil }
-        let scaled = NSImage(size: NSSize(width: 22, height: 15))
+        let size = NSSize(width: 28, height: 18)
+        let scaled = NSImage(size: size)
         scaled.lockFocus()
-        base.draw(in: NSRect(x: 0, y: 0, width: 22, height: 15))
+        base.draw(in: NSRect(origin: .zero, size: size))
         scaled.unlockFocus()
         return scaled
     }
