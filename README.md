@@ -1,108 +1,106 @@
 # TypeTune
 
-> System-wide Russian ↔ English layout correction, snippets, and optional key debounce.
+> Общесистемная коррекция раскладки русский ↔ английский, сниппеты и необязательный антидребезг клавиш.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI](https://img.shields.io/badge/CI-Linux%20%2B%20macOS-success)](https://github.com/kartamyshev-dev/TypeTune/actions)
 [![Release](https://img.shields.io/badge/release-pre--release-orange)](https://github.com/kartamyshev-dev/TypeTune/releases)
 
-**[Русский](README.ru.md)**
+**[English](README.en.md)**
 
-TypeTune fixes text typed in the wrong keyboard layout (for example `ghbdtn` → `привет`), switches the input source, expands snippets, and can optionally debounce noisy keyboards on Linux.
+TypeTune исправляет текст, набранный не в той раскладке (например, `ghbdtn` → `привет`), переключает источник ввода, раскрывает сниппеты и может гасить дребезг клавиатуры на Linux.
 
-## Status
+## Статус
 
-| Platform | Channel | Artifact |
+| Платформа | Канал | Артефакт |
 |---|---|---|
 | Linux (Ubuntu 26.04 / GNOME 50 / Wayland, amd64) | Preview | `.deb` |
-| macOS (Apple Silicon, macOS 27) | Preview | `.zip` (ad-hoc signed, not notarized) |
-| Windows | — | Not released |
+| macOS (Apple Silicon, macOS 27) | Preview | `.zip` (ad-hoc подпись, без notarization) |
+| Windows | — | Не выпускается |
 
-Preview builds are usable day-to-day but are **not** a production guarantee. Not every application is treated the same way. What CI tests versus what is checked by hand is described in [docs/testing.md](docs/testing.md) (Russian).
+Preview пригоден для ежедневной работы, но **не** гарантирует поведение в каждом приложении. Что проверяет CI, а что проверяется вручную — в [docs/testing.md](docs/testing.md).
 
-## Features
+## Возможности
 
-- **Double Shift** — convert the last word `RU ↔ EN` and switch the input source; repeat toggles back
-- **Auto-correct on Space** — frequency-ranked RU/EN dictionaries; short words and code-like tokens are conservative
-- **Snippets** — trigger + delimiter, Unicode replacements
-- **Learned words** and **exclusions** — improve or block corrections without editing files by hand
-- **Application exclusions** — disable auto-correct in selected apps (manual gesture stays)
-- **Menu bar** — pause, layout flag (`EN` / `RU` / `?`), optional switch sound (macOS)
-- **Key debounce** (Linux, opt-in, per device)
+- **Double Shift** — перевод последнего слова `RU ↔ EN` и смена источника ввода; повтор переключает обратно
+- **Автокоррекция на пробеле** — частотные словари RU/EN; короткие слова и «кодовые» токены — консервативно
+- **Сниппеты** — триггер и разделитель, Unicode-замены
+- **Выученные слова** и **исключения** — уточнение или запрет правок без ручного редактирования файлов
+- **Исключения приложений** — отключить авто-правку в выбранных программах (жест остаётся)
+- **Строка меню** — пауза, флаг раскладки (`EN` / `RU` / `?`), необязательный звук переключения (macOS)
+- **Антидребезг** (Linux, opt-in, для выбранного устройства)
 
-## Screenshots
+## Скриншоты
 
-| Settings | Menu bar |
+| Настройки | Строка меню |
 |---|---|
 | ![Settings](docs/assets/screenshots/settings.png) | ![Menu](docs/assets/screenshots/menu.png) |
 
-> Screenshots are placeholders until release assets are added.
+> Пока это заглушки — перед релизом можно заменить реальными снимками.
 
-## Install
+## Установка
 
 ### Linux (`.deb`)
 
-1. Download the `.deb` from [Releases](https://github.com/kartamyshev-dev/TypeTune/releases).
-2. Install with APT or `dpkg` (not GNOME Software for a local file).
-3. Run **TypeTune Setup** from the application menu and confirm the device-access prompt.
-4. Log out and back in so the session helper is loaded.
+1. Скачайте `.deb` из [Releases](https://github.com/kartamyshev-dev/TypeTune/releases).
+2. Установите через APT или `dpkg` (не через GNOME Software для локального файла).
+3. Запустите **TypeTune Setup** из меню приложений и подтвердите доступ к устройствам.
+4. Выйдите из сеанса и войдите снова, чтобы загрузился session helper.
 
-Details: [docs/install.md](docs/install.md)
+Подробнее: [docs/install.md](docs/install.md)
 
 ### macOS (`.zip`)
 
-1. Download `TypeTune-macos-arm64.zip` from Releases.
-2. Unpack and move `TypeTune.app` to `~/Applications`.
-3. Open the app and grant **Input Monitoring** and **Accessibility** when prompted.
+1. Скачайте `TypeTune-macos-arm64.zip` из Releases.
+2. Распакуйте и перенесите `TypeTune.app` в `~/Applications`.
+3. Откройте приложение и выдайте **Input Monitoring** и **Accessibility**.
 
-Details: [docs/install.md](docs/install.md)
+Подробнее: [docs/install.md](docs/install.md)
 
-## Privacy
+## Конфиденциальность
 
-Keystroke history used for corrections stays **in memory only**. TypeTune does not log typed words or clipboard contents. Pause the app before passwords or other sensitive fields. Secure input fields are skipped when the system reports them.
+История нажатий для коррекции хранится **только в оперативной памяти**. TypeTune не пишет в логи набранные слова и содержимое буфера обмена. Перед паролями и другим чувствительным вводом включайте паузу. Защищённые системные поля пропускаются, когда ОС о них сообщает.
 
-More: [docs/security-privacy.md](docs/security-privacy.md)
+Подробнее: [docs/security-privacy.md](docs/security-privacy.md)
 
-## Limitations
+## Ограничения
 
-- Behaviour can differ across editors, terminals, and toolkits.
-- IME / dead keys / secure fields have reduced support.
-- Layout pairs are standard US ↔ Russian (PC) unless configured otherwise.
+- Поведение в редакторах, терминалах и разных toolkit может отличаться.
+- IME / dead keys / защищённые поля поддерживаются ограниченно.
+- По умолчанию пара раскладок — стандартные US ↔ Русская (ПК).
 
-See [docs/user-guide.md](docs/user-guide.md).
+См. [docs/user-guide.md](docs/user-guide.md).
 
-## Documentation
+## Документация
 
-Documentation is written in Russian.
-
-| Document | Topic |
+| Документ | Тема |
 |---|---|
-| [docs/overview.md](docs/overview.md) | Product overview and scope |
-| [docs/install.md](docs/install.md) | Install and permissions |
-| [docs/user-guide.md](docs/user-guide.md) | Everyday use |
-| [docs/architecture.md](docs/architecture.md) | How the pieces fit |
-| [docs/development.md](docs/development.md) | Build from source |
-| [docs/testing.md](docs/testing.md) | CI vs native checks |
-| [docs/security-privacy.md](docs/security-privacy.md) | Privacy and safety |
-| [docs/troubleshooting.md](docs/troubleshooting.md) | Common problems |
+| [docs/overview.md](docs/overview.md) | Обзор продукта и границы |
+| [docs/install.md](docs/install.md) | Установка и разрешения |
+| [docs/user-guide.md](docs/user-guide.md) | Повседневное использование |
+| [docs/architecture.md](docs/architecture.md) | Как устроено |
+| [docs/development.md](docs/development.md) | Сборка из исходников |
+| [docs/testing.md](docs/testing.md) | CI и ручные проверки |
+| [docs/security-privacy.md](docs/security-privacy.md) | Безопасность и приватность |
+| [docs/troubleshooting.md](docs/troubleshooting.md) | Типовые проблемы |
 
-## Development
+## Разработка
 
 ```sh
-# Linux toolchain (CI)
+# Linux (как в CI)
 rustup toolchain install 1.98.1
 cargo test --workspace --all-targets --locked
 
-# macOS toolchain (CI)
+# macOS (как в CI)
 rustup toolchain install 1.89.0
 bash scripts/test-macos.sh
 bash scripts/build-macos.sh
 ```
 
-See [docs/development.md](docs/development.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+См. [docs/development.md](docs/development.md) и [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## License
+## Лицензия
 
 [MIT](LICENSE)
 
-Frequency word lists used for ranking ship under their own terms (CC BY-SA 4.0 / CC BY 2.5) and are attributed inside the application bundle (`frequency-attribution`).
+Частотные списки слов для ранжирования распространяются на собственных условиях (CC BY-SA 4.0 / CC BY 2.5); атрибуция вкладывается в состав приложения (`frequency-attribution`).
