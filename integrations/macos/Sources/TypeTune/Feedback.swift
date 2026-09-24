@@ -41,7 +41,7 @@ enum FlagBadge {
         // Transparent gutters mimic standard status-item spacing.
         let padX: CGFloat = 10
         let padY: CGFloat = 1
-        let inner = NSSize(width: 24, height: 16)
+        let inner = NSSize(width: 21, height: 14)
         let canvas = NSSize(width: inner.width + padX * 2, height: inner.height + padY * 2)
         let stripe: NSImage?
         switch flag {
