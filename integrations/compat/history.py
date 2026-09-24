@@ -1,6 +1,12 @@
 """Explicitly inferred last-word history; no assertion about editor contents."""
 from gesture import DoubleShift
 CODES = [41,16,17,18,19,20,21,22,23,24,25,26,27,30,31,32,33,34,35,36,37,38,39,40,44,45,46,47,48,49,50,51,52]
+# CapsLock / Fn are latches, not chords (macOS 0.1.1 lock_key).
+LOCK_KEYS = (58, 69)
+# Ctrl / Alt / Meta (both sides). Their own edges must not wipe the word.
+MODIFIER_KEYS = (29, 97, 56, 100, 125, 126)
+# BTN_LEFT and above: pointer, touch, media — never text.
+MOUSE_BASE = 272
 US = "`qwertyuiop[]asdfghjkl;'zxcvbnm,."
 RU = "ёйцукенгшщзхъфывапролджэячсмитьбю"
 UPPER_US = '~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>'
@@ -69,9 +75,18 @@ class History:
             if self.gesture.edge(identity, value==0, stamp) and not self.held and self.text:
                 return 'manual'
             return None
+        # CapsLock/Fn: latch state only — never wipe the word or block Double Shift.
+        if code in LOCK_KEYS:
+            return None
+        # Modifier edges alone must not reset history (macOS 0.1.1 d10a1f5).
+        if code in MODIFIER_KEYS:
+            return None
+        # Pointer/touch: abandon any in-progress gesture but keep the word.
+        if code >= MOUSE_BASE:
+            self.gesture.reset(); return None
         if value==0: return None
         self.gesture.reset()
-        if any(c in (29,97,56,100,125,126,58,69) for _,c in self.held):
+        if any(c in MODIFIER_KEYS for _,c in self.held):
             self.clear(); return None
         if code==14:
             self.text=self.text[:-1]; return None

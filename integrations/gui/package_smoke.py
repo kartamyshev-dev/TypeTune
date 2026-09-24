@@ -37,4 +37,16 @@ with patch.object(setup,'configured',side_effect=lambda:configured[0]):
         texture=window.get_native().get_renderer().render_texture(snapshot.to_node(),Graphene.Rect().init(0,0,window.get_width(),window.get_height()))
         assert texture.save_to_png(sys.argv[1])
     window.close()
+# Native shell doctor: exit code + stable macOS-parity keys (binary from cargo).
+doctor=Path(__file__).resolve().parents[2]/'target/debug/typetune'
+if doctor.is_file():
+    result=subprocess.run([str(doctor),'doctor','--session'],
+                          capture_output=True,text=True,timeout=20,
+                          env={**__import__('os').environ,'DBUS_SESSION_BUS_ADDRESS':'unix:path=/nonexistent/typetune-doctor/bus'})
+    assert result.returncode==0, result.stderr
+    import json
+    report=json.loads(result.stdout)
+    for key in ('protocol','os','input_source','autostart','permissions','schema_version'):
+        assert key in report, key
+    print('PKG-51-DOCTOR: typetune doctor --session keys PASS')
 print('PKG-51-GTK: no implicit permission grant, configure/open, cancelled access/removal PASS')

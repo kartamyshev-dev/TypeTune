@@ -8,12 +8,11 @@ name = "typetune-gui"
 path = "src/main.rs"
 
 [dependencies]
-typetune-config = { path = "../typetune-config" }
 gtk = { version = "0.9", package = "gtk4" }
 adw = { version = "0.7", package = "libadwaita" }
 glib = "0.20"
 serde = { version = "1", features = ["derive"] }
-toml = "0.8"
+serde_json = "1"
 tracing = "0.1"
 tracing-subscriber = "0.3"
 zbus = { version = "3", default-features = false, features = ["tokio"] }

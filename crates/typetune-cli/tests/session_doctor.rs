@@ -35,6 +35,13 @@ fn session_doctor_survives_missing_config_and_bus_without_fallback() {
         .unwrap()
         .iter()
         .any(|v| v == "unicode_unavailable"));
+    // macOS --doctor parity keys stay present even with a dead bus.
+    assert!(report["os"].as_str().unwrap().len() > 0);
+    assert!(report["protocol"].is_null());
+    assert_eq!(report["input_source"], "");
+    assert!(report["permissions"].get("dev_input").is_some());
+    assert!(report["permissions"].get("uinput").is_some());
+    assert!(report["autostart"].is_boolean());
 }
 
 #[test]

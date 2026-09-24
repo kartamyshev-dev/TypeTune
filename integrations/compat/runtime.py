@@ -55,6 +55,15 @@ class Runtime:
         self.stats=dict(keys_seen=0,stale_events=0,auto_triggers=0,manual_triggers=0,plans=0,invalidations=0)
         self.enabled=True;self.automatic=settings.get('automatic',False);self.value=None;self.fresh=0;self.owner=None
         self.last='idle';self.devices=0;self.closed=False;self.refreshing=False
+        self._skip_auto_once=False;self._window_zero_since=None
+        self._helper_rescues=0;self._helper_path=None
+        self._diag=None
+        if os.environ.get('TYPETUNE_DIAG'):
+            try:
+                state=Path(os.environ.get('XDG_STATE_HOME',str(Path.home()/'.local/state')))/'typetune'
+                state.mkdir(parents=True,exist_ok=True)
+                self._diag=(state/'diag.log').open('a',buffering=1)
+            except OSError:self._diag=None
         self.connection=Gio.bus_get_sync(Gio.BusType.SESSION,None)
         self.proxy=Gio.DBusProxy.new_sync(self.connection,Gio.DBusProxyFlags.NONE,None,'org.gnome.Shell',PATH,IFACE,None)
         self.proxy.connect('g-signal',self.changed)
@@ -67,10 +76,8 @@ class Runtime:
         else:
             local=HERE/'compat_transport'
             executable=local if local.exists() else HERE.parents[1]/'target/debug/examples/compat_transport'
-            self.helper=subprocess.Popen([str(executable)],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL)
-            os.set_blocking(self.helper.stdout.fileno(),False)
-            GLib.io_add_watch(self.helper.stdout.fileno(),GLib.IO_IN|GLib.IO_HUP|GLib.IO_ERR,self.read)
-            GLib.timeout_add(250,self.ping)
+            self._helper_path=executable
+            self._spawn_helper()
         self.started=time.monotonic()
         xml='''<node><interface name="org.typetune.Compat1">
 <method name="GetStatus"><arg type="s" direction="out"/></method>
@@ -86,8 +93,48 @@ class Runtime:
         GLib.timeout_add(50,self.poll)
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGTERM,self.close)
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGINT,self.close)
-    def allowed(self):
-        return self.enabled and self.devices>0 and self.value is not None and time.monotonic()-self.fresh<.2 and context(self.value) is not None and not self.value['modifiers'] & ~16
+    def diag(self,reason,**fields):
+        """Decision-only trace; never typed text or clipboard."""
+        if getattr(self,'_diag',None) is None:return
+        try:
+            payload=dict(t=round(time.time(),3),reason=reason)
+            payload.update(fields)
+            self._diag.write(json.dumps(payload,ensure_ascii=False)+'\n')
+        except Exception:pass
+    def _spawn_helper(self):
+        self.helper=subprocess.Popen([str(self._helper_path)],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL)
+        os.set_blocking(self.helper.stdout.fileno(),False)
+        GLib.io_add_watch(self.helper.stdout.fileno(),GLib.IO_IN|GLib.IO_HUP|GLib.IO_ERR,self.read)
+        GLib.timeout_add(250,self.ping)
+    def _helper_lost(self):
+        """Helper exit: keep UI honest, try a short supervised rescue before dying."""
+        self.diag('helper-lost',rescues=self._helper_rescues,devices=self.devices)
+        self.devices=0
+        self.last='helper-lost'
+        if self.pending is not None:
+            self.last='indeterminate' if self.phase=='injecting' else 'rejected'
+            self.pending=None;self.phase=None
+        if self.closed or self.stand or self._helper_rescues>=3:
+            self.close();return False
+        self._helper_rescues+=1
+        if self.helper:
+            try:self.helper.stdin.close()
+            except OSError:pass
+            try:self.helper.terminate()
+            except OSError:pass
+            self.helper=None
+        delay=min(2.0*self._helper_rescues,10.0)
+        def rescue():
+            if self.closed:return False
+            try:
+                self._spawn_helper()
+                self.diag('helper-respawned',rescues=self._helper_rescues)
+            except Exception:
+                self.diag('helper-respawn-failed',rescues=self._helper_rescues)
+                self.close()
+            return False
+        GLib.timeout_add(int(delay*1000),rescue)
+        return False
     def auto_allowed(self):
         return self.automatic and not preferences.ERROR and application_rules.allows((self.value or {}).get('app_id'))
     def method(self,connection,sender,path,interface,name,parameters,invocation):
@@ -116,18 +163,78 @@ class Runtime:
     def changed(self,proxy,sender,name,parameters):
         if name=='Changed':
             self.fresh=0
-            # Own source switch is distinguished by interaction_generation.
-            if self.phase!='switching':self.invalidate()
             self.poll()
     def invalidate(self):
         if hasattr(self,'feedback_tracker'):self.feedback_tracker.reset()
         self.feedback_edit=None
         self.revision+=1;self.history.reset();self.armed=None;self.replacement=None
+        self._skip_auto_once=False
         if hasattr(self,'stats'):self.stats['invalidations']+=1
+        if hasattr(self,'diag'):self.diag('invalidate',last=getattr(self,'last',''))
         if self.pending is not None:
             self.last='indeterminate' if self.phase=='injecting' else 'rejected'
             self.send({'op':'cancel'})
         self.pending=None;self.phase=None
+    def soft_invalidate(self):
+        """Cancel in-flight work but keep word history (pointer / interaction)."""
+        if hasattr(self,'feedback_tracker'):self.feedback_tracker.reset()
+        self.feedback_edit=None
+        self.armed=None;self.replacement=None
+        if self.pending is not None:
+            self.last='indeterminate' if self.phase=='injecting' else 'rejected'
+            self.send({'op':'cancel'})
+        self.pending=None;self.phase=None
+    def layout_changed(self,new_source):
+        """External layout switch: keep history, arm anti-loop, notify engine."""
+        if hasattr(self,'diag'):self.diag('layout-changed',source=new_source or '')
+        self.armed=None;self.replacement=None
+        if self.pending is not None:
+            self.last='rejected';self.send({'op':'cancel'})
+        self.pending=None;self.phase=None
+        self._skip_auto_once=True
+        try:self.rules.call(dict(op='layout_notice',source='user',layout=new_source or ''))
+        except Exception:pass
+    def play_switch_sound(self):
+        try:
+            import app_settings,switch_sound
+            if app_settings.load().get('play_switching_sound'):
+                switch_sound.play_if_allowed(self.enabled and not self.history.held)
+        except Exception:pass
+    def reconcile(self,old,value):
+        if self.phase=='switching':return
+        if old is None:
+            self.invalidate();return
+        old_snap=old.get('snapshot') or {};new_snap=value.get('snapshot') or {}
+        old_ctx=context(old);new_ctx=context(value)
+        old_app=old.get('app_id');new_app=value.get('app_id')
+        if new_ctx is None:
+            # Window flicker (token briefly 0) must not wipe history.
+            if (new_snap.get('window')==0 and old_snap.get('instance')==new_snap.get('instance')
+                    and not any(new_snap.get(k) for k in ('locked','shield_active','overview','external_source'))):
+                if self._window_zero_since is None:self._window_zero_since=time.monotonic()
+                return
+            self.invalidate();return
+        if old_ctx is None:
+            # Returned from a brief zero-window flicker.
+            if (self._window_zero_since is not None and time.monotonic()-self._window_zero_since<.4
+                    and old_snap.get('instance')==new_snap.get('instance') and old_app==new_app):
+                self._window_zero_since=None;return
+            self._window_zero_since=None
+            if old_snap.get('instance')!=new_snap.get('instance') or old_app!=new_app:
+                self.invalidate()
+            return
+        self._window_zero_since=None
+        if old_snap.get('instance')!=new_snap.get('instance') or old_app!=new_app:
+            self.invalidate();return
+        if old_ctx[1]!=new_ctx[1]:
+            self.invalidate();return
+        # Pointer / interaction only: cancel pending work, keep the word.
+        if old_ctx[2]!=new_ctx[2]:
+            self.soft_invalidate();return
+        # Source-only change: keep history, skip one auto word, notify engine.
+        if (old_snap.get('source_id')!=new_snap.get('source_id')
+                or old_snap.get('source_generation')!=new_snap.get('source_generation')):
+            self.layout_changed(new_snap.get('source_id'))
     def poll(self):
         if not self.refreshing:self.refresh(lambda:None)
         return not self.closed
@@ -139,9 +246,8 @@ class Runtime:
             try:
                 value=json.loads(proxy.call_finish(result).unpack()[0])
                 if owner is None or owner!=proxy.get_name_owner():raise ValueError()
-                old=context(self.value) if self.value else None
-                current=context(value)
-                if (current!=old or value.get('app_id')!=(self.value or {}).get('app_id')) and self.phase!='switching':self.invalidate()
+                old=self.value
+                self.reconcile(old,value)
                 self.value=value;self.owner=owner;self.fresh=time.monotonic()
             except Exception:self.value=None;self.invalidate()
             done()
@@ -159,20 +265,33 @@ class Runtime:
             return
         try:
             self.helper.stdin.write((json.dumps(value)+'\n').encode());self.helper.stdin.flush()
-        except (BrokenPipeError,OSError):self.close()
+        except (BrokenPipeError,OSError):
+            if self.helper: self._helper_lost()
+            else: self.close()
     def ping(self):
-        if self.helper.poll() is not None:self.close();return False
+        if self.closed:return False
+        if self.helper is None:return True
+        if self.helper.poll() is not None:
+            self._helper_lost();return False
         self.send(dict(op='ping'));return not self.closed
     def read(self,fd,condition):
         try:
             data=os.read(fd,65536)
-            if not data:self.close();return False
+            if not data:
+                if self.helper: self._helper_lost()
+                else: self.close()
+                return False
             self.buffer+=data
-            if len(self.buffer)>262144:self.close();return False
+            if len(self.buffer)>262144:
+                self.diag('helper-overflow')
+                self._helper_lost();return False
             while b'\n' in self.buffer:
                 line,self.buffer=self.buffer.split(b'\n',1);self.event(json.loads(line))
         except BlockingIOError:pass
-        except Exception:self.close();return False
+        except Exception:
+            if self.helper: self._helper_lost()
+            else: self.close()
+            return False
         return not self.closed
     def event(self,event):
         kind=event['kind']
@@ -221,9 +340,12 @@ class Runtime:
             allowed=context(copy) is not None
         mode=(self.value or {}).get('snapshot',{}).get('source_id')
         trigger=self.history.event(event,mode,allowed)
+        if trigger=='auto' and getattr(self,'_skip_auto_once',False):
+            self._skip_auto_once=False;trigger=None
         if trigger=='auto' and not self.auto_allowed():trigger=None
         if trigger:
             self.stats[trigger+'_triggers']+=1
+            self.diag('trigger',kind=trigger)
             self.armed=(trigger,self.revision,self.now()+.5)
         if self.armed is not None and not self.history.held:
             trigger,revision,deadline=self.armed
@@ -243,6 +365,21 @@ class Runtime:
             suggestion=self.rules.suggest(text,trigger=='auto')
             if suggestion['status']!='inferred':self.last='no-candidate';return
             self.stats['plans']+=1
+            if suggestion.get('layout_only'):
+                self.action+=1;identifier=self.action;self.pending=identifier;self.phase='switching'
+                self.replacement=''
+                self.last='pending'
+                token=context(self.value);source=self.value['snapshot'];mode=suggestion['mode']
+                request={k:source[k] for k in ('instance','generation','window')};request['target']=mode
+                def switched_only(proxy,result):
+                    try:
+                        reply=json.loads(proxy.call_finish(result).unpack()[0])
+                        if reply['status'] not in ('requested','unchanged'):raise ValueError()
+                    except Exception:self.last='rejected';self.invalidate();return
+                    self.last='layout-only';self.pending=None;self.phase=None
+                    self.history.text=''
+                self.proxy.call('RequestSource',GLib.Variant('(s)',(json.dumps(request),)),Gio.DBusCallFlags.NONE,300,None,switched_only)
+                return
             keys=key_plan(suggestion['remove'],suggestion['replacement'],suggestion['mode'])
             if keys is None:self.last='rejected';return
             self.action+=1;identifier=self.action;self.pending=identifier;self.phase='switching'
@@ -266,6 +403,7 @@ class Runtime:
                     reply=json.loads(proxy.call_finish(result).unpack()[0])
                     if reply['status'] not in ('requested','unchanged'):raise ValueError()
                 except Exception:self.last='rejected';self.invalidate();return
+                self.play_switch_sound()
                 self.refresh(check)
             self.proxy.call('RequestSource',GLib.Variant('(s)',(json.dumps(request),)),Gio.DBusCallFlags.NONE,300,None,switched)
         self.refresh(ready)

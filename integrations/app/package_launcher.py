@@ -18,7 +18,11 @@ def configured():
 
 
 def launch():
-    subprocess.Popen(['/usr/bin/python3',str(controller.PACKAGE/'gui.py')],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
+    # Native GTK shell is optional in 0.2.0; Python window stays the default.
+    if os.environ.get('TYPETUNE_NATIVE')=='1' and Path('/usr/bin/typetune-gui').exists():
+        subprocess.Popen(['/usr/bin/typetune-gui'],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
+    else:
+        subprocess.Popen(['/usr/bin/python3',str(controller.PACKAGE/'gui.py')],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
 
 
 class Setup(Gtk.ApplicationWindow):

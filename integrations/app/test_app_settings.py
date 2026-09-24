@@ -18,14 +18,38 @@ class Checks(unittest.TestCase):
     def test_defaults_and_field_updates_preserve_each_other(self):
         self.assertFalse(settings.load(self.path)['autostart'])
         self.assertEqual(settings.load(self.path)['learn_threshold'],3)
+        self.assertTrue(settings.load(self.path)['manual_switching'])
         settings.update({'mode':'compatibility'},self.path)
         settings.update({'automatic':False},self.path)
-        self.assertEqual(settings.load(self.path),dict(version=1,mode='compatibility',automatic=False,autostart=False,learn_threshold=3))
+        value=settings.load(self.path)
+        self.assertFalse(value['automatic'])
+        self.assertEqual(value['version'],2)
+        self.assertTrue(value['manual_switching'])
         settings.update({'learn_threshold':5},self.path)
         self.assertEqual(settings.load(self.path)['learn_threshold'],5)
         with self.assertRaises(ValueError):settings.update({'learn_threshold':0},self.path)
         with self.assertRaises(ValueError):settings.update({'learn_threshold':11},self.path)
         with self.assertRaises(ValueError):settings.update({'learn_threshold':'3'},self.path)
+
+    def test_v2_toggles_mutex_and_generation_ack(self):
+        settings.update({'switch_only_last_word':False,'dont_switch_words':True},self.path)
+        value=settings.load(self.path)
+        self.assertTrue(value['dont_switch_words'])
+        self.assertFalse(value['switch_only_last_word'])
+        with self.assertRaises(ValueError):
+            settings.update({'switch_only_last_word':True},self.path)
+        first=settings.load(self.path)
+        settings.update({'display_layout_flag':False},self.path,expected=first['generation'])
+        self.assertFalse(settings.load(self.path)['display_layout_flag'])
+        with self.assertRaises(ValueError):
+            settings.update({'play_switching_sound':True},self.path,expected=first['generation'])
+
+    def test_active_keyboards_validation(self):
+        settings.update({'active_keyboards':['us','ru','ua']},self.path)
+        self.assertEqual(settings.load(self.path)['active_keyboards'],['us','ru','ua'])
+        with self.assertRaises(ValueError):settings.update({'active_keyboards':['']},self.path)
+        with self.assertRaises(ValueError):settings.update({'active_keyboards':['us','us']},self.path)
+        with self.assertRaises(ValueError):settings.update({'active_keyboards':['a b']},self.path)
 
     def test_autostart_enable_disable_and_real_desktop_parser(self):
         from gi.repository import Gio
@@ -53,6 +77,7 @@ class Checks(unittest.TestCase):
         with self.assertRaises(ValueError):settings.update({'automatic':False},self.path)
         self.assertEqual(self.path.read_text(),'{broken')
         with self.assertRaises(ValueError):settings.update({'automatic':1},self.path)
+        with self.assertRaises(ValueError):settings.update({'nope':1},self.path)
 
     def test_restore_automatic_reads_saved_value(self):
         calls=[]
@@ -81,5 +106,10 @@ class Checks(unittest.TestCase):
 
     def test_legacy_ibus_settings_migrate_without_losing_choices(self):
         self.path.write_text('{"version":1,"mode":"ibus","automatic":false,"autostart":true}')
-        self.assertEqual(settings.load(self.path),dict(version=1,mode='compatibility',automatic=False,autostart=True,learn_threshold=3))
+        value=settings.load(self.path)
+        self.assertEqual(value['version'],2)
+        self.assertEqual(value['mode'],'compatibility')
+        self.assertFalse(value['automatic'])
+        self.assertTrue(value['autostart'])
+        self.assertTrue(value['manual_switching'])
         with self.assertRaises(ValueError):settings.update({'mode':'ibus'},self.path)

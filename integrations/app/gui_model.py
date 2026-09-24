@@ -18,6 +18,15 @@ class State:
     configurable: bool = False
     suggestion_count: int = 0
     learn_threshold: int = 3
+    flag: str = '?'
+    display_layout_flag: bool = True
+    manual_switching: bool = True
+    switch_only_last_word: bool = True
+    dont_switch_words: bool = False
+    dont_correct_after_layout_change: bool = True
+    play_switching_sound: bool = False
+    needs_permissions: bool = False
+    active_keyboards: tuple = ('us', 'ru')
 
 
 def _describe(data):
@@ -41,9 +50,17 @@ def _describe(data):
             detail += '\nАвтокоррекция выключена для этого приложения. Double Shift доступен.'
         elif automatic and reason == 'unknown-application':
             detail += '\nАвтокоррекция ждёт определения приложения для проверки исключений.'
+        needs_permissions = runtime.get('devices') == 0
         if enabled and not available:
-            detail += '\nКоррекция сейчас недоступна. Проверьте раскладку, активное поле и подключение клавиатуры.'
-        return State(title, detail, True, enabled, automatic, False, backend, suggestion_count=runtime.get('suggestion_count',0))
+            if needs_permissions:
+                detail += '\nНет доступа к /dev/input — откройте «Настроить доступ».'
+            else:
+                detail += '\nКоррекция сейчас недоступна. Проверьте раскладку, активное поле и подключение клавиатуры.'
+        from flag_badge import label
+        return State(title, detail, True, enabled, automatic, False, backend,
+                     suggestion_count=runtime.get('suggestion_count', 0),
+                     flag=label(runtime.get('mode')),
+                     needs_permissions=needs_permissions)
     if data.get('installed') is not True:
         return State('Нужна установка', 'Установите Linux preview по инструкции в README проекта.')
     if data.get('bridge') is not True:
@@ -61,10 +78,19 @@ def describe(data):
         automatic=state.automatic if state.running else settings.get('automatic', True) is True,
         autostart=settings.get('autostart_effective') is True,
         learn_threshold=settings.get('learn_threshold', 3) if type(settings.get('learn_threshold', 3)) is int else 3,
+        display_layout_flag=settings.get('display_layout_flag', True) is not False,
+        manual_switching=settings.get('manual_switching', True) is not False,
+        switch_only_last_word=settings.get('switch_only_last_word', True) is not False,
+        dont_switch_words=settings.get('dont_switch_words', False) is True,
+        dont_correct_after_layout_change=settings.get('dont_correct_after_layout_change', True) is not False,
+        play_switching_sound=settings.get('play_switching_sound', False) is True,
+        active_keyboards=tuple(b for b in settings.get('active_keyboards', ['us', 'ru']) if isinstance(b, str)),
         configurable=data.get('installed') is True and not data.get('settings_error'))
 
 
-COMMANDS = {'status', 'compat-on', 'start', 'pause', 'resume', 'stop', 'auto-on', 'auto-off', 'autostart-on', 'autostart-off', 'threshold-set'}
+COMMANDS = {'status', 'compat-on', 'start', 'pause', 'resume', 'stop', 'auto-on', 'auto-off',
+            'autostart-on', 'autostart-off', 'threshold-set', 'manual-toggle', 'switch-last-toggle',
+            'dont-switch-toggle', 'anti-loop-toggle', 'sound-toggle', 'flag-toggle', 'quit'}
 
 
 def request(command, payload=None, runner=subprocess.run):
@@ -94,6 +120,7 @@ def request(command, payload=None, runner=subprocess.run):
                     'autostart-on': state.autostart,
                     'autostart-off': not state.autostart,
                     'stop': not state.running,
+                    'quit': not state.running,
                     'compat-on': state.running and state.backend == 'Режим совместимости',
                     'start': state.running and state.backend == 'Режим совместимости'}
         if command in expected and not expected[command]:

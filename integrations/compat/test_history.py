@@ -26,7 +26,33 @@ class Checks(unittest.TestCase):
         self.edge(42);self.tap(30);self.edge(42,0)
         self.assertEqual(self.h.text,'A')
         self.tap(42);self.edge(42);self.assertIsNone(self.edge(42,2));self.assertIsNone(self.edge(42,0))
-        self.tap(58);self.assertEqual(self.h.text,'')
+    def test_caps_lock_latch_keeps_word_and_double_shift(self):
+        for code in [34,35,48]:self.tap(code)
+        self.assertEqual(self.h.text,'ghb')
+        self.tap(58);self.assertEqual(self.h.text,'ghb')
+        self.edge(58,0);self.assertEqual(self.h.text,'ghb')
+        self.tap(69);self.assertEqual(self.h.text,'ghb')
+    def test_modifier_edges_do_not_clear(self):
+        for code in [34,35,48]:self.tap(code)
+        self.assertEqual(self.h.text,'ghb')
+        for mod in (29,97,56,100,125,126):
+            self.edge(mod);self.assertEqual(self.h.text,'ghb')
+            self.edge(mod,0);self.assertEqual(self.h.text,'ghb')
+    def test_shortcut_with_ctrl_clears(self):
+        for code in [34,35,48]:self.tap(code)
+        self.edge(29)
+        self.tap(30)
+        self.assertEqual(self.h.text,'')
+    def test_mouse_button_codes_ignored(self):
+        for code in [34,35,48]:self.tap(code)
+        self.assertEqual(self.h.text,'ghb')
+        self.edge(272);self.assertEqual(self.h.text,'ghb')
+        self.edge(272,0);self.assertEqual(self.h.text,'ghb')
+        self.edge(277);self.assertEqual(self.h.text,'ghb')
+    def test_rapid_retoggle_not_suppressed(self):
+        for code in [34,35,48,32,20,49]:self.tap(code)
+        self.assertIsNone(self.tap(42));self.assertEqual(self.tap(42),'manual')
+        self.assertIsNone(self.tap(42));self.assertEqual(self.tap(42),'manual')
     def _apply_plan(self,text,caret,plan,mode):
         held=set();letters=(RU,RU.upper()) if mode=='ru' else (US,UPPER_US)
         punct=RU_PUNCT if mode=='ru' else US_PUNCT

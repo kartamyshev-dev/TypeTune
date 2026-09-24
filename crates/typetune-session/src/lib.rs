@@ -108,6 +108,13 @@ pub struct PortalEvidence {
     pub permission_requested: bool,
 }
 
+/// Local device-node visibility. Presence is not a grant to inject text.
+#[derive(Debug, Clone, Copy, Serialize)]
+pub struct PermissionEvidence {
+    pub dev_input: bool,
+    pub uinput: bool,
+}
+
 #[derive(Debug, Serialize)]
 pub struct SessionReport {
     pub schema_version: u32,
@@ -124,6 +131,12 @@ pub struct SessionReport {
     pub context: ContextSnapshot,
     pub text_capabilities: TextCapabilities,
     pub replacement_blockers: Vec<Blocker>,
+    /// macOS `--doctor` parity keys (stable).
+    pub protocol: Option<u32>,
+    pub os: String,
+    pub input_source: String,
+    pub autostart: bool,
+    pub permissions: PermissionEvidence,
     pub elapsed_ms: u128,
 }
 
@@ -168,9 +181,56 @@ impl SessionReport {
             context,
             text_capabilities,
             replacement_blockers,
+            protocol: None,
+            os: os_label(),
+            input_source: String::new(),
+            autostart: autostart_present(),
+            permissions: local_permissions(),
             elapsed_ms: 0,
         }
     }
+}
+
+fn os_label() -> String {
+    if let Ok(text) = std::fs::read_to_string("/etc/os-release") {
+        for line in text.lines() {
+            if let Some(value) = line.strip_prefix("PRETTY_NAME=") {
+                let value = value.trim_matches('"').trim_matches('\'');
+                if !value.is_empty() && value.len() <= 128 {
+                    return value.to_string();
+                }
+            }
+        }
+    }
+    "linux".into()
+}
+
+fn autostart_present() -> bool {
+    let base = std::env::var_os("XDG_CONFIG_HOME")
+        .map(std::path::PathBuf::from)
+        .unwrap_or_else(|| {
+            let mut home = std::path::PathBuf::from(std::env::var_os("HOME").unwrap_or_default());
+            home.push(".config");
+            home
+        });
+    let dir = base.join("autostart");
+    let Ok(entries) = std::fs::read_dir(dir) else {
+        return false;
+    };
+    entries.flatten().any(|entry| {
+        let name = entry.file_name();
+        let name = name.to_string_lossy();
+        name.contains("TypeTune") && name.ends_with(".desktop")
+    })
+}
+
+fn local_permissions() -> PermissionEvidence {
+    let dev_input = std::path::Path::new("/dev/input").is_dir()
+        && std::fs::read_dir("/dev/input")
+            .map(|mut d| d.next().is_some())
+            .unwrap_or(false);
+    let uinput = std::path::Path::new("/dev/uinput").exists();
+    PermissionEvidence { dev_input, uinput }
 }
 
 /// One fresh snapshot per invocation. Nothing is cached after disconnect;
@@ -227,6 +287,8 @@ pub async fn probe() -> SessionReport {
             );
             if let Probe::Observed(observation) = &bridge {
                 let snapshot = &observation.snapshot;
+                report.protocol = Some(snapshot.protocol);
+                report.input_source = snapshot.source_id.clone();
                 if !snapshot.source_id.is_empty() {
                     report.text_capabilities.read_layout = Capability::Limited(
                         "GNOME input source only; full keymap/modifiers and composition are not known".into());

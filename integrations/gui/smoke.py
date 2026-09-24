@@ -10,9 +10,20 @@ from gui_model import describe
 
 calls = []
 current = dict(installed=True, bridge=True, compatibility=dict(enabled=True, automatic=True, available=True, mode='ru'))
-current['settings']=dict(mode='compatibility',automatic=True,autostart_effective=False)
+current['settings']=dict(mode='compatibility',automatic=True,autostart_effective=False,
+                         manual_switching=True,switch_only_last_word=True,dont_switch_words=False,
+                         dont_correct_after_layout_change=True,play_switching_sound=False,
+                         display_layout_flag=True,active_keyboards=['us','ru'])
 fail_next = False
 block_status = None
+TOGGLE_KEYS = {
+    'manual-toggle':'manual_switching',
+    'switch-last-toggle':'switch_only_last_word',
+    'dont-switch-toggle':'dont_switch_words',
+    'anti-loop-toggle':'dont_correct_after_layout_change',
+    'sound-toggle':'play_switching_sound',
+    'flag-toggle':'display_layout_flag',
+}
 
 def requester(command, payload=None):
     global fail_next
@@ -26,6 +37,13 @@ def requester(command, payload=None):
     if command == 'auto-off': r['automatic'] = False
     if command == 'pause': r['enabled'] = False
     if command == 'resume': r['enabled'] = True
+    if command in TOGGLE_KEYS:
+        key = TOGGLE_KEYS[command]
+        current['settings'][key] = not current['settings'].get(key, True)
+        if key == 'switch_only_last_word' and current['settings'][key]:
+            current['settings']['dont_switch_words'] = False
+        if key == 'dont_switch_words' and current['settings'][key]:
+            current['settings']['switch_only_last_word'] = False
     if command == 'threshold-set':
         raw = (payload or '').strip()
         if not raw:
@@ -106,6 +124,16 @@ assert w.threshold.get_value_as_int() == 5 and calls.count('threshold-set') == 1
 assert current['settings']['learn_threshold'] == 5
 w.threshold.set_value(3); settle()
 assert w.threshold.get_value_as_int() == 3 and calls.count('threshold-set') == 2
+assert w.manual.get_active() and w.switch_last.get_active() and not w.dont_words.get_active()
+assert w.anti_loop.get_active() and not w.sound.get_active() and w.show_flag.get_active()
+assert 'us, ru' in w.boards.get_label()
+w.dont_words.set_active(True); settle()
+assert w.dont_words.get_active() and not w.switch_last.get_active()
+assert calls.count('dont-switch-toggle') == 1
+w.sound.set_active(True); settle()
+assert w.sound.get_active() and calls.count('sound-toggle') == 1
+w.show_flag.set_active(False); settle()
+assert not w.show_flag.get_active() and calls.count('flag-toggle') == 1
 for bad_payload, expected in (
     (None, 'Порог не задан'),
     ('', 'Порог не задан'),
@@ -123,7 +151,7 @@ for bad_payload, expected in (
 w.stop.emit('clicked'); settle()
 w.start.emit('clicked'); settle()
 assert w.get_width() > 0 and w.get_height() > 0
-print('GUI-43 controlled GTK: status/pause/resume/auto-off/stop/start/missing-bridge/failure/recovery/threshold PASS')
+print('GUI-43 controlled GTK: status/pause/resume/auto-off/stop/start/missing-bridge/failure/recovery/threshold/policy-toggles PASS')
 # Capture only this fixture's window, never the user's desktop.
 if len(sys.argv) > 1:
     from gi.repository import Gsk, Graphene

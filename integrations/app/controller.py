@@ -28,7 +28,7 @@ EXTENSION = DATA / 'gnome-shell/extensions' / UUID
 CONFIG = Path(os.environ.get('XDG_CONFIG_HOME', str(Path.home() / '.config')))
 ENVIRONMENT = CONFIG / 'environment.d/90-typetune-ibus.conf'
 DESKTOP = DATA / 'applications/dev.kartamyshev.TypeTune.Preview.desktop'
-FILES = ('correction_feedback.py', 'suggestion_editor.py', 'application_rules.py', 'application_editor.py', 'app_settings.py', 'preferences.py', 'word_editor.py', 'tray.py', 'gui.py', 'gui_model.py', 'controller.py', 'test-page.html', 'gesture.py')
+FILES = ('correction_feedback.py', 'suggestion_editor.py', 'application_rules.py', 'application_editor.py', 'app_settings.py', 'preferences.py', 'word_editor.py', 'tray.py', 'gui.py', 'gui_model.py', 'controller.py', 'test-page.html', 'gesture.py', 'flag_badge.py', 'switch_sound.py')
 
 
 def call(name, path, interface, method, parameters=None, timeout=1000):
@@ -437,7 +437,7 @@ def threshold_set():
 
 def main():
     parser = argparse.ArgumentParser(description='TypeTune: общесистемная коррекция раскладки (GNOME 50 / Wayland)')
-    parser.add_argument('command', choices=['package-configure', 'package-stop', 'package-remove', 'install', 'start', 'pause', 'resume', 'stop', 'status', 'uninstall', 'auto-on', 'auto-off', 'compat-on', 'compat-off', 'gui', 'words-get', 'words-save', 'apps-get', 'apps-save', 'suggestions-get', 'suggestions-resolve', 'autostart-on', 'autostart-off', 'autostart'])
+    parser.add_argument('command', choices=['package-configure', 'package-stop', 'package-remove', 'install', 'start', 'pause', 'resume', 'stop', 'status', 'uninstall', 'auto-on', 'auto-off', 'compat-on', 'compat-off', 'gui', 'words-get', 'words-save', 'apps-get', 'apps-save', 'suggestions-get', 'suggestions-resolve', 'autostart-on', 'autostart-off', 'autostart', 'threshold-set', 'manual-toggle', 'switch-last-toggle', 'dont-switch-toggle', 'anti-loop-toggle', 'sound-toggle', 'flag-toggle', 'quit'])
     args = parser.parse_args()
     repo = Path(__file__).resolve().parents[2]
     try:
@@ -476,6 +476,34 @@ def main():
                     raise RuntimeError('Настройка сохранена, но не применена. Обновите состояние или перезапустите режим.') from error
             app_settings.update({'automatic':enabled},apply=apply_automatic)
             print('Настройка автокоррекции сохранена.')
+        elif args.command in ('manual-toggle','switch-last-toggle','dont-switch-toggle',
+                              'anti-loop-toggle','sound-toggle','flag-toggle'):
+            import app_settings
+            key = {
+                'manual-toggle':'manual_switching',
+                'switch-last-toggle':'switch_only_last_word',
+                'dont-switch-toggle':'dont_switch_words',
+                'anti-loop-toggle':'dont_correct_after_layout_change',
+                'sound-toggle':'play_switching_sound',
+                'flag-toggle':'display_layout_flag',
+            }[args.command]
+            current = app_settings.load()
+            changes = {key: not current.get(key, True)}
+            if key == 'switch_only_last_word' and changes[key]:
+                changes['dont_switch_words'] = False
+            if key == 'dont_switch_words' and changes[key]:
+                changes['switch_only_last_word'] = False
+            app_settings.update(changes)
+            print('Настройка сохранена.')
+        elif args.command == 'quit':
+            try:
+                runtime = active_runtime_control()
+                if runtime is not None:
+                    runtime('Quit', True)
+            except (GLib.Error, RuntimeError):
+                pass
+            compat_stop()
+            print('TypeTune остановлен.')
         elif args.command == 'stop':
             marker=login_marker();marker.parent.mkdir(parents=True,exist_ok=True);marker.touch()
             stop()

@@ -44,6 +44,12 @@ class Window(Gtk.ApplicationWindow):
         self.auto = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.auto.connect('state-set', self.toggle_auto)
         auto_row.append(auto_text); auto_row.append(self.auto); box.append(auto_row)
+        self.manual = self.add_switch(box, 'Ручное переключение (Double Shift)', 'manual-toggle', 'manual_switching')
+        self.switch_last = self.add_switch(box, 'Переключать только последнее слово', 'switch-last-toggle', 'switch_only_last_word')
+        self.dont_words = self.add_switch(box, 'Не переключать слова', 'dont-switch-toggle', 'dont_switch_words')
+        self.anti_loop = self.add_switch(box, 'Не исправлять после смены раскладки', 'anti-loop-toggle', 'dont_correct_after_layout_change')
+        self.sound = self.add_switch(box, 'Звук переключения', 'sound-toggle', 'play_switching_sound')
+        self.show_flag = self.add_switch(box, 'Показывать флаг раскладки', 'flag-toggle', 'display_layout_flag')
         login_row = Gtk.Box(spacing=16)
         login_text = self.label('Запускать при входе в систему'); login_text.set_hexpand(True)
         self.login = Gtk.Switch(valign=Gtk.Align.CENTER)
@@ -55,6 +61,8 @@ class Window(Gtk.ApplicationWindow):
         self.threshold.set_valign(Gtk.Align.CENTER)
         self.threshold.connect('value-changed', self.change_threshold)
         threshold_row.append(threshold_text); threshold_row.append(self.threshold); box.append(threshold_row)
+        self.boards = self.label('Активные раскладки: us, ru')
+        self.boards.add_css_class('dim-label'); box.append(self.boards)
         box.append(self.label('Double Shift — переключить последнее слово и язык ввода. Повторите жест, чтобы переключить обратно.'))
         self.notice = self.label('Режим совместимости не распознаёт парольные поля и выделение. Для паролей и команд используйте паузу. Не все приложения обрабатывают замену одинаково.')
         self.notice.add_css_class('dim-label'); box.append(self.notice)
@@ -93,6 +101,20 @@ class Window(Gtk.ApplicationWindow):
             self.word_editor = WordEditor(self)
         self.word_editor.present()
 
+    def show_page(self, page):
+        """Tray openers: focus the matching editor or the permissions CTA."""
+        if page == 'learned':
+            self.open_words()
+        elif page == 'auto-disabled':
+            self.open_applications()
+        elif page == 'active-keyboards':
+            self.present()
+        elif page == 'permissions':
+            self.present()
+            if getattr(self.state, 'needs_permissions', False):
+                self.error_text = 'Нет доступа к /dev/input — откройте «Установка, доступ и удаление…» и подтвердите polkit.'
+                self.render()
+
     def open_suggestions(self, *_):
         from suggestion_editor import SuggestionEditor
         if self.suggestion_editor is None:
@@ -108,6 +130,24 @@ class Window(Gtk.ApplicationWindow):
     @staticmethod
     def label(text):
         return Gtk.Label(label=text, xalign=0, wrap=True)
+
+    def add_switch(self, parent, text, command, attr):
+        row = Gtk.Box(spacing=16)
+        label = self.label(text); label.set_hexpand(True)
+        switch = Gtk.Switch(valign=Gtk.Align.CENTER)
+        switch.connect('state-set', self.toggle_setting, command, attr)
+        row.append(label); row.append(switch); parent.append(row)
+        return switch
+
+    def toggle_setting(self, _, enabled, command, attr):
+        if self.rendering or self.controls_busy or self.state is None:
+            return True
+        if not (self.state.running or self.state.configurable):
+            return True
+        if enabled == getattr(self.state, attr):
+            return True
+        self.dispatch(command)
+        return True
 
     def closing(self, *_):
         app = self.get_application()
@@ -166,11 +206,25 @@ class Window(Gtk.ApplicationWindow):
             self.login.set_state(state.autostart)
             self.login.set_active(state.autostart)
             self.threshold.set_value(state.learn_threshold)
+            boards = ', '.join(state.active_keyboards) or '—'
+            self.boards.set_label(f'Активные раскладки: {boards}')
+            for switch, attr in ((self.manual, 'manual_switching'),
+                                 (self.switch_last, 'switch_only_last_word'),
+                                 (self.dont_words, 'dont_switch_words'),
+                                 (self.anti_loop, 'dont_correct_after_layout_change'),
+                                 (self.sound, 'play_switching_sound'),
+                                 (self.show_flag, 'display_layout_flag')):
+                value = getattr(state, attr)
+                switch.set_state(value)
+                switch.set_active(value)
         self.start_box.set_visible(not state or not state.running)
         self.pause.set_visible(bool(state and state.running))
         self.stop.set_visible(state is None or state.running)
         self.pause.set_sensitive(bool(state and state.running and not self.controls_busy))
         self.auto.set_sensitive(bool(state and (state.running or state.configurable) and not self.controls_busy))
+        policy_sensitive = bool(state and (state.running or state.configurable) and not self.controls_busy)
+        for switch in (self.manual, self.switch_last, self.dont_words, self.anti_loop, self.sound, self.show_flag):
+            switch.set_sensitive(policy_sensitive)
         self.login.set_sensitive(bool(state and state.configurable and not self.controls_busy))
         self.threshold.set_sensitive(bool(state and state.configurable and not self.controls_busy))
         self.start.set_sensitive(bool(state and state.can_start and not self.controls_busy))

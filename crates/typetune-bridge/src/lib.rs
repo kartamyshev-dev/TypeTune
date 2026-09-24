@@ -119,6 +119,7 @@ impl From<PolicyDto> for AutoPolicy {
 pub struct Bridge {
     runtime: runtime::Runtime,
     dictionary: typetune_engine::UserDictionary,
+    policy: AutoPolicy,
     plan: Option<Plan>,
     flight: Option<InFlight>,
     deadline: Option<Instant>,
@@ -268,13 +269,15 @@ impl Bridge {
                 if self.plan.is_some() || self.flight.is_some() {
                     return self.cancel();
                 }
-                match typetune_engine::inferred::suggest_with_dictionary(
+                match typetune_engine::inferred::suggest_with_policy(
                     &text,
                     automatic,
                     &self.dictionary,
+                    &self.policy,
                 ) {
                     Some(candidate) => json!({"status":"inferred", "remove": candidate.remove,
-                        "replacement":candidate.replacement, "mode":match candidate.direction {
+                        "replacement":candidate.replacement, "layout_only":candidate.layout_only,
+                        "mode":match candidate.direction {
                             Direction::UsToRu=>"ru",Direction::RuToUs=>"us"}}),
                     None => json!({"status":"ignored"}),
                 }
@@ -292,8 +295,9 @@ impl Bridge {
                 all_words.extend(learned.iter().cloned());
                 match typetune_engine::UserDictionary::new(all_words.clone(), exclusions.clone()) {
                     Ok(dictionary) => {
+                        self.policy = policy.into();
                         self.runtime
-                            .configure(words, exclusions, learned, policy.into());
+                            .configure(words, exclusions, learned, self.policy);
                         self.dictionary = dictionary;
                         json!({"status":"configured"})
                     }
@@ -544,5 +548,37 @@ mod tests {
             )["replacement"],
             "клавиатуры "
         );
+    }
+
+    #[test]
+    fn infer_respects_configured_policy() {
+        let now = Instant::now();
+        let mut b = Bridge::default();
+        assert_eq!(
+            call(
+                &mut b,
+                json!({"op":"configure","words":[],"exclusions":[],
+                    "policy":{"switch_only_last_word":true,"dont_switch_words":true,
+                        "dont_correct_after_layout_change":true}}),
+                now
+            )["status"],
+            "configured"
+        );
+        let result = call(
+            &mut b,
+            json!({"op":"infer","text":"ghbdtn ","automatic":true}),
+            now,
+        );
+        assert_eq!(result["status"], "inferred");
+        assert_eq!(result["layout_only"], true);
+        assert_eq!(result["remove"], 0);
+        // Manual Double Shift still rewrites text under dont_switch_words.
+        let manual = call(
+            &mut b,
+            json!({"op":"infer","text":"ghbdtn","automatic":false}),
+            now,
+        );
+        assert_eq!(manual["status"], "inferred");
+        assert_eq!(manual["layout_only"], false);
     }
 }

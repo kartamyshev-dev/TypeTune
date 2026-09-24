@@ -59,3 +59,15 @@ JSON-операции (урезанно): `configure`, `key_event`, `edit_result
 | Контекст текста | keymap-inferred (limited) | Accessibility (с timeout), fallback inferred |
 
 Неизвестные capabilities остаются Unknown в статусе UI.
+
+## Настройки (Linux)
+
+`~/.config/typetune/settings.json` — schema v2 c `generation` ACK (uuid). Поля-тумблеры
+совпадают с macOS `Settings.swift` по смыслу: auto/manual switching, switch-only-last-word,
+dont-switch-words, dont-correct-after-layout-change, display-layout-flag, play-switching-sound,
+active-keyboards. Слова и исключения приложений живут в отдельных файлах с собственным
+generation (`words.json`, `applications.json`).
+
+Политика передаётся в bridge через `configure.policy`; `infer` учитывает её
+(`layout_only` при `dont_switch_words`). Внешняя смена раскладки вызывает `layout_notice`
+и пропускает **одно** авто-слово (анти-петля).

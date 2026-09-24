@@ -9,8 +9,12 @@ Terminal=false
 Categories=Utility;Accessibility;
 StartupNotify=true
 StartupWMClass=dev.kartamyshev.TypeTune.Preview
-Actions=Setup;
+Actions=Setup;Native;
 
 [Desktop Action Setup]
 Name=Настроить доступ и сеанс
 Exec=/usr/bin/typetune-preview --setup
+
+[Desktop Action Native]
+Name=Нативные настройки (GTK)
+Exec=/usr/bin/typetune-gui

@@ -8,7 +8,7 @@ def run(args,**kwargs):return subprocess.run(args,check=True,**kwargs)
 def build(version,output):
     if not re.fullmatch(r'[0-9][A-Za-z0-9.+~:-]*',version):raise ValueError('Invalid Debian version')
     arch=subprocess.check_output(['dpkg','--print-architecture'],text=True).strip()
-    for args in [('typetune-bridge',),('typetune-cli','--example','compat_transport')]:
+    for args in [('typetune-bridge',),('typetune-cli','--example','compat_transport'),('typetune-cli',),('typetune-gui',)]:
         run(['cargo','build','-p',*args,'--release','--locked','--offline'],cwd=REPO)
     output.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='typetune-deb-') as temporary:
@@ -22,13 +22,18 @@ def build(version,output):
             if not source.name.startswith('test_'):copy(source,payload/'compat'/source.name)
         copy(REPO/'target/release/libtypetune_bridge.so',payload/'libtypetune_bridge.so')
         copy(REPO/'target/release/examples/compat_transport',payload/'compat/compat_transport',0o755)
+        # Native shell (0.2.0): optional GTK window + CLI doctor; Python tray remains default.
+        copy(REPO/'target/release/typetune-gui',root/'usr/bin/typetune-gui',0o755)
+        copy(REPO/'target/release/typetune',root/'usr/bin/typetune',0o755)
         shutil.copytree(REPO/'integrations/gnome',payload/'gnome',ignore=shutil.ignore_patterns('__pycache__'))
         (payload/'package.json').write_text(json.dumps(dict(version=version,architecture=arch,profile='gnome50',source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip(),source_dirty=bool(subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=REPO,text=True).strip())))+'\n')
         for name in ('manage-access','session-lifecycle'):copy(REPO/'packaging/preview'/name,payload/name,0o755)
-        launcher=root/'usr/bin/typetune-preview';launcher.parent.mkdir(parents=True)
+        launcher=root/'usr/bin/typetune-preview';launcher.parent.mkdir(parents=True,exist_ok=True)
         launcher.write_text('#!/bin/sh\nexec /usr/bin/python3 /usr/lib/typetune-preview/package_launcher.py "$@"\n');launcher.chmod(0o755)
         copy(REPO/'packaging/preview/typetune-preview.desktop',root/'usr/share/applications/dev.kartamyshev.TypeTune.Preview.desktop')
         copy(REPO/'packaging/preview/typetune-setup.desktop',root/'usr/share/applications/dev.kartamyshev.TypeTune.Setup.desktop')
+        for icon in (REPO/'resources/icons/hicolor/scalable/status').glob('*.svg'):
+            copy(icon,root/'usr/share/icons/hicolor/scalable/status'/icon.name)
         copy(REPO/'packaging/preview/org.typetune.preview.manage.policy',root/'usr/share/polkit-1/actions/org.typetune.preview.manage.policy')
         rule=root/'usr/lib/udev/rules.d/70-typetune-preview.rules';rule.parent.mkdir(parents=True)
         rule.write_text('KERNEL=="uinput", SUBSYSTEM=="misc", GROUP="input", MODE="0660"\n')
@@ -59,7 +64,7 @@ def build(version,output):
             index.append(dict(name=crate['name'],version=crate['version'],license=crate['license'],authors=crate['authors'],repository=crate['repository']))
         (notices/'manifest.json').write_text(json.dumps(index,ensure_ascii=False,indent=2)+'\n')
         debian=base/'debian';debian.mkdir();(debian/'control').write_text('Source: typetune-preview\n\nPackage: typetune-preview\nArchitecture: any\nDescription: TypeTune preview\n')
-        dependencies=subprocess.check_output(['dpkg-shlibdeps','-O','-e'+str(payload/'libtypetune_bridge.so'),'-e'+str(payload/'compat/compat_transport')],cwd=base,text=True).strip().split('=',1)[1]
+        dependencies=subprocess.check_output(['dpkg-shlibdeps','-O','-e'+str(payload/'libtypetune_bridge.so'),'-e'+str(payload/'compat/compat_transport'),'-e'+str(root/'usr/bin/typetune-gui'),'-e'+str(root/'usr/bin/typetune')],cwd=base,text=True).strip().split('=',1)[1]
         metadata=root/'DEBIAN';metadata.mkdir()
         installed_size=sum(p.stat().st_size for p in root.rglob('*') if p.is_file())//1024
         (metadata/'control').write_text(f'''Package: typetune-preview

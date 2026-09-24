@@ -1,6 +1,6 @@
 # TypeTune
 
-> System-wide Russian ↔ English layout correction, snippets, and optional key debounce.
+> System-wide Russian ↔ English layout correction.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI](https://img.shields.io/badge/CI-Linux%20%2B%20macOS-success)](https://github.com/kartamyshev-dev/TypeTune/actions)
@@ -8,7 +8,7 @@
 
 **[Русский](README.md)**
 
-TypeTune fixes text typed in the wrong keyboard layout (for example `ghbdtn` → `привет`), switches the input source, expands snippets, and can optionally debounce noisy keyboards on Linux.
+TypeTune fixes text typed in the wrong keyboard layout (for example `ghbdtn` → `привет`) and switches the input source.
 
 ## Status
 

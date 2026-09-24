@@ -15,6 +15,12 @@ with tempfile.TemporaryDirectory(prefix='typetune-dpkg-') as temporary:
     run([*dpkg,'--install',str(artifact)])
     payload=root/'usr/lib/typetune-preview'
     assert (payload/'libtypetune_bridge.so').is_file()
+    assert (payload/'switch_sound.py').is_file(), 'switch_sound.py must ship'
+    # Native shell (0.2.0) ships alongside the Python payload.
+    assert (root/'usr/bin/typetune-gui').stat().st_mode & 0o111, 'typetune-gui missing'
+    assert (root/'usr/bin/typetune').stat().st_mode & 0o111, 'typetune missing'
+    for icon in ('typetune-flag-us.svg','typetune-flag-ru.svg'):
+        assert (root/'usr/share/icons/hicolor/scalable/status'/icon).is_file(), icon
     for legacy in ('libtypetune_ibus.so','runtime_engine.py','probe_engine.py','manual.py','session_guard.py','editor_guard.py'):
         assert not (payload/legacy).exists(), legacy
     # Runtime Dictionary::load is tests-only; runtime dictionaries are embedded
@@ -35,6 +41,8 @@ with tempfile.TemporaryDirectory(prefix='typetune-dpkg-') as temporary:
     assert not list(root.rglob('*.pyc'))
     desktop=root/'usr/share/applications/dev.kartamyshev.TypeTune.Preview.desktop'
     run(['desktop-file-validate',str(desktop)])
+    text=desktop.read_text()
+    assert 'Exec=/usr/bin/typetune-gui' in text, 'native window action must ship'
     control=base/'repack';run(['dpkg-deb','-R',str(artifact),str(control)],stdout=subprocess.DEVNULL)
     path=control/'DEBIAN/control';text=path.read_text();old=next(line.split(': ',1)[1] for line in text.splitlines() if line.startswith('Version:'))
     version=old+'+test1';path.write_text(text.replace('Version: '+old,'Version: '+version))
