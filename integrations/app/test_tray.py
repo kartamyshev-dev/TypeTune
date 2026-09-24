@@ -72,6 +72,15 @@ class Checks(unittest.TestCase):
         self.assertEqual(len(icon), 1)
         self.assertEqual(icon[0][0], 41)
 
+    def test_permissions_hides_flag_pixmap(self):
+        self.assertTrue(self.tray._pixmap())
+        self.tray.state = describe(dict(
+            compatibility=dict(enabled=True, automatic=True, available=False, mode='ru', devices=0),
+            settings=dict(display_layout_flag=True)))
+        self.assertTrue(self.tray.state.needs_permissions)
+        self.assertEqual(self.tray._pixmap(), [], 'warning IconName must not be covered by the flag')
+        self.assertEqual(self.tray.icon(), 'dialog-warning-symbolic')
+
     def test_paused_stopped_unknown_and_toggle(self):
         self.tray.state = describe(dict(compatibility=dict(enabled=False, automatic=False, available=False),
                                         settings=dict()))

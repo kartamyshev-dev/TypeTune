@@ -181,6 +181,9 @@ class Tray:
     def _pixmap(self):
         if self.error or self.state is None or not self.state.running:
             return []
+        # Permission warning must win over the flag pixmap (IconName is the warning).
+        if getattr(self.state, 'needs_permissions', False):
+            return []
         if not _state_bool(self.state, 'display_layout_flag', True):
             return []
         return flag_badge.pixmap(getattr(self.state, 'flag', '?')) or []

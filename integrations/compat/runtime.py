@@ -56,6 +56,7 @@ class Runtime:
         self.enabled=True;self.automatic=settings.get('automatic',False);self.value=None;self.fresh=0;self.owner=None
         self.last='idle';self.devices=0;self.closed=False;self.refreshing=False
         self._skip_auto_once=False;self._window_zero_since=None
+        self._own_layout_switch=False
         self._helper_rescues=0;self._helper_path=None;self._rescue_pending=False
         self._diag=None
         if os.environ.get('TYPETUNE_DIAG'):
@@ -142,6 +143,9 @@ class Runtime:
         return False
     def auto_allowed(self):
         return self.automatic and not preferences.ERROR and application_rules.allows((self.value or {}).get('app_id'))
+    def manual_allowed(self):
+        try: return app_settings.load().get('manual_switching',True) is not False
+        except (ValueError,OSError): return True
     def method(self,connection,sender,path,interface,name,parameters,invocation):
         if hasattr(self,'feedback') and correction_feedback.method(self.feedback,name,parameters,invocation):return
         if name=='GetStatus':
@@ -239,6 +243,10 @@ class Runtime:
         # Source-only change: keep history, skip one auto word, notify engine.
         if (old_snap.get('source_id')!=new_snap.get('source_id')
                 or old_snap.get('source_generation')!=new_snap.get('source_generation')):
+            if getattr(self,'_own_layout_switch',False):
+                # Our own layout-only plan; do not treat as an external switch.
+                self._own_layout_switch=False
+                return
             self.layout_changed(new_snap.get('source_id'))
     def poll(self):
         if not self.refreshing:self.refresh(lambda:None)
@@ -352,6 +360,7 @@ class Runtime:
         if trigger=='auto' and getattr(self,'_skip_auto_once',False):
             self._skip_auto_once=False;trigger=None
         if trigger=='auto' and not self.auto_allowed():trigger=None
+        if trigger=='manual' and not self.manual_allowed():trigger=None
         if trigger:
             self.stats[trigger+'_triggers']+=1
             self.diag('trigger',kind=trigger)
@@ -387,6 +396,10 @@ class Runtime:
                     except Exception:self.last='rejected';self.invalidate();return
                     self.last='layout-only';self.pending=None;self.phase=None
                     self.history.text=''
+                    self.play_switch_sound()
+                    # Absorb the incoming source change as ours, not an external switch.
+                    self._own_layout_switch=True
+                    self.refresh(lambda:None)
                 self.proxy.call('RequestSource',GLib.Variant('(s)',(json.dumps(request),)),Gio.DBusCallFlags.NONE,300,None,switched_only)
                 return
             keys=key_plan(suggestion['remove'],suggestion['replacement'],suggestion['mode'])

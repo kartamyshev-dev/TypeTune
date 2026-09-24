@@ -32,4 +32,15 @@ class TriggerChecks(unittest.TestCase):
                 r.event(dict(kind='key',seq=1,device=1,code=code,value=value,time=t))
             for callback in timers:callback()
         self.assertEqual(calls,[])
+    def test_manual_disabled_skips_double_shift(self):
+        r,calls=self.fixture();timers=[]
+        r.manual_allowed=lambda:False
+        r.history.text='ghbdtn'
+        def edge(code,value,t):r.event(dict(kind='key',seq=1,device=1,code=code,value=value,time=t))
+        with patch('runtime.GLib.timeout_add',side_effect=lambda ms,fn:timers.append(fn)):
+            edge(42,1,0);edge(42,0,.05)
+            edge(42,1,.1);edge(42,0,.15)
+            for callback in list(timers):callback()
+        self.assertEqual(calls,[], 'manual_switching=False must block Double Shift')
+        self.assertEqual(r.stats.get('manual_triggers',0),0)
 if __name__=='__main__':unittest.main()

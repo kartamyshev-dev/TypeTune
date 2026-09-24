@@ -32,7 +32,7 @@ class Checks(unittest.TestCase):
         calls=[]
         runtime=SimpleNamespace(revision=1,history=History(),pending=None,phase=None,last='idle',
             send=calls.append,armed=None,replacement=None,feedback_edit=None,_skip_auto_once=False,
-            _window_zero_since=None,value=None)
+            _window_zero_since=None,_own_layout_switch=False,value=None)
         runtime.invalidate=lambda: Runtime.invalidate(runtime)
         runtime.soft_invalidate=lambda: Runtime.soft_invalidate(runtime)
         runtime.layout_changed=lambda source: Runtime.layout_changed(runtime,source)
@@ -61,6 +61,19 @@ class Checks(unittest.TestCase):
         self.assertEqual(r.history.text,'ghb')
         self.assertTrue(r._skip_auto_once)
         self.assertEqual(calls,[{'op':'layout_notice','source':'user','layout':'ru'}])
+    def test_own_layout_switch_is_not_external(self):
+        r,calls=self._runtime()
+        r._own_layout_switch=True
+        class Rules:
+            def call(self,value):calls.append(value)
+        r.rules=Rules()
+        old=self.state();new=self.state()
+        new['snapshot']=dict(old['snapshot'],source_id='ru',xkb_id='ru',source_generation=2)
+        Runtime.reconcile(r,old,new)
+        self.assertEqual(r.history.text,'ghb')
+        self.assertFalse(r._own_layout_switch)
+        self.assertFalse(r._skip_auto_once)
+        self.assertEqual(calls,[], 'own switch must not emit layout_notice or anti-loop')
     def test_window_flicker_keeps_history(self):
         r,_=self._runtime()
         old=self.state();new=self.state();new['snapshot']=dict(old['snapshot'],window=0)
