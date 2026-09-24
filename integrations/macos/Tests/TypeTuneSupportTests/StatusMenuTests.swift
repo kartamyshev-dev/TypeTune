@@ -13,7 +13,7 @@ private final class MenuRecorder {
 
 struct StatusMenuTests {
     @MainActor
-    private func makeMenu(_ state: StatusMenu.State = StatusMenu.State(flag: "EN")) -> (StatusMenu, MenuRecorder) {
+    private func makeMenu(_ state: StatusMenu.State = StatusMenu.State(flag: "us")) -> (StatusMenu, MenuRecorder) {
         let recorder = MenuRecorder()
         let environment = StatusMenu.Environment(
             apply: { recorder.applied.append($0) },
@@ -51,7 +51,7 @@ struct StatusMenuTests {
         let (menu, _) = makeMenu()
         let titles = menu.menu.items.map { $0.isSeparatorItem ? "—" : $0.title }
         #expect(titles == [
-            "EN",
+            "🇺🇸",
             "—",
             "Автопереключение",
             "Ручное переключение (Double Shift)",
@@ -79,15 +79,18 @@ struct StatusMenuTests {
     }
 
     @Test @MainActor func statusItemTitleShowsFlagOrCross() {
-        #expect(StatusMenu.statusTitle(flag: "EN", displayLayoutFlag: true, running: true) == "EN")
-        #expect(StatusMenu.statusTitle(flag: "RU", displayLayoutFlag: true, running: true) == "RU")
+        #expect(StatusMenu.statusTitle(flag: "us", displayLayoutFlag: true, running: true) == "🇺🇸")
+        #expect(StatusMenu.statusTitle(flag: "ru", displayLayoutFlag: true, running: true) == "🇷🇺")
         #expect(StatusMenu.statusTitle(flag: "?", displayLayoutFlag: true, running: true) == "?")
-        #expect(StatusMenu.statusTitle(flag: "EN", displayLayoutFlag: true, running: false) == "✕")
-        #expect(StatusMenu.statusTitle(flag: "EN", displayLayoutFlag: false, running: true) == "•")
+        #expect(StatusMenu.statusTitle(flag: "us", displayLayoutFlag: true, running: false) == "✕")
+        #expect(StatusMenu.statusTitle(flag: "us", displayLayoutFlag: false, running: true) == "•")
+        #expect(FlagBadge.image(for: "us") != nil)
+        #expect(FlagBadge.image(for: "ru") != nil)
+        #expect(FlagBadge.image(for: "?") == nil)
 
-        var state = StatusMenu.State(flag: "EN")
+        var state = StatusMenu.State(flag: "us")
         let (menu, _) = makeMenu(state)
-        #expect(menu.menu.items.first?.title == "EN")
+        #expect(menu.menu.items.first?.image != nil)
 
         state.running = false
         let (paused, _) = makeMenu(state)
@@ -95,7 +98,7 @@ struct StatusMenuTests {
     }
 
     @Test @MainActor func checkmarksReflectStateAndTogglesGoThroughApply() throws {
-        var state = StatusMenu.State(flag: "EN")
+        var state = StatusMenu.State(flag: "us")
         state.settings.playSwitchingSound = true
         state.settings.displayLayoutFlag = false
         state.settings.autostart = true
@@ -151,11 +154,11 @@ struct StatusMenuTests {
     }
 
     @Test func layoutFlagLabelMapsKnownPairOnly() {
-        #expect(LayoutFlag.label(native: ("com.apple.keylayout.ABC", "us"), activeKeyboards: ["com.apple.keylayout.ABC", "com.apple.keylayout.RussianWin"]) == "EN")
-        #expect(LayoutFlag.label(native: ("com.apple.keylayout.RussianWin", "ru"), activeKeyboards: ["com.apple.keylayout.ABC", "com.apple.keylayout.RussianWin"]) == "RU")
+        #expect(LayoutFlag.label(native: ("com.apple.keylayout.ABC", "us"), activeKeyboards: ["com.apple.keylayout.ABC", "com.apple.keylayout.RussianWin"]) == "us")
+        #expect(LayoutFlag.label(native: ("com.apple.keylayout.RussianWin", "ru"), activeKeyboards: ["com.apple.keylayout.ABC", "com.apple.keylayout.RussianWin"]) == "ru")
         // Flag follows TIS language even when the source is not in the auto-correction list.
-        #expect(LayoutFlag.label(native: ("com.apple.keylayout.Dvorak", "us"), activeKeyboards: ["com.apple.keylayout.ABC"]) == "EN")
-        #expect(LayoutFlag.label(native: ("com.apple.keylayout.RussianWin", "ru"), activeKeyboards: []) == "RU")
+        #expect(LayoutFlag.label(native: ("com.apple.keylayout.Dvorak", "us"), activeKeyboards: ["com.apple.keylayout.ABC"]) == "us")
+        #expect(LayoutFlag.label(native: ("com.apple.keylayout.RussianWin", "ru"), activeKeyboards: []) == "ru")
         #expect(LayoutFlag.label(native: ("com.apple.keylayout.Dvorak", ""), activeKeyboards: ["com.apple.keylayout.ABC"]) == "?")
     }
 

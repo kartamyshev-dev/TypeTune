@@ -62,18 +62,30 @@ final class StatusMenu: NSObject {
         let settings = state.settings
         let title = Self.statusTitle(flag: state.flag, displayLayoutFlag: settings.displayLayoutFlag, running: state.running)
         if let button {
-            // Explicit font + attributed title: bare `title` can collapse to 0-width.
-            button.font = NSFont.systemFont(ofSize: 13, weight: .semibold)
-            button.title = title
-            button.attributedTitle = NSAttributedString(string: title, attributes: [
-                .font: NSFont.systemFont(ofSize: 13, weight: .semibold),
-                .foregroundColor: NSColor.labelColor
-            ])
+            let showBadge = state.running && settings.displayLayoutFlag && FlagBadge.image(for: state.flag) != nil
+            if showBadge, let badge = FlagBadge.image(for: state.flag) {
+                // National flag in the menu bar (not EN/RU text).
+                button.image = badge
+                button.imagePosition = .imageOnly
+                button.title = ""
+                button.attributedTitle = NSAttributedString()
+            } else {
+                button.image = nil
+                button.imagePosition = .noImage
+                button.font = NSFont.systemFont(ofSize: 13, weight: .semibold)
+                button.title = title
+                button.attributedTitle = NSAttributedString(string: title, attributes: [
+                    .font: NSFont.systemFont(ofSize: 13, weight: .semibold),
+                    .foregroundColor: NSColor.labelColor
+                ])
+            }
             button.sizeToFit()
             button.toolTip = "TypeTune — \(title)"
             button.setAccessibilityLabel("TypeTune — \(title)")
         }
-        header.title = state.running ? state.flag : LayoutFlag.allDisabled
+        let headerTitle = state.running ? Self.statusTitle(flag: state.flag, displayLayoutFlag: true, running: true) : LayoutFlag.allDisabled
+        header.title = headerTitle
+        header.image = state.running ? FlagBadge.menuImage(for: state.flag) : nil
         autoSwitching.state = settings.autoSwitching ? .on : .off
         manualSwitching.state = settings.manualSwitching ? .on : .off
         switchOnlyLastWord.state = settings.switchOnlyLastWord ? .on : .off

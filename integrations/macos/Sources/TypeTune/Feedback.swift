@@ -9,23 +9,96 @@ enum LayoutFlag {
 
     /// `activeKeyboards` filters auto-correction; the flag always reflects a
     /// known us/ru layout so the menu bar is never blank after TIS readback.
+    /// Returns ISO country codes (`us` / `ru`) so the UI can draw real flags.
     static func label(native: (String, String), activeKeyboards: [String]) -> String {
         let (_, mapped) = native
         switch mapped {
-        case "us": return "EN"
-        case "ru": return "RU"
+        case "us": return "us"
+        case "ru": return "ru"
         default:
-            // Fall back: recognized pair IDs even if language mapping is empty.
             let id = native.0
-            if id == "com.apple.keylayout.ABC" || id == "com.apple.keylayout.US" { return "EN" }
-            if id == "com.apple.keylayout.RussianWin" || id == "com.apple.keylayout.Russian" { return "RU" }
+            if id == "com.apple.keylayout.ABC" || id == "com.apple.keylayout.US" { return "us" }
+            if id == "com.apple.keylayout.RussianWin" || id == "com.apple.keylayout.Russian" { return "ru" }
             return unknown
         }
     }
 
     static func statusTitle(flag: String, displayLayoutFlag: Bool, running: Bool) -> String {
         guard running else { return allDisabled }
-        return displayLayoutFlag ? flag : hidden
+        guard displayLayoutFlag else { return hidden }
+        switch flag {
+        case "us": return "🇺🇸"
+        case "ru": return "🇷🇺"
+        default: return flag
+        }
+    }
+}
+
+/// Drawn national flags for the status item (no third-party assets).
+enum FlagBadge {
+    /// Menu-bar badge, ~18×12 pt.
+    static func image(for flag: String) -> NSImage? {
+        switch flag {
+        case "us": return drawUS(size: NSSize(width: 18, height: 12))
+        case "ru": return drawRU(size: NSSize(width: 18, height: 12))
+        default: return nil
+        }
+    }
+
+    /// Larger icon for the disabled menu header.
+    static func menuImage(for flag: String) -> NSImage? {
+        guard let base = image(for: flag) else { return nil }
+        let scaled = NSImage(size: NSSize(width: 22, height: 15))
+        scaled.lockFocus()
+        base.draw(in: NSRect(x: 0, y: 0, width: 22, height: 15))
+        scaled.unlockFocus()
+        return scaled
+    }
+
+    private static func drawUS(size: NSSize) -> NSImage {
+        let image = NSImage(size: size)
+        image.lockFocus()
+        let bounds = NSRect(origin: .zero, size: size)
+        // 13 stripes, simplified as 7 red bands on white.
+        NSColor.white.setFill()
+        bounds.fill()
+        NSColor(calibratedRed: 0.69, green: 0.13, blue: 0.20, alpha: 1).setFill()
+        let stripe = size.height / 13.0
+        for i in stride(from: 0, to: 13, by: 2) {
+            NSRect(x: 0, y: CGFloat(i) * stripe, width: size.width, height: stripe).fill()
+        }
+        // Canton
+        let canton = NSRect(x: 0, y: size.height / 2.0, width: size.width * 0.42, height: size.height / 2.0)
+        NSColor(calibratedRed: 0.16, green: 0.22, blue: 0.42, alpha: 1).setFill()
+        canton.fill()
+        NSColor.white.setFill()
+        let star = size.height * 0.08
+        for row in 0..<3 {
+            for col in 0..<4 {
+                let x = canton.minX + canton.width * (CGFloat(col) + 0.5) / 4.0
+                let y = canton.minY + canton.height * (CGFloat(row) + 0.5) / 3.0
+                NSBezierPath(ovalIn: NSRect(x: x - star / 2, y: y - star / 2, width: star, height: star)).fill()
+            }
+        }
+        image.unlockFocus()
+        image.isTemplate = false
+        return image
+    }
+
+    private static func drawRU(size: NSSize) -> NSImage {
+        let image = NSImage(size: size)
+        image.lockFocus()
+        let h = size.height / 3.0
+        // White (top), blue, red — Russian tricolor.
+        NSColor.white.setFill()
+        NSRect(x: 0, y: h * 2, width: size.width, height: h).fill()
+        NSColor(calibratedRed: 0.0, green: 0.2, blue: 0.6, alpha: 1).setFill()
+        NSRect(x: 0, y: h, width: size.width, height: h).fill()
+        NSColor(calibratedRed: 0.7, green: 0.1, blue: 0.15, alpha: 1).setFill()
+        NSRect(x: 0, y: 0, width: size.width, height: h).fill()
+        image.unlockFocus()
+        image.isTemplate = false
+        return image
     }
 }
 
