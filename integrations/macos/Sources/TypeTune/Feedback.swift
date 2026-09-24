@@ -39,7 +39,7 @@ enum FlagBadge {
     /// Menu-bar badge with side padding so it does not collide with neighbours.
     static func image(for flag: String) -> NSImage? {
         // Transparent gutters mimic standard status-item spacing.
-        let padX: CGFloat = 5
+        let padX: CGFloat = 8
         let padY: CGFloat = 1
         let inner = NSSize(width: 18, height: 12)
         let canvas = NSSize(width: inner.width + padX * 2, height: inner.height + padY * 2)
