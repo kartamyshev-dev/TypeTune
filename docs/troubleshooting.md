@@ -11,11 +11,13 @@
 
 ## macOS: после пересборки пропали разрешения
 
-Ad-hoc подпись меняет cdhash. Система «не узнаёт» старый grant:
+Ad-hoc подпись меняет cdhash. Система «не узнаёт» старый grant (это нормально
+для preview-сборок; в UI — «Нужны разрешения: мониторинг ввода…»):
 
 1. Настройки macOS → Конфиденциальность и безопасность → **Универсальный доступ** / **Мониторинг ввода**.
 2. Удалите запись TypeTune, если она есть.
-3. Добавьте `~/Applications/TypeTune.app` заново.
+3. Добавьте `~/Applications/TypeTune.app` или `/Applications/TypeTune.app` заново
+   (смотря откуда запускаете).
 
 ## Linux: Setup требует пароль / не ставится из GNOME Software
 
@@ -44,6 +46,7 @@ sudo apt install ./typetune_*.deb
 ## Диагностика
 
 - macOS: `TypeTune.app/Contents/MacOS/TypeTune --doctor` (JSON: разрешения, источник ввода) — **без** текста пользователя.
+- macOS: `~/Library/Application Support/TypeTune/diag.log` — ключи и решения (`execute verified|rejected|indeterminate`, причины отказа) без набранного текста.
 - Linux: `./scripts/typetune-test status`.
 
 Подробности поведения: [user-guide](user-guide.md), границы проверок: [testing](testing.md).
