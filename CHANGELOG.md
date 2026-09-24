@@ -2,6 +2,15 @@
 
 All notable changes to TypeTune are documented here.
 
+## 0.1.2
+
+Menu-bar flag artwork (see [docs/releases/0.1.2.md](docs/releases/0.1.2.md)).
+
+### Changed
+
+- Status item shows a national flag (US / RU) instead of EN/RU text, with 10pt side padding and 21×14 artwork
+- Menu header shows the same flag badge
+
 ## 0.1.1
 
 Stability release for macOS input (see [docs/releases/0.1.1.md](docs/releases/0.1.1.md)).
