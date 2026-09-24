@@ -61,6 +61,8 @@ class Checks(unittest.TestCase):
     def test_flag_pixmap_and_header(self):
         self.assertEqual(flag_badge.label('us'), 'us')
         self.assertEqual(flag_badge.label('ru'), 'ru')
+        self.assertEqual(flag_badge.label('xkb:us::eng'), 'us')
+        self.assertEqual(flag_badge.label('xkb:ru::rus'), 'ru')
         self.assertEqual(flag_badge.label(''), '?')
         pix = flag_badge.pixmap('ru')
         self.assertEqual(len(pix), 1)
@@ -71,6 +73,9 @@ class Checks(unittest.TestCase):
         icon = self.tray._pixmap()
         self.assertEqual(len(icon), 1)
         self.assertEqual(icon[0][0], 41)
+        self.assertEqual(self.tray.icon(), 'typetune-flag-ru')
+        self.assertEqual(flag_badge.status_title('ru', True, True), 'RU')
+        self.assertEqual(flag_badge.status_title('us', True, True), 'US')
 
     def test_permissions_hides_flag_pixmap(self):
         self.assertTrue(self.tray._pixmap())

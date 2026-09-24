@@ -168,10 +168,14 @@ class Tray:
     def icon(self):
         if self.error or self.state is None:
             return 'dialog-warning-symbolic'
-        if not self.state.running:
-            return 'media-playback-stop-symbolic'
         if getattr(self.state, 'needs_permissions', False):
             return 'dialog-warning-symbolic'
+        flag = _state_flag(self.state)
+        if flag in ('us', 'ru') and _state_bool(self.state, 'display_layout_flag', True):
+            # Theme SVG shipped in the .deb; hosts that ignore IconPixmap still show it.
+            return 'typetune-flag-' + flag
+        if not self.state.running:
+            return 'media-playback-stop-symbolic'
         if not self.state.enabled:
             return 'media-playback-pause-symbolic'
         if self.state.title == 'Ожидает подходящее поле':

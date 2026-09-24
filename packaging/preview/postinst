@@ -4,5 +4,12 @@ if [ "${DPKG_ROOT:-/}" != / ]; then exit 0; fi
 case "$1" in
  configure)
   udevadm control --reload-rules || true
+  # Make typetune-flag-*.svg visible to IconName lookups in the tray.
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+  if command -v update-icon-caches >/dev/null 2>&1; then
+    update-icon-caches /usr/share/icons/hicolor 2>/dev/null || true
+  fi
   ;;
 esac

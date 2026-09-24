@@ -41,7 +41,8 @@ def _describe(data):
         automatic = runtime.get('automatic') is True
         available = runtime.get('available') is True
         title = 'На паузе' if not enabled else ('Работает' if available else 'Ожидает подходящее поле')
-        mode = {'us': 'EN', 'ru': 'RU'}.get(runtime.get('mode'), 'не определён')
+        from flag_badge import label
+        mode = {'us': 'EN', 'ru': 'RU'}.get(label(runtime.get('mode')), 'не определён')
         detail = f'{backend} · Язык: {mode}'
         if runtime.get('words_error'): detail += '\n' + runtime['words_error']
         if runtime.get('applications_error'): detail += '\n' + runtime['applications_error']

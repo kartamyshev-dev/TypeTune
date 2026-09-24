@@ -51,9 +51,15 @@ def _draw_ru(buf):
 
 def label(source_id):
     """ISO-ish flag id from a GNOME source_id."""
-    if source_id in ('us', 'en'):
+    raw = (source_id or '').strip().lower()
+    if not raw:
+        return '?'
+    # GNOME xkb ids may be bare (`us`/`ru`) or `xkb:us::eng`-shaped.
+    token = raw.split(':')[1] if raw.startswith('xkb:') else raw
+    token = token.split('+')[0].split('(')[0].split(',')[0]
+    if token in ('us', 'en', 'eng', 'usa'):
         return 'us'
-    if source_id in ('ru',):
+    if token in ('ru', 'rus'):
         return 'ru'
     return '?'
 
@@ -90,9 +96,9 @@ def menu_pixmap(flag):
 
 
 def status_title(flag, display_layout_flag, running):
-    """Text fallback when the pixmap is hidden or unknown."""
+    """Short SNI label. ASCII codes: emoji flags render as tofu/X on many Linux fonts."""
     if not running:
         return '✕'
     if not display_layout_flag:
         return '•'
-    return {'us': '🇺🇸', 'ru': '🇷🇺'}.get(flag, '?')
+    return {'us': 'US', 'ru': 'RU'}.get(flag, '?')
