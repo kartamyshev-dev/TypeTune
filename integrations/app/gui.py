@@ -20,6 +20,8 @@ class Window(Gtk.ApplicationWindow):
         self.closed = False
         self.state = None
         self.error_text = ''
+        self._status_debounce = 0
+        self._status_dirty = False
         self.set_titlebar(Gtk.HeaderBar())
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=18,
                       margin_top=24, margin_bottom=24, margin_start=28, margin_end=28)
@@ -92,6 +94,7 @@ class Window(Gtk.ApplicationWindow):
         footer.add_css_class('dim-label'); box.append(footer)
         self.connect('close-request', self.closing)
         self.timer = GLib.timeout_add_seconds(3, self.poll)
+        self.watch_bridge()
         self.render()
         self.dispatch('status')
 
@@ -159,12 +162,38 @@ class Window(Gtk.ApplicationWindow):
             app.quit()
         self.closed = True
         GLib.source_remove(self.timer)
+        if self._status_debounce:
+            GLib.source_remove(self._status_debounce)
         return False
 
     def poll(self):
         if not self.closed and not self.busy:
             self.dispatch('status')
         return not self.closed
+
+    def watch_bridge(self):
+        """Follow the shell bridge so the tray flag updates right after a layout
+        switch; the 3s poll stays as a fallback. Bridge Changed also fires on
+        clicks and focus moves, so updates are debounced."""
+        bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+        self.bridge_watch = bus.signal_subscribe(
+            'org.gnome.Shell', 'org.typetune.Session1', 'Changed', '/org/typetune/Session1',
+            None, Gio.DBusSignalFlags.NONE, lambda *_: self.bridge_changed())
+
+    def bridge_changed(self, *_):
+        if self._status_debounce:
+            GLib.source_remove(self._status_debounce)
+        self._status_debounce = GLib.timeout_add(200, self.refresh_status)
+
+    def refresh_status(self):
+        self._status_debounce = 0
+        if self.closed:
+            return False
+        if self.busy:
+            self._status_dirty = True
+        else:
+            self.dispatch('status')
+        return False
 
     def toggle_pause(self, *_):
         if self.state:
@@ -269,10 +298,15 @@ class Window(Gtk.ApplicationWindow):
         if self.pending:
             command, explicit, payload = self.pending
             self.pending = None
+            self._status_dirty = False
             self.dispatch(command, explicit, payload)
         else:
             self.controls_busy = False
-            self.render()
+            if self._status_dirty:
+                self._status_dirty = False
+                self.dispatch('status')
+            else:
+                self.render()
         return False
 
 
