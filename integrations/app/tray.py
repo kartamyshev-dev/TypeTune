@@ -204,9 +204,6 @@ class Tray:
             return {'Version':GLib.Variant('u',3), 'TextDirection':GLib.Variant('s','ltr'),
                     'Status':GLib.Variant('s','normal'), 'IconThemePath':GLib.Variant('as',[])}.get(name)
         title = 'TypeTune · ' + (self.state.title if self.state else 'Нет связи')
-        label = flag_badge.status_title(getattr(self.state, 'flag', '?') if self.state else '?',
-                                        _state_bool(self.state, 'display_layout_flag', True),
-                                        bool(self.state and self.state.running))
         values = {
             'Category':('s','ApplicationStatus'), 'Id':('s','typetune'), 'Title':('s',title),
             'Status':('s','Active'), 'IconName':('s',self.icon()), 'IconThemePath':('s',''),
@@ -214,7 +211,9 @@ class Tray:
             'AttentionIconName':('s','dialog-warning-symbolic'), 'AttentionIconPixmap':('a(iiay)',[]),
             'AttentionMovieName':('s',''), 'WindowId':('i',0), 'Menu':('o',MENU_PATH), 'ItemIsMenu':('b',True),
             'ToolTip':('(sa(iiay)ss)',(self.icon(), self._pixmap(), title, self.error or 'Double Shift — переключить слово')),
-            'XAyatanaLabel':('s',label), 'XAyatanaLabelGuide':('s',label),
+            # The bar shows the flag pixmap only; an empty label clears hosts that
+            # still have a cached RU/US/XAyatana text from an older build.
+            'XAyatanaLabel':('s',''), 'XAyatanaLabelGuide':('s',''),
         }
         return GLib.Variant(*values[name]) if name in values else None
 

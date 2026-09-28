@@ -113,7 +113,7 @@ class Checks(unittest.TestCase):
         _, _, _, _, params = changed[0]
         interface, props, _ = params.unpack()
         self.assertEqual(interface, 'org.kde.StatusNotifierItem')
-        self.assertEqual(props['XAyatanaLabel'], 'RU')
+        self.assertEqual(props['XAyatanaLabel'], '', 'bar must carry the flag only, no RU/US text')
         self.assertIn('IconPixmap', props)
 
     def test_cached_host_receives_enabled_label_and_checkbox_updates(self):
