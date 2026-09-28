@@ -321,11 +321,9 @@ fn main() -> Result<()> {
                 edited = true;
                 output.emit(code, down)?;
             }
-            if pending.is_empty() {
-                let id = action.take().unwrap();
-                ensure!(output.held.is_empty(), "unbalanced output");
-                report(json!({"kind":"result","id":id,"status":"injected-unverified"}))?;
-            }
+            let id = action.take().unwrap();
+            ensure!(output.held.is_empty(), "unbalanced output");
+            report(json!({"kind":"result","id":id,"status":"injected-unverified"}))?;
         }
         thread::sleep(Duration::from_millis(2));
     }

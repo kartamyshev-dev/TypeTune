@@ -132,7 +132,7 @@ enum Native {
         guard let (down,up)=keyboardEvents(code,unicode:unicode) else {return false}
         // Burst mode: post down/up back-to-back with no inter-pair sleep so the
         // word appears at once instead of "typing". The system queues the events
-        // in order; pacing only added visible latency (3ms x 2*N edges).
+        // in order; pacing only added visible latency (3ms x N pairs).
         down.post(tap:.cgSessionEventTap);up.post(tap:.cgSessionEventTap)
         return true
     }
