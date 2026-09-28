@@ -107,7 +107,14 @@ class Checks(unittest.TestCase):
         self.tray.update(self.tray.state, '', False)
         self.assertFalse(self.tray.connection.events)
         self.tray.update(self.tray.state, 'failure', False)
-        self.assertEqual(len(self.tray.connection.events), 4)
+        self.assertEqual(len(self.tray.connection.events), 5)
+        changed = [e for e in self.tray.connection.events if e[3] == 'PropertiesChanged']
+        self.assertEqual(len(changed), 1)
+        _, _, _, _, params = changed[0]
+        interface, props, _ = params.unpack()
+        self.assertEqual(interface, 'org.kde.StatusNotifierItem')
+        self.assertEqual(props['XAyatanaLabel'], 'RU')
+        self.assertIn('IconPixmap', props)
 
     def test_cached_host_receives_enabled_label_and_checkbox_updates(self):
         # GNOME caches properties separately from layout structure; a structural

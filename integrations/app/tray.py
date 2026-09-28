@@ -159,6 +159,13 @@ class Tray:
         self.revision += 1
         for signal in ['NewTitle', 'NewIcon', 'NewToolTip']:
             self.connection.emit_signal(None, PATH, ITEM, signal, None)
+        # Hosts cache item properties and resync them only on PropertiesChanged:
+        # without it XAyatanaLabel stays frozen (flag icon + stale '✕' in the bar).
+        changed = {name: self.property(None, None, PATH, ITEM, name)
+                   for name in ('Title', 'IconName', 'IconPixmap', 'ToolTip',
+                                'XAyatanaLabel', 'XAyatanaLabelGuide')}
+        self.connection.emit_signal(None, PATH, 'org.freedesktop.DBus.Properties', 'PropertiesChanged',
+                                    GLib.Variant('(sa{sv}as)', (ITEM, changed, [])))
         # The tree is stable. GNOME caches row properties separately and needs
         # this signal to refresh enabled/label/toggle-state on existing items.
         properties = [(i, self.props(i)) for i, kind, *_ in MENU_SPEC if kind != 'sep']
