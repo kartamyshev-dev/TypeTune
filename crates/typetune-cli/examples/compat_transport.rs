@@ -171,7 +171,6 @@ fn main() -> Result<()> {
     let mut pending = VecDeque::new();
     let mut action = None;
     let mut edited = false;
-    let mut next = Instant::now();
     let mut held = BTreeSet::new();
     let mut blocked = false;
     let mut health = (0usize, false);
@@ -306,7 +305,6 @@ fn main() -> Result<()> {
                         pending = events;
                         action = Some(id);
                         edited = false;
-                        next = Instant::now();
                     } else {
                         report(json!({"kind":"result","id":id,"status":"rejected"}))?;
                     }
@@ -314,12 +312,16 @@ fn main() -> Result<()> {
                 _ => return Err(anyhow::anyhow!("invalid transport operation")),
             }
         }
-        if action.is_some() && Instant::now() >= next {
-            if let Some((code, down)) = pending.pop_front() {
+        // Burst mode: drain the whole validated sequence back-to-back with no
+        // inter-edge pacing so the word appears at once instead of "typing".
+        // Preemption (new physical input / cancel) is still honoured on the
+        // next loop iteration; a single burst is only a few ms of uinput writes.
+        if action.is_some() {
+            while let Some((code, down)) = pending.pop_front() {
                 edited = true;
                 output.emit(code, down)?;
-                next = Instant::now() + Duration::from_millis(8);
-            } else {
+            }
+            if pending.is_empty() {
                 let id = action.take().unwrap();
                 ensure!(output.held.is_empty(), "unbalanced output");
                 report(json!({"kind":"result","id":id,"status":"injected-unverified"}))?;

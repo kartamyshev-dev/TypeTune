@@ -130,8 +130,10 @@ enum Native {
     }
     static func pair(_ code: CGKeyCode, unicode: String? = nil) -> Bool {
         guard let (down,up)=keyboardEvents(code,unicode:unicode) else {return false}
+        // Burst mode: post down/up back-to-back with no inter-pair sleep so the
+        // word appears at once instead of "typing". The system queues the events
+        // in order; pacing only added visible latency (3ms x 2*N edges).
         down.post(tap:.cgSessionEventTap);up.post(tap:.cgSessionEventTap)
-        Thread.sleep(forTimeInterval:0.003)
         return true
     }
 }
