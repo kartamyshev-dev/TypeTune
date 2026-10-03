@@ -135,6 +135,16 @@ jobs:
           rustc --version
       - name: Engine, bridge, and Swift tests
         run: bash scripts/test-macos.sh
+      - name: Preserve failed macOS test diagnostics
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: macos-test-diagnostics
+          path: |
+            target/macos-test.*/**/phase.log
+            target/macos-test.*/**/sample.txt
+          if-no-files-found: warn
+          retention-days: 7
 
   macos-package:
     name: macOS / package

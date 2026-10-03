@@ -20,7 +20,7 @@ python3 scripts/run-bounded.py --directory "$run_dir/rust-build" -- cargo build 
 PYTHONPATH=integrations/app python3 scripts/run-bounded.py --directory "$run_dir/parity" -- python3 -m unittest integrations/app/test_portable_parity.py integrations/app/test_gesture.py integrations/app/test_feedback.py
 python3 scripts/run-bounded.py --directory "$run_dir/packaging" -- python3 -m unittest discover -s tests/packaging -p 'test_*.py'
 python3 scripts/run-bounded.py --directory "$run_dir/swift-test" -- xcrun swift test --build-system native --disable-sandbox --disable-xctest --cache-path "$root/target/swift-cache" \
-    --package-path integrations/macos \
+    --package-path integrations/macos --no-parallel \
     -Xswiftc -F -Xswiftc "$frameworks" \
     -Xlinker -F -Xlinker "$frameworks" -Xlinker -rpath -Xlinker "$frameworks" \
     -Xlinker -L -Xlinker "$root/target/release" -Xlinker -rpath -Xlinker "$root/target/release"

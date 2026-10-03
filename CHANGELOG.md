@@ -2,7 +2,14 @@
 
 All notable changes to TypeTune are documented here.
 
-## 0.2.5 (preview)
+## 0.2.6 (preview)
+
+Includes the 0.2.5 candidate's changes. Swift Testing runs explicitly in sequence
+while retaining concurrency exercised inside individual tests. Failed macOS CI
+runs preserve phase logs and stack samples. All 260 local checks passed again.
+See [release notes](docs/releases/0.2.6.md).
+
+## 0.2.5 (unpublished candidate)
 
 macOS input transactions, stale-plan and UTF-16 guards, coherent keyboard output,
 observer recovery, settings/dictionary reconciliation, bounded private diagnostics
