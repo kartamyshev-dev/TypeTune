@@ -1,4 +1,5 @@
 import Foundation
+import Darwin
 
 public struct Settings: Codable, Equatable {
     public var version = 2
@@ -136,9 +137,18 @@ public final class SettingsStore {
     }
     public func save(_ proposed: Settings, expected: UInt64) throws -> Settings {
         try proposed.validate()
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
+        let lock = open(url.appendingPathExtension("lock").path, O_CREAT | O_RDWR | O_CLOEXEC, 0o600)
+        guard lock >= 0 else { throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO) }
+        defer { close(lock) }
+        // Do not block the app's main queue behind an independent writer.
+        guard flock(lock, LOCK_EX | LOCK_NB) == 0 else {
+            if errno == EWOULDBLOCK { throw SettingsError.conflict }
+            throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO)
+        }
+        defer { flock(lock, LOCK_UN) }
         guard try load().generation == expected, expected < UInt64.max else { throw SettingsError.conflict }
         var next = proposed; next.generation = expected + 1; next.version = 2
-        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
         try JSONEncoder().encode(next).write(to: url, options: .atomic)
         try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
         return next

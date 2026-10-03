@@ -2,11 +2,27 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 root="$PWD"
+install=false
+destination=""
+if [[ "${1:-}" == "--install" ]]; then
+    install=true
+    shift
+    if [[ $# -gt 0 ]]; then destination="$1"; shift; fi
+elif [[ "${1:-}" == "--help" ]]; then
+    echo "Usage: $0 [--install [/absolute/path/TypeTune.app]]"
+    exit 0
+fi
+if [[ $# -gt 0 ]]; then echo "Unexpected argument: $1" >&2; exit 2; fi
 export CLANG_MODULE_CACHE_PATH="$root/target/macos-module-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="$CLANG_MODULE_CACHE_PATH"
-cargo build --locked --release -p typetune-bridge
-xcrun swift build --build-system native --disable-sandbox --cache-path "$root/target/swift-cache" -debug-info-format none --package-path integrations/macos -c release -Xlinker -L -Xlinker "$root/target/release" -Xlinker -rpath -Xlinker @executable_path/../Frameworks
-app="$root/dist/TypeTune.app"
+mkdir -p "$root/target" "$root/dist"
+run_dir=$(mktemp -d "$root/target/macos-build.XXXXXX")
+staging=$(mktemp -d "$root/dist/.macos-build.XXXXXX")
+trap 'rm -rf -- "$staging"' EXIT
+python3 scripts/macos-package.py identity "$root" > "$run_dir/source.json"
+python3 scripts/run-bounded.py --directory "$run_dir/rust" -- cargo build --locked --release -p typetune-bridge
+python3 scripts/run-bounded.py --directory "$run_dir/swift" -- xcrun swift build --build-system native --disable-sandbox --cache-path "$root/target/swift-cache" -debug-info-format none --package-path integrations/macos -c release -Xlinker -L -Xlinker "$root/target/release" -Xlinker -rpath -Xlinker @executable_path/../Frameworks
+app="$staging/TypeTune.app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Frameworks" "$app/Contents/Resources"
 cp integrations/macos/.build/release/TypeTune "$app/Contents/MacOS/TypeTune"
 cp target/release/libtypetune_bridge.dylib "$app/Contents/Frameworks/"
@@ -17,26 +33,7 @@ if otool -L "$app/Contents/MacOS/TypeTune" | tail -n +2 | rg -q --fixed-strings 
     echo "Bundle still references the build directory" >&2
     exit 1
 fi
-revision=$(git rev-parse HEAD)
-dirty=false
-if [[ -n "$(git status --porcelain)" ]]; then dirty=true; fi
-cat > "$app/Contents/Info.plist" <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0"><dict>
-<key>CFBundleIdentifier</key><string>dev.kartamyshev.TypeTune</string>
-<key>CFBundleName</key><string>TypeTune</string>
-<key>CFBundleExecutable</key><string>TypeTune</string>
-<key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.1.0</string>
-<key>CFBundleVersion</key><string>57</string>
-<key>LSMinimumSystemVersion</key><string>27.0</string>
-<key>LSUIElement</key><true/>
-<key>NSHighResolutionCapable</key><true/>
-<key>TypeTuneSourceCommit</key><string>$revision</string>
-<key>TypeTuneSourceDirty</key><$dirty/>
-</dict></plist>
-EOF
+python3 scripts/macos-package.py stamp "$root" "$app" "$run_dir/source.json"
 # FrequencyWords/Leeds attribution (CC BY-SA 4.0 / CC BY 2.5) ships with the
 # binary because lexicons are embedded at build time. It must be in place
 # before signing: files added afterwards break the resource seal and fail
@@ -52,9 +49,13 @@ cp LICENSE "$attrs/TypeTune-LICENSE"
 codesign --force --sign - "$app/Contents/Frameworks/libtypetune_bridge.dylib"
 codesign --force --sign - --identifier dev.kartamyshev.TypeTune "$app"
 codesign --verify --deep --strict "$app"
-if [[ "${1:-}" == "--install" ]]; then
-    mkdir -p "$HOME/Applications"
-    ditto "$app" "$HOME/Applications/TypeTune.app"
-    codesign --verify --deep --strict "$HOME/Applications/TypeTune.app"
+python3 scripts/macos-package.py publish "$app" "$root/dist/TypeTune.app"
+app="$root/dist/TypeTune.app"
+if $install; then
+    if [[ -n "$destination" ]]; then
+        python3 scripts/macos-package.py install "$app" "$destination"
+    else
+        python3 scripts/macos-package.py install "$app"
+    fi
 fi
 echo "$app"

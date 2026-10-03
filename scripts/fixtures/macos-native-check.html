@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>TypeTune Native Check</title>
+<style>body{font:20px system-ui;margin:40px}input,[contenteditable]{display:block;font:24px system-ui;width:85%;margin:16px 0;padding:16px;border:1px solid #888;min-height:40px}#oracle{display:block;width:90%;height:90px;font:12px monospace}</style>
+<h1>TypeTune Native Check</h1>
+<label>Input A<input id="a" aria-label="TypeTune Native Check input A" autocomplete="off" spellcheck="false"></label>
+<label>Input B<input id="b" aria-label="TypeTune Native Check input B" autocomplete="off" spellcheck="false"></label>
+<div id="editable" role="textbox" aria-label="TypeTune Native Check contenteditable" contenteditable="true" spellcheck="false"></div>
+<label>Read-only test oracle<textarea id="oracle" aria-label="TypeTune Native Check oracle" readonly tabindex="-1"></textarea></label>
+<button id="freeze">Freeze event trace</button><pre hidden id="trace" aria-label="TypeTune Native Check event trace"></pre>
+<script>
+// An independent readback: this observes received DOM content/selection and
+// never knows expected words, edits a fixture field, or dispatches input.
+const fields = [...document.querySelectorAll('input,[contenteditable]')];
+const oracle = document.querySelector('#oracle');
+let active = null, revision = 0;
+function offsetWithin(node, container, offset) {
+  if (container !== node && !node.contains(container)) return null;
+  const range = document.createRange();
+  range.setStart(node, 0); range.setEnd(container, offset);
+  return range.toString().length;
+}
+function publish() {
+  if (!active) return;
+  const value = active.value ?? active.textContent;
+  let caret = active.selectionStart ?? null;
+  let length = caret === null ? null : active.selectionEnd - caret;
+  if (active.isContentEditable) {
+    const selection = window.getSelection();
+    if (selection && selection.rangeCount) {
+      const anchor = offsetWithin(active, selection.anchorNode, selection.anchorOffset);
+      const focus = offsetWithin(active, selection.focusNode, selection.focusOffset);
+      if (anchor !== null && focus !== null) { caret = Math.min(anchor, focus); length = Math.abs(anchor - focus); }
+    }
+  }
+  oracle.value = JSON.stringify({field:document.activeElement === active ? active.id : '',value,caret,length,revision:++revision});
+}
+for (const node of fields) {
+  node.addEventListener('focus', () => { active = node; publish(); });
+  node.addEventListener('input', publish);
+  node.addEventListener('blur', () => queueMicrotask(publish));
+}
+document.addEventListener('selectionchange', publish);
+// Only this isolated fixture records received browser events for diagnosis.
+const trace = [], traceView = document.querySelector('#trace');
+let frozen = false, freezeTimer;
+const freezeTrace = () => { frozen = true; traceView.hidden = false; traceView.replaceChildren(...trace.map(item => { const line = document.createElement('div'); line.textContent = JSON.stringify(item); return line; })); };
+document.querySelector('#freeze').onclick = freezeTrace;
+for (const node of fields) for (const type of ['keydown','keyup','beforeinput','input']) {
+  node.addEventListener(type, event => {
+    if (frozen) return;
+    if (type === 'input') { clearTimeout(freezeTimer); freezeTimer = setTimeout(freezeTrace, 2000); }
+    trace.push({type, key:event.key, code:event.code, alt:event.altKey, shift:event.shiftKey,
+      inputType:event.inputType, data:event.data, value:node.value ?? node.textContent});
+    if (trace.length > 24) trace.shift();
+  });
+}
+</script></html>

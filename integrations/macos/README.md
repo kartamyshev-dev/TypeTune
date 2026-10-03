@@ -1,80 +1,162 @@
 # TypeTune macOS preview
 
-Apple Silicon, macOS 27.0, ABC ↔ Russian — PC. Native SwiftUI/AppKit shell,
-one serial controller/runtime, Rust `typetune-bridge` in the app bundle.
-No Python/GTK runtime.
+Apple Silicon, macOS 27.0, ABC ↔ Русская — ПК. Интерфейс использует SwiftUI/AppKit,
+последовательный runtime — Rust `typetune-bridge` внутри пакета приложения.
+Python/GTK для работы установленного приложения не нужны.
+
+## Сборка и установка
+
+Из корня репозитория:
 
 ```sh
 bash scripts/test-macos.sh
-bash scripts/build-macos.sh --install
+bash scripts/build-macos.sh --install /Applications/TypeTune.app
 ```
 
-Open `~/Applications/TypeTune.app`. In Settings, request Input Monitoring and
-Accessibility using “Разрешения macOS”; the user grants these in System Settings.
-Enable “Режим совместимости”, then Apply. Automatic correction defaults on,
-compatibility and login startup default off. Pause clears history immediately.
-Closing Settings keeps the menu bar app alive; Quit stops it. A per-user lock
-prevents multiple input observers.
+Сборка без `--install` создаёт `dist/TypeTune.app`. При установке без явного пути
+сначала используется существующая `/Applications/TypeTune.app`, затем
+`~/Applications/TypeTune.app`; новая установка создаётся во втором месте.
+Завершите старый TypeTune через меню. Установщик проверяет отсутствие процесса
+и держит тот же `instance.lock`, который приложение получает до запуска runtime.
+Запускайте установку от пользователя приложения.
 
-Double Shift means two complete taps of the same side, each at most 200 ms,
-with at most 350 ms between taps. Device identity is unknown on this backend;
-same-device gestures cannot be guaranteed. Known held modifiers, navigation,
-paste, mouse events, unsupported input sources, observer loss, sleep and lock
-invalidate history. Input is never grabbed or delayed by the observer.
+Кандидат собирается в скрытом каталоге без дополнительного `.app` и проверяется
+до атомарного обмена пакетов. Прежний пакет сначала сохраняется как ZIP в
+`~/Library/Application Support/TypeTune/backups/TypeTune.rollback-*.zip`.
+Распакованная копия должна пройти проверку подписи и совпадение содержимого
+с оригиналом до замены; архив получает права `0400`, каталог — `0700`.
+Ошибка архивации запрещает установку, ошибка итоговой проверки запускает откат.
+Распакованные `.app`-бэкапы в `/Applications` не создаются: одинаковый bundle ID
+может заставить macOS привязать разрешения к старой подписи. Установщик не
+редактирует TCC/LaunchServices. Настройки сохраняются. Подпись ad-hoc,
+нотаризации нет; после обновления macOS может потребовать повторно выдать
+Input Monitoring и Accessibility именно установленной копии.
 
-## Replacement and context
+Если после обновления переключатели разрешений уже включены, а наблюдение не
+запускается, завершите TypeTune и **удалите запись кнопкой «−», затем добавьте
+точный `/Applications/TypeTune.app` кнопкой «+» в обоих разделах** macOS:
+«Универсальный доступ» и «Мониторинг ввода». Для намеренной установки в
+`~/Applications` используйте её точный путь в обоих разделах. Простое off/on
+в проверенном случае сохраняло старый `csreq`; удаление и повторное добавление
+обновило привязку к текущей подписи, после чего GUI-процесс записал
+`observer_started`. Подробные шаги и проверка через LaunchServices находятся в
+[устранении проблем](../../docs/troubleshooting.md#macos-после-пересборки-пропали-разрешения).
 
-A passive session CGEvent tap only normalizes events and enqueues them. A bounded
-256-event single-producer/single-consumer ring uses atomic indices; revision reads
-do not contend with capture. Overflow invalidates history.
-The callback never waits for the engine, Accessibility, disk, GUI or layout APIs.
-The worker reads AX context with a 50 ms messaging timeout. Text Input Source APIs
-run on the main queue (required on macOS 27), outside the callback.
+Для сохранения доверия между следующими обновлениями разумно отдельно внедрить
+подпись одной постоянной сертификатной identity с устойчивым designated requirement.
+Параметр вроде `TYPETUNE_CODESIGN_IDENTITY` пока является предложением:
+текущий сборщик его не читает и использует `codesign --sign -`. Эта инструкция
+не создаёт сертификаты, не меняет Keychain/TCC и не обещает сохранение разрешений
+после очередной ad-hoc пересборки.
 
-Replacement waits for physical Space release, verifies the complete original word when
-AX text is available, selects the target input source with readback, and emits
-paired Backspace/Unicode events. Own events carry a dedicated user-data marker.
-New input, focus changes, modifiers or timeout abort remaining output. There is
-no automatic retry and no clipboard fallback. Without AX readback the result is
-`submitted`, never `verified`. Unknown sensitivity/selection/composition remain
-unknown in this explicitly enabled compatibility profile. Secure Input and known
-secure fields suspend processing; arbitrary custom secure fields cannot be proven
-safe by key history alone. API delivery is not an atomic editor transaction.
+Версия берётся из SemVer-тегов `vMAJOR.MINOR.PATCH`, а в checkout без тегов — из
+версий release notes. Пакет содержит commit, признак dirty, SHA-256 исходников
+и полное описание сборки. Изменение исходников между началом сборки и созданием
+метаданных блокирует кандидата. Rust/Swift-фазы сборки и тестов ограничены 600 с;
+журналы сохраняются в `target/macos-build.*` / `target/macos-test.*`.
+При тайм-ауте собираются сведения о собственной группе процессов и ограниченный
+sample, затем завершается только эта группа. Тайм-аут не считается PASS.
 
-## Settings and packaging
+## Запуск и границы ввода
 
-`~/Library/Application Support/TypeTune/settings.json`: version 1, generation,
-compatibility, automatic, autostart, words, exclusions, applications (bundle IDs).
-Atomic save, validation and generation conflict detection; dictionary apply must
-be acknowledged by Rust. Suggestions/counters live only in memory. No text or
-clipboard in normal diagnostics.
+В настройках доступны «Разрешения macOS», «Режим совместимости», авто/ручное
+переключение и активные раскладки. Для новых настроек режим совместимости и
+оба вида коррекции включены, автозапуск выключен; при миграции сохраняется прежнее
+значение режима совместимости. Pause очищает историю. Закрытие окна настроек
+оставляет приложение в строке меню, Quit завершает его. Per-user lock исключает
+два одновременно работающих наблюдателя.
+
+Double Shift — два полных нажатия одной стороны, каждое не дольше 200 мс,
+с промежутком до 350 мс. macOS backend не определяет устройство, поэтому
+принадлежность обоих нажатий одной физической клавиатуре не гарантируется.
+Навигация, мышь, paste, смена поля, неподдерживаемый источник ввода, потеря
+наблюдения, сон и блокировка разрывают достоверность истории. Известные
+модификаторы не позволяют начать замену. После восстановления tap старая история
+не используется; переход A → неизвестное поле → B распознаётся как смена поля.
+
+## Замена текста и очередь событий
+
+Активный session CGEvent tap в обычном режиме сразу пропускает события приложению
+и передаёт наблюдения в ограниченный буфер. Callback не вызывает движок, AX,
+файловую систему, UI или API раскладки. Text Input Source API выполняется в главном
+потоке, как требуется на macOS 27; AX имеет messaging timeout 50 мс.
+
+План связан с исходным событием, полем и ревизией истории. До удержания ввода
+runtime ждёт отпускания клавиши, читает доступный текст и подготавливает вывод.
+При читаемом AX-тексте должны точно совпасть целое слово и все завершающие пробелы;
+диапазон UTF-16, ожидаемый текст и каретка рассчитываются до первого Backspace.
+Короткое ожидание отставшего AX после Space не ослабляет проверку совпадения.
+Суффикс внутри более длинного слова и некорректный диапазон запрещают замену.
+Double Shift может восстановить целое слово из AX при усечённой истории.
+
+На время вывода резервируется очередь до 256 отложенных событий со сроком 50 мс.
+Новые нажатия не обрывают замену посередине: клавиши, отпускания и мышь
+воспроизводятся после неё по порядку. События замены и повторного ввода помечаются
+и не запускают коррекцию рекурсивно. Физические коды, модификаторы и Unicode
+согласуются с целевой раскладкой; движку сообщается её фактическое состояние,
+включая отказ переключения и откат.
+
+Переполнение, потеря наблюдения, смена цели или тайм-аут освобождают ввод,
+инвалидируют историю и запрещают слепой повтор. Проверка AX после вывода идёт уже
+без удержания пользовательских событий. Это ограниченная транзакция доставки,
+а не атомарная операция внутри чужого редактора; clipboard fallback отсутствует.
+
+`verified` означает совпадение прочитанного текста и каретки. `submitted`
+означает отправку без такого подтверждения: например, поле не предоставляет
+AX-текст или уже пришёл следующий ввод. Путь по непрерывной истории остаётся
+доступным, но `submitted` не создаёт постоянные выученные слова. `rejected` —
+отказ до вывода; `indeterminate` — неизвестный результат после начала вывода.
+Secure Input и известные парольные поля останавливают обработку. В режиме
+совместимости неизвестные свойства нестандартного поля остаются неизвестными;
+история клавиш не доказывает безопасность произвольного custom secure field.
+
+## Настройки, обучение и диагностика
+
+`~/Library/Application Support/TypeTune/settings.json` — schema v2 с числовым
+`generation`: `compatibility`, `autoSwitching`, `manualSwitching`,
+`switchOnlyLastWord`, `dontSwitchWords`, `dontCorrectAfterLayoutChange`,
+`displayLayoutFlag`, `playSwitchingSound`, `autostart`, `autoDisabledIn`,
+`activeKeyboards`, `learned`, `exclusions`. V1 мигрирует при чтении.
+Запись атомарная, с межпроцессной блокировкой и проверкой поколения.
+
+Bridge остаётся protocol 3. Подтверждённый `edit_result` может вернуть необязательный
+`feedback` (`learned_add`, `exclusions_add`). Сохранение учитывает поколение
+настроек, а `dictionary_update` применяет словарь без сброса истории и Double Shift.
+Ошибочный или устаревший ACK не становится подтверждением правки. Прежний
+`ok` совместим с историей старых клиентов, но не даёт постоянного обучения.
 
 ```sh
-~/Applications/TypeTune.app/Contents/MacOS/TypeTune --doctor
+/Applications/TypeTune.app/Contents/MacOS/TypeTune --doctor
 ```
 
-This reports protocol, OS, permissions, input source and effective login-item state.
-The app is ad-hoc signed, not notarized. Rebuilding can require granting permissions
-again. Update only after quitting the old app; build script preserves user data.
-To remove, disable login startup in Settings, Quit, then move the app to Trash.
-Settings remain unless the user separately removes the data directory.
+Используйте фактический путь установленной копии. JSON содержит protocol, ОС,
+разрешения, источник ввода, login-item, пути, PID и идентичность исходников.
+Диагностический процесс не запускает tap: `live_observer_status` сообщает
+`unavailable_separate_process`, а наличие другого PID не доказывает здоровье runtime.
 
-The bundled CLI tools on this Mac require explicit Testing framework search paths
-and the native SwiftPM build system. Tests use Swift Testing, not XCTest/full Xcode.
-GitHub Actions builds on the hosted `xcode-27` Apple Silicon/macOS 27 preview
-image. The main CI calls `macos.yml` on branch pushes, pull requests and version
-tags; the macOS workflow also supports manual dispatch. It runs Rust/Python/Swift
-tests, packages the ad-hoc signed app, verifies its signature after ZIP extraction,
-and uploads `macos-preview` (14 days). Download `TypeTune-macos-arm64.zip` and
-`MACOS-SHA256SUMS` from that artifact. No personal Mac runner is required.
+`diag.log` в каталоге данных пишет только результаты, причины, длительности и
+счётчики, без отдельных клавиш, набранных слов и clipboard. Запись асинхронная:
+до 256 записей/64 КиБ в ожидании, текущий журнал до 1 МиБ и одна ротация
+`diag.log.1`, права `0600`. Прежний журнал сохраняется как `diag-legacy-*.log`
+с теми же правами; он может содержать старую поклавишную диагностику.
 
-Tags matching `vMAJOR.MINOR.PATCH-previewN-REVISION` publish a prerelease with both
-Debian and macOS assets only after both jobs pass. Native keyboard/permission
-acceptance remains local; CI does not grant permissions or launch input observation.
-The runner image is public preview and may change; actual versions appear in logs.
-See `docs/57-macos-checkpoint.md` for actual evidence.
+Для удаления выключите автозапуск в настройках, завершите приложение и переместите
+пакет в Корзину. Каталог настроек удаляется только отдельно по желанию пользователя.
 
-Manual Double Shift can recover a truncated history from the current AX word.
-A known snapshot must match the entire whitespace-delimited token before editing;
-a suffix inside a longer token is refused. Unknown AX text remains an unverified
-history-only compatibility path. Native acceptance is still required.
+## Проверки и CI
+
+Локальный скрипт использует native SwiftPM и явные пути к Swift Testing framework.
+Проверяются Rust engine/bridge, переносимые Python fixtures, упаковка и Swift-тесты;
+весь Linux/GTK-набор выполняется отдельно на Linux.
+
+Текущая конфигурация находится в `.github/workflows/ci.yml`: задания `macos-tests`
+и `macos-package` используют образ `xcode-27`, упаковка проверяет подпись после
+ZIP-распаковки. Артефакт `macos-package` содержит `TypeTune-macos-arm64.zip` и
+`MACOS-SHA256SUMS` и хранится 14 дней. Теги `vMAJOR.MINOR.PATCH` публикуют prerelease
+с Debian/macOS-пакетами после обязательных Linux- и macOS-заданий. Это описание
+конфигурации, а не утверждение об успешном выполнении CI для текущих изменений.
+
+Автотесты и подпись пакета не заменяют нативную приёмку. Сравнение с Lang Switcher,
+физическая клавиатура, конкретные редакторы, сон/пробуждение и серии из 30 прогонов
+требуют отдельного подтверждения. Актуальные результаты и ограничения фиксируются
+в [документации проверок](../../docs/testing.md).

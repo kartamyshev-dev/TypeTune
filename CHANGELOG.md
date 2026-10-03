@@ -2,6 +2,17 @@
 
 All notable changes to TypeTune are documented here.
 
+## 0.2.5 (preview)
+
+macOS input transactions, stale-plan and UTF-16 guards, coherent keyboard output,
+observer recovery, settings/dictionary reconciliation, bounded private diagnostics
+and verified packaging with rollback. Protocol 3 remains compatible.
+
+Added integration and native fixture checks. Local automated checks: 260 PASS;
+local diagnostic Safari contenteditable: 150 qualified repetitions. Full native
+acceptance remains incomplete, including an unexplained intermittent Double Shift
+miss on the preceding build. See [release notes](docs/releases/0.2.5.md).
+
 ## 0.2.0
 
 Native Linux shell (see [docs/releases/0.2.0.md](docs/releases/0.2.0.md)).

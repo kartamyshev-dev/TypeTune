@@ -6,7 +6,7 @@ public enum EditAcknowledgement {
         sourceMs &+ elapsedMs
     }
     public static func visibleOutcome(native: String, engine: String) -> String {
-        if engine == "reset" || engine == "stale" { return "reset" }
+        guard engine == "ok" else { return "reset" }
         return native
     }
 }

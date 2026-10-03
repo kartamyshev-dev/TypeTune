@@ -12,19 +12,52 @@ struct ObserverTests {
     }
     @Test func overlappingShiftSidesPreserveIndividualEdges() {
         let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
-        // Drive Shift edges with an injectable HID state (synthetic CGEvents
-        // do not update the real key state).
-        var held: Set<CGKeyCode> = []
-        buffer.keyStateProvider = { held.contains($0) }
-        held.insert(56); buffer.push(event(code:56,flags:0x20002),type:.flagsChanged)
-        held.insert(60); buffer.push(event(code:60,flags:0x20006),type:.flagsChanged)
-        held.remove(56); buffer.push(event(code:56,flags:0x20004),type:.flagsChanged)
-        held.remove(60); buffer.push(event(code:60,flags:0),type:.flagsChanged)
+        _=buffer.observe(event(code:0),type:.keyUp) // Known released boundary.
+        buffer.push(event(code:56,flags:0x20000),type:.flagsChanged)
+        buffer.push(event(code:60,flags:0x20000),type:.flagsChanged)
+        buffer.push(event(code:56,flags:0x20000),type:.flagsChanged)
+        buffer.push(event(code:60,flags:0),type:.flagsChanged)
         let (events,lost)=buffer.drain()
         #expect(!lost)
         #expect(events.map{$0.key}==["left_shift","right_shift","left_shift","right_shift"])
         #expect(events.map{$0.action}==["down","down","up","up"])
         #expect(events.map{$0.time}==[123,123,123,123])
+    }
+    @Test func queuedShiftEdgesUseTheirOwnFlagsAndIgnoreDeviceBits() {
+        let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
+        // Construct the complete queue before observing it. No physical Shift
+        // is held during this test; a current-HID decoder would produce up/up.
+        // Deliberately misleading side bits must not override aggregate flags.
+        let queue=[event(code:56,flags:0x20004),event(code:56,flags:0x2),
+                   event(code:56,flags:0x20004),event(code:56,flags:0x2)]
+        for event in queue {buffer.push(event,type:.flagsChanged)}
+        let (batch,lost)=buffer.drain()
+        #expect(!lost)
+        #expect(batch.map{$0.action}==["down","up","down","up"])
+        #expect(batch.allSatisfy{$0.key=="left_shift"})
+    }
+    @Test func observationLossDropsOrphanReleaseAndRecoversTheNextGesture() {
+        let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
+        buffer.push(event(code:56,flags:0x20000),type:.flagsChanged)
+        buffer.invalidate();_ = buffer.drain()
+        buffer.push(event(code:56),type:.flagsChanged)
+        #expect(buffer.drain().0.first?.key=="lock_key")
+        for flags:UInt64 in [0x20000,0,0x20000,0] {buffer.push(event(code:56,flags:flags),type:.flagsChanged)}
+        let (batch,lost)=buffer.drain()
+        #expect(!lost)
+        #expect(batch.map{$0.action}==["down","up","down","up"])
+    }
+    @Test func StartingWithBothShiftsHeldCannotManufactureACompleteTap() {
+        let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
+        // Observation begins during L-up while R remains held. The provisional
+        // L-down must be discarded when R-up exposes the incomplete history.
+        buffer.push(event(code:56,flags:0x20000),type:.flagsChanged)
+        buffer.push(event(code:60),type:.flagsChanged)
+        let (batch,lost)=buffer.drain()
+        #expect(lost)
+        #expect(batch.last?.key=="lock_key")
+        for flags:UInt64 in [0x20000,0] {buffer.push(event(code:60,flags:flags),type:.flagsChanged)}
+        #expect(buffer.drain().0.map{$0.action}==["down","up"])
     }
     @Test func ownOutputDisabledCaptureAndOverflow() {
         let buffer=InputBuffer()
@@ -50,7 +83,7 @@ struct ObserverTests {
     }
     @Test func revisionReadsMustNotDropGestureEdges() {
         let buffer=InputBuffer();buffer.accepting.store(true,ordering:.relaxed)
-        buffer.keyStateProvider = { _ in true }
+        _=buffer.observe(event(code:0),type:.keyUp)
         let done=Atomic<Bool>(false)
         let started=DispatchSemaphore(value:0)
         let finished=DispatchSemaphore(value:0)
@@ -61,8 +94,9 @@ struct ObserverTests {
         }
         started.wait()
         var dropped=0
-        let value=event(code:56,flags:0x20002)
-        for _ in 0..<20000 {
+        let value=event(code:56)
+        for index in 0..<20000 {
+            value.flags = index % 2 == 0 ? .maskShift:[]
             buffer.push(value,type:.flagsChanged)
             let (events,lost)=buffer.drain()
             if lost || events.count != 1 {dropped+=1}
@@ -78,10 +112,11 @@ struct ObserverTests {
         let finished=DispatchSemaphore(value:0)
         let done=Atomic<Bool>(false)
         DispatchQueue.global().async {
-            buffer.keyStateProvider = { _ in true }
-            let value=event(code:56,flags:0x20002)
+            _=buffer.observe(event(code:0),type:.keyUp)
+            let value=event(code:56)
             for index in 1...10000 {
                 room.wait()
+                value.flags = index % 2 == 1 ? .maskShift:[]
                 value.timestamp=UInt64(index)*1_000_000
                 buffer.push(value,type:.flagsChanged)
             }

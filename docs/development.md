@@ -36,7 +36,9 @@ cargo test --workspace --all-targets --locked
 # macOS
 bash scripts/test-macos.sh
 bash scripts/build-macos.sh          # dist/TypeTune.app
-bash scripts/build-macos.sh --install  # ~/Applications
+bash scripts/build-macos.sh --install  # существующая установка, иначе ~/Applications
+# Проверенный пакет можно установить отдельно после завершения приложения:
+python3 scripts/macos-package.py install dist/TypeTune.app /Applications/TypeTune.app
 
 # Проверка частотных данных
 python3 scripts/verify-frequency-data.py
@@ -53,6 +55,18 @@ python3 scripts/build-preview-deb.py --version 0.1.0
 - Linux: см. controller в `integrations/app` (пользовательский словарь, exclusions, apps).
 
 Изменение настройки проходит один controller с подтверждением apply; не обходите его «прямой записью» в UI-коде.
+
+На macOS обновление словаря проходит `dictionary_update` без сброса истории
+Double Shift. Новые выученные слова сохраняются только после подтверждения
+точного текста через Accessibility; `submitted` означает отправку без такого
+подтверждения. Настройки сохраняются с generation CAS и блокировкой между
+процессами.
+
+Сборка macOS фиксирует commit, dirty-флаг и SHA-256 содержимого исходников.
+Изменение исходников во время сборки отменяет упаковку. Установщик проверяет
+подпись, удерживает блокировку запуска и сохраняет предыдущий пакет для отката.
+После установки проверяйте `--doctor` именно у установленного исполняемого файла;
+его разрешения могут отличаться от разрешений сборки в `dist`.
 
 ## Стиль
 

@@ -2,6 +2,23 @@ import AppKit
 import Carbon
 import ApplicationServices
 
+/// Carbon documents IsSecureEventInputEnabled as not thread safe. Serialize
+/// our reads without making the input callback wait for a different reader.
+/// Contention is conservatively treated as Secure Input until the next check.
+enum SecureInputStatus {case disabled,enabled,busy}
+final class SecureInputReader {
+    static let shared=SecureInputReader(read:{IsSecureEventInputEnabled()})
+    private let lock=NSLock()
+    private let read:()->Bool
+    init(read:@escaping ()->Bool) {self.read=read}
+    func snapshot() -> SecureInputStatus {
+        guard lock.try() else {return .busy}
+        defer {lock.unlock()}
+        return read() ? .enabled:.disabled
+    }
+    func isEnabled() -> Bool {snapshot() != .disabled}
+}
+
 struct TextState: Equatable {
     let value: String
     let range: CFRange
@@ -14,8 +31,11 @@ struct NativeContext {
     let element: AXUIElement?
     let secure: Bool
     let permitted: Bool
+    var sourceID: String = ""
+    var pid: pid_t { pid_t(identity.split(separator: ":").first ?? "") ?? 0 }
     var usableOverride: Bool? = nil
     var usable: Bool {
+        if secure { return false }
         if let usableOverride { return usableOverride }
         return permitted && !secure && !bundle.isEmpty && (layout=="us" || layout=="ru")
     }
@@ -37,31 +57,20 @@ enum Native {
         let id=sourceID(source)
         return (id,languageCode(source,id:id))
     }
-    /// Map a TIS source to `us` / `ru` (or empty when unknown).
-    /// Accepts common macOS layout names, not only ABC / RussianWin.
+    /// Only layouts whose physical alphabet matches the engine's RU/EN pair.
+    /// A language name alone does not prove a compatible keyboard mapping.
     static func languageCode(_ source: TISInputSource, id: String) -> String {
         switch id {
-        case "com.apple.keylayout.ABC", "com.apple.keylayout.US", "com.apple.keylayout.USExtended-Software":
+        case "com.apple.keylayout.ABC", "com.apple.keylayout.US":
             return "us"
-        case "com.apple.keylayout.Russian", "com.apple.keylayout.RussianWin", "com.apple.keylayout.Russian-Phonetic":
+        case "com.apple.keylayout.Russian", "com.apple.keylayout.RussianWin":
             return "ru"
         default:
             break
         }
-        if let raw=TISGetInputSourceProperty(source,kTISPropertyLocalizedName) {
-            let name=(Unmanaged<CFString>.fromOpaque(raw).takeUnretainedValue() as String).lowercased()
-            if name.contains("russian") || name.contains("рус") { return "ru" }
-            if name.contains("u.s.") || name.contains("abc") || name == "us" || name.contains("qwerty") { return "us" }
-        }
-        if let raw=TISGetInputSourceProperty(source,kTISPropertyInputSourceLanguages),
-           let langs=Unmanaged<CFArray>.fromOpaque(raw).takeUnretainedValue() as? [String],
-           let first=langs.first {
-            if first.hasPrefix("ru") { return "ru" }
-            if first.hasPrefix("en") { return "us" }
-        }
         return ""
     }
-    static func context() -> NativeContext {
+    static func context(activeKeyboards: [String]? = nil) -> NativeContext {
         let permitted=CGPreflightListenEventAccess() && CGPreflightPostEventAccess() && AXIsProcessTrusted()
         let source=inputSource()
         guard let app=NSWorkspace.shared.frontmostApplication else {return NativeContext(identity:"",bundle:"",layout:source.1,element:nil,secure:true,permitted:permitted)}
@@ -71,31 +80,44 @@ enum Native {
         if let raw=attribute(ax,kAXFocusedUIElementAttribute),CFGetTypeID(raw)==AXUIElementGetTypeID() {element=(raw as! AXUIElement)}
         if let element {AXUIElementSetMessagingTimeout(element,0.05)}
         let subrole=element.flatMap{attribute($0,kAXSubroleAttribute)} as? String
-        // Do not use global IsSecureEventInputEnabled() alone: a stuck password
-        // manager flag would mark *every* field secure and disable the tap path.
+        // Global Secure Input is a conservative gate even when AX returns an
+        // element: an unknown/custom secure field must not authorize replay.
         let elementSecure = subrole == kAXSecureTextFieldSubrole
-        let secure = elementSecure || (IsSecureEventInputEnabled() && element == nil)
-        // History/acceptance: only the focused element’s security, not a global latch.
-        let usable = permitted && !elementSecure && !(app.bundleIdentifier ?? "").isEmpty && (source.1=="us" || source.1=="ru")
+        let secure = elementSecure || SecureInputReader.shared.isEnabled()
+        let usable = permitted && !secure && !(app.bundleIdentifier ?? "").isEmpty && (source.1=="us" || source.1=="ru") && (activeKeyboards?.contains(source.0) ?? true)
         let identity="\(app.processIdentifier):\(element.map{CFHash($0)} ?? 0)"
-        return NativeContext(identity:identity,bundle:app.bundleIdentifier ?? "",layout:source.1,element:element,secure:secure,permitted:permitted,usableOverride:usable)
+        return NativeContext(identity:identity,bundle:app.bundleIdentifier ?? "",layout:source.1,element:element,secure:secure,permitted:permitted,sourceID:source.0,usableOverride:usable)
     }
     static func text(_ context: NativeContext) -> TextState? {
-        guard let element=context.element,
-              let value=attribute(element,kAXValueAttribute) as? String, value.utf8.count <= 131072,
-              let raw=attribute(element,kAXSelectedTextRangeAttribute),CFGetTypeID(raw)==AXValueGetTypeID() else {return nil}
+        text(context,timeout:0.05)
+    }
+    static func text(_ context: NativeContext, timeout: Float) -> TextState? {
+        guard let element=context.element else {return nil}
+        AXUIElementSetMessagingTimeout(element,timeout)
+        // One editor round trip for value and selection. Separate reads can
+        // describe different frames while the editor handles a layout change.
+        var result: CFArray?
+        let names=[kAXValueAttribute,kAXSelectedTextRangeAttribute] as CFArray
+        guard AXUIElementCopyMultipleAttributeValues(element,names,AXCopyMultipleAttributeOptions(rawValue:0),&result) == .success,
+              let values=result as? [Any],values.count==2,
+              let value=values[0] as? String,value.utf8.count<=131072 else {return nil}
+        let raw=values[1] as CFTypeRef
+        guard CFGetTypeID(raw)==AXValueGetTypeID() else {return nil}
         let axValue=raw as! AXValue
         guard AXValueGetType(axValue) == .cfRange else {return nil}
-        var range=CFRange(); guard AXValueGetValue(axValue,.cfRange,&range), range.location>=0, range.length>=0,range.location+range.length<=value.utf16.count else {return nil}
+        var range=CFRange(); guard AXValueGetValue(axValue,.cfRange,&range), range.location>=0, range.length>=0,range.location<=value.utf16.count,range.length<=value.utf16.count-range.location else {return nil}
         return TextState(value:value,range:range)
     }
-    static func select(_ mode: String) -> Bool {
-        if !Thread.isMainThread {return DispatchQueue.main.sync {select(mode)}}
+    static func select(_ mode: String) -> Bool {select(mode,activeKeyboards:nil)}
+    static func select(_ mode: String, activeKeyboards: [String]?) -> Bool {
+        if !Thread.isMainThread {return DispatchQueue.main.sync {select(mode,activeKeyboards:activeKeyboards)}}
+        guard mode == "us" || mode == "ru" else {return false}
         // Prefer the classic pair; fall back to any enabled source with that language.
         let preferred=mode=="us" ? "com.apple.keylayout.ABC":"com.apple.keylayout.RussianWin"
         var candidates=[preferred]
         if mode=="us" { candidates += ["com.apple.keylayout.US"] }
-        else { candidates += ["com.apple.keylayout.Russian","com.apple.keylayout.Russian-Phonetic"] }
+        else { candidates += ["com.apple.keylayout.Russian"] }
+        if let activeKeyboards { candidates = activeKeyboards.filter { candidates.contains($0) } }
         for id in candidates {
             if let sources=TISCreateInputSourceList([kTISPropertyInputSourceID as String:id] as CFDictionary,false)?.takeRetainedValue() as? [TISInputSource],
                let source=sources.first,
@@ -117,16 +139,36 @@ enum Native {
             return !locks.contains(key) && CGEventSource.keyState(.hidSystemState, key: key)
         }
     }
-    static func keyboardEvents(_ code: CGKeyCode, unicode: String? = nil) -> (CGEvent, CGEvent)? {
-        guard let down=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:true),let up=CGEvent(keyboardEventSource:nil,virtualKey:code,keyDown:false) else {return nil}
+    static func keyboardEvents(_ code: CGKeyCode, unicode: String? = nil, flags: CGEventFlags = [],
+                               source suppliedSource: CGEventSource? = nil) -> (CGEvent, CGEvent)? {
+        guard let source=suppliedSource ?? CGEventSource(stateID:.privateState) else {return nil}
+        source.localEventsSuppressionInterval = 0
+        source.userData=ownMarker
+        guard let down=CGEvent(keyboardEventSource:source,virtualKey:code,keyDown:true),let up=CGEvent(keyboardEventSource:source,virtualKey:code,keyDown:false) else {return nil}
         for event in [down,up] {
-            event.flags=[];event.setIntegerValueField(.eventSourceUserData,value:ownMarker)
+            event.flags=flags;event.setIntegerValueField(.eventSourceUserData,value:ownMarker)
         }
         if let unicode {
             let units=Array(unicode.utf16)
-            down.keyboardSetUnicodeString(stringLength:units.count,unicodeString:units)
+            // Preparation can precede the layout switch. Both edges must carry
+            // the same target text rather than a key-up from the old layout.
+            for event in [down,up] {event.keyboardSetUnicodeString(stringLength:units.count,unicodeString:units)}
         }
         return (down,up)
+    }
+    /// Modifier edges and their character share one state table. Releasing a
+    /// different private source cannot clear a modifier held by the character.
+    static func strokeEvents(_ code: CGKeyCode, unicode: String? = nil, flags: CGEventFlags = [],
+                             source suppliedSource: CGEventSource? = nil) -> [CGEvent]? {
+        guard flags.isEmpty || flags == .maskShift || flags == .maskAlternate,
+              let source=suppliedSource ?? CGEventSource(stateID:.privateState),
+              let (down,up)=keyboardEvents(code,unicode:unicode,flags:flags,source:source) else {return nil}
+        if flags.isEmpty {return [down,up]}
+        let modifier:CGKeyCode=flags == .maskShift ? 56:58
+        guard let (modifierDown,modifierUp)=keyboardEvents(modifier,flags:flags,source:source) else {return nil}
+        modifierDown.type = .flagsChanged;modifierUp.type = .flagsChanged
+        modifierUp.flags=[]
+        return [modifierDown,down,up,modifierUp]
     }
     static func pair(_ code: CGKeyCode, unicode: String? = nil) -> Bool {
         guard let (down,up)=keyboardEvents(code,unicode:unicode) else {return false}

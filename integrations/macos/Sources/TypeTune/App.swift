@@ -20,11 +20,43 @@ final class Controller: ObservableObject {
     let store = SettingsStore(url: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/TypeTune/settings.json"))
     private var tokens: [NSObjectProtocol] = []
     private let flagMonitor = LayoutFlagMonitor()
+    private lazy var changes: SettingsTransactions = {
+        let changes = SettingsTransactions(initial: settings, environment: .init(
+            load: { [store] in try store.load() },
+            save: { [store] value, expected in try store.save(value, expected: expected) },
+            configure: { [runtime] value, dictionaryOnly, completion in
+                if dictionaryOnly { runtime.configureDictionary(value, completion: completion) }
+                else { runtime.configure(value, completion: completion) }
+            },
+            autostart: { enabled in
+                if enabled { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
+                guard (SMAppService.mainApp.status == .enabled) == enabled else {
+                    throw NSError(domain: "TypeTune", code: 1, userInfo: [NSLocalizedDescriptionKey: "Автозапуск требует подтверждения в настройках macOS"])
+                }
+            }))
+        changes.onSettings = { [weak self] saved in
+            guard let self else { return }
+            self.settings = saved
+            self.flagMonitor.refresh()
+            self.uiUpdate?()
+        }
+        changes.onBusy = { [weak self] busy in self?.applying = busy }
+        changes.onError = { [weak self] message in self?.error = message; self?.uiUpdate?() }
+        changes.onRuntimeFailure = { [weak self] in
+            self?.running = false
+            self?.runtime.setEnabled(false)
+            self?.uiUpdate?()
+        }
+        return changes
+    }()
     var uiUpdate: (() -> Void)?
 
     init() {
         runtime.publish = { [weak self] message in self?.status = message }
         do { settings = try store.load() } catch { self.error = error.localizedDescription; running = false; runtime.setEnabled(false) }
+        runtime.feedback = { [weak self] learned, exclusions, generation in
+            self?.changes.feedback(learned: learned, exclusions: exclusions, generation: generation)
+        }
         runtime.configure(settings) { [weak self] ok in
             guard let self, !ok else { return }
             self.error = "Движок отклонил настройки"
@@ -75,37 +107,12 @@ final class Controller: ObservableObject {
         }
     }
 
-    /// Single apply path: generation ACK, engine configure, autostart side effects.
-    func apply(_ proposed: Settings) {
-        guard !applying else { return }; applying = true; error = ""
-        do {
-            try proposed.validate()
-            guard try store.load().generation == proposed.generation else { throw SettingsError.conflict }
-        } catch { self.error = error.localizedDescription; applying = false; return }
-        let previous = settings
-        runtime.configure(proposed) { [weak self] ok in
-            guard let self else { return }
-            guard ok else { self.error = "Движок отклонил настройки"; self.applying = false; return }
-            do {
-                if proposed.autostart != previous.autostart {
-                    if proposed.autostart { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
-                    guard (SMAppService.mainApp.status == .enabled) == proposed.autostart else { throw NSError(domain: "TypeTune", code: 1, userInfo: [NSLocalizedDescriptionKey: "Автозапуск требует подтверждения в настройках macOS"]) }
-                }
-                self.settings = try self.store.save(proposed, expected: previous.generation)
-                self.applying = false
-                self.flagMonitor.refresh()
-                self.uiUpdate?()
-            } catch {
-                self.error = error.localizedDescription
-                if let restore = LoginItemIntent.rollbackTarget(desired: proposed.autostart, previous: previous.autostart) {
-                    if restore { try? SMAppService.mainApp.register() } else { try? SMAppService.mainApp.unregister() }
-                }
-                self.runtime.configure(previous) { _ in self.applying = false; self.uiUpdate?() }
-            }
-        }
+    /// UI edits and verified feedback share one serialized generation/CAS path.
+    func apply(_ proposed: Settings, basedOn base: Settings? = nil, completion: ((Bool) -> Void)? = nil) {
+        error = ""
+        changes.apply(proposed, basedOn: base ?? settings, completion: completion)
     }
 
-    // Learned words: Swift store only; bridge ops stay owned by the Rust side.
     func addLearned(_ word: String) {
         let next = settings.addingLearned(word)
         guard next != settings else { return }
@@ -113,14 +120,15 @@ final class Controller: ObservableObject {
     }
 
     func clearLearned() {
-        guard !settings.learned.isEmpty else { return }
-        apply(settings.clearingLearned())
+        error = ""
+        changes.apply(settings.clearingLearned(), basedOn: settings, clearLearned: true)
     }
 }
 
 struct PreferencesView: View {
     @ObservedObject var controller: Controller
     @ViewState private var draft = Settings()
+    @ViewState private var base = Settings()
     @ViewState private var exclusions = ""
     @ViewState private var activeKeyboards = ""
     @ViewState private var autoDisabledIn: [String] = []
@@ -129,6 +137,7 @@ struct PreferencesView: View {
 
     private func load() {
         draft = controller.settings
+        base = draft
         exclusions = draft.exclusions.joined(separator: "\n")
         activeKeyboards = draft.activeKeyboards.joined(separator: "\n")
         autoDisabledIn = draft.autoDisabledIn
@@ -200,9 +209,9 @@ struct PreferencesView: View {
                     HStack {
                         Text("Выученные слова").font(.headline)
                         Spacer()
-                        Button("Очистить") { controller.clearLearned() }.disabled(controller.applying || draft.learned.isEmpty)
+                        Button("Очистить") { controller.clearLearned() }.disabled(controller.applying || controller.settings.learned.isEmpty)
                     }
-                    List(draft.learned, id: \.self) { word in Text(word).font(.caption) }
+                    List(controller.settings.learned, id: \.self) { word in Text(word).font(.caption) }
                         .frame(height: 96)
                     Text("Не переключать слова").font(.headline)
                     HStack {
@@ -239,13 +248,14 @@ struct PreferencesView: View {
                 .tabItem { Text("Слова") }
                 .tag(Controller.PreferencesTab.words)
             }
+            .disabled(controller.applying)
             HStack {
                 Text("Поколение \(controller.settings.generation)").font(.caption2).foregroundStyle(.secondary)
                 Spacer()
                 Button("Перечитать", action: load)
                 Button(controller.applying ? "Применение…" : "Применить") {
                     commitLists()
-                    controller.apply(draft)
+                    controller.apply(draft, basedOn: base) { ok in if ok { load() } }
                 }
                 .disabled(controller.applying)
                 .keyboardShortcut(.defaultAction)
@@ -254,7 +264,6 @@ struct PreferencesView: View {
         .padding(12)
         .frame(width: 420, height: 360)
         .onAppear(perform: load)
-        .onChange(of: controller.settings.generation) { load() }
     }
 }
 
@@ -314,7 +323,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if CommandLine.arguments.contains("--doctor") {
             let engine = Engine()
             let version = engine.call(["op": "protocol"])
-            let data: [String: Any] = ["protocol": version, "os": ProcessInfo.processInfo.operatingSystemVersionString, "listen": CGPreflightListenEventAccess(), "post": CGPreflightPostEventAccess(), "accessibility": AXIsProcessTrusted(), "input_source": Native.inputSource().0, "login_item": SMAppService.mainApp.status.rawValue]
+            let bundle = Bundle.main
+            let identifier = bundle.bundleIdentifier ?? "unknown"
+            let otherProcesses = NSRunningApplication.runningApplications(withBundleIdentifier: identifier)
+                .filter { $0.processIdentifier != ProcessInfo.processInfo.processIdentifier }
+                .map { Int($0.processIdentifier) }
+            // This is a separate read-only process: finding the running app
+            // does not establish that its event tap or worker is healthy.
+            let data: [String: Any] = [
+                "protocol": version,
+                "os": ProcessInfo.processInfo.operatingSystemVersionString,
+                "listen": CGPreflightListenEventAccess(),
+                "post": CGPreflightPostEventAccess(),
+                "accessibility": AXIsProcessTrusted(),
+                "input_source": Native.inputSource().0,
+                "login_item": SMAppService.mainApp.status.rawValue,
+                "bundle_identifier": identifier,
+                "version": bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "unknown",
+                "build": bundle.object(forInfoDictionaryKey: "CFBundleVersion") ?? "unknown",
+                "build_description": bundle.object(forInfoDictionaryKey: "TypeTuneBuildDescription") ?? "unknown",
+                "source_commit": bundle.object(forInfoDictionaryKey: "TypeTuneSourceCommit") ?? "unknown",
+                "source_digest": bundle.object(forInfoDictionaryKey: "TypeTuneSourceDigest") ?? "unknown",
+                "source_dirty": bundle.object(forInfoDictionaryKey: "TypeTuneSourceDirty") ?? NSNull(),
+                "bundle_path": bundle.bundleURL.resolvingSymlinksInPath().path,
+                "executable_path": bundle.executableURL?.resolvingSymlinksInPath().path ?? CommandLine.arguments[0],
+                "process_id": Int(ProcessInfo.processInfo.processIdentifier),
+                "runtime": [
+                    "diagnostic_process_observer": "not_started",
+                    "other_application_process_ids": otherProcesses,
+                    "live_observer_status": "unavailable_separate_process"
+                ] as [String: Any]
+            ]
             if let json = try? JSONSerialization.data(withJSONObject: data, options: [.prettyPrinted, .sortedKeys]) { print(String(decoding: json, as: UTF8.self)) }
             return
         }

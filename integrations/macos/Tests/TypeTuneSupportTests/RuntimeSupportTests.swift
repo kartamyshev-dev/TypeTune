@@ -18,7 +18,10 @@ struct RuntimeSupportTests {
 
     @Test func editAckUsesSourceElapsedAndDoesNotClaimResetAsVerified() {
         #expect(EditAcknowledgement.resultTime(sourceMs:100,elapsedMs:2500) == 2600)
-        #expect(EditAcknowledgement.visibleOutcome(native:"verified",engine:"verified") == "verified")
+        #expect(EditAcknowledgement.visibleOutcome(native:"verified",engine:"ok") == "verified")
+        #expect(EditAcknowledgement.visibleOutcome(native:"submitted",engine:"ok") == "submitted")
+        #expect(EditAcknowledgement.visibleOutcome(native:"verified",engine:"protocol_error") == "reset")
+        #expect(EditAcknowledgement.visibleOutcome(native:"verified",engine:"unexpected") == "reset")
         #expect(EditAcknowledgement.visibleOutcome(native:"verified",engine:"reset") == "reset")
         #expect(EditAcknowledgement.visibleOutcome(native:"submitted",engine:"stale") == "reset")
         #expect(EditAcknowledgement.visibleOutcome(native:"rejected",engine:"reset") == "reset")

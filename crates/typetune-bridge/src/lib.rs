@@ -48,6 +48,8 @@ enum Request {
     KeyEvent {
         event: runtime::Event,
         automatic: bool,
+        #[serde(default = "default_true")]
+        manual: bool,
     },
     ResetContext,
     EditResult {
@@ -90,10 +92,17 @@ enum Request {
         #[serde(default)]
         policy: PolicyDto,
     },
+    /// Replace vocabulary without disturbing an edit or a Double Shift gesture.
+    DictionaryUpdate {
+        words: Vec<String>,
+        exclusions: Vec<String>,
+        #[serde(default)]
+        learned: Vec<String>,
+    },
     Cancel,
 }
 
-#[derive(Deserialize, Default)]
+#[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct PolicyDto {
     #[serde(default = "default_true")]
@@ -102,6 +111,16 @@ struct PolicyDto {
     dont_switch_words: bool,
     #[serde(default = "default_true")]
     dont_correct_after_layout_change: bool,
+}
+impl Default for PolicyDto {
+    fn default() -> Self {
+        let policy = AutoPolicy::default();
+        Self {
+            switch_only_last_word: policy.switch_only_last_word,
+            dont_switch_words: policy.dont_switch_words,
+            dont_correct_after_layout_change: policy.dont_correct_after_layout_change,
+        }
+    }
 }
 fn default_true() -> bool {
     true
@@ -118,14 +137,13 @@ impl From<PolicyDto> for AutoPolicy {
 #[derive(Default)]
 pub struct Bridge {
     runtime: runtime::Runtime,
-    dictionary: typetune_engine::UserDictionary,
     policy: AutoPolicy,
     plan: Option<Plan>,
     flight: Option<InFlight>,
     deadline: Option<Instant>,
 }
 impl Bridge {
-    /// Learned words currently held by the runtime (visible via UI only).
+    /// Learned words currently used by the runtime's effective dictionary.
     pub fn learned_words(&self) -> &[String] {
         self.runtime.learned_words()
     }
@@ -158,11 +176,15 @@ impl Bridge {
             Request::Protocol => {
                 json!({"version":3,"profile":"lang-id-aggressive","max_response_bytes":32768})
             }
-            Request::KeyEvent { event, automatic } => {
+            Request::KeyEvent {
+                event,
+                automatic,
+                manual,
+            } => {
                 if self.plan.is_some() || self.flight.is_some() {
                     return self.cancel();
                 }
-                self.runtime.event(event, automatic, &self.dictionary)
+                self.runtime.event(event, automatic, manual)
             }
             Request::ResetContext => {
                 self.runtime.reset();
@@ -172,7 +194,7 @@ impl Bridge {
                 id,
                 outcome,
                 time_ms,
-            } => self.runtime.result(id, outcome, time_ms, &self.dictionary),
+            } => self.runtime.result(id, outcome, time_ms),
             Request::LayoutNotice { source, layout } => {
                 self.runtime.layout_notice(&source, &layout)
             }
@@ -210,7 +232,7 @@ impl Bridge {
                         state.into(),
                         now,
                         Duration::from_millis(500),
-                        &self.dictionary,
+                        self.runtime.dictionary(),
                     )
                 } else {
                     prepare_toggle(state.into(), now, Duration::from_millis(500)).map(Some)
@@ -272,7 +294,7 @@ impl Bridge {
                 match typetune_engine::inferred::suggest_with_policy(
                     &text,
                     automatic,
-                    &self.dictionary,
+                    self.runtime.dictionary(),
                     &self.policy,
                 ) {
                     Some(candidate) => json!({"status":"inferred", "remove": candidate.remove,
@@ -291,19 +313,23 @@ impl Bridge {
                 if self.plan.is_some() || self.flight.is_some() || self.runtime.is_pending() {
                     return json!({"status":"busy"});
                 }
-                let mut all_words = words.clone();
-                all_words.extend(learned.iter().cloned());
-                match typetune_engine::UserDictionary::new(all_words.clone(), exclusions.clone()) {
-                    Ok(dictionary) => {
-                        self.policy = policy.into();
-                        self.runtime
-                            .configure(words, exclusions, learned, self.policy);
-                        self.dictionary = dictionary;
+                let policy = policy.into();
+                match self.runtime.configure(words, exclusions, learned, policy) {
+                    Ok(()) => {
+                        self.policy = policy;
                         json!({"status":"configured"})
                     }
                     Err(_) => json!({"status":"invalid-dictionary"}),
                 }
             }
+            Request::DictionaryUpdate {
+                words,
+                exclusions,
+                learned,
+            } => match self.runtime.update_dictionary(words, exclusions, learned) {
+                Ok(()) => json!({"status":"dictionary_updated"}),
+                Err(_) => json!({"status":"invalid-dictionary"}),
+            },
             Request::Cancel => self.cancel(),
         }
     }
@@ -361,6 +387,50 @@ mod tests {
     }
     fn call(b: &mut Bridge, value: Value, now: Instant) -> Value {
         b.request(&serde_json::to_vec(&value).unwrap(), now)
+    }
+    fn key(
+        b: &mut Bridge,
+        time: &mut u64,
+        key: &str,
+        action: &str,
+        text: Option<&str>,
+        manual: Option<bool>,
+    ) -> Value {
+        *time += 1;
+        let mut request = json!({"op":"key_event","automatic":true,"event":{
+            "key":key,"action":action,"text":text,"time_ms":*time,
+            "device":null,"origin":"physical","modifiers":0
+        }});
+        if let Some(manual) = manual {
+            request["manual"] = json!(manual);
+        }
+        call(b, request, Instant::now())
+    }
+    fn type_word(b: &mut Bridge, time: &mut u64, word: &str) {
+        for letter in word.chars() {
+            key(b, time, "letter", "down", Some(&letter.to_string()), None);
+            key(b, time, "letter", "up", None, None);
+        }
+    }
+    fn double_shift(b: &mut Bridge, time: &mut u64, manual: Option<bool>) -> Value {
+        for action in ["down", "up", "down"] {
+            key(b, time, "left_shift", action, None, manual);
+        }
+        key(b, time, "left_shift", "up", None, manual)
+    }
+    fn result(b: &mut Bridge, edit: &Value, outcome: &str, time: u64) -> Value {
+        call(
+            b,
+            json!({"op":"edit_result","id":edit["id"],"outcome":outcome,"time_ms":time}),
+            Instant::now(),
+        )
+    }
+    fn infer(b: &mut Bridge, word: &str) -> Value {
+        call(
+            b,
+            json!({"op":"infer","text":word,"automatic":true}),
+            Instant::now(),
+        )
     }
     fn authorize(b: &mut Bridge, now: Instant) -> Value {
         assert_eq!(
@@ -580,5 +650,232 @@ mod tests {
         );
         assert_eq!(manual["status"], "inferred");
         assert_eq!(manual["layout_only"], false);
+    }
+
+    #[test]
+    fn confirmed_feedback_changes_next_decision_without_breaking_retoggle() {
+        let mut b = Bridge::default();
+        let mut time = 0;
+        type_word(&mut b, &mut time, "ghbdtn");
+        let edit = key(&mut b, &mut time, "space", "down", None, None);
+        assert_eq!(edit["replacement"], "привет ");
+        let ack = result(&mut b, &edit, "verified", time);
+        assert_eq!(ack["status"], "ok");
+        assert_eq!(ack["feedback"]["learned_add"], json!(["привет"]));
+
+        // Host persists the delta and synchronizes its canonical dictionary.
+        // Neither that operation nor learning may clear last_auto or history.
+        assert_eq!(
+            call(
+                &mut b,
+                json!({"op":"dictionary_update","words":[],
+                "learned":["привет"],"exclusions":[]}),
+                Instant::now()
+            )["status"],
+            "dictionary_updated"
+        );
+        let undo = double_shift(&mut b, &mut time, None);
+        assert_eq!(undo["replacement"], "ghbdtn ");
+        let ack = result(&mut b, &undo, "verified", time);
+        assert_eq!(ack["feedback"]["exclusions_add"], json!(["ghbdtn"]));
+
+        // An immediate third gesture remains a normal manual rewrite.
+        let again = double_shift(&mut b, &mut time, None);
+        assert_eq!(again["replacement"], "привет ");
+        assert_eq!(
+            result(&mut b, &again, "verified", time),
+            json!({"status":"ok"})
+        );
+        // Prove the exclusion itself is effective, not just learned source
+        // protection that could otherwise conceal a stale exclusions dictionary.
+        assert_eq!(
+            call(&mut b, json!({"op":"learned_clear"}), Instant::now())["status"],
+            "cleared"
+        );
+        type_word(&mut b, &mut time, "ghbdtn");
+        assert_eq!(
+            key(&mut b, &mut time, "space", "down", None, None)["status"],
+            "ignored"
+        );
+        assert_eq!(infer(&mut b, "ghbdtn ")["status"], "ignored");
+    }
+
+    #[test]
+    fn submitted_and_legacy_ok_preserve_history_without_durable_learning() {
+        for outcome in ["submitted", "ok"] {
+            let mut b = Bridge::default();
+            let mut time = 0;
+            type_word(&mut b, &mut time, "ghbdtn");
+            let edit = key(&mut b, &mut time, "space", "down", None, None);
+            assert_eq!(result(&mut b, &edit, outcome, time), json!({"status":"ok"}));
+            assert!(b.learned_words().is_empty());
+            let undo = double_shift(&mut b, &mut time, None);
+            assert_eq!(undo["replacement"], "ghbdtn ");
+            // Even a verified undo cannot turn an unverified auto into exclusion.
+            let ack = result(&mut b, &undo, "verified", time);
+            assert_eq!(ack["feedback"]["exclusions_add"], json!([]));
+            assert!(b.soft_exclusions().is_empty());
+        }
+    }
+
+    #[test]
+    fn unsuccessful_results_and_unverified_undo_never_add_feedback() {
+        for outcome in [
+            "failed_before",
+            "unknown_after",
+            "rejected",
+            "indeterminate",
+        ] {
+            let mut b = Bridge::default();
+            let mut time = 0;
+            type_word(&mut b, &mut time, "ghbdtn");
+            let edit = key(&mut b, &mut time, "space", "down", None, None);
+            assert_eq!(
+                result(&mut b, &edit, outcome, time),
+                json!({"status":"reset"})
+            );
+            assert!(b.learned_words().is_empty());
+            assert!(b.soft_exclusions().is_empty());
+        }
+        let mut b = Bridge::default();
+        let mut time = 0;
+        type_word(&mut b, &mut time, "ghbdtn");
+        let edit = key(&mut b, &mut time, "space", "down", None, None);
+        result(&mut b, &edit, "verified", time);
+        let undo = double_shift(&mut b, &mut time, None);
+        assert_eq!(
+            result(&mut b, &undo, "submitted", time),
+            json!({"status":"ok"})
+        );
+        assert!(b.soft_exclusions().is_empty());
+        assert_eq!(b.learned_words(), ["привет"]);
+    }
+
+    #[test]
+    fn vocabulary_updates_are_atomic_and_preserve_pending_edits_and_gestures() {
+        let mut b = Bridge::default();
+        let mut time = 0;
+        type_word(&mut b, &mut time, "ghbdtn");
+        for action in ["down", "up", "down"] {
+            key(&mut b, &mut time, "left_shift", action, None, None);
+        }
+        let update = json!({"op":"dictionary_update","words":[],"exclusions":["hello"]});
+        assert_eq!(
+            call(&mut b, update.clone(), Instant::now())["status"],
+            "dictionary_updated"
+        );
+        let edit = key(&mut b, &mut time, "left_shift", "up", None, None);
+        assert_eq!(edit["replacement"], "привет");
+        assert_eq!(
+            call(&mut b, update, Instant::now())["status"],
+            "dictionary_updated"
+        );
+        assert_eq!(
+            call(
+                &mut b,
+                json!({"op":"dictionary_update","words":["bad word"],
+            "exclusions":[],"learned":[]}),
+                Instant::now()
+            )["status"],
+            "invalid-dictionary"
+        );
+        assert_eq!(result(&mut b, &edit, "verified", time)["status"], "ok");
+        assert_eq!(b.soft_exclusions(), ["hello"]);
+        assert_eq!(
+            double_shift(&mut b, &mut time, None)["replacement"],
+            "ghbdtn"
+        );
+    }
+
+    #[test]
+    fn learned_add_clear_and_dictionary_clear_change_effective_dictionary() {
+        let mut b = Bridge::default();
+        assert_eq!(infer(&mut b, "ghbdtn ")["status"], "inferred");
+        assert_eq!(
+            call(
+                &mut b,
+                json!({"op":"learned_add","word":"ghbdtn"}),
+                Instant::now()
+            )["status"],
+            "learned"
+        );
+        assert_eq!(infer(&mut b, "ghbdtn ")["status"], "ignored");
+        assert_eq!(
+            call(&mut b, json!({"op":"learned_clear"}), Instant::now())["status"],
+            "cleared"
+        );
+        assert_eq!(infer(&mut b, "ghbdtn ")["status"], "inferred");
+        assert_eq!(
+            call(
+                &mut b,
+                json!({"op":"dictionary_update","words":[],"exclusions":["ghbdtn"]}),
+                Instant::now()
+            )["status"],
+            "dictionary_updated"
+        );
+        assert_eq!(infer(&mut b, "ghbdtn ")["status"], "ignored");
+        assert_eq!(
+            call(
+                &mut b,
+                json!({"op":"dictionary_update","words":[],"exclusions":[]}),
+                Instant::now()
+            )["status"],
+            "dictionary_updated"
+        );
+        assert_eq!(infer(&mut b, "ghbdtn ")["status"], "inferred");
+    }
+
+    #[test]
+    fn manual_gate_preserves_word_and_old_requests_default_to_enabled() {
+        let mut b = Bridge::default();
+        let mut time = 0;
+        type_word(&mut b, &mut time, "ghbdtn");
+        assert_eq!(
+            double_shift(&mut b, &mut time, Some(false))["status"],
+            "ignored"
+        );
+        assert_eq!(
+            double_shift(&mut b, &mut time, None)["replacement"],
+            "привет"
+        );
+        let mut b = Bridge::default();
+        type_word(&mut b, &mut time, "ghbdtn");
+        double_shift(&mut b, &mut time, Some(false));
+        assert_eq!(
+            key(&mut b, &mut time, "space", "down", None, Some(false))["replacement"],
+            "привет "
+        );
+    }
+
+    #[test]
+    fn missing_policy_and_empty_policy_have_the_same_defaults() {
+        for policy in [None, Some(json!({}))] {
+            let mut b = Bridge::default();
+            let mut request = json!({"op":"configure","words":[],"exclusions":[]});
+            if let Some(policy) = policy {
+                request["policy"] = policy;
+            }
+            assert_eq!(
+                call(&mut b, request, Instant::now())["status"],
+                "configured"
+            );
+            assert_eq!(b.policy, AutoPolicy::default());
+            call(
+                &mut b,
+                json!({"op":"layout_notice","source":"user","layout":"ru"}),
+                Instant::now(),
+            );
+            let mut time = 0;
+            type_word(&mut b, &mut time, "ghbdtn");
+            assert_eq!(
+                key(&mut b, &mut time, "space", "down", None, None)["status"],
+                "ignored"
+            );
+            type_word(&mut b, &mut time, "ghbdtn");
+            assert_eq!(
+                key(&mut b, &mut time, "space", "down", None, None)["status"],
+                "inferred_edit"
+            );
+        }
     }
 }
