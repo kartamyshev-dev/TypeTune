@@ -717,3 +717,24 @@ macOS. AX может задержаться, редактор может про�
 Локальный `macos-test.kQo7D8` снова прошёл 260 проверок; Swift 150/15 завершились
 за 0,458 с. Причина CI-зависания параллельного старта не доказана. Добавлено
 сохранение phase.log/sample.txt при отказе CI; ожидается новый полный CI.
+
+### Опубликован v0.2.6
+
+GitHub Release: https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.6.
+Релиз предварительный, не draft; опубликован 2026-10-03T09:21:37Z.
+Тег указывает на `2e1d51d4a4641461a326d4c9bee4e96f41fcb3b5`.
+CI https://github.com/kartamyshev-dev/TypeTune/actions/runs/37112540685 завершился
+success: Linux lint/tests/package, macOS tests/package и Release publish.
+Последовательный запуск тестов прошёл на CI, но точная причина прежнего
+параллельного зависания не доказана.
+
+Опубликованные файлы скачаны и проверены по обоим SHA256SUMS. ZIP распакован,
+`codesign --verify --deep --strict` прошёл; Info.plist подтвердил 0.2.6,
+чистый исходный коммит релиза и source digest
+`8a1ebb6714ae9c06a4802e7d9d393cb0def81f0a6410dbae0739d7af6dea5f2e`.
+ZIP SHA-256: `7bd127e101a4715a4e8b45615e3b9e94c068be0441d20424a80123f9d382d62d`.
+DEB SHA-256: `64331e5f95b55f9aca01ff59a089942515e5a80d4e891b7a46ac156dd8afa778`.
+Локальный receipt: `target/release-0.2.6-published/verified-release.json`.
+Установленная диагностическая копия не заменялась этим архивом, её результаты
+150 нативных повторов не перенесены на релизную идентичность. Полная нативная
+приёмка и ранее описанные ограничения остаются открытыми.
