@@ -13,3 +13,7 @@ __pycache__/
 # Built Debian artifacts
 /dist/
 integrations/macos/.build/
+
+# Local third-party binary research; public release docs describe TypeTune only.
+docs/local/
+scripts/local/

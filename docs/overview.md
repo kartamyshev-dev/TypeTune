@@ -19,7 +19,7 @@ TypeTune — помощник ввода для Linux и macOS: общесист
 | Статус | Preview | Preview |
 | Среда | Ubuntu 26.04, GNOME 50, Wayland | Apple Silicon, macOS 27 |
 | Пакет | `.deb` | `.zip` → `TypeTune.app` |
-| Ввод | opt-in evdev/uinput + session helper | CGEvent tap + Accessibility |
+| Ввод | opt-in evdev/uinput + session helper | HID CGEvent tap + session output |
 | UI | GTK / tray | Строка меню + окно настроек |
 
 Windows не выпускается. Поведение в **каждом** приложении не гарантируется: редакторы, терминалы и кастомные поля обрабатываются по-разному.

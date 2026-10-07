@@ -71,14 +71,16 @@ final class Controller: ObservableObject {
         }
         flagMonitor.start { [weak self] in self?.settings.activeKeyboards ?? [] }
         let center = NSWorkspace.shared.notificationCenter
-        for name in [NSWorkspace.willSleepNotification, NSWorkspace.sessionDidResignActiveNotification] {
-            tokens.append(center.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in self?.runtime.setSuspended(true) })
-        }
-        for name in [NSWorkspace.didWakeNotification, NSWorkspace.sessionDidBecomeActiveNotification] {
-            tokens.append(center.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in self?.runtime.setSuspended(false) })
+        for (name, suspended, reason) in [
+            (NSWorkspace.willSleepNotification, true, Runtime.SuspensionReason.sleep),
+            (NSWorkspace.didWakeNotification, false, .sleep),
+            (NSWorkspace.sessionDidResignActiveNotification, true, .session),
+            (NSWorkspace.sessionDidBecomeActiveNotification, false, .session)
+        ] {
+            tokens.append(center.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in self?.runtime.setSuspended(suspended, reason: reason) })
         }
         for (name, suspended) in [("com.apple.screenIsLocked", true), ("com.apple.screenIsUnlocked", false)] {
-            tokens.append(DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name(name), object: nil, queue: .main) { [weak self] _ in self?.runtime.setSuspended(suspended) })
+            tokens.append(DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name(name), object: nil, queue: .main) { [weak self] _ in self?.runtime.setSuspended(suspended, reason: .screenLock) })
         }
     }
 
@@ -102,7 +104,7 @@ final class Controller: ObservableObject {
         if !CGPreflightListenEventAccess() {
             NSWorkspace.shared.open(URL(string: base + "ListenEvent")!)
         }
-        if !AXIsProcessTrusted() {
+        if !AXIsProcessTrusted() || !CGPreflightPostEventAccess() {
             NSWorkspace.shared.open(URL(string: base + "Accessibility")!)
         }
     }

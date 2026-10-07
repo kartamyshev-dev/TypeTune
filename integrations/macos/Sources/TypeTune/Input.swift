@@ -16,6 +16,7 @@ struct KeyObservation {
     var sequence: UInt64 = 0
     /// nil is reserved for manually constructed test observations. Captured
     /// keyboard events always carry a value; zero means unknown, never trusted.
+    /// HID capture uses the intended foreground PID, not an annotated route.
     var targetPID: pid_t? = nil
 }
 final class InputBuffer {
@@ -41,10 +42,10 @@ final class InputBuffer {
     }
     /// Activity invalidates a prepared plan even while history capture is paused.
     /// Replay is accounted for on its original arrival, never a second time.
-    func observe(_ event: CGEvent, type: CGEventType) -> KeyObservation? {
+    func observe(_ event: CGEvent, type: CGEventType, intendedPID: pid_t? = nil, keyboardMapping: KeyboardMapping? = nil) -> KeyObservation? {
         guard !isTypeTuneMarker(event.getIntegerValueField(.eventSourceUserData)) else {return nil}
         let keyboard=[CGEventType.keyDown,.keyUp,.flagsChanged].contains(type)
-        let target=keyboard ? eventTargetPID(event):nil
+        let target=keyboard ? (intendedPID ?? eventTargetPID(event)):nil
         let routeChanged=target.map {lastKeyboardTarget.exchange($0,ordering:.acquiringAndReleasing) != $0} ?? false
         // A release routed elsewhere invalidates a prepared plan as surely as
         // a new key. Ordinary same-target key-up preserves the held-key fence.
@@ -80,9 +81,16 @@ final class InputBuffer {
             if code == 51 { key="backspace" }
             else if code == 49 { key="space" }
             else {
-                var chars=[UniChar](repeating:0,count:16); var length=0
-                event.keyboardGetUnicodeString(maxStringLength: chars.count, actualStringLength: &length, unicodeString: &chars)
-                if length > 0 && length < chars.count { text=String(utf16CodeUnits: chars, count:length) }
+                if intendedPID != nil {
+                    text=keyboardMapping?.text(code:CGKeyCode(code),flags:flags)
+                } else {
+                    var chars=[UniChar](repeating:0,count:16); var length=0
+                    event.keyboardGetUnicodeString(maxStringLength: chars.count, actualStringLength: &length, unicodeString: &chars)
+                    if length > 0 && length < chars.count { text=String(utf16CodeUnits: chars, count:length) }
+                }
+            }
+            if intendedPID != nil, [36,48,53,76,115,116,117,119,121,123,124,125,126].contains(code) {
+                key="context";text=nil
             }
         } else { key="pointer" }
         let pid = event.getIntegerValueField(.eventSourceUnixProcessID)
@@ -166,12 +174,19 @@ final class Observer {
             defer {
                 if let ownedPort {lifecycle.invalidate(ownedPort)}
                 stateLock.lock()
-                if generation==run {tap=nil;source=nil;loop=nil;registeredTapID=nil;nextRegistrationCheck=UInt64.max;active=false}
-                stateLock.unlock();buffer.invalidate()
+                let current=generation==run
+                if current {
+                    tap=nil;source=nil;loop=nil;registeredTapID=nil;nextRegistrationCheck=UInt64.max;active=false
+                    // A retiring thread must not discard input collected by
+                    // the next generation. Keep cleanup and start serialized.
+                    buffer.invalidate()
+                }
+                stateLock.unlock()
+                lifecycle.log("observer_stopped attempt=\(run) stale=\(!current)")
             }
             let mask=Self.eventMask
             let permissions=lifecycle.permissions()
-            let diagnostic="pid=\(ProcessInfo.processInfo.processIdentifier) attempt=\(run) \(permissions.diagnostic) mask=\(mask)"
+            let diagnostic="pid=\(ProcessInfo.processInfo.processIdentifier) attempt=\(run) \(permissions.diagnostic) mask=\(mask) backend=\(transport.directSession ? "hid_session":"annotated_carrier")"
             lifecycle.log("observer_start \(diagnostic)")
             let callback:CGEventTapCallBack={proxy,type,event,ref in
                 Unmanaged<Observer>.fromOpaque(ref!).takeUnretainedValue().receive(event,type:type,proxy:proxy)
@@ -251,7 +266,13 @@ final class Observer {
             return nil
         }
         if marker==ownMarker || marker==replayMarker {return Unmanaged.passUnretained(event)}
-        guard let observation=buffer.observe(event,type:type) else {return Unmanaged.passUnretained(event)}
+        let intendedPID = transport.directSession ? (transport.intendedTarget?() ?? foregroundPID.load(ordering:.acquiring)) : nil
+        let mapping=transport.keyboardMapping?()
+        guard let observation=buffer.observe(event,type:type,intendedPID:intendedPID,keyboardMapping:mapping) else {return Unmanaged.passUnretained(event)}
+        if transport.directSession,mapping==nil,type == .keyDown {
+            buffer.invalidate()
+            return Unmanaged.passUnretained(event)
+        }
         transactionLock.lock()
         if let tx=transaction,!tx.released {
             tx.noteInput(at:DispatchTime.now().uptimeNanoseconds)
@@ -259,26 +280,29 @@ final class Observer {
             tx.hadDeferredEvents=true
             let keyCode=event.getIntegerValueField(.keyboardEventKeycode)
             let contextControl = ![CGEventType.keyDown,.keyUp,.flagsChanged].contains(type) || !event.flags.intersection([.maskCommand,.maskControl,.maskAlternate]).isEmpty || (type == .flagsChanged && (keyCode==57 || keyCode==63))
-            let routedTarget=eventTargetPID(event)
+            let routedTarget=intendedPID ?? eventTargetPID(event)
             if contextControl || routedTarget<=0 || routedTarget != tx.targetPID {
                 tx.failure=tx.failure ?? (contextControl ? "context_input":"input_target");tx.outputClosed=true
                 // Do not admit pointer/control or foreign input into the FIFO.
                 // Flush older keys downstream, then return this exact annotated
                 // event unchanged, preserving hit-testing and its destination.
-                releaseLocked(tx,proxy:proxy,atTap:true)
+                releaseLocked(tx,proxy:proxy,atTap:!transport.directSession)
                 tx.acknowledged.signal();transactionLock.unlock()
                 buffer.invalidate()
                 if buffer.accepting.load(ordering:.relaxed) {buffer.enqueue(observation)}
                 return Unmanaged.passUnretained(event)
             }
-            if let copy=transport.copy(event),eventTargetPID(copy)==routedTarget,
-               tx.queue.append(DeferredInput(event:copy,observation:observation,targetPID:routedTarget)) {
-                transactionLock.unlock();return nil
+            if let copy=transport.copy(event) {
+                if transport.directSession {copy.setIntegerValueField(.eventTargetUnixProcessID,value:Int64(routedTarget))}
+                if eventTargetPID(copy)==routedTarget,
+                   tx.queue.append(DeferredInput(event:copy,observation:observation,targetPID:routedTarget)) {
+                    transactionLock.unlock();return nil
+                }
             }
             // Admission failed: preserve all older events before forwarding this
             // one. No native/engine/context calls or waits occur under the lock.
             tx.failure=tx.failure ?? "fifo_admission";tx.outputClosed=true
-            releaseLocked(tx,proxy:proxy,atTap:true)
+            releaseLocked(tx,proxy:proxy,atTap:!transport.directSession)
             tx.acknowledged.signal();transactionLock.unlock()
             buffer.invalidate()
             if buffer.accepting.load(ordering:.relaxed) {buffer.enqueue(observation)}
@@ -346,7 +370,25 @@ final class Observer {
         guard open(tx) else {return result(tx,fallback:"closed_after_layout")}
         guard validateBeforeOutput() else {return result(tx,fallback:"validation_after_layout")}
         guard transport.targetIsSafe(tx.targetPID) else {return result(tx,fallback:"target_after_layout")}
-        output.sync {
+        if transport.directSession {
+            DispatchQueue.main.async { [self] in
+                output.sync {
+                    guard transport.targetIsSafe(tx.targetPID), !transport.secureInput() else {
+                        abort(tx,reason:"session_target_or_secure");return
+                    }
+                    transactionLock.lock()
+                    guard transaction === tx,!tx.released,tx.failure==nil,
+                          DispatchTime.now().uptimeNanoseconds<tx.deadline else {
+                        tx.acknowledged.signal();transactionLock.unlock();return
+                    }
+                    tx.outputStarted=true
+                    for event in prepared.events {transport.post(event)}
+                    tx.outputAcknowledged=true;tx.outputClosed=true
+                    releaseLocked(tx,proxy:nil,atTap:false)
+                    tx.acknowledged.signal();transactionLock.unlock()
+                }
+            }
+        } else { output.sync {
             guard self.open(tx) else {return}
             guard self.transport.carrierIsSafe(),let carrier=prepared.carrier else {
                 self.transactionLock.lock();tx.failure="carrier_unavailable";tx.outputClosed=true;tx.acknowledged.signal();self.transactionLock.unlock();return
@@ -356,7 +398,7 @@ final class Observer {
                 self.transactionLock.lock();tx.failure="carrier_marker";tx.outputClosed=true;tx.acknowledged.signal();self.transactionLock.unlock();return
             }
             self.transport.post(carrier)
-        }
+        } }
         let now=DispatchTime.now().uptimeNanoseconds
         let completed=now<tx.deadline && tx.acknowledged.wait(timeout:.now()+Double(tx.deadline-now)/1_000_000_000) == .success
         if !completed {
@@ -414,7 +456,9 @@ final class Observer {
             let replay=mapping?.replay(item.event) ?? item.event
             _=markEvent(replay,replayMarker)
             if atTap {transport.afterTap(replay,proxy)}
-            else {transport.replay(replay,.process(item.targetPID))}
+            else if transport.directSession,foregroundPID.load(ordering:.acquiring)==item.targetPID {
+                transport.post(replay)
+            } else {transport.replay(replay,.process(item.targetPID))}
             buffer.enqueue(replayedObservation(item.observation,event:replay))
         }
         tx.released=true;if transaction === tx {transaction=nil}
@@ -434,7 +478,7 @@ final class Observer {
         let periodicCheck=now>=nextRegistrationCheck
         if periodicCheck {nextRegistrationCheck=now+1_000_000_000}
         stateLock.unlock()
-        guard let port else {return false}
+        guard let port,registeredID != nil else {return false}
         guard lifecycle.isValid(port) else {retire(port,generation:run,reason:"invalid_port");return false}
         let flagged=needsReenable.exchange(false,ordering:.acquiringAndReleasing)
         let reenable=flagged || !lifecycle.isEnabled(port)

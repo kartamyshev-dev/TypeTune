@@ -20,6 +20,8 @@ private final class ObserverRuntimeFixture {
         (38, "j", "о"), (49, " ", " ")
     ]
     private let engine = Engine()
+    private let earlyCapture: Bool
+    private let staleUnicode: Bool
     private var clock: UInt64 = 1_000_000_000
     private var eventClock: UInt64 = 1000
     private(set) var observer: Observer!
@@ -39,14 +41,20 @@ private final class ObserverRuntimeFixture {
     var afterSelection: ((PreparedReplacement) -> Void)?
     var beforeCarrier: (() -> Void)?
 
-    init() {
+    init(sessionHistory: Bool = false, staleUnicode: Bool = false) {
+        earlyCapture=sessionHistory
+        self.staleUnicode=staleUnicode
         var transport = ObserverTransport()
+        transport.directSession = sessionHistory
+        if sessionHistory {transport.intendedTarget = {9000}}
+        if sessionHistory {transport.keyboardMapping = { [unowned self] in mapping(layout) }}
         transport.ready = { true }
         transport.targetIsSafe = { $0 == 9000 }
         transport.secureInput = { false }
         transport.carrierIsSafe = { true }
         transport.automaticWatchdog = false
         transport.post = { [unowned self] event in
+            if sessionHistory {deliver(event);return}
             event.setIntegerValueField(.eventTargetUnixProcessID,value:9000)
             beforeCarrier?()
             if delayCarrier { delayedCarriers.append(event.copy()!) }
@@ -64,6 +72,7 @@ private final class ObserverRuntimeFixture {
         observer = Observer(transport: transport)
 
         var io = RuntimeEnvironment()
+        io.historyOnly=sessionHistory
         io.buffer = observer.buffer
         io.log = { _ in }
         io.now = { [unowned self] in clock }
@@ -161,8 +170,8 @@ private final class ObserverRuntimeFixture {
         event.type = type; event.flags = flags; event.timestamp = eventClock * 1_000_000
         event.setIntegerValueField(.eventSourceUserData, value: 0)
         event.setIntegerValueField(.eventSourceUnixProcessID, value: 0)
-        event.setIntegerValueField(.eventTargetUnixProcessID, value: 9000)
-        let units = Array(text.utf16)
+        event.setIntegerValueField(.eventTargetUnixProcessID, value: earlyCapture ? 0:9000)
+        let units = Array((staleUnicode && !text.isEmpty ? "":text).utf16)
         event.keyboardSetUnicodeString(stringLength: units.count, unicodeString: units)
         return event
     }
@@ -193,6 +202,12 @@ private final class ObserverRuntimeFixture {
         tick()
     }
 
+    func returnKey() {
+        receive(physical(code: 36, type: .keyDown))
+        receive(physical(code: 36, type: .keyUp))
+        tick()
+    }
+
     private func deliver(_ event: CGEvent) {
         var units = [UniChar](repeating: 0, count: 16)
         var length = 0
@@ -203,7 +218,11 @@ private final class ObserverRuntimeFixture {
                                    marker: event.getIntegerValueField(.eventSourceUserData)))
         guard event.type == .keyDown else { return }
         if code == 51 { if !value.isEmpty { value.removeLast() } }
-        else { value += text }
+        else if code == 36 { value += "\n" }
+        else {
+            value += earlyCapture && event.getIntegerValueField(.eventSourceUserData)==0
+                ? (mapping(layout).text(code:code,flags:event.flags) ?? text):text
+        }
     }
 
     var replayedDowns: [Delivery] { deliveries.filter { $0.marker == replayMarker && $0.type == .keyDown } }
@@ -213,6 +232,74 @@ private final class ObserverRuntimeFixture {
 }
 
 struct ObserverRuntimeIntegrationTests {
+    @Test func hidHistoryStartsFreshAfterReturnWithoutAXRecovery() async {
+        await Task.detached {
+            let f = ObserverRuntimeFixture(sessionHistory: true, staleUnicode: true)
+            f.readable = false
+            f.type("a")
+            f.returnKey()
+            f.type("ghbdtn")
+            f.doubleShift()
+            #expect(f.value == "a\nпривет")
+            #expect(f.acknowledgements.map(\.outcome) == ["submitted"])
+        }.value
+    }
+    @Test func hidHistoryTranslatesPhysicalKeysWhenEarlyUnicodeIsMissing() async {
+        await Task.detached {
+            let f=ObserverRuntimeFixture(sessionHistory:true,staleUnicode:true)
+            f.readable=false
+            f.type("ghbdtn")
+            f.type(" ")
+            #expect(f.value=="привет ")
+            #expect(f.acknowledgements.map(\.outcome)==["submitted"])
+        }.value
+    }
+    @Test func sessionHistoryReplacesWithoutAXOrCarrierAndPreservesNextWord() async {
+        await Task.detached {
+            let f = ObserverRuntimeFixture(sessionHistory:true)
+            f.readable=false
+            f.type("ghbdtn")
+            f.afterSelection = { _ in
+                f.afterSelection=nil
+                f.type("yjdjt",flush:false)
+                #expect(f.value=="ghbdtn ")
+            }
+            f.type(" ")
+            #expect(f.value=="привет новое")
+            #expect(f.acknowledgements.map(\.outcome)==["submitted"])
+            #expect(f.deliveries.allSatisfy{$0.code != 90}) // No F20 carrier.
+            #expect(f.replayedDowns.map(\.text)==["н","о","в","о","е"])
+        }.value
+    }
+    @Test func sessionHistoryManualAndFailedLayoutKeepTextSafe() async {
+        await Task.detached {
+            let f = ObserverRuntimeFixture(sessionHistory:true)
+            f.readable=false
+            f.type("ghbdtn")
+            f.selectionSucceeds=false
+            f.doubleShift()
+            #expect(f.value=="ghbdtn")
+            #expect(f.acknowledgements.map(\.outcome)==["rejected"])
+            f.selectionSucceeds=true
+            f.type(" ")
+            f.type("ghbdtn")
+            f.doubleShift()
+            #expect(f.value=="ghbdtn привет")
+            #expect(f.acknowledgements.last?.outcome=="submitted")
+        }.value
+    }
+    @Test func sessionHistoryRejectsChangedContextBeforePostingAnyReplacement() async {
+        await Task.detached {
+            let f=ObserverRuntimeFixture(sessionHistory:true)
+            f.readable=false
+            f.type("ghbdtn")
+            f.afterSelection = { _ in f.rejectValidation=true }
+            f.type(" ")
+            #expect(f.value=="ghbdtn ")
+            #expect(f.acknowledgements.map(\.outcome)==["rejected"])
+            #expect(f.deliveries.allSatisfy{$0.marker==0})
+        }.value
+    }
     @Test func targetMappedReplayReachesEditorOnceAndPreservesNextWordThroughRustAcknowledgement() throws {
         let f = ObserverRuntimeFixture()
         f.type("ghbdtn")

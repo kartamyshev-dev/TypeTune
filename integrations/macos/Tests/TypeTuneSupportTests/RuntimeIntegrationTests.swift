@@ -18,6 +18,7 @@ private final class RuntimeFixture {
     var secure = false
     var readable = true
     var permission = true
+    var permissionIssue: String?
     var holding = false
     var prepareFails = false
     var commitOutcome = "submitted"
@@ -25,6 +26,7 @@ private final class RuntimeFixture {
     var committed = 0
     var finished = 0
     var textReads = 0
+    var textDelay: UInt64 = 0
     var events: [[String: Any]] = []
     var results: [[String: Any]] = []
     var layoutNotices: [[String: Any]] = []
@@ -36,10 +38,19 @@ private final class RuntimeFixture {
     var textOverride: (() -> TextState?)?
     var shiftHeld = false
     var targetPIDOverride: Int32?
+    var observerActive = true
+    var startSucceeds = true
+    var observerStarts = 0
+    var observerStops = 0
 
-    init(settings: Settings = Settings()) {
+    init(settings: Settings = Settings(), historyOnly: Bool = false) {
         var io = RuntimeEnvironment()
+        io.historyOnly = historyOnly
         io.buffer = buffer
+        io.isActive = { [unowned self] in observerActive }
+        io.recover = { [unowned self] in observerActive }
+        io.start = { [unowned self] in observerStarts += 1; observerActive = startSucceeds }
+        io.stop = { [unowned self] in observerStops += 1; observerActive = false }
         io.log = { [unowned self] in logs.append($0) }
         io.now = { [unowned self] in clock }
         io.sleep = { [unowned self] seconds in clock += UInt64(seconds * 1_000_000_000); onSleep?() }
@@ -50,10 +61,11 @@ private final class RuntimeFixture {
             let source = layout == "us" ? "com.apple.keylayout.ABC" : "com.apple.keylayout.RussianWin"
             return NativeContext(identity: identity, bundle: "fixture.editor", layout: layout,
                 element: nil, secure: secure, permitted: permission,
-                usableOverride: permission && !secure && keyboards.contains(source))
+                usableOverride: permission && !secure && keyboards.contains(source),permissionIssue:permissionIssue)
         }
         io.text = { [unowned self] _ in
             textReads += 1
+            clock += textDelay
             if let textOverride { return textOverride() }
             return readable ? TextState(value: value, range: CFRange(location: caret, length: 0)) : nil
         }
@@ -154,6 +166,102 @@ private final class RuntimeFixture {
 }
 
 struct RuntimeIntegrationTests {
+    @Test func activeObserverWithStalePostPermissionRequestsRestartInsteadOfReportingHealthy() {
+        let f=RuntimeFixture()
+        f.permission=false;f.permissionIssue="post_access"
+        f.clock+=500_000_000;f.tick()
+        #expect(f.runtime.status=="Перезапустите TypeTune после изменения разрешений")
+        f.clock+=500_000_000;f.tick()
+        #expect(f.logs.filter{$0=="runtime_blocked reason=post_access"}.count==1)
+        let accepting=f.buffer.accepting.load(ordering:.acquiring)
+        #expect(!accepting)
+    }
+    @Test func resumeWaitsForAllSuspensionReasonsAndRestartsOnce() {
+        let f = RuntimeFixture()
+        f.runtime.setSuspended(true, reason: .sleep)
+        f.runtime.setSuspended(true, reason: .session)
+        f.runtime.setSuspended(true, reason: .screenLock)
+        f.tick()
+        f.runtime.setSuspended(false, reason: .sleep)
+        f.runtime.setSuspended(false, reason: .session)
+        f.tick()
+        f.clock += 500_000_000
+        f.tick() // The first tick only consumes the history discontinuity.
+        #expect(f.runtime.status == "На паузе")
+        #expect(f.observerStops == 0)
+        let accepting = f.buffer.accepting.load(ordering: .acquiring)
+        #expect(!accepting)
+        f.runtime.setSuspended(false, reason: .screenLock)
+        f.tick()
+        #expect(f.observerStops == 1)
+        #expect(f.observerStarts == 1)
+        #expect(f.observerActive)
+        f.runtime.setSuspended(false, reason: .screenLock)
+        f.tick()
+        #expect(f.observerStops == 1)
+        #expect(f.observerStarts == 1)
+    }
+
+    @Test func startupRetriesWithoutRebootAndResumeBypassesTheOldRetryDelay() {
+        let f = RuntimeFixture()
+        f.observerActive = false; f.startSucceeds = false
+        f.tick()
+        #expect(f.observerStarts == 1)
+        f.tick()
+        #expect(f.observerStarts == 1)
+        f.startSucceeds = true
+        f.clock += 1_500_000_000
+        f.tick()
+        #expect(f.observerStarts == 2)
+        #expect(f.observerActive)
+        f.runtime.setSuspended(true, reason: .sleep)
+        f.tick()
+        f.runtime.setSuspended(false, reason: .sleep)
+        f.tick()
+        #expect(f.observerStarts == 3)
+        #expect(f.observerStops == 1)
+        #expect(f.observerActive)
+    }
+    @Test func manualDiagnosticsSeparateRecognitionFromRejectedEditorAndNeverLogText() {
+        let f = RuntimeFixture()
+        f.type("ghbdtn"); f.doubleShift()
+        #expect(f.committed == 1)
+        #expect(f.runtime.lastOutcome == "verified")
+        let decisions = f.logs.filter { $0.hasPrefix("manual_decision ") }
+        #expect(decisions.count == 1)
+        #expect(decisions[0].contains("recognized=true"))
+        #expect(decisions[0].contains("press_ms=10 gap_ms=20"))
+        #expect(!f.logs.joined().contains("ghbdtn"))
+        #expect(!f.logs.joined().contains("привет"))
+        #expect(!f.logs.joined().contains("9000:1"))
+        let empty = RuntimeFixture()
+        empty.doubleShift()
+        #expect(empty.committed == 0)
+        #expect(empty.logs.contains { $0.contains("recognized=true reason=invalid_editor_word") })
+    }
+    @Test func editTimingsExposeAXCostAndStillRequireIndependentReadback() {
+        let f = RuntimeFixture()
+        f.textDelay = 500_000
+        f.type("ghbdtn ")
+        #expect(f.value == "привет ")
+        #expect(f.runtime.lastOutcome == "verified")
+        let records = f.logs.filter { $0.hasPrefix("edit_timing ") }
+        #expect(records.count == 1)
+        #expect(records[0].contains("trigger=automatic"))
+        #expect(records[0].contains("snapshot_us=500"))
+        #expect(records[0].contains("verify_text_us=500"))
+        #expect(records[0].contains("total_us=1000"))
+        #expect(!records[0].contains("ghbdtn"))
+    }
+    @Test func aRejectedStalePlanAlsoReportsTimingsWithoutBeginningOutput() {
+        let f = RuntimeFixture()
+        f.type("ghbdtn ", flush: false)
+        f.type("g", flush: false)
+        f.tick()
+        #expect(f.committed == 0)
+        #expect(f.logs.contains("edit_rejected reason=stale_trigger"))
+        #expect(f.logs.contains { $0.hasPrefix("edit_timing ") && $0.contains("trigger=automatic") })
+    }
     @Test func aMatchingSpaceCannotRecoverAWordFromAMixedDestinationBatch() {
         let f=RuntimeFixture()
         f.targetPIDOverride=7777;f.type("ghbdtn",flush:false)
@@ -582,7 +690,7 @@ struct RuntimeIntegrationTests {
     }
 
     @Test func historyOnlyNeverRewritesASuffixAfterObservationGap() {
-        let f = RuntimeFixture()
+        let f = RuntimeFixture(historyOnly: true)
         f.readable = false
         f.type("ghb", flush: false)
         f.buffer.invalidate()
@@ -594,6 +702,29 @@ struct RuntimeIntegrationTests {
         f.type(" ") // known boundary restores history-only mode for the next word
         f.type("ghbdtn ")
         #expect(f.value == "ghbdtn привет ")
+    }
+
+    @Test func historyOnlyEmptyDiscontinuityCannotAuthorizeAPartialWord() {
+        let f = RuntimeFixture(historyOnly: true)
+        f.readable = false
+        f.type("ghb")
+        f.buffer.invalidate()
+        f.tick() // No queued events, but a word was already being observed.
+        f.type("dtn")
+        f.doubleShift()
+        #expect(f.value == "ghbdtn")
+        #expect(f.committed == 0)
+    }
+
+    @Test func historyOnlyAcceptsFreshInputInANewApplicationWithoutAX() {
+        let f = RuntimeFixture(historyOnly: true)
+        f.readable = false
+        f.identity = "9001:history"
+        f.type("ghbdtn")
+        f.doubleShift()
+        #expect(f.value == "привет")
+        #expect(f.committed == 1)
+        #expect(f.runtime.lastOutcome == "submitted")
     }
 
     @Test func rejectionReportsActualLayoutWithoutFalseExternalSwitch() {

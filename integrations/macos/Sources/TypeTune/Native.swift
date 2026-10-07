@@ -34,6 +34,7 @@ struct NativeContext {
     var sourceID: String = ""
     var pid: pid_t { pid_t(identity.split(separator: ":").first ?? "") ?? 0 }
     var usableOverride: Bool? = nil
+    var permissionIssue: String? = nil
     var usable: Bool {
         if secure { return false }
         if let usableOverride { return usableOverride }
@@ -87,6 +88,23 @@ enum Native {
         let usable = permitted && !secure && !(app.bundleIdentifier ?? "").isEmpty && (source.1=="us" || source.1=="ru") && (activeKeyboards?.contains(source.0) ?? true)
         let identity="\(app.processIdentifier):\(element.map{CFHash($0)} ?? 0)"
         return NativeContext(identity:identity,bundle:app.bundleIdentifier ?? "",layout:source.1,element:element,secure:secure,permitted:permitted,sourceID:source.0,usableOverride:usable)
+    }
+    /// Key-history context; no editor AX round trips. Identity denotes the
+    /// intended foreground application, not proof of an editor field.
+    static func historyContext(activeKeyboards: [String], permissions: ObserverPermissions? = nil) -> NativeContext {
+        HIDKeyboardLayout.shared.refresh()
+        let permissions=permissions ?? ObserverPermissions.current()
+        let source=inputSource()
+        let app=NSWorkspace.shared.frontmostApplication
+        let secure=SecureInputReader.shared.isEnabled()
+        let permitted=permissions.listen && permissions.post && permissions.accessibility
+        return NativeContext(identity:"\(app?.processIdentifier ?? 0):history",
+            bundle:app?.bundleIdentifier ?? "",layout:source.1,element:nil,
+            secure:secure,permitted:permitted,sourceID:source.0,
+            usableOverride:permitted && !secure && app != nil &&
+                activeKeyboards.contains(source.0) && ["us","ru"].contains(source.1),
+            permissionIssue: !permissions.listen ? "listen_access":
+                (!permissions.accessibility ? "accessibility_access":(!permissions.post ? "post_access":nil)))
     }
     static func text(_ context: NativeContext) -> TextState? {
         text(context,timeout:0.05)

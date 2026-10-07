@@ -14,6 +14,7 @@ struct RuntimeEditTransaction {
 
 /// Replace system I/O in tests; the event loop, bridge and acknowledgements stay real.
 struct RuntimeEnvironment {
+    var historyOnly = false
     var buffer = InputBuffer()
     var isActive: () -> Bool = { true }
     var start: () -> Void = {}
@@ -35,19 +36,34 @@ struct RuntimeEnvironment {
     var beginEdit: (Int, String, String, [String], UInt64, NativeContext) -> RuntimeEditTransaction? = { _,_,_,_,_,_ in nil }
 
     static func live() -> Self {
-        let observer = Observer()
+        let observer = Observer(transport:.sessionHistory,lifecycle:.hidHistory)
         var io = Self()
+        io.historyOnly = true
         io.buffer = observer.buffer
         io.isActive = { observer.isActive }
         io.start = observer.start
         io.recover = observer.recover
         io.stop = observer.stop
+        // Runtime owns this closure on its serial queue. TCC queries need not
+        // run for every packet or while a replacement waits for key release.
+        var permissionStamp: UInt64 = 0
+        var permissions = ObserverPermissions(listen:false,post:false,accessibility:false)
+        io.context = {
+            let now=DispatchTime.now().uptimeNanoseconds
+            if now>=permissionStamp {
+                permissions=ObserverPermissions.current()
+                permissionStamp=now+1_000_000_000
+            }
+            return Native.historyContext(activeKeyboards:$0,permissions:permissions)
+        }
+        io.text = { _ in nil }
+        io.canCommit = { $0.permitted && $0.usable && !$0.secure && Native.fastTargetIsSafe($0.pid) }
         io.beginEdit = { remove, replacement, mode, keyboards, revision, context in
             guard let prepared = Native.prepareReplacement(remove: remove, replacement: replacement,
-                      mode: mode, activeKeyboards: keyboards) else { return nil }
+                      mode: mode, activeKeyboards: keyboards,sessionHistory:true) else { return nil }
             var transaction: EditTransaction?
             return RuntimeEditTransaction(commit: { validate in
-                // The initial AX validation must not hold physical input. The
+                // Initial context validation must not hold physical input. The
                 // revision is checked atomically when the short gate begins.
                 guard validate() else {return RuntimeCommitResult(outcome:"rejected",reason:"validation_before_gate")}
                 guard let admitted = observer.begin(expectedRevision: revision, targetPID: context.pid) else {
@@ -64,20 +80,24 @@ struct RuntimeEnvironment {
 }
 
 final class Runtime {
+    enum SuspensionReason: String { case sleep, session, screenLock }
     let queue = DispatchQueue(label: "dev.kartamyshev.TypeTune.runtime", qos: .userInteractive)
     private let io: RuntimeEnvironment
     private let call: ([String: Any]) -> [String: Any]
     private var timer: DispatchSourceTimer?
     private var settings = Settings()
     private var enabled = true
-    private var suspended = false
+    private var suspensionReasons: Set<SuspensionReason> = []
+    private var suspended: Bool { !suspensionReasons.isEmpty }
     private var focus = FocusHistory()
     private var hasObservedContext = false
+    private var historyIdentity = ""
     private var historyBroken = false
     private var consecutiveObservedSpaces = 0
     private(set) var status = ""
     private(set) var lastOutcome: String?
     private var lastIssue: String?
+    private var lastPermissionIssue: String?
     private var lastLayout = ""
     private var nextIdleCheck: UInt64 = 0
     private var nextStart: UInt64 = 0
@@ -135,9 +155,20 @@ final class Runtime {
         io.buffer.invalidate()
         queue.async { self.enabled = value; self.lastIssue = nil; self.reset(); self.nextIdleCheck = 0 }
     }
-    func setSuspended(_ value: Bool) {
+    func setSuspended(_ value: Bool, reason: SuspensionReason) {
         io.buffer.invalidate()
-        queue.async { self.suspended = value; self.reset(); self.nextIdleCheck = 0 }
+        queue.async {
+            let wasSuspended = self.suspended
+            if value { self.suspensionReasons.insert(reason) }
+            else { self.suspensionReasons.remove(reason) }
+            self.reset(); self.nextIdleCheck = 0
+            self.io.log("runtime_suspension reason=\(reason.rawValue) active=\(value) suspended=\(self.suspended)")
+            if wasSuspended && !self.suspended {
+                // Recreate the registration after the last resume signal:
+                // an enabled pre-sleep port alone does not prove delivery.
+                self.io.stop(); self.nextStart = 0
+            }
+        }
     }
     func stop() {
         io.stop()
@@ -172,16 +203,21 @@ final class Runtime {
             return
         }
         let (batch, lost) = io.buffer.drain()
-        // AX is queried for input or at 2Hz, not continuously while idle.
+        // Refresh native context for input or at 2Hz, not continuously while idle.
         guard !batch.isEmpty || lost || now >= nextIdleCheck else { return }
         nextIdleCheck = now &+ 500_000_000
+        let contextStarted = io.now()
         let context = io.context(settings.activeKeyboards)
+        let contextMicros = (io.now() &- contextStarted) / 1_000
         noteLayout(context.layout, source: "user")
         let accepting = enabled && !suspended && settings.compatibility && context.usable && !context.secure
             && context.bundle != Bundle.main.bundleIdentifier
         io.buffer.accepting.store(accepting, ordering: .releasing)
+        let historyContextChanged = io.historyOnly && historyIdentity != context.identity
+        if io.historyOnly && accepting { historyIdentity = context.identity }
         if lost {
-            if !batch.isEmpty { historyBroken = true }
+            if !batch.isEmpty || (io.historyOnly && !historyContextChanged) { historyBroken = true }
+            else if historyContextChanged { historyBroken = false }
             reset()
             io.log("history_reset reason=observer_discontinuity discarded=\(batch.count)")
             return
@@ -189,7 +225,19 @@ final class Runtime {
         guard enabled, !suspended, settings.compatibility else {
             reset(); report(!settings.compatibility ? "Включите режим совместимости" : "На паузе"); return
         }
-        guard context.permitted else { reset(); report("Нужны разрешения: мониторинг ввода и универсальный доступ"); return }
+        guard context.permitted else {
+            reset()
+            let reason=context.permissionIssue ?? "permission_access"
+            if lastPermissionIssue != reason {io.log("runtime_blocked reason=\(reason)");lastPermissionIssue=reason}
+            switch reason {
+            case "listen_access": report("Нужен доступ: Мониторинг ввода")
+            case "accessibility_access": report("Нужен доступ: Управление устройством и доступ к данным")
+            case "post_access": report("Перезапустите TypeTune после изменения разрешений")
+            default: report("Нужны разрешения: мониторинг ввода и универсальный доступ")
+            }
+            return
+        }
+        lastPermissionIssue=nil
         guard accepting else {
             reset()
             report(context.secure ? "Приостановлено: защищённый ввод" : "Коррекция недоступна для текущего поля или раскладки")
@@ -206,19 +254,24 @@ final class Runtime {
         if focus.observe(context.identity) {
             consecutiveObservedSpaces = 0
             let changedExistingContext = hasObservedContext
-            if changedExistingContext { historyBroken = true }
+            if changedExistingContext {
+                if !io.historyOnly { historyBroken = true }
+                else if historyContextChanged { historyBroken = false }
+            }
             hasObservedContext = true
             _ = call(["op": "reset_context"])
             io.log("history_reset reason=focus_change")
-            // A batch captured before this AX snapshot may belong to the old
-            // field. Its Space must not authorize an old suffix in a new field.
-            if changedExistingContext { return }
+            // AX mode cannot attribute a batch to the new field. HID history
+            // already checked every intended application, and starts fresh only
+            // on an actual application change, never after an observation gap.
+            if changedExistingContext && !io.historyOnly { return }
         }
         for observation in batch {
+            let decisionStarted = io.now()
             // Pointer navigation can move the caret within the same AX element.
             if observation.key == "pointer" {
                 consecutiveObservedSpaces = 0
-                historyBroken = true
+                historyBroken = !io.historyOnly
                 _ = call(["op": "reset_context"])
                 continue
             }
@@ -267,13 +320,35 @@ final class Runtime {
                 continue
             }
             let automatic = settings.autoSwitching && !settings.autoDisabledIn.contains(context.bundle) && historyAllowed
+            let inferenceStarted = io.now()
             let reply = call(["op": "key_event", "event": event,
                               "automatic": automatic, "manual": settings.manualSwitching])
+            let inferenceMicros = (io.now() &- inferenceStarted) / 1_000
+            var logManualTiming = false
+            if ["left_shift", "right_shift"].contains(observation.key) {
+                let reason = reply["reason"] as? String ?? ""
+                let recognized = reply["gesture_recognized"] as? Bool == true
+                // Ordinary first/second edges are not logged. Only recognition
+                // or a concrete refusal; no key side, typed word or field ID.
+                if recognized || (!reason.isEmpty && reason != "gesture_waiting") {
+                    logManualTiming = true
+                    let press = (reply["gesture_press_ms"] as? NSNumber)?.stringValue ?? "unknown"
+                    let gap = (reply["gesture_gap_ms"] as? NSNumber)?.stringValue ?? "unknown"
+                    io.log("manual_decision recognized=\(recognized) reason=\(reason.isEmpty ? "edit_planned" : reason) press_ms=\(press) gap_ms=\(gap)")
+                }
+            }
+            if isSpace || logManualTiming {
+                let trigger = isSpace ? "automatic" : "manual"
+                io.log("decision_timing trigger=\(trigger) context_us=\(contextMicros) total_us=\((io.now() &- decisionStarted) / 1_000) inference_us=\(inferenceMicros)")
+            }
             if isSpace, reply["status"] as? String == "ignored" {
                 // One decision summary per boundary, never key codes or text.
                 io.log("auto_skipped reason=\(reply["reason"] as? String ?? "no_decision") enabled=\(automatic) editor=\(knownEditor) history_broken=\(historyBroken)")
             }
-            if reply["history_reset"] as? Bool == true { historyBroken = true }
+            if reply["history_reset"] as? Bool == true {
+                let explicitBoundary = observation.key == "context" || observation.modifiers & ~1 != 0
+                historyBroken = !(io.historyOnly && explicitBoundary)
+            }
             else if isSpace { historyBroken = false }
             if reply["status"] as? String == "layout_only" {
                 if observation.revision == io.buffer.currentRevision(), let mode = reply["mode"] as? String,
@@ -297,7 +372,7 @@ final class Runtime {
                 _ = call(["op": "reset_context"])
                 historyBroken = true
             }
-            io.log("edit outcome=\(outcome) ack=\(visible == "reset" ? "reset" : "ok") duration_ms=\(elapsed)")
+            io.log("edit id=\(reply["id"] as? Int ?? 0) outcome=\(outcome) ack=\(visible == "reset" ? "reset" : "ok") duration_ms=\(elapsed)")
             let actual = io.context(settings.activeKeyboards)
             noteLayout(actual.layout, source: "own")
             let movedAfterEdit = focus.observe(actual.identity)
@@ -347,6 +422,18 @@ final class Runtime {
     }
 
     private func execute(_ plan: [String: Any], observation: KeyObservation, context: NativeContext) -> String {
+        let timingStart = io.now()
+        var timings: [String: UInt64] = [:]
+        func measured<T>(_ stage: String, _ body: () -> T) -> T {
+            let start = io.now()
+            defer { timings[stage, default: 0] += (io.now() &- start) / 1_000 }
+            return body()
+        }
+        defer {
+            let stages = timings.keys.sorted().map { "\($0)_us=\(timings[$0]!)" }.joined(separator: " ")
+            let trigger = observation.key == "space" ? "automatic" : "manual"
+            io.log("edit_timing id=\(plan["id"] as? Int ?? 0) trigger=\(trigger) total_us=\((io.now() &- timingStart) / 1_000) \(stages)")
+        }
         func reject(_ reason: String) -> String {
             io.log("edit_rejected reason=\(reason)")
             return "rejected"
@@ -361,44 +448,53 @@ final class Runtime {
             io.buffer.currentRevision() == fence && io.now() < deadline && !io.modifiersHeld()
         }
         guard unchanged() else { return reject("stale_trigger") }
-        while io.typingKeyHeld() {
-            guard unchanged() else { return reject("held_key_or_new_input") }
-            io.sleep(0.002)
+        let released = measured("wait_held") {
+            while io.typingKeyHeld() {
+                guard unchanged() else { return false }
+                io.sleep(0.002)
+            }
+            return true
         }
-        let current = io.context(settings.activeKeyboards)
+        guard released else { return reject("held_key_or_new_input") }
+        let current = measured("context") { io.context(settings.activeKeyboards) }
         guard current.usable, !current.secure, current.identity == context.identity,
               observation.targetPID.map({$0>0 && $0==current.pid}) ?? true,
               unchanged() else { return reject("context_changed") }
-        var old = io.text(current)
+        var old = measured("snapshot") { io.text(current) }
         var expected: ValidatedTextEdit?
         if old != nil {
             // Space can reach the tap before the editor updates AX. Wait for
             // that exact snapshot, never trim delimiters to force a match.
             let settleDeadline = min(deadline, io.now() &+ 30_000_000)
             while let snapshot = old {
-                expected = EditorWord.prepare(before: before, replacement: replacement, in: snapshot.value,
-                    selection: NSRange(location: snapshot.range.location, length: snapshot.range.length))
+                expected = measured("editor_prepare") {
+                    EditorWord.prepare(before: before, replacement: replacement, in: snapshot.value,
+                        selection: NSRange(location: snapshot.range.location, length: snapshot.range.length))
+                }
                 if expected != nil { break }
                 guard unchanged(), io.now() < settleDeadline else { return reject("word_mismatch") }
-                io.sleep(0.002); old = io.text(current)
+                measured("settle_wait") { io.sleep(0.002) }
+                old = measured("snapshot") { io.text(current) }
             }
             guard expected != nil else { return reject("snapshot_lost") }
         }
-        guard unchanged(), let transaction = io.beginEdit(count, replacement, mode,
-                settings.activeKeyboards, fence, current) else { return reject("preparation_or_stale") }
-        let result = transaction.commit {
-            guard self.io.canCommit(current) else {
-                self.io.log("validation_rejected reason=field_context")
-                return false
+        guard unchanged(), let transaction = measured("native_prepare", {
+            io.beginEdit(count, replacement, mode, settings.activeKeyboards, fence, current)
+        }) else { return reject("preparation_or_stale") }
+        let result = measured("commit") {
+            transaction.commit {
+                guard measured("validate_focus", { self.io.canCommit(current) }) else {
+                    self.io.log("validation_rejected reason=field_context")
+                    return false
+                }
+                // Programmatic edits need not produce a keyboard/focus event.
+                let same = measured("validate_text") { old.map { self.io.validateText(current, $0) } ?? true }
+                if !same { self.io.log("validation_rejected reason=text_snapshot") }
+                return same
             }
-            // A programmatic caret/value change need not produce a physical
-            // event or change field identity. Never delete against an old range.
-            let same=old.map { self.io.validateText(current, $0) } ?? true
-            if !same {self.io.log("validation_rejected reason=text_snapshot")}
-            return same
         }
         // AX readback must never hold physical input behind a slow editor.
-        transaction.finish()
+        measured("release") { transaction.finish() }
         guard result.outcome == "submitted" else {
             io.log("commit_stopped reason=\(result.reason)")
             return result.outcome
@@ -409,11 +505,11 @@ final class Runtime {
         let verifyDeadline = io.now() &+ 100_000_000
         repeat {
             guard io.buffer.currentRevision() == fence else { return "submitted" }
-            let observedContext = io.context(settings.activeKeyboards)
+            let observedContext = measured("verify_context") { io.context(settings.activeKeyboards) }
             guard observedContext.identity == context.identity, observedContext.usable, !observedContext.secure else { return "indeterminate" }
-            guard let actual = io.text(observedContext) else { return "submitted" }
+            guard let actual = measured("verify_text", { io.text(observedContext) }) else { return "submitted" }
             if actual.value == expected.expected, actual.range.location == expected.caret, actual.range.length == 0 { return "verified" }
-            io.sleep(0.005)
+            measured("verify_wait") { io.sleep(0.005) }
         } while io.now() < verifyDeadline
         return "indeterminate"
     }

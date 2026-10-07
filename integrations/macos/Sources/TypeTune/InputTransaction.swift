@@ -17,7 +17,7 @@ func isTypeTuneMarker(_ marker: Int64) -> Bool {
     marker==ownMarker || marker==replayMarker || transactionID(marker) != nil
 }
 
-/// Only an annotated, positive process destination can authorize an edit.
+/// Read an annotated process destination; HID capture supplies its intended PID separately.
 func eventTargetPID(_ event:CGEvent) -> pid_t {
     let raw=event.getIntegerValueField(.eventTargetUnixProcessID)
     guard raw>0,raw<=Int64(Int32.max) else {return 0}
@@ -53,8 +53,8 @@ struct BoundedFIFO<Element> {
 struct DeferredInput {
     let event: CGEvent
     let observation: KeyObservation
-    // Admission permits only keyboard input with an authoritative positive
-    // destination. Pointer/control events are immediately passed at the tap.
+    // Admission permits keyboard input addressed to the positive transaction
+    // destination (intended foreground in HID mode). Pointer/control is passed.
     let targetPID: pid_t
 }
 
@@ -139,6 +139,9 @@ enum ReplayDestination {case process(pid_t)}
 /// Injectable transport exercises the actual observer state machine without
 /// installing a tap or sending input to the user's desktop.
 struct ObserverTransport {
+    var directSession = false
+    var intendedTarget: (() -> pid_t)? = nil
+    var keyboardMapping: (() -> KeyboardMapping?)? = nil
     var copy: (CGEvent)->CGEvent? = {$0.copy()}
     var post: (CGEvent)->Void = {$0.post(tap:.cgSessionEventTap)}
     var replay: (CGEvent,ReplayDestination)->Void = {event,destination in
@@ -159,4 +162,12 @@ struct ObserverTransport {
     var ready: (() -> Bool)? = nil
     var automaticWatchdog=true
     static let live=ObserverTransport()
+    static var sessionHistory: Self {
+        var io = Self()
+        io.directSession = true
+        io.keyboardMapping = {HIDKeyboardLayout.shared.snapshot()}
+        // Focus-stable FIFO release uses session in Observer. Its exceptional
+        // focus-change path retains the previous process-addressed transport.
+        return io
+    }
 }

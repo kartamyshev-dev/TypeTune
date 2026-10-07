@@ -6,6 +6,35 @@ struct KeyboardStroke: Equatable {
     let flags: CGEventFlags
 }
 
+/// TIS translation is prepared on main, never inside the HID callback. Early
+/// keyboard packets need not contain the editor's translated Unicode string.
+final class HIDKeyboardLayout {
+    static let shared=HIDKeyboardLayout()
+    private let lock=NSLock()
+    private var mapping:KeyboardMapping?
+    private var sourceKey=""
+    private var token:NSObjectProtocol?
+    func refresh() {
+        if !Thread.isMainThread {DispatchQueue.main.sync {self.refresh()};return}
+        if token==nil {
+            token=DistributedNotificationCenter.default().addObserver(
+                forName:NSNotification.Name(kTISNotifySelectedKeyboardInputSourceChanged as String),
+                object:nil,queue:.main) { [weak self] _ in self?.refresh() }
+        }
+        guard let source=TISCopyCurrentKeyboardInputSource()?.takeRetainedValue() else {return}
+        let key="\(Native.sourceID(source)):\(LMGetKbdType())"
+        lock.lock();let changed=sourceKey != key;lock.unlock()
+        guard changed else {return}
+        let translated=KeyboardMapping(source:source)
+        lock.lock();mapping=translated;sourceKey=key;lock.unlock()
+    }
+    func snapshot() -> KeyboardMapping? {
+        guard lock.try() else {return nil}
+        defer{lock.unlock()}
+        return mapping
+    }
+}
+
 /// Immutable translations captured on the main thread before an edit. No TIS
 /// calls are needed when releasing physical keys buffered during a layout change.
 struct KeyboardMapping {
@@ -97,13 +126,13 @@ struct PreparedReplacement {
 }
 
 extension Native {
-    static func prepareReplacement(remove: Int, replacement: String, mode: String, activeKeyboards: [String]) -> PreparedReplacement? {
+    static func prepareReplacement(remove: Int, replacement: String, mode: String, activeKeyboards: [String], sessionHistory: Bool = false) -> PreparedReplacement? {
         if !Thread.isMainThread {
-            return DispatchQueue.main.sync {prepareReplacement(remove:remove,replacement:replacement,mode:mode,activeKeyboards:activeKeyboards)}
+            return DispatchQueue.main.sync {prepareReplacement(remove:remove,replacement:replacement,mode:mode,activeKeyboards:activeKeyboards,sessionHistory:sessionHistory)}
         }
         guard (1...128).contains(remove), !replacement.isEmpty, replacement.count<=128,
               !replacement.contains("\0"), mode=="us" || mode=="ru",
-              !CGEventSource.keyState(.hidSystemState,key:CGKeyCode(kVK_F20)),
+              (sessionHistory || !CGEventSource.keyState(.hidSystemState,key:CGKeyCode(kVK_F20))),
               let original=TISCopyCurrentKeyboardInputSource()?.takeRetainedValue(),
               activeKeyboards.contains(sourceID(original)),
               !languageCode(original,id:sourceID(original)).isEmpty,
@@ -115,7 +144,7 @@ extension Native {
             guard let sources=TISCreateInputSourceList([kTISPropertyInputSourceID as String:id,kTISPropertyInputSourceIsEnabled as String:true] as CFDictionary,false)?.takeRetainedValue() as? [TISInputSource],
                   let source=sources.first, languageCode(source,id:id)==mode,
                   let mapping=KeyboardMapping(source:source) else {continue}
-            guard let eventSource=CGEventSource(stateID:.privateState) else {return nil}
+            guard let eventSource=CGEventSource(stateID:sessionHistory ? .combinedSessionState:.privateState) else {return nil}
             var events: [CGEvent]=[]
             for _ in 0..<remove {
                 guard let (down,up)=keyboardEvents(51,source:eventSource) else {return nil}
@@ -126,12 +155,21 @@ extension Native {
                 guard let strokeEvents=mapping.replacementEvents(for:text,source:eventSource) else {return nil}
                 events += strokeEvents
             }
-            guard let carrier=keyboardEvents(CGKeyCode(kVK_F20))?.1 else {return nil}
+            let carrier=sessionHistory ? nil:keyboardEvents(CGKeyCode(kVK_F20))?.1
+            if !sessionHistory,carrier==nil {return nil}
             let lease=LayoutSelectionLease(originalID:sourceID(original),targetID:id,
                 originalMapping:originalMapping,targetMapping:mapping,
                 currentSource:{Native.inputSource().0},
-                selectTarget:{TISSelectInputSource(source)==noErr},
-                selectOriginal:{TISSelectInputSource(original)==noErr})
+                selectTarget:{
+                    let ok=TISSelectInputSource(source)==noErr
+                    if sessionHistory {HIDKeyboardLayout.shared.refresh()}
+                    return ok
+                },
+                selectOriginal:{
+                    let ok=TISSelectInputSource(original)==noErr
+                    if sessionHistory {HIDKeyboardLayout.shared.refresh()}
+                    return ok
+                })
             return PreparedReplacement(events:events,sourceID:id,mode:mode,mapping:mapping,
                 selectAction:lease.select,restoreAction:lease.restore,carrier:carrier,
                 noteDeferredInput:lease.noteDeferredInput,releaseWithoutOutput:lease.releaseWithoutOutput,

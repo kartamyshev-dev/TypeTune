@@ -2,6 +2,21 @@
 
 All notable changes to TypeTune are documented here.
 
+## 0.2.7 (preview)
+
+macOS captures physical keys at the HID tap, translates them through the active
+keyboard layout and sends replacements through the session event stream.
+Correction no longer waits for an editor's Accessibility text snapshot. Fresh
+history resumes after Return, navigation and application changes; observation
+gaps still prevent rewriting partial words. Observer generation cleanup and
+independent sleep/session/lock suspension reasons prevent stale recovery state.
+
+Decision diagnostics distinguish Double Shift recognition, dictionary exclusions,
+permission failures and replacement stages without recording typed text.
+All 280 local checks passed. User feedback and native submission records confirm
+improvement; broad application and physical sleep/wake acceptance remain pending.
+Linux and macOS retain the shared protocol 3. See [release notes](docs/releases/0.2.7.md).
+
 ## 0.2.6 (preview)
 
 Includes the 0.2.5 candidate's changes. Swift Testing runs explicitly in sequence
@@ -109,4 +124,3 @@ Initial public release.
 
 - Preview channel: not every application is guaranteed.
 - Windows is not released in this version.
-

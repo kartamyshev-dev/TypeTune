@@ -1,5 +1,8 @@
 # TypeTune
 
+Current preview: [0.2.7](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.7).
+[Release notes and verification limits](docs/releases/0.2.7.md).
+
 > System-wide Russian ↔ English layout correction.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

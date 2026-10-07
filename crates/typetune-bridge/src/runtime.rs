@@ -63,41 +63,87 @@ struct Gesture {
     down: Option<(String, u64)>,
     first: Option<(String, u64)>,
 }
+struct GestureDecision {
+    fired: bool,
+    reason: &'static str,
+    press_ms: Option<u64>,
+    gap_ms: Option<u64>,
+}
+impl GestureDecision {
+    fn new(fired: bool, reason: &'static str, press_ms: Option<u64>, gap_ms: Option<u64>) -> Self {
+        Self {
+            fired,
+            reason,
+            press_ms,
+            gap_ms,
+        }
+    }
+    fn response(&self) -> Value {
+        self.annotate(json!({"status":"ignored", "reason":self.reason}))
+    }
+    fn annotate(&self, mut response: Value) -> Value {
+        response["gesture_recognized"] = json!(self.fired);
+        response["gesture_press_ms"] = json!(self.press_ms);
+        response["gesture_gap_ms"] = json!(self.gap_ms);
+        response
+    }
+}
 impl Gesture {
-    fn edge(&mut self, key: String, up: bool, now: u64) -> bool {
+    fn edge(&mut self, key: String, up: bool, now: u64) -> GestureDecision {
         if !up {
             if self.down.is_some() {
                 *self = Self::default();
-                return false;
+                return GestureDecision::new(false, "gesture_duplicate_down", None, None);
             }
+            let gap = self.first.as_ref().and_then(|(_, t)| now.checked_sub(*t));
+            let mut reason = "gesture_waiting";
             if self
                 .first
                 .as_ref()
                 .is_some_and(|(k, t)| k != &key || now < *t || now - *t > 350)
             {
+                reason = if self.first.as_ref().is_some_and(|(k, _)| k != &key) {
+                    "gesture_side_changed"
+                } else {
+                    "gesture_interval"
+                };
                 self.first = None;
             }
             self.down = Some((key, now));
-            return false;
+            return GestureDecision::new(false, reason, None, gap);
         }
         let Some((k, t)) = self.down.take() else {
             *self = Self::default();
-            return false;
+            return GestureDecision::new(false, "gesture_unmatched_up", None, None);
         };
+        let press = now.checked_sub(t);
         if k != key || now < t || now - t > 200 {
+            let reason = if k != key {
+                "gesture_side_changed"
+            } else if now < t {
+                "gesture_clock"
+            } else {
+                "gesture_hold"
+            };
             *self = Self::default();
-            return false;
+            return GestureDecision::new(false, reason, press, None);
         }
+        let gap = self.first.as_ref().and_then(|(_, t)| now.checked_sub(*t));
         if self
             .first
             .as_ref()
             .is_some_and(|(k, t)| k == &key && now >= *t && now - *t <= 350)
         {
             *self = Self::default();
-            return true;
+            return GestureDecision::new(true, "gesture_recognized", press, gap);
         }
+        let reason = if self.first.is_some() {
+            "gesture_interval"
+        } else {
+            "gesture_waiting"
+        };
         self.first = Some((key, now));
-        false
+        GestureDecision::new(false, reason, press, gap)
     }
 }
 struct Pending {
@@ -255,10 +301,11 @@ impl Runtime {
     pub fn event(&mut self, e: Event, automatic: bool, manual_enabled: bool) -> Value {
         let ignored = json!({"status":"ignored"});
         let space_trigger = e.key == "space" && e.action != Action::Up;
+        let shift_trigger = e.key == "left_shift" || e.key == "right_shift";
         // Optional protocol-3 diagnostic for a decision boundary only. Never
         // include the typed token, editor snapshot, key sequence or device ID.
         let diagnostic = |mut response: Value, reason: &'static str| {
-            if space_trigger {
+            if space_trigger || shift_trigger {
                 response["reason"] = json!(reason);
             }
             response
@@ -306,10 +353,11 @@ impl Runtime {
             return diagnostic(self.ignored_after_reset(), "shortcut_or_held_limit");
         }
         let manual;
+        let mut gesture_evidence = None;
         if e.key == "left_shift" || e.key == "right_shift" {
             if !manual_enabled {
                 self.gesture = Gesture::default();
-                return ignored;
+                return diagnostic(ignored, "manual_disabled");
             }
             if e.action == Action::Repeat
                 || self
@@ -318,15 +366,23 @@ impl Runtime {
                     .any(|k| !k.ends_with(":left_shift") && !k.ends_with(":right_shift"))
             {
                 self.gesture = Gesture::default();
-                return ignored;
+                return diagnostic(
+                    ignored,
+                    if e.action == Action::Repeat {
+                        "gesture_repeat"
+                    } else {
+                        "gesture_other_key_held"
+                    },
+                );
             }
-            manual = self
+            let decision = self
                 .gesture
-                .edge(identity, e.action == Action::Up, e.time_ms)
-                && self.held.is_empty();
+                .edge(identity, e.action == Action::Up, e.time_ms);
+            manual = decision.fired && self.held.is_empty();
             if !manual {
-                return ignored;
+                return decision.response();
             }
+            gesture_evidence = Some(decision);
         } else {
             if e.action == Action::Up {
                 return ignored;
@@ -417,15 +473,24 @@ impl Runtime {
                 if token.is_empty()
                     || token.chars().any(char::is_whitespace)
                     || editor_word.chars().count() > 128
-                    || suggest_with_policy(
-                        &canonical_word(&editor_word, false),
-                        false,
-                        &self.dictionary,
-                        &AutoPolicy::default(),
-                    )
-                    .is_none()
                 {
-                    return self.ignored_after_reset();
+                    let response = diagnostic(self.ignored_after_reset(), "invalid_editor_word");
+                    return gesture_evidence
+                        .as_ref()
+                        .map_or(response.clone(), |g| g.annotate(response));
+                }
+                if suggest_with_policy(
+                    &canonical_word(&editor_word, false),
+                    false,
+                    &self.dictionary,
+                    &AutoPolicy::default(),
+                )
+                .is_none()
+                {
+                    let response = diagnostic(self.ignored_after_reset(), "editor_no_suggestion");
+                    return gesture_evidence
+                        .as_ref()
+                        .map_or(response.clone(), |g| g.annotate(response));
                 }
                 if self.text != editor_word {
                     self.reset_tracker();
@@ -448,7 +513,24 @@ impl Runtime {
             &self.dictionary,
             &self.policy,
         ) else {
-            return diagnostic(ignored, "no_suggestion");
+            let token = self
+                .text
+                .trim()
+                .rsplit(char::is_whitespace)
+                .next()
+                .unwrap_or("")
+                .to_lowercase();
+            let reason = if !manual && self.learned.contains(&token) {
+                "learned_source_word"
+            } else if !manual && self.words.contains(&token) {
+                "user_source_word"
+            } else {
+                "no_suggestion"
+            };
+            let response = diagnostic(ignored, reason);
+            return gesture_evidence
+                .as_ref()
+                .map_or(response.clone(), |g| g.annotate(response));
         };
         if !s.layout_only {
             // Only the decision uses canonical spaces. Restore the current
@@ -469,10 +551,17 @@ impl Runtime {
         if s.layout_only {
             // Layout-only is our own switch: only skip auto when policy asks and
             // treat it like `source: own` so the next word can still correct.
-            return json!({"status":"layout_only","id":self.next,"mode":mode,"switch_layout":true});
+            let response =
+                json!({"status":"layout_only","id":self.next,"mode":mode,"switch_layout":true});
+            return gesture_evidence
+                .as_ref()
+                .map_or(response.clone(), |g| g.annotate(response));
         }
-        let response = json!({"status":"inferred_edit","id":self.next,"before":self.text,
+        let mut response = json!({"status":"inferred_edit","id":self.next,"before":self.text,
             "remove":s.remove,"replacement":s.replacement,"mode":mode,"switch_layout":true});
+        if let Some(evidence) = gesture_evidence {
+            response = evidence.annotate(response);
+        }
         self.pending = Some(Pending {
             id: self.next,
             before: self.text.clone(),
@@ -540,6 +629,37 @@ impl Runtime {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn automatic_reports_intentional_dictionary_spelling_without_exposing_text() {
+        for learned in [true, false] {
+            let mut r = Runtime::default();
+            let source = vec!["ghbdtn".into()];
+            r.configure(
+                if learned { vec![] } else { source.clone() },
+                vec![],
+                if learned { source } else { vec![] },
+                AutoPolicy::default(),
+            )
+            .unwrap();
+            let mut time = 0;
+            word(&mut r, "ghbdtn", &mut time);
+            let reply = event(&mut r, "space", "down", None, time + 1, true);
+            assert_eq!(
+                reply["reason"],
+                if learned {
+                    "learned_source_word"
+                } else {
+                    "user_source_word"
+                }
+            );
+            assert!(!reply.to_string().contains("ghbdtn"));
+            assert!(!r.is_pending());
+            r.reset();
+            word(&mut r, "vjkjrj", &mut time);
+            let reply = event(&mut r, "space", "down", None, time + 2, true);
+            assert_eq!(reply["replacement"], "молоко ");
+        }
+    }
     fn event(
         r: &mut Runtime,
         key: &str,
@@ -1192,14 +1312,92 @@ mod tests {
             let mut g = Gesture::default();
             let mut fired = false;
             for e in case["events"].as_array().unwrap() {
-                fired |= g.edge(
-                    e[0].as_str().unwrap().into(),
-                    e[1].as_bool().unwrap(),
-                    e[2].as_u64().unwrap(),
-                );
+                fired |= g
+                    .edge(
+                        e[0].as_str().unwrap().into(),
+                        e[1].as_bool().unwrap(),
+                        e[2].as_u64().unwrap(),
+                    )
+                    .fired;
             }
             assert_eq!(fired, case["fires"].as_bool().unwrap(), "{}", case["name"]);
         }
+    }
+    #[test]
+    fn gesture_diagnostics_preserve_thresholds_and_recovery() {
+        let mut g = Gesture::default();
+        assert_eq!(g.edge("left".into(), false, 0).reason, "gesture_waiting");
+        let held = g.edge("left".into(), true, 201);
+        assert!(!held.fired);
+        assert_eq!(held.reason, "gesture_hold");
+        assert_eq!(held.press_ms, Some(201));
+        g.edge("left".into(), false, 300);
+        g.edge("left".into(), true, 350);
+        let gap = g.edge("left".into(), false, 701);
+        assert_eq!(gap.reason, "gesture_interval");
+        assert_eq!(gap.gap_ms, Some(351));
+        // A failed second press still arms a new first press, as before.
+        g.edge("left".into(), true, 751);
+        g.edge("left".into(), false, 801);
+        let recognized = g.edge("left".into(), true, 1001);
+        assert!(recognized.fired);
+        assert_eq!(recognized.press_ms, Some(200));
+        assert_eq!(recognized.gap_ms, Some(250));
+        assert_eq!(
+            g.edge("right".into(), true, 1010).reason,
+            "gesture_unmatched_up"
+        );
+        g.edge("left".into(), false, 1020);
+        assert_eq!(
+            g.edge("right".into(), false, 1030).reason,
+            "gesture_duplicate_down"
+        );
+        g.edge("left".into(), false, 1040);
+        g.edge("left".into(), true, 1090);
+        assert_eq!(
+            g.edge("right".into(), false, 1140).reason,
+            "gesture_side_changed"
+        );
+    }
+    #[test]
+    fn manual_diagnostics_distinguish_recognition_from_editor_refusal_without_text() {
+        let mut r = Runtime::default();
+        let mut t = 0;
+        let rejected = editor_gesture(&mut r, "invalid snapshot", &mut t);
+        assert_eq!(rejected["reason"], "invalid_editor_word");
+        assert_eq!(rejected["gesture_recognized"], true);
+        assert_eq!(rejected["history_reset"], true);
+        assert!(!rejected.to_string().contains("snapshot"));
+        assert!(!r.is_pending());
+        word(&mut r, "ghbdtn", &mut t);
+        let planned = gesture(&mut r, &mut t);
+        assert_eq!(planned["status"], "inferred_edit");
+        assert_eq!(planned["gesture_recognized"], true);
+        assert_eq!(planned["gesture_press_ms"], 50);
+        assert_eq!(planned["gesture_gap_ms"], 100);
+        assert!(r.is_pending());
+    }
+    #[test]
+    fn shift_guards_report_reasons_without_relaxing_origin_or_held_keys() {
+        let mut r = Runtime::default();
+        let mut t = 0;
+        word(&mut r, "ghbdtn", &mut t);
+        let input = json!({"key":"left_shift", "action":"up", "text":null,
+            "time_ms":t+1,"device":null,"origin":"unknown","modifiers":0});
+        let response = r.event(serde_json::from_value(input).unwrap(), false, true);
+        assert_eq!(response["reason"], "untrusted_origin");
+        assert_eq!(response["history_reset"], true);
+        assert!(r.text.is_empty());
+        assert!(!r.is_pending());
+        assert_eq!(
+            event(&mut r, "left_shift", "repeat", None, t + 2, false)["reason"],
+            "gesture_repeat"
+        );
+        event(&mut r, "letter", "down", Some("g"), t + 3, false);
+        assert_eq!(
+            event(&mut r, "left_shift", "down", None, t + 4, false)["reason"],
+            "gesture_other_key_held"
+        );
     }
     #[test]
     fn shared_feedback_fixtures_map_to_learned_and_exclusions() {

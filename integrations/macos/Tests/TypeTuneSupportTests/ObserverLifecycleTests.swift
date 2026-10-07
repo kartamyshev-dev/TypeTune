@@ -11,7 +11,9 @@ private final class LifecycleHarness {
     private var registrationCount=0
     let permissions=ObserverPermissions(listen:true,post:false,accessibility:false)
     var observer:Observer!
-    init() {
+    let sourceEntered=DispatchSemaphore(value:0)
+    let releaseSource=DispatchSemaphore(value:0)
+    init(blockFirstSource:Bool=false) {
         var io=ObserverLifecycleIO()
         io.observeFocus=false
         io.permissions={ [unowned self] in permissions }
@@ -26,12 +28,18 @@ private final class LifecycleHarness {
             return fail ? nil:CFMachPortCreate(nil,{_,_,_,_ in},nil,nil)
         }
         io.createSource={ [unowned self] port in
-            get("sourceFails") ? nil:CFMachPortCreateRunLoopSource(nil,port,0)
+            if blockFirstSource,attempts==1 {
+                sourceEntered.signal()
+                _=releaseSource.wait(timeout:.now()+2)
+                return nil
+            }
+            return get("sourceFails") ? nil:CFMachPortCreateRunLoopSource(nil,port,0)
         }
         io.isValid={ [unowned self] _ in get("valid") }
         io.isEnabled={ [unowned self] _ in get("enabled") }
         io.enable={ [unowned self] _ in if get("enableSucceeds") {set("enabled",true)} }
-        io.log={ [unowned self] message in
+        io.log={ [weak self] message in
+            guard let self else {return}
             condition.lock();messages.append(message);condition.broadcast();condition.unlock()
         }
         observer=Observer(lifecycle:io)
@@ -58,6 +66,22 @@ private final class LifecycleHarness {
 }
 
 struct ObserverLifecycleTests {
+    @Test func staleStartupCleanupCannotInvalidateTheReplacementObserverBuffer() throws {
+        let harness=LifecycleHarness(blockFirstSource:true)
+        defer{harness.releaseSource.signal();harness.observer.stop()}
+        harness.observer.start()
+        try #require(harness.sourceEntered.wait(timeout:.now()+1) == .success)
+        harness.observer.stop();harness.observer.start()
+        try #require(harness.waitFor("observer_started"))
+        #expect(harness.observer.recover())
+        _=harness.observer.buffer.drain() // Consume the explicit stop discontinuity.
+        let revision=harness.observer.buffer.currentRevision()
+        harness.releaseSource.signal()
+        try #require(harness.waitFor("observer_stopped attempt=1 stale=true"))
+        #expect(harness.observer.isActive)
+        #expect(harness.observer.buffer.currentRevision()==revision)
+        #expect(!harness.observer.buffer.drain().1)
+    }
     @Test func enabledTapWithAClippedMaskIsRetiredOnABoundedHealthCheck() throws {
         let harness=LifecycleHarness();defer{harness.observer.stop()}
         harness.observer.start();try #require(harness.waitFor("observer_started"))

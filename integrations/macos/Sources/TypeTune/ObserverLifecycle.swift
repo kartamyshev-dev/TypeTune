@@ -17,7 +17,7 @@ struct ObserverTapRegistration {
     func contains(_ required:CGEventMask) -> Bool {enabled && mask & required == required}
     var diagnostic:String {"tap_id=\(id) actual_mask=\(mask) registered_enabled=\(enabled)"}
 
-    static func current() -> Self? {
+    static func current(point: CGEventTapLocation = .cgAnnotatedSessionEventTap) -> Self? {
         var count:UInt32=0
         guard CGGetEventTapList(0,nil,&count) == .success,count>0,count<=4096 else {return nil}
         var taps=[CGEventTapInformation](repeating:CGEventTapInformation(),count:Int(count))
@@ -28,7 +28,7 @@ struct ObserverTapRegistration {
         // ambiguity rather than accidentally certifying another registration.
         let own=taps.prefix(Int(count)).filter {
             $0.tappingProcess==ProcessInfo.processInfo.processIdentifier &&
-            $0.tapPoint == .cgAnnotatedSessionEventTap && $0.options == .defaultTap
+            $0.tapPoint == point && $0.options == .defaultTap
         }
         guard own.count==1,let tap=own.first else {return nil}
         return Self(id:tap.eventTapID,mask:tap.eventsOfInterest,enabled:tap.enabled)
@@ -53,4 +53,13 @@ struct ObserverLifecycleIO {
     var log: (String)->Void = DiagLog.write
     var observeFocus=true
     static let live=Self()
+    static var hidHistory: Self {
+        var io = Self()
+        io.createTap = {
+            CGEvent.tapCreate(tap:.cghidEventTap,place:.headInsertEventTap,options:.defaultTap,
+                              eventsOfInterest:$0,callback:$1,userInfo:$2)
+        }
+        io.registration = { _ in ObserverTapRegistration.current(point:.cghidEventTap) }
+        return io
+    }
 }
