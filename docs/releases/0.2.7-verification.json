@@ -1,0 +1,70 @@
+{
+  "tag": "v0.2.7",
+  "source_commit": "f78972f3432e332d358d714e1c27112158584827",
+  "release_url": "https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.7",
+  "prerelease": true,
+  "ci_run_id": 37596383033,
+  "assets": {
+    "typetune-preview_0.2.7_amd64.deb": {
+      "sha256": "c6bfe3f854459e1c001c5874e513c56c363edcc163cca36bc5d62c28515be817",
+      "size": 3820872,
+      "url": "https://github.com/kartamyshev-dev/TypeTune/releases/download/v0.2.7/typetune-preview_0.2.7_amd64.deb"
+    },
+    "TypeTune-macos-arm64.zip": {
+      "sha256": "140e104626c22fa60292e15ef647bc1e0267d75060c37426da8222519801754c",
+      "size": 1920086,
+      "url": "https://github.com/kartamyshev-dev/TypeTune/releases/download/v0.2.7/TypeTune-macos-arm64.zip"
+    }
+  },
+  "macos_bundle": {
+    "version": "0.2.7",
+    "source_commit": "f78972f3432e332d358d714e1c27112158584827",
+    "source_dirty": false,
+    "source_digest": "1215d6d6a4104cc08e999b5090384a3896cce07f55af0e63839def238a75b455",
+    "binary_sha256": "f297be6fb13149f6b5723e3936d8f0019b684f15cc0c78ff86f124a895404cd2",
+    "architecture": "arm64",
+    "codesign_deep_strict": "PASS",
+    "signature_kind": "ad-hoc, not notarized"
+  },
+  "linux_package": {
+    "Package": "typetune-preview",
+    "Version": "0.2.7",
+    "Architecture": "amd64"
+  },
+  "checksum_verification": "PASS",
+  "native_release_binary_acceptance": "NOT_RUN",
+  "limitations": [
+    "Local diagnostic-build feedback does not establish native acceptance of these CI binaries.",
+    "Broad application and physical sleep/wake/lock validation remain incomplete."
+  ],
+  "ci": {
+    "url": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/37596383033",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "macOS / package",
+        "conclusion": "success"
+      },
+      {
+        "name": "macOS / tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "Linux / tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "Linux / lint",
+        "conclusion": "success"
+      },
+      {
+        "name": "Linux / package",
+        "conclusion": "success"
+      },
+      {
+        "name": "Release / publish",
+        "conclusion": "success"
+      }
+    ]
+  }
+}
