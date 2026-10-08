@@ -2,6 +2,17 @@
 
 All notable changes to TypeTune are documented here.
 
+## 0.2.8 (preview)
+
+Double Shift now converts RU/EN tokens containing ASCII digits, preserving the
+digits and letter case (for example, `ghbdtn123` → `привет123`). Numeric keys no
+longer erase the word history. Automatic correction still skips numeric tokens;
+numeric-only input does not trigger a manual replacement or layout change.
+All 285 local checks passed, including the complete HID → bridge → session-output
+fixture with reverse switching and trailing spaces. The user reported the
+installed diagnostic build working; native acceptance of published CI binaries
+remains separate. See [release notes](docs/releases/0.2.8.md).
+
 ## 0.2.7 (preview)
 
 macOS captures physical keys at the HID tap, translates them through the active

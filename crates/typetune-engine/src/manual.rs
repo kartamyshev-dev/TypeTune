@@ -43,7 +43,8 @@ pub fn prepare_manual(
     })
 }
 
-/// Map one complete token through the layout tables; case is preserved.
+/// Map one complete token through the layout tables; case and ASCII digits
+/// are preserved. Numeric-only tokens have no layout to convert.
 pub(crate) fn map_token(word: &str, direction: Direction) -> Result<String, Rejection> {
     if word.is_empty() {
         return Err(Rejection::InvalidRange);
@@ -53,13 +54,22 @@ pub(crate) fn map_token(word: &str, direction: Direction) -> Result<String, Reje
         Direction::RuToUs => (RU, US),
     };
     let mut out = String::with_capacity(word.len());
+    let mut converted = false;
     for c in word.chars() {
+        if c.is_ascii_digit() {
+            out.push(c);
+            continue;
+        }
         let mapped = from
             .chars()
             .zip(to.chars())
             .find_map(|(a, b)| (a == c).then_some(b))
             .ok_or(Rejection::Unsupported)?;
         out.push(mapped);
+        converted = true;
+    }
+    if !converted {
+        return Err(Rejection::Unsupported);
     }
     Ok(out)
 }

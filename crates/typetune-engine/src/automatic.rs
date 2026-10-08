@@ -105,8 +105,9 @@ fn split_edge_punct(word: &str) -> (&str, &str, &str) {
 /// Full-token URL/email/path/code heuristics (docs/16:57). Runs before any
 /// edge-punctuation split so guards see exactly what the user committed.
 /// Mid-token `.`/`,` are productive US letter keys (`ю`/`б`), so they are not
-/// domain markers (`k.lb` → `люди`); unmappable `@ / \\ _ -` and digits already
-/// fail `map_token`. A leading `:` would strip into `:привет` from the
+/// domain markers (`k.lb` → `люди`); `@ / \\ _ -` fail `map_token`.
+/// Digits are allowed only for explicit manual conversion and guarded here.
+/// A leading `:` would strip into `:привет` from the
 /// `:ghbdtn` negative fixture and is therefore prohibited up front.
 fn prohibited_token(word: &str) -> bool {
     word.contains("://")

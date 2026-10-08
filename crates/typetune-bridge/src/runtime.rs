@@ -440,10 +440,11 @@ impl Runtime {
                     return diagnostic(ignored, "automatic_disabled");
                 }
             } else if let Some(text) = e.text {
-                // Only the established RU/EN alphabet and mapped punctuation enter history.
+                // Keep digits in the complete token for explicit conversion.
+                // Automatic policy still rejects numeric tokens as a whole.
                 if text.chars().count() != 1
                     || !text.chars().all(|c| {
-                        c.is_ascii_alphabetic()
+                        c.is_ascii_alphanumeric()
                             || ('А'..='я').contains(&c)
                             || "ёЁ`~[]{};'\",.<>:".contains(c)
                     })
@@ -894,7 +895,7 @@ mod tests {
             "\u{a0}ghbdtn\u{a0}",
             "two words ",
             " ghbdtn ",
-            "ghbdtn1 ",
+            "ghbdtn١ ",
             "https://ghbdtn ",
             too_long.as_str(),
         ] {
@@ -981,7 +982,7 @@ mod tests {
         for observed in [
             "",
             "two words",
-            "frr1",
+            "frr١",
             "https://frr",
             "frr\n\u{a0}",
             "frr\u{a0}\t",
@@ -1199,20 +1200,72 @@ mod tests {
 
     #[test]
     fn manual_uses_complete_editor_word_after_history_loss() {
+        for (source, expected) in [("frr", "акк"), ("frr1", "акк1")] {
+            let mut r = Runtime::default();
+            let mut t = 0;
+            word(&mut r, "r", &mut t);
+            let p = editor_gesture(&mut r, source, &mut t);
+            assert_eq!(p["before"], source);
+            assert_eq!(p["remove"], source.chars().count());
+            assert_eq!(p["replacement"], expected);
+            r.result(p["id"].as_u64().unwrap(), Outcome::Ok, t);
+            assert_eq!(gesture(&mut r, &mut t)["replacement"], source);
+        }
+    }
+
+    #[test]
+    fn manual_keeps_digits_in_complete_history_and_retoggles() {
+        for (source, expected) in [
+            ("ghbdtn1", "привет1"),
+            ("ghbdtn123", "привет123"),
+            ("1ghbdtn2", "1привет2"),
+            ("g1h2bdtn", "п1р2ивет"),
+            ("руддщ123", "hello123"),
+        ] {
+            let mut r = Runtime::default();
+            let mut t = 0;
+            word(&mut r, source, &mut t);
+            assert_eq!(r.text, source);
+            let p = gesture(&mut r, &mut t);
+            assert_eq!(p["before"], source);
+            assert_eq!(p["remove"], source.chars().count());
+            assert_eq!(p["replacement"], expected);
+            r.result(p["id"].as_u64().unwrap(), Outcome::Submitted, t);
+            let reverse = gesture(&mut r, &mut t);
+            assert_eq!(reverse["before"], expected);
+            assert_eq!(reverse["replacement"], source);
+            assert!(r.learned_words().is_empty());
+        }
         let mut r = Runtime::default();
         let mut t = 0;
-        word(&mut r, "r", &mut t);
-        for a in ["down", "up", "down"] {
-            t += 50;
-            event(&mut r, "left_shift", a, None, t, false);
+        word(&mut r, "123", &mut t);
+        assert_eq!(gesture(&mut r, &mut t)["status"], "ignored");
+        assert!(!r.is_pending());
+    }
+
+    #[test]
+    fn automatic_numeric_tokens_do_not_rewrite_a_suffix_or_break_next_word() {
+        for source in ["ghbdtn1", "1ghbdtn", "g1h2bdtn"] {
+            let mut r = Runtime::default();
+            let mut t = 0;
+            word(&mut r, source, &mut t);
+            t += 1;
+            let reply = event(&mut r, "space", "down", None, t, true);
+            assert_eq!(reply["status"], "ignored");
+            assert!(!r.is_pending());
+            t += 1;
+            event(&mut r, "space", "up", None, t, true);
+            let p = gesture(&mut r, &mut t);
+            assert_eq!(p["before"], format!("{source} "));
+            assert_eq!(p["remove"], source.chars().count() + 1);
+            r.result(p["id"].as_u64().unwrap(), Outcome::Submitted, t);
+            word(&mut r, "vjkjrj", &mut t);
+            t += 1;
+            assert_eq!(
+                event(&mut r, "space", "down", None, t, true)["replacement"],
+                "молоко "
+            );
         }
-        t += 50;
-        let p = r.event(serde_json::from_value(json!({"key":"left_shift","action":"up","text":null,"time_ms":t,"device":null,"origin":"physical","modifiers":0,"editor_word":"frr"})).unwrap(),false,true);
-        assert_eq!(p["before"], "frr");
-        assert_eq!(p["remove"], 3);
-        assert_eq!(p["replacement"], "акк");
-        r.result(p["id"].as_u64().unwrap(), Outcome::Ok, t);
-        assert_eq!(gesture(&mut r, &mut t)["replacement"], "frr");
     }
 
     #[test]

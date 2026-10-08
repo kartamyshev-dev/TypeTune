@@ -1,7 +1,7 @@
 # TypeTune
 
-Current preview: [0.2.7](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.7).
-[Release notes and verification limits](docs/releases/0.2.7.md).
+Current preview: [0.2.8](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.8).
+[Release notes and verification limits](docs/releases/0.2.8.md).
 
 > System-wide Russian ↔ English layout correction.
 
@@ -25,7 +25,7 @@ Preview builds are usable day-to-day but are **not** a production guarantee. Not
 
 ## Features
 
-- **Double Shift** — convert the last word `RU ↔ EN` and switch the input source; repeat toggles back
+- **Double Shift** — convert the last word `RU ↔ EN` and switch the input source; digits are preserved (`ghbdtn1` → `привет1`), repeat toggles back
 - **Auto-correct on Space** — frequency-ranked RU/EN dictionaries; short words and code-like tokens are conservative
 - **Snippets** — trigger + delimiter, Unicode replacements
 - **Learned words** and **exclusions** — improve or block corrections without editing files by hand

@@ -236,6 +236,9 @@ fn manual_mapping_case_delimiters_and_surroundings() {
         ("ghbdtn", "привет", Direction::UsToRu),
         ("GhBdTn  ", "ПрИвЕт  ", Direction::UsToRu),
         ("GHBDTN", "ПРИВЕТ", Direction::UsToRu),
+        ("GhBdTn123  ", "ПрИвЕт123  ", Direction::UsToRu),
+        ("1ghbdtn2", "1привет2", Direction::UsToRu),
+        ("руддщ123 ", "hello123 ", Direction::RuToUs),
         ("руддщ ", "hello ", Direction::RuToUs),
         ("ЁХЪЖЭБЮ", "~{}:\"<>", Direction::RuToUs),
         ("`[];' ,.", "`[];' бю", Direction::UsToRu),
@@ -259,7 +262,7 @@ fn manual_mapping_case_delimiters_and_surroundings() {
 #[test]
 fn manual_refuses_unsupported_tokens_and_partial_words() {
     for text in [
-        "", "   ", "ghbdtn\n", "ghbdtn\t", "abcЯ", "abc123", "x@y", "a/b", "é", "🙂",
+        "", "   ", "ghbdtn\n", "ghbdtn\t", "abcЯ", "123", "ghbdtn١", "x@y", "a/b", "é", "🙂",
     ] {
         let e = editor(text);
         assert!(prepare_manual(

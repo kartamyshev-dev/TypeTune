@@ -1,6 +1,32 @@
 # Текущее состояние macOS input backend
 
-Checkpoint: 2026-10-07, кандидат 0.2.7, Apple Silicon/macOS 27.0.1.
+Checkpoint: 2026-10-08, кандидат 0.2.8, Apple Silicon/macOS 27.0.1.
+
+## Double Shift и цифры (2026-10-08)
+
+ASCII-цифры 0–9 больше не сбрасывают историю слова. Ручное преобразование
+сохраняет цифры в конце, начале и внутри токена, регистр и буквальный хвост
+пробелов: `ghbdtn123` → `привет123`, повтор возвращает исходный текст.
+Токены из одних цифр не вызывают замены или переключения раскладки.
+Автоматическая коррекция по-прежнему отвергает весь токен с цифрами.
+
+Регрессия воспроизведена до исправления: bridge терял всю историю после `1`.
+Полный `scripts/test-macos.sh` прошёл 285 проверок (31 engine +48 bridge
++17 portable +23 packaging +166 Swift/15 suites), прогон `macos-test.TWQo7Q`.
+`cargo fmt`, clippy engine/bridge с `-D warnings` и `git diff --check`: PASS.
+HID-fixture соединяет observer, bridge и session output без AX и без достоверного
+раннего Unicode; проверяет цифры, пробел, обратный Double Shift и следующее слово.
+Эти fixture не отправляют ввод на рабочий стол. Установлена диагностическая
+identity `0.2.7+ge0534465de29.dirty.70e703d3f6dd`, deep/strict codesign PASS,
+bundle SHA256 `a5b6f678a26d69cb27d90e0a6137115ff170ceefd22453bdb749f6f67110dc6c`.
+После обновления прежних разрешений запуск PID49913 в 08:50:15Z подтвердил
+listen/post/accessibility=true и enabled HID tap1561783348.
+В 08:50:19–08:50:40Z зарегистрированы 8 submitted/ack=ok. Пользователь сообщил
+«вроде работает»; точный текст и N-17 независимо не наблюдались.
+Локальный receipt: `target/manual-digits-install-verification.json`.
+Сведения ниже о сборке и нативных операциях относятся к 2026-10-07.
+
+## Production backend
 
 Production использует активный HID/head tap и вывод через session stream.
 Неизменяемая таблица активной раскладки готовится на главном потоке и обновляется

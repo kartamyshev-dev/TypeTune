@@ -17,7 +17,8 @@ private final class ObserverRuntimeFixture {
     private static let keys: [(CGKeyCode, String, String)] = [
         (0, "a", "ф"), (5, "g", "п"), (4, "h", "р"), (11, "b", "и"),
         (2, "d", "в"), (17, "t", "е"), (45, "n", "т"), (16, "y", "н"),
-        (38, "j", "о"), (49, " ", " ")
+        (38, "j", "о"), (49, " ", " "),
+        (18, "1", "1"), (19, "2", "2"), (20, "3", "3")
     ]
     private let engine = Engine()
     private let earlyCapture: Bool
@@ -232,6 +233,43 @@ private final class ObserverRuntimeFixture {
 }
 
 struct ObserverRuntimeIntegrationTests {
+    @Test func hidHistoryManualPreservesDigitsAndRetogglesWithoutAX() async {
+        await Task.detached {
+            for (source, target) in [("ghbdtn1", "привет1"), ("ghbdtn123", "привет123"), ("1ghbdtn2", "1привет2")] {
+                for tail in ["", " "] {
+                    let f = ObserverRuntimeFixture(sessionHistory: true, staleUnicode: true)
+                    f.readable = false
+                    f.type(source + tail)
+                    #expect(f.value == source + tail)
+                    #expect(f.transactions.isEmpty) // Numeric tokens never auto-correct.
+                    f.doubleShift()
+                    #expect(f.value == target + tail)
+                    #expect(f.layout == "ru")
+                    f.doubleShift()
+                    #expect(f.value == source + tail)
+                    #expect(f.layout == "us")
+                    #expect(f.acknowledgements.map(\.outcome) == ["submitted", "submitted"])
+                    #expect(f.acknowledgements.allSatisfy { $0.status == "ok" })
+                }
+            }
+        }.value
+    }
+
+    @Test func hidNumericOnlyManualDoesNotSwitchAndNextWordStillCorrects() async {
+        await Task.detached {
+            let f = ObserverRuntimeFixture(sessionHistory: true, staleUnicode: true)
+            f.readable = false
+            f.type("123")
+            f.doubleShift()
+            #expect(f.value == "123")
+            #expect(f.layout == "us")
+            #expect(f.transactions.isEmpty)
+            f.type(" ghbdtn ")
+            #expect(f.value == "123 привет ")
+            #expect(f.acknowledgements.map(\.outcome) == ["submitted"])
+        }.value
+    }
+
     @Test func hidHistoryStartsFreshAfterReturnWithoutAXRecovery() async {
         await Task.detached {
             let f = ObserverRuntimeFixture(sessionHistory: true, staleUnicode: true)

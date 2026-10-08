@@ -80,6 +80,24 @@ pub fn suggest_with_policy(
 mod tests {
     use super::*;
     #[test]
+    fn manual_preserves_digits_while_automatic_refuses_numeric_tokens() {
+        for (source, expected) in [
+            ("ghbdtn1", "привет1"),
+            ("GhBdTn123  ", "ПрИвЕт123  "),
+            ("руддщ123 ", "hello123 "),
+            ("1ghbdtn2", "1привет2"),
+            ("g1h2bdtn", "п1р2ивет"),
+        ] {
+            let manual = suggest(source, false).unwrap();
+            assert_eq!(manual.replacement, expected);
+            assert_eq!(manual.remove, source.chars().count());
+            assert!(suggest(&format!("{} ", source.trim_end()), true).is_none());
+        }
+        for source in ["123", "123 ", "ghbdtn١"] {
+            assert!(suggest(source, false).is_none());
+        }
+    }
+    #[test]
     fn inferred_is_separate_from_committed_plan_and_uses_same_rules() {
         let s = suggest("ghbdtn ", true).unwrap();
         assert_eq!(s.remove, 7);
