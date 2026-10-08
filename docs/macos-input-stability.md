@@ -1,6 +1,6 @@
 # Текущее состояние macOS input backend
 
-Checkpoint: 2026-10-08, кандидат 0.2.8, Apple Silicon/macOS 27.0.1.
+Checkpoint: 2026-10-08, выпуск 0.2.8, Apple Silicon/macOS 27.0.1.
 
 ## Double Shift и цифры (2026-10-08)
 
@@ -24,6 +24,14 @@ listen/post/accessibility=true и enabled HID tap1561783348.
 В 08:50:19–08:50:40Z зарегистрированы 8 submitted/ack=ok. Пользователь сообщил
 «вроде работает»; точный текст и N-17 независимо не наблюдались.
 Локальный receipt: `target/manual-digits-install-verification.json`.
+
+Релиз [0.2.8](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.8)
+опубликован после CI37753043401: все шесть заданий success на commit
+`15e1e8631fac8f56eee58fea57b27878a2b038f3`. Скачанные с GitHub ZIP/DEB прошли
+SHA256 manifests и GitHub digests, macOS deep/strict codesign PASS.
+Версия 0.2.8, clean source commit и source digest совпали с локальным тегом.
+[Полный receipt](releases/0.2.8-verification.json).
+Нативная приёмка опубликованного CI-бинарника остаётся NOT_RUN.
 Сведения ниже о сборке и нативных операциях относятся к 2026-10-07.
 
 ## Production backend

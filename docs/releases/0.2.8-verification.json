@@ -1,0 +1,75 @@
+{
+  "tag": "v0.2.8",
+  "source_commit": "15e1e8631fac8f56eee58fea57b27878a2b038f3",
+  "release_url": "https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.2.8",
+  "prerelease": true,
+  "published_at": "2026-10-08T08:59:33Z",
+  "verified_at": "2026-10-08T09:00:54.497280+00:00",
+  "ci_run_id": 37753043401,
+  "assets": {
+    "TypeTune-macos-arm64.zip": {
+      "sha256": "d727270c170276c503802bddd886f09624792865e3010795a37df35509759eb2",
+      "size": 1920049,
+      "url": "https://github.com/kartamyshev-dev/TypeTune/releases/download/v0.2.8/TypeTune-macos-arm64.zip"
+    },
+    "typetune-preview_0.2.8_amd64.deb": {
+      "sha256": "c113d4dfd9a9483ecbf0c967f54a831f28925b8c91053c9e649e5dd52eb1f22c",
+      "size": 3803522,
+      "url": "https://github.com/kartamyshev-dev/TypeTune/releases/download/v0.2.8/typetune-preview_0.2.8_amd64.deb"
+    }
+  },
+  "macos_bundle": {
+    "version": "0.2.8",
+    "source_commit": "15e1e8631fac8f56eee58fea57b27878a2b038f3",
+    "source_dirty": false,
+    "source_digest": "7ef6e18f88294497e65016964c30948bd7d5a33880a80bb537189c302c5c11af",
+    "binary_sha256": "7f6daa00f1de83d647d56c90824702e2e7b1a8309139a72473cffbc6c5a185ec",
+    "bridge_sha256": "2a910a4edd845616b99112e865b850ccdc221fcce8c754c23e464f7a8a8f66e8",
+    "architecture": "arm64",
+    "codesign_deep_strict": "PASS",
+    "signature_kind": "ad-hoc, not notarized",
+    "matches_local_tagged_source_digest": "PASS"
+  },
+  "linux_package": {
+    "Package": "typetune-preview",
+    "Version": "0.2.8",
+    "Architecture": "amd64"
+  },
+  "checksum_verification": "PASS",
+  "github_asset_digest_verification": "PASS",
+  "native_release_binary_acceptance": "NOT_RUN",
+  "limitations": [
+    "User feedback concerns the installed diagnostic build; released CI binaries have not had native acceptance.",
+    "Broad application and physical sleep/wake/lock validation remain incomplete."
+  ],
+  "ci": {
+    "url": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/37753043401",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "Linux / lint",
+        "conclusion": "success"
+      },
+      {
+        "name": "macOS / package",
+        "conclusion": "success"
+      },
+      {
+        "name": "Linux / package",
+        "conclusion": "success"
+      },
+      {
+        "name": "Linux / tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "macOS / tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "Release / publish",
+        "conclusion": "success"
+      }
+    ]
+  }
+}

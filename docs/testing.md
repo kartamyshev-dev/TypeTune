@@ -93,6 +93,12 @@ input-source и длительностью. Программные CGEvent и ф
 8 submitted/ack=ok, но точный текст и физический N-17 независимо не наблюдались.
 Нативная приёмка опубликованного CI-бинарника — отдельно.
 
+Релизный CI37753043401 на `15e1e8631fac8f56eee58fea57b27878a2b038f3` прошёл
+все шесть заданий macOS/Linux/publish. Скачанные ZIP/DEB проверены по SHA256
+manifests и GitHub digests; macOS deep/strict codesign, версия, clean commit
+и source digest совпали с тегом. [Receipt](releases/0.2.8-verification.json).
+Физический ввод релизного бинарника 0.2.8: NOT_RUN.
+
 ### Проверено на этом Mac (2026-10-07)
 
 280 локальных проверок PASS: 30 engine, 46 bridge, 17 portable, 23 packaging,
