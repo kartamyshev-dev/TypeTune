@@ -49,6 +49,8 @@
 
 ## Начать
 
+[Скачать предварительный релиз v0.1.3 для Apple Silicon](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.3). Длительная проверка стабильности ещё не завершена.
+
 Mac с Apple Silicon, macOS 14 или новее и Swift 6 для сборки.
 
 ```sh

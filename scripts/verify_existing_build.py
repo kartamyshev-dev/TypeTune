@@ -54,12 +54,12 @@ def main():
     root = pathlib.Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
     parser.add_argument('identity')
-    parser.add_argument('session')
+    parser.add_argument('session', nargs='?')
+    parser.add_argument('--artifact-only', action='store_true', help='Candidate integrity only; no native acceptance claim')
     parser.add_argument('--app', help='Exact tested running .app; must match the packaged dist bundle')
     args = parser.parse_args()
     identity = json.loads(pathlib.Path(args.identity).read_text())
-    folder = pathlib.Path(args.session)
-    session = json.loads((folder/'summary.json').read_text())
+    require(args.artifact_only != bool(args.session), 'Choose a native session or candidate artifact verification')
     app = root/'dist/LayoutPilot.app'
     binary = app/'Contents/MacOS/LayoutPilot'
     require(identity.get('compiledInputsMatchCommit') is True, 'Unverified compiled inputs')
@@ -71,11 +71,17 @@ def main():
     require(actual == identity['bundleSha256'], 'Bundle changed after checks')
     tested_binary = target_binary(root, args.app)
     require(bundle_digest(tested_binary.parents[2]) == bundle_digest(app), 'Tested app differs from packaged dist bundle')
+    subprocess.run(['codesign', '--verify', '--deep', '--strict', str(app)], check=True)
+    subprocess.run([str(root/'dist/layoutpilot-cli'), 'selftest'], check=True, stdout=subprocess.DEVNULL)
+    if args.artifact_only:
+        print(json.dumps({'candidateArtifactVerified': True, 'binarySha256': digest(binary),
+                          'nativeAcceptance': False, 'notice': 'Integrity only; candidate, not full release acceptance.'}))
+        return
+    folder = pathlib.Path(args.session)
+    session = json.loads((folder/'summary.json').read_text())
     current = capture(root, tested_binary, session['pid'])
     report = validate_session(folder, current)
     require(report['integrityPassed'] and report['correctionQualityPassed'] and report['passed'], 'Native session correction quality failed')
-    subprocess.run(['codesign', '--verify', '--deep', '--strict', str(app)], check=True)
-    subprocess.run([str(root/'dist/layoutpilot-cli'), 'selftest'], check=True, stdout=subprocess.DEVNULL)
     print(json.dumps({'existingBuildVerified': True, 'binarySha256': digest(binary),
                       'nativeSessionSeconds': report['durationSeconds'],
                       'notice': 'Packages the same tested app; does not claim native acceptance at a new installation path.'}))
