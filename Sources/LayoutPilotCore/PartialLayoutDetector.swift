@@ -63,7 +63,7 @@ public extension Engine {
     /// default is intentionally the shared authored bundled vocabulary only.
     func decidePartial(_ word: String, context: InputContext = InputContext(),
                        detector: PartialLayoutDetector = .bundled) -> Decision? {
-        guard settings.automatic, settings.appAutomatic[context.application] != false,
+        guard settings.automatic, settings.automaticChangesAllowed(in: context.application),
               !context.secure, context.reliable,
               !settings.excludedApps.contains(context.application),
               let candidate = detector.candidate(word) else { return nil }

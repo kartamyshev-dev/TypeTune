@@ -42,8 +42,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
         let title = NSMenuItem(title: "TypeTune · " + store.serviceStatus.title.lowercased(), action: nil, keyEquivalent: "")
         menu.addItem(title); menu.addItem(.separator())
-        let automatic = NSMenuItem(title: "Автопереключение", action: #selector(toggleAutomatic), keyEquivalent: "")
-        automatic.target = self; automatic.state = store.settings.automatic ? .on : .off
+        let automatic = NSMenuItem(title: "Автоисправления", action: #selector(toggleAutomatic), keyEquivalent: "")
+        automatic.target = self; automatic.state = store.settings.paused ? .off : .on
         automatic.isEnabled = store.settingsStorageAvailable; menu.addItem(automatic)
         let settings = NSMenuItem(title: "Настройки…", action: #selector(showSettings), keyEquivalent: ",")
         settings.target = self; menu.addItem(settings)
@@ -54,7 +54,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     @objc func updateStatusItem() {
         let flag = InputSources.language == .russian ? "🇷🇺" : (InputSources.language == .english ? "🇺🇸" : "🌐")
-        let suffix = store.recoveryRequired || store.serviceStatus == .tapFailed ? " !" : (store.settings.automatic ? "" : " Ⅱ")
+        let suffix = store.recoveryRequired || store.serviceStatus == .tapFailed ? " !" : (store.settings.paused ? " Ⅱ" : "")
         let title = NSMutableAttributedString(string: flag, attributes: [
             .font: NSFont.systemFont(ofSize: 20), .baselineOffset: -2
         ])
@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     @objc func toggleAutomatic() {
         guard store.settingsStorageAvailable else { return }
-        store.settings.automatic.toggle(); rebuildMenu()
+        store.settings.paused.toggle(); rebuildMenu()
     }
     @objc func showSettings() {
         if window == nil {

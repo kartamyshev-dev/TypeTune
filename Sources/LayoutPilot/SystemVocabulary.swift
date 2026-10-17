@@ -91,7 +91,8 @@ final class SystemVocabulary {
     func decision(_ word: String, settings: Settings, context: InputContext = InputContext()) -> Decision? {
         let base = Engine(settings: settings)
         if let decision = base.decide(word, context: context) { return decision }
-        guard isAvailable, settings.automatic || settings.typos || settings.yo,
+        guard isAvailable, settings.automaticChangesAllowed(in: context.application),
+              settings.automatic || settings.typos || settings.yo,
               !context.secure, context.reliable, !settings.excludedApps.contains(context.application),
               (3...40).contains(word.count), word.utf16.count <= 80, !Layout.isMixed(word) else { return nil }
         let lower = word.lowercased()

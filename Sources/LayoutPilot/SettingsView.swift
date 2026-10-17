@@ -121,6 +121,7 @@ struct SettingsView: View {
     private var general: some View {
         Form {
             Section("Исправление текста") {
+                Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused)
                 Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
                 Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
                 if store.earlyCorrection { Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.").font(.caption).foregroundStyle(.secondary) }
@@ -146,7 +147,7 @@ struct SettingsView: View {
                 Text("Двойной Shift или ⌘⌥Space — преобразовать слово или выделение. ⌘⌥Z — отменить и запомнить исключение.")
                     .font(.caption).foregroundStyle(.secondary)
                 Toggle("Одиночный Option — преобразовать слово или выделение", isOn: $store.settings.optionCorrection)
-                Toggle("Левый + правый Shift — пауза автопереключения", isOn: $store.settings.shiftChordPause)
+                Toggle("Левый + правый Shift — пауза автоисправлений", isOn: $store.settings.shiftChordPause)
                 Toggle("⌘⇧V — вставить текст без форматирования (экспериментально)", isOn: $store.settings.plainPaste)
             }
             Section("Приложение") {
@@ -200,11 +201,11 @@ struct SettingsView: View {
                     HStack { Text(value); Spacer(); Button("Убрать") { store.settings.excludedApps.removeAll { $0 == value } } }.accessibilityElement(children: .contain)
                 }
             }.frame(height: 90)
-            Text("Автопереключение в программах").font(.headline)
-            Text("Эти правила меняют только автоматическую смену раскладки. Общая пауза и полный запрет обработки имеют приоритет.")
+            Text("Автоисправления в программах").font(.headline)
+            Text("«Выключено» отключает все автоматические изменения в программе: раскладку, опечатки, «ё», регистр и правила. Ручное преобразование работает. Общая пауза и полный запрет обработки имеют приоритет.")
                 .font(.caption).foregroundStyle(.secondary)
             HStack {
-                TextField("Идентификатор программы для автопереключения", text: $form.autoBundleID)
+                TextField("Идентификатор программы для автоисправлений", text: $form.autoBundleID)
                 Button("Добавить правило") { addAutoApp(form.autoBundleID) }.disabled(form.autoBundleID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 Button("Выбрать программу…", action: chooseAutoApp)
             }
@@ -212,7 +213,7 @@ struct SettingsView: View {
                 HStack {
                     Text(id).textSelection(.enabled)
                     Spacer()
-                    Picker("Автопереключение", selection: Binding(get: { store.settings.appAutomatic[id] ?? true },
+                    Picker("Автоисправления", selection: Binding(get: { store.settings.appAutomatic[id] ?? true },
                         set: { store.settings.appAutomatic[id] = $0 })) {
                         Text("Выключено").tag(false)
                         Text("Включено").tag(true)

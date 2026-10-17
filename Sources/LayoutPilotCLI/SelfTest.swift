@@ -215,14 +215,15 @@ func runSelfTests() -> Int {
     check(Engine(settings: appSettings).decide("ghbdtn", context: .init(application: "com.apple.TextEdit"))?.replacement == "привет", "per-app true permits globally enabled automatic correction")
     check(Engine(settings: appSettings).decide("ghbdtn", context: .init(application: "com.example.Other"))?.replacement == "привет", "missing app policy preserves default automatic behavior")
     check(Engine(settings: appSettings).manual("ghbdtn", context: chromeContext)?.replacement == "привет", "per-app automatic pause preserves manual correction")
-    check(Engine(settings: appSettings).decide("превет", context: chromeContext)?.reason == .typo, "own contract: app automatic pause preserves typo correction")
-    check(Engine(settings: appSettings).decide("еще", context: chromeContext)?.reason == .yo, "own contract: app automatic pause preserves yo correction")
+    // Changed contract (DECISIONS 22): an application pause stops every automatic change.
+    check(Engine(settings: appSettings).decide("превет", context: chromeContext) == nil, "app automatic pause also stops typo correction")
+    check(Engine(settings: appSettings).decide("еще", context: chromeContext) == nil, "app automatic pause also stops yo correction")
     appSettings.rules = [.init(source: "lpfixture", replacement: "проверка")]
     check(Engine(settings: appSettings).decide("lpfixture", context: chromeContext) == nil, "per-app false suppresses user automatic rule")
     check(Engine(settings: appSettings).decide("lpfixture", context: .init(application: "com.apple.TextEdit"))?.reason == .userRule, "per-app true permits user automatic rule")
     appSettings.automatic = false
-    check(Engine(settings: appSettings).decide("ghbdtn", context: .init(application: "com.apple.TextEdit")) == nil, "global pause dominates explicit per-app true")
-    check(Engine(settings: appSettings).decide("lpfixture", context: .init(application: "com.apple.TextEdit")) == nil, "global pause dominates per-app user-rule permission")
+    check(Engine(settings: appSettings).decide("ghbdtn", context: .init(application: "com.apple.TextEdit")) == nil, "automatic layout off dominates explicit per-app true")
+    check(Engine(settings: appSettings).decide("lpfixture", context: .init(application: "com.apple.TextEdit")) == nil, "automatic layout off dominates per-app user-rule permission")
     appSettings.automatic = true
     appSettings.excludedApps = ["com.apple.TextEdit"]
     let excludedContext = InputContext(application: "com.apple.TextEdit")
@@ -437,6 +438,7 @@ func runSelfTests() -> Int {
     for (passed, label) in earlyRollbackChecks() { check(passed, label) }
     for (passed, label) in physicalPunctuationChecks() { check(passed, label) }
     for (passed, label) in doubleCapitalChecks() { check(passed, label) }
+    for (passed, label) in pauseChecks() { check(passed, label) }
     print("\(count - failures)/\(count) offline invariants passed; \(failures) failures. No runtime input claim.")
     return failures
 }

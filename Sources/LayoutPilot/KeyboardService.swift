@@ -762,8 +762,8 @@ final class KeyboardService {
                 } else { enqueue(boundTo: cachedSnapshot?.value) { $0.manual($1) } }
             case .toggleAutomatic:
                 revision += 1; cachedSnapshot = nil; transaction = nil
-                store.settings.automatic.toggle()
-                store.lastStatus = store.settings.automatic ? "Автопереключение включено" : "Автопереключение на паузе"
+                store.settings.paused.toggle()
+                store.lastStatus = store.settings.paused ? "Автоисправления на паузе" : "Автоисправления включены"
             case .switchLayout:
                 revision += 1; cachedSnapshot = nil; transaction = nil
                 let before = InputSources.identifier

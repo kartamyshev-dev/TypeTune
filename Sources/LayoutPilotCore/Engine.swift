@@ -18,25 +18,32 @@ public struct Settings: Codable, Equatable, Sendable {
     public var shiftChordPause = false
     public var plainPaste = false
     public var sound = false
-    /// Per-application auto policy cannot override the global automatic pause.
-    /// Full processing exclusions remain a separate, stronger safety setting.
+    /// Global pause: no automatic change at all (layout, typos, ё, case, rules).
+    /// Manual conversion and undo keep working. `automatic` is only the layout switch.
+    public var paused = false
+    /// false pauses every automatic change in that application; true cannot override
+    /// the global pause. Full processing exclusions remain a separate, stronger setting.
     public var appAutomatic: [String: Bool] = [:]
     public var excludedApps: [String] = []
     public var excludedWords: [String] = []
     public var rules: [UserRule] = []
     public var learnedWords: [String] = []
     public init() {}
+    public func automaticChangesAllowed(in application: String) -> Bool {
+        !paused && appAutomatic[application] != false
+    }
     public func excludes(_ word: String) -> Bool {
         let lower = word.lowercased()
         return excludedWords.contains { $0.lowercased() == lower } || learnedWords.contains { $0.lowercased() == lower }
     }
     private enum CodingKeys: String, CodingKey {
-        case automatic, typos, yo, singleShift, optionCorrection, shiftChordPause,
+        case automatic, paused, typos, yo, singleShift, optionCorrection, shiftChordPause,
              plainPaste, sound, appAutomatic, excludedApps, excludedWords, rules, learnedWords
     }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         automatic = try values.decodeIfPresent(Bool.self, forKey: .automatic) ?? true
+        paused = try values.decodeIfPresent(Bool.self, forKey: .paused) ?? false
         typos = try values.decodeIfPresent(Bool.self, forKey: .typos) ?? true
         yo = try values.decodeIfPresent(Bool.self, forKey: .yo) ?? true
         singleShift = try values.decodeIfPresent(Bool.self, forKey: .singleShift) ?? true
@@ -109,11 +116,11 @@ public struct Engine: Sendable {
         self.settings = settings; self.lexicon = lexicon; self.mapping = mapping
     }
     public func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
-        guard !context.secure, context.reliable,
+        guard !context.secure, context.reliable, settings.automaticChangesAllowed(in: context.application),
               !settings.excludedApps.contains(context.application), !word.isEmpty else { return nil }
         let lower = word.lowercased()
         guard !settings.excludes(word) else { return nil }
-        let automatic = settings.automatic && settings.appAutomatic[context.application] != false
+        let automatic = settings.automatic
         // User rules are literal and intentionally take precedence over automatic heuristics.
         if automatic, let rule = settings.rules.first(where: { $0.source.lowercased() == lower }) {
             let value = Layout.matchingCase(rule.replacement, source: word)
