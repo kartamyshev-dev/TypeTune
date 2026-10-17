@@ -153,6 +153,18 @@ final class InputDiagnostics {
             let keyboard = service()
             keyboard.testingEnableContextCapture()
             keyboard.testingPrepareKeyRead(deadline: .greatestFiniteMagnitude)
+            keyboard.testingMarkPrimaryCapture()
+            keyboard.testingReleaseKey()
+            checks["keyup_does_not_queue_duplicate_of_primary_capture"] = keyboard.testingRequestedContextRevisions.isEmpty
+            keyboard.testingCompleteContextCapture(revision: 0, failure: .deadlineExceeded)
+            checks["failed_primary_capture_releases_slot"] = !keyboard.testingContextCapturePending
+            keyboard.testingReleaseKey()
+            checks["release_can_retry_after_primary_finished_within_original_budget"] = keyboard.testingRequestedContextRevisions.count == 1
+        }
+        do {
+            let keyboard = service()
+            keyboard.testingEnableContextCapture()
+            keyboard.testingPrepareKeyRead(deadline: .greatestFiniteMagnitude)
             keyboard.testingReleaseKey()
             let first = keyboard.testingRequestedContextRevisions.first ?? -1
             checks["key_release_requests_missing_baseline"] = keyboard.testingRequestedContextRevisions.count == 1 &&

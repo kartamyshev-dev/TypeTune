@@ -1,0 +1,158 @@
+[
+  {
+    "id": "stream-80ms-01",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-02",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-03",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-04",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-05",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-06",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-07",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-08",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-09",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-10",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-11",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  },
+  {
+    "id": "stream-80ms-12",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Repeat of authored continuous-stream regression at explicitly requested 80 ms interval; 12 cases, 192 words. No original observation."
+  }
+]

@@ -491,6 +491,7 @@ final class KeyboardService {
         if let inserted {
             pendingKeyRead = (expectedRevision, pid, sourceID, key, inserted, deadline)
         }
+        contextCaptureRevision = expectedRevision
         captureAfterKey(previous: previous, value: translated,
             inserted: inserted, keyCode: key,
             boundary: boundary, repeated: event.getIntegerValueField(.keyboardEventAutorepeat) != 0,
@@ -506,7 +507,7 @@ final class KeyboardService {
         axQueue.asyncAfter(deadline: .now() + 0.005) { [weak self] in
             guard let self else { return }
             guard self.isCurrent(expectedRevision, pid: pid, sourceID: sourceID) else {
-                if readOnlyBaseline { DispatchQueue.main.async { self.finishKeyBaselineCapture(revision: expectedRevision) } }
+                DispatchQueue.main.async { self.finishKeyBaselineCapture(revision: expectedRevision) }
                 return
             }
             let began = ProcessInfo.processInfo.systemUptime
@@ -515,26 +516,28 @@ final class KeyboardService {
             guard let current = observation.snapshot, self.isCurrent(expectedRevision, pid: pid, sourceID: sourceID) else {
                 if let failure = observation.failure {
                     DispatchQueue.main.async {
-                        defer { if readOnlyBaseline { self.finishKeyBaselineCapture(revision: expectedRevision) } }
+                        var rescheduled = false
+                        defer { if !rescheduled { self.finishKeyBaselineCapture(revision: expectedRevision) } }
                         guard self.revision == expectedRevision,
                               NSWorkspace.shared.frontmostApplication?.processIdentifier == pid,
                               InputSources.identifier == sourceID else { return }
                         if failure.retryable, self.cachedSnapshot?.revision == expectedRevision { return }
                         self.reportContextFailure(failure)
                         if !readOnlyBaseline, failure.retryable, ProcessInfo.processInfo.systemUptime < deadline {
+                            rescheduled = true
                             self.captureAfterKey(previous: previous, value: value, inserted: inserted, keyCode: keyCode,
                                 boundary: boundary, repeated: repeated, revision: expectedRevision, pid: pid,
                                 sourceID: sourceID, deadline: deadline)
                         }
                     }
-                } else if readOnlyBaseline {
+                } else {
                     DispatchQueue.main.async { self.finishKeyBaselineCapture(revision: expectedRevision) }
                 }
                 return
             }
             DispatchQueue.main.async {
                 var rescheduled = false
-                defer { if readOnlyBaseline && !rescheduled { self.finishKeyBaselineCapture(revision: expectedRevision) } }
+                defer { if !rescheduled { self.finishKeyBaselineCapture(revision: expectedRevision) } }
                 guard self.revision == expectedRevision, self.allowedFrontmost(),
                       NSWorkspace.shared.frontmostApplication?.processIdentifier == pid,
                       InputSources.identifier == sourceID else { return }
@@ -1521,6 +1524,7 @@ final class KeyboardService {
         pendingKeyRead = (revision, -1, "test-source", keyCode, inserted,
             deadline ?? ProcessInfo.processInfo.systemUptime + 0.060)
     }
+    func testingMarkPrimaryCapture() { precondition(!observesSystem); contextCaptureRevision = revision }
     func testingReleaseKey(keyCode: Int = 0) {
         precondition(!observesSystem)
         _ = handle(.keyUp, CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: false)!)
