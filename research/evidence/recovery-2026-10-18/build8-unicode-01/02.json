@@ -1,0 +1,129 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 15
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 15,
+      "maxMilliseconds": 0.21620833285851404,
+      "totalMilliseconds": 1.6867916856426746
+    },
+    "AXFocusedUIElement:0": {
+      "count": 15,
+      "maxMilliseconds": 0.09058332943823189,
+      "totalMilliseconds": 0.9256666526198387
+    },
+    "AXFocusedWindow:0": {
+      "count": 15,
+      "maxMilliseconds": 29.877083339670207,
+      "totalMilliseconds": 37.635625012626406
+    },
+    "AXRole:0": {
+      "count": 15,
+      "maxMilliseconds": 0.06625000241911039,
+      "totalMilliseconds": 0.6277083302848041
+    },
+    "AXSelectedTextRange:0": {
+      "count": 4,
+      "maxMilliseconds": 0.06458333518821746,
+      "totalMilliseconds": 0.20908332953695208
+    },
+    "AXSubrole:-25205": {
+      "count": 15,
+      "maxMilliseconds": 0.23562499700346962,
+      "totalMilliseconds": 1.815583324059844
+    },
+    "AXValue:0": {
+      "count": 4,
+      "maxMilliseconds": 0.050000002374872565,
+      "totalMilliseconds": 0.1612083360669203
+    },
+    "AXWindow:0": {
+      "count": 15,
+      "maxMilliseconds": 0.1667916658334434,
+      "totalMilliseconds": 1.0842083211173303
+    }
+  },
+  "beforeGesture": {
+    "inputSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 23,
+      "location": 0
+    },
+    "text": "ghbdtn é\nhello\t👩🏽‍💻"
+  },
+  "boundary": false,
+  "boundaryObservation": {
+    "performed": false
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/3E248DA8-8192-43A2-8CF5-C8C0215AC48E.results.json",
+  "clipboardRestore": "not_used",
+  "completed": 1,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/3E248DA8-8192-43A2-8CF5-C8C0215AC48E.txt",
+  "elapsedSeconds": 1.6804571249958826,
+  "events": 8,
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "gesture": "doubleShift",
+  "gestureIntermediate": {},
+  "id": "single",
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "initialSyntheticText": "ghbdtn é\nhello\t👩🏽‍💻",
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII": "",
+  "requestedSource": "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture": true,
+  "selection": {
+    "length": 0,
+    "location": 23
+  },
+  "text": "привет é\nруддщ\t👩🏽‍💻",
+  "timing": {
+    "firstWordAfterFocus": false,
+    "preGestureDelayMilliseconds": 600
+  },
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "864bba150381153ba959d7ae32ed125a93317ee9eb2e8111a729eba48ca3a1d6",
+    "targetBinarySha256": "77243f2dbab348bd49258f64932c1def167d3c3446702dac659cd8ec0c8d3589",
+    "probeSourceSha256": "fa77ce6a5aa86d0faa838826a594d28f369bfce40bd8d64456adf892e5d85c6d",
+    "probeBinarySha256": "137e756321f0006128b9cf2f6de7ab5ff030940b470ebe3e26158e1ab31c61b4",
+    "targetProcess": {
+      "pid": 9665,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 01:12:21 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/caramba/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 9800,
+    "command": "/Users/kartamyshev/git/caramba/.build/native-probe",
+    "started": "Sun Oct 18 01:12:35 2026"
+  },
+  "processExitCode": 0,
+  "helperWallSeconds": 2.679183833002753,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "864bba150381153ba959d7ae32ed125a93317ee9eb2e8111a729eba48ca3a1d6",
+    "targetBinarySha256": "77243f2dbab348bd49258f64932c1def167d3c3446702dac659cd8ec0c8d3589",
+    "probeSourceSha256": "fa77ce6a5aa86d0faa838826a594d28f369bfce40bd8d64456adf892e5d85c6d",
+    "probeBinarySha256": "137e756321f0006128b9cf2f6de7ab5ff030940b470ebe3e26158e1ab31c61b4",
+    "targetProcess": {
+      "pid": 9665,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 01:12:21 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 9665,
+  "sourceCommit": "e4823c9b96748b54ba06232585ae3249461974a1",
+  "sourceDirty": true,
+  "probeStartUptime": 37384.695571708,
+  "probeEndUptime": 37387.430090875
+}

@@ -1,0 +1,20 @@
+{
+  "sourceFixtureSha256": "be0fb8439c57af7b05fc03f7439448734926f25fc87e9c5afb2d316772e3f662",
+  "fixtureSha256": "2ed7073b0d88cb5045f3a1233f485313868f3910853b6e56f16225780cc1c5d5",
+  "included": [
+    "auto-ru",
+    "auto-en",
+    "typo",
+    "double-caps",
+    "yo",
+    "digits",
+    "double-shift",
+    "manual-shortcut",
+    "single-shift",
+    "physical-punctuation",
+    "selected-manual"
+  ],
+  "excluded": {
+    "auto-undo": "Would add a learned-word rule; CUA cannot bind renamed application to remove the test rule safely. Manual undo is tested in Unicode suite."
+  }
+}
