@@ -337,7 +337,14 @@ final class KeyboardService {
             if NSWorkspace.shared.frontmostApplication?.processIdentifier == gate.pid, !IsSecureEventInputEnabled() {
                 if !preservesContext(event) { sourceAfterReplay = nil; transaction = nil; cachedSnapshot = nil }
                 inputReplay.append(event.copy() ?? event); bufferedEventCount += 1
-                if inputReplay.count == 512 { revision += 1 } // cancel further AX writes; retain input until rollback completes
+                if inputReplay.count == InputReplayQueue<CGEvent>.pendingLimit {
+                    // Cancel further AX writes; retain input until rollback completes.
+                    revision += 1
+                    InputDiagnostics.shared.fault(reason: "replay-buffer-limit", revision: revision, counts: recoveryCounts)
+                }
+                // Typing faster than verified replay: stop draining and keep everything
+                // for explicit recovery instead of growing the barrier without bound.
+                if replaying && inputReplay.reachedPendingLimit { suspendReplay(target: gate) }
                 return true
             }
             revision += 1 // external focus/secure change cancels mutation; never intercept the new app's input
@@ -390,6 +397,9 @@ final class KeyboardService {
             captureMissingContextAfterKeyRelease(keyCode: Int(event.getIntegerValueField(.keyboardEventKeycode)))
             return false
         }
+        // Scrolling and dragging neither move the caret nor change text; only button
+        // presses/releases invalidate the context. The barrier above still retains them.
+        if [.scrollWheel, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged].contains(type) { return false }
         if type != .keyDown && type != .flagsChanged { resetTransient(); captureAfterEvent(); return false }
         guard allowedFrontmost(), InputSources.language != nil else { resetTransient(); return false }
         if EditorSupport.permitsTerminalIntegration(applicationID: NSWorkspace.shared.frontmostApplication?.bundleIdentifier) {
@@ -403,7 +413,6 @@ final class KeyboardService {
             }
             return false
         }
-        if type == .leftMouseDown || type == .rightMouseDown { resetTransient(); captureAfterEvent(); return false }
         let key = Int(event.getIntegerValueField(.keyboardEventKeycode))
         if type == .flagsChanged { replayReadbackNonce = UUID(); captureAfterEvent(); handleModifier(key, event.flags); return false }
         let now = ProcessInfo.processInfo.systemUptime

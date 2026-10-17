@@ -5,6 +5,15 @@ import LayoutPilotCore
 func replayRoutingChecks() -> [(Bool, String)] {
     var checks: [(Bool, String)] = []
     func check(_ passed: Bool, _ label: String) { checks.append((passed, "replay routing: " + label)) }
+    var limited = InputReplayQueue<Int>()
+    for value in 0..<(InputReplayQueue<Int>.pendingLimit - 1) { limited.append(value) }
+    check(!limited.reachedPendingLimit, "below the pending limit replay may continue")
+    limited.append(511)
+    check(limited.reachedPendingLimit && limited.count == 512, "the limit is reached at 512 pending events")
+    limited.append(512)
+    check(limited.reachedPendingLimit && limited.count == 513, "the limit signal never discards further input")
+    _ = limited.takeBatch(limit: 2)
+    check(!limited.reachedPendingLimit && limited.outstanding == 2, "posted events leave the pending count")
     var queue = InputReplayQueue<String>()
     for item in ["keyDown-A", "keyUp-A", "shiftDown", "shiftUp"] { queue.append(item) }
     check(queue.takeBatch(limit: 0) == nil && queue.count == 4, "invalid limit cannot remove pending input")

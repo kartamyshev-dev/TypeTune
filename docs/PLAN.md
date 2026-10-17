@@ -12,7 +12,7 @@
 - [x] Этап 1 (ядро; GUI-часть не скомпилирована): физическая пунктуация, верхний цифровой ряд, learnAs — [evidence](../research/evidence/stage1-punctuation-2026-10-17/verification.json).
 - [x] Этап 2 (ядро; статистика в GUI не скомпилирована): двойные заглавные в трёхбуквенных акронимах — [evidence](../research/evidence/stage2-doublecaps-2026-10-17/verification.json).
 - [x] Этап 3 (ядро; меню/жест/настройки не скомпилированы): полная пауза `Settings.paused` — [evidence](../research/evidence/stage3-pause-2026-10-17/verification.json).
-- [ ] Этап 4: прокрутка/drag вне барьера, мёртвый код, предел буфера (GUI).
+- [ ] Этап 4 (GUI): прокрутка/drag вне барьера, мёртвый код, предел буфера — код и Core-инварианты готовы ([evidence](../research/evidence/stage4-events-2026-10-17/verification.json)); открыто до сборки и native-проверки на Mac.
 - [ ] Этап 5: таблица раскладки из UCKeyTranslate (GUI).
 - [ ] Этап 6: расширение собственного словаря, корпус v3, оценка на естественном тексте.
 - [ ] Этап 7: MutationSession в Core.

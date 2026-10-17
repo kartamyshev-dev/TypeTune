@@ -16,6 +16,10 @@ public struct InputReplayQueue<Event> {
     public var count: Int { pending.count }
     public var isEmpty: Bool { pending.isEmpty }
     public var isDrained: Bool { pending.isEmpty && outstanding == 0 }
+    /// Pending size at which the owner cancels further AX writes and suspends replay.
+    /// It is a signal only: the queue never discards input on its own.
+    public static var pendingLimit: Int { 512 }
+    public var reachedPendingLimit: Bool { pending.count >= Self.pendingLimit }
     public mutating func append(_ event: Event) { pending.append(event) }
     /// Only events waiting for posting; an acknowledged/in-flight batch is separate.
     public func containsPending(where predicate: (Event) -> Bool) -> Bool {

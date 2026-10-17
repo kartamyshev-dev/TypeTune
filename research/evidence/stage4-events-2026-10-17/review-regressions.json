@@ -1,0 +1,65 @@
+{
+  "byCategory" : {
+    "doublecaps-acronym" : {
+      "corrections" : 0,
+      "count" : 6,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 6
+    },
+    "doublecaps-control" : {
+      "corrections" : 3,
+      "count" : 3,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 3
+    },
+    "physical-punctuation" : {
+      "corrections" : 6,
+      "count" : 6,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 6
+    },
+    "punctuation-control" : {
+      "corrections" : 2,
+      "count" : 6,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 6
+    }
+  },
+  "bySplit" : {
+    "train" : {
+      "corrections" : 11,
+      "count" : 21,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 21
+    }
+  },
+  "failures" : [
+
+  ],
+  "notice" : "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",
+  "schemaVersion" : 1,
+  "total" : {
+    "corrections" : 11,
+    "count" : 21,
+    "falseCorrections" : 0,
+    "misses" : 0,
+    "originalCompared" : 0,
+    "originalMatches" : 0,
+    "passed" : 21
+  }
+}

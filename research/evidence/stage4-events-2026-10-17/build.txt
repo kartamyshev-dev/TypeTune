@@ -1,0 +1,14 @@
+Building for debugging...
+[0/4] Write sources
+[2/4] Write swift-version-2198EC330A9A1ACF.txt
+[4/6] Compiling LayoutPilotCore InputReplayQueue.swift
+[5/6] Emitting module LayoutPilotCore
+[7/10] Emitting module LayoutPilotCLI
+[8/10] Compiling LayoutPilotCLI ReplayRoutingChecks.swift
+[9/10] Compiling LayoutPilotCLI RecoveryChecks.swift
+[10/11] Compiling LayoutPilotCLI SelfTest.swift
+[11/14] Wrapping AST for LayoutPilotCore for debugging
+[12/14] Write Objects.LinkFileList
+[13/14] Linking layoutpilot-cli
+Build of product 'layoutpilot-cli' complete! (4.83s)
+exit=0
