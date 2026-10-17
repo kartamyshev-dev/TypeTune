@@ -47,7 +47,7 @@ try:
         validate_workload_segments(result, 30 if '--idle-after-batch' in probe_args else 0)
 except Exception as error:
     result['validationError'] = str(error)
-    result.setdefault('error', str(error))
+    result['error'] = result.get('error') or str(error)
 if result.get('error') and result.get('checkpoint'):
     checkpoint = pathlib.Path(result['checkpoint']).resolve()
     if checkpoint.is_relative_to(root/'research/private/probes') and checkpoint.is_file():

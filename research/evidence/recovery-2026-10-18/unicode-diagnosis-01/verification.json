@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "target": "prototype",
+  "fixtureSha256": "61913af87bb6cccbbe6e75ade9bcef555e4f0ef0cf9c3ea75d2d63cf5c4f272a",
+  "requested": 3,
+  "completed": 1,
+  "results": [
+    {
+      "id": "multiline-selection",
+      "failures": [
+        "text",
+        "inputSource",
+        "selection"
+      ],
+      "evidence": "research/evidence/recovery-2026-10-18/unicode-diagnosis-01/00.json"
+    }
+  ],
+  "passed": false,
+  "notice": "Only these seeded TextEdit selections; no other-host or full F05 acceptance."
+}
