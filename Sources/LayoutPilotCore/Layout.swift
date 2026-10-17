@@ -21,6 +21,34 @@ public enum Layout {
             self.toRussian = toRussian; self.toEnglish = toEnglish
         }
 
+        /// A table decoded from installed layouts: every Latin and Cyrillic letter must
+        /// have a key, otherwise the caller keeps the authored standard table.
+        public static func keyboard(pairs: [(latin: Character, cyrillic: Character)]) -> Mapping? {
+            guard let mapping = Mapping(pairs: pairs), mapping.coversAllLetters else { return nil }
+            return mapping
+        }
+        /// Builds a table from what each physical key (and Shift+key) types in the
+        /// English and the Russian layout, in key order. Keys equal in both layouts,
+        /// multi-character output and characters already claimed by an earlier key
+        /// (for example the ISO § key duplicating `) are skipped.
+        public static func decoded(keys: [(english: String?, russian: String?)]) -> Mapping? {
+            var pairs: [(latin: Character, cyrillic: Character)] = []
+            var latinUsed = Set<Character>(), cyrillicUsed = Set<Character>()
+            for key in keys {
+                guard let english = key.english, let russian = key.russian, english.count == 1, russian.count == 1,
+                      let latin = english.first, let cyrillic = russian.first, latin != cyrillic,
+                      !latinUsed.contains(latin), !cyrillicUsed.contains(cyrillic) else { continue }
+                latinUsed.insert(latin); cyrillicUsed.insert(cyrillic)
+                pairs.append((latin, cyrillic))
+            }
+            return keyboard(pairs: pairs)
+        }
+        public var coversAllLetters: Bool {
+            let latin = "abcdefghijklmnopqrstuvwxyz", cyrillic = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            return (latin + latin.uppercased()).allSatisfy { toRussian[$0] != nil } &&
+                (cyrillic + cyrillic.uppercased()).allSatisfy { toEnglish[$0] != nil }
+        }
+
         // Independently authored standard US / Russian PC (Windows) layouts.
         public static let standardPC: Mapping = {
             let latin = Array("`qwertyuiop[]asdfghjkl;'zxcvbnm,./~QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?@#$^&|")

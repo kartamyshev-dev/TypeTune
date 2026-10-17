@@ -88,8 +88,9 @@ final class SystemVocabulary {
         guard isAvailable, (1...40).contains(word.count), let language = Self.pureLanguage(word) else { return false }
         return spelling(word, language: language)
     }
-    func decision(_ word: String, settings: Settings, context: InputContext = InputContext()) -> Decision? {
-        let base = Engine(settings: settings)
+    func decision(_ word: String, settings: Settings, context: InputContext = InputContext(),
+                  mapping: Layout.Mapping = .standardPC) -> Decision? {
+        let base = Engine(settings: settings, mapping: mapping)
         if let decision = base.decide(word, context: context) { return decision }
         guard isAvailable, settings.automaticChangesAllowed(in: context.application),
               settings.automatic || settings.typos || settings.yo,
@@ -97,7 +98,7 @@ final class SystemVocabulary {
               (3...40).contains(word.count), word.utf16.count <= 80, !Layout.isMixed(word) else { return nil }
         let lower = word.lowercased()
         guard !settings.excludes(word) else { return nil }
-        let converted = Layout.convert(word)
+        let converted = Layout.convert(word, mapping: mapping)
         let sourceLanguage = Self.pureLanguage(word)
         let targetLanguage = Self.pureLanguage(converted)
         // Permit physical punctuation only when the entire alternate token is RU/EN letters.
@@ -113,7 +114,7 @@ final class SystemVocabulary {
             if sourceAccepted { add(word, language) }
         }
         if settings.automatic, let language = targetLanguage, spelling(converted, language: language) { add(converted, language) }
-        if let decision = Engine(settings: settings, lexicon: lexicon).decide(word, context: context) { return decision }
+        if let decision = Engine(settings: settings, lexicon: lexicon, mapping: mapping).decide(word, context: context) { return decision }
         if settings.typos, !sourceAccepted, let language = sourceLanguage,
            word.count >= 5, word == lower {
             let candidates = Set(guesses(lower, language: language).filter { value in
@@ -126,6 +127,6 @@ final class SystemVocabulary {
                 lexicon.typos[lower] = candidate
             }
         }
-        return Engine(settings: settings, lexicon: lexicon).decide(word, context: context)
+        return Engine(settings: settings, lexicon: lexicon, mapping: mapping).decide(word, context: context)
     }
 }

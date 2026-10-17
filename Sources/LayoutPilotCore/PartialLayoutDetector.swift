@@ -40,7 +40,7 @@ public struct PartialLayoutDetector: Sendable {
         case .russian: return russianPrefixes.contains(word)
         }
     }
-    fileprivate func candidate(_ word: String) -> (replacement: String, language: Language)? {
+    fileprivate func candidate(_ word: String, mapping: Layout.Mapping) -> (replacement: String, language: Language)? {
         guard (3...64).contains(word.count), !word.dropFirst().contains(where: { $0.isUppercase }) else { return nil }
         let source: Language
         if word.unicodeScalars.allSatisfy({ Self.isLetter($0, in: .english) }) { source = .english }
@@ -50,7 +50,7 @@ public struct PartialLayoutDetector: Sendable {
         // typo, case normalization, ё substitution or user-rule evaluation occurs.
         guard !containsPrefix(word.lowercased(), language: source) else { return nil }
         let target: Language = source == .english ? .russian : .english
-        let converted = Layout.convert(word, to: target)
+        let converted = Layout.convert(word, to: target, mapping: mapping)
         guard converted.unicodeScalars.allSatisfy({ Self.isLetter($0, in: target) }),
               containsPrefix(converted.lowercased(), language: target) else { return nil }
         return (converted, target)
@@ -66,7 +66,7 @@ public extension Engine {
         guard settings.automatic, settings.automaticChangesAllowed(in: context.application),
               !context.secure, context.reliable,
               !settings.excludedApps.contains(context.application),
-              let candidate = detector.candidate(word) else { return nil }
+              let candidate = detector.candidate(word, mapping: mapping) else { return nil }
         let lower = word.lowercased(), converted = candidate.replacement.lowercased()
         // Respect whole-word exceptions before they finish being typed. A source
         // or target prefix of a protected entry is deliberately also protected.

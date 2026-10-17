@@ -15,7 +15,7 @@ final class KeyboardService {
         guard let self, self.allowedFrontmost(), self.terminalPolicyPermitsAction, InputSources.language != nil,
               NSWorkspace.shared.frontmostApplication?.bundleIdentifier == host else { return nil }
         let context = InputContext(application: host)
-        let decision = manual ? Engine(settings: self.store.settings).manual(word, context: context) :
+        let decision = manual ? self.engine.manual(word, context: context) :
             self.completedTokenDecision(word, context: context)
         if let language = decision?.targetLanguage, !InputSources.isAvailable(language) { return nil }
         return decision
@@ -488,7 +488,7 @@ final class KeyboardService {
             pinned.selection = NSRange(location: predicted.cursor, length: 0)
             // A proposal only schedules a fresh AX capture. Predicted text never
             // authorizes an early write; the full observed target/text/caret must match.
-            if !store.earlyCorrection || Engine(settings: store.settings).partialProposal(
+            if !store.earlyCorrection || engine.partialProposal(
                 in: pinned.text, selection: pinned.selection, context: context(pinned)) == nil {
                 cachedSnapshot = (expectedRevision, pinned)
                 return false
@@ -803,7 +803,7 @@ final class KeyboardService {
         guard allowedFrontmost(), InputSources.language != nil else { skipped("Поле или раскладка не поддерживают безопасную замену"); return }
         let range = snapshot.selection.length > 0 ? snapshot.selection : TextEdit.wordBeforeCursor(in: snapshot.text, cursor: snapshot.selection.location)
         guard let range, let swift = Range(range, in: snapshot.text),
-              let decision = Engine(settings: store.settings).manual(String(snapshot.text[swift]), context: context(snapshot)) else { return }
+              let decision = engine.manual(String(snapshot.text[swift]), context: context(snapshot)) else { return }
         // The reference leaves a caret after the replacement. Retaining the
         // converted selection would let the next Space erase the whole result.
         apply(snapshot, range: range, decision: decision, keepSelection: false)
@@ -812,17 +812,19 @@ final class KeyboardService {
         guard allowedFrontmost(), InputSources.language != nil, snapshot.selection.length == 0,
               let range = TextEdit.wordBeforeCursor(in: snapshot.text, cursor: snapshot.selection.location),
               let swift = Range(range, in: snapshot.text),
-              let decision = Engine(settings: store.settings).completedTokenDecision(String(snapshot.text[swift]), decide: {
+              let decision = engine.completedTokenDecision(String(snapshot.text[swift]), decide: {
                   decide($0, context: context(snapshot))
               }, isKnownWord: { self.isKnownWord($0) }) else { return }
         apply(snapshot, range: NSRange(location: range.location, length: decision.original.utf16.count), decision: decision)
     }
     private func automaticPartial(_ snapshot: EditorSnapshot) {
         guard store.earlyCorrection, !snapshot.addressBar, allowedFrontmost(), InputSources.language != nil,
-              let proposal = Engine(settings: store.settings).partialProposal(
+              let proposal = engine.partialProposal(
                 in: snapshot.text, selection: snapshot.selection, context: context(snapshot)) else { return }
         apply(snapshot, range: proposal.range, decision: proposal.decision, partial: true)
     }
+    /// The decision engine for current settings and the installed layouts' key table.
+    private var engine: Engine { Engine(settings: store.settings, mapping: InputSources.mapping) }
     /// A token that is itself a word never becomes a layout prefix plus converted punctuation.
     private func isKnownWord(_ word: String) -> Bool {
         if Lexicon.bundled.contains(word) { return true }
@@ -831,9 +833,9 @@ final class KeyboardService {
     }
     func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
         if store.useSystemDictionary {
-            return MainActor.assumeIsolated { vocabulary.decision(word, settings: store.settings, context: context) }
+            return MainActor.assumeIsolated { vocabulary.decision(word, settings: store.settings, context: context, mapping: InputSources.mapping) }
         }
-        return Engine(settings: store.settings).decide(word, context: context)
+        return engine.decide(word, context: context)
     }
     private func statisticsCategory(_ decision: Decision) -> UsageCategory {
         switch decision.reason {
@@ -848,7 +850,7 @@ final class KeyboardService {
     /// Return a whole-token decision, preserving trailing sentence punctuation.
     /// Catch-up uses the same whole-token-first policy as ordinary automatic().
     private func completedTokenDecision(_ token: String, context: InputContext) -> Decision? {
-        guard let value = Engine(settings: store.settings).completedTokenDecision(token, decide: {
+        guard let value = engine.completedTokenDecision(token, decide: {
             decide($0, context: context)
         }, isKnownWord: { self.isKnownWord($0) }) else { return nil }
         let punctuation = token.dropFirst(value.original.count)

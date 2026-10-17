@@ -85,6 +85,49 @@ enum InputSources {
         guard TISSelectInputSource(source) == noErr else { return false }
         return identifier == expectedID
     }
+    /// ANSI key positions first, then the ISO § key, which may duplicate the ` key.
+    private static let mappingKeyCodes: [CGKeyCode] = (0...50).filter { $0 != 10 }.map { CGKeyCode($0) } + [10]
+    private static var cachedMapping: (key: String, value: Layout.Mapping)?
+    /// Conversion table of the enabled English/Russian pair that select() would use,
+    /// decoded from their key layouts; the authored PC table when decoding fails.
+    /// Main thread only. Keyed by the current source and keyboard type.
+    static var mapping: Layout.Mapping {
+        let keyboardType = UInt32(LMGetKbdType())
+        let cacheKey = identifier + "|" + String(keyboardType)
+        if let cachedMapping, cachedMapping.key == cacheKey { return cachedMapping.value }
+        let value = decodedMapping(keyboardType: keyboardType) ?? .standardPC
+        cachedMapping = (cacheKey, value)
+        return value
+    }
+    private static func layoutSource(_ language: Language, in list: [TISInputSource]) -> TISInputSource? {
+        if Self.language == language, let current { return current }
+        let ids = language == .russian ? russianIDs : englishIDs
+        return list.first {
+            property($0, kTISPropertyInputSourceType) == kTISTypeKeyboardLayout as String &&
+                ids.contains(property($0, kTISPropertyInputSourceID) ?? "")
+        }
+    }
+    private static func layoutData(_ source: TISInputSource) -> CFData? {
+        guard let pointer = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData) else { return nil }
+        return Unmanaged<CFData>.fromOpaque(pointer).takeUnretainedValue()
+    }
+    private static func decodedMapping(keyboardType: UInt32) -> Layout.Mapping? {
+        guard let list = TISCreateInputSourceList(nil, false)?.takeRetainedValue() as? [TISInputSource],
+              let english = layoutSource(.english, in: list), let russian = layoutSource(.russian, in: list),
+              let englishID = property(english, kTISPropertyInputSourceID),
+              let russianID = property(russian, kTISPropertyInputSourceID) else { return nil }
+        let englishData = layoutData(english), russianData = layoutData(russian)
+        var keys: [(english: String?, russian: String?)] = []
+        for keyCode in mappingKeyCodes {
+            for flags in [CGEventFlags(), .maskShift] {
+                keys.append((insertionText(keyCode: keyCode, flags: flags, sourceID: englishID,
+                                           layoutData: englishData, keyboardType: keyboardType),
+                              insertionText(keyCode: keyCode, flags: flags, sourceID: russianID,
+                                            layoutData: russianData, keyboardType: keyboardType)))
+            }
+        }
+        return Layout.Mapping.decoded(keys: keys)
+    }
     static func isAvailable(_ language: Language) -> Bool {
         if Self.language == language { return true }
         let ids = language == .russian ? russianIDs : englishIDs

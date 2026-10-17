@@ -265,7 +265,7 @@ struct SettingsView: View {
             Text("Это предварительный просмотр. Проверка ввода в других программах выполняется отдельно.").foregroundStyle(.secondary)
             TextField("Текст для проверки", text: $form.sample)
             HStack {
-                Button("Преобразовать раскладку") { form.preview = Layout.convert(form.sample) }
+                Button("Преобразовать раскладку") { form.preview = Layout.convert(form.sample, mapping: InputSources.mapping) }
                 Button("Проверить автоматическое правило") {
                     form.preview = keyboard.decide(form.sample)?.replacement ?? "Без изменения"
                 }
