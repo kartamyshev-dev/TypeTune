@@ -832,11 +832,8 @@ final class KeyboardService {
         case .yo: return .yo
         case .manual: return .manual
         case .typo:
-            let letters = Array(decision.original)
             // The reference groups its double-capital event with automatic changes.
-            if letters.count >= 3, letters[0].isUppercase, letters[1].isUppercase,
-               letters[2].isLowercase, letters.allSatisfy({ $0.isLetter }) { return .automatic }
-            return .typo
+            return Engine.isDoubleCapitalTypo(decision.original) ? .automatic : .typo
         }
     }
     /// Return a whole-token decision, preserving trailing sentence punctuation.

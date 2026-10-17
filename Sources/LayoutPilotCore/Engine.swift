@@ -96,6 +96,12 @@ public struct Engine: Sendable {
     private static let doubleCapsPreservedWords: Set<String> = [
         "facebook", "iphone", "mhz"
     ]
+    /// Shape of the double-capital typo: two capitals, then a lowercase letter, letters only.
+    public static func isDoubleCapitalTypo(_ word: String) -> Bool {
+        let letters = Array(word)
+        return letters.count > 2 && letters.allSatisfy({ $0.isLetter }) &&
+            letters[0].isUppercase && letters[1].isUppercase && letters[2].isLowercase
+    }
     public var settings: Settings
     public var lexicon: Lexicon
     public var mapping: Layout.Mapping
@@ -124,10 +130,13 @@ public struct Engine: Sendable {
         let letters = Array(word)
         // Physical punctuation is admitted above for dictionary-backed layout lookup,
         // but it does not license unconditional case changes in filenames/code tokens.
-        if settings.typos, word.allSatisfy({ $0.isLetter }), letters.count > 2,
-           letters[0].isUppercase, letters[1].isUppercase,
-           letters[2].isLowercase, !Self.doubleCapsPreservedWords.contains(lower) {
-            result = String(word.prefix(1)) + word.dropFirst().lowercased(); reason = .typo
+        // Three letters are usually an acronym plural or unit (IDs, PCs, GHz): change
+        // those only when the corrected word is known in either layout (МИр, DAy).
+        if settings.typos, Self.isDoubleCapitalTypo(word), !Self.doubleCapsPreservedWords.contains(lower) {
+            let fixed = String(word.prefix(1)) + word.dropFirst().lowercased()
+            if letters.count > 3 || lexicon.contains(fixed) || lexicon.contains(Layout.convert(fixed, mapping: mapping)) {
+                result = fixed; reason = .typo
+            }
         }
         // Stages compose in order: layout and spelling operate on the case-
         // corrected candidate, otherwise GHbdtn would become ПРивет again.

@@ -10,7 +10,7 @@
 
 - [x] Этап 0: Swift 6.0.3 для Linux, базовая линия, GUI-таргет только на macOS, fixtures дефектов ревью (12 падают до исправления): [evidence](../research/evidence/stage0-linux-2026-10-17/verification.json).
 - [x] Этап 1 (ядро; GUI-часть не скомпилирована): физическая пунктуация, верхний цифровой ряд, learnAs — [evidence](../research/evidence/stage1-punctuation-2026-10-17/verification.json).
-- [ ] Этап 2: двойные заглавные в трёхбуквенных акронимах.
+- [x] Этап 2 (ядро; статистика в GUI не скомпилирована): двойные заглавные в трёхбуквенных акронимах — [evidence](../research/evidence/stage2-doublecaps-2026-10-17/verification.json).
 - [ ] Этап 3: полная пауза `Settings.paused`.
 - [ ] Этап 4: прокрутка/drag вне барьера, мёртвый код, предел буфера (GUI).
 - [ ] Этап 5: таблица раскладки из UCKeyTranslate (GUI).
