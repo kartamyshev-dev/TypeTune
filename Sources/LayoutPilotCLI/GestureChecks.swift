@@ -4,9 +4,11 @@ func modifierGestureChecks() -> [(Bool, String)] {
     var results: [(Bool, String)] = []
     func check(_ value: Bool, _ name: String) { results.append((value, "modifier: " + name)) }
     var m = ModifierGesture(optionTap: true, bothShiftPause: true)
-    for (key, side, aggregate) in [(56, UInt64(0x2), UInt64(1 << 17)), (60, 0x4, 1 << 17),
+    // Explicit element type: the untyped literal exceeds the Linux type-checker budget.
+    let releaseCases: [(Int, UInt64, UInt64)] = [(56, 0x2, 1 << 17), (60, 0x4, 1 << 17),
         (58, 0x20, 1 << 19), (61, 0x40, 1 << 19), (55, 0x8, 1 << 20),
-        (54, 0x10, 1 << 20), (59, 0x1, 1 << 18), (62, 0x2000, 1 << 18)] {
+        (54, 0x10, 1 << 20), (59, 0x1, 1 << 18), (62, 0x2000, 1 << 18)]
+    for (key, side, aggregate) in releaseCases {
         check(ModifierGesture.isRelease(keyCode: key, rawFlags: 0), "known modifier release \(key)")
         check(!ModifierGesture.isRelease(keyCode: key, rawFlags: side | aggregate), "held modifier is not release \(key)")
         check(!ModifierGesture.isRelease(keyCode: key, rawFlags: aggregate), "missing side bits do not prove release \(key)")

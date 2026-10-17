@@ -1,0 +1,76 @@
+{
+  "byCategory" : {
+    "doublecaps-acronym" : {
+      "corrections" : 6,
+      "count" : 6,
+      "falseCorrections" : 6,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 0
+    },
+    "doublecaps-control" : {
+      "corrections" : 3,
+      "count" : 3,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 3
+    },
+    "physical-punctuation" : {
+      "corrections" : 2,
+      "count" : 6,
+      "falseCorrections" : 0,
+      "misses" : 6,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 0
+    },
+    "punctuation-control" : {
+      "corrections" : 2,
+      "count" : 6,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 6
+    }
+  },
+  "bySplit" : {
+    "train" : {
+      "corrections" : 13,
+      "count" : 21,
+      "falseCorrections" : 6,
+      "misses" : 6,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 9
+    }
+  },
+  "failures" : [
+    "review-punct-en-period",
+    "review-punct-en-comma",
+    "review-punct-en-question",
+    "review-punct-ru-period",
+    "review-punct-ru-comma",
+    "review-punct-ru-question",
+    "review-doublecaps-IDs",
+    "review-doublecaps-PCs",
+    "review-doublecaps-TVs",
+    "review-doublecaps-VMs",
+    "review-doublecaps-OKs",
+    "review-doublecaps-GHz"
+  ],
+  "notice" : "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",
+  "schemaVersion" : 1,
+  "total" : {
+    "corrections" : 13,
+    "count" : 21,
+    "falseCorrections" : 6,
+    "misses" : 6,
+    "originalCompared" : 0,
+    "originalMatches" : 0,
+    "passed" : 9
+  }
+}

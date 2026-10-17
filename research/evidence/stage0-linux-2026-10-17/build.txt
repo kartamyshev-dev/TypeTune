@@ -1,0 +1,36 @@
+Building for debugging...
+[0/9] Copying lexicon.json
+[0/9] Copying layoutpilot.zsh
+[0/9] Write sources
+[4/9] Write swift-version-2198EC330A9A1ACF.txt
+[6/19] Compiling LayoutPilotCore EditorSnapshotFailure.swift
+[7/19] Compiling LayoutPilotCore EditorSupport.swift
+[8/19] Compiling LayoutPilotCore Engine.swift
+[9/19] Compiling LayoutPilotCore InputRecovery.swift
+[10/19] Compiling LayoutPilotCore InputReplayQueue.swift
+[11/23] Compiling LayoutPilotCore Layout.swift
+[12/23] Compiling LayoutPilotCore ModifierGesture.swift
+[13/23] Compiling LayoutPilotCore PartialLayoutDetector.swift
+[14/23] Compiling LayoutPilotCore PartialMutationRollbackPlan.swift
+[15/23] Emitting module LayoutPilotCore
+[16/23] Compiling LayoutPilotCore Replay.swift
+[17/23] Compiling LayoutPilotCore ReplayInsertionProjection.swift
+[18/23] Compiling LayoutPilotCore UsageStatistics.swift
+[19/23] Compiling LayoutPilotCore resource_bundle_accessor.swift
+[20/24] Wrapping AST for LayoutPilotCore for debugging
+[22/32] Emitting module LayoutPilotCLI
+[23/35] Compiling LayoutPilotCLI EarlyRollbackChecks.swift
+[24/35] Compiling LayoutPilotCLI GestureChecks.swift
+[25/35] Compiling LayoutPilotCLI PartialLayoutChecks.swift
+[26/35] Compiling LayoutPilotCLI RecoveryChecks.swift
+[27/35] Compiling LayoutPilotCLI SnapshotChecks.swift
+[28/35] Compiling LayoutPilotCLI StatisticsChecks.swift
+[29/35] Compiling LayoutPilotCLI main.swift
+[30/35] Compiling LayoutPilotCLI ReplayProjectionChecks.swift
+[31/35] Compiling LayoutPilotCLI ReplayRoutingChecks.swift
+[32/35] Compiling LayoutPilotCLI SelfTest.swift
+[33/36] Wrapping AST for LayoutPilotCLI for debugging
+[34/36] Write Objects.LinkFileList
+[35/36] Linking layoutpilot-cli
+Build of product 'layoutpilot-cli' complete! (13.23s)
+exit=0

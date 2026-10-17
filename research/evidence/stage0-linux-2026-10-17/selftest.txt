@@ -1,0 +1,2 @@
+720/720 offline invariants passed; 0 failures. No runtime input claim.
+exit=0

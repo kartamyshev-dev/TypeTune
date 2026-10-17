@@ -1,0 +1,67 @@
+{
+  "kind": "Linux offline (Core + CLI + XCTest); not macOS, not native, not GUI",
+  "date": "2026-10-17",
+  "baseCommit": "321bfdd0756baed2b84945b6281907e41908234d",
+  "host": "Ubuntu 24.04.4 LTS x86_64",
+  "toolchain": {
+    "version": "Swift version 6.0.3 (swift-6.0.3-RELEASE)\nTarget: x86_64-unknown-linux-gnu",
+    "url": "https://download.swift.org/swift-6.0.3-release/ubuntu2404/swift-6.0.3-RELEASE/swift-6.0.3-RELEASE-ubuntu24.04.tar.gz",
+    "sha256": "33e923609f6d89ee455af0a017ae4941ce16878c4940882cbf6a1656de294e8b",
+    "signature": "Good signature, Swift 6.x Release Signing Key, RSA EF80A866B47A981F (keys from swift.org/keys/all-keys.asc)",
+    "installedAt": "/opt/swift-6.0.3 (outside repository)"
+  },
+  "results": {
+    "build": "exit 0",
+    "selftest": "720/720, exit 0",
+    "corpus": "train 3094/3094, holdout 1326/1326, exit 0",
+    "xctest": "14/14 XCTest, exit 0 (first execution of LayoutPilotCoreTests)",
+    "auditGates": "4/4, exit 0",
+    "reviewRegressions": "9/21 passed, exit 1: the 12 review defects fail before any fix, all 9 controls pass"
+  },
+  "sourceChanges": [
+    "Package.swift: LayoutPilot GUI product/target declared only under #if os(macOS)",
+    "GestureChecks.swift: explicit tuple element type; untyped literal exceeded the Linux type-checker budget; same values"
+  ],
+  "notRun": [
+    "GUI target LayoutPilot (AppKit) build",
+    "macOS selftest/corpus for this tree",
+    "native/NativeProbe"
+  ],
+  "sourceHashes": {
+    "Package.swift": "aaf88351166b690438cdec54789676e60d09986dc981a721de304124b786bbdb",
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "87348c6be6e5b958818a2269ca02f1103914dbcaba767de0e2057835cad647e5",
+    "Sources/LayoutPilot/InputDiagnostics.swift": "dcc38e6bed33c660ae6f1be82b7e0e3fefc2c000c77a1f7f62aae9318022251d",
+    "Sources/LayoutPilot/InputSources.swift": "4ecb1a4daf95b893462a2db787c7a7aec1eaf8b63eb2a7c253216d8f8a66a953",
+    "Sources/LayoutPilot/KeyboardService.swift": "ad98d4236be8839d2d7715eca3b814cffdbe086f9b4e8f80fd441b169f81007f",
+    "Sources/LayoutPilot/SettingsView.swift": "80346660515d73234fe54254e69ad64a4328824bef177f43151e8aa16da6d606",
+    "Sources/LayoutPilot/SingleInstance.swift": "bdc6a9e98a0c5f89b245ab7808c3d934b2e416fbe148e13d95326f271895ba8c",
+    "Sources/LayoutPilot/Store.swift": "04044e6a6427137a1838e3cd06c0a616b6ff38f4aab72e48b36e1dc628dc4ca1",
+    "Sources/LayoutPilot/SystemVocabulary.swift": "c49cc22cece2dbe044bf8000b362a53fce8c70d4b81ea454e18dfc5a89d846a4",
+    "Sources/LayoutPilot/TerminalBridge.swift": "382671a7834a7f5f8600f474f3ea84abe19ec7962a7b74867ecd013bc1eaf5a6",
+    "Sources/LayoutPilot/main.swift": "d62df1dbb527e7f763a194650dfb033c7d8eece46ecd8afa67631ee6fb1fe87a",
+    "Sources/LayoutPilotCLI/EarlyRollbackChecks.swift": "dbadb9f35ff6e758be1ae0c378fb4e0a4a9a3822a19f4cd6a0691919e9f64335",
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "28dfb6874f7f74b346ee4c38383e47275bed08d84fd7667a60d7248948ba0bb1",
+    "Sources/LayoutPilotCLI/PartialLayoutChecks.swift": "dd9a1920d9085ca82b54da8c961915f6dda1d6286f749a39685c929d03370c74",
+    "Sources/LayoutPilotCLI/RecoveryChecks.swift": "820fe1f1810ce0ed3ef40037e5b1f3353faca688a848d268f83e1c385de404b1",
+    "Sources/LayoutPilotCLI/ReplayProjectionChecks.swift": "270e0254ace0b6eb26f656bd6372af60e3b85754e4d022c957c94bc690e0059b",
+    "Sources/LayoutPilotCLI/ReplayRoutingChecks.swift": "fd5de85ed06924d047149ad51d2b95a67edec8a5b2e95e244f59259dab04d8b4",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "9dba48a60d5cd9bf092c12df43a65d691c8c95d79eb9b6104c231c3dbc291bca",
+    "Sources/LayoutPilotCLI/SnapshotChecks.swift": "9ae16a1048c17398e968738b5f1f356207685044c8a9dc6a4635bad2e5869389",
+    "Sources/LayoutPilotCLI/StatisticsChecks.swift": "9a74996f77f46f21ffbba8465588c0384c96577a731cb9ef76cdf99baa7d80a9",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9",
+    "Sources/LayoutPilotCore/EditorSnapshotFailure.swift": "8e1b3c59735b705870652fcad22723104b046404a8173b291949b6bb827a75e8",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "daa6a9a8c3f129040761931714f656fc6fb25ebbb473de233c8a84677d1deaf8",
+    "Sources/LayoutPilotCore/Engine.swift": "b2a3e92b2f327fc1881679c370974f3e9ab10376971cb0382c0ba53cd9d90005",
+    "Sources/LayoutPilotCore/InputRecovery.swift": "63c8e01a7d10cfe29e93d7862ec3fbcd89fb5ea27f30cccaa2a5382319932a18",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "d1bc2913ce060a96da5a00c2527b2333a9db2d47e153d4f93a795750d2bb9785",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "a0ac5cb3495416ffd4a4f7c9a688dea55d87e7eec6bbe20050c338281ff52e32",
+    "Sources/LayoutPilotCore/PartialLayoutDetector.swift": "9794244b628d1b3b4ad1becd233679ff6f8b1b9aff3293370120556ce622810b",
+    "Sources/LayoutPilotCore/PartialMutationRollbackPlan.swift": "78afc0d45caf6709e3ef143eab88ce552e983a2133f78aec63ccff3fd75405f5",
+    "Sources/LayoutPilotCore/Replay.swift": "b0e9de46d16849ef7f580d7f274a4011355daf28622f053bdfa4b8f5c136e3d4",
+    "Sources/LayoutPilotCore/ReplayInsertionProjection.swift": "c415e76de7ec9a16a5977a402ae5e5f1bb87415ffbe5053a32924646fb00a585",
+    "Sources/LayoutPilotCore/Resources/layoutpilot.zsh": "ed41b97161558fb33398fb023748712acb944618f706fe8b96ce0d03c80effe5",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+    "Sources/LayoutPilotCore/UsageStatistics.swift": "33ce6cc82593ac4241292ee591157debb6a958694f44569fe8fa3885a51afd0d"
+  }
+}
