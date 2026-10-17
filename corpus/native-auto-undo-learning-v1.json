@@ -1,0 +1,29 @@
+[
+  {
+    "id": "auto-undo",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "undo",
+    "boundary": true,
+    "expected": "ghbdtn ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "learned-after-auto-undo",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "ghbdtn ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "The immediately preceding auto-undo must learn ghbdtn; its next occurrence stays unchanged. Remove only this fixture rule after validation."
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "backup": "/Users/kartamyshev/git/caramba/research/private/stream-2026-10-18/previous-build8.app",
+  "previous": {
+    "Contents/Info.plist": "f0820b545b5a606337d03776fb823679c292e64aeefd681270809c29420454a5",
+    "Contents/MacOS/LayoutPilot": "77243f2dbab348bd49258f64932c1def167d3c3446702dac659cd8ec0c8d3589",
+    "Contents/Resources/AppIcon.icns": "31af2cea2f4d67b0aac3c28a77e0d71b4dbb7876f90066465d85782b598bf1a9",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Info.plist": "2a22a924be70b1734fc4286ffecc7f12a58a955e5fc76441b932648b4dcb271e",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/layoutpilot.zsh": "ed41b97161558fb33398fb023748712acb944618f706fe8b96ce0d03c80effe5",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeDirectory": "df7413c6601b72d01ca2213117a69cdd54c06ce274f643b2f6a681a49b2f3ccf",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeRequirements": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeResources": "73c252357b639fef15f06141b585ea2c593171981fbddf265f83eb92ccec56a9",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeSignature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Contents/_CodeSignature/CodeResources": "189b351f93396095564f9920cc2643b117da4b20701d0816b32ea11020783f5e"
+  },
+  "installed": {
+    "Contents/Info.plist": "4007a117bcafb64ebafcc865f4af2638c04a141a28d49bafaa9dd286469465a6",
+    "Contents/MacOS/LayoutPilot": "920564da6286b592964bd51db8391d0290602ec695a56f4ad8475d4e61ff4713",
+    "Contents/Resources/AppIcon.icns": "31af2cea2f4d67b0aac3c28a77e0d71b4dbb7876f90066465d85782b598bf1a9",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Info.plist": "2a22a924be70b1734fc4286ffecc7f12a58a955e5fc76441b932648b4dcb271e",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/layoutpilot.zsh": "ed41b97161558fb33398fb023748712acb944618f706fe8b96ce0d03c80effe5",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeDirectory": "df7413c6601b72d01ca2213117a69cdd54c06ce274f643b2f6a681a49b2f3ccf",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeRequirements": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeResources": "73c252357b639fef15f06141b585ea2c593171981fbddf265f83eb92ccec56a9",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeSignature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Contents/_CodeSignature/CodeResources": "189b351f93396095564f9920cc2643b117da4b20701d0816b32ea11020783f5e"
+  },
+  "sameFiles": true,
+  "signatureVerified": true,
+  "userClosedPrevious": true,
+  "pid": 12741,
+  "sameExistingPermissionsRefreshedViaSystemUI": true,
+  "sourceCommit": "4099b1225d55edc9903f9c543cb21fa5979348ef",
+  "fourHourRunStarted": false
+}

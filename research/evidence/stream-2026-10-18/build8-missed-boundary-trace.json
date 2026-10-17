@@ -1,0 +1,330 @@
+{
+  "source": "research/evidence/recovery-2026-10-18/build8-final-diagnostics.json",
+  "session": "BFE04E15-D318-4E99-91A4-9F668DCCBB40",
+  "records": [
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": true,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": true,
+        "sourceRussian": false
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 59,
+      "uptime": 37411.74222558334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "predictionEqualsTranslated": true,
+        "predictionSuffixVisible": true,
+        "previous": true,
+        "readOnlyBaseline": false,
+        "sameTarget": true,
+        "translatedAvailable": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 16.1654583280324,
+      "phase": "boundary",
+      "revision": 59,
+      "uptime": 37411.764859250005
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "apply-enqueued",
+      "revision": 59,
+      "uptime": 37411.76490091667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 0.20375000167405233,
+      "phase": "mutation-initial",
+      "revision": 59,
+      "uptime": 37411.765141208336
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 0.39287500112550333,
+      "phase": "mutation-gate",
+      "revision": 59,
+      "uptime": 37411.765330125
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 59,
+      "uptime": 37411.765331875
+    },
+    {
+      "checks": {
+        "deadlineExpired": false
+      },
+      "counts": {},
+      "phase": "replacement-stage",
+      "reason": "verified",
+      "revision": -1,
+      "uptime": 37411.80683175
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 42.13016666471958,
+      "phase": "mutation-result",
+      "revision": 59,
+      "uptime": 37411.80706766667
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "counts": {},
+      "phase": "apply-result",
+      "revision": 59,
+      "uptime": 37411.81151404167
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "counts": {},
+      "phase": "apply-commit",
+      "revision": 59,
+      "uptime": 37411.812819833336
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 59,
+      "uptime": 37411.817815375005
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 59,
+      "uptime": 37411.817877333335
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": false,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 60,
+      "uptime": 37411.86007616667
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": false,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 61,
+      "uptime": 37411.97612016667
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": false,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 62,
+      "uptime": 37412.10089041667
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": false,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 63,
+      "uptime": 37412.21961875
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": false,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 64,
+      "uptime": 37412.33411945833
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": true,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 65,
+      "uptime": 37412.45957091667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "snapshot-failed",
+      "reason": "deadlineExceeded",
+      "revision": 65,
+      "uptime": 37412.524040250006
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 65,
+      "uptime": 37412.5240465
+    },
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "service-state",
+      "reason": "waitingForContext",
+      "revision": 65,
+      "uptime": 37412.525515500005
+    },
+    {
+      "checks": {
+        "currentLayoutEqualsEventUnicode": false,
+        "currentLayoutTranslationAvailable": true,
+        "sourceEnglish": false,
+        "sourceRussian": true
+      },
+      "counts": {},
+      "phase": "key-translation",
+      "revision": 66,
+      "uptime": 37412.58688925
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "predictionEqualsTranslated": true,
+        "predictionSuffixVisible": true,
+        "previous": false,
+        "readOnlyBaseline": false,
+        "sameTarget": false,
+        "translatedAvailable": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 12.273125001229346,
+      "phase": "capture",
+      "revision": 66,
+      "uptime": 37412.60547354167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "predictionEqualsTranslated": true,
+        "predictionSuffixVisible": true,
+        "previous": false,
+        "readOnlyBaseline": true,
+        "sameTarget": false,
+        "translatedAvailable": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 5.849958331964444,
+      "phase": "capture",
+      "revision": 66,
+      "uptime": 37412.616050916666
+    },
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "service-state",
+      "reason": "ready",
+      "revision": 66,
+      "uptime": 37412.620339625006
+    }
+  ],
+  "interpretation": "Revision 65 whitespace capture exhausted the existing 60 ms budget. No mutation was dispatched; revision 66 obtained a new baseline. Duplicate keyUp capture is a code-level workload defect, not a proven exclusive cause of this timeout."
+}
