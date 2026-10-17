@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "ae3f565b39a319825b7cdae8dbebc4746940f0a5",
+  "status": "unfixed observed omissions; not passing regression tests",
+  "notice": "All four are train cases. Repeat on clean new TextEdit documents; intermittent timing must not be hidden by reruns.",
+  "cases": [
+    {
+      "id": "0da869a705d3-1",
+      "text": "implementation",
+      "source": "RussianWin",
+      "expected": "implementation ",
+      "split": "train",
+      "category": "wrong",
+      "provenance": "synthetic lexicon consistency; authored standard physical mapping; root=english:implementation",
+      "observed": "шьздуьутефешщт ",
+      "originalObserved": "implementation "
+    },
+    {
+      "id": "0e28ab735d43-4",
+      "text": "Rule",
+      "source": "RussianWin",
+      "expected": "Rule ",
+      "split": "train",
+      "category": "case_wrong_title",
+      "provenance": "synthetic lexicon consistency; authored standard physical mapping; root=english:rule",
+      "observed": "Кгду ",
+      "originalObserved": "Rule "
+    },
+    {
+      "id": "06660400b905-doublecaps",
+      "text": "CJkm",
+      "source": "RussianWin",
+      "expected": "Соль ",
+      "split": "train",
+      "category": "doublecaps",
+      "provenance": "synthetic lexicon consistency; authored standard physical mapping; root=russian:соль",
+      "observed": "СОль ",
+      "originalObserved": "Соль "
+    },
+    {
+      "id": "1857b2793618-1",
+      "text": "vbyenf",
+      "source": "ABC",
+      "expected": "минута ",
+      "split": "train",
+      "category": "wrong",
+      "provenance": "synthetic lexicon consistency; authored standard physical mapping; root=russian:минута",
+      "observed": "vbyenf ",
+      "originalObserved": "минута "
+    }
+  ]
+}

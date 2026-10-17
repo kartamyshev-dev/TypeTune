@@ -1,0 +1,142 @@
+[
+  {
+    "id": "stream-0",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-1",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-2",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-3",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-4",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-5",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-6",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-7",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-8",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-9",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-10",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-11",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-12",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-13",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-14",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-15",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-16",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-17",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  },
+  {
+    "id": "stream-18",
+    "text": "ghbdtn hello ghbdtn hello",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello "
+  },
+  {
+    "id": "stream-19",
+    "text": "hello ghbdtn hello ghbdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "hello привет hello привет "
+  }
+]

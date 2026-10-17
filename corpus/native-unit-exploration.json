@@ -1,0 +1,42 @@
+[
+  {
+    "id": "unit-explore-0",
+    "text": "MBps",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own synthetic F17 units exploration; no expected reference result before observation."
+  },
+  {
+    "id": "unit-explore-1",
+    "text": "MHz",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own synthetic F17 units exploration; no expected reference result before observation."
+  },
+  {
+    "id": "unit-explore-2",
+    "text": "GHZ",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own synthetic F17 units exploration; no expected reference result before observation."
+  },
+  {
+    "id": "unit-explore-3",
+    "text": "GBps",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own synthetic F17 units exploration; no expected reference result before observation."
+  },
+  {
+    "id": "unit-explore-4",
+    "text": "RJvgm.nth",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own synthetic F17 units exploration; no expected reference result before observation."
+  }
+]

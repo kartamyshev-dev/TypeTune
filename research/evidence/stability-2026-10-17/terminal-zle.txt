@@ -1,0 +1,110 @@
+test_auto (__main__.ZleTests.test_auto) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py:668: ResourceWarning: unclosed <socket.socket fd=3, family=1, type=1, proto=0>
+  with outcome.testPartExecutor(self):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/lp-zle-isj1fbf6'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_control_payload_rejected (__main__.ZleTests.test_control_payload_rejected) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/lp-zle-a0l2xr_x'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_correct_word (__main__.ZleTests.test_correct_word) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/lp-zle-vvo9zh0i'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_manual (__main__.ZleTests.test_manual) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/lp-zle-3ucd3pxl'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_timeout_preserves_input (__main__.ZleTests.test_timeout_preserves_input) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/lp-zle-25a1ggc5'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_undo (__main__.ZleTests.test_undo) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/lp-zle-1r9wuol8'>
+  _warnings.warn(warn_message, ResourceWarning)
+
+======================================================================
+ERROR: test_auto (__main__.ZleTests.test_auto)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 106, in test_auto
+    self.run_session(lambda s: (s.type(b'ghbdtn '), s.wait(lambda: 'applied' in s.events), s.result('привет ')))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 101, in run_session
+    session = Session(response)
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 26, in __init__
+    self.server.bind(str(path)); self.server.listen(1); self.server.settimeout(5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_control_payload_rejected (__main__.ZleTests.test_control_payload_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 127, in test_control_payload_rejected
+    self.run_session(lambda s: (s.type(b'ghbdtn '), s.wait(lambda: 'auto\tghbdtn' in s.events), time.sleep(0.1), s.result('ghbdtn ')), response='edit\tbad\x1bpayload\n')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 101, in run_session
+    session = Session(response)
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 26, in __init__
+    self.server.bind(str(path)); self.server.listen(1); self.server.settimeout(5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_correct_word (__main__.ZleTests.test_correct_word)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 109, in test_correct_word
+    self.run_session(lambda s: (s.type(b'hello '), s.wait(lambda: 'auto\thello' in s.events), s.result('hello ')))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 101, in run_session
+    session = Session(response)
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 26, in __init__
+    self.server.bind(str(path)); self.server.listen(1); self.server.settimeout(5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_manual (__main__.ZleTests.test_manual)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 115, in test_manual
+    self.run_session(run)
+    ~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 101, in run_session
+    session = Session(response)
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 26, in __init__
+    self.server.bind(str(path)); self.server.listen(1); self.server.settimeout(5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_timeout_preserves_input (__main__.ZleTests.test_timeout_preserves_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 124, in test_timeout_preserves_input
+    self.run_session(lambda s: (s.type(b'ghbdtn '), s.wait(lambda: 'auto\tghbdtn' in s.events), time.sleep(0.35), s.result('ghbdtn ')), response=None)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 101, in run_session
+    session = Session(response)
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 26, in __init__
+    self.server.bind(str(path)); self.server.listen(1); self.server.settimeout(5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_undo (__main__.ZleTests.test_undo)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 121, in test_undo
+    self.run_session(run)
+    ~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 101, in run_session
+    session = Session(response)
+  File "/Users/kartamyshev/git/caramba/scripts/test_terminal_zle.py", line 26, in __init__
+    self.server.bind(str(path)); self.server.listen(1); self.server.settimeout(5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.012s
+
+FAILED (errors=6)

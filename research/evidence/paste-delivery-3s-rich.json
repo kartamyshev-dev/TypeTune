@@ -1,0 +1,128 @@
+[
+  {
+    "clear": {
+      "after": {
+        "length": 0,
+        "location": 0,
+        "text": ""
+      },
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "clear"
+    },
+    "paste": {
+      "afterLength": 0,
+      "afterLocation": 20,
+      "afterText": "первая\nвторая\tстрока",
+      "axErrors": {
+        "AXURL:-25212": 24
+      },
+      "beforeText": "",
+      "clipboardOriginalLogged": false,
+      "clipboardOriginalTypesAndDataVerified": true,
+      "clipboardRestored": true,
+      "clipboardStillOwned": true,
+      "clipboardUnchangedByPaste": true,
+      "eventSource": "private",
+      "expectation": "plain",
+      "expected": "первая\nвторая\tстрока",
+      "finalModifiersNeutral": true,
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "formattedControl": false,
+      "guardChecks": 12,
+      "handlerIdentityProven": false,
+      "holdPastTimeout": false,
+      "initialModifiersNeutral": true,
+      "nativeMatchStyle": false,
+      "passed": true,
+      "postedControlPayload": false,
+      "postedEvents": 6,
+      "postedReturn": false,
+      "settleMilliseconds": 3000,
+      "targetGuardsPassed": true
+    }
+  },
+  {
+    "clear": {
+      "after": {
+        "length": 0,
+        "location": 0,
+        "text": "\n"
+      },
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "clear"
+    },
+    "paste": {
+      "afterLength": 0,
+      "afterLocation": 20,
+      "afterText": "первая\nвторая\tстрока",
+      "axErrors": {
+        "AXURL:-25212": 24
+      },
+      "beforeText": "\n",
+      "clipboardOriginalLogged": false,
+      "clipboardOriginalTypesAndDataVerified": true,
+      "clipboardRestored": true,
+      "clipboardStillOwned": true,
+      "clipboardUnchangedByPaste": true,
+      "eventSource": "private",
+      "expectation": "plain",
+      "expected": "первая\nвторая\tстрока",
+      "finalModifiersNeutral": true,
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "formattedControl": false,
+      "guardChecks": 12,
+      "handlerIdentityProven": false,
+      "holdPastTimeout": false,
+      "initialModifiersNeutral": true,
+      "nativeMatchStyle": false,
+      "passed": true,
+      "postedControlPayload": false,
+      "postedEvents": 6,
+      "postedReturn": false,
+      "settleMilliseconds": 3000,
+      "targetGuardsPassed": true
+    }
+  },
+  {
+    "clear": {
+      "after": {
+        "length": 0,
+        "location": 0,
+        "text": "\n"
+      },
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "clear"
+    },
+    "paste": {
+      "afterLength": 0,
+      "afterLocation": 0,
+      "afterText": "\n",
+      "axErrors": {
+        "AXURL:-25212": 24
+      },
+      "beforeText": "\n",
+      "clipboardOriginalLogged": false,
+      "clipboardOriginalTypesAndDataVerified": true,
+      "clipboardRestored": true,
+      "clipboardStillOwned": true,
+      "clipboardUnchangedByPaste": true,
+      "eventSource": "private",
+      "expectation": "plain",
+      "expected": "первая\nвторая\tстрока",
+      "finalModifiersNeutral": true,
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "formattedControl": false,
+      "guardChecks": 12,
+      "handlerIdentityProven": false,
+      "holdPastTimeout": false,
+      "initialModifiersNeutral": true,
+      "nativeMatchStyle": false,
+      "passed": false,
+      "postedControlPayload": false,
+      "postedEvents": 6,
+      "postedReturn": false,
+      "settleMilliseconds": 3000,
+      "targetGuardsPassed": true
+    }
+  }
+]

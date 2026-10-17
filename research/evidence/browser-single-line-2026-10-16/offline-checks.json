@@ -1,0 +1,18 @@
+[
+  {
+    "check": "audit-gates",
+    "exitCode": 0
+  },
+  {
+    "check": "identity",
+    "exitCode": 0
+  },
+  {
+    "check": "integrity",
+    "exitCode": 0
+  },
+  {
+    "check": "corpus",
+    "exitCode": 0
+  }
+]

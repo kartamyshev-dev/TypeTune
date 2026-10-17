@@ -1,0 +1,15 @@
+{"cases":12,"failures":[],"notice":"Production replace entry point; current-check sentinel always denies all AX work. No live Codex reproduction or native TextEdit acceptance."}
+Building for debugging...
+[Planning deferred tasks]
+[2 / 7]
+[3 / 8] LayoutPilotCore
+[14 / 19] LayoutPilotCore
+[18 / 23] LayoutPilotCore
+[28 / 34] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[32 / 34] LayoutPilotCore
+[32 / 34] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[34 / 36] layoutpilot-cli-product
+Build complete! (3,18 с)

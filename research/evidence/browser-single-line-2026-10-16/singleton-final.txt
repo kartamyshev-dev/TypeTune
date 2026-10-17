@@ -1,0 +1,12 @@
+{
+  "checks" : {
+    "first_acquires" : true,
+    "released_lock_reacquired_by_process" : true,
+    "second_process_refused" : true,
+    "symlink_refused_original_unchanged" : true
+  },
+  "nativeAcceptance" : false,
+  "nativeEventsPosted" : false,
+  "passed" : true,
+  "standardDefaultsUsed" : false
+}

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "scripts/verify_native_suite.py",
+    "research/evidence/stability-2026-10-17/candidate-build6-preselected-abc-regressions-01.json",
+    "--fixtures",
+    "corpus/native-stability-regressions-v1.json"
+  ],
+  "exitCode": 1,
+  "stdout": "{\"cases\": 0, \"requestedCases\": 3, \"rowsFromStoppedCheckpoint\": true, \"failures\": [\"helper_exit_not_verified\", \"Process completion not verified\", \"helper_exit_not_verified\", \"Stopped/incomplete run\", \"Completion count not verified\", \"Missing or duplicate cases\", \"stability-first-word-after-focus: first_word_timing_not_verified\", \"stability-first-word-after-focus: text\", \"stability-first-word-after-focus: inputSource\", \"stability-first-word-after-focus: selection\", \"stability-immediate-double-shift: gesture_delay_not_verified\", \"stability-immediate-double-shift: text\", \"stability-immediate-double-shift: inputSource\", \"stability-immediate-double-shift: selection\", \"stability-continuous-stream: text\", \"stability-continuous-stream: inputSource\", \"stability-continuous-stream: selection\"], \"fixtureIdentityVerified\": true, \"modifierCleanupVerified\": true, \"notice\": \"Only supplied native scenarios; stopped/incomplete runs cannot pass.\"}\n",
+  "stderr": "",
+  "experimentalPrecondition": "ABC selected through LayoutPilot UI before helper launch; original RussianWin restored afterwards",
+  "interpretation": "Stopped on target_not_frontmost; no completed case and no native PASS. App trace contains verified mutation only."
+}

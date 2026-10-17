@@ -1,0 +1,14 @@
+{
+  "passed": 8,
+  "checks": [
+    "missing command rejected",
+    "unknown command rejected",
+    "convert result checked",
+    "invalid split rejected",
+    "unknown replay event rejected",
+    "empty evaluation rejected",
+    "evaluation failure reported and null original excluded",
+    "duplicate fixture id rejected"
+  ],
+  "offlineSelftest": "140/140 offline invariants passed; 0 failures. No runtime input claim."
+}

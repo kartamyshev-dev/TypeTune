@@ -1,0 +1,119 @@
+{
+  "targetSha256": "ba8e8277258feae9c0b6e22dace832f97cdad16fef3a2761c87d568b27193e3e",
+  "traceEnabledForThisProbe": true,
+  "testSelectionDelayMilliseconds": 30,
+  "phaseCounts": {
+    "capture": 39,
+    "snapshot-unavailable-or-stale": 1,
+    "ax-read": 4,
+    "apply-enqueued": 12,
+    "mutation-initial": 12,
+    "mutation-gate": 12,
+    "mutation-result": 12,
+    "apply-result": 12,
+    "partial-rollback-result": 5,
+    "replay-forward": 22,
+    "replay-drained": 6,
+    "replay-readback": 6,
+    "partial-replay-catchup": 5,
+    "apply-commit": 6,
+    "source-selection": 6,
+    "gesture-modifier": 18
+  },
+  "partialRuntimeStages": [
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 6,
+      "uptime": 49321.387624125004
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 7,
+      "uptime": 49321.464295125006
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 12,
+      "uptime": 49323.35199995834
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 13,
+      "uptime": 49323.414005833336
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 13,
+      "uptime": 49323.461099458335
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": false
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 14,
+      "uptime": 49323.52550179167
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 19,
+      "uptime": 49325.55684733333
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 20,
+      "uptime": 49325.629227125006
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 32,
+      "uptime": 49329.4569915
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 33,
+      "uptime": 49329.52692279167
+    }
+  ],
+  "testKeysRestored": true,
+  "earlyOptionRestoredOffThroughUI": true,
+  "nativeEarlyNormalModeRegressionPassed": false,
+  "notice": "Trace is timing/boolean-only and includes 6 delayed cases plus 2 anchor cases. Passing trace-on cases do not erase prior first-ghb failure."
+}

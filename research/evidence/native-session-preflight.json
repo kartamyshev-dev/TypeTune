@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "ae3f565b39a319825b7cdae8dbebc4746940f0a5",
+  "binarySha256": "102ad5b5e8326662751a31947a51183481a38e366b1c475db67967433e139791",
+  "diagnosticDelayMilliseconds": 0,
+  "settings": {
+    "excludedWords": [],
+    "singleShift": true,
+    "rules": [],
+    "sound": false,
+    "optionCorrection": false,
+    "shiftChordPause": false,
+    "plainPaste": true,
+    "learnedWords": [],
+    "automatic": true,
+    "yo": true,
+    "typos": true,
+    "excludedApps": []
+  },
+  "autostartUI": "registered on then unregistered off; login itself untested",
+  "wordExclusionPriority": "lpfixture remained unchanged despite temporary literal rule; both removed"
+}

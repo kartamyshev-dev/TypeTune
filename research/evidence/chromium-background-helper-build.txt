@@ -1,0 +1,30 @@
+Building for debugging...
+[Planning deferred tasks]
+[3 / 9] LayoutPilotCore
+[11 / 17] LayoutPilotCore
+[15 / 20] LayoutPilotCore
+[15 / 20] layoutpilot-cli-product
+[21 / 24] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[22 / 24] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[24 / 26] layoutpilot-cli-product
+Build complete! (1,79 с)
+Tools/CodexFixtureProbe.swift:63:56: warning: call to main actor-isolated local function 'authenticated()' in a synchronous nonisolated context [#ActorIsolatedCall]
+28 |    let application=AXUIElementCreateApplication(app.processIdentifier)
+29 |    guard let field=element(attr(application,kAXFocusedUIElementAttribute)), let window=element(attr(field,kAXWindowAttribute)) else {throw Failure(reason:"no_focused_field")}
+30 |    func authenticated() throws {
+   |         |- note: calls to local function 'authenticated()' from outside of its actor context are implicitly asynchronous
+   |         `- note: main actor isolation inferred from enclosing context
+31 |     try require(!IsSecureEventInputEnabled() && AXIsProcessTrusted() && CGPreflightPostEventAccess(),"permissions_changed")
+32 |     try require(NSWorkspace.shared.frontmostApplication?.processIdentifier==app.processIdentifier,"focus_changed")
+   :
+61 |      DispatchQueue(label:"fixture.production-accessibility").async {
+62 |       let result=AccessibilityEditor.replace(actual,range:NSRange(location:0,length:6),replacement:"привет",
+63 |         testKeyboardInsertion:writer,isCurrent:{ (try? authenticated()) != nil })
+   |                                                        `- warning: call to main actor-isolated local function 'authenticated()' in a synchronous nonisolated context [#ActorIsolatedCall]
+64 |       switch result {case .verified:resultName="verified";case .notApplied:resultName="notApplied";case .uncertain:resultName="uncertain"}
+65 |       finished.signal()
+
+[#ActorIsolatedCall]: <https://docs.swift.org/compiler/documentation/diagnostics/actor-isolated-call>

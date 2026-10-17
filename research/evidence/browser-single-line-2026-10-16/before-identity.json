@@ -1,0 +1,11 @@
+{
+  "baseCommit": "ae319d6d2e9c1f9fe8292225215435c543656dcf",
+  "beforeExecutableSha256": "38a0d4fd41e5aa96842dcbb097402a6f593423beecb44fe712984a33e37a41a0",
+  "helperSha256": "e91f043f8ee43e9345f9dd55ff58b4d395b7390e969784ec37d52c876e6e7a98",
+  "helperSourceSha256": "6ff3a569b74006d6a4c810ec48f8b28fab93f266902a8d19a4326e7e6a5040cb",
+  "fixtureSha256": "2c50a5eeeeba3dc2d5c8a238063547c29eb10ff26d144a75c3a43e461149491b",
+  "launch": "LaunchServices open -n -W; open status is not the helper exit code; verdicts use helper output and field readback",
+  "scope": "Isolated localhost Chrome fields only; not a whole-session acceptance",
+  "helperScope": "helperSha256 binds single-line before receipts only; earlier textarea observations used the pre-extension helper",
+  "earlierTextAreaHelperSha256": "baa04e3cf5cd3e31ad3acb2876ec1a1672b04b182628f6eff832c33208ba599d"
+}

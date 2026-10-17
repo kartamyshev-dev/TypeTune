@@ -1,0 +1,64 @@
+[
+  {
+    "clear": {
+      "after": {
+        "length": 0,
+        "location": 0,
+        "text": "\n"
+      },
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "clear"
+    },
+    "paste": {
+      "afterLength": 0,
+      "afterLocation": 0,
+      "afterText": "\n",
+      "allPassed": false,
+      "axErrors": {
+        "AXURL:-25212": 28
+      },
+      "beforeText": "\n",
+      "clipboardOriginalLogged": false,
+      "clipboardOriginalTypesAndDataVerified": true,
+      "clipboardRestored": true,
+      "clipboardSettleMilliseconds": 0,
+      "clipboardStillOwned": true,
+      "clipboardUnchangedByPaste": true,
+      "eventSource": "hid",
+      "expectation": "plain",
+      "expected": "первая\nвторая\tстрока",
+      "finalModifiersNeutral": true,
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "formattedControl": false,
+      "guardChecks": 14,
+      "handlerIdentityProven": false,
+      "holdPastTimeout": false,
+      "initialModifiersNeutral": true,
+      "nativeMatchStyle": true,
+      "passed": false,
+      "postedControlPayload": false,
+      "postedEvents": 8,
+      "postedReturn": false,
+      "repeatRequested": 1,
+      "settleMilliseconds": 800,
+      "targetGuardsPassed": true,
+      "totalPostedEvents": 8,
+      "trials": [
+        {
+          "afterLength": 0,
+          "afterLocation": 0,
+          "afterText": "\n",
+          "beforeText": "\n",
+          "clipboardUnchangedByPaste": true,
+          "finalModifiersNeutral": true,
+          "guardChecks": 14,
+          "passed": false,
+          "postedEvents": 8,
+          "settleMilliseconds": 800,
+          "targetGuardsPassed": true,
+          "trial": 1
+        }
+      ]
+    }
+  }
+]

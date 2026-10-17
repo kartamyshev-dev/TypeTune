@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "kind": "source-and-existing-evidence-audit",
+  "scope": "No live UI, processes, REA session, personal database, or native app acceptance",
+  "head": "0f80e5996c1a715ac69039d4a5dd5ba0891d8044",
+  "files": {
+    "Sources/LayoutPilotCore/Engine.swift": "d439ccd72e84a93d21eae516cd486a882ed63028a06e43f70b0dbcd9b2ee2ab6",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "685087bab89e27022c6782ab4a6b1714b0651ef1123034a6a73a902dd250391c",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6",
+    "Sources/LayoutPilot/Store.swift": "98222c8a3beed570ec350750b3ae9742baff0522f1c3ff9359cccd07e62e6f14",
+    "Sources/LayoutPilot/KeyboardService.swift": "f7a38a0924442c3c0dc4cd93518425c9a5900f3d6f08205cea8a30dd6cd65386",
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "5262aeca4c1a774b0ac108b69edc9727b93e002f66bddbbb38622949c369073a",
+    "Sources/LayoutPilot/SettingsView.swift": "2593358b259776707fc24e2d240a3c62aa20632f21bea9ad4af1bbcbe5fcf656",
+    "Sources/LayoutPilot/main.swift": "e32614099a0d43e25b09852f470195135a2470d3635eb6842dffff4114676a58",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "a2b3617f5fdfdcd1dfb5eb6f4135473f09bb94e6bbb8481e8cf76970e6dea7f3",
+    "docs/FEATURES.md": "e7666df7c05a5beb2db029f99456110744b0f621d123ca19685a062debb1d9fb",
+    "docs/SPECIFICATION.md": "4408c977cc21874bc17badc0a9ddcde47a09255b2fb518d46227f656c1fce1b3",
+    "research/evidence/ui-observations.json": "e827e1d71552e119256b9ba7e88173092c93b68e7fe01a7be45ed70a4589620b"
+  },
+  "findingDocument": "docs/COVERAGE_GAPS.md",
+  "runtimeChecksRun": false,
+  "guiBinaryChanged": false
+}

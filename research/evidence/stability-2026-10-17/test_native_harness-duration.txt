@@ -1,0 +1,11 @@
+test_corpus_selected_app_reports_raw_as_quality_failure (__main__.NativeHarnessTests.test_corpus_selected_app_reports_raw_as_quality_failure) ... ok
+test_long_session_stops_after_first_failed_helper (__main__.NativeHarnessTests.test_long_session_stops_after_first_failed_helper) ... ok
+test_package_verifier_requires_matching_bundle_and_quality (__main__.NativeHarnessTests.test_package_verifier_requires_matching_bundle_and_quality) ... ok
+test_session_forwards_exact_app_and_stream_expectations (__main__.NativeHarnessTests.test_session_forwards_exact_app_and_stream_expectations) ... ok
+test_session_rejects_invalid_duration_before_process_or_file_access (__main__.NativeHarnessTests.test_session_rejects_invalid_duration_before_process_or_file_access) ... ok
+test_verifier_uses_app_and_exits_nonzero_for_quality_failure (__main__.NativeHarnessTests.test_verifier_uses_app_and_exits_nonzero_for_quality_failure) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.054s
+
+OK

@@ -1,0 +1,77 @@
+{
+  "sourceCommit": "1b790639b5745a531e341426bb1cb127ddea370b",
+  "sourceDirtyBeforeBuild": false,
+  "previousOwnAppPreservedPrivately": true,
+  "sources": {
+    "Package.swift": "60549aaf7885c414fdeeb67a22ed588fbe01d691a9788f05c63629d481327ae4",
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "b265cb375701059a512bd992b97caa27a5258f307ba9fd7e27376ce0406c4b37",
+    "Sources/LayoutPilot/InputDiagnostics.swift": "a3f8b5ae347e7bb7cff931f9b61b73f1dc9c7245de5c644599f6aed8cbdc4f00",
+    "Sources/LayoutPilot/InputSources.swift": "2229c9c6b75a386d6e2b6115902e0d267befb8c795e35449b4c5a7a6aba3e6eb",
+    "Sources/LayoutPilot/KeyboardService.swift": "510418c28bf784322baedeb44d94057272dd6f2a6603eb48814eb115263799d1",
+    "Sources/LayoutPilot/SettingsView.swift": "2e963d7151f6823bd1c0b0596c741e74fca4f22092b4834c89a00050774efe05",
+    "Sources/LayoutPilot/Store.swift": "9999f3b35db295cec51063d4affbd06db59885265a42946529cdb494c81f7244",
+    "Sources/LayoutPilot/SystemVocabulary.swift": "d4d28f983c55dc85c6999f9cb5a7293c4e163f9e2c6f5435cc15b8ab41a2566f",
+    "Sources/LayoutPilot/main.swift": "e32614099a0d43e25b09852f470195135a2470d3635eb6842dffff4114676a58",
+    "Sources/LayoutPilotCLI/EarlyRollbackChecks.swift": "dbadb9f35ff6e758be1ae0c378fb4e0a4a9a3822a19f4cd6a0691919e9f64335",
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "7e03708af658da86d77f1307dcdd128107e3d5b312a9c0f781819fb81f534679",
+    "Sources/LayoutPilotCLI/PartialLayoutChecks.swift": "dd9a1920d9085ca82b54da8c961915f6dda1d6286f749a39685c929d03370c74",
+    "Sources/LayoutPilotCLI/ReplayProjectionChecks.swift": "270e0254ace0b6eb26f656bd6372af60e3b85754e4d022c957c94bc690e0059b",
+    "Sources/LayoutPilotCLI/ReplayRoutingChecks.swift": "fd5de85ed06924d047149ad51d2b95a67edec8a5b2e95e244f59259dab04d8b4",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "c1be68c2b614a528e5347246fd57b021b0e602d0e34f68ed7263567d8a576637",
+    "Sources/LayoutPilotCLI/StatisticsChecks.swift": "9a74996f77f46f21ffbba8465588c0384c96577a731cb9ef76cdf99baa7d80a9",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "7a578ff0c7744f52569c524c9dd36d140f64504231bd295083b718ece1f9d32f",
+    "Sources/LayoutPilotCore/Engine.swift": "9b0c04bad9d1df8ac2ead76151e57b1c22b419f776d145da2abfb1e7d618e274",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "d1bc2913ce060a96da5a00c2527b2333a9db2d47e153d4f93a795750d2bb9785",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "a0ac5cb3495416ffd4a4f7c9a688dea55d87e7eec6bbe20050c338281ff52e32",
+    "Sources/LayoutPilotCore/PartialLayoutDetector.swift": "9794244b628d1b3b4ad1becd233679ff6f8b1b9aff3293370120556ce622810b",
+    "Sources/LayoutPilotCore/PartialMutationRollbackPlan.swift": "78afc0d45caf6709e3ef143eab88ce552e983a2133f78aec63ccff3fd75405f5",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6",
+    "Sources/LayoutPilotCore/ReplayInsertionProjection.swift": "c415e76de7ec9a16a5977a402ae5e5f1bb87415ffbe5053a32924646fb00a585",
+    "Sources/LayoutPilotCore/UsageStatistics.swift": "33ce6cc82593ac4241292ee591157debb6a958694f44569fe8fa3885a51afd0d",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+  },
+  "compiledInputsMatchCommit": true,
+  "binarySha256": "ba8e8277258feae9c0b6e22dace832f97cdad16fef3a2761c87d568b27193e3e",
+  "bundleManifest": [
+    [
+      "Contents/Info.plist",
+      "2c84d2b1a7223bd631660917bd4d9b8b31b20e002fdab678a3f174988758f3ee"
+    ],
+    [
+      "Contents/MacOS/LayoutPilot",
+      "ba8e8277258feae9c0b6e22dace832f97cdad16fef3a2761c87d568b27193e3e"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Info.plist",
+      "2a22a924be70b1734fc4286ffecc7f12a58a955e5fc76441b932648b4dcb271e"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/lexicon.json",
+      "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeDirectory",
+      "a34dd329da22f58183c6b504ff2d975be5270ca7e6610dfa2841cb0a9667ec5d"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeRequirements",
+      "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeResources",
+      "a75991e7e9cc0d66949a0ab7c987d8952388ef76ee1a0afeb5740e0df848ea5a"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeSignature",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    ],
+    [
+      "Contents/_CodeSignature/CodeResources",
+      "e3b0cdd704dcf2693f8a4c153ca172285b850f71951ca4f763039ee6efb2df4c"
+    ]
+  ],
+  "bundleSha256": "07d4b96449b1396465ba1236bb12eff5fb8dc72d359348f4b6ff081802fa81d8",
+  "nativeAcceptance": false
+}

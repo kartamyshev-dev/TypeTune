@@ -1,0 +1,15 @@
+{
+  "binarySha256": "9f4af13e1168f612ac32234cc4852c937ef67848f8377facd710564f10c43d9a",
+  "firstRun": "Stopped at case 6 when target lost foreground; five completed rows retained separately. Not a completed performance result.",
+  "secondRun": "12 empty results, integrity failure: app was retaining new events in recovery from previous interrupted run. Not text-loss evidence and not successful input acceptance.",
+  "observedRecoveryBufferEvents": 2564,
+  "recoveryDocument": "F8713213-6961-4702-90F6-B451B27FEBF5.txt",
+  "nextChange": "Do not retain new typing while recovery is pending. Saved historical buffer remains until explicit recovery/discard.",
+  "privateProfileSha256": {
+    "load-after-route-ui.sample.txt": "716fabc22f0e1499f6b5277b1169ecaa90466f15653d675d76ae8c8484a65e1f",
+    "load-after-route-cache.sample.txt": "3e7accb00b17ed8b7492bee9db22952a90be9bffa252ce99e2e8e68f7e2436d1",
+    "load-after-route-prediction.sample.txt": "6d99884b69aa5a2835737f9263850b36e858266dd6f9be52f5c65f8f03dbde42",
+    "load-after-route-translated.sample.txt": "bf2d26f701e663ecd6604b48e52bd50428ecf71be77a1c6fbddd6823c8d58272",
+    "load-before-route-cache.sample.txt": "154bd23d204323b811f9915910960d4df0a236563694e33badb0d2956d68659a"
+  }
+}

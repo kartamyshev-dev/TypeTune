@@ -1,0 +1,1 @@
+{"after":{"length":0,"location":8,"text":"привет  "},"afterFirstSpace":{"length":0,"location":7,"text":"привет "},"before":{"length":0,"location":0,"text":"\n"},"expected":"привет  ","field":"LP-CODEX-001 rich","fixtureURL":"http:\/\/127.0.0.1:18763\/?fixture=LP-CODEX-001","mode":"type-wrong","passed":true}

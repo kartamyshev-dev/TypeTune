@@ -1,0 +1,522 @@
+[
+  {
+    "id": "repeat-00-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-00-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-00-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-00-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-01-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-01-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-01-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-01-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-02-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-02-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-02-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-02-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-03-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-03-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-03-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-03-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-04-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-04-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-04-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-04-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-05-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-05-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-05-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-05-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-06-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-06-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-06-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-06-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-07-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-07-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-07-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-07-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-08-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-08-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-08-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-08-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-09-0da869a705d3-1",
+    "text": "implementation",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "implementation ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 15,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0da869a705d3-1; no holdout tuning"
+  },
+  {
+    "id": "repeat-09-0e28ab735d43-4",
+    "text": "Rule",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Rule ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 0e28ab735d43-4; no holdout tuning"
+  },
+  {
+    "id": "repeat-09-06660400b905-doublecaps",
+    "text": "CJkm",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "Соль ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 06660400b905-doublecaps; no holdout tuning"
+  },
+  {
+    "id": "repeat-09-1857b2793618-1",
+    "text": "vbyenf",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "минута ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Repeated historical train omission 1857b2793618-1; no holdout tuning"
+  }
+]

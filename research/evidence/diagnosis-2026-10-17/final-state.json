@@ -1,0 +1,16 @@
+{
+  "userChatGPTResult": "готово сейчас работает",
+  "changeSinceFailedUserRetest": "Same binary restarted with opt-in timing/boolean diagnostics; no permissions or source changes",
+  "traceRestored": "test.traceInput removed; normal app restarted",
+  "earlyCorrection": false,
+  "automatic": true,
+  "runningProcess": "21388 /Applications/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+  "guiSha256": "efd117a012e6bc9c46d58a469c2f718854d723a36e8cee9086e05bf96550995e",
+  "finalUI": "Работает; Готово. Double Shift — исправить; ⌘⌥Z — отменить",
+  "chromeAddressBar": "Observed ghbdtn in Chrome omnibox; intentionally unsupported",
+  "chatGPTPreRestartRootCause": "NOT_ESTABLISHED; no failing trace from that state",
+  "chatGPTUIAgentActions": "None: CUA safety refusal respected",
+  "localFixtureTabClosed": true,
+  "localFixtureServerStopped": true,
+  "traceDoesNotContainInputText": true
+}

@@ -1,0 +1,14 @@
+{
+  "source": "Sources/LayoutPilot/main.swift",
+  "sha256": "3faff58350204053aeaba60c74acf22991347d7ba5b0642ce4650ffaedcbca84",
+  "gui_build": {
+    "command": "swift build --product LayoutPilot",
+    "exit_code": 0
+  },
+  "diff_check": {
+    "command": "git diff --check",
+    "exit_code": 0
+  },
+  "native_menu": "NOT_RUN",
+  "installed_app_updated": false
+}

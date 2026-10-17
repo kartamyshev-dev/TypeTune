@@ -1,0 +1,1 @@
+{"cases": 9, "requestedCases": 9, "rowsFromStoppedCheckpoint": false, "failures": ["early-explore-0: text", "early-explore-0: inputSource"], "modifierCleanupVerified": true, "notice": "Only supplied native scenarios; stopped/incomplete runs cannot pass."}

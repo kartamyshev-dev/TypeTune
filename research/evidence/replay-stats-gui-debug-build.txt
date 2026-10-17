@@ -1,0 +1,36 @@
+Building for debugging...
+[Planning deferred tasks]
+[3 / 11] LayoutPilotCore
+[13 / 21] LayoutPilotCore
+[17 / 22] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[20 / 74]
+[27 / 74]
+[29 / 74]
+[34 / 74]
+[35 / 74]
+[36 / 74]
+[38 / 74]
+[39 / 74]
+[41 / 74]
+[50 / 74]
+[51 / 74]
+[55 / 74]
+[60 / 74]
+[61 / 74]
+[62 / 74]
+[71 / 74] LayoutPilot-product
+[72 / 74] LayoutPilot-product
+error: SwiftCompile normal arm64 /Users/kartamyshev/git/caramba/Sources/LayoutPilot/Store.swift failed with a nonzero exit code. Command line:     cd /Users/kartamyshev/git
+    builtin-SwiftPerFileCompile Store.swift
+/Users/kartamyshev/git/caramba/Sources/LayoutPilot/Store.swift:54:25: error: 'self' used in property access 'statistics' before all stored properties are initialized
+ 52 |             }
+ 53 |         } else { statistics = UsageStatistics(legacyCorrected: legacy) }
+ 54 |         corrected = Int(statistics.correctedTotal)
+    |                         |- error: 'self' used in property access 'statistics' before all stored properties are initialized
+    |                         `- note: 'self.corrected' not initialized
+ 55 |         if statisticsStorageAvailable { persistStatistics() }
+ 56 |         else { lastStatus = "Сохранённая статистика недоступна. Прежний итог исправлений сохранён." }
+Failed frontend command:
+/Library/Developer/CommandLineTools/usr/bin/swift-frontend -frontend -c /Users/kartamyshev/git/caramba/Sources/LayoutPilot/AccessibilityEditor.swift /Users/kartamyshev/git/caramba/Sources/LayoutPilot/InputDiagnostics.swift /Users/kartamyshev/git/caramba/Sources/LayoutPilot/InputSources.swift /Users/kartamyshev/git/caramba/Sources/LayoutPilot/KeyboardService.swift /Users/kartamyshev/git/caramba/Sources/LayoutPilot/SettingsView.swift -primary-file /Users/kartamyshev/git/caramba/Sources/LayoutPilot/Store.swift /Users/kartamyshev/git/caramba/Sources/LayoutPilot/SystemVocabulary.swift /Users/kartamyshev/git/caramba/Sources/LayoutPilot/main.swift -emit-dependencies-path /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/Store.d -emit-const-values-path /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/Store.swiftconstvalues -emit-reference-dependencies-path /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/Store.swiftdeps -serialize-diagnostics-path /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/Store.dia -target arm64-apple-macos14.0 -disable-cross-import-overlay-search -load-resolved-plugin /Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/libObservationMacros.dylib\#\#ObservationMacros -load-resolved-plugin /Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#\#SwiftMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/LayoutPilot-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk -I /Users/kartamyshev/git/caramba/.build/out/Products/Debug -Isystem /Library/Developer/CommandLineTools/Developer/usr/lib -F /Users/kartamyshev/git/caramba/.build/out/Products/Debug/PackageFrameworks -F /Users/kartamyshev/git/caramba/.build/out/Products/Debug -F /Library/Developer/CommandLineTools/Library/Developer/Frameworks -F /Library/Developer/CommandLineTools/Developer/Library/Frameworks -module-cache-path /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -swift-version 5 -Onone -D SWIFT_PACKAGE -D DEBUG -D Xcode -serialize-debugging-options -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/kartamyshev/git/caramba/.build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/kartamyshev/git -enable-anonymous-context-mangled-names -file-compilation-dir /Users/kartamyshev/git -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -ivfsstatcache -Xcc /Users/kartamyshev/git/caramba/.build/out/SDKStatCaches.noindex/macosx27.0-26A425-a0facfad118c1a7a18f0aad9463f6549ffd68ff603bdaacc80b00cb8898de72d.sdkstatcache -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/Users/kartamyshev/git/caramba/.build/out/Products/Debug/include -Xcc -I/Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/DerivedSources-normal/arm64 -Xcc -I/Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/DerivedSources/arm64 -Xcc -I/Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name LayoutPilot -package-name caramba -const-gather-protocols-file /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/LayoutPilot_const_extract_protocols.json -disable-clang-spi -clang-target arm64-apple-macos27.0 -target-sdk-version 27.0 -target-sdk-name macosx27.0 -in-process-plugin-server-path /Library/Developer/CommandLineTools/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -o /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/Store.o -debug-module-path /Users/kartamyshev/git/caramba/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/LayoutPilot.swiftmodule -index-unit-output-path /LayoutPilot.build/Debug/LayoutPilot-p.build/Objects-normal/arm64/Store.o -index-store-path /Users/kartamyshev/git/caramba/.build/out -index-system-modules
+error: Build failed

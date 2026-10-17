@@ -1,0 +1,11 @@
+test_auto (__main__.ZleTests.test_auto) ... ok
+test_control_payload_rejected (__main__.ZleTests.test_control_payload_rejected) ... ok
+test_correct_word (__main__.ZleTests.test_correct_word) ... ok
+test_manual (__main__.ZleTests.test_manual) ... ok
+test_timeout_preserves_input (__main__.ZleTests.test_timeout_preserves_input) ... ok
+test_undo (__main__.ZleTests.test_undo) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.260s
+
+OK

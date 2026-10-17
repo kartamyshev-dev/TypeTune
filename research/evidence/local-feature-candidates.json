@@ -1,0 +1,251 @@
+{
+  "evidence_id": "LP-LOCAL-CANDIDATES-20261015-01",
+  "method": "Saved REA evidence plus read-only frozen-bundle exact literal scan and own Mach-O LC_SEGMENT_64/LC_FUNCTION_STARTS+ARM64 directBL/ADRP+ADD decoding. No REA session/import/runtime.",
+  "target": {
+    "path": "research/private/caramba-arm64",
+    "sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9"
+  },
+  "frozen_bundle_regular_nonsymlink_files_scanned": 67,
+  "literal_scan_encodings": [
+    "UTF8",
+    "UTF16LE byte pattern",
+    "UTF16BE byte pattern"
+  ],
+  "literals": [
+    {
+      "literal": "Paste without formatting — on any hotkey, even ⌘V itself",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/CarambaSwitcherUI",
+          "sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a"
+        },
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/en.lproj/Localizable.strings",
+          "sha256": "b5d747bd6c81a5ddd7beef5c9852d94f77b9cb7232a0ce59e524a05c0a6ab1c2"
+        },
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+          "sha256": "074010d04220c1d0438d07acd29fac65204d9791eae7729eb4cd645b25df4daa"
+        }
+      ],
+      "thin_arm64_locations": []
+    },
+    {
+      "literal": "Remove custom sound",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/CarambaSwitcherUI",
+          "sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a"
+        },
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/en.lproj/Localizable.strings",
+          "sha256": "b5d747bd6c81a5ddd7beef5c9852d94f77b9cb7232a0ce59e524a05c0a6ab1c2"
+        },
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+          "sha256": "074010d04220c1d0438d07acd29fac65204d9791eae7729eb4cd645b25df4daa"
+        }
+      ],
+      "thin_arm64_locations": []
+    },
+    {
+      "literal": "switch_to_en_on_focus",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro",
+          "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+        }
+      ],
+      "thin_arm64_locations": [
+        {
+          "file_offset": "0x430d3c",
+          "address": "0x100430d3c",
+          "segment": "__TEXT"
+        }
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.sounds.main-sound-override",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro",
+          "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+        }
+      ],
+      "thin_arm64_locations": [
+        {
+          "file_offset": "0x4be0b0",
+          "address": "0x1004be0b0",
+          "segment": "__TEXT"
+        }
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.personalization.header-color",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro",
+          "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+        }
+      ],
+      "thin_arm64_locations": [
+        {
+          "file_offset": "0x4bf140",
+          "address": "0x1004bf140",
+          "segment": "__TEXT"
+        }
+      ]
+    },
+    {
+      "literal": "caramba.header-color-name",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro",
+          "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+        }
+      ],
+      "thin_arm64_locations": [
+        {
+          "file_offset": "0x4be060",
+          "address": "0x1004be060",
+          "segment": "__TEXT"
+        }
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.paste-no-format",
+      "frozen_bundle_files_with_exact_literal": [
+        {
+          "path": "research/private/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro",
+          "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+        }
+      ],
+      "thin_arm64_locations": [
+        {
+          "file_offset": "0x4bcfa0",
+          "address": "0x1004bcfa0",
+          "segment": "__TEXT"
+        }
+      ]
+    }
+  ],
+  "thin_arm64_direct_calls": [
+    {
+      "callsite": "0x10004a734",
+      "direct_bl_target": "0x1003ef208",
+      "target_name_from_saved_REA_inventory": "SettingsPaneView.init(with callback names in imported Swift symbol)",
+      "lc_function_start": "0x10004a588",
+      "next_lc_function_start": "0x10004a898"
+    },
+    {
+      "callsite": "0x10004d6d8",
+      "direct_bl_target": "0x1003ef214",
+      "target_name_from_saved_REA_inventory": "ColoredHeaderView.defaultColor",
+      "lc_function_start": "0x10004d510",
+      "next_lc_function_start": "0x10004daa0"
+    },
+    {
+      "callsite": "0x10004d9b4",
+      "direct_bl_target": "0x1003ef1cc",
+      "target_name_from_saved_REA_inventory": "HeaderColor.name(forLegacyHex)",
+      "lc_function_start": "0x10004d510",
+      "next_lc_function_start": "0x10004daa0"
+    }
+  ],
+  "thin_arm64_candidate_literal_references": [
+    {
+      "literal": "tech.caramba.switcher.paste-no-format",
+      "target_address": "0x1004bcfa0",
+      "adrp_address": "0x10000a468",
+      "add_address": "0x10000a46c",
+      "lc_function_start": "0x10000a45c",
+      "next_lc_function_start": "0x10000a4bc"
+    },
+    {
+      "literal": "tech.caramba.switcher.paste-no-format",
+      "target_address": "0x1004bcfa0",
+      "adrp_address": "0x100024024",
+      "add_address": "0x100024028",
+      "lc_function_start": "0x100023dd4",
+      "next_lc_function_start": "0x100024280"
+    },
+    {
+      "literal": "caramba.header-color-name",
+      "target_address": "0x1004be060",
+      "adrp_address": "0x10002417c",
+      "add_address": "0x100024180",
+      "lc_function_start": "0x100023dd4",
+      "next_lc_function_start": "0x100024280"
+    },
+    {
+      "literal": "tech.caramba.switcher.sounds.main-sound-override",
+      "target_address": "0x1004be0b0",
+      "adrp_address": "0x100024214",
+      "add_address": "0x100024218",
+      "lc_function_start": "0x100023dd4",
+      "next_lc_function_start": "0x100024280"
+    },
+    {
+      "literal": "tech.caramba.switcher.personalization.header-color",
+      "target_address": "0x1004bf140",
+      "adrp_address": "0x10004d8f8",
+      "add_address": "0x10004d8fc",
+      "lc_function_start": "0x10004d510",
+      "next_lc_function_start": "0x10004daa0"
+    },
+    {
+      "literal": "switch_to_en_on_focus",
+      "target_address": "0x100430d3c",
+      "adrp_address": "0x1002d7d74",
+      "add_address": "0x1002d7d78",
+      "lc_function_start": "0x1002d68a0",
+      "next_lc_function_start": "0x1002d8e40"
+    }
+  ],
+  "existing_REA_export": {
+    "path": "research/private/origin-evidence-bundle.json",
+    "sha256": "0f407f5d98f8485082586652b6027afab24898862b9d701d074dd1bf64305f51"
+  },
+  "existing_REA_records": [
+    {
+      "evidence_id": "ev_066eefbfea61311f20d4b59a89de4a566c8645cf62f9a3e4c6a6604063ebe89d",
+      "operation": "search_procedures",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "regex",
+        "pattern": "keyboard|csbr|switch|classifier|retyp|event_tap"
+      }
+    },
+    {
+      "evidence_id": "ev_989c78f27762a0dc0de2ab249d579145231a51660db4092835029b2586afdf2f",
+      "operation": "search_procedures",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "regex",
+        "pattern": "AutoswitchExceptions|AppExceptions|undo|patternSet|doubleCaps|paste"
+      }
+    },
+    {
+      "evidence_id": "ev_6a01a7b57c19fe099f11b87374ca21b2260cd82f3f0ce1760574d5589b8d6189",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100022cb4"
+      }
+    },
+    {
+      "evidence_id": "ev_79bce0abad7ec1b544bdfc1ae38c7f293127b97e6a8ef49545c4de4e9e8ab8d5",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002db840"
+      }
+    }
+  ],
+  "limitations": [
+    "Exact bytes absent does not prove feature absent; compressed/obfuscated/split strings and dynamically resolved paths are outside literal scan.",
+    "ADRP+ADD pairs within four instructions are candidate address construction, not complete dataflow; register overwrites are not symbolically proven.",
+    "LC_FUNCTION_STARTS owner intervals are metadata-derived query candidates, not recovered function semantics or REA xrefs.",
+    "Imported callback signature proves binary interface naming, not callback nonnil wiring or user-reachable behavior.",
+    "Resource and shared-framework text does not establish this version exposes the action.",
+    "No model patterns, original decompilation or dictionaries are included."
+  ]
+}

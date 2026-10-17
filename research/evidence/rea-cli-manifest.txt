@@ -1,0 +1,161 @@
+# rea
+
+Reverse engineer anything from your terminal or agent.
+
+| Command | Description |
+|---------|-------------|
+| `rea address-to-file-offset <path> <address>` | Resolve an analysis address to its original file byte offset |
+| `rea analyze <path>` | Get an overview of an app |
+| `rea analyze-javascript-application <path>` | Statically reconstruct a local JavaScript/Electron application |
+| `rea analyze-web-bundle <endpoint> <targetId>` | Capture and statically analyze a page bundle, defaulting to the selected target origin |
+| `rea annotate-native-function <path> <procedure>` | Edit function annotations and return refreshed analysis |
+| `rea build-reconstruction-obligation-ledger <inputJson>` | Generate a deterministic Evidence-backed reconstruction obligation ledger page |
+| `rea capabilities` | List provider capabilities and side effects |
+| `rea capture-adb-screen <serial>` | Capture one screen frame as a digested PNG |
+| `rea capture-browser-scenario <inputJson>` | Run one bounded Playwright browser scenario and return Evidence |
+| `rea capture-electron-scenario <inputJson>` | Run one owned Electron scenario with cancellable actions |
+| `rea capture-native-ui-scenario <path>` | Run declarative AX actions or waits in one exact native application window |
+| `rea capture-process <scenario>` | Capture one caller-selected process scenario |
+| `rea capture-web-screenshot <endpoint> <targetId>` | Capture one visible page viewport within the supplied origin scope |
+| `rea collect-adb-bugreport <serial>` | Collect and digest one device-generated bugreport archive |
+| `rea compare <left> <right>` | Compare two canonical Evidence bundles |
+| `rea compare-application-versions <inputJson>` | Compare two authenticated JavaScript Application Graph versions |
+| `rea compare-javascript-export-shapes <inputJson>` | Compare exact static JavaScript export return shapes without execution |
+| `rea compare-managed-members <leftPath> <rightPath>` | Compare managed PE/CLI member inventories by exact declared type, name, and signature; names alone never form a match |
+| `rea compare-process-captures <left> <right> [traceSpec]` | Compare two process capture Evidence JSON files |
+| `rea compare-source-to-bundle <inputJson>` | Compare committed historical source with authenticated application Evidence |
+| `rea compare-wasm-interfaces <input>` | Compare core WASM interfaces from two exact inspection Evidence records |
+| `rea compare-web-captures <beforeJson> <afterJson>` | Compare two normalized passive captures or recorded browser scenarios |
+| `rea compare-web-screenshots <beforeJson> <afterJson>` | Compare two self-verifying PNG artifact JSON values |
+| `rea cutter-command <sessionId> <expectedGeneration> <command>` | Execute one Rizin command in a selected live Cutter instance |
+| `rea debug-with-gdb <command>` | Run one unrestricted GDB console command in an ephemeral MI session; provide an inferior TTY so a live target can be safely detached |
+| `rea debug-with-rizin <path> <command>` | Run one unrestricted Rizin debugger command in an ephemeral session |
+| `rea decode-android-resources <path>` | Decode one APK's manifest, metadata, and string resources with apktool |
+| `rea decode-interface-builder <path>` | Decode compiled storyboard and nib archives from an app bundle |
+| `rea decode-signal-recording <path>` | Decode an existing signal recording with caller-supplied sigrok |
+| `rea decompile <path> [address]` | Read one part of an app as code |
+| `rea decompile-jeb-item <item-address> <item-kind>` | Decompile one JEB type or method to engine pseudo-code |
+| `rea demangle-swift <path> <symbols...>` | Demangle Swift symbols without Hopper |
+| `rea discover-webmcp-tools <endpoint> <targetId>` | Passively discover page-declared WebMCP tools |
+| `rea doctor` | Check whether REA is ready |
+| `rea evaluate-reconstruction-coverage <inputJson>` | Evaluate inline fail-closed reconstruction coverage |
+| `rea evidence-export <source> <output>` | Validate and atomically export canonical Evidence JSON |
+| `rea evidence-import <path>` | Validate and import a bounded local Evidence bundle |
+| `rea execute-rizin-command <path> <command>` | Execute one Rizin command against a local artifact |
+| `rea export-web-scripts <capturePath> <outputDirectory>` | Export retained website scripts into an absent directory for static JavaScript analysis |
+| `rea extract-artifact <path>` | Extract all regular artifact contents safely |
+| `rea extract-firmware <path> <outputDirectory>` | Extract selected firmware bytes and return verified files and provenance |
+| `rea function <path> [address]` | Analyze one complete function with evidence |
+| `rea identify-flutter-build <path>` | Identify a Flutter build's Dart snapshot hash and engine facts by pure APK parsing |
+| `rea import-managed-reconstruction <inputJson>` | Import decompiler-produced managed reconstruction against exact static member evidence |
+| `rea import-reference-source <root>` | Import a source tree as historical reference only |
+| `rea inspect <path>` | Inspect an app overview with evidence |
+| `rea inspect-adb-client ` | Inspect the caller-selected adb client without contacting devices |
+| `rea inspect-adb-device <serial>` | Inspect one device's build identity through a fixed getprop whitelist |
+| `rea inspect-adb-display <serial>` | Report the display's declared size and density |
+| `rea inspect-adb-package <serial> <package>` | Inspect one installed package's version, installer, and flags through dumpsys |
+| `rea inspect-adb-window <serial>` | Report the window manager's current focus declarations |
+| `rea inspect-analysis-view <inputJson>` | Project a selected view of completed binary-layout, JavaScript application, native function, artifact-inventory, WASM, Mach-O, Interface Builder, EVM, managed, Android package, Dart AOT, web network capture or pcap Evidence JSON |
+| `rea inspect-android-class <path> <className>` | Inspect one exact APK class's member inventory |
+| `rea inspect-android-method <path> <className> <methodName>` | Decompile one APK method with explicit overload selection |
+| `rea inspect-android-package <path>` | Inspect APK declarations and decoded manifest without executing it |
+| `rea inspect-apktool-client ` | Inspect the caller-selected apktool launcher without decoding anything |
+| `rea inspect-artifact <path>` | Inspect one artifact and return all available observations and next probes |
+| `rea inspect-asset-catalog <path>` | Inspect compiled Apple asset catalog metadata |
+| `rea inspect-binary-layout <path>` | Inspect binary file/linked layout without executing the selected object |
+| `rea inspect-dart-aot <path>` | Inspect one ABI's Dart AOT snapshot: sections, headers, and the string pool |
+| `rea inspect-electron-fuses <path>` | Inspect packaged Electron fuse bytes without launching the application |
+| `rea inspect-electron-page <endpoint> <targetId>` | Passively inspect one Electron file page |
+| `rea inspect-evidence-bundle <inputJson>` | Inspect complete or selected discovery metadata from a local Evidence bundle |
+| `rea inspect-evm-interface <path> <encoding>` | Infer interface candidates from explicit local EVM bytecode |
+| `rea inspect-firmware-regions <path>` | Inspect firmware signature candidates without extracting them |
+| `rea inspect-go-binary <path>` | Inspect embedded Go compiler, modules and build settings without target execution |
+| `rea inspect-jeb-client ` | Inspect the running JEB MCP client without opening a target |
+| `rea inspect-keyed-archive <path> [archive]` | Inspect a Foundation keyed archive as an object-reference graph |
+| `rea inspect-macho <path>` | Run inspect_macho without launching Hopper |
+| `rea inspect-managed-artifact <path>` | Inspect PE/CLI identity without loading target code |
+| `rea inspect-managed-members <path>` | Inspect PE/CLI metadata members, signatures, CIL anchors, and ldstr string literals without loading target code |
+| `rea inspect-managed-native-boundaries <path>` | Inspect PE/CLI PInvoke and native implementation boundary declarations without loading target code |
+| `rea inspect-native-api <path> <address>` | Reconstruct one native function API boundary with evidence |
+| `rea inspect-native-data-type <path>` | Inspect one recovered database type or typed data object |
+| `rea inspect-native-dispatch-metadata <path>` | Inspect typed Objective-C and Swift dispatch metadata |
+| `rea inspect-native-instruction <path> <address>` | Inspect one native instruction with decoded operand facts |
+| `rea inspect-native-load-image <path>` | Verify loaded native bytes, source mappings, relocations and entry |
+| `rea inspect-packet-capture <path>` | Inspect an existing packet capture with caller-supplied TShark |
+| `rea inspect-packet-fields` | Search installed TShark protocol and field definitions |
+| `rea inspect-pcap-capture <path>` | Inspect one pcap/pcapng capture: endpoints, DNS, TLS SNI, and protocol distribution |
+| `rea inspect-pcap-client ` | Inspect the caller-selected tshark and capinfos binaries without reading a capture |
+| `rea inspect-pe-resources <path>` | Inspect PE resource identities, payload ranges, hashes and icon-group relationships |
+| `rea inspect-plist <path>` | Parse app plist metadata without launching Hopper |
+| `rea inspect-recorded-crash <path>` | Inspect supplied core registers/signals and optional debugger mapping evidence |
+| `rea inspect-rust-binary <path>` | Inspect an embedded cargo-auditable Rust dependency list without target execution |
+| `rea inspect-signal-decoders` | Search installed sigrok decoders or selected decoder help |
+| `rea inspect-signature <path>` | Run inspect_signature without launching Hopper |
+| `rea inspect-sqlite-database <path>` | Inspect SQLite schema and optional ordinary-table rows from a local snapshot |
+| `rea inspect-wasm-artifact <path>` | Inspect an explicit local WASM artifact with WABT |
+| `rea inspect-web-event-listeners <endpoint> <targetId> <selector>` | Inspect native listener source locations on the first main-document CSS match |
+| `rea inspect-web-network-capture <capturePath> <format>` | Inspect retained HAR, native mitmproxy, Fiddler SAZ or aioquic qlog records without fetching recorded URLs |
+| `rea inspect-web-page <endpoint> <targetId>` | Passively inspect one page through CDP, defaulting to its current origin |
+| `rea inspect-with-objdump <path> <operation>` | Inspect a local artifact with GNU objdump and retain its raw output as Evidence |
+| `rea install-adb-package <serial> <apk-path>` | Install one local APK; --replace requests reinstall mode to keep existing app data |
+| `rea instructions <path> [address]` | Read every raw instruction without decompiling |
+| `rea instrument-with-frida <mode> <target>` | Run one Frida script against a selected process and detach |
+| `rea list-adb-devices ` | List attached devices with serial, state, transport, and inferred kind |
+| `rea list-adb-directory <serial> <device-path>` | List one device directory with kinds, permissions, and sizes |
+| `rea list-adb-features <serial>` | List the device's declared hardware and software features |
+| `rea list-adb-packages <serial>` | List installed packages on one device with base APK device paths |
+| `rea list-adb-processes <serial>` | List running processes exactly as ps -A reports them |
+| `rea list-adb-services <serial>` | List the device's binder services and interfaces |
+| `rea list-architectures <path>` | Run list_architectures without launching Hopper |
+| `rea list-browser-targets <endpoint>` | List page targets from a selected loopback CDP browser, optionally filtered by origin |
+| `rea list-cutter-sessions ` | List live Cutter instances connected through the REA Python plugin bridge |
+| `rea list-electron-targets <endpoint>` | List local file pages exposed by the selected Electron CDP endpoint |
+| `rea list-frida-devices ` | List local Frida devices and an optional remote endpoint |
+| `rea list-frida-processes ` | List processes visible through a Frida device |
+| `rea list-javascript-runtime-targets <endpoint>` | List Node/Electron V8 Inspector targets |
+| `rea list-jeb-units ` | List JEB project units by path and type with optional filter |
+| `rea list-objdump-architectures ` | List BFD targets advertised by the installed GNU objdump |
+| `rea observe-javascript-runtime <endpoint> <targetId>` | Passively observe one exact Node/Electron Inspector target |
+| `rea observe-native-calls <path> <inputJson>` | Launch a Mach-O under LLDB and record entries into selected functions or Objective-C methods |
+| `rea observe-native-ui <path>` | Observe one already-running native application window by PID and window ID |
+| `rea observe-web-execution <endpoint> <targetId>` | Observe precise page execution; resets counters and temporarily disables optimization |
+| `rea observe-web-session <endpoint> <targetId>` | Observe user-driven page navigation during a chosen window |
+| `rea open-jeb-project <path>` | Open or create a JEB project from an artifact or .jdb2 database |
+| `rea project-android-application-graph <inputJson>` | Project authenticated APK inventory Evidence into an Android application graph |
+| `rea project-apple-application-graph <inputJson>` | Project authenticated IPA or macOS app inventory Evidence into an Apple application graph |
+| `rea project-harmony-application-graph <inputJson>` | Project authenticated HarmonyOS HAP, HSP, or App Pack inventory Evidence into an application graph |
+| `rea project-managed-application-graph <inputJson>` | Project authenticated managed static Evidence into an application graph |
+| `rea providers` | List configured analysis providers |
+| `rea pull-adb-file <serial> <device-path>` | Pull one device file to a local copy with a SHA-256 digest |
+| `rea pull-adb-package <serial> <package>` | Pull one installed package's complete APK set with SHA-256 digests |
+| `rea push-adb-file <serial> <local-path> <device-path>` | Push one local file to the device; refuses existing targets without --overwrite |
+| `rea read-adb-logcat <serial>` | Read a bounded dump of the device log for one buffer |
+| `rea read-adb-setting <serial> <namespace> <key>` | Read one settings value from system, secure, or global |
+| `rea read-bytes <path> <address>` | Read exact provider memory bytes at one analysis address |
+| `rea reconcile-javascript-runtime <inputJson>` | Reconcile static application and passive runtime Evidence JSON |
+| `rea recover-javascript-sources <path> <outputDirectory>` | Recover readable JavaScript modules with source provenance and verified files |
+| `rea resolve-adb-packages <serial> <query>` | Find installed packages by case-insensitive name substring |
+| `rea resolve-native-call-targets <path> <address>` | Resolve one static native call site |
+| `rea search <path> [pattern]` | Search every analyzed string or procedure name |
+| `rea search-android-classes <path> <query>` | Search APK class names; empty query inventories all classes |
+| `rea search-bytes <path> <pattern>` | Find masked byte patterns in initialized provider memory |
+| `rea setup` | Configure agent integrations and optional analysis providers |
+| `rea start-adb-activity <serial> <action>` | Start an intent with am start (action, URI, component, extras) |
+| `rea start-adb-app <serial> <package>` | Start one installed app by resolving and launching its launcher activity |
+| `rea stop-adb-app <serial> <package>` | Force-stop every process of one package |
+| `rea trace <path> [query]` | Trace a literal feature through analyzed references |
+| `rea trace-android-references <path> <className>` | Trace incoming APK using nodes for a class or selected method |
+| `rea trace-application-feature <inputJson>` | Trace a typed seed through authenticated application Evidence JSON |
+| `rea trace-dylib-resolution <path>` | Trace dyld load-path resolution for a Mach-O or every executable in an app bundle |
+| `rea trace-javascript-semantics <inputJson>` | Trace bounded static semantic relations through authenticated application Evidence |
+| `rea trace-native-ui-action <path> <action>` | Trace a compiled UI action selector to its native handler and direct callees |
+| `rea trace-native-values <path> <procedure>` | Trace bounded native def-use and call dependencies |
+| `rea trace-web-module-imports <manifestPath> <scriptIndex>` | Trace one captured script's native imports to URLs and captured source candidates |
+| `rea trace-web-source-location <manifestPath> <scriptIndex> <sourceMapPath> <sourceMapUrl> <line> <column>` | Trace one retained script position through an explicitly selected local source map |
+| `rea uninstall` | Remove REA-owned agent configuration and skill files |
+| `rea uninstall-adb-package <serial> <package>` | Uninstall one package and its data from the device |
+| `rea update` | Update this REA installation and verify the installed release |
+| `rea verify-managed-native-boundaries <inputJson>` | Verify managed P/Invoke declarations against authenticated native Evidence |
+| `rea xrefs <path> [address]` | List bounded references to an analyzed address |
+
+Run `rea --llms-full` for full manifest. Run `rea <command> --schema` for argument details.

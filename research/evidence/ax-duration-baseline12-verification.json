@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "completed12": true,
+    "asciiPreserved": true,
+    "sourceABC": true,
+    "modifiersNeutral": true
+  },
+  "axReadErrors": {
+    "AXSubrole:-25205": 2721
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 2721,
+      "maxMilliseconds": 18.514041667003767,
+      "totalMilliseconds": 354.3357916532841
+    },
+    "AXFocusedUIElement:0": {
+      "count": 2721,
+      "maxMilliseconds": 10.491708333574934,
+      "totalMilliseconds": 204.41454160572903
+    },
+    "AXFocusedWindow:0": {
+      "count": 2721,
+      "maxMilliseconds": 22.981000000072527,
+      "totalMilliseconds": 657.9060834119446
+    },
+    "AXRole:0": {
+      "count": 2721,
+      "maxMilliseconds": 7.043416668238933,
+      "totalMilliseconds": 128.16820833904785
+    },
+    "AXSelectedTextRange:0": {
+      "count": 121,
+      "maxMilliseconds": 0.14304166688816622,
+      "totalMilliseconds": 8.227041669670143
+    },
+    "AXSubrole:-25205": {
+      "count": 2721,
+      "maxMilliseconds": 5.978541666991077,
+      "totalMilliseconds": 363.6112499953015
+    },
+    "AXValue:0": {
+      "count": 121,
+      "maxMilliseconds": 0.14891666614857968,
+      "totalMilliseconds": 6.788083333958639
+    },
+    "AXWindow:0": {
+      "count": 2721,
+      "maxMilliseconds": 6.944916665815981,
+      "totalMilliseconds": 201.5198332937871
+    }
+  },
+  "notice": "One synthetic baseline with all switchers stopped. No CPU inference or proof of delay causality."
+}

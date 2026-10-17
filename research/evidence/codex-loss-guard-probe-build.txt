@@ -1,0 +1,11 @@
+Building for debugging...
+[3 / 12] LayoutPilotCore
+[5 / 13] LayoutPilotCore
+Build complete! (0,50 с)
+Tools/EditorGuardProbe.swift:3:8: error: no such module 'LayoutPilotCore'
+ 1 | import AppKit
+ 2 | import ApplicationServices
+ 3 | import LayoutPilotCore
+   |        `- error: no such module 'LayoutPilotCore'
+ 4 | 
+ 5 | /// Calls the production replacement entry point, but never authorizes AX work:

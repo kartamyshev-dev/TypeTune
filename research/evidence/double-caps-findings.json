@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "method": "Saved REA Evidence plus immutable Mach-O derivation, followed by one explicitly scoped fresh main import for2dfeb4 pseudo+ASM only; no UI/native/code actions.",
+  "references": [
+    {
+      "evidence_id": "ev_9d8880bb72af09b01dc75a8dab09744a86eb7dd26d84edc54012bb05720078be",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e10b4"
+      }
+    },
+    {
+      "evidence_id": "ev_7fd2facc652fe69fd39fe72f3180c64868929660ab3bcddbb11f25a3a5eb0b02",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e10b4"
+      }
+    },
+    {
+      "evidence_id": "ev_75d491a274ba578743fd0754eee43abeafd4888e73ab23e44e275f37a5f4d96c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002d9888"
+      }
+    },
+    {
+      "evidence_id": "ev_e67d9a3a22a170903c622c2c41c79e7e9a41bd858ba9b7ebc11592ef5a4e9c0b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002db210"
+      }
+    },
+    {
+      "evidence_id": "ev_ef75960aec2254ae04d247aa063a83bc3a39549a68a9368ef5caa9bb18a719e8",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e6428"
+      }
+    },
+    {
+      "evidence_id": "ev_7622d953747d6e96d420f27718cfa175fa0e7512ef794bf48dff116ec597ce1e",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002dfeb4"
+      }
+    },
+    {
+      "evidence_id": "ev_fcef5d900d114ad47253f9624a020346adc0fcdac4e78b56541b93d9e034bd94",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002dfeb4"
+      }
+    },
+    {
+      "evidence_id": "ev_389ea798cd7848c4d5ca94ff2a8aaafdff9cae88620302c4bceb9e390aaf8219",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e0030"
+      },
+      "new_query": false
+    },
+    {
+      "evidence_id": "ev_c7fc339d3853043a4c8a90beb71b259c34dbf8273e18340ce29e7c3ce460c0af",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e1d98"
+      },
+      "new_query": false
+    },
+    {
+      "evidence_id": "ev_734199f05f45a9750c2e948596578f59d613d77a439bce9c7a4560cd3ec7da20",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002d68a0"
+      },
+      "new_query": false
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "research/private/phase2-evidence-bundle.json",
+      "sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f",
+      "bytes": 7991759
+    },
+    {
+      "path": "research/private/origin-evidence-bundle.json",
+      "sha256": "0f407f5d98f8485082586652b6027afab24898862b9d701d074dd1bf64305f51",
+      "bytes": 8281263
+    },
+    {
+      "path": "research/private/hotkey-evidence-bundle.json",
+      "sha256": "407cb9addf51070f471c401ac97c5b43e937799e1714745a13d0e2bd523548ab",
+      "bytes": 8843304
+    },
+    {
+      "path": "research/private/double-caps-vtable-map.json",
+      "sha256": "1e33eba0a36dc12d5498fdb3f734450b96726bb2bbc9e8bb797f75e2cf38b458",
+      "bytes": 930
+    },
+    {
+      "path": "research/evidence/header-phase-original-double-caps.json",
+      "sha256": "57db50739f2060258eb68ffd36a3c8e0629d3e01113d2624b7b27da15cbc9a37",
+      "bytes": 5897
+    },
+    {
+      "path": "research/evidence/header-phase-original-double-caps-verification.json",
+      "sha256": "193a1edcdac9cd8d32008aaa3a1928c40fec0a664cab0bf9c8ee9163bde9d25f",
+      "bytes": 201
+    },
+    {
+      "path": "corpus/native-double-caps.json",
+      "sha256": "439e704711eb3bc46956963ac1879473445cb81cfd29d5dac9de1cb7d33d1e72",
+      "bytes": 861
+    },
+    {
+      "path": "research/private/double-caps-gate-evidence-bundle.json",
+      "sha256": "229c449571d62f74138e4e48d490f002cf4b969cb7ce48632033ba27fa8dc42e",
+      "bytes": 8860488
+    },
+    {
+      "path": "research/private/double-caps-gate-snapshot.json",
+      "sha256": "b9745c21fb69de728e74be9420d67050679d9ef47b8d9ed15444bba348c7fcc8",
+      "bytes": 15521387
+    }
+  ],
+  "vtable_derivation": [
+    {
+      "slot_address": "0x10052e050",
+      "file_offset": "0x52e050",
+      "fixup_chain_membership_verified": true,
+      "pointer_format": 6,
+      "target_address": "0x1002e6424",
+      "method": "Mach-O LC_DYLD_CHAINED_FIXUPS starts-page chain; DYLD_CHAINED_PTR_64_OFFSET low36 runtime offset + __TEXT base"
+    },
+    {
+      "slot_address": "0x10052e058",
+      "file_offset": "0x52e058",
+      "fixup_chain_membership_verified": true,
+      "pointer_format": 6,
+      "target_address": "0x1002e64f4",
+      "method": "Mach-O LC_DYLD_CHAINED_FIXUPS starts-page chain; DYLD_CHAINED_PTR_64_OFFSET low36 runtime offset + __TEXT base"
+    },
+    {
+      "slot_address": "0x10052e060",
+      "file_offset": "0x52e060",
+      "fixup_chain_membership_verified": true,
+      "pointer_format": 6,
+      "target_address": "0x1002e6428",
+      "method": "Mach-O LC_DYLD_CHAINED_FIXUPS starts-page chain; DYLD_CHAINED_PTR_64_OFFSET low36 runtime offset + __TEXT base"
+    }
+  ],
+  "observations": [
+    {
+      "id": "DC-PATTERN",
+      "anchors": [
+        "0x1002e120c",
+        "0x1002e1218",
+        "0x1002e191c",
+        "0x1002e19e4"
+      ],
+      "claim": "Outer F17 stage requires enable byte+2b, model virtualbool+28, sufficient3scalars, uppercase firsttwo andlowercase third; formats and applies correction before autoswitch/typos."
+    },
+    {
+      "id": "DC-SHORT-NATIVE",
+      "claim": "Existing completed4case originalrun includesGHb/RussianWin -> При atcursor4. This is positive three-letter evidence, notgeneral wordlength/dictionary rule."
+    },
+    {
+      "id": "DC-REST-UNKNOWN",
+      "claim": "Outercase check reads firstthree scalars only; no all-tail-lowercase loop here. Gate andformatter mayimpose more restrictions; mixedcase-tail behavior notestablished."
+    },
+    {
+      "id": "DC-GATE-TARGET",
+      "claim": "Verified vtable52e038+28 →2e6428→2dfeb4. New onebody packet resolved2dfeb4: feature-vector bit2 veto; no direct positiveknownword requirement."
+    },
+    {
+      "id": "DC-GATE-EMPTY-ALLOWS",
+      "anchors": [
+        "0x1002dfee8",
+        "0x1002dff84"
+      ],
+      "claim": "Empty featurevector returns true."
+    },
+    {
+      "id": "DC-GATE-SENTINEL-ALLOWS",
+      "anchors": [
+        "0x1002dff04",
+        "0x1002dff0c",
+        "0x1002dff34"
+      ],
+      "claim": "Record firstqword -2 stops scanning and returns true aftercleanup; remainingrecords nottested."
+    },
+    {
+      "id": "DC-GATE-BIT2-VETO",
+      "anchors": [
+        "0x1002dff18",
+        "0x1002dff1c",
+        "0x1002dffbc",
+        "0x1002e0024"
+      ],
+      "claim": "Before sentinel, any40byte record byte+18 bit2=1 causesfalse. Allscannedwithoutbit2 cause true. Bits0/1 notdirectlytested."
+    },
+    {
+      "id": "DC-GATE-FEATURE-LABEL-BOUNDARY",
+      "claim": "Schema tag3knownword/tag4casesensitive/tag5doublecapspreventative decode intoseparate boolbytes+8/+9/+10 in12byte record. Runtimegate usespackedbit2of40byte record; packingbridge missing, preventing definitivebitlabel."
+    }
+  ],
+  "existing_native_results_verified": [
+    {
+      "id": "double-caps-positive",
+      "physicalASCII": "GHbdtn",
+      "source": "com.apple.keylayout.RussianWin",
+      "text": "Привет ",
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "matchesFixture": true
+    },
+    {
+      "id": "double-caps-acronym",
+      "physicalASCII": "HTTP",
+      "source": "com.apple.keylayout.ABC",
+      "text": "HTTP ",
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "matchesFixture": true
+    },
+    {
+      "id": "double-caps-mixed-brand",
+      "physicalASCII": "iPhone",
+      "source": "com.apple.keylayout.ABC",
+      "text": "iPhone ",
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "matchesFixture": true
+    },
+    {
+      "id": "double-caps-three-letters",
+      "physicalASCII": "GHb",
+      "source": "com.apple.keylayout.RussianWin",
+      "text": "При ",
+      "selection": {
+        "length": 0,
+        "location": 4
+      },
+      "matchesFixture": true
+    }
+  ],
+  "unknowns": [
+    "Decoded schema bool→packed runtime bit2 mapping; preventative is hypothesis untilbridge",
+    "Full lookup/fallbackrecord selection andlanguage constraints in2e6124/2dec80",
+    "Whetherformatter lowercasessecondscalar orentiretail",
+    "UI preferencebinding andindependence fromtypos toggle",
+    "Mixedcase/unknownnames/Unicode expandingcase mappings",
+    "Exact scalarcount helper semantics"
+  ],
+  "bounded_next_query": {
+    "gate_2dfeb4_resolved": true,
+    "not_requested_yet": [
+      "0x1002e6124 fallbackrecord origin",
+      "0x1002dec80 primarylookup ID meaning"
+    ],
+    "no_implicit_scope_expansion": true
+  },
+  "gate_followup": {
+    "fresh_imports": 1,
+    "new_pseudo_bodies": 1,
+    "new_ASM_bodies": 1,
+    "new_records": 2,
+    "export_records": 140,
+    "session_closed": true,
+    "JVM_PID": 47317,
+    "JVM_exit_checked": true,
+    "snapshot_primitive_entries": 1,
+    "snapshot_workflow_entries": 1,
+    "instructions_complete_body_bytes": 380,
+    "observed_range": [
+      "0x1002dfeb4",
+      "0x1002e002f"
+    ],
+    "further_queries_not_executed": true
+  },
+  "prior_cached_pass": {
+    "missing_pseudocode_selectors_checked": [
+      "0x1002dfeb4",
+      "0x1002e8d00",
+      "0x1002d8e40",
+      "0x1003d1dc4"
+    ],
+    "snapshots_inspected": [
+      {
+        "private_path": "research/private/deep-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/extractor-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/phase2-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/ui-snapshot.json",
+        "primitive_count": 0,
+        "workflow_count": 0,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/settings-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/phase3-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/hotkey-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/caramba-snapshot.json",
+        "primitive_count": 0,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      },
+      {
+        "private_path": "research/private/origin-snapshot.json",
+        "primitive_count": 1,
+        "workflow_count": 1,
+        "missing_selectors_absent_in_retained_records_and_primitives": true
+      }
+    ],
+    "scope": "Historical cached-only pass beforeonebody followup;2dfeb4 nowexists innewexport."
+  }
+}

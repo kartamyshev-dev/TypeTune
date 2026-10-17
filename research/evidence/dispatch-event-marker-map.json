@@ -1,0 +1,48 @@
+{
+  "evidence": "ev_e32289eb3e357ec8d496c1023b5a756031e22c46f0f1cc2d84521461e7c6968f",
+  "method": "author mapping of referenced literal pointer+length in saved dispatch pseudocode to source bytes; report emission only, not matching priority",
+  "markers": [
+    {
+      "address": "0x100428378",
+      "length": 19,
+      "marker": "caramba_singleshift",
+      "pseudocode_offset": 17644
+    },
+    {
+      "address": "0x1004283c2",
+      "length": 18,
+      "marker": "caramba_autoswitch",
+      "pseudocode_offset": 31983
+    },
+    {
+      "address": "0x1004283d4",
+      "length": 17,
+      "marker": "caramba_collision",
+      "pseudocode_offset": 47917
+    },
+    {
+      "address": "0x10042838b",
+      "length": 19,
+      "marker": "caramba_double_caps",
+      "pseudocode_offset": 50633
+    },
+    {
+      "address": "0x1004283c2",
+      "length": 18,
+      "marker": "caramba_autoswitch",
+      "pseudocode_offset": 51085
+    },
+    {
+      "address": "0x10042841d",
+      "length": 24,
+      "marker": "caramba_selection_switch",
+      "pseudocode_offset": 78800
+    },
+    {
+      "address": "0x10042840a",
+      "length": 19,
+      "marker": "caramba_doubleshift",
+      "pseudocode_offset": 78919
+    }
+  ]
+}

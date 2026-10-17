@@ -1,0 +1,107 @@
+{
+  "kind": "F13-own-implementation-checks",
+  "files": [
+    {
+      "path": "Sources/LayoutPilotCore/UsageStatistics.swift",
+      "sha256": "33ce6cc82593ac4241292ee591157debb6a958694f44569fe8fa3885a51afd0d",
+      "bytes": 4840
+    },
+    {
+      "path": "Sources/LayoutPilot/Store.swift",
+      "sha256": "10f94bffa6f76172064513e939230a13f4da0d35551b8d5e1f88988772c42661",
+      "bytes": 13857
+    },
+    {
+      "path": "Sources/LayoutPilot/SettingsView.swift",
+      "sha256": "925f8b6cf6451f382cdf352ea491f99f3a42b40a47c97353c7e3dca8ab88dea9",
+      "bytes": 23334
+    },
+    {
+      "path": "Sources/LayoutPilot/KeyboardService.swift",
+      "sha256": "1dd91cdc96faad52fff5dfa261e807ea247507b404d8981939490ac5b148639f",
+      "bytes": 59316
+    },
+    {
+      "path": "Sources/LayoutPilotCLI/StatisticsChecks.swift",
+      "sha256": "9a74996f77f46f21ffbba8465588c0384c96577a731cb9ef76cdf99baa7d80a9",
+      "bytes": 4405
+    },
+    {
+      "path": "Sources/LayoutPilotCLI/SelfTest.swift",
+      "sha256": "e996d1692c5d7f86fa88259e9ad17f0ab0ca55e3a70e65ee0b0af8e97bfd1441",
+      "bytes": 36934
+    },
+    {
+      "path": "Tools/StatisticsStoreProbe.swift",
+      "sha256": "3cc289409d5d44a0c422c57d9cd11d922236f81b0587999d1dfe503cfd2c13d2",
+      "bytes": 5615
+    },
+    {
+      "path": "scripts/statistics_store_probe.sh",
+      "sha256": "b131d1ea01e4fb9caa3eb80b6878ecaa6ab706dd0dc0ccdfdb8697614b33542e",
+      "bytes": 648
+    },
+    {
+      "path": ".build/debug/layoutpilot-cli",
+      "sha256": "9749ead36d7d1f5d39323d4f2ded469886f4b02c71ea36bd5f191e2beb5ef2e6",
+      "bytes": 1055872
+    },
+    {
+      "path": ".build/debug/LayoutPilot",
+      "sha256": "d5f3f86a6d2ad012554c6698dd08928d222e2f72166d42cc8d0034e56662c347",
+      "bytes": 2397536
+    },
+    {
+      "path": "research/evidence/replay-stats-store-probe.json",
+      "sha256": "aea7100c691b3f025eb34c88fbd135ecfb915534c283c9bd8e427262b7cea504",
+      "bytes": 2178
+    },
+    {
+      "path": "research/evidence/replay-stats-store-probe-initial.json",
+      "sha256": "12a5f1246c90148ed4f65827cbd8bc04b598113edd2dc8e90d8ff7b902031dc0",
+      "bytes": 2179
+    },
+    {
+      "path": "research/evidence/replay-stats-store-probe-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "research/evidence/replay-stats-cli-build2.log",
+      "sha256": "e274385495d4e6ac0bf14479dd6986be496ab269e3c9230ef8c1a862242f3ac2",
+      "bytes": 787
+    },
+    {
+      "path": "research/evidence/replay-stats-cli-selftest2.log",
+      "sha256": "40c639f02a3dc56aa25742653d4999c197b694f2768c00fabfa9316eccecee7b",
+      "bytes": 71
+    },
+    {
+      "path": "research/evidence/replay-stats-gui-debug-build2.log",
+      "sha256": "bbc9a48a831853379956a06da3e5c371cc334db0427fafb65db24d1cd13a7f73",
+      "bytes": 957
+    }
+  ],
+  "cliBuild": true,
+  "cliOfflineInvariants": {
+    "passed": 451,
+    "failed": 0
+  },
+  "isolatedActualStore": {
+    "passed": 22,
+    "failed": 0,
+    "standardDefaultsUsed": false,
+    "ownSuiteCleaned": true
+  },
+  "guiDebugBuild": true,
+  "guiRuntime": false,
+  "nativeInput": false,
+  "soundPlayed": false,
+  "distChangedByThisTask": false,
+  "originalParity": false,
+  "limitations": [
+    "GUI statistics rendering not observed",
+    "native event-to-category and sound-start integration not accepted by this report",
+    "remote configuration override not copied"
+  ]
+}

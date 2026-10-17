@@ -1,0 +1,183 @@
+{
+  "byCategory": {
+    "ambiguous": {
+      "corrections": 0,
+      "count": 1,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 1
+    },
+    "case": {
+      "corrections": 7,
+      "count": 280,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 280
+    },
+    "case_wrong_title": {
+      "corrections": 280,
+      "count": 280,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 280
+    },
+    "case_wrong_upper": {
+      "corrections": 280,
+      "count": 280,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 280
+    },
+    "code": {
+      "corrections": 0,
+      "count": 281,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 281
+    },
+    "correct": {
+      "corrections": 7,
+      "count": 280,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 280
+    },
+    "digits": {
+      "corrections": 0,
+      "count": 281,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 281
+    },
+    "doublecaps": {
+      "corrections": 280,
+      "count": 280,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 280
+    },
+    "email": {
+      "corrections": 0,
+      "count": 281,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 281
+    },
+    "mixed": {
+      "corrections": 0,
+      "count": 281,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 281
+    },
+    "path": {
+      "corrections": 0,
+      "count": 1,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 1
+    },
+    "punctuation": {
+      "corrections": 0,
+      "count": 1,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 1
+    },
+    "short": {
+      "corrections": 0,
+      "count": 3,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 3
+    },
+    "unicode": {
+      "corrections": 0,
+      "count": 2,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 2
+    },
+    "unknown": {
+      "corrections": 0,
+      "count": 1,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 1
+    },
+    "url": {
+      "corrections": 0,
+      "count": 281,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 281
+    },
+    "wrong": {
+      "corrections": 280,
+      "count": 280,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 280
+    }
+  },
+  "bySplit": {
+    "train": {
+      "corrections": 1134,
+      "count": 3094,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 3094
+    }
+  },
+  "corpusSha256": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
+  "currentSourceLexiconSha256": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+  "failures": [],
+  "fixtureLexiconSha256": "1764cd67ed823ea70551fb8c856ad0599f1a3765242d329c0710451b70d0aced",
+  "notice": "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",
+  "schemaVersion": 1,
+  "total": {
+    "corrections": 1134,
+    "count": 3094,
+    "falseCorrections": 0,
+    "misses": 0,
+    "originalCompared": 0,
+    "originalMatches": 0,
+    "passed": 3094
+  }
+}

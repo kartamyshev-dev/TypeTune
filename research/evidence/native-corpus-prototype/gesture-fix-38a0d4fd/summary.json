@@ -1,0 +1,6 @@
+{
+  "target": "prototype",
+  "cases": 1000,
+  "matchesExpected": 1000,
+  "notice": "Native TextEdit sample of authored lexicon corpus; not independent language-quality or latency p95."
+}

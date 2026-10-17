@@ -1,0 +1,18 @@
+{
+  "observedAtUTC": "2026-10-17T18:40:12Z",
+  "app": "/Applications/LayoutPilot.app",
+  "pid": 25237,
+  "version": "0.1.2",
+  "binarySha256": "7d6745f62b2cf5c8fb3b9df6894d42ba1dbf9119e72a886e1eb1ba629d75e4f3",
+  "uiState": "Ожидает восстановления",
+  "pendingDisplayed": 0,
+  "automatic": true,
+  "earlyCorrection": false,
+  "plainPaste": true,
+  "backupVerifiedFiles": 10,
+  "preferencesPrivateBackup": true,
+  "recoveryReset": false,
+  "appRestarted": false,
+  "initialTrigger": "unknown",
+  "deliveryOutcome": "unknown"
+}

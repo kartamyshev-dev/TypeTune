@@ -1,0 +1,133 @@
+{
+  "method": "Independent author decoder of the two admitted compact format descriptors, rules derived from saved Ghidra parser3d61a4; does not execute original code or measure runtime.",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "formats": [
+    {
+      "address": "0x1004dac93",
+      "file_offset": "0x4dac93",
+      "descriptor_bytes": 6,
+      "descriptor_sha256": "87aeaccc4b3dc01264853f97cdf0a4ff1de9a5836f7233b0afd237da56aebdfe",
+      "contract": "02 + textUTF8 + 03"
+    },
+    {
+      "address": "0x1004dac99",
+      "file_offset": "0x4dac99",
+      "descriptor_bytes": 4,
+      "descriptor_sha256": "f1e79100289aaed87726c78304703a5c99d10e9a7892d0c30f8fc0794234f793",
+      "contract": "02 + textUTF8"
+    }
+  ],
+  "cases": [
+    {
+      "synthetic_text": "",
+      "completed": false,
+      "output_hex": "02",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "",
+      "completed": true,
+      "output_hex": "0203",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "ghb",
+      "completed": false,
+      "output_hex": "02676862",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "ghb",
+      "completed": true,
+      "output_hex": "0267686203",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "ghbdtn",
+      "completed": false,
+      "output_hex": "0267686264746e",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "ghbdtn",
+      "completed": true,
+      "output_hex": "0267686264746e03",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "при",
+      "completed": false,
+      "output_hex": "02d0bfd180d0b8",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "при",
+      "completed": true,
+      "output_hex": "02d0bfd180d0b803",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "Привет",
+      "completed": false,
+      "output_hex": "02d09fd180d0b8d0b2d0b5d182",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "Привет",
+      "completed": true,
+      "output_hex": "02d09fd180d0b8d0b2d0b5d18203",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "abc.txt",
+      "completed": false,
+      "output_hex": "026162632e747874",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "abc.txt",
+      "completed": true,
+      "output_hex": "026162632e74787403",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "x\ty",
+      "completed": false,
+      "output_hex": "02780979",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "x\ty",
+      "completed": true,
+      "output_hex": "0278097903",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "🙂",
+      "completed": false,
+      "output_hex": "02f09f9982",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "🙂",
+      "completed": true,
+      "output_hex": "02f09f998203",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "é",
+      "completed": false,
+      "output_hex": "0265cc81",
+      "static_contract_match": true
+    },
+    {
+      "synthetic_text": "é",
+      "completed": true,
+      "output_hex": "0265cc8103",
+      "static_contract_match": true
+    }
+  ],
+  "passed": 18,
+  "failed": 0,
+  "native_execution": false
+}

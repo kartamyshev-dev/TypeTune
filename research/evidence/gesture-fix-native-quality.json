@@ -1,0 +1,134 @@
+{
+  "notice": "Current bound TextEdit run against authored expectations only; no fresh original comparison, independent-language or correction-only latency acceptance.",
+  "overall": {
+    "count": 1000,
+    "matchesExpected": 1000,
+    "correctCorrections": 520,
+    "falseCorrections": 0,
+    "misses": 0,
+    "otherWrongResults": 0
+  },
+  "bySplit": {
+    "holdout": {
+      "count": 300,
+      "matchesExpected": 300,
+      "correctCorrections": 166,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "train": {
+      "count": 700,
+      "matchesExpected": 700,
+      "correctCorrections": 354,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    }
+  },
+  "byCategory": {
+    "case": {
+      "count": 120,
+      "matchesExpected": 120,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "case_wrong_title": {
+      "count": 130,
+      "matchesExpected": 130,
+      "correctCorrections": 130,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "case_wrong_upper": {
+      "count": 130,
+      "matchesExpected": 130,
+      "correctCorrections": 130,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "code": {
+      "count": 42,
+      "matchesExpected": 42,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "correct": {
+      "count": 112,
+      "matchesExpected": 112,
+      "correctCorrections": 1,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "digits": {
+      "count": 119,
+      "matchesExpected": 119,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "doublecaps": {
+      "count": 128,
+      "matchesExpected": 128,
+      "correctCorrections": 128,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "email": {
+      "count": 46,
+      "matchesExpected": 46,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "punctuation": {
+      "count": 1,
+      "matchesExpected": 1,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "short": {
+      "count": 1,
+      "matchesExpected": 1,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "url": {
+      "count": 40,
+      "matchesExpected": 40,
+      "correctCorrections": 0,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    },
+    "wrong": {
+      "count": 131,
+      "matchesExpected": 131,
+      "correctCorrections": 131,
+      "falseCorrections": 0,
+      "misses": 0,
+      "otherWrongResults": 0
+    }
+  },
+  "evidence": {
+    "research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/00.json": "83ee5c97f78ac1155376a3b4c9a3ebe06475d4907de18adbced8ebd624d677cf",
+    "research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/01.json": "8d75bc948bcc17fa5744b2f7edf24eae3bbeb91f8a4028599bfad86f2b4218cb",
+    "research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/02.json": "f6a9b478b426835d8685c17bafa0252f1b6d5032d82657be7e3ff16d6458b375",
+    "research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/03.json": "e6640e7ebd88ecf9f51a96010e99779e9dac26cc1b08d88b90094c35fb0c4c37",
+    "research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/04.json": "9d586ae0871992bf25d481db282a1589c9aaf2ceb884d44d27a8812c188cfd8d"
+  }
+}

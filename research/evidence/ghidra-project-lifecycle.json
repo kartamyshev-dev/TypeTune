@@ -1,0 +1,55 @@
+{
+  "package_version": "6.5.0",
+  "ghidra_version": "12.1.4",
+  "method": "read-only inspection of installed provider implementation, recorded tool schemas, and project artifacts in research/private; no new import or target execution",
+  "persistent_project_status": "unsupported_by_installed_rea_ghidra_provider",
+  "private_project_artifacts": [],
+  "tool_contracts": {
+    "open_binary": [
+      "path",
+      "format",
+      "architecture",
+      "entry_point",
+      "provider_id",
+      "snapshot_path"
+    ],
+    "close_binary": [
+      "snapshot_path",
+      "overwrite"
+    ]
+  },
+  "catalog_tool_count": 207,
+  "source_evidence": {
+    "dist/ghidra/GhidraLauncher.js": {
+      "sha256": "739676ebc64bd7b23ed1bc4a9395d596efe7bf8080eb67af1ff3e00d86609a67",
+      "anchors": [
+        {
+          "line": 380,
+          "text": "\"-readOnly\","
+        },
+        {
+          "line": 381,
+          "text": "\"-deleteProject\","
+        }
+      ]
+    },
+    "dist/ghidra/GhidraProviderCapabilities.js": {
+      "sha256": "f689b4c723302abf237af75044034ff8ab2114230e722e459b9ed4df7f43dd9a",
+      "anchors": [
+        {
+          "line": 19,
+          "text": "\"The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.\","
+        },
+        {
+          "line": 42,
+          "text": "\"Metadata edits invalidate immutable analysis snapshots and are discarded on close. CLI returns the updated dossier before session cleanup; this is not a saved Ghidra project.\","
+        },
+        {
+          "line": 50,
+          "text": "\"Metadata edits invalidate immutable analysis snapshots and are discarded on close; this is not a saved Ghidra project.\","
+        }
+      ]
+    }
+  },
+  "conclusion": "REA launch is readOnly+deleteProject. close_binary persists Evidence snapshot only; it cannot save a persistent Ghidra project. Existing snapshot replay is not project reopening. Required gpr-save/reopen criterion remains unverified."
+}

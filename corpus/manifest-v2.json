@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "rows": 4420,
+  "split": {
+    "train": 3094,
+    "holdout": 1326
+  },
+  "categories": {
+    "correct": 400,
+    "wrong": 400,
+    "case": 400,
+    "case_wrong_upper": 400,
+    "case_wrong_title": 400,
+    "digits": 401,
+    "url": 401,
+    "email": 401,
+    "code": 401,
+    "mixed": 402,
+    "doublecaps": 400,
+    "short": 4,
+    "ambiguous": 1,
+    "unknown": 2,
+    "unicode": 3,
+    "path": 2,
+    "punctuation": 2
+  },
+  "sha256": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
+  "lexiconSha256": "1764cd67ed823ea70551fb8c856ad0599f1a3765242d329c0710451b70d0aced",
+  "originalObservations": 0,
+  "notice": "Offline consistency only. No independent language quality or live equivalence claim."
+}

@@ -1,0 +1,446 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 362
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 362,
+      "maxMilliseconds": 0.5717916719731875,
+      "totalMilliseconds": 44.964916618482675
+    },
+    "AXFocusedUIElement:0": {
+      "count": 362,
+      "maxMilliseconds": 0.8475416689179838,
+      "totalMilliseconds": 28.035458373778965
+    },
+    "AXFocusedWindow:0": {
+      "count": 362,
+      "maxMilliseconds": 29.94862500054296,
+      "totalMilliseconds": 477.32479161641095
+    },
+    "AXRole:0": {
+      "count": 362,
+      "maxMilliseconds": 6.499249997432344,
+      "totalMilliseconds": 21.911333380558062
+    },
+    "AXSelectedTextRange:0": {
+      "count": 98,
+      "maxMilliseconds": 1.1526249945745803,
+      "totalMilliseconds": 10.203166639257688
+    },
+    "AXSubrole:-25205": {
+      "count": 362,
+      "maxMilliseconds": 6.19854166143341,
+      "totalMilliseconds": 56.24637498112861
+    },
+    "AXValue:0": {
+      "count": 98,
+      "maxMilliseconds": 0.16116666665766388,
+      "totalMilliseconds": 6.580791625310667
+    },
+    "AXWindow:0": {
+      "count": 362,
+      "maxMilliseconds": 2.203333337092772,
+      "totalMilliseconds": 29.60562499356456
+    }
+  },
+  "cases": 12,
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.results.json",
+  "completed": 12,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "results": [
+    {
+      "beforeGesture": {},
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 1.9447543749993201,
+      "events": 12,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-00",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "привет"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 6
+        },
+        "text": "привет"
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 1.9287069166603032,
+      "events": 20,
+      "gesture": "backspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-01",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "text": "приве"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 6
+        },
+        "text": "привет"
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.076739166666812,
+      "events": 22,
+      "gesture": "doubleBackspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-02",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 4
+      },
+      "text": "прив"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 6
+        },
+        "text": "привет"
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 1.933163625006273,
+      "events": 20,
+      "gesture": "backspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-03",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "text": "приве"
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14144770833081566,
+        "firstChangeSeconds": 0.03338641666050535,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.036622791667469,
+      "events": 20,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-04",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "привет "
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 7
+        },
+        "text": "привет "
+      },
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1438205416634446,
+        "firstChangeSeconds": 0.03721745833172463,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.071927458331629,
+      "events": 22,
+      "gesture": "backspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-05",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "привет"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 7
+        },
+        "text": "привет "
+      },
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1430670416666544,
+        "firstChangeSeconds": 0.03067495833238354,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.237053583332454,
+      "events": 24,
+      "gesture": "doubleBackspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-06",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "text": "приве"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 7
+        },
+        "text": "привет "
+      },
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14351495833398076,
+        "firstChangeSeconds": 0.03159254166530445,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.0613229166701785,
+      "events": 22,
+      "gesture": "backspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-07",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "привет"
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1383804166689515,
+        "firstChangeSeconds": 0.03216037500533275,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.045197374995041,
+      "events": 20,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-08",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "привет "
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 7
+        },
+        "text": "привет "
+      },
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14172533333476167,
+        "firstChangeSeconds": 0.03085220833600033,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.0715471250005066,
+      "events": 22,
+      "gesture": "backspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-09",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "привет"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 7
+        },
+        "text": "привет "
+      },
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14546566666831495,
+        "firstChangeSeconds": 0.031181458332866896,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.2309402916725958,
+      "events": 24,
+      "gesture": "doubleBackspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-10",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "text": "приве"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "selection": {
+          "length": 0,
+          "location": 7
+        },
+        "text": "привет "
+      },
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1496424166689394,
+        "firstChangeSeconds": 0.032079124997835606,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/A92969B4-AC11-4B4C-9E04-14BFFA19A463.txt",
+      "elapsedSeconds": 2.080687375004345,
+      "events": 22,
+      "gesture": "backspace",
+      "gestureIntermediate": {},
+      "id": "f14-backspace-explore-11",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "привет"
+    }
+  ],
+  "totalEvents": 250,
+  "processExitCode": 0,
+  "identity": {
+    "targetBinarySha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5",
+    "probeBinarySha256": "ad0747563e7862071785a7d2f398b48e721e39dcf88371c0f437716be3485134",
+    "probeSourceSha256": "2f64174f768820a1f04cfa0fd66551eada6e1522cee27e849d9c47c22f4573b1",
+    "caseFileSha256": "5213692de7e65d960c1de22c8ff65f150fd60a133bb0f0d4674faab71c636e19",
+    "targetBundleSha256": "fb7c6a9366b8c116587eb414874bcd357d78c1c46a8acd8e8f08fae4e45b4d49",
+    "pid": 73722,
+    "target": "original",
+    "sourceCommit": "45188395ead944f47c186d7cffd91224b573acbb",
+    "sourceDirty": true,
+    "processStart": "Fri Oct 16 00:52:48 2026",
+    "probeStartUptime": 48762.807949041
+  },
+  "probeEndUptime": 48794.05486825,
+  "identityUnchanged": true,
+  "targetProcessUnchanged": true
+}

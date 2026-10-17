@@ -1,0 +1,17 @@
+{
+  "installed_path": "/Applications/LayoutPilot.app",
+  "files_matched": 10,
+  "sha256": "22547ba38f7356199356bd3ad2f0e06e587b4ec0aff40b84a23fc2e080c2bfbc",
+  "signature_verified": true,
+  "settings_preserved": true,
+  "backup": "/Users/kartamyshev/git/caramba/research/private/menu-pause-install/previous.zip",
+  "backup_files_verified": 10,
+  "source_sha256": "82ca975312fb30e00da6f261c6a7fc6c75cb01e1cc42a26f49c8fe5e8673962b",
+  "pause_indicator": "only when global automatic is disabled; error indicator retains priority",
+  "flag_font_points": 20,
+  "flag_baseline_offset_points": -2,
+  "isolated_status_checks": "16/16",
+  "ui_status_after_permission_refresh_and_restart": "Работает",
+  "visual_alignment": "NOT_RUN",
+  "native_text_input": "NOT_RUN"
+}

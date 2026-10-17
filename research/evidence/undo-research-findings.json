@@ -1,0 +1,243 @@
+{
+  "evidence_id": "LP-UNDO-20261015-01",
+  "method": "read existing REA records and saved ARM64 assembly; no active REA or runtime",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "records": [
+    {
+      "evidence_id": "ev_22551d5be75cb66f6fa304046951cfbd21865eedd28e2f1850f0ad3064b9e18f",
+      "operation": "analyze_function",
+      "requested_parameters": {
+        "procedure": "0x10025398c"
+      },
+      "bundle": "research/private/deep-evidence-bundle.json",
+      "bundle_sha256": "29ca59c86c8aac66a6e8c2a1ba75e6c4ed767a1de6c060ed27daab7563c9beaf"
+    },
+    {
+      "evidence_id": "ev_e32289eb3e357ec8d496c1023b5a756031e22c46f0f1cc2d84521461e7c6968f",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x100253e18"
+      },
+      "bundle": "research/private/deep-evidence-bundle.json",
+      "bundle_sha256": "29ca59c86c8aac66a6e8c2a1ba75e6c4ed767a1de6c060ed27daab7563c9beaf"
+    },
+    {
+      "evidence_id": "ev_1e6aa997bb221fa651a03227f661788acab8bfaf49a0a89aac39acea037bd04b",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x100255918"
+      },
+      "bundle": "research/private/deep-evidence-bundle.json",
+      "bundle_sha256": "29ca59c86c8aac66a6e8c2a1ba75e6c4ed767a1de6c060ed27daab7563c9beaf"
+    },
+    {
+      "evidence_id": "ev_25e7666d04bb7a81c4ec92714346dedb0d5b3e271a953e70189f89a62b07740f",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x1002519b0"
+      },
+      "bundle": "research/private/phase2-evidence-bundle.json",
+      "bundle_sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f"
+    },
+    {
+      "evidence_id": "ev_d984e908d21a5dd96e5c11e5e2a3565a4bd34cfab74fa831dc3c4ac99f5d6d20",
+      "operation": "read_function_instructions",
+      "requested_parameters": {
+        "procedure": "0x1002519b0"
+      },
+      "bundle": "research/private/phase2-evidence-bundle.json",
+      "bundle_sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f"
+    },
+    {
+      "evidence_id": "ev_88dc0ec5db51c5c3fb90ee13cf714286683560d48d96c1517f4c2523a43e634f",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x10025575c"
+      },
+      "bundle": "research/private/phase2-evidence-bundle.json",
+      "bundle_sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f"
+    },
+    {
+      "evidence_id": "ev_7e57d15fcd78498942357e2eda3d04ff5a83fbecbc692e9fe9ccb07dd275555b",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x100255420"
+      },
+      "bundle": "research/private/phase2-evidence-bundle.json",
+      "bundle_sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f"
+    },
+    {
+      "evidence_id": "ev_f646a460d3e9a0758a7f3f622b2c8c5418f3f69eddc29a6bfa21e8daaf6538c5",
+      "operation": "read_function_instructions",
+      "requested_parameters": {
+        "procedure": "0x100255420"
+      },
+      "bundle": "research/private/phase2-evidence-bundle.json",
+      "bundle_sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f"
+    },
+    {
+      "evidence_id": "ev_f0752d57b8b93bc5c9ba25480c2bc9b21edfc8d8945d281e1714c36d60437915",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x100255af0"
+      },
+      "bundle": "research/private/phase2-evidence-bundle.json",
+      "bundle_sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f"
+    },
+    {
+      "evidence_id": "ev_275e695cbe6516531e9521ba75d785f3a2a2b3d80d8fcd59e7aee39e9edb22bb",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x100255a14"
+      },
+      "bundle": "research/private/phase3-evidence-final.json",
+      "bundle_sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a"
+    },
+    {
+      "evidence_id": "ev_37ccc27cd1ad1c030b5dc695fc083f129334bc44766b192209a020406f4ba625",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x1002d9680"
+      },
+      "bundle": "research/private/phase3-evidence-final.json",
+      "bundle_sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a"
+    },
+    {
+      "evidence_id": "ev_db819743493356a874911e965b5fb8a01d464fa039684cabac389aaf50c72d03",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x1002e35bc"
+      },
+      "bundle": "research/private/phase3-evidence-final.json",
+      "bundle_sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a"
+    },
+    {
+      "evidence_id": "ev_69c60ebb97abfe5a0c3c2bdb9fd16c9e31432ef12bf53b7984cf7021ba00845f",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x1002516ec"
+      },
+      "bundle": "research/private/phase3-evidence-final.json",
+      "bundle_sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a"
+    },
+    {
+      "evidence_id": "ev_e0a817c11f36685db780ca6d4ad81d34489239149d390f94d100a8597014c2d4",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x1002557f4"
+      },
+      "bundle": "research/private/phase3-evidence-final.json",
+      "bundle_sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a"
+    },
+    {
+      "evidence_id": "ev_1c06051f78df1ee083cc8c9186c36d52b88ad8de0d3fd47376a43c8254fc8c32",
+      "operation": "read_function_instructions",
+      "requested_parameters": {
+        "procedure": "0x1002dfac8"
+      },
+      "bundle": "research/private/origin-evidence-bundle.json",
+      "bundle_sha256": "0f407f5d98f8485082586652b6027afab24898862b9d701d074dd1bf64305f51"
+    },
+    {
+      "evidence_id": "ev_70b49bff3fb0ad93b1bcb4ff0a0680aa1628299bdc778e0d003917dea54696bd",
+      "operation": "procedure_pseudo_code",
+      "requested_parameters": {
+        "procedure": "0x1002dfac8"
+      },
+      "bundle": "research/private/origin-evidence-bundle.json",
+      "bundle_sha256": "0f407f5d98f8485082586652b6027afab24898862b9d701d074dd1bf64305f51"
+    }
+  ],
+  "observed": [
+    {
+      "id": "U01",
+      "procedure": "0x1002519b0",
+      "summary": "Input reducer preserves key-up state; key-down Tab clears buffered key records, Backspace removes last buffered key record if present."
+    },
+    {
+      "id": "U02",
+      "procedure": "0x100255918",
+      "summary": "Getter copies optional stored correction state at app+0x118 and retains source object at app+0x130; no Core Data write is visible in this getter."
+    },
+    {
+      "id": "U03",
+      "procedure": "0x100251f20",
+      "assembly_range": [
+        "0x100252844",
+        "0x100252910"
+      ],
+      "summary": "After stored-correction getter and current key-buffer clone, length-zero branch calls0x100255a14(saved bytes); true selects retained input source then swaps correction state to variant0x8000000000000002."
+    },
+    {
+      "id": "U04",
+      "procedure": "0x100255420",
+      "summary": "Feature gate skips Backspace and compares current text with stored correction context; this is not by itself a persistent-learning operation."
+    },
+    {
+      "id": "U05",
+      "procedure": "0x10025575c",
+      "summary": "Clears manual/repeated correction flag app+0x151 and releases optional correction state; no rule addition established."
+    },
+    {
+      "id": "U06",
+      "procedure": "0x100255a14",
+      "summary": "Compound eligibility gate: string utility/size-dependent helper, model-backed predicate0x1002d9680, then0x1002e35bc; no direct persistence writer in this body. Callee side effects remain bounded unknown."
+    },
+    {
+      "id": "U07",
+      "procedure": "0x1002d9680",
+      "summary": "Uses global mutex and model state, calls0x1002dfac8 with final argument1, then unlocks; no direct Core Data setter established."
+    },
+    {
+      "id": "U08",
+      "procedure": "0x1002e35bc",
+      "summary": "Calls string helper and rejects short result, then evaluates multiple lazily initialized matcher objects via0x1002df1a0 with staged positive/negative branches; exact pattern classes unknown."
+    },
+    {
+      "id": "U09",
+      "procedure": "0x1002557f4",
+      "summary": "Copies buffered key records, obtains current TIS input source, calls0x100257960 to derive text, then releases temporary data."
+    },
+    {
+      "id": "U10",
+      "procedure": "0x1002516ec",
+      "summary": "Tagged gesture-state reducer compares stored/current timestamps and button identity, returns state variants0..4; no persistence call visible."
+    },
+    {
+      "id": "U11",
+      "procedure": "0x1002dfac8",
+      "summary": "Feature extractor0x1002e0030→scan0x28-byte candidates→flagbit0 boolean; no direct persistence writer. Pseudocode corroborated by ARM64 instructions."
+    }
+  ],
+  "missing_procedures": [
+    {
+      "procedure": "0x1002e0030",
+      "priority": 1,
+      "question": "Recover feature extraction/record categories under model-backed eligibility;0x1002dfac8 body is now obtained and does not establish persistence."
+    },
+    {
+      "procedure": "0x10024b614",
+      "priority": 2,
+      "question": "Resolve string utility used before gate and regex-like chain; do not assume character count/type from recovered ABI alone."
+    },
+    {
+      "procedure": "0x1002df1a0",
+      "priority": 3,
+      "question": "Establish matcher semantics and initialization references for0x1002e35bc without exporting bundled patterns."
+    }
+  ],
+  "unknowns": [
+    "Actual Undo gesture and whether immediate Backspace triggers correction reversal.",
+    "Full model-backed eligibility meaning, callback side effects and matcher classes in gate0x100255a14.",
+    "Every callback from engine to AutoswitchExceptionsStore persistence and its transaction boundary.",
+    "Meaning/threshold of additions, user confirmation, visible and disabled.",
+    "Whether restoring original text must happen before adding an exception."
+  ],
+  "runtime_acceptance": false,
+  "phase3_update": {
+    "source_bundle": "research/private/phase3-evidence-final.json",
+    "sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a",
+    "record_count": 89,
+    "method": "new bodies read as saved pseudocode, no additional instructions for these five procedures"
+  }
+}

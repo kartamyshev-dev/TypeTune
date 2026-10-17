@@ -1,0 +1,8 @@
+test_cli_delivery_artifacts_are_bound_at_build (__main__.AuditGateTests.test_cli_delivery_artifacts_are_bound_at_build) ... ok
+test_existing_build_requires_exact_source_and_resource_set (__main__.AuditGateTests.test_existing_build_requires_exact_source_and_resource_set) ... ok
+test_native_suite_requires_complete_verified_run (__main__.AuditGateTests.test_native_suite_requires_complete_verified_run) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.113s
+
+OK

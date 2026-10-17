@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "verificationType": "compile_and_offline_only",
+  "helperInvocations": 0,
+  "nativeEvents": 0,
+  "appsOpened": 0,
+  "swiftCompileExitCode": 0,
+  "offlineTamperChecks": 15,
+  "offlineTamperPassed": true,
+  "lateComparisonFix": "elapsed>=1800 stops only after at least one stability batch",
+  "sourceSha256": {
+    "scripts/run_native_session.py": "3824d9b856115c0f60d5bf02376ff498a9aa69e8e5f588e1fd16366f51b06df0",
+    "scripts/test_native_evidence.py": "4629b71406234ab0fca4cb407a3bca8d052f04d0237acdc1c79e036296d8a194",
+    "Tools/TextEditFocusSwapProbe.swift": "de80151ef62116bc03b8ce4f79f112d4e740fe32a95eddf6382d8fc0caf0fc29",
+    "scripts/build_focus_swap_probe.sh": "54578a3dd299b4fce6929b234ec63e11a58952f0ad6dec3036773caa141ea6bb"
+  },
+  "compiledHelperSha256": "4f40109f67450c3e9c4913bb38409ccca9611be48dbac1936bf25d3a253f3c3e",
+  "limitations": [
+    "No native execution or race-overlap proof",
+    "No RAM-only pending count read",
+    "Before/after/caret checks remain subject to AX/CGEvent TOCTOU"
+  ]
+}

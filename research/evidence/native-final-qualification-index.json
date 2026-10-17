@@ -1,0 +1,69 @@
+{
+  "codeSourceCommit": "ae3f565b39a319825b7cdae8dbebc4746940f0a5",
+  "binarySha256": "102ad5b5e8326662751a31947a51183481a38e366b1c475db67967433e139791",
+  "lexiconSha256": "1764cd67ed823ea70551fb8c856ad0599f1a3765242d329c0710451b70d0aced",
+  "probeSourceSha256": "be476518a4dc60ff29803614686b290392360ff6b970526d8b292e0289ff40de",
+  "checks": {
+    "native-final-controls-ae3f565.json": {
+      "textCasesVerified": 6,
+      "sha256": "ecfaff518a0eb467411b463b7e176d4b2f66a7d3b9d0f233c7aa234b8f2daeeb"
+    },
+    "native-final-system-vocabulary.json": {
+      "textCasesVerified": 6,
+      "sha256": "0244bb9872869a75fdcf9c4ec2856103aa1fdc905499bf9ea6790ffa956450f9"
+    },
+    "native-final-manual-undo-ae3f565.json": {
+      "intermediateVerified": true,
+      "sha256": "2d6ce0ebfc3bcf6abd185cf91fecc2deaa3264c6fb0ea6de96ca9118ae914c68"
+    },
+    "native-final-unicode-eligible-ae3f565.json": {
+      "unicodeAndCaretVerified": true,
+      "sha256": "205403c1ae3c32565b51abf27edef4dad2b17724b4066413018c054ee15c1286"
+    },
+    "native-final-app-exclusion.json": {
+      "textVerified": true,
+      "sha256": "96f2b3a31700420be6fb1ccc364bbd968cdaa3f626267fb596c9b30a3b373802"
+    },
+    "native-final-literal-rule.json": {
+      "textVerified": true,
+      "sha256": "e29c8d004e8a1bbc33634e2409648b5ca3549d6a4766be0557df9459f8550ae4"
+    },
+    "native-final-word-exclusion-priority.json": {
+      "textVerified": true,
+      "sha256": "71c51df4cb6033a014da95ad8f92790e0ce74d8752f0e7cee60bc9610170552c"
+    },
+    "native-final-smoke-ae3f565.json": {
+      "verifier": "scripts/verify_native_suite.py",
+      "cases": 13,
+      "sha256": "ad6184512fef8eae6a278233b108d5a078126dc236ab281c1472600992ffd8d1"
+    },
+    "native-final-stream-ae3f565.json": {
+      "profileDelayMilliseconds": 80,
+      "preserved": 20,
+      "exactCorrections": 17,
+      "sha256": "d839b861cfd6c4303a82d053b03533be7fb41c2c930c3a1d1bebc411afc45f3d"
+    },
+    "native-session-final-fifo/summary.json": {
+      "verifier": "scripts/verify_native_session.py",
+      "durationSeconds": 2170.2868135000026,
+      "sha256": "90936351a729b3ec7c2ab6655cb0776b1f80d1bce133e631ec88718d5b22a11f"
+    }
+  },
+  "restoredSettings": {
+    "excludedWords": [],
+    "singleShift": true,
+    "rules": [],
+    "sound": false,
+    "optionCorrection": false,
+    "shiftChordPause": false,
+    "plainPaste": true,
+    "learnedWords": [],
+    "automatic": true,
+    "yo": true,
+    "typos": true,
+    "excludedApps": []
+  },
+  "systemDictionary": false,
+  "diagnosticKeyAbsent": true,
+  "notice": "Bounded TextEdit evidence only; code/resource identity checked. No full feature/other-app/focus-race/p95 acceptance."
+}

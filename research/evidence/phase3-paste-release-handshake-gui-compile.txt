@@ -1,0 +1,25 @@
+Building for debugging...
+[4 / 16] LayoutPilotCore
+[12 / 24] LayoutPilotCore
+[18 / 23] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[21 / 74]
+[28 / 74]
+[30 / 74]
+[35 / 74]
+[36 / 74]
+[37 / 74]
+[40 / 74]
+[42 / 74]
+[51 / 74]
+[52 / 74]
+[56 / 74]
+[61 / 74]
+[62 / 74]
+[63 / 74]
+[71 / 74] LayoutPilot-product
+[72 / 74] LayoutPilot-product
+[74 / 76] LayoutPilot-product
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+Build complete! (27,12 с)

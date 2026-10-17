@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "provenance": "Own synthetic authored scenarios; no original result assumed. Separate from control corpus.",
+  "cases": [
+    {
+      "id": "multiline-selection",
+      "feature": "F05",
+      "initialText": "ghbdtn\nhello\t😀",
+      "text": "",
+      "source": "ABC",
+      "gesture": "doubleShift",
+      "boundary": false,
+      "selectAllBeforeGesture": true,
+      "expected": "привет\nруддщ\t😀",
+      "expectedSource": "com.apple.keylayout.RussianWin",
+      "expectedSelection": {
+        "location": 0,
+        "length": 15
+      }
+    },
+    {
+      "id": "multiline-undo",
+      "feature": "F05",
+      "initialText": "ghbdtn\nhello\t😀",
+      "text": "",
+      "source": "ABC",
+      "gesture": "manualUndo",
+      "boundary": false,
+      "selectAllBeforeGesture": true,
+      "expected": "ghbdtn\nhello\t😀",
+      "expectedSource": "com.apple.keylayout.ABC",
+      "expectedSelection": {
+        "location": 0,
+        "length": 15
+      },
+      "expectedIntermediate": "привет\nруддщ\t😀",
+      "targets": [
+        "prototype"
+      ]
+    },
+    {
+      "id": "multiline-unicode-selection",
+      "feature": "F05",
+      "initialText": "ghbdtn é\nhello\t👩🏽‍💻",
+      "text": "",
+      "source": "ABC",
+      "gesture": "doubleShift",
+      "boundary": false,
+      "selectAllBeforeGesture": true,
+      "expected": "привет у́\nруддщ\t👩🏽‍💻",
+      "expectedSource": "com.apple.keylayout.RussianWin",
+      "expectedSelection": {
+        "location": 0,
+        "length": 23
+      }
+    }
+  ]
+}

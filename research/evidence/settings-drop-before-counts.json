@@ -1,0 +1,25 @@
+{
+  "audibilityVerified" : false,
+  "checks" : {
+    "sameOwnProcessStillRunning" : true,
+    "statisticsDecoded" : true
+  },
+  "clipboardRead" : false,
+  "counts" : {
+    "automatic" : 9,
+    "manual" : 5,
+    "singleShift" : 1,
+    "sound" : 0,
+    "typo" : 1,
+    "yo" : 1
+  },
+  "eventsPosted" : 0,
+  "guiActivated" : false,
+  "kind" : "own-app-read-only-artifact-readback",
+  "mode" : "statistics",
+  "nativeDropVerified" : false,
+  "passed" : true,
+  "preferencesWritten" : false,
+  "privatePathsOrContentsLogged" : false,
+  "uiObserved" : false
+}

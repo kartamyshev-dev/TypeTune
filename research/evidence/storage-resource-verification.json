@@ -1,0 +1,12 @@
+{
+  "evidence_id": "LP-STORAGE-20261015-VERIFY",
+  "source_evidence": "LP-STORAGE-20261015-01",
+  "source_evidence_sha256": "45f214b199003d47213d3c2a2ea43fee8589ea2ce93d52ea3d7107213b9259fe",
+  "source_artifacts_rehashed": 16,
+  "all_matched": true,
+  "models_parsed": 8,
+  "resource_plists_parsed": 3,
+  "preference_literals_present": true,
+  "followup_marker_groups_present": true,
+  "behavioral_checks_performed": false
+}

@@ -1,0 +1,16 @@
+{
+  "privateDestination": "research/private/phase3-pre-experiments",
+  "roots": [
+    {
+      "rootIndex": 0,
+      "sqliteBackups": 1,
+      "copyCreated": true
+    },
+    {
+      "rootIndex": 1,
+      "sqliteBackups": 0,
+      "copyCreated": true
+    }
+  ],
+  "sqliteCoherence": "SQLite backup API includes live WAL; other opaque formats only filesystem copy"
+}

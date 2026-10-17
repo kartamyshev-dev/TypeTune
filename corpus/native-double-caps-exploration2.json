@@ -1,0 +1,58 @@
+[
+  {
+    "id": "caps-layout",
+    "text": "GHbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  },
+  {
+    "id": "caps-layout-short",
+    "text": "GHb",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  },
+  {
+    "id": "caps-facebook",
+    "text": "FAcebook",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  },
+  {
+    "id": "caps-github",
+    "text": "GItHub",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  },
+  {
+    "id": "caps-youtube",
+    "text": "YOuTube",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  },
+  {
+    "id": "caps-iphone",
+    "text": "IPhone",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  },
+  {
+    "id": "caps-hello",
+    "text": "HEllo",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation."
+  }
+]

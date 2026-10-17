@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "provider": "REA6.5.0/Ghidra12.1.4",
+  "sourceBundleSha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f",
+  "method": "author interpretation of previously saved ARM64 instructions; no new import, UI, runtime input, source/tool edit or dictionary copy",
+  "findings": [
+    {
+      "id": "SF01",
+      "function": "0x1002e0cec",
+      "anchors": [
+        "0x1002e0e60",
+        "0x1002e0e7c",
+        "0x1002e0f40",
+        "0x1002e0f54"
+      ],
+      "claim": "For a matched language pair, no zero-weight Boolean records => category1; any zero-weight record with low Boolean bit0 => category3; otherwise any such bit1 record => category2. Category3 wins mixed bits. Nonzero weights do not set these category bits.",
+      "evidence_id": "ev_dc4ca2427cec9987472c0444b6f5ed0b41d0da44de0005bd1275c566c8e189fe"
+    },
+    {
+      "id": "SF02",
+      "function": "0x1002e0cec",
+      "anchors": [
+        "0x1002e0d0c",
+        "0x1002e0d48",
+        "0x1002e0ea8",
+        "0x1002e0eac"
+      ],
+      "claim": "No matching unordered language pair returns category0; x1 is not initialized to a weight on that path and caller ignores it. Zero-feature matched pair instead returns category1 with sum0.",
+      "evidence_id": "ev_dc4ca2427cec9987472c0444b6f5ed0b41d0da44de0005bd1275c566c8e189fe"
+    },
+    {
+      "id": "SF03",
+      "function": "0x1002e0cec",
+      "anchors": [
+        "0x1002e0e54",
+        "0x1002e0e5c",
+        "0x1002e0ee0"
+      ],
+      "claim": "A feature entry first-word sentinel -2 terminates accumulation and enters remaining-entry cleanup; existing category bits and sum are retained. Meaning/emission condition unknown without extractor body.",
+      "evidence_id": "ev_dc4ca2427cec9987472c0444b6f5ed0b41d0da44de0005bd1275c566c8e189fe"
+    },
+    {
+      "id": "SF04",
+      "function": "0x1002e083c",
+      "anchors": [
+        "0x1002e0910",
+        "0x1002e0964",
+        "0x1002e0988",
+        "0x1002e0b94",
+        "0x1002e0be4"
+      ],
+      "claim": "Category3 sets sticky overall veto sentinel 0x8000000000000002. Without it, any category2 candidate takes precedence over category1 weight winner; later category2 overwrites earlier category2. Category0 skipped.",
+      "evidence_id": "ev_93408285a7e01902352121bc95fd3fe4ba0f6db4cfc36ec13c6afdab171bdfc7"
+    },
+    {
+      "id": "SF05",
+      "function": "0x1002e083c",
+      "anchors": [
+        "0x1002e09b4",
+        "0x1002e09b8"
+      ],
+      "claim": "Category1 comparison uses signed32 greater-than. Equal sums keep earlier category1 candidate. This is category-specific, not a universal confidence threshold.",
+      "evidence_id": "ev_93408285a7e01902352121bc95fd3fe4ba0f6db4cfc36ec13c6afdab171bdfc7"
+    }
+  ],
+  "missingQueries": [
+    {
+      "name": "procedure_pseudo_code",
+      "arguments": {
+        "procedure": "0x1002e0030"
+      }
+    },
+    {
+      "name": "read_function_instructions",
+      "arguments": {
+        "procedure": "0x1002e0030"
+      }
+    }
+  ],
+  "limits": [
+    "Feature extractor body0x1002e0030 absent from69-record bundle; references to it are not its implementation.",
+    "Boolean offset+0x18 semantic name and sentinel-2 source conditions remain unknown.",
+    "Full dictionary, numeric weights, runtime category frequencies and Undo/learning are not established."
+  ],
+  "readback": {
+    "bundleDigestVerified": true,
+    "fiveClaimsAnchorsVerified": true,
+    "method": "primary agent readonly source-bundle hash and instruction anchor checks; no new native execution"
+  }
+}

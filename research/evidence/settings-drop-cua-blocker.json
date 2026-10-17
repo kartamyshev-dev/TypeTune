@@ -1,0 +1,29 @@
+{
+  "kind": "CUA-F19-native-drop-feasibility",
+  "guiBinarySha256": "944f9ccec18becc8fb72e2ca991582443aa7231ee21ff0399f5cd04e76707455",
+  "expectedBinaryUnchanged": true,
+  "initialUI": {
+    "headerColor": "Синий",
+    "lightHeaderText": true,
+    "imageSelection": "Однотонный фон",
+    "soundEnabled": false
+  },
+  "finderFolderObserved": "/Users/kartamyshev/git/caramba/.build/settings-fixtures",
+  "ownPNGAndTIFFObserved": true,
+  "documentedAPI": "Target.drag(from:Vec2,to:Vec2) bound to an App/Window; no global drag target or mouseDown/move/mouseUp API available",
+  "blocker": "Cannot safely express one authenticated Finder-to-LayoutPilot cross-window drag with documented APIs/geometry; no guessed-coordinate attempt made",
+  "dragAttempts": 0,
+  "nativeDrop": "NOT_RUN",
+  "TIFFOnlyProvider": "NOT_RUN",
+  "restartReset": "NOT_RUN-no-selection-changed",
+  "originalAccessed": false,
+  "guiStoppedOrRebuilt": false,
+  "TCCChanged": false,
+  "soundPlayed": false,
+  "countsUnchanged": true,
+  "headerStillEmpty": true,
+  "syntheticFixturesUnchanged": true,
+  "userFilesChanged": false,
+  "finalFinderFolder": "own synthetic settings-fixtures",
+  "CUAReleased": true
+}

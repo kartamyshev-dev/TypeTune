@@ -1,0 +1,44 @@
+Building for production...
+[Planning deferred tasks]
+[3 / 10]
+[4 / 11] LayoutPilotCore
+[6 / 12] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[12 / 13] LayoutPilot-product
+[13 / 56]
+[19 / 56]
+[21 / 56]
+[26 / 56]
+[27 / 56]
+[28 / 56]
+[31 / 56]
+[33 / 56]
+[42 / 56]
+[43 / 56]
+[47 / 56]
+[51 / 56]
+[52 / 56]
+[53 / 56]
+[54 / 56]
+[55 / 56] LayoutPilot-product
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[58 / 60] LayoutPilot-product
+[59 / 60] LayoutPilot-product
+Build complete! (35,31 с)
+Building for production...
+[Planning deferred tasks]
+[3 / 6] LayoutPilotCore
+[4 / 7] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[10 / 11] layoutpilot-cli-product
+[11 / 12] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[14 / 16] layoutpilot-cli-product
+[16 / 16] layoutpilot-cli-product
+Build complete! (8,72 с)
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app

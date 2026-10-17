@@ -1,0 +1,43 @@
+{
+  "beforeGesture" : {
+    "inputSource" : "com.apple.keylayout.RussianWin",
+    "selection" : {
+      "length" : 5,
+      "location" : 0
+    },
+    "text" : "hello"
+  },
+  "boundary" : false,
+  "boundaryObservation" : {
+    "performed" : false
+  },
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/B5AB8A5A-333B-40A0-9910-415F4B7F055C.results.json",
+  "clipboardRestore" : "not_used",
+  "completed" : 1,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/B5AB8A5A-333B-40A0-9910-415F4B7F055C.txt",
+  "elapsedSeconds" : 1.8800311249942752,
+  "events" : 8,
+  "eventTag" : 1280331858,
+  "gesture" : "manualUndo",
+  "gestureIntermediate" : {
+    "inputSource" : "com.apple.keylayout.RussianWin",
+    "selection" : {
+      "length" : 5,
+      "location" : 0
+    },
+    "text" : "руддщ"
+  },
+  "id" : "single",
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "initialSyntheticText" : "hello",
+  "inputSource" : "com.apple.keylayout.RussianWin",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII" : "",
+  "requestedSource" : "com.apple.keylayout.RussianWin",
+  "selectAllBeforeGesture" : true,
+  "selection" : {
+    "length" : 5,
+    "location" : 0
+  },
+  "text" : "hello"
+}

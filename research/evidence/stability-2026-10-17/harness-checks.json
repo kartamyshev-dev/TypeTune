@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-17T18:19:58.818410+00:00",
+  "scope": "offline harness, tamper, exact correction and mocked orchestration checks only; no native GUI, keyboard events, settings or app launch",
+  "syntaxChecked": [
+    "scripts/native_evidence.py",
+    "scripts/native_integrity.py",
+    "scripts/run_native_corpus.py",
+    "scripts/run_native_session.py",
+    "scripts/verify_native_session.py",
+    "scripts/verify_existing_build.py",
+    "scripts/test_native_evidence.py",
+    "scripts/test_native_integrity.py",
+    "scripts/test_native_harness.py"
+  ],
+  "sourceHashes": {
+    "scripts/native_evidence.py": "a008ac945a8f4242201db5257f60a018ea31ef1f1ca597535961e869aab5985c",
+    "scripts/native_integrity.py": "0d524c746bc01a163bf66bf0de148e59e3b36d363501b4b84b091aa361aba299",
+    "scripts/run_native_corpus.py": "ca42cbb14afab04d20fcd95418a55456a57c227d26cc55a83671b241290f0535",
+    "scripts/run_native_session.py": "5b3c551cbae76c364fe2c66a7ff479871a1336150435e5f80ef67d3396d11b7b",
+    "scripts/verify_native_session.py": "42cf6433659b8eee1491100e71e5b16edeb4a0d26c10d97192327e76c5fb58fd",
+    "scripts/verify_existing_build.py": "bc19c2d1c9c27c967f88381354afad92b61c6d3779171364843518d97fdc8425",
+    "scripts/test_native_evidence.py": "94bc1754f307c30dabd65c4b67ac4ccf83884fc2f126e43520e19ed37a8f2e85",
+    "scripts/test_native_integrity.py": "6b7244097cd959eaa9eb7a6cd4e3b6f810271170091aa75fddf2fa13488151d0",
+    "scripts/test_native_harness.py": "3676fcfc12fb5956d3734398fa89a12d90a4ca05c5ca3e8fbafcde8c6ce9dffa"
+  },
+  "streamFixtureSha256": "fa8933321aeeb73d2c4ebbca28c1158809e2aa2f05b22abfc1971e7273937791",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_evidence.py"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_native_evidence-stability.txt",
+      "output": "33 offline identity/session/tamper checks PASS; no native acceptance\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_integrity.py"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_native_integrity-stability.txt",
+      "output": "26 offline corpus integrity checks PASS; no native/quality acceptance\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_harness.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_native_harness-stability.txt",
+      "output": "test_corpus_selected_app_reports_raw_as_quality_failure (__main__.NativeHarnessTests.test_corpus_selected_app_reports_raw_as_quality_failure) ... ok\ntest_package_verifier_requires_matching_bundle_and_quality (__main__.NativeHarnessTests.test_package_verifier_requires_matching_bundle_and_quality) ... ok\ntest_session_forwards_exact_app_and_stream_expectations (__main__.NativeHarnessTests.test_session_forwards_exact_app_and_stream_expectations) ... ok\ntest_verifier_uses_app_and_exits_nonzero_for_quality_failure (__main__.NativeHarnessTests.test_verifier_uses_app_and_exits_nonzero_for_quality_failure) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.023s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_audit_gates.py"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_audit_gates-stability.txt",
+      "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 1.100s\n\nOK\n"
+    }
+  ],
+  "allPassed": true
+}

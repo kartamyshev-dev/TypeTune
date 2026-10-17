@@ -1,0 +1,23 @@
+{
+  "count": 1000,
+  "split": {
+    "train": 700,
+    "holdout": 300
+  },
+  "categories": {
+    "wrong": 131,
+    "correct": 112,
+    "doublecaps": 128,
+    "case": 120,
+    "url": 40,
+    "email": 46,
+    "case_wrong_title": 130,
+    "digits": 119,
+    "case_wrong_upper": 130,
+    "code": 42,
+    "short": 1,
+    "punctuation": 1
+  },
+  "sha256": "9308f60080c71e4da8b3bb4da0adbfda7ef8f164ab40296fccf5964d734b3163",
+  "notice": "Native sample from synthetic lexicon consistency corpus. Not independent language quality."
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "sourceEvidence": {
+    "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01.json": "bd74082ca172070589a72a9723910cf46f1f1be9ed40eb88ba7a02f7e8ee6273",
+    "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01-diagnostics.json": "9a37e4f96d557d9d06d11f214eb8cf540317eb0a613c179c86eff0dec79d6f0e",
+    "corpus/native-stability-regressions-v1.json": "b794c2e1daaff7e913e512820de1912420054eb3b017bb9711af5e82192a1002"
+  },
+  "targetBinarySha256": "a46c7c6a69410118fca48b66e36abc37cc05068efef48f99f8c01000179a1391",
+  "boundFixtureAndHelperVerified": true,
+  "correctionQualityPassed": false,
+  "correctionFailureIDs": [
+    "stability-first-word-after-focus"
+  ],
+  "cases": [
+    {
+      "id": "stability-first-word-after-focus",
+      "textMatches": false,
+      "sourceMatches": false,
+      "caretMatches": true,
+      "timing": {
+        "firstInputAfterFocusMilliseconds": 92.5831249987823,
+        "firstWordAfterFocus": true,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "id": "stability-immediate-double-shift",
+      "textMatches": true,
+      "sourceMatches": true,
+      "caretMatches": true,
+      "timing": {
+        "firstWordAfterFocus": false,
+        "gestureAfterTypingMilliseconds": 17.241208333871327,
+        "preGestureDelayMilliseconds": 0
+      }
+    },
+    {
+      "id": "stability-continuous-stream",
+      "textMatches": true,
+      "sourceMatches": true,
+      "caretMatches": true,
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    }
+  ],
+  "firstObservedBoundary": {
+    "checks": {
+      "insertionVisible": true,
+      "matchesBeforeText": false,
+      "matchesPredictedCaret": false,
+      "matchesPredictedText": false,
+      "previous": false,
+      "sameTarget": false
+    },
+    "counts": {},
+    "elapsedMilliseconds": 23.598958334332565,
+    "phase": "boundary",
+    "revision": 12,
+    "uptime": 26120.40611104167
+  },
+  "firstApplyEnqueued": {
+    "checks": {},
+    "counts": {},
+    "phase": "apply-enqueued",
+    "revision": 20,
+    "uptime": 26121.675097583335
+  },
+  "interpretation": [
+    "Observed first-word correction miss: raw ghbdtn plus space and ABC remain; caret 7 is correct and helper reports 14 emitted events.",
+    "First keydown was 92.583 ms after positive helper ownership; fixed .5s activation/.2s post-source settling was correctly skipped for this mode.",
+    "Application first boundary saw visible insertion but no prior anchor; repeated earlier capture had previous=false and deadlineExceeded. No correction enqueue appeared for the first boundary.",
+    "Missing app anchor after focus/temporary AX failures is a supported hypothesis for the product investigation, not a uniquely proven upstream cause.",
+    "Helper AXFocusedWindow transient errors preceded successful authentication; AXSubrole unsupported responses also occur throughout successful cases and do not establish the cause.",
+    "Immediate Double Shift passed at 17.241 ms observed typing-to-gesture gap; continuous stream exact text/source/caret passed. Neither changes first-word FAIL."
+  ],
+  "nativeRerun": "NOT_RUN",
+  "productionOrNativeProbeEditsByThisSubtask": false
+}

@@ -1,0 +1,4 @@
+Building for debugging...
+[1 / 1]
+Build complete! (0,29 с)
+{"cases":12,"failures":[],"notice":"Production replace entry point; current-check sentinel always denies all AX work. No live Codex reproduction or native TextEdit acceptance."}

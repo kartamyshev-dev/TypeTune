@@ -1,0 +1,52 @@
+{
+  "pid": 81209,
+  "targetBinarySha256": "38a0d4fd41e5aa96842dcbb097402a6f593423beecb44fe712984a33e37a41a0",
+  "probeSourceSha256": "e7816642ac8669a3ab1b66a2e690f0eed8c19a5521e58bf9c10897aee485df24",
+  "probeBinarySha256": "b76b4de99a4102db9920c9887688b182390febcbc430fa3a981ac549177b011b",
+  "intervalMilliseconds": 10,
+  "comparisonRun": "gesture-fix-38a0d4fd",
+  "stabilityBatches": [
+    {
+      "index": 0,
+      "cases": 100,
+      "textIntegrityFailures": [],
+      "matchesCorrectionExpectation": 59
+    }
+  ],
+  "notice": "Synthetic new TextEdit documents only; session includes bounded clearing and setup pauses. CPU sampled every 2s; no correction-only latency claim.",
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "ffe5762a468336aab8d182c8605a1ff634f725af394b522d91e3a09f8bf40ec4",
+    "targetBinarySha256": "38a0d4fd41e5aa96842dcbb097402a6f593423beecb44fe712984a33e37a41a0",
+    "probeSourceSha256": "e7816642ac8669a3ab1b66a2e690f0eed8c19a5521e58bf9c10897aee485df24",
+    "probeBinarySha256": "b76b4de99a4102db9920c9887688b182390febcbc430fa3a981ac549177b011b",
+    "targetProcess": {
+      "pid": 81209,
+      "command": "/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+      "started": "Fri Oct 16 01:57:12 2026"
+    }
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "ffe5762a468336aab8d182c8605a1ff634f725af394b522d91e3a09f8bf40ec4",
+    "targetBinarySha256": "38a0d4fd41e5aa96842dcbb097402a6f593423beecb44fe712984a33e37a41a0",
+    "probeSourceSha256": "e7816642ac8669a3ab1b66a2e690f0eed8c19a5521e58bf9c10897aee485df24",
+    "probeBinarySha256": "b76b4de99a4102db9920c9887688b182390febcbc430fa3a981ac549177b011b",
+    "targetProcess": {
+      "pid": 81209,
+      "command": "/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+      "started": "Fri Oct 16 01:57:12 2026"
+    }
+  },
+  "identityUnchanged": true,
+  "status": "completed",
+  "durationSeconds": 1968.278791249999,
+  "atLeast30Minutes": true,
+  "telemetry": {
+    "samples": 980,
+    "peakCPUPercent": 13.4,
+    "peakRSSKiB": 86496
+  }
+}

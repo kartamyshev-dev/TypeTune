@@ -1,0 +1,18 @@
+{
+  "notice": "Aggregate samples from one instrumented failed run. Selected symbol names only; raw stacks remain private. No per-AX timing correlation or definitive deadlock attribution.",
+  "sourceEvidence": "research/evidence/ax-profile-load12.json",
+  "observed": {
+    "TextEdit": {
+      "TSMMessagePortCallBack": 2,
+      "_TSMSetInputSourceSelected": 3,
+      "isPrefsSetInputSourceSelected": 2,
+      "HIS_XPC_CFPreferencesSynchronize": 1,
+      "xpc_connection_send_message_with_reply_sync": 7
+    },
+    "LayoutPilot": {
+      "KeyboardService.selectSource": 1,
+      "InputSources.selectVerified": 2,
+      "TISSelectInputSource": 0
+    }
+  }
+}

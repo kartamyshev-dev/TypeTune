@@ -1,0 +1,22 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>LayoutPilot isolated input LP-CODEX-001</title><style>body{font:18px system-ui;max-width:800px;margin:45px auto}textarea,[contenteditable]{display:block;width:100%;min-height:110px;border:2px solid #617499;padding:12px;margin:16px 0;white-space:pre-wrap}pre{font-size:12px;white-space:pre-wrap}</style><h1>LayoutPilot — отдельный тест ввода</h1><p>Локальная страница. Отправки сообщений и сетевых запросов нет.</p><label>Обычное поле<textarea id="plain" aria-label="LP-CODEX-001 plain"></textarea></label><label>Редактор содержимого<div id="rich" role="textbox" contenteditable="true" aria-label="LP-CODEX-001 rich"></div></label><output id="format" aria-label="LP-CODEX-001 format"></output><output id="delivery" aria-label="LP-CODEX-001 delivery"></output><pre id="log"></pre><script>
+window.testEvents=[];
+const expected="первая\nвторая\tстрока";
+const metrics={v:0,paste:0,input:0,clip:false,cancel:false,beforeCancel:false,beforeMatch:false,text:0,textMatch:false,textCancel:false,active:false,pasteAt:0,beforeAt:0,inputAt:0,last:"none"};
+let renderPending=false;
+function render(){
+ renderPending=false;
+ delivery.textContent="LP-CODEX-001 delivery: "+JSON.stringify(metrics);
+ log.textContent=testEvents.slice(-12).map(x=>x.type+":"+(x.key||x.inputType||"-")).join(" | ");
+ format.textContent="LP-CODEX-001 rich formatting: "+(rich.querySelector("b,strong,i,em,font,[style]")?"present":"absent");
+}
+function scheduleRender(){render()}
+for(const el of [plain,rich]){
+ el.addEventListener("paste",e=>{metrics.paste++;metrics.pasteAt=performance.now();metrics.clip=e.clipboardData?.getData("text/plain")===expected;queueMicrotask(()=>{metrics.cancel=e.defaultPrevented;metrics.active=document.activeElement===el;scheduleRender()})});
+ el.addEventListener("textInput",e=>{metrics.text++;metrics.textMatch=e.data===expected;queueMicrotask(()=>{metrics.textCancel=e.defaultPrevented;scheduleRender()})});
+ el.addEventListener("beforeinput",e=>{metrics.beforeAt=performance.now();metrics.beforeMatch=e.dataTransfer?.getData("text/plain")===expected;queueMicrotask(()=>{metrics.beforeCancel=e.defaultPrevented;scheduleRender()})});
+ el.addEventListener("input",()=>{metrics.input++;metrics.inputAt=performance.now()});
+ el.addEventListener("keydown",e=>{if(e.code==="KeyV"){metrics.v++;metrics.last=JSON.stringify({key:e.key,meta:e.metaKey,alt:e.altKey,shift:e.shiftKey,ctrl:e.ctrlKey,trusted:e.isTrusted})}});
+ for(const type of ["beforeinput","input","keydown","keyup"])el.addEventListener(type,e=>{testEvents.push({field:el.id,type,inputType:e.inputType||null,data:e.data||null,key:e.key||null});if(testEvents.length>256)testEvents.shift();scheduleRender()});
+}
+render();
+</script></html>

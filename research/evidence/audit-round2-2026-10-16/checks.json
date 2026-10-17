@@ -1,0 +1,26 @@
+[
+  {
+    "check": "cli-selftest",
+    "exitCode": 0
+  },
+  {
+    "check": "editor-guard",
+    "exitCode": 0
+  },
+  {
+    "check": "audit-gates",
+    "exitCode": 0
+  },
+  {
+    "check": "identity",
+    "exitCode": 0
+  },
+  {
+    "check": "integrity",
+    "exitCode": 0
+  },
+  {
+    "check": "corpus",
+    "exitCode": 0
+  }
+]

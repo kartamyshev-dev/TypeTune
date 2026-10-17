@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "standalone-real-Store-runtime-identity",
+  "passed": true,
+  "checks": 25,
+  "guiBuildPerformed": false,
+  "distChanged": false,
+  "files": {
+    "Sources/LayoutPilot/Store.swift": "8902d04125c9fea063217ca85dba34e8470d33d7957d1b5a3cd8fb5a04c68ba0",
+    "Tools/HeaderImageProbe.swift": "27ed889686c262c14e42c80ca62c47c5e49b8ba78bd9691c148e63f5981ff69f",
+    "scripts/header_image_probe.sh": "e6a6e21e104dbebfd02cd4a24960fbcdeebbc6e0543217eace2c919f60cbeaa0"
+  }
+}

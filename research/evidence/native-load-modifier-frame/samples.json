@@ -1,0 +1,197 @@
+[
+  {
+    "seconds": 0.009012542001073598,
+    "cpuPercent": 0.0,
+    "rssKiB": 83984
+  },
+  {
+    "seconds": 1.0156284999993659,
+    "cpuPercent": 1.0,
+    "rssKiB": 84000
+  },
+  {
+    "seconds": 2.029334625000047,
+    "cpuPercent": 9.9,
+    "rssKiB": 84800
+  },
+  {
+    "seconds": 3.036010499999975,
+    "cpuPercent": 5.8,
+    "rssKiB": 84960
+  },
+  {
+    "seconds": 4.047619917000702,
+    "cpuPercent": 11.5,
+    "rssKiB": 85328
+  },
+  {
+    "seconds": 5.052608707999752,
+    "cpuPercent": 7.1,
+    "rssKiB": 85168
+  },
+  {
+    "seconds": 6.063441708000028,
+    "cpuPercent": 5.2,
+    "rssKiB": 85216
+  },
+  {
+    "seconds": 7.068464874999336,
+    "cpuPercent": 6.4,
+    "rssKiB": 85264
+  },
+  {
+    "seconds": 8.08041675000095,
+    "cpuPercent": 6.7,
+    "rssKiB": 85088
+  },
+  {
+    "seconds": 9.09302820800076,
+    "cpuPercent": 11.1,
+    "rssKiB": 85168
+  },
+  {
+    "seconds": 10.104001207999318,
+    "cpuPercent": 8.6,
+    "rssKiB": 85216
+  },
+  {
+    "seconds": 11.115483625000707,
+    "cpuPercent": 16.1,
+    "rssKiB": 85296
+  },
+  {
+    "seconds": 12.12598112500018,
+    "cpuPercent": 1.4,
+    "rssKiB": 85296
+  },
+  {
+    "seconds": 13.13381450000088,
+    "cpuPercent": 12.2,
+    "rssKiB": 85328
+  },
+  {
+    "seconds": 14.148737792000247,
+    "cpuPercent": 5.7,
+    "rssKiB": 85312
+  },
+  {
+    "seconds": 15.162439125000674,
+    "cpuPercent": 13.8,
+    "rssKiB": 85344
+  },
+  {
+    "seconds": 16.170021583000562,
+    "cpuPercent": 8.1,
+    "rssKiB": 85360
+  },
+  {
+    "seconds": 17.181479917000615,
+    "cpuPercent": 2.9,
+    "rssKiB": 85296
+  },
+  {
+    "seconds": 18.184987874999933,
+    "cpuPercent": 7.6,
+    "rssKiB": 85296
+  },
+  {
+    "seconds": 19.194494499999564,
+    "cpuPercent": 9.9,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 20.20239891700112,
+    "cpuPercent": 14.6,
+    "rssKiB": 85248
+  },
+  {
+    "seconds": 21.21522320800068,
+    "cpuPercent": 9.9,
+    "rssKiB": 85184
+  },
+  {
+    "seconds": 22.22438208300082,
+    "cpuPercent": 4.6,
+    "rssKiB": 85120
+  },
+  {
+    "seconds": 23.23280133300068,
+    "cpuPercent": 4.9,
+    "rssKiB": 85184
+  },
+  {
+    "seconds": 24.245977708000282,
+    "cpuPercent": 6.9,
+    "rssKiB": 85200
+  },
+  {
+    "seconds": 25.253967708000346,
+    "cpuPercent": 6.1,
+    "rssKiB": 85200
+  },
+  {
+    "seconds": 26.265247958001055,
+    "cpuPercent": 10.1,
+    "rssKiB": 85216
+  },
+  {
+    "seconds": 27.278864333000456,
+    "cpuPercent": 15.1,
+    "rssKiB": 85248
+  },
+  {
+    "seconds": 28.29142962500009,
+    "cpuPercent": 1.2,
+    "rssKiB": 85168
+  },
+  {
+    "seconds": 29.29543804199966,
+    "cpuPercent": 13.7,
+    "rssKiB": 85216
+  },
+  {
+    "seconds": 30.30026700000053,
+    "cpuPercent": 7.9,
+    "rssKiB": 85216
+  },
+  {
+    "seconds": 31.309080500001073,
+    "cpuPercent": 10.5,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 32.31263666700033,
+    "cpuPercent": 10.1,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 33.32729199999994,
+    "cpuPercent": 2.1,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 34.338450917000955,
+    "cpuPercent": 7.3,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 35.34944291700049,
+    "cpuPercent": 5.5,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 36.36333612499948,
+    "cpuPercent": 12.2,
+    "rssKiB": 85232
+  },
+  {
+    "seconds": 37.37191045799955,
+    "cpuPercent": 12.0,
+    "rssKiB": 85200
+  },
+  {
+    "seconds": 38.38243929199962,
+    "cpuPercent": 8.7,
+    "rssKiB": 85200
+  }
+]

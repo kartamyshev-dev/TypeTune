@@ -1,0 +1,101 @@
+{
+  "checks" : [
+    {
+      "id" : "legacy_total_migrated",
+      "passed" : true
+    },
+    {
+      "id" : "history_no_time_estimate",
+      "passed" : true
+    },
+    {
+      "id" : "old_key_preserved_at_migration",
+      "passed" : true
+    },
+    {
+      "id" : "new_counts_record_persisted",
+      "passed" : true
+    },
+    {
+      "id" : "verified_corrections_classified",
+      "passed" : true
+    },
+    {
+      "id" : "verified_source_change_not_correction",
+      "passed" : true
+    },
+    {
+      "id" : "no_sound_start_no_sound_count",
+      "passed" : true
+    },
+    {
+      "id" : "known_action_weights_only",
+      "passed" : true
+    },
+    {
+      "id" : "correction_api_rejects_noncorrection_categories",
+      "passed" : true
+    },
+    {
+      "id" : "restart_preserves_migration_and_categories",
+      "passed" : true
+    },
+    {
+      "id" : "older_build_increment_preserved_as_history",
+      "passed" : true
+    },
+    {
+      "id" : "older_legacy_value_no_reset",
+      "passed" : true
+    },
+    {
+      "id" : "malformed_record_preserves_legacy_total",
+      "passed" : true
+    },
+    {
+      "id" : "malformed_saved_record_never_overwritten",
+      "passed" : true
+    },
+    {
+      "id" : "legacy_total_still_saved_when_category_record_unavailable",
+      "passed" : true
+    },
+    {
+      "id" : "unavailable_record_restart_preserves_new_total_as_history",
+      "passed" : true
+    },
+    {
+      "id" : "store_corrected_and_count_saturate",
+      "passed" : true
+    },
+    {
+      "id" : "store_estimate_saturates",
+      "passed" : true
+    },
+    {
+      "id" : "negative_legacy_not_imported_or_silently_rewritten",
+      "passed" : true
+    },
+    {
+      "id" : "boolean_legacy_is_not_a_count",
+      "passed" : true
+    },
+    {
+      "id" : "ordinary_settings_bytes_untouched",
+      "passed" : true
+    },
+    {
+      "id" : "own_suite_cleaned",
+      "passed" : true
+    }
+  ],
+  "failed" : 0,
+  "kind" : "isolated-actual-Store-statistics",
+  "nativeAcceptance" : false,
+  "nativeEventsPosted" : false,
+  "originalAccessed" : false,
+  "soundPlayed" : false,
+  "standardDefaultsUsed" : false,
+  "total" : 22,
+  "uiUsed" : false
+}

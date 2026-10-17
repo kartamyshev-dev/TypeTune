@@ -1,0 +1,451 @@
+{
+  "id": "LP-STATS-20261015-01",
+  "kind": "own-source-findings-not-new-REA-evidence",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "scope": "cached exports plus two-body persistent Ghidra readOnly/noanalysis followup; no import/runtime/UI",
+  "files": [
+    {
+      "path": "research/private/caramba-arm64",
+      "bytes": 6274800,
+      "sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9"
+    },
+    {
+      "path": "research/private/stats-followup.txt",
+      "bytes": 21079,
+      "sha256": "96fe336649fcad99bb268b90556ecebbf50cee89a9a33e6ad02d6fcffff9df16"
+    },
+    {
+      "path": "research/private/CarambaStatsProbe.java",
+      "bytes": 1297,
+      "sha256": "e3fa29e9c7c84de120e1c769e8e9eedbbea968d34aef62fc2367e738dac53627"
+    },
+    {
+      "path": "research/private/stats-followup.log",
+      "bytes": 4240,
+      "sha256": "8ffdf498afbf3fd183a19674d51ee041ae59154190daf92a97a49b251caab946"
+    },
+    {
+      "path": "research/private/stats-followup-script.log",
+      "bytes": 70,
+      "sha256": "73eace75ae03b7aa22e28dfa4deff0fbb4c3e8c07895d5a2f0fe9c39f02a029f"
+    },
+    {
+      "path": "research/private/f14-engine-interface.txt",
+      "bytes": 22409,
+      "sha256": "8cbe7035cd925dbfbb10dbf561b8085d9132e33f0b466691ab26af3267a48e44"
+    },
+    {
+      "path": "research/private/f14-event-bridge.txt",
+      "bytes": 3356,
+      "sha256": "f3558a53dd4a98f0d47798997f78e238707109c8cd746afd299b9bcb28b8e55e"
+    },
+    {
+      "path": "research/private/f14-save-event-continuation.txt",
+      "bytes": 2687,
+      "sha256": "11380ca0414df0b3cb4acc3a4a1ae03b88ad24241fd10534e1808ada730cce35"
+    },
+    {
+      "path": "research/private/f14-refresh-event.txt",
+      "bytes": 1778,
+      "sha256": "b1a5c625779465164c1abd2f57e73cd584dc0984400df535c1e560e3e6740b89"
+    },
+    {
+      "path": "research/private/f14-final-consumers.txt",
+      "bytes": 9031,
+      "sha256": "d19b4b977710e9be7031d90825cae13051dae647b20c34b9c597ee3b39bda419"
+    },
+    {
+      "path": "research/private/hotkey-main-objc-metadata.txt",
+      "bytes": 2344165,
+      "sha256": "5e18228e3f9290da102b8b108bef2be06f683a83132cdb69c0dc471de8f915e6"
+    },
+    {
+      "path": "research/private/strings.txt",
+      "bytes": 376039,
+      "sha256": "63248b23f8bde03a9e226021ecf948123e6c0ae7d2af66138605cf2c9bb3e336"
+    },
+    {
+      "path": "research/private/stats-table-followup.txt",
+      "bytes": 4308,
+      "sha256": "fd34f3479fa2a8e976fd68aa68bcc7fec2bb459f49ecb3126d05c0bf44640de5"
+    },
+    {
+      "path": "research/private/stats-table-followup.log",
+      "bytes": 4273,
+      "sha256": "dd317a01c0deaf16a6c026361b685eff61e182d5acd009413b5f687dd7f4cd0d"
+    },
+    {
+      "path": "research/private/stats-table-followup-script.log",
+      "bytes": 81,
+      "sha256": "c6b13baa5d47ffa1ab6bc360cc085b33b745cabbc11fb1c8ec95d143d4e55ff3"
+    },
+    {
+      "path": "research/private/CarambaStatsTableProbe.java",
+      "bytes": 2848,
+      "sha256": "a142a38e117854492f960563b12c7700fb500b8cb38921d284acd7b9b5c055c5"
+    },
+    {
+      "path": "research/private/stats-writer-followup.txt",
+      "bytes": 43835,
+      "sha256": "f78edaedadb4ea02f94f5dd00149e9e7891046d6ecc443d726b83c259fdc724e"
+    },
+    {
+      "path": "research/private/stats-writer-followup.log",
+      "bytes": 4279,
+      "sha256": "3da3a3ceb450532560bd8c932e646b8ed1fd2953a89445d3893dcd6002a9e786"
+    },
+    {
+      "path": "research/private/stats-writer-followup-script.log",
+      "bytes": 83,
+      "sha256": "8d59ebbd0380d50dcb72e7ef058ecb12eed9073d40a4638ffe944bbc61093a06"
+    },
+    {
+      "path": "research/private/CarambaStatsWriterProbe.java",
+      "bytes": 1346,
+      "sha256": "8d43cc4847f554f3c510fe54d03e5a47275f994a145370fe5e38dbf06fccb189"
+    },
+    {
+      "path": "research/private/stats-last-writer-followup.txt",
+      "bytes": 29136,
+      "sha256": "3047ad3b398967b29758c7c15f77cf856d2f1c45e718d1a3b8ca50b3c3bbfa45"
+    },
+    {
+      "path": "research/private/stats-last-writer-followup.log",
+      "bytes": 4306,
+      "sha256": "506e8638e6913f5936dd59e9f95b40ad633cbf69d3bf49659b59fcd7b0c7a168"
+    },
+    {
+      "path": "research/private/stats-last-writer-followup-script.log",
+      "bytes": 92,
+      "sha256": "2fa6b8877692a16d18a1990740bd4f1bbb4954185547d5e7a2a34b54c98f136c"
+    },
+    {
+      "path": "research/private/CarambaStatsLastWriterProbe.java",
+      "bytes": 1664,
+      "sha256": "e161f837f24eccdae4f880fe5a6a8d9cf91f7b35d13a5b2248e450dafabd4a19"
+    },
+    {
+      "path": "research/private/stats-time-followup.txt",
+      "bytes": 189,
+      "sha256": "e3718a8bddff0fca52141fee43e3a44738f7c3d9d9cf3ea52e5988bae8e6ea1b"
+    },
+    {
+      "path": "research/private/stats-time-followup.log",
+      "bytes": 4267,
+      "sha256": "ca502c536a03b09c6de30145ef5d575e97df3cde2385d2af42e5cbe545f4a15b"
+    },
+    {
+      "path": "research/private/stats-time-followup-script.log",
+      "bytes": 79,
+      "sha256": "e57ab0db4246bb684796be274372d7fed7e59987804f1f2e7ef6bd7a8c51a1f8"
+    },
+    {
+      "path": "research/private/CarambaStatsTimeProbe.java",
+      "bytes": 1919,
+      "sha256": "533067986fffc8c51ac088f81f06d71b500dcc730156eb8465bd19d57a517623"
+    },
+    {
+      "path": "research/private/stats-time-address-followup.txt",
+      "bytes": 18232,
+      "sha256": "6c1c08226d33ff32b342c23b4066c06ace41b3209cff01fb5d1ad373183921e1"
+    },
+    {
+      "path": "research/private/stats-time-address-followup.log",
+      "bytes": 4312,
+      "sha256": "fcc99e4807fddef6b03ff6aac60c1096e378d0016ab68b461386f7cc9a4bde06"
+    },
+    {
+      "path": "research/private/stats-time-address-followup-script.log",
+      "bytes": 94,
+      "sha256": "e991049b992a9fc9c54099c083e64a39235627d1e01ff404fc9afbabc5014b9d"
+    },
+    {
+      "path": "research/private/CarambaStatsTimeAddressProbe.java",
+      "bytes": 3160,
+      "sha256": "9d2ccce6505298a0a5e6d2e52c316a4e2a5cca22c39d717be85710e2cbd9e95b"
+    },
+    {
+      "path": "research/private/stats-config-followup.txt",
+      "bytes": 11716,
+      "sha256": "3ed7119968f4f280585c04fffbef601efc728f220af48eab3094a26fe592c36b"
+    },
+    {
+      "path": "research/private/stats-config-followup.log",
+      "bytes": 4279,
+      "sha256": "816f9b053b3428ed9758611e12485f5db234f3abe4289cfbedb6aaf058928753"
+    },
+    {
+      "path": "research/private/stats-config-followup-script.log",
+      "bytes": 83,
+      "sha256": "72c7066b438258fb03da3bd3f5e3b8633163b9d0347327355f32c45e2a341da3"
+    },
+    {
+      "path": "research/private/CarambaStatsConfigProbe.java",
+      "bytes": 1977,
+      "sha256": "53d934445a08388cbeff667fd2439f9f8bdad14ee579a1d68c01083f7d06a204"
+    },
+    {
+      "path": "research/private/stats-time-consumer-followup.txt",
+      "bytes": 14582,
+      "sha256": "fae2a3cc39cf10609f305a523848479dd2ba4f8160895fc2ff662f67da769550"
+    },
+    {
+      "path": "research/private/stats-time-consumer-followup.log",
+      "bytes": 4318,
+      "sha256": "affdd8c829c626fbc20f2e4de5fb8de90b3bf6ff3bfc82447bf30cccaedf2550"
+    },
+    {
+      "path": "research/private/stats-time-consumer-followup-script.log",
+      "bytes": 96,
+      "sha256": "18225091ebefe73d32464993f66e29bd1b167fe13e46cc97c67f2ff4becf4554"
+    },
+    {
+      "path": "research/private/CarambaStatsTimeConsumerProbe.java",
+      "bytes": 1323,
+      "sha256": "a57632296fdac78520d2f869e9a22dbefb23ca7f0671175ac92df97b3162cce8"
+    }
+  ],
+  "packet": {
+    "procedures": [
+      "0x100025740",
+      "0x100042364"
+    ],
+    "exit": 0,
+    "marker": "STATS_PROBE_SAVED",
+    "sha_guard": true,
+    "instructions_included": true
+  },
+  "facts": [
+    {
+      "id": "stats-class",
+      "source": "research/private/hotkey-main-objc-metadata.txt",
+      "anchor": "0x100590260; ivars0x100565138",
+      "observation": "SwitchStatisticsModule metadata contains _autoswitches/_cupertino/_yofikator/_sounds/_singleshift/_doubleshift; static metadata not a proven increment contract"
+    },
+    {
+      "id": "event-table",
+      "procedure": "0x100042364",
+      "instructions": "0x1000423b4-0x100042488",
+      "observation": "8 records,40byte stride, source0x100590750; key16bytes, two discriminator bytes16/17, callback24/context32; copied to dictionary0x100590718 with24byte values"
+    },
+    {
+      "id": "consumer-callback",
+      "procedure": "0x100042704",
+      "source": "research/private/f14-final-consumers.txt",
+      "observation": "lookup result byte0/byte1/callback/context; byte0!=6 invokes0x100025740; callback invoked separately"
+    },
+    {
+      "id": "side-effect-not-counter-proof",
+      "procedure": "0x100025740",
+      "observation": "Bool-enabled plus parameter!=4 gate followed by commands/Dispatch async; no direct counter increment or saved-time formula established"
+    },
+    {
+      "id": "counter-writers",
+      "procedures": [
+        "0x10002f390",
+        "0x10002f778",
+        "0x10002fb64",
+        "0x10002ff50",
+        "0x10003040c"
+      ],
+      "observation": "selector longLongForKey read + checked signed increment argument + setLongLong_forKey; callbacks supply1; suffix getter0x10002db58 not resolved; published aggregate sums dynamically cast Int64 prefix-matching store entries"
+    },
+    {
+      "id": "bounded-key-literals",
+      "method": "read4x96byte via MachO LC_SEGMENT_64 virtual/file mapping; target digest matched",
+      "values": {
+        "0x1004be480": "tech.caramba.switcher.counters.autoswitch:",
+        "0x1004be450": "tech.caramba.switcher.counters.doubleshift:",
+        "0x1004be3a0": "tech.caramba.switcher.counters.autoswitch",
+        "0x1004be2e0": "tech.caramba.switcher.counters.doubleshift"
+      }
+    }
+  ],
+  "missing": [
+    "async descriptor0x100410650 exact join to entry0x1000429f4",
+    "suffix getter0x10002db58 precise device identity/creation semantics",
+    "counter restart/sync/reset/runtime semantics",
+    "sounds event/increment writer",
+    "configuration override JSON schema and effective runtime values/backend0x1000147ac/0x10025e150",
+    "possible total saved-time consumer outside four confirmed feature tiles"
+  ],
+  "acceptance": {
+    "formula_recovered": true,
+    "per_feature_increment_recovered": true,
+    "runtime_verified": false,
+    "prototype_changed": false,
+    "formula_scope": "compiled default per-category formula and formatter; no runtime claim or total-sum claim"
+  },
+  "table_followup": {
+    "rows": 8,
+    "row_bytes": 40,
+    "address": "0x100590750",
+    "callback_unique": 5,
+    "source": "existing Ghidra resolved pointers and DATA refs; no manufactured callable addresses",
+    "exit": 0,
+    "markers": [
+      "STATS_TABLE_PROBE_SAVED",
+      "STATS_WRITER_PROBE_SAVED",
+      "STATS_LAST_WRITER_PROBE_SAVED"
+    ]
+  },
+  "event_counter_mapping": [
+    {
+      "event": "caramba_autoswitch",
+      "callback": "0x1000458e8",
+      "writer": "0x10002f390",
+      "category": "autoswitch",
+      "increment": 1
+    },
+    {
+      "event": "caramba_autoswitch_user",
+      "callback": "0x1000458e8",
+      "writer": "0x10002f390",
+      "category": "autoswitch",
+      "increment": 1
+    },
+    {
+      "event": "caramba_autocorrect",
+      "callback": "0x1000424d8",
+      "writer": "0x10002f778",
+      "category": "cupertino",
+      "increment": 1
+    },
+    {
+      "event": "caramba_yofikator",
+      "callback": "0x1000424fc",
+      "writer": "0x10002fb64",
+      "category": "yofikator",
+      "increment": 1
+    },
+    {
+      "event": "caramba_doubleshift",
+      "callback": "0x1000458ec",
+      "writer": "0x10003040c",
+      "category": "doubleshift",
+      "increment": 1
+    },
+    {
+      "event": "caramba_singleshift",
+      "callback": "0x100042544",
+      "writer": "0x10002ff50",
+      "category": "singleshift",
+      "increment": 1
+    },
+    {
+      "event": "caramba_double_caps",
+      "callback": "0x1000458e8",
+      "writer": "0x10002f390",
+      "category": "autoswitch",
+      "increment": 1
+    },
+    {
+      "event": "caramba_selection_switch",
+      "callback": "0x1000458ec",
+      "writer": "0x10003040c",
+      "category": "doubleshift",
+      "increment": 1
+    }
+  ],
+  "time_followup": {
+    "unique_bodies": [
+      "0x10002eebc",
+      "0x1000519f0",
+      "0x10004c4f0",
+      "0x10004c6c0",
+      "0x10004fe90",
+      "0x100014290"
+    ],
+    "ordinary_string_xrefs": 0,
+    "targeted_address_materializations": [
+      {
+        "key": "usage_stats_event_weights",
+        "string_address": "0x1004be3d0",
+        "adrp": "0x10002eee0",
+        "add": "0x10002eee4",
+        "function": "0x10002eebc"
+      },
+      {
+        "key": "usage_stats_timing_limits",
+        "string_address": "0x1004bf180",
+        "adrp": "0x100051a00",
+        "add": "0x100051a04",
+        "function": "0x1000519f0"
+      }
+    ],
+    "exit": 0,
+    "sha_guards": true,
+    "body_limit": 6
+  },
+  "time_formula": {
+    "kind": "per-category weighted seconds; not a proven total-sum UI",
+    "defaults_seconds": {
+      "autoswitch": 10,
+      "cupertino": 10,
+      "yofikator": 3,
+      "doubleshift": 7,
+      "singleshift": 2,
+      "sounds": 1
+    },
+    "default_storage_order": [
+      10,
+      10,
+      7,
+      2,
+      3,
+      1
+    ],
+    "result_vector_order": [
+      "autoswitch",
+      "cupertino",
+      "yofikator",
+      "doubleshift",
+      "singleshift",
+      "sounds"
+    ],
+    "operation": "Double(categoryCount) * corresponding effective weight",
+    "weights_procedure": "0x10002eebc",
+    "published_keypaths": [
+      "0x100410130",
+      "0x100410178",
+      "0x1004101c0",
+      "0x100410208",
+      "0x100410250",
+      "0x100410298"
+    ],
+    "ui_consumer": "0x10004fe90",
+    "confirmed_formatted_vector_indices": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "formatter": "0x1000519f0",
+    "default_limit_tuple": [
+      60,
+      3600,
+      "Double.greatestFiniteMagnitude",
+      "Double.greatestFiniteMagnitude"
+    ],
+    "finite_nonnegative_default_format": "t<=3600: trunc(t/60) minutes; larger representable finite t: trunc(t/3600) hours; extreme max-value can fail integer range checks",
+    "configurable_other_units": {
+      "workday_seconds": 28800,
+      "workweek_seconds": 144000
+    },
+    "override_source": "feature gate(name) via0x100014290 then String parameter(name,__json) via0x1000147ac; UTF8 JSONDecoder; preserve compiled defaults on missing/disabled/decode error",
+    "override_getters": [
+      "0x10004c4f0",
+      "0x10004c6c0"
+    ],
+    "backend_not_resolved": [
+      "0x1000147ac",
+      "0x10025e150"
+    ],
+    "not_verified": [
+      "runtime effective override values",
+      "override model JSON schema",
+      "whether values originate remote/cache/local preference",
+      "runtime UI boundary/reset/sync"
+    ]
+  }
+}

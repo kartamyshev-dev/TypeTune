@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "offlinePassed": true,
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/test_audit_gates.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "matchedExpectation": true,
+      "log": "research/evidence/stability-2026-10-17/audit-fixture-binding.txt",
+      "wallSeconds": 1.762
+    },
+    {
+      "command": [
+        "python3",
+        "-c",
+        "import sys,unittest;sys.path.insert(0,\"scripts\");suite=unittest.defaultTestLoader.loadTestsFromName(\"test_native_probe_fixtures.NativeProbeFixtureTests.test_suite_rejects_correct_text_without_executed_timing_mode\");result=unittest.TextTestRunner().run(suite);sys.exit(not result.wasSuccessful())"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "matchedExpectation": true,
+      "log": "research/evidence/stability-2026-10-17/timing-suite-fixture-binding.txt",
+      "wallSeconds": 0.147
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_evidence.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "matchedExpectation": true,
+      "log": "research/evidence/stability-2026-10-17/identity-fixture-binding.txt",
+      "wallSeconds": 0.293
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_harness.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "matchedExpectation": true,
+      "log": "research/evidence/stability-2026-10-17/orchestration-fixture-binding.txt",
+      "wallSeconds": 0.155
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "matchedExpectation": true,
+      "log": "research/evidence/stability-2026-10-17/diff-fixture-binding.txt",
+      "wallSeconds": 0.013
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify_native_suite.py",
+        "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01.json",
+        "--fixtures",
+        "corpus/native-stability-regressions-v1.json"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "matchedExpectation": true,
+      "log": "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01-fixture-bound-verification.json",
+      "wallSeconds": 0.047
+    }
+  ],
+  "counts": {
+    "auditUnittest": 4,
+    "timingVerifierUnittest": 1,
+    "identitySessionTamper": 77,
+    "orchestrationUnittest": 11
+  },
+  "sources": {
+    "scripts/native_evidence.py": "86542db458e3d2f95ee631a324fa5f88a6f96bed759fe3b000b80bca40124611",
+    "scripts/verify_native_suite.py": "0abeabfdb1a1dd75cbd3db940423cbf5ec60f1cea8e5bca2c6e616008afc224a",
+    "scripts/test_audit_gates.py": "043162edae5a6903aa45bafa733b7b6051a983b65a54b95de8d4fecebd64ae07",
+    "scripts/test_native_probe_fixtures.py": "b11c99d0bfc8f488e5a776ff75f7c4cf7bae78f789349dc2d3a755c64a2b7df2",
+    "Tools/NativeProbe.swift": "8a18574fd9606f45e9fbf4b3586eadd228043a6eaa2a0d9ff3d4d195e43ba40e",
+    "corpus/native-smoke.json": "2edaf5336daffa7d49eb2c2c1a5de1e43c7c5495cc922b26481beb0f0e80e587",
+    "corpus/native-stability-regressions-v1.json": "b794c2e1daaff7e913e512820de1912420054eb3b017bb9711af5e82192a1002",
+    "research/private/native-batches/candidate013-profile-smoke-v1.json": "be0fb8439c57af7b05fc03f7439448734926f25fc87e9c5afb2d316772e3f662"
+  },
+  "existingNativeRegression": "FAIL: first-word text/source, preserved and revalidated",
+  "newNativeRuns": 0,
+  "productionOrNativeProbeEditsByThisSubtask": false,
+  "notice": "Fixture digest is mandatory; historical result without it is rejected, not upgraded by attaching current hashes."
+}

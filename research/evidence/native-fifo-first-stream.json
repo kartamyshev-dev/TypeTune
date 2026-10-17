@@ -1,0 +1,13 @@
+{
+  "activeCase" : "single",
+  "activeCaseEvents" : 52,
+  "activeCaseIndex" : 0,
+  "autoResume" : false,
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/AD4AABB7-702A-472E-8880-AD1D36DBE8DE.results.json",
+  "checkpointWriteFailed" : false,
+  "completed" : 0,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/AD4AABB7-702A-472E-8880-AD1D36DBE8DE.txt",
+  "error" : "target_not_frontmost",
+  "persistedCompleted" : 0,
+  "requestedCases" : 1
+}

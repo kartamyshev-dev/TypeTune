@@ -1,0 +1,15 @@
+{
+  "attemptedUI": "Автопереключение включено",
+  "rows": [
+    [
+      1,
+      "com.google.Chrome",
+      "/Applications/Google Chrome.app"
+    ]
+  ],
+  "columns": [
+    "enabled",
+    "bundleID",
+    "path"
+  ]
+}

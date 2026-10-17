@@ -1,0 +1,49 @@
+{
+  "target": "Caramba Switcher Pro 2026.10.07 (20261007.1)",
+  "date": "2026-10-14",
+  "driver": "cua_repl native AX / pressKey",
+  "observations": [
+    {
+      "kind": "UI",
+      "feature": "license",
+      "result": "Trial active until 17.10.2026; functions accessible; no purchases performed"
+    },
+    {
+      "kind": "UI",
+      "feature": "settings",
+      "result": "five feature tiles, Option false, shift chord pause false, plain paste true; typo tile temporarily toggled twice, original enabled state restored"
+    },
+    {
+      "kind": "UI",
+      "feature": "exceptions",
+      "result": "word/app rule tabs available, no rows edited"
+    },
+    {
+      "kind": "runtime-inconclusive",
+      "app": "TextEdit",
+      "input": "ghbdtn + space",
+      "method": "pressKey ctrl+space then g,h,b,d,t,n,space",
+      "output": "привет ",
+      "limitation": "Ctrl+Space disabled in system symbolic hotkeys60/61. Initial source not established, output alone does not establish Caramba correction."
+    },
+    {
+      "kind": "driver-limitation",
+      "method": "typeText ghbdtn ",
+      "output": "d ",
+      "result": "not a valid physical-key oracle; use pressKey individual keys instead"
+    },
+    {
+      "kind": "driver-limitation",
+      "method": "pressKey Shift_L",
+      "result": "keyPressIncludedNoNonModifierKeys; modifier-only gestures cannot be driven through this API"
+    },
+    {
+      "kind": "runtime-inconclusive",
+      "app": "TextEdit",
+      "input": "physical h e l l o space",
+      "output": "руддщ ",
+      "source": "RussianWin per preferences",
+      "limitation": "No automatic correction observed; pending controlled-source baseline"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "authority": "shipped-artifact static analysis; no native UI execution by this investigator",
+  "target": {
+    "component": "CarambaSwitcherUI.framework",
+    "version_context": "frozen Caramba Switcher Pro 2026.10.07 build 20261007.1",
+    "universal_sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a",
+    "arm64_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a",
+    "arm64_member_verified_equal": true,
+    "fat_members": [
+      {
+        "cpu_type": "0x1000007",
+        "offset": 16384,
+        "size": 730608,
+        "sha256": "e8359cabdc4c6d65d26cb4e1230ef370e02c7238cb21f45cffbd13161e010016"
+      },
+      {
+        "cpu_type": "0x100000c",
+        "offset": 753664,
+        "size": 738320,
+        "sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+      }
+    ]
+  },
+  "tools": {
+    "rea": "6.5.0",
+    "ghidra": "12.1.4",
+    "skill_version": 42
+  },
+  "scope_ledger": {
+    "imports": 1,
+    "pseudo_records": 15,
+    "asm_records": 8,
+    "total_records": 23,
+    "initial_body_budget": "8–12",
+    "expanded_by_coordinator": "15 to cover drop, persisted image writer, removal",
+    "session_closed": true,
+    "snapshot_cache_primitives": 0,
+    "snapshot_cache_workflows": 0,
+    "replay_limitation": "Evidence persisted; snapshot does not promise a reusable Ghidra database."
+  },
+  "artifacts": [
+    {
+      "private_path": "research/private/Caramba Switcher Pro.app/Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/CarambaSwitcherUI",
+      "bytes": 1491984,
+      "sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a"
+    },
+    {
+      "private_path": "research/private/caramba-ui-arm64",
+      "bytes": 738320,
+      "sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "private_path": "research/private/ui-symbols-demangled.txt",
+      "bytes": 359190,
+      "sha256": "ca98516a7021f43a1f54c781598af757f63360d3edbd737587010fbc6acd1c31"
+    },
+    {
+      "private_path": "research/private/ui-load-commands.txt",
+      "bytes": 3137,
+      "sha256": "bde58f48b656d111f841a0cd397c957fe2870696beaddcaf5609e856525c738c"
+    },
+    {
+      "private_path": "research/private/ui-objc-metadata.txt",
+      "bytes": 15001,
+      "sha256": "988ee5335159b13fd69b6392b822f1d703fc08a8a68a37e17ab1c9808ea70080"
+    },
+    {
+      "private_path": "research/private/ui-evidence-bundle.json",
+      "bytes": 232221,
+      "sha256": "ddc8ddc058c2fb4de88e61029a0d55fd5cf89af4204978a134617616a20565e9"
+    },
+    {
+      "private_path": "research/private/ui-snapshot.json",
+      "bytes": 233912,
+      "sha256": "4e14861bf687f7fff3a8d4461c17f1ceb1dd58ed4145a3815eedc7e6e6612884"
+    }
+  ],
+  "references": [
+    {
+      "address": "0x361c0",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_213022e415b1bba96979e36dd9ce6230de3068811d2e2ed1a4c8b2ed33fa95b6",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2f8a0",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_28f2d1ddb1927d3b4a68d39fb29dfeefb7af14107f13a25dbf731a43107dfe9c",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2e80c",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_38ccc01ea3feed27d3534d1dedcee9af761f8ca9fce7e56b954a669a9e058eeb",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x305d0",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_45b921384f87e1afd46aa2a78f892adb8d61b949c0df93373cc03ba3cb08bf37",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2e80c",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_46e5c27df0f92f1a3524c149acd9708816e083eea8aa7a61d4cce4bb1ad14257",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x388d4",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_5883554d4049ef3a0344e631b69c743a81b2ab81cac1dbbf17b4e851e27e4bc7",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2fad8",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_59563f0135e579a2435efed524b3f949c21937566ba753cce134049bff729b59",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2f540",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_78216a6950d3d162ebec78010e4b6da952039ccab9a2898401729473a83d76f8",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2fc78",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_7a5f06c68a4ffdfb1424b7345760d329195d5e289a2eceaf99e0af09f3be52b1",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x30200",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_7f8b7b2153111f80367988e7c1947d309638e5ad85285dffbada0eb3e52fe631",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x38b04",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_807fc48ffa5f9663404cc39d5a858529401acc9cf28291c0dde63768a8caf61e",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x386e8",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_8b1a9dc98649d92f5c1af2d8253b46fa67284a240b7a44d474b687d79879ae96",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2f540",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_8fd451c7ce3d639e3f962bd46f790627e2870479e7eb71f31d861cd5f8e01f92",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x305d0",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_a70d13288ddddb3913dc1af41cad52b16d0471c807683bedcb55322f2e149f2d",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2f8a0",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_ab59f92b12c40dbab1b25a230ffb65ab0f37508fb0d97fe0f05ed03da6742fb2",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2fc18",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_b228a9f10116e50b1f2a68f808855f19204e0da36f3d1cc86ea8de0b0dc4a2ad",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x3120c",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_b826705eeb77bb2645662e9130eff50da01f89fd3024a48e9db6860dd084bbbb",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2fc78",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_c35b8120b5b997ff3cbef9114d27672b877b275c4f855c0af69fbacf859b4f0b",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2eca8",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_c4b6cb803f9dd04f6b64c2890ddad8a334caaebd87fef748d3d1a9570a7fe3ae",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2fc18",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_e09757184292ed65d713d9931d8639e5ecedc1457f44478c0ca0c74cc0bc83a8",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2e234",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_edf8f8ae045b7c28b4509507a5a8d17342cf2ed98b562d10638dcbe2d949bbf8",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x30200",
+      "operation": "read_function_instructions",
+      "evidence_id": "ev_ef141e8612e74487b9dfb6e1478d5ac73fd2dee77288aa37721ecf44fe41e8aa",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    },
+    {
+      "address": "0x2e768",
+      "operation": "procedure_pseudo_code",
+      "evidence_id": "ev_f51ba43c062cd8735b2a0b5f37f711a36b570fe8d7d260faeaa52fbae68bc0d9",
+      "target_sha256": "aeb68b283c8a65a7469870adb1853b385a5ec2162f89d71d5bb2208efdca332a"
+    }
+  ],
+  "findings": [
+    {
+      "id": "UI-HEADER-CYCLE",
+      "claim": "Without header image, left background mouseDown cycles 25 preset colors and invokes onColorChange.",
+      "anchors": [
+        "0x2fc18",
+        "0x3120c"
+      ],
+      "status": "static_observed"
+    },
+    {
+      "id": "UI-HEADER-RESET",
+      "claim": "Without header image, rightMouseDown resets caramba-orange and invokes callback; with image it opens remove-image menu.",
+      "anchors": [
+        "0x30200"
+      ],
+      "status": "static_observed"
+    },
+    {
+      "id": "UI-HEADER-CONTRAST",
+      "claim": "Title button toggles white/black tint, stores headerTitleWhite, updates title drawing.",
+      "anchors": [
+        "0x2fad8",
+        "0x2f8a0"
+      ],
+      "status": "static_observed"
+    },
+    {
+      "id": "UI-HEADER-IMAGE",
+      "claim": "Setup registers FileURL/TIFF drops and reads persisted headerImageData. Drop tries TIFF then URL image; success attaches image and stores TIFF data. Removal clears image and headerImageData/headerTitleWhite.",
+      "anchors": [
+        "0x2e768",
+        "0x2e80c",
+        "0x2fc78",
+        "0x2f540",
+        "0x305d0"
+      ],
+      "status": "static_observed; native drop/restart unrun"
+    },
+    {
+      "id": "UI-NO-PICKER-DEFAULT",
+      "claim": "Queried default-header mouse handlers implement cycle/reset, not a picker/menu.",
+      "anchors": [
+        "0x2fc18",
+        "0x3120c",
+        "0x30200"
+      ],
+      "status": "bounded_negative"
+    },
+    {
+      "id": "UI-RECORDER-UNKNOWN",
+      "claim": "No Recorder or KeyboardShortcuts-specific symbols/dependency found in complete framework inventories; SettingsSheet rawValue yields license/about/exceptions. This does not prove absence of arbitrary shortcut UI in main or anonymous/shared bodies.",
+      "anchors": [
+        "0x361c0",
+        "0x386e8",
+        "0x388d4",
+        "0x38b04"
+      ],
+      "status": "bounded_negative; unresolved"
+    }
+  ],
+  "next_queries": [
+    {
+      "component": "main",
+      "address": "0x1001bf170",
+      "question": "Named shortcut constructor and actual recorder instantiation/callback"
+    },
+    {
+      "component": "CarambaSwitcherUI.framework",
+      "address": "0x39308",
+      "question": "Next SettingsPane body helper if main recorder wiring requires it"
+    }
+  ],
+  "limits": [
+    "Not runtime or full feature acceptance.",
+    "No original palette/assets/decompiler text included in public files.",
+    "Exact historical cause of new caramba-orange preference not established.",
+    "Arbitrary shortcut editing remains unknown."
+  ]
+}

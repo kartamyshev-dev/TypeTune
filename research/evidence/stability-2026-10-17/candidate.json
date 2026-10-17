@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "72ad44f451c8c11b46436fec376973410402e372",
+  "cleanBeforeBuild": true,
+  "version": "0.1.3",
+  "build": "4",
+  "app": "/Users/kartamyshev/git/caramba/dist/LayoutPilot.app",
+  "binarySha256": "a46c7c6a69410118fca48b66e36abc37cc05068efef48f99f8c01000179a1391",
+  "bundleSha256": "3157e15085e1ab05bdb1a6d7aa1689a5fb45ef2f7aa251faf4b857c265e4ec56",
+  "compiledInputsMatchCommit": true,
+  "signatureVerified": true,
+  "releaseSelftestPassed": true,
+  "releaseCorpusPassed": true,
+  "installed": true,
+  "nativeAcceptance": "NOT_RUN",
+  "installedApp": "/Applications/LayoutPilot.app"
+}

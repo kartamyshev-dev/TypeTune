@@ -1,0 +1,37 @@
+{
+  "beforeGesture" : {
+
+  },
+  "boundary" : true,
+  "boundaryObservation" : {
+    "elapsedSeconds" : 0.17495504167163745,
+    "firstChangeSeconds" : 0.033517041665618308,
+    "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+    "performed" : true,
+    "textTransitionsObserved" : 2
+  },
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/A093FF97-A9F3-4297-858C-99A0DD5DBFF0.results.json",
+  "clipboardRestore" : "not_used",
+  "completed" : 1,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/A093FF97-A9F3-4297-858C-99A0DD5DBFF0.txt",
+  "elapsedSeconds" : 2.4567469166649971,
+  "events" : 20,
+  "eventTag" : 1280331858,
+  "gesture" : "none",
+  "gestureIntermediate" : {
+
+  },
+  "id" : "single",
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "initialSyntheticText" : "",
+  "inputSource" : "com.apple.keylayout.RussianWin",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII" : "lpfixture",
+  "requestedSource" : "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture" : false,
+  "selection" : {
+    "length" : 0,
+    "location" : 9
+  },
+  "text" : "проверка "
+}

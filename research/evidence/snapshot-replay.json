@@ -1,0 +1,8 @@
+{
+  "original_evidence": "ev_b7dc8cbeedb8ce20c80f84fcd1da98928aa180e25c8594bc6d3898a8ac17a046",
+  "reopened_evidence": "ev_b7dc8cbeedb8ce20c80f84fcd1da98928aa180e25c8594bc6d3898a8ac17a046",
+  "identical_evidence_id": true,
+  "procedure_count": 24484,
+  "string_count": 40952,
+  "method": "same CLI analyze query with immutable snapshot; this verifies replay, not persistent Ghidra database"
+}

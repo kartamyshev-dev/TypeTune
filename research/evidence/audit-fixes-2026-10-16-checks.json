@@ -1,0 +1,115 @@
+{
+  "baseCommit": "ae319d6d2e9c1f9fe8292225215435c543656dcf",
+  "workingTreeValidation": true,
+  "checks": [
+    {
+      "check": "cli-build",
+      "command": [
+        "swift",
+        "build",
+        "--product",
+        "layoutpilot-cli"
+      ],
+      "exitCode": 0,
+      "seconds": 3.37,
+      "log": "research/evidence/audit-fixes-2026-10-16-cli-build.txt"
+    },
+    {
+      "check": "cli-selftest",
+      "command": [
+        ".build/debug/layoutpilot-cli",
+        "selftest"
+      ],
+      "exitCode": 0,
+      "seconds": 0.29,
+      "log": "research/evidence/audit-fixes-2026-10-16-cli-selftest.txt"
+    },
+    {
+      "check": "gui-build",
+      "command": [
+        "swift",
+        "build",
+        "--product",
+        "LayoutPilot"
+      ],
+      "exitCode": 0,
+      "seconds": 22.59,
+      "log": "research/evidence/audit-fixes-2026-10-16-gui-build.txt"
+    },
+    {
+      "check": "store",
+      "command": [
+        "sh",
+        "scripts/statistics_store_probe.sh"
+      ],
+      "exitCode": 0,
+      "seconds": 1.62,
+      "log": "research/evidence/audit-fixes-2026-10-16-store.txt"
+    },
+    {
+      "check": "singleton",
+      "command": [
+        "sh",
+        "scripts/single_instance_probe.sh"
+      ],
+      "exitCode": 0,
+      "seconds": 0.82,
+      "log": "research/evidence/audit-fixes-2026-10-16-singleton.txt"
+    },
+    {
+      "check": "gates",
+      "command": [
+        "python3",
+        "scripts/test_audit_gates.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "seconds": 1.04,
+      "log": "research/evidence/audit-fixes-2026-10-16-gates.txt"
+    },
+    {
+      "check": "identity-regressions",
+      "command": [
+        "python3",
+        "scripts/test_native_evidence.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.08,
+      "log": "research/evidence/audit-fixes-2026-10-16-identity-regressions.txt"
+    },
+    {
+      "check": "corpus-integrity",
+      "command": [
+        "python3",
+        "scripts/test_native_integrity.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03,
+      "log": "research/evidence/audit-fixes-2026-10-16-corpus-integrity.txt"
+    },
+    {
+      "check": "corpus",
+      "command": [
+        "python3",
+        "scripts/evaluate_corpus.py",
+        "--report-prefix",
+        "../research/evidence/audit-fixes-2026-10-16-corpus"
+      ],
+      "exitCode": 0,
+      "seconds": 0.19,
+      "log": "research/evidence/audit-fixes-2026-10-16-corpus.txt"
+    }
+  ],
+  "fixturesBefore": {
+    "corpus/synthetic-v2.jsonl": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
+    "corpus/native-v1.json": "9308f60080c71e4da8b3bb4da0adbfda7ef8f164ab40296fccf5964d734b3163",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+  },
+  "fixturesAfter": {
+    "corpus/synthetic-v2.jsonl": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
+    "corpus/native-v1.json": "9308f60080c71e4da8b3bb4da0adbfda7ef8f164ab40296fccf5964d734b3163",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+  },
+  "nativeAcceptance": false,
+  "installedAppRebuilt": false
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "CUA UI observation; no keyboard events",
+  "binarySha256": "080bd487db570e070b8a52ada9a5e3f1df403e7c98b4417557d73491a463cd1d",
+  "axRefreshCompleted": true,
+  "monitoringRefreshCompleted": false,
+  "header": "Приостановлен",
+  "message": "Нужен Мониторинг ввода",
+  "status": "Разрешите Мониторинг ввода и перезапустите LayoutPilot",
+  "observed": true
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "typo-load-0",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-1",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-2",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-3",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-4",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-5",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-6",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-7",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-8",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-9",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-10",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo-load-11",
+    "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 113,
+      "length": 0
+    }
+  }
+]

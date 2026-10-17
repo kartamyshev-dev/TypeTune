@@ -1,0 +1,2157 @@
+{
+  "notice": "Opt-in test timing and boolean checks only; capped at 1000 records.",
+  "records": [
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.0875416628550738,
+      "phase": "capture",
+      "revision": 3,
+      "uptime": 49321.159605458335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.5224166709231213,
+      "phase": "capture",
+      "revision": 3,
+      "uptime": 49321.167147583335
+    },
+    {
+      "checks": {
+        "boundary": false
+      },
+      "elapsedMilliseconds": 1.198291669425089,
+      "phase": "snapshot-unavailable-or-stale",
+      "revision": 3,
+      "uptime": 49321.17498070834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.338416666840203,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 49321.18220241667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.8732916651060805,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 49321.190715875004
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 19.27070833335165,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 49321.216325416666
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 31.37054166290909,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 49321.25386883334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 32.84920832811622,
+      "phase": "capture",
+      "revision": 5,
+      "uptime": 49321.25513025
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 6.107249995693564,
+      "phase": "capture",
+      "revision": 5,
+      "uptime": 49321.26774929167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 16.279916671919636,
+      "phase": "capture",
+      "revision": 6,
+      "uptime": 49321.32867441667
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 6,
+      "uptime": 49321.32873791667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.39395833300659433,
+      "phase": "mutation-initial",
+      "revision": 6,
+      "uptime": 49321.329227291666
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6308750016614795,
+      "phase": "mutation-gate",
+      "revision": 6,
+      "uptime": 49321.329463500006
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 51.06099999829894,
+      "phase": "mutation-result",
+      "revision": 6,
+      "uptime": 49321.37989466667
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 6,
+      "uptime": 49321.382987875004
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 6,
+      "uptime": 49321.387624125004
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 7,
+      "uptime": 49321.43491725
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 7,
+      "uptime": 49321.436640750006
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 7,
+      "uptime": 49321.45054079167
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 7,
+      "uptime": 49321.457415875004
+    },
+    {
+      "checks": {
+        "pendingSource": false
+      },
+      "phase": "replay-drained",
+      "revision": 7,
+      "uptime": 49321.457469125
+    },
+    {
+      "checks": {
+        "completedTokens": false,
+        "exactPrediction": true,
+        "partialReplay": true,
+        "sameTarget": true,
+        "withinDeadline": true
+      },
+      "phase": "replay-readback",
+      "revision": 7,
+      "uptime": 49321.46428704167
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 7,
+      "uptime": 49321.464295125006
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 7,
+      "uptime": 49321.46432783334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.35958333319285884,
+      "phase": "mutation-initial",
+      "revision": 7,
+      "uptime": 49321.46474204167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6649166680290364,
+      "phase": "mutation-gate",
+      "revision": 7,
+      "uptime": 49321.465047000005
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 36.906749999616295,
+      "phase": "mutation-result",
+      "revision": 7,
+      "uptime": 49321.501289
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 7,
+      "uptime": 49321.502036125006
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 7,
+      "uptime": 49321.50417033333
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 7,
+      "uptime": 49321.50718829167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 7,
+      "uptime": 49322.66228316667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 8,
+      "uptime": 49322.74146895834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 12.245124999026302,
+      "phase": "capture",
+      "revision": 9,
+      "uptime": 49322.7911125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 8.184833328414243,
+      "phase": "capture",
+      "revision": 10,
+      "uptime": 49323.19266566667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.7555000013089739,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49323.28639758334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3232499986770563,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49323.29429208334
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 12,
+      "uptime": 49323.29431904167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.2525000018067658,
+      "phase": "mutation-initial",
+      "revision": 12,
+      "uptime": 49323.29461566667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.46133333671605214,
+      "phase": "mutation-gate",
+      "revision": 12,
+      "uptime": 49323.29482454167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 51.94075000326848,
+      "phase": "mutation-result",
+      "revision": 12,
+      "uptime": 49323.346303875005
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 12,
+      "uptime": 49323.34740791667
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 12,
+      "uptime": 49323.35199995834
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 13,
+      "uptime": 49323.38091783334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 13,
+      "uptime": 49323.381929125004
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 13,
+      "uptime": 49323.386225625
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 13,
+      "uptime": 49323.38724708334
+    },
+    {
+      "checks": {
+        "pendingSource": false
+      },
+      "phase": "replay-drained",
+      "revision": 13,
+      "uptime": 49323.38728283333
+    },
+    {
+      "checks": {
+        "completedTokens": false,
+        "exactPrediction": true,
+        "partialReplay": true,
+        "sameTarget": true,
+        "withinDeadline": true
+      },
+      "phase": "replay-readback",
+      "revision": 13,
+      "uptime": 49323.413998083335
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 13,
+      "uptime": 49323.414005833336
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 13,
+      "uptime": 49323.41403479167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.589374998526182,
+      "phase": "mutation-initial",
+      "revision": 13,
+      "uptime": 49323.41471766667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.9452083322685212,
+      "phase": "mutation-gate",
+      "revision": 13,
+      "uptime": 49323.41507341667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.15362499881303,
+      "phase": "mutation-result",
+      "revision": 13,
+      "uptime": 49323.45228191667
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 13,
+      "uptime": 49323.452924916666
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 13,
+      "uptime": 49323.461099458335
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 14,
+      "uptime": 49323.492342833335
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 14,
+      "uptime": 49323.49364291667
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": true
+      },
+      "phase": "replay-forward",
+      "revision": 14,
+      "uptime": 49323.49647108334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true,
+        "space": true
+      },
+      "phase": "replay-forward",
+      "revision": 14,
+      "uptime": 49323.49769129167
+    },
+    {
+      "checks": {
+        "pendingSource": false
+      },
+      "phase": "replay-drained",
+      "revision": 14,
+      "uptime": 49323.497742375
+    },
+    {
+      "checks": {
+        "completedTokens": false,
+        "exactPrediction": false,
+        "partialReplay": true,
+        "sameTarget": true,
+        "withinDeadline": true
+      },
+      "phase": "replay-readback",
+      "revision": 14,
+      "uptime": 49323.504325500006
+    },
+    {
+      "checks": {
+        "completedTokens": false,
+        "exactPrediction": true,
+        "partialReplay": true,
+        "sameTarget": true,
+        "withinDeadline": true
+      },
+      "phase": "replay-readback",
+      "revision": 14,
+      "uptime": 49323.525485833336
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": false
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 14,
+      "uptime": 49323.52550179167
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 14,
+      "uptime": 49323.52555408334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.5293750000419095,
+      "phase": "mutation-initial",
+      "revision": 14,
+      "uptime": 49323.52615204167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.7433749997289851,
+      "phase": "mutation-gate",
+      "revision": 14,
+      "uptime": 49323.52636479167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 41.9980000006035,
+      "phase": "mutation-result",
+      "revision": 14,
+      "uptime": 49323.567619625006
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 14,
+      "uptime": 49323.56847308334
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 14,
+      "uptime": 49323.57021708334
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 14,
+      "uptime": 49323.575134875005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 14,
+      "uptime": 49324.92304266667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 15,
+      "uptime": 49324.974452625
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 9.245375003956724,
+      "phase": "capture",
+      "revision": 16,
+      "uptime": 49325.02530058334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 9.892499998386484,
+      "phase": "capture",
+      "revision": 17,
+      "uptime": 49325.41372075
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.73183333594352,
+      "phase": "capture",
+      "revision": 19,
+      "uptime": 49325.49591108334
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 19,
+      "uptime": 49325.4959525
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.6555416694027372,
+      "phase": "mutation-initial",
+      "revision": 19,
+      "uptime": 49325.49679004167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 1.11750000360189,
+      "phase": "mutation-gate",
+      "revision": 19,
+      "uptime": 49325.49725
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 41.23891666677082,
+      "phase": "mutation-result",
+      "revision": 19,
+      "uptime": 49325.537371125
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 19,
+      "uptime": 49325.53804166667
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 19,
+      "uptime": 49325.55684733333
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 20,
+      "uptime": 49325.58207920834
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 20,
+      "uptime": 49325.59722154167
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 20,
+      "uptime": 49325.60193820834
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 20,
+      "uptime": 49325.60282466667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 20,
+      "uptime": 49325.603746458335
+    },
+    {
+      "checks": {
+        "pendingSource": false
+      },
+      "phase": "replay-drained",
+      "revision": 20,
+      "uptime": 49325.603785875006
+    },
+    {
+      "checks": {
+        "completedTokens": false,
+        "exactPrediction": true,
+        "partialReplay": true,
+        "sameTarget": true,
+        "withinDeadline": true
+      },
+      "phase": "replay-readback",
+      "revision": 20,
+      "uptime": 49325.629208833336
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 20,
+      "uptime": 49325.629227125006
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 20,
+      "uptime": 49325.629268875
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.5770416610175744,
+      "phase": "mutation-initial",
+      "revision": 20,
+      "uptime": 49325.629881333334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.9601249985280447,
+      "phase": "mutation-gate",
+      "revision": 20,
+      "uptime": 49325.63026420834
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 41.81479166436475,
+      "phase": "mutation-result",
+      "revision": 20,
+      "uptime": 49325.671119000006
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 20,
+      "uptime": 49325.672078125004
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 20,
+      "uptime": 49325.67340416667
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 20,
+      "uptime": 49325.6811305
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 20,
+      "uptime": 49326.82705354167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 21,
+      "uptime": 49326.8824735
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 33.88995833665831,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 49326.93788920833
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 42.06904166494496,
+      "phase": "capture",
+      "revision": 22,
+      "uptime": 49326.94585954167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.6832916662679054,
+      "phase": "capture",
+      "revision": 23,
+      "uptime": 49327.34150254167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.1967916618450545,
+      "phase": "capture",
+      "revision": 23,
+      "uptime": 49327.349607083335
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 27,
+      "uptime": 49328.75412704167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 28,
+      "uptime": 49328.80880154167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 8.740208337258082,
+      "phase": "capture",
+      "revision": 29,
+      "uptime": 49328.863768083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 29,
+      "uptime": 49329.25217954167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9534583368804306,
+      "phase": "capture",
+      "revision": 30,
+      "uptime": 49329.29121004167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 30,
+      "uptime": 49329.31718391667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 6.025624999892898,
+      "phase": "capture",
+      "revision": 32,
+      "uptime": 49329.40978870833
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 32,
+      "uptime": 49329.409819500004
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.24904166639316827,
+      "phase": "mutation-initial",
+      "revision": 32,
+      "uptime": 49329.41010770834
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6671666633337736,
+      "phase": "mutation-gate",
+      "revision": 32,
+      "uptime": 49329.410525750005
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 42.220708332024515,
+      "phase": "mutation-result",
+      "revision": 32,
+      "uptime": 49329.452079208335
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 32,
+      "uptime": 49329.45250454167
+    },
+    {
+      "checks": {
+        "pendingReplay": true,
+        "verified": true
+      },
+      "phase": "partial-rollback-result",
+      "revision": 32,
+      "uptime": 49329.4569915
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 33,
+      "uptime": 49329.483028375005
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 33,
+      "uptime": 49329.496259583335
+    },
+    {
+      "checks": {
+        "keyDown": true,
+        "outstanding": false,
+        "queueEmpty": false,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 33,
+      "uptime": 49329.510466708336
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 33,
+      "uptime": 49329.51295829167
+    },
+    {
+      "checks": {
+        "pendingSource": false
+      },
+      "phase": "replay-drained",
+      "revision": 33,
+      "uptime": 49329.51301745834
+    },
+    {
+      "checks": {
+        "completedTokens": false,
+        "exactPrediction": true,
+        "partialReplay": true,
+        "sameTarget": true,
+        "withinDeadline": true
+      },
+      "phase": "replay-readback",
+      "revision": 33,
+      "uptime": 49329.52691554167
+    },
+    {
+      "checks": {
+        "earlyEnabled": true,
+        "unfinishedTail": true
+      },
+      "phase": "partial-replay-catchup",
+      "revision": 33,
+      "uptime": 49329.52692279167
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 33,
+      "uptime": 49329.52694358334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.545374998182524,
+      "phase": "mutation-initial",
+      "revision": 33,
+      "uptime": 49329.52752745833
+    },
+    {
+      "checks": {
+        "granted": false,
+        "nativePaste": false,
+        "revision": false
+      },
+      "elapsedMilliseconds": 0.8847499993862584,
+      "phase": "mutation-gate",
+      "revision": 33,
+      "uptime": 49329.52786654167
+    },
+    {
+      "checks": {
+        "current": false,
+        "gated": false,
+        "nativePaste": false,
+        "notApplied": true,
+        "uncertain": false,
+        "verified": false
+      },
+      "elapsedMilliseconds": 0.9266249981010333,
+      "phase": "mutation-result",
+      "revision": 33,
+      "uptime": 49329.527908125005
+    },
+    {
+      "checks": {
+        "gated": false,
+        "verified": false
+      },
+      "phase": "apply-result",
+      "revision": 33,
+      "uptime": 49329.527911083336
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.5867500003660098,
+      "phase": "capture",
+      "revision": 34,
+      "uptime": 49329.549763958334
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 34,
+      "uptime": 49329.549783125
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.1021249991026707,
+      "phase": "mutation-initial",
+      "revision": 34,
+      "uptime": 49329.54990516667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.1977499996428378,
+      "phase": "mutation-gate",
+      "revision": 34,
+      "uptime": 49329.55000070834
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.90233333368087,
+      "phase": "mutation-result",
+      "revision": 34,
+      "uptime": 49329.588705500006
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 34,
+      "uptime": 49329.58952791667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 34,
+      "uptime": 49329.590747375005
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 34,
+      "uptime": 49329.593822
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 34,
+      "uptime": 49330.78507879167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 35,
+      "uptime": 49330.84366045833
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8079166655079462,
+      "phase": "capture",
+      "revision": 36,
+      "uptime": 49330.880731000005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 36,
+      "uptime": 49331.270763333334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.7285416650120169,
+      "phase": "capture",
+      "revision": 37,
+      "uptime": 49331.31114516667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.7327500027022325,
+      "phase": "capture",
+      "revision": 37,
+      "uptime": 49331.32012741667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 37,
+      "uptime": 49331.33010320833
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 37,
+      "uptime": 49331.36243304167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 38,
+      "uptime": 49331.400571875005
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.9870000067166984,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.07043041667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.1082500059274025,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.07796454167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.1570416609174572,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.08556583334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 2.2664583375444636,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.09374754167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.116166662541218,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.10046741667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.0027500029536895,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.10765520834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.6185416679945774,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.11566741667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.7924999992828816,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.12325641667
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 34.246499999426305,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 49422.16458754167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 35.868291663064156,
+      "phase": "capture",
+      "revision": 44,
+      "uptime": 49422.16597575
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 24.300625002069864,
+      "phase": "capture",
+      "revision": 46,
+      "uptime": 49422.36896991667
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 46,
+      "uptime": 49422.36902279167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.4573333353619091,
+      "phase": "mutation-initial",
+      "revision": 46,
+      "uptime": 49422.369550375006
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.8867916694725864,
+      "phase": "mutation-gate",
+      "revision": 46,
+      "uptime": 49422.36997979167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 44.086833331675734,
+      "phase": "mutation-result",
+      "revision": 46,
+      "uptime": 49422.413179875
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 46,
+      "uptime": 49422.41375208334
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": true
+      },
+      "phase": "apply-commit",
+      "revision": 46,
+      "uptime": 49422.415504833334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "phase": "source-selection",
+      "revision": 46,
+      "uptime": 49422.41551120834
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true,
+        "space": false
+      },
+      "phase": "replay-forward",
+      "revision": 47,
+      "uptime": 49422.45136683334
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "phase": "replay-drained",
+      "revision": 47,
+      "uptime": 49422.45143954167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 47,
+      "uptime": 49423.677997708335
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 31.02641666919226,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 49423.72631295834
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 48,
+      "uptime": 49423.743192
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 6.347208327497356,
+      "phase": "capture",
+      "revision": 49,
+      "uptime": 49423.781592583335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.1129583328729495,
+      "phase": "capture",
+      "revision": 50,
+      "uptime": 49424.173382375004
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 24.988375000248197,
+      "phase": "capture",
+      "revision": 50,
+      "uptime": 49424.204956458336
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 20.973750004486647,
+      "phase": "capture",
+      "revision": 52,
+      "uptime": 49424.461255250004
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 52,
+      "uptime": 49424.461307833335
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.4711666697403416,
+      "phase": "mutation-initial",
+      "revision": 52,
+      "uptime": 49424.46181404167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.8435416675638407,
+      "phase": "mutation-gate",
+      "revision": 52,
+      "uptime": 49424.462186375
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 40.5724166703294,
+      "phase": "mutation-result",
+      "revision": 52,
+      "uptime": 49424.50191529167
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 52,
+      "uptime": 49424.50255620834
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 52,
+      "uptime": 49424.50554983334
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 52,
+      "uptime": 49424.517586
+    }
+  ],
+  "schemaVersion": 1,
+  "session": "8A5979C8-A737-474C-B570-8A72B16636C0"
+}

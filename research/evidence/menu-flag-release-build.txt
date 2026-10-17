@@ -1,0 +1,30 @@
+Building for production...
+[4 / 11] LayoutPilotCore
+[6 / 12] LayoutPilotCore
+[9 / 11] LayoutPilot-product
+[11 / 54]
+[17 / 54]
+[19 / 54]
+[24 / 54]
+[25 / 54]
+[26 / 54]
+[29 / 54]
+[31 / 54]
+[40 / 54]
+[41 / 54]
+[45 / 54]
+[50 / 54]
+[51 / 54]
+[52 / 54]
+[53 / 54] LayoutPilot-product
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[55 / 57] LayoutPilot-product
+[56 / 57] LayoutPilot-product
+Build complete! (31,98 с)
+Building for production...
+Build complete! (0,18 с)
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app

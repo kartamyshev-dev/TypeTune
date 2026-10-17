@@ -1,0 +1,23 @@
+{
+  "sampling": "TextEdit and LayoutPilot, 10ms interval, maximum60s; stopped with probe",
+  "elapsedSeconds": 27.98118224999962,
+  "notice": "Diagnostic instrumented run only; profiling may alter timing. Raw stacks remain private.",
+  "files": {
+    "LayoutPilot.sample.log": {
+      "sha256": "62150035d895fd361fb9e99ddb212780a397a669a8465163be8bd78fe3fda509",
+      "bytes": 282
+    },
+    "TextEdit.txt": {
+      "sha256": "9509e77823287c551e1f9bdacea23ebd939ae2c5ca1dd63583e67c0916e451ca",
+      "bytes": 695482
+    },
+    "TextEdit.sample.log": {
+      "sha256": "714e718d9adcbd7682a4906b9d800603492a51f4cb87a2ef5a7778954dbcb62c",
+      "bytes": 279
+    },
+    "LayoutPilot.txt": {
+      "sha256": "d15db0b9a4c87183a65a27e1485949d88ec6966def12cc6d7deebfb9eddd59a4",
+      "bytes": 1556231
+    }
+  }
+}

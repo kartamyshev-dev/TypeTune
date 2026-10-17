@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ru-outside",
+    "text": "ntktcrjg",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "телескоп ",
+    "gesture": "none"
+  },
+  {
+    "id": "en-outside",
+    "text": "microscope",
+    "source": "RussianWin",
+    "boundary": true,
+    "expected": "microscope ",
+    "gesture": "none"
+  },
+  {
+    "id": "physical-outside",
+    "text": ";jyukbhjdfybt",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "жонглирование ",
+    "gesture": "none"
+  },
+  {
+    "id": "en-one-edit",
+    "text": "microscoppe",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "microscope ",
+    "gesture": "none"
+  },
+  {
+    "id": "digits-guard",
+    "text": "ntktcrjg42",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "ntktcrjg42 ",
+    "gesture": "none"
+  },
+  {
+    "id": "url-guard",
+    "text": "https://ntktcrjg.test",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "https://ntktcrjg.test ",
+    "gesture": "none"
+  }
+]

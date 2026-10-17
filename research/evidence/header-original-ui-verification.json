@@ -1,0 +1,30 @@
+{
+  "scope": "original UI color/contrast only; no original image drop performed",
+  "observedUI": [
+    {
+      "action": "left click header background",
+      "before": "orange / white title",
+      "after": "red / white title",
+      "diskColorReadback": "caramba-red"
+    },
+    {
+      "action": "right click background, no image",
+      "after": "orange / white title"
+    },
+    {
+      "action": "click title",
+      "after": "orange / black title"
+    }
+  ],
+  "finalReadback": {
+    "headerTitleWhite": false,
+    "headerColorName": "caramba-orange",
+    "headerImagePresent": false
+  },
+  "restoration": "Initial visible orange / black title restored. Backup absent color key may be persisted now as default orange after right-reset; byte-identical preferences not claimed.",
+  "notVerified": [
+    "all 25 colors via UI",
+    "image native drop",
+    "original image restart"
+  ]
+}

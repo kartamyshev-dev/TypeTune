@@ -1,0 +1,66 @@
+{
+  "children" : 4,
+  "guiLaunched" : false,
+  "kind" : "actual-Store-cross-process-persistence",
+  "nativeAcceptance" : false,
+  "nativeEventsPosted" : false,
+  "originalAccessed" : false,
+  "ownSuiteCleaned" : true,
+  "passed" : true,
+  "soundPlayed" : false,
+  "standardDefaultsUsed" : false,
+  "trials" : [
+    {
+      "countsMatch" : true,
+      "distinctChildProcess" : true,
+      "exit" : 0,
+      "historyMatch" : true,
+      "ordinarySettingsUnchanged" : true,
+      "passed" : true,
+      "phase" : "seed",
+      "pid" : 67836,
+      "synchronized" : true,
+      "timeMatch" : true,
+      "totalsMatch" : true
+    },
+    {
+      "countsMatch" : true,
+      "distinctChildProcess" : true,
+      "exit" : 0,
+      "historyMatch" : true,
+      "ordinarySettingsUnchanged" : true,
+      "passed" : true,
+      "phase" : "restart",
+      "pid" : 67837,
+      "synchronized" : true,
+      "timeMatch" : true,
+      "totalsMatch" : true
+    },
+    {
+      "countsMatch" : true,
+      "distinctChildProcess" : true,
+      "exit" : 0,
+      "historyMatch" : true,
+      "ordinarySettingsUnchanged" : true,
+      "passed" : true,
+      "phase" : "increment",
+      "pid" : 67838,
+      "synchronized" : true,
+      "timeMatch" : true,
+      "totalsMatch" : true
+    },
+    {
+      "countsMatch" : true,
+      "distinctChildProcess" : true,
+      "exit" : 0,
+      "historyMatch" : true,
+      "ordinarySettingsUnchanged" : true,
+      "passed" : true,
+      "phase" : "final",
+      "pid" : 67841,
+      "synchronized" : true,
+      "timeMatch" : true,
+      "totalsMatch" : true
+    }
+  ]
+}

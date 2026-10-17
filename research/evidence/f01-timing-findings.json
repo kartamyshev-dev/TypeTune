@@ -1,0 +1,752 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-16",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "scope": {
+    "new_REA_sessions": 0,
+    "new_imports": 0,
+    "persistent_project_opens_this_packet": 4,
+    "persistent_options": [
+      "-process caramba-arm64",
+      "-noanalysis",
+      "-readOnly"
+    ],
+    "new_pseudo_bodies": [
+      "0x1002dec80",
+      "0x1002e5fb8",
+      "0x1002de6f0",
+      "0x1002e4058",
+      "0x1003d6e50",
+      "0x1003d1dc4"
+    ],
+    "new_asm_bodies": [
+      "0x1002dec80",
+      "0x1002e5fb8",
+      "0x1002de6f0",
+      "0x1002e4058",
+      "0x1003d6e50",
+      "0x1003d1dc4"
+    ],
+    "substantive_bodies_limit": 6,
+    "substantive_bodies_read": 6,
+    "generic_clone_boundary": "2e4058 provedgenericdeepclone; nofurtherclone/hash/allocbodiesqueried",
+    "target_SHAguard": true,
+    "project_byte_identity_before_after": true,
+    "project_files_compared": 9,
+    "headless_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "project_closed_and_no_JVM": true,
+    "native_UI_input_actions": 0,
+    "supplemental_not_REA_evidence": true
+  },
+  "references": [
+    {
+      "evidence_id": "ev_fd52fc9ee791fa18913d4e4cf53c0882b625b5d879ee860b8cb3ee048391634f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e3ca8"
+      }
+    },
+    {
+      "evidence_id": "ev_dc4ca2427cec9987472c0444b6f5ed0b41d0da44de0005bd1275c566c8e189fe",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e0cec"
+      }
+    },
+    {
+      "evidence_id": "ev_93408285a7e01902352121bc95fd3fe4ba0f6db4cfc36ec13c6afdab171bdfc7",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e083c"
+      }
+    },
+    {
+      "evidence_id": "ev_f41e7318948f8b8e620a31704c24552b17a171cac641648c45b631949e7996a9",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e6424"
+      }
+    },
+    {
+      "evidence_id": "ev_e32289eb3e357ec8d496c1023b5a756031e22c46f0f1cc2d84521461e7c6968f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100253e18"
+      }
+    },
+    {
+      "evidence_id": "ev_7fd2facc652fe69fd39fe72f3180c64868929660ab3bcddbb11f25a3a5eb0b02",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e10b4"
+      }
+    },
+    {
+      "evidence_id": "ev_29a976e554936d241a1421c1dca8f062979cc9aefc268fe72270c49413829bff",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e0030"
+      },
+      "new_query": false
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "research/private/f01-timing-gate-llvm.txt",
+      "bytes": 4985,
+      "sha256": "aca554540e31e65b373296a87497499893ed92eac764089828ff321cce48a2cf"
+    },
+    {
+      "path": "research/private/f01-timing-dispatch-llvm.txt",
+      "bytes": 2499,
+      "sha256": "e554116db7f15db1cccd66fbc156c0c9283b48c585b0e7b4850ac06a52f13e22"
+    },
+    {
+      "path": "research/private/selection-followup.txt",
+      "bytes": 40891,
+      "sha256": "a09df8a5d7340b3b07fb0b343152f6cc3a75d1302360d74d1469aeb49ead2933"
+    },
+    {
+      "path": "research/evidence/phase3-original-hid-source.json",
+      "bytes": 1110,
+      "sha256": "c9d1f94ef27b6141d2fe1ea93fcc876338d2a9fc1e11eb56c3e629e15e311c23"
+    },
+    {
+      "path": "research/private/f01-fallback-2e6124.txt",
+      "bytes": 9055,
+      "sha256": "6c31397ec8b5ff2d711786e0221850b87fd04bbac8fe67b592b63a541f39870c"
+    },
+    {
+      "path": "research/private/CarambaF01FallbackProbe.java",
+      "bytes": 1402,
+      "sha256": "de8636ad78b7b59d92844c424d84c9ad5f78c497dde156781b597ce81d06ce24"
+    },
+    {
+      "path": "research/private/f01-fallback.log",
+      "bytes": 4262,
+      "sha256": "4c07805c14ef165f54b76254e5a2b67f29ddd60e0972b26766105684aeb40b0b"
+    },
+    {
+      "path": "research/private/f01-fallback-script.log",
+      "bytes": 77,
+      "sha256": "0cfca6d8d7a57f2bf092cde946e666c1e7ea9c8a937953f938452f67af11f3e4"
+    },
+    {
+      "path": "research/private/f01-project-before.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/private/f01-project-after.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/evidence/early-exploration-original.json",
+      "bytes": 8981,
+      "sha256": "3b82cc910ab71ecd95a1ca34f26886ad31297f9d6e2538eadd21611764ffe357"
+    },
+    {
+      "path": "research/private/f01-variants-2e8990.txt",
+      "bytes": 13616,
+      "sha256": "f014b018991e0f8180f64e972b4026fe534fe2d2cfc39401b15b464be767261d"
+    },
+    {
+      "path": "research/private/CarambaF01VariantsProbe.java",
+      "bytes": 1402,
+      "sha256": "bee715bcd11ef049673147efaae5567d664658f4992382fb15cec58ba730f741"
+    },
+    {
+      "path": "research/private/f01-variants.log",
+      "bytes": 4262,
+      "sha256": "8fbcaad50c0b0608ca75a561fb894b6939b6d3aa679123955c6defec50cffd61"
+    },
+    {
+      "path": "research/private/f01-variants-script.log",
+      "bytes": 77,
+      "sha256": "5a46456cf363701fa9e2e052a49fb8d0abec58e4b5fd4b28bc5485c902d09e6c"
+    },
+    {
+      "path": "research/private/f01-variants-project-before.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/private/f01-variants-project-after.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/private/f01-format-packet.txt",
+      "bytes": 6125,
+      "sha256": "19b99b3af6fecf840fbb1b59f70aa45bcee600e1bb88aad6bf73cc4fa24364e4"
+    },
+    {
+      "path": "research/private/f01-format-render-packet.txt",
+      "bytes": 17800,
+      "sha256": "0fa4f09c60e1a6a98ab5a00926fcf06a8d476d1d3aa2fd7a23d9d31d447e8ec8"
+    },
+    {
+      "path": "research/private/CarambaF01FormatProbe.java",
+      "bytes": 1465,
+      "sha256": "dd4b17c265890b76ab6114c6c0e84c26dbdf2d70dd598c2d82ec5d2ec7eb3b1e"
+    },
+    {
+      "path": "research/private/CarambaF01FormatRenderProbe.java",
+      "bytes": 1459,
+      "sha256": "afef10c9f10d7e1e8ec67c201d16b18071d26e1b33958287afb86dcef0450ccc"
+    },
+    {
+      "path": "research/private/f01-format.log",
+      "bytes": 4250,
+      "sha256": "1f3bd33520ada434a5d18dcc146504bdecaf7623f9417c694217cc807e6701dd"
+    },
+    {
+      "path": "research/private/f01-format-render.log",
+      "bytes": 4282,
+      "sha256": "45fb998409d4096861eb0c62f1bc7f734816a14027952af88875ca7a434c99fc"
+    },
+    {
+      "path": "research/private/f01-format-script.log",
+      "bytes": 73,
+      "sha256": "a4bb7e1d2579a645e1ef20cd96b9b4e4604970af99b5eafa3459326698094592"
+    },
+    {
+      "path": "research/private/f01-format-render-script.log",
+      "bytes": 79,
+      "sha256": "747413b5ea85067f71c4f510858e6494eed931a858f9cac06126800b38edd189"
+    },
+    {
+      "path": "research/private/f01-format-project-before.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/private/f01-format-project-after.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/evidence/f01-format-static-verification.json",
+      "bytes": 3447,
+      "sha256": "5db2d557d8c4c52e34c59aeef2c9e08ae4c27e0c3440bc5e7488db73a333c36a"
+    },
+    {
+      "path": "research/private/CarambaF01MatchingProbe.java",
+      "bytes": 1455,
+      "sha256": "9e0f52245da27697aa5e4230e487542dbfedb6c26216acd9677340514d15cac5"
+    },
+    {
+      "path": "research/private/CarambaF01MatchingCoreProbe.java",
+      "bytes": 1459,
+      "sha256": "4328fecacd2b0078a69e5c754540c5cde1112541c567e9a124f0557b1abda7ad"
+    },
+    {
+      "path": "research/private/CarambaF01CountProbe.java",
+      "bytes": 1440,
+      "sha256": "8af63580d83ff98fafa6aa8d187473a7a297051bea8b6499128acf638002b95c"
+    },
+    {
+      "path": "research/private/CarambaF01CaseProbe.java",
+      "bytes": 1439,
+      "sha256": "21e1590916cb99e058035100151c09a85521b3cbeb17345e51e684b35e78c77d"
+    },
+    {
+      "path": "research/private/f01-matching-packet.txt",
+      "bytes": 13088,
+      "sha256": "41fc0427f4feadba5a69ba09f1921f368ab430fd3576d7085f7ac6de20a41a4b"
+    },
+    {
+      "path": "research/private/f01-matching-core-packet.txt",
+      "bytes": 11557,
+      "sha256": "cfdc7758b08f97409062df78febdcb1eb74c9a3c3b81c3c6f5487fc332087333"
+    },
+    {
+      "path": "research/private/f01-count-packet.txt",
+      "bytes": 11467,
+      "sha256": "f790ed18e24965461b623dd3e8fa2baaddb00fec2c4aa10e85e5008b2dc9eb2a"
+    },
+    {
+      "path": "research/private/f01-case-packet.txt",
+      "bytes": 30554,
+      "sha256": "9206e0b4a62d5e3349d7e90b4cebaba1cb89ea0f80eb12b5c5f970a4f404455b"
+    },
+    {
+      "path": "research/private/f01-matching.log",
+      "bytes": 4260,
+      "sha256": "a78307910f5fcfb8b08a9c806e61e477d239e879dbbed8fc7f9e49234aea45a4"
+    },
+    {
+      "path": "research/private/f01-matching-core.log",
+      "bytes": 4282,
+      "sha256": "5236fcf9912e1089e9a52ee359ee887f0c602e1219f3d9af3389ec92a575c02f"
+    },
+    {
+      "path": "research/private/f01-count.log",
+      "bytes": 4245,
+      "sha256": "4a2c9f0e2345a60f82c35590b8cf9dd88fad289b32ff3c6d1fc729310eab59f0"
+    },
+    {
+      "path": "research/private/f01-case.log",
+      "bytes": 4240,
+      "sha256": "57372c1749ac082c5ea36151e99218b15d2157a36cbd778514dec253a5028f61"
+    },
+    {
+      "path": "research/private/f01-matching-project-before.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    },
+    {
+      "path": "research/private/f01-matching-project-after.json",
+      "bytes": 1691,
+      "sha256": "ab8f8b66fa0cad6377ef36934a9bcff92224dae123a93de9a13c61f64fdc11a9"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01-EARLY-GATE",
+      "anchors": [
+        "0x1002534d0",
+        "0x1002e3e1c",
+        "0x1002e3e24"
+      ],
+      "claim": "Automaticbranch gate2e3ca8 returns delimiter(lastUnicodeScalar inTAB/LF/CR/SPACE/hyphen) OR (countHelperResult>2 AND noUppercase scalarafterfirst). Counthelperunits notproven; >2numericthreshold provenASM."
+    },
+    {
+      "id": "F01-MODEL-EVERY-ELIGIBLE-PREFIX",
+      "anchors": [
+        "0x1002534f0",
+        "0x100253714"
+      ],
+      "claim": "Afterearlygating/settings/history/modifier/exceptions, dispatcher invokespipelinewithmode0; no universalmandatoryboundaryguardbeforeordinarysuccessfulretype."
+    },
+    {
+      "id": "F01-NO-CONFIDENCE-MARGIN",
+      "anchors": [
+        "0x1002e083c",
+        "0x1002e0cec"
+      ],
+      "claim": "Category1 maximizes signedweights(tieskeepprior); category2priority; category3veto. No universal numericconfidence/margin threshold established."
+    },
+    {
+      "id": "F01-ZERO-PAIR",
+      "claim": "Forbothlanguagecandidates ordinarycategory1 withbothsumszero aggregatoroutputsboolean; wrapperrejectsit. Category0skipclearsthisboolean, so notgeneralanyzero-weight veto."
+    },
+    {
+      "id": "F01-COLLISION-FLAG",
+      "anchors": [
+        "0x1002e1614",
+        "0x100253748",
+        "0x10025375c",
+        "0x1004283d4"
+      ],
+      "claim": "Model specialresultsetsoutputbyte79; dispatchseparatescollisionbranch, boundaryupdatesstoredstate, collisionreportthenreturnwithoutretype. NotgeneralwaitforSpace."
+    },
+    {
+      "id": "F01-HISTORICAL-PREBOUNDARY",
+      "claim": "Savedoriginal syntheticChrome run hasпривет beforefirstSpace; emittedsourceABCforfirst3 andRussianWinby4thevent. Exactper-lettertexttiming absent; nop95/parity/sourcefilter claim."
+    },
+    {
+      "id": "F01-FALLBACK-ITERATOR",
+      "anchors": [
+        "0x1002e6178",
+        "0x1002e6208",
+        "0x1002e6230",
+        "0x1002e6254",
+        "0x1002e6294",
+        "0x1002e631c"
+      ],
+      "claim": "2e6124 drainsactive40Brecords, iterates24Bvariantswith2e1d98 lookupanddrainsresults, thensecondaryprepared40Brecords. -2endsrecordstream; variant/lookup -1endsvariantphase. No scorearithmetic/flagchanges."
+    },
+    {
+      "id": "F01-COORDINATOR-NATIVE",
+      "claim": "Coordinator-owned early-exploration-original.json completed9 withoutboundary:ghb→при,ghbd→прив,ghbdtn→привет; ABc.txt/ABc;def/MBps/MHz unchanged. Thisinvestigator onlyreadsavedrecord, didnotexecutenative."
+    },
+    {
+      "id": "F01-VARIANTS-DEDUP",
+      "anchors": [
+        "0x1002e8a10",
+        "0x1002e8a28",
+        "0x1002e8a80",
+        "0x1002e8a98",
+        "0x1002e8b4c",
+        "0x1002e8b50"
+      ],
+      "claim": "2e8990 isunique iterator overexisting24Bstrings:hash,length+memcmp dedup, skipduplicates, insertpointer andcloneunique output, -1end. NoRUENconversion/casefold/normalization/weights."
+    },
+    {
+      "id": "F01-TWO-FORMATTED-INPUTS",
+      "anchors": [
+        "0x1002e0230",
+        "0x1002e0248",
+        "0x1002e0258",
+        "0x1002e0288",
+        "0x1002e02ac"
+      ],
+      "claim": "CachedextractorASM createsoutputs atsp20/sp38, gives[start=sp20,end=sp50]to2e477c. Exactlytwo24Binputs:formattedpunctuation-trimmed thenformattedwhole(whitespace-trimmed). Dedupyieldsatmosttwo, notngram/prefixenumeration."
+    },
+    {
+      "id": "F01-DEDUP-INDEX-NOT-MODEL-FLAGS",
+      "claim": "State00/08cursor/end,10/18table/mask,20/28capacity/countbookkeeping,30/38hashinputs. Index/controlmetadataarenotsemanticfeatureflags."
+    },
+    {
+      "id": "F01-LOOKUP-PARTIAL-COMPLETE-BYTES",
+      "anchors": [
+        "0x1004dac93",
+        "0x1004dac99",
+        "0x1003d6218",
+        "0x1003d6248",
+        "0x1002e6414",
+        "0x1003d5550"
+      ],
+      "claim": "Exactlookupformat:descriptor4dac99→02||UTF8(T),descriptor4dac93→02||UTF8(T)||03. Mode!=0orlastdelimiter selectscomplete; automode0withoutdelimiter selectspartial. T alreadytrimmed."
+    },
+    {
+      "id": "F01-DISPLAY-UNCHANGED-SLICE",
+      "anchors": [
+        "0x1002e6414",
+        "0x1003da148",
+        "0x1003d61ec",
+        "0x1003d5550"
+      ],
+      "claim": "C0defaultoptions60000020 givewriterdirectwrite_str ofentireslice; nocasefold/truncation/normalization introducedhere."
+    },
+    {
+      "id": "F01-SYNTHETIC-FORMAT-VERIFICATION",
+      "claim": "Authorstaticdecoderofadmittedformats passes18syntheticcases; notoriginalcodeexecution/nativePASS."
+    },
+    {
+      "id": "F01-INDEPENDENT-CLASSIFIER-CONTRACT",
+      "claim": "Partial/complete areseparate modelinputcontexts. Latermatchingpacket provescompressedbyte-trie allprefixmatchesperbyte-start; thisstilldoesnot implyunique-dictionary-prefix immediatecorrection."
+    },
+    {
+      "id": "F01-BYTE-TRIE-MATCHER",
+      "anchors": [
+        "0x1002de758",
+        "0x1002de794",
+        "0x1002de798",
+        "0x1002de7b8"
+      ],
+      "claim": "2de6f0 startsstate0, XORencodednodeoffset/state/inputbyte, checksbytelabel, emits31bitID atterminalbit8 andcontinues. Allterminalprefixmatchespercurrentsuffix; nofixed2/3/4patternlength."
+    },
+    {
+      "id": "F01-ALL-BYTE-STARTS",
+      "anchors": [
+        "0x1002e6028",
+        "0x1002e6048",
+        "0x1002e6088"
+      ],
+      "claim": "2e5fb8 incrementsbyte-startby1, scansremainingsuffixwith2de6f0; returnsIDw1andpresentw0. 2dec80 collectswithoutunique-IDdedup, retainingoverlaps/repetitions."
+    },
+    {
+      "id": "F01-OPERATIONAL-FLAGS",
+      "claim": "Matchedfeatures flagsbit0 affectszeroweightcategory2/3; bit1 excludeslowercasebranch only; bit2 vetoesF17 beforeend sentinel. Exactdecodedschema→packedconstructor notyetidentified;2e4058 isclone, notbridge."
+    },
+    {
+      "id": "F01-LOWERCASE-NORMALIZATION",
+      "anchors": [
+        "0x1003d1dc4"
+      ],
+      "claim": "ASCIIA-Z loweredwithbit20; UTF8decodedwithUnicodecasemapping andspecialGreekSigma, potentiallymulti-scalaroutput. NotassertedUnicodecaselessfold orfullmappingversion."
+    },
+    {
+      "id": "F01-SHORT-COUNT-SCALARS",
+      "anchors": [
+        "0x1003d6e50",
+        "0x1003d70d4"
+      ],
+      "claim": "CountsnoncontinuationUTF8bytes; forvalidshortinputcaller<32bytes earlythreshold>2meansatleast3Unicodescalars. Longcallerhelper3d673c unqueried."
+    },
+    {
+      "id": "F01-PATTERN-VETO-NOT-WHOLE-WORD",
+      "claim": "2dfeb4 bit2 veto consumesmatchedmodelpatterns throughsamefeatureextractor; canbeanchoredorinternalpattern; no positiveexactknownword requirement. Originalpatterncontentsnotextracted."
+    }
+  ],
+  "count_units_unknown": {
+    "short_valid_UTF8_less_than32bytes": "resolved: Unicode scalarcount via3d6e50",
+    "long_caller_path": "3d673c notyetqueried",
+    "not_grapheme_or_UTF16": true
+  },
+  "dictionary_model_data_transferred": false,
+  "bounded_missing_queries": [
+    {
+      "question": "Decoded schema bool→runtime packedflag constructor, addressnotyetestablished; do notblindlyscan genericclone/hash",
+      "status": "unknown"
+    },
+    {
+      "address": "0x1003d673c",
+      "purpose": "Longcaller scalarcountpath, secondary lowpriority",
+      "status": "notqueried"
+    }
+  ],
+  "not_implemented_or_native_verified_here": true,
+  "prior_cached_pass_scope": {
+    "REA": "existing saved records only",
+    "new_REA_sessions": 0,
+    "new_imports": 0,
+    "persistent_project_opens": 0,
+    "native_UI_input_actions": 0,
+    "supplemental_tool": "Apple LLVM21.0.0 llvm-objdump onfrozenMachO",
+    "bounded_ranges": [
+      [
+        "0x1002e3ca8",
+        "0x1002e3e3c exclusive"
+      ],
+      [
+        "0x1002534d0",
+        "0x100253590 exclusive"
+      ]
+    ],
+    "supplemental_not_REA_evidence": true
+  },
+  "fallback_record_layout": [
+    {
+      "offset": "0x00–0x17",
+      "bytes": 24,
+      "observed": "String-like/optional triple; firstqword -2 iteratorend, -1 allowedinordinaryfeature; semantictextpurpose unknown"
+    },
+    {
+      "offset": "0x18",
+      "bytes": 8,
+      "observed": "Metadata/flags qword; consumers uselowbits0/1/2; boolpackingbridge unproven"
+    },
+    {
+      "offset": "0x20",
+      "bytes": 4,
+      "observed": "Feature/table identifier copiedfrommodelrecord; semanticmeaning unknown"
+    },
+    {
+      "offset": "0x24",
+      "bytes": 4,
+      "observed": "Signed32bitweight usedbyevaluator; copiedunchangedbyiterator"
+    }
+  ],
+  "prior_fallback_pass_scope": {
+    "REA": "existing savedrecords only; supplemental directGhidra existingproject",
+    "new_REA_sessions": 0,
+    "new_imports": 0,
+    "persistent_project_opens": 1,
+    "persistent_options": [
+      "-process caramba-arm64",
+      "-noanalysis",
+      "-readOnly"
+    ],
+    "new_pseudo_bodies": [
+      "0x1002e6124"
+    ],
+    "new_asm_bodies": [
+      "0x1002e6124"
+    ],
+    "extra_2dec80_queried": false,
+    "target_SHAguard": true,
+    "project_byte_identity_before_after": true,
+    "project_files_compared": 9,
+    "headless_exit_code": 0,
+    "project_closed_and_no_JVM": true,
+    "native_UI_input_actions": 0,
+    "supplemental_not_REA_evidence": true
+  },
+  "variants_packet": {
+    "body_address": "0x1002e8990",
+    "body_range": [
+      "0x1002e8990",
+      "0x1002e8bfb inclusive"
+    ],
+    "body_bytes": 620,
+    "extra_callee_count": 0,
+    "Ghidra": "12.1.4",
+    "method": "existingproject noanalysis/readOnly, neverimport; directGhidra noREAID"
+  },
+  "bounded_resolved_queries": [
+    {
+      "address": "0x1002e6124",
+      "body_bytes": 736,
+      "range": [
+        "0x1002e6124",
+        "0x1002e6403 inclusive"
+      ],
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1002e8990",
+      "body_bytes": 620,
+      "semantic_correction": "Dedupofalreadyformattedstrings, notproducer",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1002e6414",
+      "body_bytes": 16,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1003da148",
+      "body_bytes": 20,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1003d2aa0",
+      "body_bytes": 404,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1003d61a4",
+      "body_bytes": 436,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1003d52d8",
+      "body_bytes": 784,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1002dec80",
+      "body_bytes": 700,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1002e5fb8",
+      "body_bytes": 364,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1002de6f0",
+      "body_bytes": 328,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1002e4058",
+      "body_bytes": 432,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1003d6e50",
+      "body_bytes": 680,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    },
+    {
+      "address": "0x1003d1dc4",
+      "body_bytes": 2104,
+      "raw_record_kind": "supplementalGhidra",
+      "new_REA_id": null
+    }
+  ],
+  "prior_variants_packet_scope": {
+    "REA": "cached Evidence plus supplemental directGhidra existingproject",
+    "new_REA_sessions": 0,
+    "new_imports": 0,
+    "persistent_project_opens_this_packet": 1,
+    "persistent_options": [
+      "-process caramba-arm64",
+      "-noanalysis",
+      "-readOnly"
+    ],
+    "new_pseudo_bodies": [
+      "0x1002e8990"
+    ],
+    "new_asm_bodies": [
+      "0x1002e8990"
+    ],
+    "new_callee_bodies": [],
+    "maximum_additional_callees_allowed": 3,
+    "target_SHAguard": true,
+    "project_byte_identity_before_after": true,
+    "project_files_compared": 9,
+    "headless_exit_code": 0,
+    "project_closed_and_no_JVM": true,
+    "native_UI_input_actions": 0,
+    "supplemental_not_REA_evidence": true
+  },
+  "lookup_format_contract": {
+    "partial": {
+      "descriptor_address": "0x1004dac99",
+      "bytes": "0x02 || UTF8(T)"
+    },
+    "complete": {
+      "descriptor_address": "0x1004dac93",
+      "bytes": "0x02 || UTF8(T) || 0x03"
+    },
+    "selection": "complete ifmode_lowbyte!=0 orlastscalarTAB/LF/CR/SPACE/hyphen;elsepartial",
+    "input_text": "T isalreadywhitespace/punctuation-normalized asdefinedincachedextractor",
+    "format_opcode_semantics": {
+      "01": "next1byteliteral",
+      "c0": "defaultDisplayargument",
+      "00": "end"
+    },
+    "writer_default_options": "0x60000020",
+    "original_runtime_execution": false
+  },
+  "format_static_verification": {
+    "cases": 18,
+    "failed": 0,
+    "artifact": "research/evidence/f01-format-static-verification.json",
+    "scope": "Authorstaticformatdescriptorinterpretation, notoriginalformatterruntime"
+  },
+  "prior_format_packet_scope": {
+    "REA": "cached Evidence plus supplemental directGhidra existingproject",
+    "new_REA_sessions": 0,
+    "new_imports": 0,
+    "persistent_project_opens_this_packet": 2,
+    "reason_for_second_reopen": "Firstboundedpacket identifiedparser3d61a4 andwritercallee3d52d8, requiredtoresolveactualoutput; sameexistingproject, serialreadonly",
+    "persistent_options": [
+      "-process caramba-arm64",
+      "-noanalysis",
+      "-readOnly"
+    ],
+    "new_pseudo_bodies": [
+      "0x1002e6414",
+      "0x1003da148",
+      "0x1003d2aa0",
+      "0x1003d61a4",
+      "0x1003d52d8"
+    ],
+    "new_asm_bodies": [
+      "0x1002e6414",
+      "0x1003da148",
+      "0x1003d2aa0",
+      "0x1003d61a4",
+      "0x1003d52d8"
+    ],
+    "target_SHAguard": true,
+    "project_byte_identity_before_after": true,
+    "project_files_compared": 9,
+    "headless_exit_codes": [
+      0,
+      0
+    ],
+    "project_closed_and_no_JVM": true,
+    "native_UI_input_actions": 0,
+    "supplemental_not_REA_evidence": true
+  },
+  "matching_contract": {
+    "representation": "UTF8bytes with02start andoptional03end",
+    "search": "compressedarraytrie prefixwalk atallbyte-starts",
+    "outputs": "31bitterminalIDs; overlaps/repeatedIDsretained",
+    "lowercasing": "lowercasefirst(bit1filter), thenoriginalcase",
+    "weights": "signed32nonzero additiveweights ofeligiblematchedrecords; categorical0weight logic remainsseparate",
+    "F17_veto": "anymatchedeligiblebit2recordbeforesentinel",
+    "marker_pattern_shapes": [
+      "P internalmatch",
+      "02+P startanchor",
+      "P+03 completeendanchor",
+      "02+P+03 completewholetext"
+    ],
+    "fixed_ngram_length": null,
+    "original_model_data_extracted": false
+  }
+}

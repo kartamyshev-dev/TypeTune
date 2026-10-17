@@ -1,0 +1,14 @@
+{
+  "cases": 40,
+  "matches": 39,
+  "failures": [
+    {
+      "id": "1857b2793618-1-repeat-4",
+      "actual": "vbyenf ",
+      "expected": "минута "
+    }
+  ],
+  "fixtureSha256": "f4ee2c8a2a1f89bbd654e25b3696c3f7b83cd2db636c198419d25bd4ccbc69c0",
+  "binarySha256": "3c5c90c3d76982470e2d14ac25bd72135048cc0024bf79a52d9699b55a68c2f5",
+  "notice": "10 repetitions each of four historical train misses. One omitted correction remains; not full acceptance."
+}

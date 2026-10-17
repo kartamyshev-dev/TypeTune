@@ -1,0 +1,1 @@
+{"cases": 13, "failures": ["auto-undo: text", "auto-undo: inputSource"], "notice": "Only supplied native scenarios; not full acceptance."}

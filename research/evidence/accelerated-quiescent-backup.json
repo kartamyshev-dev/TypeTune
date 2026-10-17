@@ -1,0 +1,12 @@
+{
+  "originalStoppedBeforeAndAfter": true,
+  "dbHandlesClosedBeforeCopy": true,
+  "sourceBytesStable": true,
+  "redbCopiesByteEqual": 1,
+  "sqliteBackupsVerified": 1,
+  "settingsCopies": 3,
+  "privateDestination": "research/private/quiescent-10aca2cd7acc4b15ac1290d6d639beb9",
+  "personalDataPublished": false,
+  "redbFormatIntegrityVerified": false,
+  "notice": "Quiescent byte-consistent redb backup; no semantic redb-format validation. SQLite backup API includes WAL. Source DB/settings never written."
+}

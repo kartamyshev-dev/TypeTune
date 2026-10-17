@@ -1,0 +1,58 @@
+{
+  "scope": "CLI/offline only; no GUI build or native execution; no original parity or corpus quality claim",
+  "change": "Require all-letter original token for unconditional F17 case correction; keep physical-punctuation layout lookup unchanged.",
+  "selftest": "351/351 offline invariants passed; 0 failures. No runtime input claim.",
+  "corpus": {
+    "train": {
+      "corrections": 1134,
+      "count": 3094,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 3094
+    },
+    "holdout": {
+      "corrections": 484,
+      "count": 1326,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 1326
+    }
+  },
+  "sourceSha256": {
+    "Package.swift": "60549aaf7885c414fdeeb67a22ed588fbe01d691a9788f05c63629d481327ae4",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "7a578ff0c7744f52569c524c9dd36d140f64504231bd295083b718ece1f9d32f",
+    "Sources/LayoutPilotCore/Engine.swift": "1871f8325936e6c0698bb2c4613dc2284b57c70ff6df792f6b5da47b327f9222",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "4248329ead35e70648514c8fe4f8e5ac7ac4fd17ecc60e5cc2d79fa78ec2898f",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "a0ac5cb3495416ffd4a4f7c9a688dea55d87e7eec6bbe20050c338281ff52e32",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "7e03708af658da86d77f1307dcdd128107e3d5b312a9c0f781819fb81f534679",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "31de0285735067c16971a56b457ec85d4b3b8adb71f088eb496c9f6f1e79fa15",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9"
+  },
+  "cliSha256": "5e58d14ae51a3b8b1b89f455c02b38e61313c10f86e4bfc6146768faa0090f6a",
+  "corpusSha256": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
+  "evidence": [
+    "f17-punctuation-cli-build2.txt",
+    "f17-punctuation-cli-selftest2.txt",
+    "f17-punctuation-corpus2-train.json",
+    "f17-punctuation-corpus2-holdout.json",
+    "f17-punctuation-corpus2.txt"
+  ],
+  "previousFailure": {
+    "evidence": "f17-punctuation-cli-selftest.txt",
+    "passed": 349,
+    "total": 351,
+    "reason": "Two initially authored keyboard examples had a swapped physical key order: rjvg.mnth spells компюьтер, not компьютер. Corrected examples use rjvgm.nth/Rjvgm.nth; Engine was unchanged after the first patch. Failure retained."
+  },
+  "remainingLimitations": [
+    "Punctuation-source double-caps correction deliberately not applied; keyboard layout conversion remains independent.",
+    "Model veto is still an approximation; all-letter mixed acronyms/units require separate policy and reference investigation.",
+    "Current GUI native results were obtained before this source change and are not transferred."
+  ]
+}

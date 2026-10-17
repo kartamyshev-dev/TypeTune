@@ -1,0 +1,283 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 71
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 71,
+      "maxMilliseconds": 0.44912500015925616,
+      "totalMilliseconds": 8.9908333029598
+    },
+    "AXFocusedUIElement:0": {
+      "count": 71,
+      "maxMilliseconds": 12.057208339683712,
+      "totalMilliseconds": 17.41587501601316
+    },
+    "AXFocusedWindow:0": {
+      "count": 71,
+      "maxMilliseconds": 32.35233333543874,
+      "totalMilliseconds": 198.20866666850634
+    },
+    "AXRole:0": {
+      "count": 71,
+      "maxMilliseconds": 0.16758332640165463,
+      "totalMilliseconds": 3.3121250016847625
+    },
+    "AXSelectedTextRange:0": {
+      "count": 10,
+      "maxMilliseconds": 0.1377916632918641,
+      "totalMilliseconds": 0.8863333205226809
+    },
+    "AXSubrole:-25205": {
+      "count": 71,
+      "maxMilliseconds": 0.2948333349195309,
+      "totalMilliseconds": 9.243458371201996
+    },
+    "AXValue:0": {
+      "count": 10,
+      "maxMilliseconds": 0.1383333292324096,
+      "totalMilliseconds": 0.8282916678581387
+    },
+    "AXWindow:0": {
+      "count": 71,
+      "maxMilliseconds": 0.47195833030855283,
+      "totalMilliseconds": 5.616375005047303
+    }
+  },
+  "cases": 3,
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/3E8BE741-0906-43DC-9F51-CA6AC977276F.results.json",
+  "completed": 3,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/3E8BE741-0906-43DC-9F51-CA6AC977276F.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "results": [
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.ABC",
+        "selection": {
+          "length": 0,
+          "location": 9
+        },
+        "text": "ghbdtn123"
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/3E8BE741-0906-43DC-9F51-CA6AC977276F.txt",
+      "elapsedSeconds": 2.422437000001082,
+      "events": 24,
+      "gesture": "manual",
+      "gestureIntermediate": {},
+      "id": "manual-shortcut",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn123",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 9
+      },
+      "text": "привет123"
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.ABC",
+        "selection": {
+          "length": 0,
+          "location": 0
+        },
+        "text": ""
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/3E8BE741-0906-43DC-9F51-CA6AC977276F.txt",
+      "elapsedSeconds": 1.2812875416639145,
+      "events": 8,
+      "gesture": "singleShift",
+      "gestureIntermediate": {},
+      "id": "single-shift",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 0
+      },
+      "text": ""
+    },
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.ABC",
+        "selection": {
+          "length": 5,
+          "location": 0
+        },
+        "text": "hello"
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/3E8BE741-0906-43DC-9F51-CA6AC977276F.txt",
+      "elapsedSeconds": 2.232492374998401,
+      "events": 24,
+      "gesture": "doubleShift",
+      "gestureIntermediate": {},
+      "id": "selected-manual",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "hello",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": true,
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "text": "руддщ"
+    }
+  ],
+  "tagTrace": {
+    "maxTaggedSamples": 512,
+    "modifierFrameCap": 128,
+    "modifierFrames": [
+      {
+        "eventTimestampNanoseconds": 49918826858541,
+        "modifier": "leftCommand",
+        "observedUptime": 49918.827015625,
+        "rawFlags": 537919496
+      },
+      {
+        "eventTimestampNanoseconds": 49918861944791,
+        "modifier": "leftOption",
+        "observedUptime": 49918.862151875,
+        "rawFlags": 538443816
+      },
+      {
+        "eventTimestampNanoseconds": 49918919006541,
+        "modifier": "leftOption",
+        "observedUptime": 49918.91929779167,
+        "rawFlags": 537919496
+      },
+      {
+        "eventTimestampNanoseconds": 49918962222250,
+        "modifier": "leftCommand",
+        "observedUptime": 49918.96245295834,
+        "rawFlags": 536870912
+      },
+      {
+        "eventTimestampNanoseconds": 49919580717375,
+        "modifier": "leftCommand",
+        "observedUptime": 49919.58084858333,
+        "rawFlags": 537919496
+      },
+      {
+        "eventTimestampNanoseconds": 49919653086750,
+        "modifier": "leftCommand",
+        "observedUptime": 49919.653275250006,
+        "rawFlags": 536870912
+      },
+      {
+        "eventTimestampNanoseconds": 49920674593208,
+        "modifier": "leftShift",
+        "observedUptime": 49920.674834125006,
+        "rawFlags": 537001986
+      },
+      {
+        "eventTimestampNanoseconds": 49920736006208,
+        "modifier": "leftShift",
+        "observedUptime": 49920.73622329167,
+        "rawFlags": 536870912
+      },
+      {
+        "eventTimestampNanoseconds": 49921347878958,
+        "modifier": "leftCommand",
+        "observedUptime": 49921.348121625,
+        "rawFlags": 537919496
+      },
+      {
+        "eventTimestampNanoseconds": 49921408030125,
+        "modifier": "leftCommand",
+        "observedUptime": 49921.408922875,
+        "rawFlags": 536870912
+      },
+      {
+        "eventTimestampNanoseconds": 49923023163500,
+        "modifier": "leftCommand",
+        "observedUptime": 49923.02338629167,
+        "rawFlags": 537919496
+      },
+      {
+        "eventTimestampNanoseconds": 49923076387708,
+        "modifier": "leftCommand",
+        "observedUptime": 49923.07649187501,
+        "rawFlags": 536870912
+      },
+      {
+        "eventTimestampNanoseconds": 49923247076625,
+        "modifier": "leftShift",
+        "observedUptime": 49923.247211500006,
+        "rawFlags": 537001986
+      },
+      {
+        "eventTimestampNanoseconds": 49923316614583,
+        "modifier": "leftShift",
+        "observedUptime": 49923.316825500006,
+        "rawFlags": 536870912
+      },
+      {
+        "eventTimestampNanoseconds": 49923395725250,
+        "modifier": "leftShift",
+        "observedUptime": 49923.39586808334,
+        "rawFlags": 537001986
+      },
+      {
+        "eventTimestampNanoseconds": 49923460400791,
+        "modifier": "leftShift",
+        "observedUptime": 49923.46062366667,
+        "rawFlags": 536870912
+      }
+    ],
+    "nonzeroTagTypeHistogram": {
+      "0x000000004c505052": {
+        "flagsChanged": 16,
+        "keyDown": 20,
+        "keyUp": 20
+      }
+    },
+    "ordinaryKeycodesOrTextLogged": false,
+    "started": true,
+    "state": "stopped",
+    "taggedSamples": 56,
+    "taggedTypeCounts": {
+      "flagsChanged": 16,
+      "keyDown": 20,
+      "keyUp": 20
+    }
+  },
+  "totalEvents": 56,
+  "processExitCode": 0,
+  "identity": {
+    "targetBinarySha256": "ba8e8277258feae9c0b6e22dace832f97cdad16fef3a2761c87d568b27193e3e",
+    "probeBinarySha256": "b76b4de99a4102db9920c9887688b182390febcbc430fa3a981ac549177b011b",
+    "probeSourceSha256": "e7816642ac8669a3ab1b66a2e690f0eed8c19a5521e58bf9c10897aee485df24",
+    "caseFileSha256": "dd3b6240cd239b30af2cf24746e9ffc8ce176b19ce760afc365d229db8cc5870",
+    "targetBundleSha256": "07d4b96449b1396465ba1236bb12eff5fb8dc72d359348f4b6ff081802fa81d8",
+    "pid": 76306,
+    "target": "prototype",
+    "sourceCommit": "1b790639b5745a531e341426bb1cb127ddea370b",
+    "sourceDirty": true,
+    "processStart": "Fri Oct 16 01:10:23 2026",
+    "probeStartUptime": 49916.107987916
+  },
+  "probeEndUptime": 49924.081616875,
+  "identityUnchanged": true,
+  "targetProcessUnchanged": true
+}

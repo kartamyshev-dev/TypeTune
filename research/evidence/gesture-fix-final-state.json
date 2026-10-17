@@ -1,0 +1,11 @@
+{
+  "onlyLayoutPilotRunning": true,
+  "pid": 85874,
+  "testKeysAbsent": true,
+  "earlyCorrection": false,
+  "settingsUnchangedFromPreLongrun": true,
+  "originalStopped": true,
+  "inputSourceRestored": true,
+  "modifiersNeutral": true,
+  "archiveAppLaunchedAndNativePassed": true
+}

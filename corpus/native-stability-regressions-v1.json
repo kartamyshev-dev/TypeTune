@@ -1,0 +1,45 @@
+[
+  {
+    "id": "stability-first-word-after-focus",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "firstWordAfterFocus": true,
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "New synthetic TextEdit document; ABC selected before activation. Type after ownership verification with no additional settling pause; ownership failure is a stopped run. Authored expectation; not control corpus or original parity."
+  },
+  {
+    "id": "stability-immediate-double-shift",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "doubleShift",
+    "boundary": false,
+    "preGestureDelayMilliseconds": 0,
+    "expected": "привет",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 6,
+      "length": 0
+    },
+    "provenance": "New synthetic TextEdit document; Double Shift after final typing key-up without trailing typing interval or explicit pre-gesture settling; per-event guards and key transport pauses preserved and actual gap measured. Authored expectation."
+  },
+  {
+    "id": "stability-continuous-stream",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  }
+]

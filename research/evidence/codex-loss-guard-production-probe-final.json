@@ -1,0 +1,5 @@
+{
+  "status": "NOT_RUN",
+  "reason": "Probe compilation failed: module path mismatch; compiler log retained",
+  "notice": "Not a successful probe. Later linked attempt is separate evidence."
+}

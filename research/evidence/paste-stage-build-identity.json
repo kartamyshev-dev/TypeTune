@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "guiSHA256": "5d6a353b87583b8a4f66dab5fbddbeecaff2a4dfb85c2e95e9767544b06044bc",
+  "sourceSHA256": {
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "b265cb375701059a512bd992b97caa27a5258f307ba9fd7e27376ce0406c4b37",
+    "Sources/LayoutPilot/InputDiagnostics.swift": "a3f8b5ae347e7bb7cff931f9b61b73f1dc9c7245de5c644599f6aed8cbdc4f00",
+    "Sources/LayoutPilot/InputSources.swift": "2229c9c6b75a386d6e2b6115902e0d267befb8c795e35449b4c5a7a6aba3e6eb",
+    "Sources/LayoutPilot/KeyboardService.swift": "7300764de95f03aa5b0cdbc50340d407280d0d03c46fc7c35abedac86310cf0b",
+    "Sources/LayoutPilot/SettingsView.swift": "fbac61cfcdb8336d6ce30e1006326f2e880affc1a797d2b093748ac9c9753b31",
+    "Sources/LayoutPilot/Store.swift": "8902d04125c9fea063217ca85dba34e8470d33d7957d1b5a3cd8fb5a04c68ba0",
+    "Sources/LayoutPilot/SystemVocabulary.swift": "d4d28f983c55dc85c6999f9cb5a7293c4e163f9e2c6f5435cc15b8ab41a2566f",
+    "Sources/LayoutPilot/main.swift": "e32614099a0d43e25b09852f470195135a2470d3635eb6842dffff4114676a58",
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "7e03708af658da86d77f1307dcdd128107e3d5b312a9c0f781819fb81f534679",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "bf44e1888de517e31e6782c20255ae0004fd94e9b01a58a1953ab987d6eccd20",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "7a578ff0c7744f52569c524c9dd36d140f64504231bd295083b718ece1f9d32f",
+    "Sources/LayoutPilotCore/Engine.swift": "d368ccf2607fdde52ed21d02fc855dc574f2a1832fdfc2202585526c50358dbb",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "4248329ead35e70648514c8fe4f8e5ac7ac4fd17ecc60e5cc2d79fa78ec2898f",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "a0ac5cb3495416ffd4a4f7c9a688dea55d87e7eec6bbe20050c338281ff52e32",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6"
+  },
+  "baseCommit": "8693a3ddaaa8b336e21e9c3fed7f25ce138ef17b",
+  "dirty": true,
+  "diagnosticEnabled": true
+}

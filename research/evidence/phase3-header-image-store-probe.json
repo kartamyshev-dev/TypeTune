@@ -1,0 +1,115 @@
+{
+  "accessibilityUsed" : false,
+  "checks" : [
+    {
+      "id" : "initial_empty_selection",
+      "passed" : true
+    },
+    {
+      "id" : "url_import_decodes_synthetic_128x64",
+      "passed" : true
+    },
+    {
+      "id" : "url_import_copies_exact_source_bytes",
+      "passed" : true
+    },
+    {
+      "id" : "url_import_preserves_source",
+      "passed" : true
+    },
+    {
+      "id" : "url_import_persists_owned_path",
+      "passed" : true
+    },
+    {
+      "id" : "restart_restores_valid_owned_image",
+      "passed" : true
+    },
+    {
+      "id" : "data_import_creates_independent_owned_copy",
+      "passed" : true
+    },
+    {
+      "id" : "data_import_preserves_exact_bytes",
+      "passed" : true
+    },
+    {
+      "id" : "malformed_data_keeps_previous_selection",
+      "passed" : true
+    },
+    {
+      "id" : "empty_data_keeps_previous_selection",
+      "passed" : true
+    },
+    {
+      "id" : "over_32MiB_data_keeps_previous_selection",
+      "passed" : true
+    },
+    {
+      "id" : "nonfile_url_keeps_previous_selection",
+      "passed" : true
+    },
+    {
+      "id" : "directory_url_keeps_previous_selection",
+      "passed" : true
+    },
+    {
+      "id" : "over_32MiB_url_rejected_before_reading_image",
+      "passed" : true
+    },
+    {
+      "id" : "valid_png_width8193_rejected_without_losing_previous_selection",
+      "passed" : true
+    },
+    {
+      "id" : "missing_owned_copy_preserves_path_and_has_no_image",
+      "passed" : true
+    },
+    {
+      "id" : "restore_rejects_valid_image_outside_owned_directory",
+      "passed" : true
+    },
+    {
+      "id" : "reset_clears_image_and_owned_preference",
+      "passed" : true
+    },
+    {
+      "id" : "reset_does_not_delete_owned_copy",
+      "passed" : true
+    },
+    {
+      "id" : "all_operations_preserve_synthetic_original",
+      "passed" : true
+    },
+    {
+      "id" : "header_operations_do_not_change_ordinary_settings_or_statistics",
+      "passed" : true
+    },
+    {
+      "id" : "cleanup_removes_only_registered_test_copies",
+      "passed" : true
+    },
+    {
+      "id" : "cleanup_removes_only_new_synthetic_fixture_directory",
+      "passed" : true
+    },
+    {
+      "id" : "cleanup_preserves_all_preexisting_owned_paths",
+      "passed" : true
+    },
+    {
+      "id" : "cleanup_removes_all_unique_probe_defaults_keys",
+      "passed" : true
+    }
+  ],
+  "keyboardEventsPosted" : false,
+  "kind" : "standalone-real-Store-runtime",
+  "nativeAppAcceptance" : false,
+  "originalCarambaAccessed" : false,
+  "passed" : true,
+  "passedCount" : 25,
+  "remainingProbePreferenceKeysCount" : 0,
+  "standardDefaultsUsed" : false,
+  "totalCount" : 25,
+  "uiUsed" : false
+}

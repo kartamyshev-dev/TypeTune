@@ -1,0 +1,28 @@
+{
+  "verifiedAt": "2026-10-17T19:07:20.580588+00:00",
+  "command": [
+    "python3",
+    "scripts/verify_native_suite.py",
+    "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01.json",
+    "--fixtures",
+    "corpus/native-stability-regressions-v1.json"
+  ],
+  "exitCode": 1,
+  "status": "FAIL",
+  "resultSha256": "bd74082ca172070589a72a9723910cf46f1f1be9ed40eb88ba7a02f7e8ee6273",
+  "fixturesSha256": "b794c2e1daaff7e913e512820de1912420054eb3b017bb9711af5e82192a1002",
+  "validatorSha256": "261bbcd04caaf30640ca25353c9f052be458195ef8eb02616f89b00f67aac38d",
+  "validatorOutput": {
+    "cases": 3,
+    "requestedCases": 3,
+    "rowsFromStoppedCheckpoint": false,
+    "failures": [
+      "stability-first-word-after-focus: text",
+      "stability-first-word-after-focus: inputSource"
+    ],
+    "modifierCleanupVerified": true,
+    "notice": "Only supplied native scenarios; stopped/incomplete runs cannot pass."
+  },
+  "stderr": "",
+  "notice": "Validation of existing bounded TextEdit observations only; no app launch or input. Native suite acceptance failed; four-hour and working-day acceptance NOT_RUN."
+}

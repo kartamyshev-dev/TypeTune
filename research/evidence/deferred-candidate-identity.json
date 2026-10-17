@@ -1,0 +1,7 @@
+{
+  "sourceCommit": "e3a9180b83f25676e27cacc3ed2a9ca24e8ff192",
+  "binarySha256": "396e410a3b27a11e76d0abeb3e831a9ad9c44bd791cf9890f1061d4d41fcf5d1",
+  "nativeProbeBinarySha256": "1683ecebcc8d95f9227895cb6c5a8bf45a56bd840178cce6632eb69cd5c7ab15",
+  "nativeProbeSourceAtStart": "be476518a4dc60ff29803614686b290392360ff6b970526d8b292e0289ff40de",
+  "nextHelperChange": "AX failed attribute/status counts only; no gate changes. Current running process still old helper."
+}

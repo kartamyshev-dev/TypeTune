@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "fixtureSha256": "61913af87bb6cccbbe6e75ade9bcef555e4f0ef0cf9c3ea75d2d63cf5c4f272a",
+  "results": [
+    {
+      "id": "multiline-selection",
+      "checks": {
+        "text": true,
+        "selection": true,
+        "source": true,
+        "clipboard": true,
+        "identity": true,
+        "neutral": true
+      }
+    },
+    {
+      "id": "multiline-unicode-selection",
+      "checks": {
+        "text": true,
+        "selection": true,
+        "source": true,
+        "clipboard": true,
+        "identity": true,
+        "neutral": true
+      }
+    }
+  ],
+  "allObservedFieldsMatchRefinedSpecification": true,
+  "notice": "Refinement from observed reference behavior; earlier authored-oracle failures are preserved, not retroactively replaced."
+}

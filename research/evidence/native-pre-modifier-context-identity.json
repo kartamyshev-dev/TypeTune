@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "0a1f493fea659a55ea5e26b18323538098c0811c",
+  "binarySha256": "9a7e712f96834dc34003f4ac8cafb353764d0126a19b482246f629884a8559bc",
+  "sourceFiles": {
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "318acdd80238e728e3cf445f8765d1f35c76cc9ea8b595092d2b3f89f054aac7",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "4c7626bba07b849f6ecbf7161a16f6c4ce31138a137e3cae261cce9ed2969b73",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6",
+    "Sources/LayoutPilotCore/Engine.swift": "4ac84d780bc862e342a3103abd3f834341b47c88763f37e0a37483ba36b0d423",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "4ad696a8fb0f8b7a726cf3dfe5131fdaf1feb133eedb092279f4c86929333238",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "7e97a0a81d8cca98daa6bdf096e477e8d7f9ae77efcac8ffa4c3f5251fc53052",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilot/KeyboardService.swift": "b36a82df7a5053787ce85170fb56e7da780e2a1406c7a7fc146cd1fd37924807",
+    "Sources/LayoutPilot/SettingsView.swift": "979b1d1fce4f4c8447b68b1c65007aaa302f625e3937a8d947b07d721fd1273b",
+    "Sources/LayoutPilot/SystemVocabulary.swift": "d4d28f983c55dc85c6999f9cb5a7293c4e163f9e2c6f5435cc15b8ab41a2566f",
+    "Sources/LayoutPilot/Store.swift": "98222c8a3beed570ec350750b3ae9742baff0522f1c3ff9359cccd07e62e6f14",
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "c2d63a07f0abc8dd83d1b4a00dc2e04e74c6dd658a0af996ae81933395222200",
+    "Sources/LayoutPilot/main.swift": "73e93876661f9322e8374fab1e788ad72979165270efeac8cb3e66352b8bc7a1",
+    "Sources/LayoutPilot/InputSources.swift": "2229c9c6b75a386d6e2b6115902e0d267befb8c795e35449b4c5a7a6aba3e6eb"
+  },
+  "notice": "FIFO native candidate. Diagnostic key removed before normal test relaunch; optional system vocabulary off."
+}

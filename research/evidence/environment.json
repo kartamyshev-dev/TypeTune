@@ -1,0 +1,40 @@
+{
+  "version": "2026.10.07",
+  "build": "20261007.1",
+  "bundleIdentifier": "tech.caramba.switcher",
+  "architecture": {
+    "exit": 0,
+    "stdout": "arm64\n",
+    "stderr": ""
+  },
+  "os": {
+    "exit": 0,
+    "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+    "stderr": ""
+  },
+  "swift": {
+    "exit": 0,
+    "stdout": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+    "stderr": "swift-driver version: 1.168.6 "
+  },
+  "binary": {
+    "exit": 0,
+    "stdout": "/Applications/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64]\n/Applications/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro (for architecture x86_64):\tMach-O 64-bit executable x86_64\n/Applications/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro (for architecture arm64):\tMach-O 64-bit executable arm64\n",
+    "stderr": ""
+  },
+  "signature": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Executable=/Applications/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro\nIdentifier=tech.caramba.switcher\nFormat=app bundle with Mach-O universal (x86_64 arm64)\nCodeDirectory v=20500 size=12545 flags=0x10000(runtime) hashes=381+7 location=embedded\nHash type=sha256 size=32\nCandidateCDHash sha256=37cb2e389e2e2f5aceaa57bb5001686942e89ee0\nCandidateCDHashFull sha256=37cb2e389e2e2f5aceaa57bb5001686942e89ee06439d689fc38b695bf110d49\nHash choices=sha256\nCMSDigest=37cb2e389e2e2f5aceaa57bb5001686942e89ee06439d689fc38b695bf110d49\nCMSDigestType=2\nCDHash=37cb2e389e2e2f5aceaa57bb5001686942e89ee0\nSignature size=4710\nAuthority=Apple Mac OS Application Signing\nAuthority=Apple Worldwide Developer Relations Certification Authority\nAuthority=Apple Root CA\nInfo.plist entries=31\nTeamIdentifier=AKZHD7272L\nRuntime Version=27.0.0\nSealed Resources version=2 rules=13 files=57\nInternal requirements count=1 size=224\nTotal signatures=1\nChosen signature=1\n"
+  },
+  "signatureVerification": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "entitlements": {
+    "exit": 0,
+    "stdout": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"https://www.apple.com/DTDs/PropertyList-1.0.dtd\"><plist version=\"1.0\"><dict><key>com.apple.application-identifier</key><string>AKZHD7272L.tech.caramba.switcher</string><key>com.apple.developer.aps-environment</key><string>production</string><key>com.apple.developer.icloud-container-environment</key><string>Production</string><key>com.apple.developer.icloud-container-identifiers</key><array><string>iCloud.tech.caramba.switcher.icloud</string></array><key>com.apple.developer.icloud-services</key><array><string>CloudKit</string></array><key>com.apple.developer.team-identifier</key><string>AKZHD7272L</string><key>com.apple.developer.ubiquity-kvstore-identifier</key><string>AKZHD7272L.tech.caramba.switcher</string><key>com.apple.security.app-sandbox</key><true/><key>com.apple.security.application-groups</key><array><string>AKZHD7272L.com.caramba-switcher.shared</string></array><key>com.apple.security.files.user-selected.read-only</key><true/><key>com.apple.security.network.client</key><true/><key>keychain-access-groups</key><array><string>AKZHD7272L.tech.caramba.switcher</string></array></dict></plist>\n",
+    "stderr": "Executable=/Applications/Caramba Switcher Pro.app/Contents/MacOS/Caramba Switcher Pro\nwarning: Specifying ':' in the path is deprecated and will not work in a future release\n"
+  }
+}

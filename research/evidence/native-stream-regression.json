@@ -1,0 +1,37 @@
+{
+  "id": "R01-replay-overtake",
+  "status": "native_fifo_preservation_pass_with_correction_misses",
+  "observedFile": "native-final-stream-delayed.json",
+  "binaryIdentity": "native-pre-fifo-identity.json",
+  "sourceCommit": "9b392b2",
+  "diagnosticSelectionDelayMs": 80,
+  "cases": 20,
+  "matchesAuthoredExpected": 5,
+  "observedExamples": [
+    "hello -> lhelo",
+    "привет -> вприет"
+  ],
+  "cause": "Input gate released before copied events traversed tap; new hardware events could overtake delayed events.",
+  "requiredValidation": "FIFO queue regression + repeat same native stress; exact text preservation separately from safe skipped corrections.",
+  "fifoFirstAttempt": {
+    "file": "native-fifo-first-stream.json",
+    "sourceCommit": "5ea689f",
+    "binarySha256": "8ed378dbfc0402dea8e605a284a4fa43253875ec768c10de6356c86e833e12bc",
+    "result": "ACK watchdog stopped test and opened recovery UI. No ACK was observed; cause under investigation. Synthetic retained events explicitly discarded through UI."
+  },
+  "verifiedFix": {
+    "sourceCommit": "0a1f493fea659a55ea5e26b18323538098c0811c",
+    "binarySha256": "9a7e712f96834dc34003f4ac8cafb353764d0126a19b482246f629884a8559bc",
+    "file": "native-final-stream-fifo.json",
+    "diagnosticSelectionDelayMs": 80,
+    "cases": 20,
+    "textIntegrityFailures": 0,
+    "matchesCorrectionExpectation": 18,
+    "uncorrectedFirstWordCaseIDs": [
+      "stream-0",
+      "stream-12"
+    ],
+    "tagTrace": "native-fifo-fresh-source-trace.json",
+    "tagDiagnosis": "Copied events reappeared with helper tag; a private source with batch userData preserves the delivery token. FIFO barrier stays until all acknowledged."
+  }
+}

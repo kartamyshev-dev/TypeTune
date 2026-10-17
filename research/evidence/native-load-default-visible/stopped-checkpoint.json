@@ -1,0 +1,18 @@
+{
+  "activeCase" : "load-0",
+  "activeCaseEvents" : 25,
+  "activeCaseIndex" : 0,
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/803D8C49-40E6-4A3F-A3ED-171DE9DEA613.results.json",
+  "completed" : 0,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/803D8C49-40E6-4A3F-A3ED-171DE9DEA613.txt",
+  "error" : "focused_window_unverified",
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "notice" : "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+  "requestedCases" : 12,
+  "results" : [
+
+  ],
+  "schemaVersion" : 1,
+  "status" : "failed",
+  "totalEventsCompletedCases" : 0
+}

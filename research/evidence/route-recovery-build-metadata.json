@@ -1,0 +1,9 @@
+{
+  "binarySha256": "3c5c90c3d76982470e2d14ac25bd72135048cc0024bf79a52d9699b55a68c2f5",
+  "sourceBase": "aa4b6d6de409473ce691be089c9565218afa5c74",
+  "sourceUncommittedChange": "Recovery branch passes new input instead of extending retained buffer.",
+  "build": "scripts/build.sh exit 0; arm64 ad-hoc",
+  "selftest": "163/163; offline only",
+  "native": "NOT_RUN for this binary",
+  "runningHistoricalBinary": "9f4af13e1168f612ac32234cc4852c937ef67848f8377facd710564f10c43d9a"
+}

@@ -1,0 +1,157 @@
+{
+  "activeCase": "load-2",
+  "activeCaseEvents": 58,
+  "activeCaseIndex": 2,
+  "autoResume": false,
+  "axReadErrors": {
+    "AXFocusedUIElement:-25204": 1,
+    "AXFocusedWindow:-25204": 5,
+    "AXSubrole:-25205": 511
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 511,
+      "maxMilliseconds": 14.416500000152155,
+      "totalMilliseconds": 88.06120835106412
+    },
+    "AXFocusedUIElement:-25204": {
+      "count": 1,
+      "maxMilliseconds": 146.8824166659033,
+      "totalMilliseconds": 146.8824166659033
+    },
+    "AXFocusedUIElement:0": {
+      "count": 515,
+      "maxMilliseconds": 54.49308333299996,
+      "totalMilliseconds": 189.01412502964376
+    },
+    "AXFocusedWindow:-25204": {
+      "count": 5,
+      "maxMilliseconds": 155.0598750000063,
+      "totalMilliseconds": 768.613041665958
+    },
+    "AXFocusedWindow:0": {
+      "count": 511,
+      "maxMilliseconds": 141.3926666664338,
+      "totalMilliseconds": 446.6604999888659
+    },
+    "AXRole:0": {
+      "count": 511,
+      "maxMilliseconds": 12.259625000297092,
+      "totalMilliseconds": 62.470208316881326
+    },
+    "AXSelectedTextRange:0": {
+      "count": 22,
+      "maxMilliseconds": 0.10054166705231182,
+      "totalMilliseconds": 1.3054166629444808
+    },
+    "AXSubrole:-25205": {
+      "count": 511,
+      "maxMilliseconds": 30.498333333525807,
+      "totalMilliseconds": 102.32333334533905
+    },
+    "AXValue:0": {
+      "count": 22,
+      "maxMilliseconds": 0.11037500007660128,
+      "totalMilliseconds": 1.212874998600455
+    },
+    "AXWindow:0": {
+      "count": 515,
+      "maxMilliseconds": 7.906291666586185,
+      "totalMilliseconds": 55.73729170282604
+    }
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/574F1899-B00C-4EC9-81B9-06F46EDF3A42.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 2,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/574F1899-B00C-4EC9-81B9-06F46EDF3A42.txt",
+  "error": "focused_window_unverified",
+  "finalModifierFlags": 536870912,
+  "persistedCompleted": 2,
+  "requestedCases": 12,
+  "processExitCode": 2,
+  "identity": {
+    "targetBinarySha256": "b911718f071b06d166c09a2648fa67cc21fe6c7d84651ae1ef1b6c8a88773957",
+    "probeBinarySha256": "5538c9ad9cdfac66421dbdf87148f0e5674d207761e55cf2360cd6c33afbfdb1",
+    "probeSourceSha256": "b3f245782734ba0c5910c097644454aa369ddba21f3e46d8b0cb9d3d08bd00ca",
+    "caseFileSha256": "5bffb592fe2368091d897eb2bbf7d93947b5b94b0180937085154c4f3b0070ee",
+    "pid": 50663,
+    "sourceCommit": "2fbf08d17afe8bd799e26a7e128df6f4b78ab0a9",
+    "sourceDirty": true,
+    "processStart": "Thu Oct 15 12:55:08 2026",
+    "probeStartUptime": 10200.114070708
+  },
+  "probeEndUptime": 10214.450424625,
+  "identityUnchanged": true,
+  "targetProcessUnchanged": true,
+  "savedCheckpoint": {
+    "activeCase": "load-2",
+    "activeCaseEvents": 58,
+    "activeCaseIndex": 2,
+    "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/574F1899-B00C-4EC9-81B9-06F46EDF3A42.results.json",
+    "completed": 2,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/574F1899-B00C-4EC9-81B9-06F46EDF3A42.txt",
+    "error": "focused_window_unverified",
+    "initialInputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+    "requestedCases": 12,
+    "results": [
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.141353083334252,
+          "firstChangeSeconds": 0.029072541667119367,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/caramba/research/private/probes/574F1899-B00C-4EC9-81B9-06F46EDF3A42.txt",
+        "elapsedSeconds": 5.784471791666874,
+        "events": 210,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "load-0",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.14313337499879708,
+          "firstChangeSeconds": 0.03205229166633217,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/caramba/research/private/probes/574F1899-B00C-4EC9-81B9-06F46EDF3A42.txt",
+        "elapsedSeconds": 5.003997874999186,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "load-1",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello ghbdtn hello  "
+      }
+    ],
+    "schemaVersion": 1,
+    "status": "failed",
+    "totalEventsCompletedCases": 426
+  }
+}

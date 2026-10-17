@@ -1,0 +1,14 @@
+{
+  "files": {
+    "Contents/Info.plist": "2c84d2b1a7223bd631660917bd4d9b8b31b20e002fdab678a3f174988758f3ee",
+    "Contents/MacOS/LayoutPilot": "b911718f071b06d166c09a2648fa67cc21fe6c7d84651ae1ef1b6c8a88773957",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Info.plist": "2a22a924be70b1734fc4286ffecc7f12a58a955e5fc76441b932648b4dcb271e",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/lexicon.json": "1764cd67ed823ea70551fb8c856ad0599f1a3765242d329c0710451b70d0aced",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeDirectory": "ca9a1d204e89e421b0dbcc744b4e8978eaacb3539ac5e390445850fb14c3c4ef",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeRequirements": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeResources": "982fd0bdb23cf9d64f00c167aeaaaf4e4597def238dee78305d098478d09e430",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeSignature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Contents/_CodeSignature/CodeResources": "5b7e6ceb740a8ce527be922e1b4b24c880222cec05b9591d27f6e40a3890768c"
+  },
+  "oldArchiveSha256": "e67f2ae3bb0ca600a600810d8794f29ecb451b1e883fbd6da04fb04e3aca7d76"
+}

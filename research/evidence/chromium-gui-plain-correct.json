@@ -1,0 +1,1 @@
+{"after":{"length":0,"location":7,"text":"hello  "},"afterFirstSpace":{"length":0,"location":6,"text":"hello "},"before":{"length":0,"location":0,"text":""},"expected":"hello  ","fixtureURL":"http:\/\/127.0.0.1:18763\/?fixture=LP-CODEX-001","mode":"type-correct","passed":true}

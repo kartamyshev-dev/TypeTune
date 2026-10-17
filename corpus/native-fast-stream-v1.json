@@ -1,0 +1,132 @@
+[
+  {
+    "id": "fast-stream-00",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-01",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-02",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-03",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-04",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-05",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-06",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-07",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-08",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  },
+  {
+    "id": "fast-stream-09",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 105,
+      "length": 0
+    },
+    "provenance": "Synthetic fast streaming quality regression; observed misses in native-session-gesture-fix-38a0d4fd. Requested interval10ms/settle100ms; authored expected; no original observation."
+  }
+]

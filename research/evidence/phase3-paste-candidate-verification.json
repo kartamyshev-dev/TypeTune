@@ -1,0 +1,82 @@
+{
+  "binarySHA256": "1b92f4c5c8d45ffb1eaaa79ee8a1d2535a3b48d7a54c20a9f34566ee28e484a6",
+  "results": [
+    {
+      "file": "research/evidence/phase3-final-paste-rich.json",
+      "sha256": "8c6ff96e5c55b4d75e1db93a87e730e173267562156f0f2906087609b3313e90",
+      "passed": true,
+      "error": null,
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-post-paste-rich.json",
+      "sha256": "471e49042b5999e85215e1b187b38131750d7275719bfc0d326506fb6c78d49d",
+      "passed": true,
+      "error": null,
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-rich-wrong.json",
+      "sha256": "d2103a0531e0cae394e9ba54bdafa865522b68c836657025b60a743054c8ae6e",
+      "passed": true,
+      "error": null,
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-rich-correct.json",
+      "sha256": "04681c294ffae6bbb7dc982d9e66d4b8fdc6508ad84f0bf8aab49157787551ff",
+      "passed": true,
+      "error": null,
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-rich-stream.json",
+      "sha256": "a5b85b80eda1be367cb70796ec3d9236a6ae4a6b7752c8f8bb62066aac3d0986",
+      "passed": true,
+      "error": null,
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-paste-plain.json",
+      "sha256": "3e15e9baea036e11e223b8bb88f272a2205e48b54bbe03efa79781a2d7daf8da",
+      "passed": false,
+      "error": "external_modifier_pressed",
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-post-paste-plain.json",
+      "sha256": "e1ccf9366237cb11b9c0a5315796cdd9eb361d07d3b72cfe446ffeb92405eb39",
+      "passed": false,
+      "error": "not_own_paste_result",
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-plain-wrong.json",
+      "sha256": "b849700a303515d2dd5cddccc7da69b8c88c3fd2899cfcfd7624cdcb4d8a7cd4",
+      "passed": false,
+      "error": "active_modifiers",
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-plain-correct.json",
+      "sha256": "b849700a303515d2dd5cddccc7da69b8c88c3fd2899cfcfd7624cdcb4d8a7cd4",
+      "passed": false,
+      "error": "active_modifiers",
+      "scope": "isolated Chrome fixture; not Codex composer"
+    },
+    {
+      "file": "research/evidence/phase3-final-plain-stream.json",
+      "sha256": "b849700a303515d2dd5cddccc7da69b8c88c3fd2899cfcfd7624cdcb4d8a7cd4",
+      "passed": false,
+      "error": "active_modifiers",
+      "scope": "isolated Chrome fixture; not Codex composer"
+    }
+  ],
+  "uiObservations": {
+    "richPlainPasteStatus": "Вставлен текст без форматирования",
+    "richNativePasteFormatting": "absent",
+    "ordinaryChromePasteFormattingControl": "present",
+    "plainAttemptStatus": "Вставка пропущена или прервана: проверьте текст"
+  },
+  "limitation": "Plain attempt stopped at overlapping modifier frame. Subsequent plain checks stopped at active_modifiers, not functional acceptance. GUI stopped; user manually released Command/Shift/Option. No Codex composer accessed."
+}

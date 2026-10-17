@@ -1,0 +1,17 @@
+[
+  {
+    "seconds": 0.007289457999831939,
+    "cpuPercent": 0.0,
+    "rssKiB": 82208
+  },
+  {
+    "seconds": 1.0165347080001084,
+    "cpuPercent": 1.1,
+    "rssKiB": 82224
+  },
+  {
+    "seconds": 2.027450874999886,
+    "cpuPercent": 9.0,
+    "rssKiB": 82384
+  }
+]

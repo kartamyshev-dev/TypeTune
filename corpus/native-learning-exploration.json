@@ -1,0 +1,98 @@
+[
+  {
+    "id": "f14-backspace-explore-00",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-01",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "backspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-02",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "doubleBackspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-03",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "backspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-04",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-05",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "backspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-06",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "doubleBackspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-07",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "backspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-08",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-09",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "backspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-10",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "doubleBackspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  },
+  {
+    "id": "f14-backspace-explore-11",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "backspace",
+    "provenance": "Own bounded F14 exploration: observe original before/after Backspace. No expected undo/learning result asserted. Only synthetic TextEdit document."
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "early-explore-0",
+    "text": "ghb",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-1",
+    "text": "ghbd",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-2",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-3",
+    "text": "hello",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-4",
+    "text": "ABc.txt",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-5",
+    "text": "ABc;def",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-6",
+    "text": "MBps",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-7",
+    "text": "MHz",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  },
+  {
+    "id": "early-explore-8",
+    "text": "RJvgm.nth",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Own synthetic exploratory F01/F17 input, no result oracle set before observing original."
+  }
+]

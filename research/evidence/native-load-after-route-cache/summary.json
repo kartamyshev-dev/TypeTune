@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "pid": 24264,
+  "binarySha256": "260ef4ea0991238ec2928e179dbef82bd461128cd64a203c416667e9f22a56dc",
+  "fixtureSha256": "5bffb592fe2368091d897eb2bbf7d93947b5b94b0180937085154c4f3b0070ee",
+  "probeSourceSha256": "be476518a4dc60ff29803614686b290392360ff6b970526d8b292e0289ff40de",
+  "wallSeconds": 66.07940083400172,
+  "processCPUSeconds": 21.24,
+  "processCPUPercentOfWall": 32.14,
+  "cases": 12,
+  "textIntegrityFailures": 0,
+  "fullyCorrectedPhrases": 9,
+  "notice": "Short observational synthetic TextEdit load run, includes setup/clear pauses; not 30-minute or other-app acceptance.",
+  "medianSampleCPUPercent": 35.55,
+  "peakSampleCPUPercent": 43.1,
+  "peakRSSKiB": 89184
+}

@@ -1,0 +1,9 @@
+{
+  "accessibilityTrusted" : true,
+  "events" : 0,
+  "inputSource" : "com.apple.keylayout.ABC",
+  "modifierFlags" : 0,
+  "postEventAccess" : true,
+  "secureInput" : true,
+  "statusOnly" : true
+}

@@ -1,0 +1,89 @@
+{
+  "evidence_id": "LP-PHASE3-STATIC-20261015-01",
+  "source_bundle": "research/private/phase3-evidence-final.json",
+  "source_bundle_sha256": "5250c17b21b7bc920d3722bf222b3f6a85afdab652a7f440b7fcda47a5d6716a",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "records": [
+    {
+      "evidence_id": "ev_35b1c1ccb109f5fe0f73039a29e7cba0ceabcab4f88a73e0c999750355c18c37",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100022f90"
+      }
+    },
+    {
+      "evidence_id": "ev_385e02f94d62c14a47e7da3740a562d20e7843ab565ac13493da3b231ebc9221",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100022fe8"
+      }
+    },
+    {
+      "evidence_id": "ev_6a01a7b57c19fe099f11b87374ca21b2260cd82f3f0ce1760574d5589b8d6189",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100022cb4"
+      }
+    },
+    {
+      "evidence_id": "ev_6cd8adc13d6c2e8be473765a34e3b278e1c78a8c649dfcd9318bb00c143c7d5a",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10004214c"
+      }
+    },
+    {
+      "evidence_id": "ev_6ea1d734338d0899c0700676ea3488ba37a37eea2a4f29be75868fade41bbb7a",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10002341c"
+      }
+    },
+    {
+      "evidence_id": "ev_ac920bff0a0e35a9a73540f5adf4dc23c90f2f28b74a258879f3dcfd2471acb2",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004214c"
+      }
+    },
+    {
+      "evidence_id": "ev_c7fc339d3853043a4c8a90beb71b259c34dbf8273e18340ce29e7c3ce460c0af",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e1d98"
+      }
+    },
+    {
+      "evidence_id": "ev_f455eef7cfe53fef5768ea4209f5a8b60c60d8e9903e7607328eceae66c6ba6f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100042234"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "P01",
+      "summary": "0x10004214c hashes Swift String into a Set and tests stored member equality. Exact equality is Swift semantics, not a proven byte-equality-only comparison. No substring search in this predicate."
+    },
+    {
+      "id": "P02",
+      "summary": "0x100042234 reads AutoswitchExceptionsStore.patternSet, bridges candidate string, calls predicate0x10004214c. Normalization while constructing the set or before caller is not established here."
+    },
+    {
+      "id": "P03",
+      "summary": "0x100022cb4 temporarily declares string-only pasteboard data and emits keyboard gesture, then requests1e9 nanoseconds Task sleep. Normal continuation0x100022f90→0x100022fe8 restores saved type/data map via0x10002341c. No changeCount/focus-preservation guarantee is established."
+    },
+    {
+      "id": "P04",
+      "summary": "0x1002e1d98 uses direct hashed integer-key lookup, record flags and paired byte-sequence equality in candidate extraction; complete rule selection/semantic categories are not restored."
+    }
+  ],
+  "limitations": [
+    "Static code observations only; no original dictionaries or decompilation distributed.",
+    "Swift and Rust ABI recovery can mislabel return registers and types.",
+    "Sleep constant is requested duration, not measured end-to-end latency.",
+    "Whole clipboard, newer user clipboard changes, and multiple pasteboard item preservation are not established by this bounded path."
+  ],
+  "runtime_acceptance": false
+}

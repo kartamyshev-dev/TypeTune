@@ -1,0 +1,2540 @@
+{
+  "notice": "Authored lexicon consistency sample, synthetic HID TextEdit only. Not independent language quality or correction latency p95.",
+  "caseSha256": "9308f60080c71e4da8b3bb4da0adbfda7ef8f164ab40296fccf5964d734b3163",
+  "recordedProtocol": {
+    "probeSourceSha256": [
+      "23e9009d7cc2ea0d4f36cb60014193dd746088bc3507ddd80919d38c824bc074",
+      "3c0d156cd72ddbadc5fb91a6bba8636077c71f311cfc38c1e0a83b8f902990d7",
+      "52b809a4db4d0fca1089d386ea6d61f3c26a1e5c782dc821ae971fc1198f9259",
+      "be476518a4dc60ff29803614686b290392360ff6b970526d8b292e0289ff40de"
+    ],
+    "probeBinarySha256": [],
+    "intervalMilliseconds": []
+  },
+  "recordedProtocolComplete": false,
+  "recordedProtocolMatches": false,
+  "protocolLimit": "Helper/interval metadata only; does not prove equal app settings, original learning state, independent corpus or correction-only latency.",
+  "syntheticInputSha256": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
+  "files": {
+    "research/evidence/native-corpus-original/focused/00.json": "01fa24f03cfec6637d697cb6f759ecda4384a8b15f3ffb3091edeb7106551eab",
+    "research/evidence/native-corpus-original/focused-retry/01.json": "07858c5eb05dc629687cb0c72f48e0e2217c5641a1fcbc89fb59e8021590f610",
+    "research/evidence/native-corpus-original/focused-retry/02.json": "079f72c5e842d5f7dcf0cc165c103f6724fad6051e4b4058ae498a4f4ee33a2f",
+    "research/evidence/native-corpus-original/focused-retry-window/03.json": "8c051dc081e9e8a15a284b148f78193b01f88257999dc92cc685d49412c89a94",
+    "research/evidence/native-corpus-original/focused-final-batch/04.json": "a58c57fa6b5e35505f31f014e88aef3d51cf1f0e6ec27183937512af742cf0a7",
+    "research/evidence/native-corpus-prototype/final-fifo/00.json": "96183e3f8a4ae5d4377e685aaaa0a93851c1492fbad4ea2417920b42aa171fe9",
+    "research/evidence/native-corpus-prototype/final-fifo/01.json": "8b1e9bbea6752136e1191ec99f922482192225abdccb00a2bfbefaa00d5e4280",
+    "research/evidence/native-corpus-prototype/final-fifo/02.json": "bdceab30f1f143eeb8a3513d67d281a8956aa9c4033abac704eb823aa638dbe4",
+    "research/evidence/native-corpus-prototype/final-fifo/03.json": "5b8164a9e1eaea879d67ad762eebea5405520bb0e22a5adbe920c62307c00b2c",
+    "research/evidence/native-corpus-prototype/final-fifo/04.json": "880222c8eae558e3469fe5b2d45ef8f87e46b9b8904c0ce3fdddfc5951a52424"
+  },
+  "overall": {
+    "original": {
+      "count": 1000,
+      "matchesExpected": 801,
+      "correctCorrections": 518,
+      "falseCorrections": 197,
+      "misses": 2,
+      "otherWrongResults": 0
+    },
+    "prototype": {
+      "count": 1000,
+      "matchesExpected": 996,
+      "correctCorrections": 516,
+      "falseCorrections": 0,
+      "misses": 4,
+      "otherWrongResults": 0
+    }
+  },
+  "bySplit": {
+    "holdout": {
+      "original": {
+        "count": 300,
+        "matchesExpected": 233,
+        "correctCorrections": 166,
+        "falseCorrections": 67,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 300,
+        "matchesExpected": 300,
+        "correctCorrections": 166,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "train": {
+      "original": {
+        "count": 700,
+        "matchesExpected": 568,
+        "correctCorrections": 352,
+        "falseCorrections": 130,
+        "misses": 2,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 700,
+        "matchesExpected": 696,
+        "correctCorrections": 350,
+        "falseCorrections": 0,
+        "misses": 4,
+        "otherWrongResults": 0
+      }
+    }
+  },
+  "byCategory": {
+    "case": {
+      "original": {
+        "count": 120,
+        "matchesExpected": 120,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 120,
+        "matchesExpected": 120,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "case_wrong_title": {
+      "original": {
+        "count": 130,
+        "matchesExpected": 130,
+        "correctCorrections": 130,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 130,
+        "matchesExpected": 129,
+        "correctCorrections": 129,
+        "falseCorrections": 0,
+        "misses": 1,
+        "otherWrongResults": 0
+      }
+    },
+    "case_wrong_upper": {
+      "original": {
+        "count": 130,
+        "matchesExpected": 130,
+        "correctCorrections": 130,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 130,
+        "matchesExpected": 130,
+        "correctCorrections": 130,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "code": {
+      "original": {
+        "count": 42,
+        "matchesExpected": 5,
+        "correctCorrections": 0,
+        "falseCorrections": 37,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 42,
+        "matchesExpected": 42,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "correct": {
+      "original": {
+        "count": 112,
+        "matchesExpected": 112,
+        "correctCorrections": 1,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 112,
+        "matchesExpected": 112,
+        "correctCorrections": 1,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "digits": {
+      "original": {
+        "count": 119,
+        "matchesExpected": 1,
+        "correctCorrections": 0,
+        "falseCorrections": 118,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 119,
+        "matchesExpected": 119,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "doublecaps": {
+      "original": {
+        "count": 128,
+        "matchesExpected": 126,
+        "correctCorrections": 126,
+        "falseCorrections": 0,
+        "misses": 2,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 128,
+        "matchesExpected": 127,
+        "correctCorrections": 127,
+        "falseCorrections": 0,
+        "misses": 1,
+        "otherWrongResults": 0
+      }
+    },
+    "email": {
+      "original": {
+        "count": 46,
+        "matchesExpected": 6,
+        "correctCorrections": 0,
+        "falseCorrections": 40,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 46,
+        "matchesExpected": 46,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "punctuation": {
+      "original": {
+        "count": 1,
+        "matchesExpected": 0,
+        "correctCorrections": 0,
+        "falseCorrections": 1,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 1,
+        "matchesExpected": 1,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "short": {
+      "original": {
+        "count": 1,
+        "matchesExpected": 1,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 1,
+        "matchesExpected": 1,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "url": {
+      "original": {
+        "count": 40,
+        "matchesExpected": 39,
+        "correctCorrections": 0,
+        "falseCorrections": 1,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 40,
+        "matchesExpected": 40,
+        "correctCorrections": 0,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      }
+    },
+    "wrong": {
+      "original": {
+        "count": 131,
+        "matchesExpected": 131,
+        "correctCorrections": 131,
+        "falseCorrections": 0,
+        "misses": 0,
+        "otherWrongResults": 0
+      },
+      "prototype": {
+        "count": 131,
+        "matchesExpected": 129,
+        "correctCorrections": 129,
+        "falseCorrections": 0,
+        "misses": 2,
+        "otherWrongResults": 0
+      }
+    }
+  },
+  "differences": [
+    {
+      "id": "2a986c822393-7",
+      "split": "train",
+      "category": "email",
+      "input": "dtnrf@example.test ",
+      "expected": "dtnrf@example.test ",
+      "original": "ветка\"учфьздуюеуые ",
+      "prototype": "dtnrf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "03c7af31e5c0-5",
+      "split": "train",
+      "category": "digits",
+      "input": "дфгтср123 ",
+      "expected": "дфгтср123 ",
+      "original": "launch123 ",
+      "prototype": "дфгтср123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "17a5809e845d-7",
+      "split": "train",
+      "category": "email",
+      "input": "ctvmz@example.test ",
+      "expected": "ctvmz@example.test ",
+      "original": "семья\"учфьздуюеуые ",
+      "prototype": "ctvmz@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "26945b80b087-7",
+      "split": "train",
+      "category": "email",
+      "input": "cbcntvf@example.test ",
+      "expected": "cbcntvf@example.test ",
+      "original": "система\"учфьздуюеуые ",
+      "prototype": "cbcntvf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "376feb0e53f6-7",
+      "split": "train",
+      "category": "email",
+      "input": "rjvvbn@example.test ",
+      "expected": "rjvvbn@example.test ",
+      "original": "rjvbn@example.test ",
+      "prototype": "rjvvbn@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0c7624b88011-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_yfcnhjqrf=1 ",
+      "expected": "let_yfcnhjqrf=1 ",
+      "original": "дуе_настройка=1 ",
+      "prototype": "let_yfcnhjqrf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0b05530512e6-5",
+      "split": "train",
+      "category": "digits",
+      "input": "тгьиук123 ",
+      "expected": "тгьиук123 ",
+      "original": "number123 ",
+      "prototype": "тгьиук123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "26be857b55fe-5",
+      "split": "train",
+      "category": "digits",
+      "input": "зыугвщсщву123 ",
+      "expected": "зыугвщсщву123 ",
+      "original": "pseudocode123 ",
+      "prototype": "зыугвщсщву123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "7764d00a5263-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_gjrf=1 ",
+      "expected": "let_gjrf=1 ",
+      "original": "дуе_пока=1 ",
+      "prototype": "let_gjrf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "265dbac2fb53-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_elfkbnm=1 ",
+      "expected": "let_elfkbnm=1 ",
+      "original": "дуе_удалить=1 ",
+      "prototype": "let_elfkbnm=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "04cbd7a754fb-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ntrcn123 ",
+      "expected": "ntrcn123 ",
+      "original": "текст123 ",
+      "prototype": "ntrcn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "46a71d963333-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_bcghfdktybt=1 ",
+      "expected": "let_bcghfdktybt=1 ",
+      "original": "дуе_исправление=1 ",
+      "prototype": "let_bcghfdktybt=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "4beaeed4078c-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_fdnjvfnbxtcrbq=1 ",
+      "expected": "let_fdnjvfnbxtcrbq=1 ",
+      "original": "дуе_автоматический=1 ",
+      "prototype": "let_fdnjvfnbxtcrbq=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "392e05fe5c23-5",
+      "split": "train",
+      "category": "digits",
+      "input": "jnvtybnm123 ",
+      "expected": "jnvtybnm123 ",
+      "original": "отменить123 ",
+      "prototype": "jnvtybnm123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "68152fc2cf98-5",
+      "split": "train",
+      "category": "digits",
+      "input": "вшсешщтфкн123 ",
+      "expected": "вшсешщтфкн123 ",
+      "original": "dictionary123 ",
+      "prototype": "вшсешщтфкн123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3c5c81d90e38-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_rkfdbif=1 ",
+      "expected": "let_rkfdbif=1 ",
+      "original": "дуе_клавиша=1 ",
+      "prototype": "let_rkfdbif=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "2a2618891cb2-5",
+      "split": "train",
+      "category": "digits",
+      "input": "гтыгззщкеув123 ",
+      "expected": "гтыгззщкеув123 ",
+      "original": "unsupported123 ",
+      "prototype": "гтыгззщкеув123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "52664fcf45f8-5",
+      "split": "train",
+      "category": "digits",
+      "input": "gthdsq123 ",
+      "expected": "gthdsq123 ",
+      "original": "первый123 ",
+      "prototype": "gthdsq123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6fcc8b4eb98d-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ылшз123 ",
+      "expected": "ылшз123 ",
+      "original": "skip123 ",
+      "prototype": "ылшз123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "139e1a70061a-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ищгтвфкн123 ",
+      "expected": "ищгтвфкн123 ",
+      "original": "boundary123 ",
+      "prototype": "ищгтвфкн123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1bae03362f07-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_gjtpl=1 ",
+      "expected": "let_gjtpl=1 ",
+      "original": "дуе_поезд=1 ",
+      "prototype": "let_gjtpl=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0a61073eee6a-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ckjdf123 ",
+      "expected": "ckjdf123 ",
+      "original": "слова123 ",
+      "prototype": "ckjdf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "402f2c80501a-5",
+      "split": "train",
+      "category": "digits",
+      "input": "cthdth123 ",
+      "expected": "cthdth123 ",
+      "original": "сервер123 ",
+      "prototype": "cthdth123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "376feb0e53f6-5",
+      "split": "train",
+      "category": "digits",
+      "input": "rjvvbn123 ",
+      "expected": "rjvvbn123 ",
+      "original": "коммит123 ",
+      "prototype": "rjvvbn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "29f67479abd3-5",
+      "split": "train",
+      "category": "digits",
+      "input": "цщквы123 ",
+      "expected": "цщквы123 ",
+      "original": "words123 ",
+      "prototype": "цщквы123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "538707c20314-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_ghbvth=1 ",
+      "expected": "let_ghbvth=1 ",
+      "original": "дуе_пример=1 ",
+      "prototype": "let_ghbvth=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0da869a705d3-1",
+      "split": "train",
+      "category": "wrong",
+      "input": "шьздуьутефешщт ",
+      "expected": "implementation ",
+      "original": "implementation ",
+      "prototype": "шьздуьутефешщт ",
+      "classification": "original_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "2d47de6e74bf-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_ljv=1 ",
+      "expected": "let_ljv=1 ",
+      "original": "дуе_дом=1 ",
+      "prototype": "let_ljv=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "19377cc4e066-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_pflfxf=1 ",
+      "expected": "let_pflfxf=1 ",
+      "original": "дуе_задача=1 ",
+      "prototype": "let_pflfxf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3c25bfdb644e-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_yjdfz=1 ",
+      "expected": "let_yjdfz=1 ",
+      "original": "дуе_новая=1 ",
+      "prototype": "let_yjdfz=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0dd145b8e204-5",
+      "split": "train",
+      "category": "digits",
+      "input": "сгкыщк123 ",
+      "expected": "сгкыщк123 ",
+      "original": "cursor123 ",
+      "prototype": "сгкыщк123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "53ec0cc35e15-7",
+      "split": "train",
+      "category": "email",
+      "input": "dcnfdrf@example.test ",
+      "expected": "dcnfdrf@example.test ",
+      "original": "вставка\"учфьздуюеуые ",
+      "prototype": "dcnfdrf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0e6e9bf8bfdb-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ldthm123 ",
+      "expected": "ldthm123 ",
+      "original": "дверь123 ",
+      "prototype": "ldthm123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "5f21daa88d34-7",
+      "split": "train",
+      "category": "email",
+      "input": "djlf@example.test ",
+      "expected": "djlf@example.test ",
+      "original": "вода\"учфьздуюеуые ",
+      "prototype": "djlf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "37c3034873cd-5",
+      "split": "train",
+      "category": "digits",
+      "input": "учекф123 ",
+      "expected": "учекф123 ",
+      "original": "extra123 ",
+      "prototype": "учекф123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1bf72186d4d5-5",
+      "split": "train",
+      "category": "digits",
+      "input": "срфшк123 ",
+      "expected": "срфшк123 ",
+      "original": "chair123 ",
+      "prototype": "срфшк123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "7f4d45fe5e39-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ajrec123 ",
+      "expected": "ajrec123 ",
+      "original": "фокус123 ",
+      "prototype": "ajrec123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "54fdc9145e4d-5",
+      "split": "train",
+      "category": "digits",
+      "input": "аферук123 ",
+      "expected": "аферук123 ",
+      "original": "father123 ",
+      "prototype": "аферук123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1efc479d8f42-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ызфсу123 ",
+      "expected": "ызфсу123 ",
+      "original": "space123 ",
+      "prototype": "ызфсу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0e427fcee683-5",
+      "split": "train",
+      "category": "digits",
+      "input": "вусшышщт123 ",
+      "expected": "вусшышщт123 ",
+      "original": "decision123 ",
+      "prototype": "вусшышщт123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "00adefa79fb8-5",
+      "split": "train",
+      "category": "digits",
+      "input": "вудфн123 ",
+      "expected": "вудфн123 ",
+      "original": "delay123 ",
+      "prototype": "вудфн123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "4d8ca91abe73-5",
+      "split": "train",
+      "category": "digits",
+      "input": "pdtpls123 ",
+      "expected": "pdtpls123 ",
+      "original": "звезды123 ",
+      "prototype": "pdtpls123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "26be857b55fe-doublecaps",
+      "split": "train",
+      "category": "doublecaps",
+      "input": "PSeudocode ",
+      "expected": "Pseudocode ",
+      "original": "PSeudocode ",
+      "prototype": "Pseudocode ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3b829483fec1-5",
+      "split": "train",
+      "category": "digits",
+      "input": "штфсешму123 ",
+      "expected": "штфсешму123 ",
+      "original": "inactive123 ",
+      "prototype": "штфсешму123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "458f6651bebe-5",
+      "split": "train",
+      "category": "digits",
+      "input": "rehcjh123 ",
+      "expected": "rehcjh123 ",
+      "original": "курсор123 ",
+      "prototype": "rehcjh123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "672c7152b810-5",
+      "split": "train",
+      "category": "digits",
+      "input": "afqk123 ",
+      "expected": "afqk123 ",
+      "original": "файл123 ",
+      "prototype": "afqk123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "70e4a767aea0-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_cnhfyf=1 ",
+      "expected": "let_cnhfyf=1 ",
+      "original": "дуе_страна=1 ",
+      "prototype": "let_cnhfyf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "38443aecfe6a-5",
+      "split": "train",
+      "category": "digits",
+      "input": "екфсу123 ",
+      "expected": "екфсу123 ",
+      "original": "trace123 ",
+      "prototype": "екфсу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "47f63db5c907-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ьфтшауые123 ",
+      "expected": "ьфтшауые123 ",
+      "original": "manifest123 ",
+      "prototype": "ьфтшауые123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "25bc7d7e59f4-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ghbdtn123 ",
+      "expected": "ghbdtn123 ",
+      "original": "привет123 ",
+      "prototype": "ghbdtn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1b328121adac-5",
+      "split": "train",
+      "category": "digits",
+      "input": "туц123 ",
+      "expected": "туц123 ",
+      "original": "new123 ",
+      "prototype": "туц123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "672c7152b810-7",
+      "split": "train",
+      "category": "email",
+      "input": "afqk@example.test ",
+      "expected": "afqk@example.test ",
+      "original": "файл\"учфьздуюеуые ",
+      "prototype": "afqk@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "5a2cb2f90b57-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ыенду123 ",
+      "expected": "ыенду123 ",
+      "original": "style123 ",
+      "prototype": "ыенду123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "629b7659cdb4-5",
+      "split": "train",
+      "category": "digits",
+      "input": "утвштп123 ",
+      "expected": "утвштп123 ",
+      "original": "ending123 ",
+      "prototype": "утвштп123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "37e65562574c-5",
+      "split": "train",
+      "category": "digits",
+      "input": "vfvf123 ",
+      "expected": "vfvf123 ",
+      "original": "мама123 ",
+      "prototype": "vfvf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "20945b133940-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ыуфкср123 ",
+      "expected": "ыуфкср123 ",
+      "original": "search123 ",
+      "prototype": "ыуфкср123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0d54d9ccbe3d-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ыефеу123 ",
+      "expected": "ыефеу123 ",
+      "original": "state123 ",
+      "prototype": "ыефеу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0e28ab735d43-4",
+      "split": "train",
+      "category": "case_wrong_title",
+      "input": "Кгду ",
+      "expected": "Rule ",
+      "original": "Rule ",
+      "prototype": "Кгду ",
+      "classification": "original_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "2b05406a93cf-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ыуеештпы123 ",
+      "expected": "ыуеештпы123 ",
+      "original": "settings123 ",
+      "prototype": "ыуеештпы123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "02ca7011e998-5",
+      "split": "train",
+      "category": "digits",
+      "input": "зкщща123 ",
+      "expected": "зкщща123 ",
+      "original": "proof123 ",
+      "prototype": "зкщща123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "63d22f164004-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ьууештп123 ",
+      "expected": "ьууештп123 ",
+      "original": "meeting123 ",
+      "prototype": "ьууештп123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "11c41e7232ca-7",
+      "split": "train",
+      "category": "email",
+      "input": "bltn@example.test ",
+      "expected": "bltn@example.test ",
+      "original": "идет\"учфьздуюеуые ",
+      "prototype": "bltn@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "5065eabcdc45-5",
+      "split": "train",
+      "category": "digits",
+      "input": "pder123 ",
+      "expected": "pder123 ",
+      "original": "звук123 ",
+      "prototype": "pder123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "42e1874b103a-7",
+      "split": "train",
+      "category": "email",
+      "input": "dcnhtxf@example.test ",
+      "expected": "dcnhtxf@example.test ",
+      "original": "встреча\"учфьздуюеуые ",
+      "prototype": "dcnhtxf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6a7a46fdd800-5",
+      "split": "train",
+      "category": "digits",
+      "input": "pfxtv123 ",
+      "expected": "pfxtv123 ",
+      "original": "зачем123 ",
+      "prototype": "pfxtv123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "5fdcc6cc6be8-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_epyftn=1 ",
+      "expected": "let_epyftn=1 ",
+      "original": "дуе_узнает=1 ",
+      "prototype": "let_epyftn=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "26945b80b087-5",
+      "split": "train",
+      "category": "digits",
+      "input": "cbcntvf123 ",
+      "expected": "cbcntvf123 ",
+      "original": "система123 ",
+      "prototype": "cbcntvf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1147676e212f-5",
+      "split": "train",
+      "category": "digits",
+      "input": "dsltktybt123 ",
+      "expected": "dsltktybt123 ",
+      "original": "выделение123 ",
+      "prototype": "dsltktybt123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "2fe23fa2292c-5",
+      "split": "train",
+      "category": "digits",
+      "input": "фтщерук123 ",
+      "expected": "фтщерук123 ",
+      "original": "another123 ",
+      "prototype": "фтщерук123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "06660400b905-doublecaps",
+      "split": "train",
+      "category": "doublecaps",
+      "input": "СОль ",
+      "expected": "Соль ",
+      "original": "Соль ",
+      "prototype": "СОль ",
+      "classification": "original_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1b4ee79061c4-6",
+      "split": "train",
+      "category": "url",
+      "input": "https://ghjuhfvvf.example/test ",
+      "expected": "https://ghjuhfvvf.example/test ",
+      "original": "https://ghjuhfvf.example/test ",
+      "prototype": "https://ghjuhfvvf.example/test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "336866debd2f-5",
+      "split": "train",
+      "category": "digits",
+      "input": "туецщкл123 ",
+      "expected": "туецщкл123 ",
+      "original": "network123 ",
+      "prototype": "туецщкл123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1857b2793618-1",
+      "split": "train",
+      "category": "wrong",
+      "input": "vbyenf ",
+      "expected": "минута ",
+      "original": "минута ",
+      "prototype": "vbyenf ",
+      "classification": "original_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "40b26c302cd6-5",
+      "split": "train",
+      "category": "digits",
+      "input": "сщьздуч123 ",
+      "expected": "сщьздуч123 ",
+      "original": "complex123 ",
+      "prototype": "сщьздуч123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "11c41e7232ca-5",
+      "split": "train",
+      "category": "digits",
+      "input": "bltn123 ",
+      "expected": "bltn123 ",
+      "original": "идет123 ",
+      "prototype": "bltn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0a61073eee6a-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_ckjdf=1 ",
+      "expected": "let_ckjdf=1 ",
+      "original": "дуе_слова=1 ",
+      "prototype": "let_ckjdf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "001f206d02fa-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_zpsr=1 ",
+      "expected": "let_zpsr=1 ",
+      "original": "дуе_язык=1 ",
+      "prototype": "let_zpsr=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "439ec5a605c7-5",
+      "split": "train",
+      "category": "digits",
+      "input": "учзщке123 ",
+      "expected": "учзщке123 ",
+      "original": "export123 ",
+      "prototype": "учзщке123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0208636b9670-5",
+      "split": "train",
+      "category": "digits",
+      "input": "gjxtve123 ",
+      "expected": "gjxtve123 ",
+      "original": "почему123 ",
+      "prototype": "gjxtve123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "00e625edc4a8-5",
+      "split": "train",
+      "category": "digits",
+      "input": "xtkjdtr123 ",
+      "expected": "xtkjdtr123 ",
+      "original": "человек123 ",
+      "prototype": "xtkjdtr123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "67b937ba497c-7",
+      "split": "train",
+      "category": "email",
+      "input": "vtczw@example.test ",
+      "expected": "vtczw@example.test ",
+      "original": "месяц\"учфьздуюеуые ",
+      "prototype": "vtczw@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3cdc326d49a8-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_cbybq=1 ",
+      "expected": "let_cbybq=1 ",
+      "original": "дуе_синий=1 ",
+      "prototype": "let_cbybq=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "29ff0f584e2f-doublecaps",
+      "split": "train",
+      "category": "doublecaps",
+      "input": "GRapheme ",
+      "expected": "Grapheme ",
+      "original": "GRapheme ",
+      "prototype": "Grapheme ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "64132d7c9d22-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_crjkmrj=1 ",
+      "expected": "let_crjkmrj=1 ",
+      "original": "дуе_сколько=1 ",
+      "prototype": "let_crjkmrj=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "74c79c9a9a08-7",
+      "split": "train",
+      "category": "email",
+      "input": "ljcnfnjxyj@example.test ",
+      "expected": "ljcnfnjxyj@example.test ",
+      "original": "достаточно\"учфьздуюеуые ",
+      "prototype": "ljcnfnjxyj@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "402f2c80501a-7",
+      "split": "train",
+      "category": "email",
+      "input": "cthdth@example.test ",
+      "expected": "cthdth@example.test ",
+      "original": "сервер\"учфьздуюеуые ",
+      "prototype": "cthdth@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6e1ab6473040-5",
+      "split": "train",
+      "category": "digits",
+      "input": "jnltkmyj123 ",
+      "expected": "jnltkmyj123 ",
+      "original": "отдельно123 ",
+      "prototype": "jnltkmyj123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "004bf5351856-7",
+      "split": "train",
+      "category": "email",
+      "input": "rjl@example.test ",
+      "expected": "rjl@example.test ",
+      "original": "код\"учфьздуюеуые ",
+      "prototype": "rjl@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "682b6afe5bb2-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ефыл123 ",
+      "expected": "ефыл123 ",
+      "original": "task123 ",
+      "prototype": "ефыл123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "7bfef643341d-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ujl123 ",
+      "expected": "ujl123 ",
+      "original": "год123 ",
+      "prototype": "ujl123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "7c618c2f9a43-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_cthtlbyf=1 ",
+      "expected": "let_cthtlbyf=1 ",
+      "original": "дуе_середина=1 ",
+      "prototype": "let_cthtlbyf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "00fb5f9fb16d-5",
+      "split": "train",
+      "category": "digits",
+      "input": "нуфк123 ",
+      "expected": "нуфк123 ",
+      "original": "year123 ",
+      "prototype": "нуфк123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6e1ab6473040-7",
+      "split": "train",
+      "category": "email",
+      "input": "jnltkmyj@example.test ",
+      "expected": "jnltkmyj@example.test ",
+      "original": "отдельно\"учфьздуюеуые ",
+      "prototype": "jnltkmyj@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "06d2997e10c7-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_ltnb=1 ",
+      "expected": "let_ltnb=1 ",
+      "original": "дуе_дети=1 ",
+      "prototype": "let_ltnb=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "21fe0ef5ebfc-5",
+      "split": "train",
+      "category": "digits",
+      "input": "игшдв123 ",
+      "expected": "игшдв123 ",
+      "original": "build123 ",
+      "prototype": "игшдв123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "70e4a767aea0-5",
+      "split": "train",
+      "category": "digits",
+      "input": "cnhfyf123 ",
+      "expected": "cnhfyf123 ",
+      "original": "страна123 ",
+      "prototype": "cnhfyf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3411e46c8a18-5",
+      "split": "train",
+      "category": "digits",
+      "input": "здуфыу123 ",
+      "expected": "здуфыу123 ",
+      "original": "please123 ",
+      "prototype": "здуфыу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "2d1944fcec3f-5",
+      "split": "train",
+      "category": "digits",
+      "input": "дфнщге123 ",
+      "expected": "дфнщге123 ",
+      "original": "layout123 ",
+      "prototype": "дфнщге123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "25e45eb6799b-5",
+      "split": "train",
+      "category": "digits",
+      "input": "cnhfybwf123 ",
+      "expected": "cnhfybwf123 ",
+      "original": "страница123 ",
+      "prototype": "cnhfybwf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "52da9f50cc7f-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ерукуащку123 ",
+      "expected": "ерукуащку123 ",
+      "original": "therefore123 ",
+      "prototype": "ерукуащку123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "018103960d97-7",
+      "split": "train",
+      "category": "email",
+      "input": "jnkbxyj@example.test ",
+      "expected": "jnkbxyj@example.test ",
+      "original": "отлично\"учфьздуюеуые ",
+      "prototype": "jnkbxyj@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0dc1336e07ee-5",
+      "split": "train",
+      "category": "digits",
+      "input": "еуыештп123 ",
+      "expected": "еуыештп123 ",
+      "original": "testing123 ",
+      "prototype": "еуыештп123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0c23c76fb09c-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_lfyyst=1 ",
+      "expected": "let_lfyyst=1 ",
+      "original": "дуе_данные=1 ",
+      "prototype": "let_lfyyst=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "184e297e422e-5",
+      "split": "train",
+      "category": "digits",
+      "input": "vfibyf123 ",
+      "expected": "vfibyf123 ",
+      "original": "машина123 ",
+      "prototype": "vfibyf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "080fff1605af-7",
+      "split": "train",
+      "category": "email",
+      "input": "bynthytn@example.test ",
+      "expected": "bynthytn@example.test ",
+      "original": "интернет\"учфьздуюеуые ",
+      "prototype": "bynthytn@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "31633394ec2a-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_rhfcysq=1 ",
+      "expected": "let_rhfcysq=1 ",
+      "original": "дуе_красный=1 ",
+      "prototype": "let_rhfcysq=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0a61073eee6a-7",
+      "split": "train",
+      "category": "email",
+      "input": "ckjdf@example.test ",
+      "expected": "ckjdf@example.test ",
+      "original": "слова\"учфьздуюеуые ",
+      "prototype": "ckjdf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "00eda6c7f3ed-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_ljrevtyns=1 ",
+      "expected": "let_ljrevtyns=1 ",
+      "original": "дуе_документы=1 ",
+      "prototype": "let_ljrevtyns=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "4fdb45c7bcbf-5",
+      "split": "train",
+      "category": "digits",
+      "input": "bcnjxybr123 ",
+      "expected": "bcnjxybr123 ",
+      "original": "источник123 ",
+      "prototype": "bcnjxybr123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6f5e5652ae94-5",
+      "split": "train",
+      "category": "digits",
+      "input": "сщтмуке123 ",
+      "expected": "сщтмуке123 ",
+      "original": "convert123 ",
+      "prototype": "сщтмуке123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "303d3b07b987-5",
+      "split": "train",
+      "category": "digits",
+      "input": "мукышщт123 ",
+      "expected": "мукышщт123 ",
+      "original": "version123 ",
+      "prototype": "мукышщт123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "2e5eb5943aba-5",
+      "split": "train",
+      "category": "digits",
+      "input": "фкешафсе123 ",
+      "expected": "фкешафсе123 ",
+      "original": "artifact123 ",
+      "prototype": "фкешафсе123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "31633394ec2a-7",
+      "split": "train",
+      "category": "email",
+      "input": "rhfcysq@example.test ",
+      "expected": "rhfcysq@example.test ",
+      "original": "красный\"учфьздуюеуые ",
+      "prototype": "rhfcysq@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "554bb4a3b430-5",
+      "split": "train",
+      "category": "digits",
+      "input": "сщзн123 ",
+      "expected": "сщзн123 ",
+      "original": "copy123 ",
+      "prototype": "сщзн123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "53ec0cc35e15-5",
+      "split": "train",
+      "category": "digits",
+      "input": "dcnfdrf123 ",
+      "expected": "dcnfdrf123 ",
+      "original": "вставка123 ",
+      "prototype": "dcnfdrf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "19b9f3e9337c-5",
+      "split": "train",
+      "category": "digits",
+      "input": "rkbtyn123 ",
+      "expected": "rkbtyn123 ",
+      "original": "клиент123 ",
+      "prototype": "rkbtyn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0726eaf151ef-5",
+      "split": "train",
+      "category": "digits",
+      "input": "вумудщзук123 ",
+      "expected": "вумудщзук123 ",
+      "original": "developer123 ",
+      "prototype": "вумудщзук123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "538707c20314-7",
+      "split": "train",
+      "category": "email",
+      "input": "ghbvth@example.test ",
+      "expected": "ghbvth@example.test ",
+      "original": "пример\"учфьздуюеуые ",
+      "prototype": "ghbvth@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1857b2793618-5",
+      "split": "train",
+      "category": "digits",
+      "input": "vbyenf123 ",
+      "expected": "vbyenf123 ",
+      "original": "минута123 ",
+      "prototype": "vbyenf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6cd395e98d8b-5",
+      "split": "train",
+      "category": "digits",
+      "input": "зфыыцщкв123 ",
+      "expected": "зфыыцщкв123 ",
+      "original": "password123 ",
+      "prototype": "зфыыцщкв123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3ecfe7edcd28-5",
+      "split": "train",
+      "category": "digits",
+      "input": "htitybt123 ",
+      "expected": "htitybt123 ",
+      "original": "решение123 ",
+      "prototype": "htitybt123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1bae03362f07-5",
+      "split": "train",
+      "category": "digits",
+      "input": "gjtpl123 ",
+      "expected": "gjtpl123 ",
+      "original": "поезд123 ",
+      "prototype": "gjtpl123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0682bf39f35d-5",
+      "split": "train",
+      "category": "digits",
+      "input": "пщщв123 ",
+      "expected": "пщщв123 ",
+      "original": "good123 ",
+      "prototype": "пщщв123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6bf0921baa5c-7",
+      "split": "train",
+      "category": "email",
+      "input": "heccrbq@example.test ",
+      "expected": "heccrbq@example.test ",
+      "original": "русский\"учфьздуюеуые ",
+      "prototype": "heccrbq@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "05592386adfd-7",
+      "split": "train",
+      "category": "email",
+      "input": "pfdnhf@example.test ",
+      "expected": "pfdnhf@example.test ",
+      "original": "завтра\"учфьздуюеуые ",
+      "prototype": "pfdnhf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "787dce9e863c-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ензштп123 ",
+      "expected": "ензштп123 ",
+      "original": "typing123 ",
+      "prototype": "ензштп123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "018103960d97-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_jnkbxyj=1 ",
+      "expected": "let_jnkbxyj=1 ",
+      "original": "дуе_отлично=1 ",
+      "prototype": "let_jnkbxyj=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "492286fb4f46-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ntgksq123 ",
+      "expected": "ntgksq123 ",
+      "original": "теплый123 ",
+      "prototype": "ntgksq123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "210c8c014b10-5",
+      "split": "train",
+      "category": "digits",
+      "input": "gfhjkm123 ",
+      "expected": "gfhjkm123 ",
+      "original": "пароль123 ",
+      "prototype": "gfhjkm123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "04cbd7a754fb-7",
+      "split": "train",
+      "category": "email",
+      "input": "ntrcn@example.test ",
+      "expected": "ntrcn@example.test ",
+      "original": "текст\"учфьздуюеуые ",
+      "prototype": "ntrcn@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "0309a6fa236e-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_jnvtyf=1 ",
+      "expected": "let_jnvtyf=1 ",
+      "original": "дуе_отмена=1 ",
+      "prototype": "let_jnvtyf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "1fa764a92f4e-5",
+      "split": "train",
+      "category": "digits",
+      "input": "cjcnjzybt123 ",
+      "expected": "cjcnjzybt123 ",
+      "original": "состояние123 ",
+      "prototype": "cjcnjzybt123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "22493164c28c-5",
+      "split": "train",
+      "category": "digits",
+      "input": "уккщкы123 ",
+      "expected": "уккщкы123 ",
+      "original": "errors123 ",
+      "prototype": "уккщкы123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "3e87026b3719-7",
+      "split": "train",
+      "category": "email",
+      "input": "gfvznm@example.test ",
+      "expected": "gfvznm@example.test ",
+      "original": "память\"учфьздуюеуые ",
+      "prototype": "gfvznm@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "06d2997e10c7-5",
+      "split": "train",
+      "category": "digits",
+      "input": "ltnb123 ",
+      "expected": "ltnb123 ",
+      "original": "дети123 ",
+      "prototype": "ltnb123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "6cc866bae5f9-8",
+      "split": "train",
+      "category": "code",
+      "input": "let_gjbcr=1 ",
+      "expected": "let_gjbcr=1 ",
+      "original": "дуе_поиск=1 ",
+      "prototype": "let_gjbcr=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "85d5ebc9f52a-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_yjdst=1 ",
+      "expected": "let_yjdst=1 ",
+      "original": "дуе_новые=1 ",
+      "prototype": "let_yjdst=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "85d5ebc9f52a-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "yjdst123 ",
+      "expected": "yjdst123 ",
+      "original": "новые123 ",
+      "prototype": "yjdst123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "ade225489e80-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "extn123 ",
+      "expected": "extn123 ",
+      "original": "учет123 ",
+      "prototype": "extn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "88bf106e3c87-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "ljgjkybntkmysq@example.test ",
+      "expected": "ljgjkybntkmysq@example.test ",
+      "original": "дополнительный\"учфьздуюеуые ",
+      "prototype": "ljgjkybntkmysq@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "challenge-019",
+      "split": "holdout",
+      "category": "punctuation",
+      "input": "(руддщ) ",
+      "expected": "(руддщ) ",
+      "original": "(hello) ",
+      "prototype": "(руддщ) ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a3ae42041ead-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "тщешашсфешщт123 ",
+      "expected": "тщешашсфешщт123 ",
+      "original": "notification123 ",
+      "prototype": "тщешашсфешщт123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a24598243ca2-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_gjkt=1 ",
+      "expected": "let_gjkt=1 ",
+      "original": "дуе_поле=1 ",
+      "prototype": "let_gjkt=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8490369bf314-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "eghfdktybt123 ",
+      "expected": "eghfdktybt123 ",
+      "original": "управление123 ",
+      "prototype": "eghfdktybt123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "81f2c7273f06-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "flhtc123 ",
+      "expected": "flhtc123 ",
+      "original": "адрес123 ",
+      "prototype": "flhtc123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "820ba491220b-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "rjat@example.test ",
+      "expected": "rjat@example.test ",
+      "original": "кофе\"учфьздуюеуые ",
+      "prototype": "rjat@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a04f50bb32f6-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "сдшуте123 ",
+      "expected": "сдшуте123 ",
+      "original": "client123 ",
+      "prototype": "сдшуте123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8aeea03b7b00-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ыфау123 ",
+      "expected": "ыфау123 ",
+      "original": "safe123 ",
+      "prototype": "ыфау123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "ade225489e80-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "extn@example.test ",
+      "expected": "extn@example.test ",
+      "original": "учет\"учфьздуюеуые ",
+      "prototype": "extn@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "ac0b4718806e-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ыцшае123 ",
+      "expected": "ыцшае123 ",
+      "original": "swift123 ",
+      "prototype": "ыцшае123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "80034cb78062-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "plhfdcndeqnt@example.test ",
+      "expected": "plhfdcndeqnt@example.test ",
+      "original": "здравствуйте\"учфьздуюеуые ",
+      "prototype": "plhfdcndeqnt@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "80034cb78062-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "plhfdcndeqnt123 ",
+      "expected": "plhfdcndeqnt123 ",
+      "original": "здравствуйтей23 ",
+      "prototype": "plhfdcndeqnt123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "aa31065739ef-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ашкые123 ",
+      "expected": "ашкые123 ",
+      "original": "first123 ",
+      "prototype": "ашкые123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "91e88f77d876-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "зкщоусе123 ",
+      "expected": "зкщоусе123 ",
+      "original": "project123 ",
+      "prototype": "зкщоусе123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8fd3e89e5bf0-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "вфефифыу123 ",
+      "expected": "вфефифыу123 ",
+      "original": "database123 ",
+      "prototype": "вфефифыу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a2bbd7d3b3df-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_plhfdcndeq=1 ",
+      "expected": "let_plhfdcndeq=1 ",
+      "original": "дуе_здравствуй=1 ",
+      "prototype": "let_plhfdcndeq=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8de8c405363f-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "hfcxtn123 ",
+      "expected": "hfcxtn123 ",
+      "original": "расчёт123 ",
+      "prototype": "hfcxtn123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8e719cb3f67c-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_nthvbyfk=1 ",
+      "expected": "let_nthvbyfk=1 ",
+      "original": "дуе_терминал=1 ",
+      "prototype": "let_nthvbyfk=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "83dbf880c90e-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_ltqcndbntkmyj=1 ",
+      "expected": "let_ltqcndbntkmyj=1 ",
+      "original": "дуе_действительно=1 ",
+      "prototype": "let_ltqcndbntkmyj=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "84ab34d6b26f-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "сфдд123 ",
+      "expected": "сфдд123 ",
+      "original": "call123 ",
+      "prototype": "сфдд123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "882a1659538d-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_ghjcnjq=1 ",
+      "expected": "let_ghjcnjq=1 ",
+      "original": "дуе_простой=1 ",
+      "prototype": "let_ghjcnjq=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "89230e1bad76-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "rkfdbfnehf@example.test ",
+      "expected": "rkfdbfnehf@example.test ",
+      "original": "клавиатура\"учфьздуюеуые ",
+      "prototype": "rkfdbfnehf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "9400daec18bf-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "зфслфпу123 ",
+      "expected": "зфслфпу123 ",
+      "original": "package123 ",
+      "prototype": "зфслфпу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "83dbf880c90e-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ltqcndbntkmyj123 ",
+      "expected": "ltqcndbntkmyj123 ",
+      "original": "действительно123 ",
+      "prototype": "ltqcndbntkmyj123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "85a5e35f2eda-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_ghbdtncndbt=1 ",
+      "expected": "let_ghbdtncndbt=1 ",
+      "original": "дуе_приветствие=1 ",
+      "prototype": "let_ghbdtncndbt=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "9eb3dfa14d4a-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "утпдшыр123 ",
+      "expected": "утпдшыр123 ",
+      "original": "english123 ",
+      "prototype": "утпдшыр123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8422d1ea682f-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "hfphtitybt@example.test ",
+      "expected": "hfphtitybt@example.test ",
+      "original": "разрешение\"учфьздуюеуые ",
+      "prototype": "hfphtitybt@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8c63906e80b8-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "игааук123 ",
+      "expected": "игааук123 ",
+      "original": "buffer123 ",
+      "prototype": "игааук123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a1640b64ae98-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "ljhjuf@example.test ",
+      "expected": "ljhjuf@example.test ",
+      "original": "дорога\"учфьздуюеуые ",
+      "prototype": "ljhjuf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "93365c380503-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "зукышыеуте123 ",
+      "expected": "зукышыеуте123 ",
+      "original": "persistent123 ",
+      "prototype": "зукышыеуте123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8d6677ce57a2-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "ctcnhs@example.test ",
+      "expected": "ctcnhs@example.test ",
+      "original": "сестры\"учфьздуюеуые ",
+      "prototype": "ctcnhs@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8490369bf314-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "eghfdktybt@example.test ",
+      "expected": "eghfdktybt@example.test ",
+      "original": "управление\"учфьздуюеуые ",
+      "prototype": "eghfdktybt@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8d073a2bbea1-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "htubcnh@example.test ",
+      "expected": "htubcnh@example.test ",
+      "original": "регистр\"учфьздуюеуые ",
+      "prototype": "htubcnh@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8156d694d5fd-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "cbvdjk123 ",
+      "expected": "cbvdjk123 ",
+      "original": "символ123 ",
+      "prototype": "cbvdjk123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "852e365f7079-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "вщщк123 ",
+      "expected": "вщщк123 ",
+      "original": "door123 ",
+      "prototype": "вщщк123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "92e7a74dbb32-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "еуче123 ",
+      "expected": "еуче123 ",
+      "original": "text123 ",
+      "prototype": "еуче123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "9b281e387db6-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "умуте123 ",
+      "expected": "умуте123 ",
+      "original": "event123 ",
+      "prototype": "умуте123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "930753d60583-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "ryjgrf@example.test ",
+      "expected": "ryjgrf@example.test ",
+      "original": "кнопка\"учфьздуюеуые ",
+      "prototype": "ryjgrf@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8902b6cf1ed6-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "gjcktlybq@example.test ",
+      "expected": "gjcktlybq@example.test ",
+      "original": "последний\"учфьздуюеуые ",
+      "prototype": "gjcktlybq@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "92ba46128b2f-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "rkfdbib@example.test ",
+      "expected": "rkfdbib@example.test ",
+      "original": "клавиши\"учфьздуюеуые ",
+      "prototype": "rkfdbib@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a3da001d25d3-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "йгуыешщт123 ",
+      "expected": "йгуыешщт123 ",
+      "original": "question123 ",
+      "prototype": "йгуыешщт123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "94149c5e9673-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ьфшт123 ",
+      "expected": "ьфшт123 ",
+      "original": "main123 ",
+      "prototype": "ьфшт123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8422d1ea682f-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "hfphtitybt123 ",
+      "expected": "hfphtitybt123 ",
+      "original": "разрешение123 ",
+      "prototype": "hfphtitybt123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "930753d60583-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ryjgrf123 ",
+      "expected": "ryjgrf123 ",
+      "original": "кнопка123 ",
+      "prototype": "ryjgrf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8902b6cf1ed6-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_gjcktlybq=1 ",
+      "expected": "let_gjcktlybq=1 ",
+      "original": "дуе_последний=1 ",
+      "prototype": "let_gjcktlybq=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "96bd2f321bc6-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "yfcnhjqrb@example.test ",
+      "expected": "yfcnhjqrb@example.test ",
+      "original": "настройки\"учфьздуюеуые ",
+      "prototype": "yfcnhjqrb@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8868c61fedf0-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "еуые123 ",
+      "expected": "еуые123 ",
+      "original": "test123 ",
+      "prototype": "еуые123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "81f2c7273f06-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "flhtc@example.test ",
+      "expected": "flhtc@example.test ",
+      "original": "адрес\"учфьздуюеуые ",
+      "prototype": "flhtc@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "aa04bf33a925-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_ctnm=1 ",
+      "expected": "let_ctnm=1 ",
+      "original": "дуе_сеть=1 ",
+      "prototype": "let_ctnm=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8de8c405363f-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "hfcxtn@example.test ",
+      "expected": "hfcxtn@example.test ",
+      "original": "hfcx§n@example.test ",
+      "prototype": "hfcxtn@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8ab40be26274-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "куыгдеы123 ",
+      "expected": "куыгдеы123 ",
+      "original": "results123 ",
+      "prototype": "куыгдеы123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "894378aae38b-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "lheu123 ",
+      "expected": "lheu123 ",
+      "original": "друг123 ",
+      "prototype": "lheu123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "9ca2f94db5d8-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_xbckj=1 ",
+      "expected": "let_xbckj=1 ",
+      "original": "дуе_число=1 ",
+      "prototype": "let_xbckj=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "94f47657e4cb-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "дшьше123 ",
+      "expected": "дшьше123 ",
+      "original": "limit123 ",
+      "prototype": "дшьше123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a66f91f0475c-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "pfrhsnm123 ",
+      "expected": "pfrhsnm123 ",
+      "original": "закрыть123 ",
+      "prototype": "pfrhsnm123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "9fa8ae5a3323-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "сщгтекн123 ",
+      "expected": "сщгтекн123 ",
+      "original": "country123 ",
+      "prototype": "сщгтекн123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "9e2f6dd6906c-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ыщгксу123 ",
+      "expected": "ыщгксу123 ",
+      "original": "source123 ",
+      "prototype": "ыщгксу123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a1640b64ae98-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_ljhjuf=1 ",
+      "expected": "let_ljhjuf=1 ",
+      "original": "дуе_дорога=1 ",
+      "prototype": "let_ljhjuf=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "acd9f6af0c63-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ещз123 ",
+      "expected": "ещз123 ",
+      "original": "top123 ",
+      "prototype": "ещз123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "84989fe74016-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ерштл123 ",
+      "expected": "ерштл123 ",
+      "original": "think123 ",
+      "prototype": "ерштл123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "abebc8562363-7",
+      "split": "holdout",
+      "category": "email",
+      "input": "cjplfnm@example.test ",
+      "expected": "cjplfnm@example.test ",
+      "original": "создать\"учфьздуюеуые ",
+      "prototype": "cjplfnm@example.test ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "a1640b64ae98-5",
+      "split": "holdout",
+      "category": "digits",
+      "input": "ljhjuf123 ",
+      "expected": "ljhjuf123 ",
+      "original": "дорога123 ",
+      "prototype": "ljhjuf123 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    },
+    {
+      "id": "8eca28878e0f-8",
+      "split": "holdout",
+      "category": "code",
+      "input": "let_jngecr=1 ",
+      "expected": "let_jngecr=1 ",
+      "original": "дуе_отпуск=1 ",
+      "prototype": "let_jngecr=1 ",
+      "classification": "prototype_matches_authored_expected",
+      "cause": "requires_review"
+    }
+  ],
+  "authoredHoldoutCriterionPassed": true
+}

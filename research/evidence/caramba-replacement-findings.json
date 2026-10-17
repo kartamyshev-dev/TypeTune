@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "date": "2026-10-15",
+  "kind": "static-shipped-artifact-investigation",
+  "originalAppExecuted": false,
+  "newImports": 0,
+  "records": [
+    {
+      "private_file": "research/private/retyping-pseudocode-page.json",
+      "sha256": "0527a4b37b3a0d6179240f382d55b87a64e6df26a3ea6b4b12f580a52e435f08",
+      "evidence_ids": [
+        "ev_3bcdcfaf5af9534fd1ffa660b77d97b755c5cec1b9a3050041aec4d1ccc34a57"
+      ]
+    },
+    {
+      "private_file": "research/private/retyping-pseudocode-rest.json",
+      "sha256": "ba4327161502a2ab477684a22232d3f335ad8e9aa6e5a5dfbee1e0e95e50646a",
+      "evidence_ids": [
+        "ev_354d6350f581bcd01bb375fc8b01f8c2b15f362bda04801325894ae57a07599a"
+      ]
+    },
+    {
+      "private_file": "research/private/phase2-retype-operation.json",
+      "sha256": "410340c00f6b2a3e02497455b42d7edd87d69175e9683a15af8523aea77fdd5f",
+      "evidence_ids": [
+        "ev_615e17fcaa53d9a95de5ea1b7a9280fb77e7f5a80ec0baecb255b6647643b4f2"
+      ]
+    },
+    {
+      "private_file": "research/private/phase2-retype-instructions.json",
+      "sha256": "5d17104161babe60769f5a6ad356f8fd3a84abe3feb0a4219316e06a15dcd2f2",
+      "evidence_ids": [
+        "ev_f9fed34782aa76925320b9c9897dff0e467a386f0d538a4ccb17d8e8ea7abf86"
+      ]
+    },
+    {
+      "private_file": "research/private/replacement-instructions.json",
+      "sha256": "f0a19669b88167564ce35ce6be5e111310cf08ec8187b8ceb9e124fc6e11b9d1",
+      "evidence_ids": [
+        "ev_2b935c46e7481096e06960db13b1296f48571d1dc673011d21e9af44d3f06f5b"
+      ]
+    },
+    {
+      "private_file": "research/private/post-instructions.json",
+      "sha256": "e8c553624d1a3f85af12f936b9ef72155331daa4f9e98f9fe205d2a2ec480116",
+      "evidence_ids": [
+        "ev_44321b2e4fb609e05dea5c0d107633e12083e473300f2c7146de357ddf2bad1d"
+      ]
+    },
+    {
+      "private_file": "research/private/swift-post-pseudocode.json",
+      "sha256": "27b9267b67d26f382c0955f82f91c8f0a596e5087c591872e1ffe9ad9dc9f1c5",
+      "evidence_ids": [
+        "ev_c1683e1bcc9a10b5bcebdacfc16212bff387c2d3e4117277d8381563a04f34b8"
+      ]
+    }
+  ],
+  "readOnlyGhidraFollowup": {
+    "provider": "Ghidra12.1.4/JDK21",
+    "project": "research/private/ghidra-persistent/caramba.gpr",
+    "program": "caramba-arm64",
+    "flags": [
+      "-process",
+      "-noanalysis",
+      "-readOnly",
+      "-max-cpu 2"
+    ],
+    "addresses": [
+      "0x100042a98",
+      "0x100042234",
+      "0x10025a030",
+      "0x1002d2738"
+    ],
+    "reaEvidenceId": null,
+    "filesSha256": {
+      "research/private/replacement-followup.txt": "af0ea043836c5af38981ef2c3ed1c7be8999b26ef9b90b3c9c3b09ee5d2ef317",
+      "research/private/replacement-followup.log": "c7de9f1d6cd8299e9fea70f912c090e1fbe125cb5eb6b8f7c058ea527bc13eed",
+      "research/private/CarambaReplacementProbe.java": "1aa862420992221fe4180776ea987fca2b0bc1d7fb5762a82b84013dd85454e6"
+    },
+    "scriptSuccessMarker": "REPLACEMENT_PROBE_SAVED"
+  },
+  "findings": [
+    {
+      "id": "CR-1",
+      "status": "observed-static",
+      "functions": [
+        "0x10025a220",
+        "0x10025a4a8",
+        "0x1002d2720"
+      ],
+      "claim": "Retype deletes with Backspace and types target keycode/flags pairs via CGEventPost session location1; bounded path does not mutate AXSelectedText or clipboard."
+    },
+    {
+      "id": "CR-2",
+      "status": "observed-static",
+      "functions": [
+        "0x100251f20"
+      ],
+      "claim": "Some dispatch branches skip common prefix under an additional optimization flag; applicability incomplete."
+    },
+    {
+      "id": "CR-3",
+      "status": "observed-static",
+      "functions": [
+        "0x10025a220"
+      ],
+      "claim": "Private event source stateID=-1; optional extra Space; optional Control Backspace; TIS retry and delay caps exist."
+    },
+    {
+      "id": "CR-4",
+      "status": "unknown",
+      "claim": "Manual-selection path, clipboard, exact per-app timing and Unicode deletion-count semantics not fully traced."
+    },
+    {
+      "id": "CR-5",
+      "status": "not-observed-runtime",
+      "claim": "This static work does not reproduce the Codex deletion incident or prove a prototype fix."
+    }
+  ],
+  "accessibilityBootstrapLiteralScan": {
+    "scope": "Frozen bundle files readable by pathlib.rglob, follows file symlinks; original not executed",
+    "terms": [
+      "AXManualAccessibility",
+      "AXEnhancedUserInterface",
+      "AXFocusedUIElement",
+      "AXUIElementCreateApplication",
+      "AXUIElementCopyAttributeValue",
+      "AXUIElementSetAttributeValue"
+    ],
+    "encodings": [
+      "utf-8",
+      "utf-16-le",
+      "utf-16-be"
+    ],
+    "filesScanned": 68,
+    "fileRecords": [
+      {
+        "relativePath": "Contents/Frameworks/CarambaSwitcherUI.framework/CarambaSwitcherUI",
+        "sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a",
+        "bytes": 1491984
+      },
+      {
+        "relativePath": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/CarambaSwitcherUI",
+        "sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a",
+        "bytes": 1491984
+      },
+      {
+        "relativePath": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/Resources/Info.plist",
+        "sha256": "db5735ef67397c674cd2c78ac99028fa0099d42c3bfb37c53df2b83304b00774",
+        "bytes": 1330
+      },
+      {
+        "relativePath": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/_CodeSignature/CodeResources",
+        "sha256": "fe0b008f53696e2fb141b5ac1179f73b1c7e6522e34b5a8477e8f8c625e4724d",
+        "bytes": 2442
+      },
+      {
+        "relativePath": "Contents/Info.plist",
+        "sha256": "b13a795840ed0e15b9179511abf030f802cf63fe96f62f00f1637ed5b854c0b4",
+        "bytes": 2017
+      },
+      {
+        "relativePath": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/Info.plist",
+        "sha256": "7ffb589ded1bd8a697780df6cab073030c7667bed637ef0a1a1923dccc1b764d",
+        "bytes": 930
+      },
+      {
+        "relativePath": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/MacOS/LaunchAtLoginHelper",
+        "sha256": "51da24948a8d2993a134b01a79b3c01872bbdc59cd6aeb467c214d620732fa63",
+        "bytes": 181472
+      },
+      {
+        "relativePath": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/PkgInfo",
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+        "bytes": 8
+      },
+      {
+        "relativePath": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/_CodeSignature/CodeResources",
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b",
+        "bytes": 2200
+      },
+      {
+        "relativePath": "Contents/MacOS/Caramba Switcher Pro",
+        "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5",
+        "bytes": 13303536
+      },
+      {
+        "relativePath": "Contents/PkgInfo",
+        "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+        "bytes": 8
+      },
+      {
+        "relativePath": "Contents/Resources/AppIcon.icns",
+        "sha256": "837973d70d929b7dbe0a4ac0892a688022504d7d64c487c487becf1a2d73c3c2",
+        "bytes": 59666
+      },
+      {
+        "relativePath": "Contents/Resources/Assets.car",
+        "sha256": "9142cfd67c9f0c85b898ab3921c397f9a45faddf56cdfef843453e2769b593f8",
+        "bytes": 3288856
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Exceptions.storyboardc/HnZ-6l-BZb-view-sPD-NJ-36b.nib",
+        "sha256": "b81912e41154878185dc53012761ae26024321a1c164cbfc99486b906bf8656b",
+        "bytes": 39426
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Exceptions.storyboardc/Info.plist",
+        "sha256": "dfa522a3fa421a1746f60b79b1d3bf0f95f2816edd0e12364671d8a50189858c",
+        "bytes": 424
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Exceptions.storyboardc/NSViewController-HnZ-6l-BZb.nib",
+        "sha256": "62dd3a0ea44c76dd858cbb1d0b51a1d9415e183c12842c4d3a08341381bf6ec4",
+        "bytes": 1597
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Main.storyboardc/2Hm-E1-tLy-view-WNg-r1-MSk.nib",
+        "sha256": "8ffc55f5d069bb7d7d006b6f4aff7e0057b9c33fad9261464edd4d6295c8d58f",
+        "bytes": 11010
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Main.storyboardc/Info.plist",
+        "sha256": "3fcb3be075d1ffc98e1f5f3b3b6ef3e4196ead596c286386fcdeb009a4b49bc0",
+        "bytes": 395
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Main.storyboardc/JSG-z5-Z8W-view-sRb-va-8yw.nib",
+        "sha256": "62afc6d993d20f0bd25e848aaa790252d61e73779fe89383dedf0b82ecd88e3e",
+        "bytes": 11010
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Main.storyboardc/MainMenu.nib",
+        "sha256": "281b3cc4f269b30d65c4fa4e7c837ae5d8150cdcecff11cd6469d1d963fba3e1",
+        "bytes": 20113
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Main.storyboardc/SplitshiftDisabled.nib",
+        "sha256": "d3a5deac49e7d7c1ae2c84468af2e8bafb3709ef7269985392818303909af612",
+        "bytes": 3052
+      },
+      {
+        "relativePath": "Contents/Resources/Base.lproj/Main.storyboardc/SplitshiftEnabled.nib",
+        "sha256": "8aa2385cea536968d0197f65f19f4d2732a8e69e690d2242fa5411e3725caed5",
+        "bytes": 3051
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.2.mom",
+        "sha256": "bcb9fcec547a5dc40e9d5dcecb809137e4ce5dd6270f1f74a1aa6fe78d841fbf",
+        "bytes": 4393
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.3.mom",
+        "sha256": "86ac599466d4f1f5b1324dfd3c5e53b3c0e6c364082d493d76fa5afc6945c5de",
+        "bytes": 3884
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.4.mom",
+        "sha256": "f7739f968b5837379f29dde60b26e4355aebc56c1946019f39118877d410fac3",
+        "bytes": 3566
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.5.mom",
+        "sha256": "b02279cb57294bdf97940a1049abda9da552a952a28773eaca52c277f264713d",
+        "bytes": 3688
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.6.mom",
+        "sha256": "93bf5548b80e1b77bcdde9b42f28422c8a6c58700eabd8135effe0704b52f588",
+        "bytes": 3113
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.7.mom",
+        "sha256": "c67ec56d8fca4aec402e5468a91dc2aa67c578af47e074b6515c6bfaf2801914",
+        "bytes": 3112
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.8.mom",
+        "sha256": "309116244e07a0e8df5b7d7b05a3e2061a4fb2e284b6ff83c7a47a24384e6f78",
+        "bytes": 3590
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.8.omo",
+        "sha256": "14322d29a2cfee42b5bb90f48b92dee34056e581ca91615a331794938d5b7b68",
+        "bytes": 4280
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/Caramba.mom",
+        "sha256": "86ac599466d4f1f5b1324dfd3c5e53b3c0e6c364082d493d76fa5afc6945c5de",
+        "bytes": 3884
+      },
+      {
+        "relativePath": "Contents/Resources/Caramba.momd/VersionInfo.plist",
+        "sha256": "47ebe940dd66b5b4657e5528327c3942f32a3cf9178ebd6b9bdb52e2888b7e41",
+        "bytes": 1342
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaAccessibility.bundle/Contents/Info.plist",
+        "sha256": "f2b2a9ebe1eb71fa502cf5a61d7f6e1cd7c8cd255a8f9dafe95601181827e355",
+        "bytes": 1284
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaAccessibility.bundle/Contents/Resources/en.lproj/Localizable.strings",
+        "sha256": "8bc0d3c2a118b3835e35c74c1ee9d48fa09645fe5356dad0b7a3c53b7a395e73",
+        "bytes": 880
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaAccessibility.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+        "sha256": "29b24467473254f8bab3ae8513e199fd430b9ef72b1df5b08028344db3d0276f",
+        "bytes": 1122
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaCore.bundle/Contents/Info.plist",
+        "sha256": "2568314ccc83ec7f593459cb86eca4a032af18fc4a0ec7c536ba42a7b5749a27",
+        "bytes": 1266
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaCore.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+        "sha256": "06c0b6b477fc52848cd7aef3cf350f62e7a040aa739e2f8cd33e4d3e3afa7130",
+        "bytes": 480
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Info.plist",
+        "sha256": "7e25f17c2dcc1be6f54fc0a9aac02c9d3b54537d74325ff3fd9b8a325823eafe",
+        "bytes": 1292
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ar.lproj/Localizable.strings",
+        "sha256": "3ea6f67d065cb035835a378b5d39953085b2201723574c2e3ad770c8999f3664",
+        "bytes": 756
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/cs.lproj/Localizable.strings",
+        "sha256": "44411c3e4c94fa6ea9a6529df17e6510661116f90f52bd4d3e7a53d4ccf69cc0",
+        "bytes": 500
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/de.lproj/Localizable.strings",
+        "sha256": "44070f2f442073cfd3035952fd81329ce35212784a87c9f19224f60ad5e8830d",
+        "bytes": 584
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/en.lproj/Localizable.strings",
+        "sha256": "f2458e8b5dbfa169c20a4c523389601a381c4ed75f16a2c2afc8ddc1c83e234c",
+        "bytes": 563
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/es.lproj/Localizable.strings",
+        "sha256": "c099a627fd4ab5998585c79e3cdeec1211e3f304b2aed4f0ef0f8ea61a4fdcf8",
+        "bytes": 608
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/fr.lproj/Localizable.strings",
+        "sha256": "4c4d5d00c5b438740bd4d5fe4b75b365ad46a5a5d88cc43ba433fedc3748144c",
+        "bytes": 601
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/hu.lproj/Localizable.strings",
+        "sha256": "0e1581063eb871ce476036e83f39486b5dfa7275b0ff799a2e08720d08a73c89",
+        "bytes": 599
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ja.lproj/Localizable.strings",
+        "sha256": "243fb41c3521cdd358eae13aa469aac07da8c12dabd0a2c71f0437352a712bb6",
+        "bytes": 613
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ko.lproj/Localizable.strings",
+        "sha256": "8c430a55ecb1e4e43a4d7b33c52c69fbbcd430accae2304046417649cc617517",
+        "bytes": 602
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/nl.lproj/Localizable.strings",
+        "sha256": "a22f9c04086c4eef36c73b08b796c17296822ebae7444a38f042985291c56391",
+        "bytes": 580
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/pt-BR.lproj/Localizable.strings",
+        "sha256": "6b5e04c16b70c4088e8cb9401f5d2742faf154df44844f246bbb47702083a0a1",
+        "bytes": 520
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+        "sha256": "86001b75048329c872b2c32ca8adfdbf75bb989700ca64438aaf5b4871d13688",
+        "bytes": 759
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/sk.lproj/Localizable.strings",
+        "sha256": "c9875c8b5c90b1a570902b7fd6f3703f29996cd1b53596d1ca27e7d0ea2d2470",
+        "bytes": 672
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/zh-Hans.lproj/Localizable.strings",
+        "sha256": "77913be8bc8078d928a0e1093672f4bb6bd8bc4dc5e0b018b9e6da764ae43640",
+        "bytes": 492
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/zh-TW.lproj/Localizable.strings",
+        "sha256": "95636848606abf86c30850df6319d2cb3c73d6cffbdeec4394fea4e6ee15f1d7",
+        "bytes": 467
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Info.plist",
+        "sha256": "ea0677139ac3178971722d3b1b0dba816862a473281cb7244622e59f31a1ff9d",
+        "bytes": 1291
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/Assets.car",
+        "sha256": "cf54b2dc4b225d3032938c88991011bb8e21d827be5ed10297bfef9c0334622e",
+        "bytes": 191128
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/Sen.ttf",
+        "sha256": "5a2d5777100be28024b4f28505d678c006bc52e9d9fa78f554a1252b5f254c77",
+        "bytes": 50824
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/en.lproj/Localizable.strings",
+        "sha256": "b5d747bd6c81a5ddd7beef5c9852d94f77b9cb7232a0ce59e524a05c0a6ab1c2",
+        "bytes": 13782
+      },
+      {
+        "relativePath": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+        "sha256": "074010d04220c1d0438d07acd29fac65204d9791eae7729eb4cd645b25df4daa",
+        "bytes": 15560
+      },
+      {
+        "relativePath": "Contents/Resources/en.lproj/Exceptions.strings",
+        "sha256": "f568fd7d6c42449587bf54c4c270733e012df3fed86871ea577358bf51f6ae90",
+        "bytes": 2062
+      },
+      {
+        "relativePath": "Contents/Resources/en.lproj/Localizable.strings",
+        "sha256": "5aa702b849bbdad26851a9150b1f0b1ff3d277e04461eceb289469dc871ee0bb",
+        "bytes": 16192
+      },
+      {
+        "relativePath": "Contents/Resources/en.lproj/Localizable.stringsdict",
+        "sha256": "31746fc9e5ea675ccd6027d65424140601cd0eb30eb9019f8a5a4ae839e5c4d6",
+        "bytes": 1214
+      },
+      {
+        "relativePath": "Contents/Resources/en.lproj/Main.strings",
+        "sha256": "4e2a9c3ba463718675021954b726f4c0098073f216c74e652df043fe61325aa9",
+        "bytes": 3550
+      },
+      {
+        "relativePath": "Contents/Resources/ru.lproj/Exceptions.strings",
+        "sha256": "d8c23393eb450a27fb8933b7bef32b3f1258d6eabcd9840f7f7b0b40540cf500",
+        "bytes": 2132
+      },
+      {
+        "relativePath": "Contents/Resources/ru.lproj/Localizable.strings",
+        "sha256": "a9ec7c1a4e20d4f9f8d5b03935e7c0e889e5aa14495d1b80baeecac476c46fdc",
+        "bytes": 16962
+      },
+      {
+        "relativePath": "Contents/Resources/ru.lproj/Localizable.stringsdict",
+        "sha256": "cf84255ed9fab6a0e5154da3fbf996498ee8364dea626180b554e970c3c09038",
+        "bytes": 1456
+      },
+      {
+        "relativePath": "Contents/Resources/ru.lproj/Main.strings",
+        "sha256": "bb336647688c7c4476a523388dfeb106e979db8cc31a9b9a7e7a58ea3f5d37cc",
+        "bytes": 1408
+      },
+      {
+        "relativePath": "Contents/_CodeSignature/CodeResources",
+        "sha256": "ecf5addcbc18b904c6e6f9704a903035d80569e714dbc95e727f102dffdd7b25",
+        "bytes": 23930
+      },
+      {
+        "relativePath": "Contents/_MASReceipt/receipt",
+        "sha256": "17abc7d5ccd6886d7801180313a8238fd90089bc8f79d31d2ab0818126f3f881",
+        "bytes": 4890
+      }
+    ],
+    "hits": [],
+    "thinTargetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+    "thinUndefinedAXImports": [
+      "_AXIsProcessTrustedWithOptions"
+    ],
+    "limitations": [
+      "No literal match is not proof of no computed/encrypted name or dlopen/dlsym construction.",
+      "AX bootstrap via frameworks outside the frozen bundle is not ruled out.",
+      "No native runtime or nil-field diagnosis performed."
+    ]
+  }
+}

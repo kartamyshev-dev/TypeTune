@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-15T21:00:55.565023+03:00",
+  "appExecutableSHA256": "e1c52501a439acf1fe71c594275d95903a7f8c56f2016a49fbbd8567c61c0dec",
+  "guiSourceCommit": "cc24f7b",
+  "chromeVersion": "155.0.8059.40",
+  "cases": 6,
+  "passed": 6,
+  "observations": [
+    "chromium-gui-rich-wrong.json",
+    "chromium-gui-rich-correct.json",
+    "chromium-gui-plain-wrong.json",
+    "chromium-gui-plain-correct.json",
+    "chromium-gui-plain-stream20.json",
+    "chromium-gui-rich-stream20.json"
+  ],
+  "processes": "8132 /Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+  "uiStatus": "Работает; auto RU/EN on; AX renewed through System Settings for same app path",
+  "scope": "isolated Chrome fixture ONLY; real Codex composer NOT_RUN",
+  "continuation": "LayoutPilot left running at explicit user request; other known switchers absent",
+  "sourceRestoration": "test helper defer restores exact initial TIS source each run; no clipboard use by helper",
+  "screenshots": [
+    "research/private/chromium-gui-verification.png",
+    "research/private/chromium-pilot-running.png"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "LP-F14-TRIGGER-20261016-01",
+  "date": "2026-10-16",
+  "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "method": "Ghidra12.1.4 existing persistent project readOnly/noanalysis plus cached REA; SHA guard",
+  "imports": 0,
+  "newSemanticBodies": [
+    "0x100042364"
+  ],
+  "bodyLimit": 6,
+  "newReaEvidenceIds": [],
+  "projectFilesUnchanged": 9,
+  "javaRemaining": false,
+  "runtimeObserved": false,
+  "cachedReaEvidenceIds": [
+    "ev_e32289eb3e357ec8d496c1023b5a756031e22c46f0f1cc2d84521461e7c6968f"
+  ],
+  "artifacts": [
+    {
+      "path": "research/private/f14-trigger-initializer.txt",
+      "sha256": "d319be96f060e204bf92a7ec26403b10930a18ab6748a63888795acd9773ddf7"
+    },
+    {
+      "path": "research/private/f14-trigger-table.txt",
+      "sha256": "14bd3014b244473670c8730be699874367845c90e6c28d6c3f1b855983e2d3f1"
+    },
+    {
+      "path": "research/private/f14-trigger-xrefs.txt",
+      "sha256": "d1214577b9a9c2ac2b0a8d21f394ca68477f431d33d753b4e408c13286038526"
+    },
+    {
+      "path": "research/private/f14-trigger-cached-dispatch.json",
+      "sha256": "5c795bd9c65584c4fab3968b75e7f037cf65d404de0bc173c1b1d2b94f9adc20"
+    },
+    {
+      "path": "research/private/stats-table-followup.txt",
+      "sha256": "fd34f3479fa2a8e976fd68aa68bcc7fec2bb459f49ecb3126d05c0bf44640de5"
+    },
+    {
+      "path": "research/private/stats-writer-followup.txt",
+      "sha256": "f78edaedadb4ea02f94f5dd00149e9e7891046d6ecc443d726b83c259fdc724e"
+    },
+    {
+      "path": "research/private/stats-last-writer-followup.txt",
+      "sha256": "3047ad3b398967b29758c7c15f77cf856d2f1c45e718d1a3b8ca50b3c3bbfa45"
+    },
+    {
+      "path": "research/private/f14-engine-interface.txt",
+      "sha256": "8cbe7035cd925dbfbb10dbf561b8085d9132e33f0b466691ab26af3267a48e44"
+    },
+    {
+      "path": "research/private/f14-final-consumers.txt",
+      "sha256": "d19b4b977710e9be7031d90825cae13051dae647b20c34b9c597ee3b39bda419"
+    },
+    {
+      "path": "research/private/f14-trigger-project-before.json",
+      "sha256": "9d4d904540bf32ee35903ec26f21ea38481d0daadbcdf5a4ae7c55f798a3386c"
+    },
+    {
+      "path": "research/private/f14-trigger-project-after.json",
+      "sha256": "9d4d904540bf32ee35903ec26f21ea38481d0daadbcdf5a4ae7c55f798a3386c"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F14T-01",
+      "kind": "observed-static",
+      "anchors": [
+        "0x100042364",
+        "0x1000423c0..0x100042450",
+        "0x100590750..0x10059088f"
+      ],
+      "claim": "Event dictionary has8 records of40B; callbacks resolve to five NSUserDefaults statistics increment writers; collision is absent from this exact table."
+    },
+    {
+      "id": "F14T-02",
+      "kind": "observed-static",
+      "anchors": [
+        "0x100042704",
+        "0x1000428e0",
+        "0x10002f390",
+        "0x10002f778",
+        "0x10002fb64",
+        "0x10002ff50",
+        "0x10003040c"
+      ],
+      "claim": "Known event callback chains increment defaults counters by1 and update Published statistics; no known UserRules mutation/save in inspected chains."
+    },
+    {
+      "id": "F14T-03",
+      "kind": "bounded-xref",
+      "anchors": [
+        "0x1002528cc",
+        "0x10025e4e0",
+        "0x10025e53c"
+      ],
+      "claim": "All three direct255a14 callsites belong to correction dispatch or known manual rule validator; no new automatic writer found."
+    },
+    {
+      "id": "F14T-04",
+      "kind": "cached-static",
+      "anchors": [
+        "0x100252844..0x100252910"
+      ],
+      "claim": "Empty current buffer plus eligible saved correction snapshot selects previous input source and replaces in-memory correction state; not observed persistence."
+    }
+  ],
+  "unknowns": [
+    "Automatic learning trigger, if present in this version",
+    "Additions increment and undo threshold",
+    "Dynamic KVC/ObjC and other callback writers",
+    "Live persistence/readback after synthetic undo"
+  ],
+  "nextAction": "Controlled synthetic undo and exact own-test-row readback to identify a writer; no repeated generic helper queries."
+}

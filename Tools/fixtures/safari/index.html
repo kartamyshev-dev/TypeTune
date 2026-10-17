@@ -1,0 +1,18 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Неактивная fixture</title>
+<style>body{font:18px system-ui;margin:40px}textarea,[contenteditable]{display:block;min-height:100px;width:650px;border:2px solid #617499;margin:15px}</style>
+<h1 id="heading">Ожидание корректного токена</h1><main id="fixture"></main>
+<script>
+'use strict';
+const token=new URL(location.href).searchParams.get('fixture');
+if(/^LP-SAFARI-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(token||'')){
+ document.title=token;heading.textContent=token+' — только собственный синтетический ввод';
+ for(const kind of ['plain','rich']){
+  const label=document.createElement('label');label.textContent=token+' '+kind;
+  const el=document.createElement(kind==='plain'?'textarea':'div');
+  el.id=kind;el.setAttribute('aria-label',token+' '+kind);
+  if(kind==='rich'){el.contentEditable='true';el.setAttribute('role','textbox');}
+  label.append(el);fixture.append(label);
+ }
+}
+// No network, storage, clipboard, submission, autofocus, scripted text or logging.
+</script></html>

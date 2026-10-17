@@ -1,0 +1,9 @@
+{
+  "axErrors": {
+    "AXURL:-25212": 46
+  },
+  "error": "manual_exact_word_selection_not_verified",
+  "notice": "Stopped; no automatic retry or wider field access.",
+  "helperSha256": "6371a31bf42a5ffbfe739a78146e7e67a8e5f0fd89da379a5a6724cc29b93ff5",
+  "targetSha256": "94aa34c27022489f534b67c765b7abdb99b7aaf701865d1b03a4279ab2fe065d"
+}

@@ -1,0 +1,21 @@
+{
+  "notice": "Opt-in test timing and boolean checks only; capped at 1000 records.",
+  "records": [
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 86.83608333376469,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 40338.070396333336
+    }
+  ],
+  "schemaVersion": 1,
+  "session": "9E279962-5C26-4866-A722-E3E777E1EBCB"
+}

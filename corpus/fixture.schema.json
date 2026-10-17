@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LayoutPilot offline fixture v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "feature",
+    "split",
+    "category",
+    "provenance",
+    "input",
+    "expected"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "feature": {
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "train",
+        "holdout"
+      ]
+    },
+    "category": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "input": {
+      "type": "string"
+    },
+    "expected": {
+      "type": "string"
+    },
+    "originalResult": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "events": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "text",
+              "backspace",
+              "boundary",
+              "reset"
+            ]
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "initialText": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "context": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "application": {
+          "type": "string"
+        },
+        "secure": {
+          "type": "boolean"
+        },
+        "reliable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "application",
+        "secure",
+        "reliable"
+      ]
+    },
+    "settings": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Full Codable Settings snapshot; omitted means default Settings."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "archive": "dist/LayoutPilot-0.1.0-a840f0415c12-arm64.zip",
+  "archiveSha256": "7d019de9ad410353779a92a34be1e70a9210372933b80e8d71f63861eb703232",
+  "sourceCommit": "a840f0415c1278c3d907ca018b219568491cf553",
+  "compiledSourceCommit": "7e0ad86b4e3b8caa4b37c13866fb8b0c029ec899",
+  "manifestFilesVerified": 60,
+  "extractedBundleIdentical": true,
+  "extractedExecutableSha256": "38a0d4fd41e5aa96842dcbb097402a6f593423beecb44fe712984a33e37a41a0",
+  "signatureValid": true,
+  "extractedCLISelftest": "584/584 offline invariants passed; 0 failures. No runtime input claim.",
+  "guiLaunchFromExtractedApp": true,
+  "launchPath": "/Users/kartamyshev/git/caramba/dist/LayoutPilot.app",
+  "launchMethod": "Extracted byte-identical bundle copied to the same authorized path; original own bundle preserved privately.",
+  "launchNativeProbe": "research/evidence/gesture-fix-archive-launch-native.json",
+  "launchPID": 85874,
+  "postLaunchCorrectionPassed": true
+}

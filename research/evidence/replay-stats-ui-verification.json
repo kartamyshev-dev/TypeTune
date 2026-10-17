@@ -1,0 +1,12 @@
+{
+  "targetSha256": "944f9ccec18becc8fb72e2ca991582443aa7231ee21ff0399f5cd04e76707455",
+  "nativeUIObserved": true,
+  "fiveActionCategoriesVisible": true,
+  "soundCountVisibleInAX": true,
+  "legacyHistoryLabelVisibleInAX": true,
+  "estimatedWeightsDisclosureVisibleInAX": true,
+  "screenshotReviewed": true,
+  "storeProbe": "replay-stats-store-probe.json",
+  "nativeEvents": "replay-stats-textedit-smoke.json",
+  "notice": "Observed own statistics UI after synthetic Chrome/TextEdit input. Original runtime overrides and original native UI parity not claimed."
+}

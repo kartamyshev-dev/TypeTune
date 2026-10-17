@@ -1,0 +1,14 @@
+.build/
+.swiftpm/
+.DS_Store
+dist/
+research/private/
+research/tools/
+research/rea-workspace/
+*.ghidra*
+*.gpr
+*.rep/
+*.log
+
+__pycache__/
+*.pyc

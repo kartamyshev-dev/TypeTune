@@ -1,0 +1,10 @@
+{
+  "bundleIconFile": "AppIcon",
+  "iconMatchesSource": true,
+  "signatureVerified": true,
+  "architecture": "arm64",
+  "appIconSha256": "31af2cea2f4d67b0aac3c28a77e0d71b4dbb7876f90066465d85782b598bf1a9",
+  "coverSha256": "215f4e067f90200222a7ab22e107a8408ab7422ebaf81519f8d5c95ac0c9423d",
+  "nativeUI": "NOT_RUN",
+  "installedAppUpdated": false
+}

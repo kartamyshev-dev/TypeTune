@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "guiSHA256": "6a93cdc9bbf1aff55c5fcab3c525d9b62a13f6aa16b7601da167f445c52eed5e",
+  "targetBundleSha256": "fd91372a5a3904a4754df2d3531eaf3f03745327496dabdca307fb996bad27e1",
+  "checks": {
+    "short-caps-word-plain": true,
+    "short-caps-word-rich": true,
+    "short-caps-post-paste-space-plain": true,
+    "short-caps-post-paste-space-rich": true,
+    "short-caps-single-clipboard-plain-block2": true,
+    "short-caps-single-clipboard-rich": true,
+    "short-caps-textedit-verification": true,
+    "short-caps-textedit-smoke-verification": true,
+    "short-caps-shift-regression-verification": true,
+    "sourceAndResourcesUnchanged": true
+  },
+  "allListedChecksPassed": true,
+  "fullAcceptance": false,
+  "knownFailure": "First standalone plain paste block skipped; other independent Chrome controls also skip; F07 unresolved. Prior 5d6a TextEdit two gesture misses not explained.",
+  "notice": "Only named cases, exact source/resources; no real Codex composer, 1000-case comparison or 30min acceptance."
+}

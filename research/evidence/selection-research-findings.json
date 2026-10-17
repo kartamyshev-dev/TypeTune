@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "method": "existing cached REA Evidence and frozen resource read; no new import/runtime",
+  "sourceFiles": [
+    {
+      "privateFile": "research/private/hotkey-evidence-bundle.json",
+      "sha256": "407cb9addf51070f471c401ac97c5b43e937799e1714745a13d0e2bd523548ab"
+    },
+    {
+      "privateFile": "research/private/retyping-pseudocode-rest.json",
+      "sha256": "ba4327161502a2ab477684a22232d3f335ad8e9aa6e5a5dfbee1e0e95e50646a"
+    },
+    {
+      "privateFile": "research/private/retyping-pseudocode-page.json",
+      "sha256": "0527a4b37b3a0d6179240f382d55b87a64e6df26a3ea6b4b12f580a52e435f08"
+    },
+    {
+      "privateFile": "research/private/Caramba Switcher Pro.app/Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+      "sha256": "074010d04220c1d0438d07acd29fac65204d9791eae7729eb4cd645b25df4daa"
+    }
+  ],
+  "knownRecords": [
+    {
+      "evidenceId": "ev_69c60ebb97abfe5a0c3c2bdb9fd16c9e31432ef12bf53b7984cf7021ba00845f",
+      "parameters": {
+        "procedure": "0x1002516ec"
+      },
+      "bodyAddressCaution": "requested address can be interior; use returned function definition/entry",
+      "operation": "procedure_pseudo_code"
+    },
+    {
+      "evidenceId": "ev_6a01a7b57c19fe099f11b87374ca21b2260cd82f3f0ce1760574d5589b8d6189",
+      "parameters": {
+        "procedure": "0x100022cb4"
+      },
+      "bodyAddressCaution": "requested address can be interior; use returned function definition/entry",
+      "operation": "procedure_pseudo_code"
+    },
+    {
+      "evidenceId": "ev_e32289eb3e357ec8d496c1023b5a756031e22c46f0f1cc2d84521461e7c6968f",
+      "parameters": {
+        "procedure": "0x100253e18"
+      },
+      "bodyAddressCaution": "requested address can be interior; use returned function definition/entry",
+      "operation": "procedure_pseudo_code"
+    }
+  ],
+  "findings": [
+    {
+      "id": "SEL-01",
+      "status": "observed-pseudocode",
+      "procedure": "0x100251f20",
+      "branchRegion": "after label0x100253820",
+      "condition": "derived local buffer length zero OR predicate0x1002e3b90 true",
+      "calls": [
+        {
+          "address": "0x100259288",
+          "markerAddress": "0x10042841d",
+          "markerByteLength": 24,
+          "marker": "caramba_selection_switch"
+        },
+        {
+          "address": "0x10025935c",
+          "arguments": "available input source pointer/count pair, ABI requires instruction corroboration"
+        }
+      ]
+    },
+    {
+      "id": "SEL-02",
+      "status": "observed-pseudocode",
+      "procedure": "0x100251f20",
+      "otherBranchMarker": "caramba_doubleshift",
+      "markerAddress": "0x10042840a",
+      "markerByteLength": 19,
+      "claim": "Nonempty local word branch continues separate existing retype path."
+    },
+    {
+      "id": "SEL-03",
+      "status": "unknown",
+      "claim": "Text acquisition, Cmd+C, transform, multiline segmentation, paste and clipboard restore inside selection callee not obtained."
+    },
+    {
+      "id": "SEL-04",
+      "status": "observed-arm64",
+      "procedure": "0x10025935c",
+      "claim": "Cmd+C key8/mod100000 at2593a8-2593b0; sleep200ms; read helper2598ac; writer259998 receives transformed string; Cmd+V key9/mod100000 at2596a8-2596b0; sleep200ms; writer receives saved string at2596e0-2596e8."
+    },
+    {
+      "id": "SEL-05",
+      "status": "observed-arm64-and-pseudocode",
+      "procedure": "0x10024b614",
+      "claim": "UTF8 Unicode whitespace trim returns substring pointer and byte length; no character count or editor read."
+    },
+    {
+      "id": "SEL-06",
+      "status": "observed-arm64",
+      "procedure": "0x1002516ec",
+      "claim": "Idle firstpress >100ms; firstrelease <300ms; secondpress <300ms; secondrelease <750ms, same side identity; press/release mapping from prior dispatch pseudo."
+    },
+    {
+      "id": "SEL-07",
+      "status": "inferred-static",
+      "claim": "Helpers2598ac/259998 strongly inferred clipboard read/write by CmdC/CmdV dataflow; exact types/errors/clipboardchange guard unverified."
+    },
+    {
+      "id": "SEL-08",
+      "status": "observed-arm64-and-pseudocode",
+      "procedures": [
+        "0x1002598ac",
+        "0x100259998"
+      ],
+      "claim": "Both use NSPasteboardTypeString at import55d3c0; read nil returns empty Rust String; writer array count1; Rust UTF8 converts to NSString; no other-type snapshot."
+    },
+    {
+      "id": "SEL-09",
+      "status": "observed-arm64",
+      "procedure": "0x100259998",
+      "claim": "No write-return validation after call260304; NSArray nil panics; changeCount/ownership guard absent in caller. Underlying wrapper exceptions not analyzed."
+    },
+    {
+      "id": "SEL-10",
+      "status": "inferred-from-observed-dataflow",
+      "procedures": [
+        "0x10025935c",
+        "0x1002598ac",
+        "0x100259998"
+      ],
+      "claim": "Original selection save/restore preserves only prior string; no caller guard protecting unrelated/newer clipboard. Exact read/write wrapper selectors remain unexpanded."
+    }
+  ],
+  "missingProcedures": [
+    {
+      "address": "0x10025c2e8",
+      "question": "Selection segmentation and LF/TAB/whitespace behavior"
+    },
+    {
+      "address": "0x10025043c",
+      "question": "Per-part transformation and layout weight accumulation"
+    },
+    {
+      "address": "0x1002e3b90",
+      "question": "Predicate selecting clipboard path instead of word buffer"
+    }
+  ],
+  "requestedNextBatchExecuted": true,
+  "runtimeAcceptance": false,
+  "ghidraComplement": {
+    "provider": "Ghidra12.1.4",
+    "flags": [
+      "-process caramba-arm64",
+      "-noanalysis",
+      "-readOnly",
+      "-max-cpu 2"
+    ],
+    "targetShaVerifiedByScript": true,
+    "exitCode": 0,
+    "successMarker": "SELECTION_PROBE_SAVED",
+    "reaEvidenceId": null,
+    "newPseudoCount": 2,
+    "newImports": 0,
+    "privateFileSha256": {
+      "research/private/CarambaSelectionProbe.java": "65407be9b9c57ea5e7888e66f84698c1bce8c7aa99caa94e35e30936b9eed196",
+      "research/private/selection-followup.txt": "a09df8a5d7340b3b07fb0b343152f6cc3a75d1302360d74d1469aeb49ead2933",
+      "research/private/selection-followup.log": "ce9bf3b693f367422dfa52a9ef6c9c2b260c7cf2502cf61ceb08d4e3c6f72c4d",
+      "research/private/selection-followup-script.log": "2d1419a002d0969b4b78af30de499d591727adbdbc8d1d845eda288c7cef06b8"
+    }
+  },
+  "clipboardGhidraComplement": {
+    "provider": "Ghidra12.1.4",
+    "flags": [
+      "-process caramba-arm64",
+      "-noanalysis",
+      "-readOnly",
+      "-max-cpu 2"
+    ],
+    "targetShaVerifiedByScript": true,
+    "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+    "exitCode": 0,
+    "successMarker": "CLIPBOARD_PROBE_SAVED",
+    "reaEvidenceId": null,
+    "newPseudoCount": 2,
+    "newImports": 0,
+    "privateFileSha256": {
+      "research/private/CarambaClipboardProbe.java": "c2459c60e229f22f02f867206544d06a7121a0caacaf1370526361cc8f238b0a",
+      "research/private/selection-clipboard-followup.txt": "5c177ef47a1801b3c944864916e195e6028bec361c1c82d9dc47d032e72b5e55",
+      "research/private/selection-clipboard-followup.log": "c70a4e2f17bd6715333b67e6ce38981f2bce6ddbe2940bc65b8b11a377098994",
+      "research/private/selection-clipboard-followup-script.log": "7d095a361695e1386bb620c54a8774a6dcd7d247ea2f1a8ca17f6086e72bc8cc"
+    }
+  },
+  "remainingClipboardLimits": [
+    "Exact ObjC selector/body of wrappers260258/2601f0/260370/260304 not queried in two-body budget.",
+    "Native AppKit generated type representations not observed; no runtime test or personal clipboard accessed."
+  ]
+}

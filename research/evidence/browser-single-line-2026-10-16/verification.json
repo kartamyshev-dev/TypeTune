@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "scope": "Isolated runtime observations on working-tree app; not strict native-suite, long-session, release or original parity acceptance",
+  "targetIdentityUnchanged": true,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "cdfc6b794fa1e89e48b8957f9de0eb0d15479af8d210a00391373a47d6687744",
+    "targetBinarySha256": "080bd487db570e070b8a52ada9a5e3f1df403e7c98b4417557d73491a463cd1d",
+    "probeSourceSha256": "e7816642ac8669a3ab1b66a2e690f0eed8c19a5521e58bf9c10897aee485df24",
+    "probeBinarySha256": "b76b4de99a4102db9920c9887688b182390febcbc430fa3a981ac549177b011b",
+    "targetProcess": {
+      "pid": 58248,
+      "command": "/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+      "started": "Fri Oct 16 19:09:05 2026"
+    }
+  },
+  "chrome": [
+    {
+      "file": "accepted-plain-type-correct.json",
+      "sha256": "10e67ee2dc9fbb5549eb87dfb267789a6999bb3ac0bd273dc82979e90bb97f0f",
+      "mode": "type-correct",
+      "passed": true
+    },
+    {
+      "file": "accepted-plain-type-manual.json",
+      "sha256": "bc235d49f86c0f4506ca7a877ac5c77d36f8bc8b5107c837fdd47a30484efb15",
+      "mode": "type-manual",
+      "passed": true
+    },
+    {
+      "file": "accepted-plain-type-wrong.json",
+      "sha256": "d77d2cbb752355ed0da567bdb01bd8266893baf4131bb935e175e931346ef88a",
+      "mode": "type-wrong",
+      "passed": true
+    },
+    {
+      "file": "accepted-rich-type-correct.json",
+      "sha256": "0ab680e4a0b9f05cedac574499e22f38283835af55fc927d5f83b3fa5eee78b0",
+      "mode": "type-correct",
+      "passed": true
+    },
+    {
+      "file": "accepted-rich-type-manual.json",
+      "sha256": "496a84aff3db1d086a39160b367287c2a137aecf374fb795f60589fc2c8d8d42",
+      "mode": "type-manual",
+      "passed": true
+    },
+    {
+      "file": "accepted-rich-type-wrong.json",
+      "sha256": "f7ee45a3b40daa426737d8836b211a14fa71e720f252247ddfde8556519112b3",
+      "mode": "type-wrong",
+      "passed": true
+    },
+    {
+      "file": "accepted-single-type-correct.json",
+      "sha256": "678f20a13e29fa5edb740f2225f185b8775a82eccb7843e1e09d97cbc8812a48",
+      "mode": "type-correct",
+      "passed": true
+    },
+    {
+      "file": "accepted-single-type-manual.json",
+      "sha256": "6e4af994a88568b240bc7fb9a0877a88a152f0cb7618ce2fa7026b56f0684d5d",
+      "mode": "type-manual",
+      "passed": true
+    },
+    {
+      "file": "accepted-single-type-stream.json",
+      "sha256": "2473477de3087653b4f2255b3970311dd7dbcd6912b6231c457cd9bcb63289ff",
+      "mode": "type-stream",
+      "passed": true
+    },
+    {
+      "file": "accepted-single-type-wrong.json",
+      "sha256": "76fa7d58facff53663eaffc43ffd3d2aa71a4d4d12fd23d2edabc9a710229612",
+      "mode": "type-wrong",
+      "passed": true
+    }
+  ],
+  "chromeObservedPassed": 10,
+  "textEdit": [
+    {
+      "id": "auto-ru",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "auto-en",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "typo",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "double-caps",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "yo",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "digits",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "double-shift",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "manual-shortcut",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "single-shift",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "physical-punctuation",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "selected-manual",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "plain-paste",
+      "textSourceCaretMatch": true
+    },
+    {
+      "id": "auto-undo",
+      "textSourceCaretMatch": true
+    }
+  ],
+  "textEditObservedMatched": 13,
+  "textEditReceiptSha256": "64197ef5999b5214fdf8e7a7c54c29d7beb3cc494f91bf8293b00704ee634aec",
+  "settingsRestored": true,
+  "syntheticLearnedWordRemoved": true,
+  "inputSourceRestored": "com.apple.keylayout.RussianWin",
+  "modifiersNeutral": true,
+  "traceDelayAbsent": true,
+  "otherSwitchersStopped": true,
+  "signatureVerified": true,
+  "launch": "LaunchServices open -n -W. Helper child exit code not available; no processExitCode or strict-suite PASS inferred from open status.",
+  "earlierFocusStop": "final-single-type-correct.json; no automatic retry; fresh run accepted by user",
+  "permissionNegativeUI": "permission-negative-ui.json",
+  "finalUIObservation": {
+    "running": true,
+    "automatic": true,
+    "earlyCorrection": false,
+    "accessibilityAllowed": true,
+    "inputMonitoringAllowed": true,
+    "postingAllowed": true,
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "testLearnedWordAbsent": true,
+    "testTextEditDocumentClosed": true,
+    "localhostFixtureTabClosed": true,
+    "localhostServerStopped": true
+  },
+  "offlineEvidence": {
+    "releaseSelftest": "cli-final.txt",
+    "store": "store-final.txt",
+    "singleton": "singleton-final.txt",
+    "auditGates": "audit-gates.txt",
+    "identity": "identity.txt",
+    "integrity": "integrity.txt",
+    "corpus": "corpus.txt",
+    "build": "build-final.txt"
+  }
+}

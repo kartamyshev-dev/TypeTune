@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "verificationType": "offline_only",
+  "nativeEvents": 0,
+  "appsLaunched": 0,
+  "checks": 14,
+  "passed": true,
+  "commands": [
+    "python3 scripts/test_native_evidence.py",
+    "python3 -m py_compile scripts/native_evidence.py scripts/test_native_evidence.py scripts/run_native_corpus.py scripts/run_native_session.py scripts/compare_native.py scripts/verify_native_session.py"
+  ],
+  "sourceSha256": {
+    "scripts/native_evidence.py": "933e7f4ecf59e129472724e472b439421a9f7d675675f518e5d27368c93dfa99",
+    "scripts/test_native_evidence.py": "6a34c3d5c7f7e686d7bbe5a071f0253ae9af2f64faee8137ebf4f0507caa9176",
+    "scripts/run_native_corpus.py": "9a7e1a6b718fcc551062d65ad6760e7223908d3b2612eee33f190db6d2bd04fe",
+    "scripts/run_native_session.py": "3210210b8c19846cfe545863e9175e44c0007419bb713c2bb12ddac8aa839142",
+    "scripts/compare_native.py": "71fa97a1b6efc91f1fa0dc864404a9bdafbeea0280c11d017386f9e305ea477a",
+    "scripts/verify_native_session.py": "1a290f30698ca318b4f550dc79b1b4cf5fa6f3c1b7f0fb953dec041669d8e901"
+  },
+  "limits": [
+    "No native corpus/session execution",
+    "No loaded-process mapped-image hash claim",
+    "Historical binary-only records remain historical and are rejected by strict session validator",
+    "Before/after identity checks do not provide atomic filesystem/process transaction"
+  ]
+}

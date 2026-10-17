@@ -1,0 +1,121 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 27
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 27,
+      "maxMilliseconds": 0.23941666586324573,
+      "totalMilliseconds": 3.1640416782465763
+    },
+    "AXFocusedUIElement:0": {
+      "count": 27,
+      "maxMilliseconds": 25.34445833589416,
+      "totalMilliseconds": 47.107875034271274
+    },
+    "AXFocusedWindow:0": {
+      "count": 27,
+      "maxMilliseconds": 32.357291667722166,
+      "totalMilliseconds": 165.11529167473782
+    },
+    "AXRole:0": {
+      "count": 27,
+      "maxMilliseconds": 0.18549999367678538,
+      "totalMilliseconds": 1.3766666597803123
+    },
+    "AXSelectedTextRange:0": {
+      "count": 5,
+      "maxMilliseconds": 0.09241666703019291,
+      "totalMilliseconds": 0.3002083321916871
+    },
+    "AXSubrole:-25205": {
+      "count": 27,
+      "maxMilliseconds": 0.28141666552983224,
+      "totalMilliseconds": 3.3934166858671233
+    },
+    "AXValue:0": {
+      "count": 5,
+      "maxMilliseconds": 0.07354166882578284,
+      "totalMilliseconds": 0.20579167176038027
+    },
+    "AXWindow:0": {
+      "count": 27,
+      "maxMilliseconds": 0.337874997057952,
+      "totalMilliseconds": 2.239458328403998
+    }
+  },
+  "cases": 2,
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/1D496AF1-EE70-45A3-93B8-A7FCA044AF54.results.json",
+  "completed": 2,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/1D496AF1-EE70-45A3-93B8-A7FCA044AF54.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "results": [
+    {
+      "beforeGesture": {},
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/1D496AF1-EE70-45A3-93B8-A7FCA044AF54.txt",
+      "elapsedSeconds": 1.6606875416691764,
+      "events": 6,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "early-anchor-0",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghb",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 3
+      },
+      "text": "при"
+    },
+    {
+      "beforeGesture": {},
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/1D496AF1-EE70-45A3-93B8-A7FCA044AF54.txt",
+      "elapsedSeconds": 1.606942500002333,
+      "events": 12,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "early-anchor-1",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghb",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 3
+      },
+      "text": "при"
+    }
+  ],
+  "totalEvents": 18,
+  "processExitCode": 0,
+  "identity": {
+    "targetBinarySha256": "ba8e8277258feae9c0b6e22dace832f97cdad16fef3a2761c87d568b27193e3e",
+    "probeBinarySha256": "ad0747563e7862071785a7d2f398b48e721e39dcf88371c0f437716be3485134",
+    "probeSourceSha256": "2f64174f768820a1f04cfa0fd66551eada6e1522cee27e849d9c47c22f4573b1",
+    "caseFileSha256": "602cdcf8c34f90c82104cd163b96427fc60760df29842b797cd78982ba347cad",
+    "targetBundleSha256": "07d4b96449b1396465ba1236bb12eff5fb8dc72d359348f4b6ff081802fa81d8",
+    "pid": 75130,
+    "target": "prototype",
+    "sourceCommit": "1b790639b5745a531e341426bb1cb127ddea370b",
+    "sourceDirty": true,
+    "processStart": "Fri Oct 16 01:02:23 2026",
+    "probeStartUptime": 49420.9457145
+  },
+  "probeEndUptime": 49425.773636875,
+  "identityUnchanged": true,
+  "targetProcessUnchanged": true
+}

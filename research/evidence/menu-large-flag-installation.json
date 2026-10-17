@@ -1,0 +1,16 @@
+{
+  "installed_path": "/Applications/LayoutPilot.app",
+  "files_matched": 10,
+  "sha256": "e1d6899aca5a9807ab8a59048b299bf05de8d2b6f152f7d4cfb1390ebdd1d8fa",
+  "signature_verified": true,
+  "settings_preserved": true,
+  "backup": "/Users/kartamyshev/git/caramba/research/private/menu-large-flag-install/previous.zip",
+  "backup_files_verified": 10,
+  "source_sha256": "4e9d4eb0add11d2e1199c1a7814385563d8ae912aaf1dc07d5b76c6b89cc2168",
+  "flag_font_points": 20,
+  "suffix_font": "system menu bar default",
+  "ui_status": "Работает",
+  "permission_refresh": "Accessibility and Input Monitoring via System Settings; restarted",
+  "menu_bar_visual": "NOT_RUN",
+  "native_text_input": "NOT_RUN"
+}

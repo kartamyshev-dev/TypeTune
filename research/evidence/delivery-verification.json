@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "3173cfdb2c8d53b94050a5419544285e67d72af4",
+  "nativeCodeSourceCommit": "ae3f565b39a319825b7cdae8dbebc4746940f0a5",
+  "archive": "dist/LayoutPilot-0.1.0-arm64.zip",
+  "archiveSha256": "e67f2ae3bb0ca600a600810d8794f29ecb451b1e883fbd6da04fb04e3aca7d76",
+  "extractedManifestFilesVerified": 27,
+  "binarySha256": "102ad5b5e8326662751a31947a51183481a38e366b1c475db67967433e139791",
+  "matchesQualifiedNativeBinary": true,
+  "architecture": "arm64",
+  "signature": "ad-hoc, no TeamIdentifier; deep strict verification passed",
+  "notarized": false,
+  "cliSelftest": "140/140 passed from extracted delivery",
+  "gui": "Launched exact extracted executable PID216; automatic preview ghbdtn→привет observed; quit verified. No additional global-input acceptance claim.",
+  "restoration": {
+    "prototypeProcessesStopped": true,
+    "originalRunningPID": 287,
+    "source": "RussianWin",
+    "originalUICheckboxes": {
+      "option": false,
+      "shiftChordPause": false,
+      "plainPaste": true
+    },
+    "originalBundle70EntriesUnchanged": true,
+    "ownTestRulesExceptionsDiagnosticRemoved": true,
+    "systemDictionary": false,
+    "launchAtLogin": false,
+    "theme": "system"
+  },
+  "notice": "Experimental prototype, full PLAN not achieved. Sources archive is commit3173cfd; later repository commit only records delivery verification."
+}

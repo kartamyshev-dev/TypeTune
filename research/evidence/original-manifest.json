@@ -1,0 +1,349 @@
+[
+  {
+    "path": "Contents/Frameworks/CarambaSwitcherUI.framework/CarambaSwitcherUI",
+    "symlink": "Versions/Current/CarambaSwitcherUI"
+  },
+  {
+    "path": "Contents/Frameworks/CarambaSwitcherUI.framework/Resources",
+    "symlink": "Versions/Current/Resources"
+  },
+  {
+    "path": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/CarambaSwitcherUI",
+    "size": 1491984,
+    "sha256": "31e915394d99184e19aaa1a454d289762404ff57610ba28de1498c1233231d9a"
+  },
+  {
+    "path": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/Resources/Info.plist",
+    "size": 1330,
+    "sha256": "db5735ef67397c674cd2c78ac99028fa0099d42c3bfb37c53df2b83304b00774"
+  },
+  {
+    "path": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/A/_CodeSignature/CodeResources",
+    "size": 2442,
+    "sha256": "fe0b008f53696e2fb141b5ac1179f73b1c7e6522e34b5a8477e8f8c625e4724d"
+  },
+  {
+    "path": "Contents/Frameworks/CarambaSwitcherUI.framework/Versions/Current",
+    "symlink": "A"
+  },
+  {
+    "path": "Contents/Info.plist",
+    "size": 2017,
+    "sha256": "b13a795840ed0e15b9179511abf030f802cf63fe96f62f00f1637ed5b854c0b4"
+  },
+  {
+    "path": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/Info.plist",
+    "size": 930,
+    "sha256": "7ffb589ded1bd8a697780df6cab073030c7667bed637ef0a1a1923dccc1b764d"
+  },
+  {
+    "path": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/MacOS/LaunchAtLoginHelper",
+    "size": 181472,
+    "sha256": "51da24948a8d2993a134b01a79b3c01872bbdc59cd6aeb467c214d620732fa63"
+  },
+  {
+    "path": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/PkgInfo",
+    "size": 8,
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+  },
+  {
+    "path": "Contents/Library/LoginItems/LaunchAtLoginHelper.app/Contents/_CodeSignature/CodeResources",
+    "size": 2200,
+    "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+  },
+  {
+    "path": "Contents/MacOS/Caramba Switcher Pro",
+    "size": 13303536,
+    "sha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+  },
+  {
+    "path": "Contents/PkgInfo",
+    "size": 8,
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+  },
+  {
+    "path": "Contents/Resources/AppIcon.icns",
+    "size": 59666,
+    "sha256": "837973d70d929b7dbe0a4ac0892a688022504d7d64c487c487becf1a2d73c3c2"
+  },
+  {
+    "path": "Contents/Resources/Assets.car",
+    "size": 3288856,
+    "sha256": "9142cfd67c9f0c85b898ab3921c397f9a45faddf56cdfef843453e2769b593f8"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Exceptions.storyboardc/HnZ-6l-BZb-view-sPD-NJ-36b.nib",
+    "size": 39426,
+    "sha256": "b81912e41154878185dc53012761ae26024321a1c164cbfc99486b906bf8656b"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Exceptions.storyboardc/Info.plist",
+    "size": 424,
+    "sha256": "dfa522a3fa421a1746f60b79b1d3bf0f95f2816edd0e12364671d8a50189858c"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Exceptions.storyboardc/NSViewController-HnZ-6l-BZb.nib",
+    "size": 1597,
+    "sha256": "62dd3a0ea44c76dd858cbb1d0b51a1d9415e183c12842c4d3a08341381bf6ec4"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Main.storyboardc/2Hm-E1-tLy-view-WNg-r1-MSk.nib",
+    "size": 11010,
+    "sha256": "8ffc55f5d069bb7d7d006b6f4aff7e0057b9c33fad9261464edd4d6295c8d58f"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Main.storyboardc/Info.plist",
+    "size": 395,
+    "sha256": "3fcb3be075d1ffc98e1f5f3b3b6ef3e4196ead596c286386fcdeb009a4b49bc0"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Main.storyboardc/JSG-z5-Z8W-view-sRb-va-8yw.nib",
+    "size": 11010,
+    "sha256": "62afc6d993d20f0bd25e848aaa790252d61e73779fe89383dedf0b82ecd88e3e"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Main.storyboardc/MainMenu.nib",
+    "size": 20113,
+    "sha256": "281b3cc4f269b30d65c4fa4e7c837ae5d8150cdcecff11cd6469d1d963fba3e1"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Main.storyboardc/SplitshiftDisabled.nib",
+    "size": 3052,
+    "sha256": "d3a5deac49e7d7c1ae2c84468af2e8bafb3709ef7269985392818303909af612"
+  },
+  {
+    "path": "Contents/Resources/Base.lproj/Main.storyboardc/SplitshiftEnabled.nib",
+    "size": 3051,
+    "sha256": "8aa2385cea536968d0197f65f19f4d2732a8e69e690d2242fa5411e3725caed5"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.2.mom",
+    "size": 4393,
+    "sha256": "bcb9fcec547a5dc40e9d5dcecb809137e4ce5dd6270f1f74a1aa6fe78d841fbf"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.3.mom",
+    "size": 3884,
+    "sha256": "86ac599466d4f1f5b1324dfd3c5e53b3c0e6c364082d493d76fa5afc6945c5de"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.4.mom",
+    "size": 3566,
+    "sha256": "f7739f968b5837379f29dde60b26e4355aebc56c1946019f39118877d410fac3"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.5.mom",
+    "size": 3688,
+    "sha256": "b02279cb57294bdf97940a1049abda9da552a952a28773eaca52c277f264713d"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.6.mom",
+    "size": 3113,
+    "sha256": "93bf5548b80e1b77bcdde9b42f28422c8a6c58700eabd8135effe0704b52f588"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.7.mom",
+    "size": 3112,
+    "sha256": "c67ec56d8fca4aec402e5468a91dc2aa67c578af47e074b6515c6bfaf2801914"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.8.mom",
+    "size": 3590,
+    "sha256": "309116244e07a0e8df5b7d7b05a3e2061a4fb2e284b6ff83c7a47a24384e6f78"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.8.omo",
+    "size": 4280,
+    "sha256": "14322d29a2cfee42b5bb90f48b92dee34056e581ca91615a331794938d5b7b68"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/Caramba.mom",
+    "size": 3884,
+    "sha256": "86ac599466d4f1f5b1324dfd3c5e53b3c0e6c364082d493d76fa5afc6945c5de"
+  },
+  {
+    "path": "Contents/Resources/Caramba.momd/VersionInfo.plist",
+    "size": 1342,
+    "sha256": "47ebe940dd66b5b4657e5528327c3942f32a3cf9178ebd6b9bdb52e2888b7e41"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaAccessibility.bundle/Contents/Info.plist",
+    "size": 1284,
+    "sha256": "f2b2a9ebe1eb71fa502cf5a61d7f6e1cd7c8cd255a8f9dafe95601181827e355"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaAccessibility.bundle/Contents/Resources/en.lproj/Localizable.strings",
+    "size": 880,
+    "sha256": "8bc0d3c2a118b3835e35c74c1ee9d48fa09645fe5356dad0b7a3c53b7a395e73"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaAccessibility.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+    "size": 1122,
+    "sha256": "29b24467473254f8bab3ae8513e199fd430b9ef72b1df5b08028344db3d0276f"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaCore.bundle/Contents/Info.plist",
+    "size": 1266,
+    "sha256": "2568314ccc83ec7f593459cb86eca4a032af18fc4a0ec7c536ba42a7b5749a27"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaCore.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+    "size": 480,
+    "sha256": "06c0b6b477fc52848cd7aef3cf350f62e7a040aa739e2f8cd33e4d3e3afa7130"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Info.plist",
+    "size": 1292,
+    "sha256": "7e25f17c2dcc1be6f54fc0a9aac02c9d3b54537d74325ff3fd9b8a325823eafe"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ar.lproj/Localizable.strings",
+    "size": 756,
+    "sha256": "3ea6f67d065cb035835a378b5d39953085b2201723574c2e3ad770c8999f3664"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/cs.lproj/Localizable.strings",
+    "size": 500,
+    "sha256": "44411c3e4c94fa6ea9a6529df17e6510661116f90f52bd4d3e7a53d4ccf69cc0"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/de.lproj/Localizable.strings",
+    "size": 584,
+    "sha256": "44070f2f442073cfd3035952fd81329ce35212784a87c9f19224f60ad5e8830d"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/en.lproj/Localizable.strings",
+    "size": 563,
+    "sha256": "f2458e8b5dbfa169c20a4c523389601a381c4ed75f16a2c2afc8ddc1c83e234c"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/es.lproj/Localizable.strings",
+    "size": 608,
+    "sha256": "c099a627fd4ab5998585c79e3cdeec1211e3f304b2aed4f0ef0f8ea61a4fdcf8"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/fr.lproj/Localizable.strings",
+    "size": 601,
+    "sha256": "4c4d5d00c5b438740bd4d5fe4b75b365ad46a5a5d88cc43ba433fedc3748144c"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/hu.lproj/Localizable.strings",
+    "size": 599,
+    "sha256": "0e1581063eb871ce476036e83f39486b5dfa7275b0ff799a2e08720d08a73c89"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ja.lproj/Localizable.strings",
+    "size": 613,
+    "sha256": "243fb41c3521cdd358eae13aa469aac07da8c12dabd0a2c71f0437352a712bb6"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ko.lproj/Localizable.strings",
+    "size": 602,
+    "sha256": "8c430a55ecb1e4e43a4d7b33c52c69fbbcd430accae2304046417649cc617517"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/nl.lproj/Localizable.strings",
+    "size": 580,
+    "sha256": "a22f9c04086c4eef36c73b08b796c17296822ebae7444a38f042985291c56391"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/pt-BR.lproj/Localizable.strings",
+    "size": 520,
+    "sha256": "6b5e04c16b70c4088e8cb9401f5d2742faf154df44844f246bbb47702083a0a1"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+    "size": 759,
+    "sha256": "86001b75048329c872b2c32ca8adfdbf75bb989700ca64438aaf5b4871d13688"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/sk.lproj/Localizable.strings",
+    "size": 672,
+    "sha256": "c9875c8b5c90b1a570902b7fd6f3703f29996cd1b53596d1ca27e7d0ea2d2470"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/zh-Hans.lproj/Localizable.strings",
+    "size": 492,
+    "sha256": "77913be8bc8078d928a0e1093672f4bb6bd8bc4dc5e0b018b9e6da764ae43640"
+  },
+  {
+    "path": "Contents/Resources/CarambaKit_CarambaKeyboardShortcuts.bundle/Contents/Resources/zh-TW.lproj/Localizable.strings",
+    "size": 467,
+    "sha256": "95636848606abf86c30850df6319d2cb3c73d6cffbdeec4394fea4e6ee15f1d7"
+  },
+  {
+    "path": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Info.plist",
+    "size": 1291,
+    "sha256": "ea0677139ac3178971722d3b1b0dba816862a473281cb7244622e59f31a1ff9d"
+  },
+  {
+    "path": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/Assets.car",
+    "size": 191128,
+    "sha256": "cf54b2dc4b225d3032938c88991011bb8e21d827be5ed10297bfef9c0334622e"
+  },
+  {
+    "path": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/Sen.ttf",
+    "size": 50824,
+    "sha256": "5a2d5777100be28024b4f28505d678c006bc52e9d9fa78f554a1252b5f254c77"
+  },
+  {
+    "path": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/en.lproj/Localizable.strings",
+    "size": 13782,
+    "sha256": "b5d747bd6c81a5ddd7beef5c9852d94f77b9cb7232a0ce59e524a05c0a6ab1c2"
+  },
+  {
+    "path": "Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/ru.lproj/Localizable.strings",
+    "size": 15560,
+    "sha256": "074010d04220c1d0438d07acd29fac65204d9791eae7729eb4cd645b25df4daa"
+  },
+  {
+    "path": "Contents/Resources/en.lproj/Exceptions.strings",
+    "size": 2062,
+    "sha256": "f568fd7d6c42449587bf54c4c270733e012df3fed86871ea577358bf51f6ae90"
+  },
+  {
+    "path": "Contents/Resources/en.lproj/Localizable.strings",
+    "size": 16192,
+    "sha256": "5aa702b849bbdad26851a9150b1f0b1ff3d277e04461eceb289469dc871ee0bb"
+  },
+  {
+    "path": "Contents/Resources/en.lproj/Localizable.stringsdict",
+    "size": 1214,
+    "sha256": "31746fc9e5ea675ccd6027d65424140601cd0eb30eb9019f8a5a4ae839e5c4d6"
+  },
+  {
+    "path": "Contents/Resources/en.lproj/Main.strings",
+    "size": 3550,
+    "sha256": "4e2a9c3ba463718675021954b726f4c0098073f216c74e652df043fe61325aa9"
+  },
+  {
+    "path": "Contents/Resources/ru.lproj/Exceptions.strings",
+    "size": 2132,
+    "sha256": "d8c23393eb450a27fb8933b7bef32b3f1258d6eabcd9840f7f7b0b40540cf500"
+  },
+  {
+    "path": "Contents/Resources/ru.lproj/Localizable.strings",
+    "size": 16962,
+    "sha256": "a9ec7c1a4e20d4f9f8d5b03935e7c0e889e5aa14495d1b80baeecac476c46fdc"
+  },
+  {
+    "path": "Contents/Resources/ru.lproj/Localizable.stringsdict",
+    "size": 1456,
+    "sha256": "cf84255ed9fab6a0e5154da3fbf996498ee8364dea626180b554e970c3c09038"
+  },
+  {
+    "path": "Contents/Resources/ru.lproj/Main.strings",
+    "size": 1408,
+    "sha256": "bb336647688c7c4476a523388dfeb106e979db8cc31a9b9a7e7a58ea3f5d37cc"
+  },
+  {
+    "path": "Contents/_CodeSignature/CodeResources",
+    "size": 23930,
+    "sha256": "ecf5addcbc18b904c6e6f9704a903035d80569e714dbc95e727f102dffdd7b25"
+  },
+  {
+    "path": "Contents/_MASReceipt/receipt",
+    "size": 4890,
+    "sha256": "17abc7d5ccd6886d7801180313a8238fd90089bc8f79d31d2ab0818126f3f881"
+  }
+]

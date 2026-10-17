@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "method": "Ghidra12.1.4 existing persistent project readOnly/noanalysis; cached REA corroboration; no runtime",
+  "newImports": 0,
+  "reaNewEvidenceIds": [],
+  "scriptShaChecks": true,
+  "pseudoBodies": [
+    {
+      "requestedAddress": "0x100010310",
+      "entryAddress": "0x100010310",
+      "privateFile": "research/private/f14-background-save.txt"
+    },
+    {
+      "requestedAddress": "0x100259288",
+      "entryAddress": "0x100259288",
+      "privateFile": "research/private/f14-engine-interface.txt"
+    },
+    {
+      "requestedAddress": "0x10025e364",
+      "entryAddress": "0x10025e364",
+      "privateFile": "research/private/f14-engine-interface.txt"
+    },
+    {
+      "requestedAddress": "0x10025ed64",
+      "entryAddress": "0x10025ed64",
+      "privateFile": "research/private/f14-engine-interface.txt"
+    },
+    {
+      "requestedAddress": "0x100042568",
+      "entryAddress": "0x100042568",
+      "privateFile": "research/private/f14-event-bridge.txt"
+    },
+    {
+      "requestedAddress": "0x100042704",
+      "entryAddress": "0x100042704",
+      "privateFile": "research/private/f14-final-consumers.txt"
+    },
+    {
+      "requestedAddress": "0x10000e834",
+      "entryAddress": "0x10000e834",
+      "privateFile": "research/private/f14-final-consumers.txt"
+    },
+    {
+      "requestedAddress": "0x10000e0c4",
+      "entryAddress": "0x10000e0c4",
+      "privateFile": "research/private/f14-pattern-refresh.txt"
+    },
+    {
+      "requestedAddress": "0x10000dbb0",
+      "entryAddress": "0x10000dbb0",
+      "privateFile": "research/private/f14-pattern-refresh.txt"
+    },
+    {
+      "requestedAddress": "0x10000d7ac",
+      "entryAddress": "0x10000d7ac",
+      "privateFile": "research/private/f14-refresh-event.txt"
+    },
+    {
+      "requestedAddress": "0x100042698",
+      "entryAddress": "0x100042698",
+      "privateFile": "research/private/f14-refresh-event.txt"
+    },
+    {
+      "requestedAddress": "0x100049dc8",
+      "entryAddress": "0x100049dc8",
+      "privateFile": "research/private/f14-save-event-continuation.txt"
+    },
+    {
+      "requestedAddress": "0x1000429f4",
+      "entryAddress": "0x1000429f4",
+      "privateFile": "research/private/f14-save-event-continuation.txt"
+    },
+    {
+      "requestedAddress": "0x10000e868",
+      "entryAddress": "0x10000e868",
+      "privateFile": "research/private/f14-save-event-continuation.txt"
+    },
+    {
+      "requestedAddress": "0x10000d20c",
+      "entryAddress": "0x10000d20c",
+      "privateFile": "research/private/f14-write-d20c.txt"
+    },
+    {
+      "requestedAddress": "0x10004732c",
+      "entryAddress": "0x10004732c",
+      "privateFile": "research/private/f14-writer-closures.txt"
+    },
+    {
+      "requestedAddress": "0x100054e0c",
+      "entryAddress": "0x100054e0c",
+      "privateFile": "research/private/f14-writer-closures.txt"
+    },
+    {
+      "requestedAddress": "0x10000dd24",
+      "entryAddress": "0x10000dd24",
+      "privateFile": "research/private/f14-writer-dd24.txt"
+    },
+    {
+      "requestedAddress": "0x100049dac",
+      "entryAddress": "0x100049dac",
+      "privateFile": "research/private/f14-writer-relay.txt"
+    }
+  ],
+  "newPseudoBodyCount": 19,
+  "sourceFiles": [
+    {
+      "privateFile": "research/private/f14-background-save.txt",
+      "sha256": "eae9e27d59ab4948f030e61cf0d6f872125a7c2532a40c3ff50ba0eed53e6c39"
+    },
+    {
+      "privateFile": "research/private/f14-backgroundsave-script.log",
+      "sha256": "83371604489e8ee188f4091140195ccaff3821844e07c3dfada97f372cc5b026"
+    },
+    {
+      "privateFile": "research/private/f14-backgroundsave.log",
+      "sha256": "2ff9f52a682ad22ea1cb6682d429ba293ff825597327684d9609b5b3f86ae53f"
+    },
+    {
+      "privateFile": "research/private/f14-closures-script.log",
+      "sha256": "5dcb66b521167a2b00b2c6ef787cff985fb19d05a060b976af5dd0721394a222"
+    },
+    {
+      "privateFile": "research/private/f14-closures.log",
+      "sha256": "d0b420771e8783532816a331554f8276bfb903d748318d861fbaba8369a38bc6"
+    },
+    {
+      "privateFile": "research/private/f14-continuations-script.log",
+      "sha256": "5220ebe40a0e9abccb12fe490ac727444fdefe82cd8832dfe6f89bdf392bf252"
+    },
+    {
+      "privateFile": "research/private/f14-continuations.log",
+      "sha256": "bda2e980aaad8c5101305df03e8ea6609669734e51e1c46db346093f53ac1e92"
+    },
+    {
+      "privateFile": "research/private/f14-engine-interface.txt",
+      "sha256": "8cbe7035cd925dbfbb10dbf561b8085d9132e33f0b466691ab26af3267a48e44"
+    },
+    {
+      "privateFile": "research/private/f14-event-bridge.txt",
+      "sha256": "f3558a53dd4a98f0d47798997f78e238707109c8cd746afd299b9bcb28b8e55e"
+    },
+    {
+      "privateFile": "research/private/f14-eventbridge-script.log",
+      "sha256": "4aa5fed921dcc78122bb70b1d00f418eca65116f7c22646749723d60d264c111"
+    },
+    {
+      "privateFile": "research/private/f14-eventbridge.log",
+      "sha256": "d63b5cb4b1da637404d1a7fb7638c3ac098895363c60513446170312c9db2fa5"
+    },
+    {
+      "privateFile": "research/private/f14-final-consumers.txt",
+      "sha256": "d19b4b977710e9be7031d90825cae13051dae647b20c34b9c597ee3b39bda419"
+    },
+    {
+      "privateFile": "research/private/f14-finalconsumers-script.log",
+      "sha256": "5d6fda7a433c545daaf0bb22116cf806c28589e6536e0cea947d3dbce0560244"
+    },
+    {
+      "privateFile": "research/private/f14-finalconsumers.log",
+      "sha256": "a1950631575edaae8ef59a6275d530bf8e589eef9201711db6d52306c1885aa2"
+    },
+    {
+      "privateFile": "research/private/f14-interface-script.log",
+      "sha256": "103a5e20a36ece3d16c09d5411148f22d1c0f12d76f872b328eaa6afc989e0f6"
+    },
+    {
+      "privateFile": "research/private/f14-interface.log",
+      "sha256": "8d5a7ac303634e8175063bcd920314be6009cdf0f4f9b662a313c16c8cf5ce55"
+    },
+    {
+      "privateFile": "research/private/f14-inventory-script.log",
+      "sha256": "0be8f3e1ec00ed198475943a026f7a76cd87d255d631472949c22c1d368b4ca1"
+    },
+    {
+      "privateFile": "research/private/f14-inventory.log",
+      "sha256": "93367b1acd6a558b7c0c7b38cf81a512b095a4ed8cd04f9b52bafa26748de911"
+    },
+    {
+      "privateFile": "research/private/f14-inventory.txt",
+      "sha256": "aae093888c7bf3e2a6d7360ca0a541be1138cf7975d4297899776844cbe6f5b5"
+    },
+    {
+      "privateFile": "research/private/f14-pattern-refresh.txt",
+      "sha256": "545fbe65364c77be16db67fc94eab10360d39869f32fbbbe267fdaf3a757c323"
+    },
+    {
+      "privateFile": "research/private/f14-patternrefresh-script.log",
+      "sha256": "debd4f43fffc8dbced1d5fb10df6631992badc4d415297bd6d6dc28de481b2b7"
+    },
+    {
+      "privateFile": "research/private/f14-patternrefresh.log",
+      "sha256": "50ef9d63bc35956d755ef88a25caf16d8316ae9f0f1aeee108ce8cb0d18d779a"
+    },
+    {
+      "privateFile": "research/private/f14-refresh-event.txt",
+      "sha256": "b1a5c625779465164c1abd2f57e73cd584dc0984400df535c1e560e3e6740b89"
+    },
+    {
+      "privateFile": "research/private/f14-refresh-script.log",
+      "sha256": "455f33e5f4bc83038e42a355ee4d579c190d6940bdacb0cb8e142a31d65b8f5b"
+    },
+    {
+      "privateFile": "research/private/f14-refresh.log",
+      "sha256": "28a24026ce03cbc266dd0993b6911fb13fb0b4ce7ba3e0912c5f8fa652ae0c17"
+    },
+    {
+      "privateFile": "research/private/f14-relay-callers.txt",
+      "sha256": "60ba10142db30879bd31d4c8798843e0e26cc1d5d872f8696ab9981348408883"
+    },
+    {
+      "privateFile": "research/private/f14-relay-script.log",
+      "sha256": "251caff3122594e533517b6068ffeb7e32d26cc82edf773cc8cd3d7d710ff38f"
+    },
+    {
+      "privateFile": "research/private/f14-relay.log",
+      "sha256": "2e686e5efd9a03292def721e932ee23a13f59ad852c7d6c3df18d7cc13c4bc41"
+    },
+    {
+      "privateFile": "research/private/f14-save-event-continuation.txt",
+      "sha256": "11380ca0414df0b3cb4acc3a4a1ae03b88ad24241fd10534e1808ada730cce35"
+    },
+    {
+      "privateFile": "research/private/f14-setter-inventory-script.log",
+      "sha256": "a01ac130476f16540f799ec64b6d32159b1c71df991981cc350f63d6391a27d5"
+    },
+    {
+      "privateFile": "research/private/f14-setter-inventory.log",
+      "sha256": "83a7b6e3dd14897710b9a9e671c91a27a63a6405920b322f1d1601153429d481"
+    },
+    {
+      "privateFile": "research/private/f14-setter-inventory.txt",
+      "sha256": "1e74625c9710ad074b6ddf6e63e2bfdcdb80f5d05a63737c6e39e4430860836b"
+    },
+    {
+      "privateFile": "research/private/f14-stub-callers.txt",
+      "sha256": "7765b19effd540b2a09579a2d3224e0710bcbb58a3ba9eef452bf184e17a34b5"
+    },
+    {
+      "privateFile": "research/private/f14-write-callers.txt",
+      "sha256": "c9293756d4307d6132f79e77d0c441058e4f1d075745443517bf14f83d0cc0a6"
+    },
+    {
+      "privateFile": "research/private/f14-write-d20c.txt",
+      "sha256": "1ac0c931a8914c2133d00995869875eac2cabcfdb867cb8cc0f24cf72d792b7f"
+    },
+    {
+      "privateFile": "research/private/f14-writecall-script.log",
+      "sha256": "f1bdc6c56c1bd7d9499c7a61b96a7ab67f6b3e2348b4dc2ab6d64321391552a7"
+    },
+    {
+      "privateFile": "research/private/f14-writecall.log",
+      "sha256": "30c45f2164d2857649c9d4a4b78a8123781e5cf78057b1e28aa87351476033f7"
+    },
+    {
+      "privateFile": "research/private/f14-writer-closures.txt",
+      "sha256": "25562a0bdcd713382e76e6883f808384bfdacec2be39382faff673e70f439cda"
+    },
+    {
+      "privateFile": "research/private/f14-writer-dd24.txt",
+      "sha256": "2d423995912f384e14ce0f52dd262e83645b68a35d969e1426752b7e4793269d"
+    },
+    {
+      "privateFile": "research/private/f14-writer-relay.txt",
+      "sha256": "a54b7ca1cfc36e83d484db974ee9b45cae82ecdb60ef40f21bc59fff2295c769"
+    },
+    {
+      "privateFile": "research/private/f14-writer-script.log",
+      "sha256": "579e7bd7bb95416bbd4de5cb98fa91495d0a5fd68c3f0717d68a698c7bcd4521"
+    },
+    {
+      "privateFile": "research/private/f14-writer.log",
+      "sha256": "44b5fddaedf880ec88b29b29f993c284c8680ba1f4fc2683ec3d842db1460bcf"
+    },
+    {
+      "privateFile": "research/private/CarambaF14Inventory.java",
+      "sha256": "b60669e558365d049c8ce68199776182523badf8d733ece6243f7aae6e51460d"
+    },
+    {
+      "privateFile": "research/private/CarambaReplacementProbe.java",
+      "sha256": "1aa862420992221fe4180776ea987fca2b0bc1d7fb5762a82b84013dd85454e6"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F14-01",
+      "kind": "observed-static",
+      "claim": "Manual rule upsert00d20c sets pattern,visible=true,additions=0,disabled=false; real ObjC setter xrefs."
+    },
+    {
+      "id": "F14-02",
+      "kind": "observed-static",
+      "claim": "Manual UI callers04732c and054e0c capture writer49dac, background generic10310 invokes mutation then context.save; error and successful completion separate."
+    },
+    {
+      "id": "F14-03",
+      "kind": "observed-static",
+      "claim": "Fetchdd24 copies all four fields; refresh e0c4 requiresvisible thenvalidation and builds patternSet, no disabled condition in this body."
+    },
+    {
+      "id": "F14-04",
+      "kind": "cached-REA",
+      "evidenceId": "ev_ac920bff0a0e35a9a73540f5adf4dc23c90f2f28b74a258879f3dcfd2471acb2",
+      "claim": "04214c exact SwiftString hash membership, no normalization/regex in this body."
+    },
+    {
+      "id": "F14-05",
+      "kind": "observed-static",
+      "claim": "Event bridge042568 captures only event name, not string payload; does not establish collision→persisted word."
+    }
+  ],
+  "unknowns": [
+    "Automatic learning trigger after Backspace/undo",
+    "Meaning/increment/threshold of additions",
+    "Full disabled semantics outside refresh",
+    "Dynamic/KVC/indirect writers",
+    "Runtime save success and full model parity"
+  ],
+  "runtimeAcceptance": false
+}

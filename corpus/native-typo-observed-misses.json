@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "targetBinarySha256": "b911718f071b06d166c09a2648fa67cc21fe6c7d84651ae1ef1b6c8a88773957",
+  "sourceEvidence": "research/evidence/ax-duration-typo12.json",
+  "status": "Observed omission, not passing regression; independent synthetic workload, not holdout tuning",
+  "misses": [
+    {
+      "fixture": {
+        "id": "typo-load-8",
+        "text": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+        "source": "RussianWin",
+        "boundary": true,
+        "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+        "expectedSource": "com.apple.keylayout.RussianWin",
+        "expectedSelection": {
+          "location": 113,
+          "length": 0
+        }
+      },
+      "observed": {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.14810300000135612,
+          "firstChangeSeconds": 0.032626291667838814,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/caramba/research/private/probes/9F240A6C-C3AA-461E-9E25-78AADEBD998A.txt",
+        "elapsedSeconds": 5.168776499998785,
+        "events": 232,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "typo-load-8",
+        "inputSource": "com.apple.keylayout.RussianWin",
+        "physicalASCII": "ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ghtdtn ",
+        "requestedSource": "com.apple.keylayout.RussianWin",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 113
+        },
+        "text": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет превет  "
+      }
+    }
+  ]
+}

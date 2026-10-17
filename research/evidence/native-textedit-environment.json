@@ -1,0 +1,10 @@
+{
+  "application": "TextEdit",
+  "path": "/System/Applications/TextEdit.app",
+  "version": "1.21",
+  "build": "419",
+  "bundleIdentifier": "com.apple.TextEdit",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+  "architecture": "arm64",
+  "notice": "Environment identity only; runtime evidence listed separately."
+}

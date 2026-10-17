@@ -1,0 +1,9 @@
+{
+  "status": "stopped",
+  "error": "Text integrity failure",
+  "pid": 27732,
+  "binarySha256": "9f4af13e1168f612ac32234cc4852c937ef67848f8377facd710564f10c43d9a",
+  "medianSampleCPUPercent": 40.9,
+  "peakSampleCPUPercent": 46.3,
+  "peakRSSKiB": 55712
+}

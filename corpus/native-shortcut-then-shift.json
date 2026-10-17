@@ -1,0 +1,42 @@
+[
+  {
+    "id": "manual-shortcut",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "gesture": "manual",
+    "boundary": false,
+    "expected": "привет123",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  },
+  {
+    "id": "single-shift",
+    "text": "",
+    "source": "ABC",
+    "gesture": "singleShift",
+    "boundary": false,
+    "expected": "",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 0,
+      "length": 0
+    }
+  },
+  {
+    "id": "selected-manual",
+    "text": "hello",
+    "source": "ABC",
+    "gesture": "doubleShift",
+    "boundary": false,
+    "expected": "руддщ",
+    "selectAllBeforeGesture": true,
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "early-anchor-0",
+    "text": "ghb",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Narrow F01 context-bootstrap diagnostic: first new-document ghb then same-document ghb, trace ON/testdelay30, unchanged binary/model/guards. Original min3 result is separate evidence.",
+    "expected": "при",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 3
+    }
+  },
+  {
+    "id": "early-anchor-1",
+    "text": "ghb",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Narrow F01 context-bootstrap diagnostic: first new-document ghb then same-document ghb, trace ON/testdelay30, unchanged binary/model/guards. Original min3 result is separate evidence.",
+    "expected": "при",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 3
+    }
+  }
+]

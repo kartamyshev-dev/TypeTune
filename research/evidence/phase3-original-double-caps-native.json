@@ -1,0 +1,85 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 36
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 36,
+      "maxMilliseconds": 0.33958333369810134,
+      "totalMilliseconds": 4.864958333200775
+    },
+    "AXFocusedUIElement:0": {
+      "count": 36,
+      "maxMilliseconds": 2.831333338690456,
+      "totalMilliseconds": 6.919416657183319
+    },
+    "AXFocusedWindow:0": {
+      "count": 36,
+      "maxMilliseconds": 39.49770833423827,
+      "totalMilliseconds": 94.82808331085835
+    },
+    "AXRole:0": {
+      "count": 36,
+      "maxMilliseconds": 0.093291666416917,
+      "totalMilliseconds": 1.3200416797189973
+    },
+    "AXSelectedTextRange:0": {
+      "count": 15,
+      "maxMilliseconds": 0.5181250016903505,
+      "totalMilliseconds": 1.741958323691506
+    },
+    "AXSubrole:-25205": {
+      "count": 36,
+      "maxMilliseconds": 0.29145833832444623,
+      "totalMilliseconds": 4.002083347586449
+    },
+    "AXValue:0": {
+      "count": 15,
+      "maxMilliseconds": 0.09791666525416076,
+      "totalMilliseconds": 0.806541669589933
+    },
+    "AXWindow:0": {
+      "count": 36,
+      "maxMilliseconds": 0.21912499505560845,
+      "totalMilliseconds": 2.3982916682143696
+    }
+  },
+  "beforeGesture": {},
+  "boundary": true,
+  "boundaryObservation": {
+    "elapsedSeconds": 0.2366876666637836,
+    "firstChangeSeconds": 0.09419062500091968,
+    "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+    "performed": true,
+    "textTransitionsObserved": 2
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/A9D77F3A-8C85-43BB-AB67-C5F68DDA4375.results.json",
+  "clipboardRestore": "not_used",
+  "completed": 1,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/A9D77F3A-8C85-43BB-AB67-C5F68DDA4375.txt",
+  "elapsedSeconds": 2.2511664999983623,
+  "events": 18,
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "gesture": "none",
+  "gestureIntermediate": {},
+  "id": "single",
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "initialSyntheticText": "",
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII": "GHbdtn",
+  "requestedSource": "com.apple.keylayout.RussianWin",
+  "selectAllBeforeGesture": false,
+  "selection": {
+    "length": 0,
+    "location": 7
+  },
+  "text": "Привет ",
+  "originalPreflight": {
+    "onlyOriginal": true,
+    "pid": 33498,
+    "installedMainSHA256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5"
+  },
+  "processExitCode": 0
+}

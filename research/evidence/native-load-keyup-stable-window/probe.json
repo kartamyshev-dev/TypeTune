@@ -1,0 +1,13 @@
+{
+  "activeCase": "load-0",
+  "activeCaseEvents": 40,
+  "activeCaseIndex": 0,
+  "autoResume": false,
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/B6668280-35D3-4F6E-97BC-C43BF7C3AD6B.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 0,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/B6668280-35D3-4F6E-97BC-C43BF7C3AD6B.txt",
+  "error": "focused_window_unverified",
+  "persistedCompleted": 0,
+  "requestedCases": 12
+}

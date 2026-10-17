@@ -1,0 +1,13 @@
+Another instance of SwiftPM (PID: 6474) is already running using '/Users/kartamyshev/git/caramba/.build', waiting until that process has finished execution...Building for debugging...
+[4 / 14] LayoutPilotCore
+[12 / 22] LayoutPilotCore
+[13 / 22] LayoutPilotCore
+[16 / 21] layoutpilot-cli-product
+[20 / 25] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[23 / 25] layoutpilot-cli-product
+[25 / 27] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+Build complete! (1,85 с)
+Another instance of SwiftPM (PID: 6595) is already running using '/Users/kartamyshev/git/caramba/.build', waiting until that process has finished execution...

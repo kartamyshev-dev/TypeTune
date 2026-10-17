@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "target": "prototype",
+  "fixtureSha256": "61913af87bb6cccbbe6e75ade9bcef555e4f0ef0cf9c3ea75d2d63cf5c4f272a",
+  "requested": 3,
+  "completed": 3,
+  "results": [
+    {
+      "id": "multiline-selection",
+      "failures": [],
+      "evidence": "research/evidence/f17-punctuation-selections/00.json"
+    },
+    {
+      "id": "multiline-undo",
+      "failures": [],
+      "evidence": "research/evidence/f17-punctuation-selections/01.json"
+    },
+    {
+      "id": "multiline-unicode-selection",
+      "failures": [],
+      "evidence": "research/evidence/f17-punctuation-selections/02.json"
+    }
+  ],
+  "passed": true,
+  "notice": "Only these seeded TextEdit selections; no other-host or full F05 acceptance."
+}

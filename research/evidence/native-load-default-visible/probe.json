@@ -1,0 +1,18 @@
+{
+  "activeCase": "load-0",
+  "activeCaseEvents": 25,
+  "activeCaseIndex": 0,
+  "autoResume": false,
+  "axReadErrors": {
+    "AXFocusedUIElement:-25204": 1,
+    "AXFocusedWindow:-25204": 1,
+    "AXSubrole:-25205": 30
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/803D8C49-40E6-4A3F-A3ED-171DE9DEA613.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 0,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/803D8C49-40E6-4A3F-A3ED-171DE9DEA613.txt",
+  "error": "focused_window_unverified",
+  "persistedCompleted": 0,
+  "requestedCases": 12
+}

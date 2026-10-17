@@ -1,0 +1,1209 @@
+{
+  "targetSha256": "944f9ccec18becc8fb72e2ca991582443aa7231ee21ff0399f5cd04e76707455",
+  "helperSha256": "5a9f0f87dedafeed51df226536104307f2d54c99ea532e89f0a7ce433229b6f9",
+  "traceEnabled": false,
+  "results": [
+    {
+      "after": {
+        "length": 0,
+        "location": 8,
+        "text": "привет  "
+      },
+      "afterFirstSpace": {
+        "length": 0,
+        "location": 7,
+        "text": "привет "
+      },
+      "before": {
+        "length": 0,
+        "location": 0,
+        "text": ""
+      },
+      "beforeFirstSpace": {
+        "length": 0,
+        "location": 6,
+        "text": "ghbdtn"
+      },
+      "emitted": [
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": " "
+        }
+      ],
+      "expected": "привет  ",
+      "field": "LP-CODEX-001 plain",
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "type-wrong",
+      "passed": true,
+      "selectedSource": "com.apple.keylayout.ABC",
+      "typingSource": "com.apple.keylayout.ABC"
+    },
+    {
+      "after": {
+        "length": 0,
+        "location": 7,
+        "text": "hello  "
+      },
+      "afterFirstSpace": {
+        "length": 0,
+        "location": 6,
+        "text": "hello "
+      },
+      "before": {
+        "length": 0,
+        "location": 0,
+        "text": ""
+      },
+      "beforeFirstSpace": {
+        "length": 0,
+        "location": 5,
+        "text": "hello"
+      },
+      "emitted": [
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 14,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "e"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 37,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "l"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 37,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "l"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 31,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "o"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": " "
+        }
+      ],
+      "expected": "hello  ",
+      "field": "LP-CODEX-001 plain",
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "type-correct",
+      "passed": true,
+      "selectedSource": "com.apple.keylayout.ABC",
+      "typingSource": "com.apple.keylayout.ABC"
+    },
+    {
+      "after": {
+        "length": 0,
+        "location": 141,
+        "text": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  "
+      },
+      "afterFirstSpace": {
+        "length": 0,
+        "location": 140,
+        "text": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет "
+      },
+      "before": {
+        "length": 0,
+        "location": 0,
+        "text": ""
+      },
+      "beforeFirstSpace": {
+        "length": 0,
+        "location": 6,
+        "text": "ghbdtn"
+      },
+      "emitted": [
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.ABC",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 5,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "g"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 4,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "h"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 11,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "b"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 2,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "d"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 17,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "t"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 45,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": "n"
+        },
+        {
+          "eventSourceState": 1,
+          "keyCode": 49,
+          "source": "com.apple.keylayout.RussianWin",
+          "unicode": " "
+        }
+      ],
+      "expected": "привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет  ",
+      "field": "LP-CODEX-001 plain",
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "mode": "type-stream",
+      "passed": true,
+      "selectedSource": "com.apple.keylayout.ABC",
+      "typingSource": "com.apple.keylayout.ABC"
+    },
+    {
+      "after": {
+        "length": 0,
+        "location": 8,
+        "text": "привет  "
+      },
+      "afterManual": {
+        "length": 0,
+        "location": 6,
+        "text": "привет"
+      },
+      "before": {
+        "length": 0,
+        "location": 0,
+        "text": ""
+      },
+      "clipboardUsed": false,
+      "emittedFrames": [
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 51,
+          "uptime": 46935.60095641667
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 51,
+          "uptime": 46935.64449104167
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 5,
+          "uptime": 46935.99954279167
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 5,
+          "uptime": 46936.033709208335
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 4,
+          "uptime": 46936.062791833334
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 4,
+          "uptime": 46936.09231904167
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 11,
+          "uptime": 46936.123241375004
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 11,
+          "uptime": 46936.15875733334
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 2,
+          "uptime": 46936.18963204167
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 2,
+          "uptime": 46936.22033254167
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 17,
+          "uptime": 46936.24833079167
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 17,
+          "uptime": 46936.2781895
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 45,
+          "uptime": 46936.30715295834
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 45,
+          "uptime": 46936.338105125
+        },
+        {
+          "down": true,
+          "flags": 537001986,
+          "flagsChanged": true,
+          "keyCode": 56,
+          "uptime": 46936.681648625
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": true,
+          "keyCode": 56,
+          "uptime": 46936.75576458334
+        },
+        {
+          "down": true,
+          "flags": 537001986,
+          "flagsChanged": true,
+          "keyCode": 56,
+          "uptime": 46936.86322575
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": true,
+          "keyCode": 56,
+          "uptime": 46936.93241541667
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 49,
+          "uptime": 46937.56704329167
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 49,
+          "uptime": 46937.607910000006
+        },
+        {
+          "down": true,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 49,
+          "uptime": 46937.6383655
+        },
+        {
+          "down": false,
+          "flags": 536870912,
+          "flagsChanged": false,
+          "keyCode": 49,
+          "uptime": 46937.67367541667
+        }
+      ],
+      "finalModifiersNeutral": true,
+      "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+      "intermediatePassed": true,
+      "mode": "type-manual",
+      "passed": true,
+      "pid": 94007,
+      "returnEvents": 0,
+      "selected": {
+        "length": 6,
+        "location": 0,
+        "text": "ghbdtn"
+      },
+      "typed": {
+        "length": 0,
+        "location": 6,
+        "text": "ghbdtn"
+      }
+    }
+  ]
+}

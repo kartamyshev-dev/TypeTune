@@ -1,0 +1,6009 @@
+{
+  "notice": "Opt-in test timing and boolean checks only; capped at 1000 records.",
+  "records": [
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3778333339141682,
+      "phase": "mutation-initial",
+      "revision": 3,
+      "uptime": 40941.77234029167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.5936666711932048,
+      "phase": "mutation-gate",
+      "revision": 3,
+      "uptime": 40941.77255629167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40941.772616375005
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 8.57979166903533,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40941.78119616667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 8.748958331125323,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40941.781365208335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.500208329583984,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40941.785116833336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 15.37724999798229,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40941.787993791666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 19.33320833632024,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40941.791949583334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 46.32004166342085,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40941.81893641667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 47.00545833475189,
+      "phase": "mutation-result",
+      "revision": 3,
+      "uptime": 40941.81896779167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.335333330440335,
+      "phase": "mutation-initial",
+      "revision": 4,
+      "uptime": 40943.537513166666
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.49879166908795014,
+      "phase": "mutation-gate",
+      "revision": 4,
+      "uptime": 40943.537676500004
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0003749955794773996,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40943.537803458334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.4417499987757765,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40943.539244708336
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.6321250004693866,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40943.53943508334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.1258749984554015,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40943.539928583334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.3825833306764252,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40943.541185291666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.331499996827915,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40943.543134375
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 36.71129166468745,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40943.57451408334
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.375624997366685,
+      "phase": "mutation-result",
+      "revision": 4,
+      "uptime": 40943.57455333334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.28429166559362784,
+      "phase": "mutation-initial",
+      "revision": 5,
+      "uptime": 40945.4168205
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.45183333713794127,
+      "phase": "mutation-gate",
+      "revision": 5,
+      "uptime": 40945.416987916666
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012499367585405707,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40945.417038625004
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.058749997464474,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40945.4230975
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.166541665152181,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40945.42320508334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.668208327435423,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40945.425706875
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.791374996188097,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40945.42783008334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 13.614291667181533,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40945.430653
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 49.813833327789325,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40945.46685254167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 50.38600000261795,
+      "phase": "mutation-result",
+      "revision": 5,
+      "uptime": 40945.46692208334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.22050000552553684,
+      "phase": "mutation-initial",
+      "revision": 6,
+      "uptime": 40947.17809254167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.4214583386783488,
+      "phase": "mutation-gate",
+      "revision": 6,
+      "uptime": 40947.17829320834
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40947.178347333334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.318791667581536,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40947.18466625
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.459416668803897,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40947.18480658333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.665625002118759,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40947.18601295834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.347416668082587,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40947.188694916666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 13.258458333439194,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40947.19160579167
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 48.33258333383128,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40947.22668004167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 48.873874999117106,
+      "phase": "mutation-result",
+      "revision": 6,
+      "uptime": 40947.226745625005
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.20899999799439684,
+      "phase": "mutation-initial",
+      "revision": 7,
+      "uptime": 40948.94813879167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.36808333243243396,
+      "phase": "mutation-gate",
+      "revision": 7,
+      "uptime": 40948.94829779167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012499367585405707,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40948.94834920834
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.62949999968987,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40948.95497875
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.744166661519557,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40948.95509341667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.885374994657468,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40948.956234625
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.539208331261761,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40948.957888916666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.187999993329868,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40948.96053733333
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 57.63624999963213,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40949.005985625
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 58.119958332099486,
+      "phase": "mutation-result",
+      "revision": 7,
+      "uptime": 40949.00604954167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.2859999949578196,
+      "phase": "mutation-initial",
+      "revision": 8,
+      "uptime": 40950.714600708336
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.4614583303919062,
+      "phase": "mutation-gate",
+      "revision": 8,
+      "uptime": 40950.714776
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40950.714823
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 7.261874998221174,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40950.72208516667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 7.4491666673566215,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40950.72227229167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.515624998835847,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40950.72333866667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.146791668375954,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40950.72496983333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 14.146083332889248,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40950.728969083335
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.36250000091968,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40950.7601855
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.93395833217073,
+      "phase": "mutation-result",
+      "revision": 8,
+      "uptime": 40950.76024854167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.203875002625864,
+      "phase": "mutation-initial",
+      "revision": 9,
+      "uptime": 40952.498318750004
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.3590833366615698,
+      "phase": "mutation-gate",
+      "revision": 9,
+      "uptime": 40952.49847383334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40952.498525166666
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.125250001787208,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40952.50465054167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.236624998564366,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40952.50476170833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.186875001934823,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40952.505712000006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.356458333262708,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40952.50888179167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 16.334874999301974,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40952.514860083334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 48.484375001862645,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40952.547009625
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 48.94708333449671,
+      "phase": "mutation-result",
+      "revision": 9,
+      "uptime": 40952.547061833335
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.22541666839970276,
+      "phase": "mutation-initial",
+      "revision": 10,
+      "uptime": 40954.27002233334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.3892500026267953,
+      "phase": "mutation-gate",
+      "revision": 10,
+      "uptime": 40954.27018595834
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40954.270233625
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.2116666694055311,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40954.27144516667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.2872500010416843,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40954.27152075
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 1.8704166650422849,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40954.27210404167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.6435416695894673,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40954.27387720834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.99808333592955,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40954.277231875
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": true,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 190.5454166699201,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40954.46077908333
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 191.02758333610836,
+      "phase": "mutation-result",
+      "revision": 10,
+      "uptime": 40954.460824291666
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3039583389181644,
+      "phase": "mutation-initial",
+      "revision": 11,
+      "uptime": 40994.07053345833
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.48312500439351425,
+      "phase": "mutation-gate",
+      "revision": 11,
+      "uptime": 40994.07071266667
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40994.07076375
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.168916664842982,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40994.07593283334
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.391749997215811,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40994.0761555
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.987208333157469,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40994.077751125005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.577583336271346,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40994.08134133334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.870458333054557,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40994.083634250004
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 53.96683333674446,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40994.124730625
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 54.55562499992084,
+      "phase": "mutation-result",
+      "revision": 11,
+      "uptime": 40994.12478516667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3762499982258305,
+      "phase": "mutation-initial",
+      "revision": 12,
+      "uptime": 40996.79437575
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6281666646827944,
+      "phase": "mutation-gate",
+      "revision": 12,
+      "uptime": 40996.794627625
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40996.79470804167
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 2.7348750008968636,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40996.797442875
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 2.820875000907108,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40996.79752875
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.4723333301371895,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40996.79818020834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.646166668157093,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40996.800354125
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.464125003025401,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40996.802172125004
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 44.800625000789296,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40996.83950870833
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.57349999959115,
+      "phase": "mutation-result",
+      "revision": 12,
+      "uptime": 40996.839573000005
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.43258332880213857,
+      "phase": "mutation-initial",
+      "revision": 13,
+      "uptime": 40999.51781783334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6518750014947727,
+      "phase": "mutation-gate",
+      "revision": 13,
+      "uptime": 40999.51803683334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00020833249436691403,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 40999.518099416666
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.072666666819714,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 40999.52317195834
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.180541666049976,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 40999.523279625006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.40762499824632,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 40999.52450691667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.28883333451813,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 40999.526388000006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.26637500419747,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 40999.52936579167
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 35.700500004168134,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 40999.55379975
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 36.464833334321156,
+      "phase": "mutation-result",
+      "revision": 13,
+      "uptime": 40999.55384970833
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4731250010081567,
+      "phase": "mutation-initial",
+      "revision": 14,
+      "uptime": 41002.226068958335
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.895249999302905,
+      "phase": "mutation-gate",
+      "revision": 14,
+      "uptime": 41002.22649104167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0003333334461785853,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41002.226604208336
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 2.6602083307807334,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41002.22926429167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 2.82024999614805,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41002.229424125006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.0242499962914735,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41002.23062829167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.4712916646385565,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41002.233075250006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.502541662892327,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41002.23510679167
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 44.13520833622897,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41002.270739375
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.2222083331435,
+      "phase": "mutation-result",
+      "revision": 14,
+      "uptime": 41002.270817833334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.33008332684403285,
+      "phase": "mutation-initial",
+      "revision": 15,
+      "uptime": 41004.925782375
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.47649999760324135,
+      "phase": "mutation-gate",
+      "revision": 15,
+      "uptime": 41004.925928625
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41004.92597041667
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 4.437208335730247,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41004.93040766667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 4.6067500006756745,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41004.93057708334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.772249998699408,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41004.931742625005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.172083333192859,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41004.934142750004
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.43745833542198,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41004.937407875004
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": false,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 163.27949999686098,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41005.089249916666
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 163.84108333295444,
+      "phase": "mutation-result",
+      "revision": 15,
+      "uptime": 41005.08929325
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.20312500419095159,
+      "phase": "mutation-initial",
+      "revision": 16,
+      "uptime": 41050.06615979167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.40229166916105896,
+      "phase": "mutation-gate",
+      "revision": 16,
+      "uptime": 41050.066358958335
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41050.066410625004
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 0.7573749971925281,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41050.06716795834
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 0.862375003634952,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41050.06727283334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 1.7873749966383912,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41050.06819791667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.946041666495148,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41050.07035666667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 19.65675000246847,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41050.08606741667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 25.539458336425014,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41050.09195004167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 26.049125001009088,
+      "phase": "mutation-result",
+      "revision": 16,
+      "uptime": 41050.092005708335
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.17933333583641797,
+      "phase": "mutation-initial",
+      "revision": 17,
+      "uptime": 41052.80263908333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.34608333953656256,
+      "phase": "mutation-gate",
+      "revision": 17,
+      "uptime": 41052.80280583334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41052.80286445834
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.551750000449829,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41052.80841629167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.723750000470318,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41052.808588125
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.679833335510921,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41052.809544083335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.874250001099426,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41052.81173879167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.926041668630205,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41052.81479041667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": false,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 165.9677083371207,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41052.968832375
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 166.44379166973522,
+      "phase": "mutation-result",
+      "revision": 17,
+      "uptime": 41052.968903583336
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4201666670269333,
+      "phase": "mutation-initial",
+      "revision": 18,
+      "uptime": 41099.335854916666
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6843750015832484,
+      "phase": "mutation-gate",
+      "revision": 18,
+      "uptime": 41099.336119750005
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41099.33621175
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.460208336648066,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41099.342672833336
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.667666668363381,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41099.342880083335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.223416665918194,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41099.345435333336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.674208330281544,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41099.34888616667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 31.90645833092276,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41099.368118125
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.986708332027774,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41099.37419845834
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.84049999760464,
+      "phase": "mutation-result",
+      "revision": 18,
+      "uptime": 41099.37427504167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.2410000015515834,
+      "phase": "mutation-initial",
+      "revision": 19,
+      "uptime": 41102.076776333335
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6296666688285768,
+      "phase": "mutation-gate",
+      "revision": 19,
+      "uptime": 41102.07716495833
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00037500285543501377,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41102.077271625
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.173583333089482,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41102.082444875
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.290291665005498,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41102.082561250005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.561000001966022,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41102.083832083335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.148708337103017,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41102.08541983333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.453374998178333,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41102.08772441667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 41.62966666626744,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41102.11890079167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 42.40479166764999,
+      "phase": "mutation-result",
+      "revision": 19,
+      "uptime": 41102.11893991667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3376666645635851,
+      "phase": "mutation-initial",
+      "revision": 20,
+      "uptime": 41104.80714604167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.5711666672141291,
+      "phase": "mutation-gate",
+      "revision": 20,
+      "uptime": 41104.807379375
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002500019036233425,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41104.807489708335
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 4.512291670835111,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41104.81200195834
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 4.665458334784489,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41104.81215491667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.909166669880506,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41104.813398625
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.389541668293532,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41104.81587908333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.808833336341195,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41104.81829841667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 46.44070833455771,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41104.85393033334
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 47.18624999804888,
+      "phase": "mutation-result",
+      "revision": 20,
+      "uptime": 41104.85399458333
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3817916658590548,
+      "phase": "mutation-initial",
+      "revision": 21,
+      "uptime": 41107.50221995833
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.5960416674497537,
+      "phase": "mutation-gate",
+      "revision": 21,
+      "uptime": 41107.502434208334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002916640369221568,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41107.50249804167
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.346708327124361,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41107.50784479167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.5263749964069575,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41107.508024208335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.411083330225665,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41107.50990916667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.838583330041729,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41107.513337041666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 13.54170832928503,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41107.51603958334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 39.90629166219151,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41107.54240420833
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 40.634750002936926,
+      "phase": "mutation-result",
+      "revision": 21,
+      "uptime": 41107.54247283334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.2271250050398521,
+      "phase": "mutation-initial",
+      "revision": 22,
+      "uptime": 41110.17468933333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.3885416663251817,
+      "phase": "mutation-gate",
+      "revision": 22,
+      "uptime": 41110.17485058334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41110.174898625
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 3.041041665710509,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41110.17794
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 3.231624999898486,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41110.178130125
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.2732083311420865,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41110.17917183333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.8699583353009075,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41110.18176854167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.201541666698176,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41110.18410041667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 55.06079166661948,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41110.22995945834
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 55.554208338435274,
+      "phase": "mutation-result",
+      "revision": 22,
+      "uptime": 41110.23001629167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.24770833260845393,
+      "phase": "mutation-initial",
+      "revision": 23,
+      "uptime": 41112.877012833334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.42637500155251473,
+      "phase": "mutation-gate",
+      "revision": 23,
+      "uptime": 41112.877191375
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012499367585405707,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41112.87724175
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.711583333322778,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41112.88295329167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.886583327082917,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41112.88312829167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.312583329621702,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41112.88455475
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.840249997272622,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41112.88808204167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 14.246833328797948,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41112.891488625006
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 49.794333332101814,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41112.92703616667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 50.32941666286206,
+      "phase": "mutation-result",
+      "revision": 23,
+      "uptime": 41112.92709441667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3150416669086553,
+      "phase": "mutation-initial",
+      "revision": 24,
+      "uptime": 41115.607263958336
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.49554166616871953,
+      "phase": "mutation-gate",
+      "revision": 24,
+      "uptime": 41115.607444875
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00016667036106809974,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41115.607530375004
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.130208337504882,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41115.612660625
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.276708339806646,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41115.61280704167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.352791671815794,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41115.61388308334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.687416666361969,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41115.61621783333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.791416669439059,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41115.619321708335
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": false,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 164.7485833382234,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41115.772278875
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 165.3717500012135,
+      "phase": "mutation-result",
+      "revision": 24,
+      "uptime": 41115.77232041667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.19987500127172098,
+      "phase": "mutation-initial",
+      "revision": 25,
+      "uptime": 41161.99674858333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.3641666698968038,
+      "phase": "mutation-gate",
+      "revision": 25,
+      "uptime": 41161.99691295833
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00016667036106809974,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41161.996969458334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.6672083365847357,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41161.998636875
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.833125003031455,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41161.998802458336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.4920416694367304,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41162.001461625005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.335416670481209,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41162.003304958336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 35.39187500427943,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41162.03236133334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 41.7661666724598,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41162.03873558334
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 42.24383333348669,
+      "phase": "mutation-result",
+      "revision": 25,
+      "uptime": 41162.038792458334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.29133333009667695,
+      "phase": "mutation-initial",
+      "revision": 26,
+      "uptime": 41166.93549408334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.45308333210414276,
+      "phase": "mutation-gate",
+      "revision": 26,
+      "uptime": 41166.93565583334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41166.93570245834
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 0.7980833324836567,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41166.93650091667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 0.9252916715922765,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41166.93662770834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 1.586875005159527,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41166.937289458336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.436750001332257,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41166.94013925
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.409708337741904,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41166.942112375
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 29.99491667287657,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41166.96569741667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 30.53208333585644,
+      "phase": "mutation-result",
+      "revision": 26,
+      "uptime": 41166.96573479167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4585833303281106,
+      "phase": "mutation-initial",
+      "revision": 27,
+      "uptime": 41171.86681816667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.7159999950090423,
+      "phase": "mutation-gate",
+      "revision": 27,
+      "uptime": 41171.86707558334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41171.867165625
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 0.8531666680937633,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41171.86801858334
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.018166665744502,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41171.86818354167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.340375001949724,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41171.86950595833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.136041669582482,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41171.87430154167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.187416668690275,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41171.87835279167
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": false,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 161.25741666473914,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41172.02842279167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 162.10008333291626,
+      "phase": "mutation-result",
+      "revision": 27,
+      "uptime": 41172.028459416666
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.5596666669589467,
+      "phase": "mutation-initial",
+      "revision": 28,
+      "uptime": 41240.85579504167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.7754583275527693,
+      "phase": "mutation-gate",
+      "revision": 28,
+      "uptime": 41240.856010875
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41240.856094125
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.394166666723322,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41240.86248825
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.517208334116731,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41240.86261120834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.115624998230487,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41240.86521083333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.41045833012322,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41240.868504833335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 30.682625001645647,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41240.886776750005
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.50741666590329,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41240.89360175
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.45587499381509,
+      "phase": "mutation-result",
+      "revision": 28,
+      "uptime": 41240.893691125006
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.31816666887607425,
+      "phase": "mutation-initial",
+      "revision": 29,
+      "uptime": 41243.752779
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.5096250024507754,
+      "phase": "mutation-gate",
+      "revision": 29,
+      "uptime": 41243.752970416666
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41243.753027583334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 3.526958331349306,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41243.756554625004
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 3.7460416642716154,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41243.756773875
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.841291665798053,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41243.75786875
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.42754166276427,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41243.760455250005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.547833331860602,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41243.76457570834
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.55504166474566,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41243.79058275
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.220416667172685,
+      "phase": "mutation-result",
+      "revision": 29,
+      "uptime": 41243.79068095834
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.10583333641989157,
+      "phase": "mutation-initial",
+      "revision": 30,
+      "uptime": 41246.471486375005
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.20400000357767567,
+      "phase": "mutation-gate",
+      "revision": 30,
+      "uptime": 41246.47158425
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 4.166940925642848e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41246.47161358334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.0064999997848645,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41246.47762025
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.121375001384877,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41246.477734875
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.431791666022036,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41246.479045375
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.249124999972992,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41246.48186270834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.996500001463573,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41246.484610125
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 32.017833334975876,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41246.503631583335
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 32.322041668521706,
+      "phase": "mutation-result",
+      "revision": 30,
+      "uptime": 41246.503702375005
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.44241666910238564,
+      "phase": "mutation-initial",
+      "revision": 31,
+      "uptime": 41249.13038916667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6325416688923724,
+      "phase": "mutation-gate",
+      "revision": 31,
+      "uptime": 41249.13057891667
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333881851285696e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41249.130627375
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.075791672628839,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41249.136703125005
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.202833334100433,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41249.136830125004
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.281500002136454,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41249.137908916666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.783125002286397,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41249.14041041667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 13.213500002166256,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41249.143840875004
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 30.22200000123121,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41249.160849375
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 30.967208331276197,
+      "phase": "mutation-result",
+      "revision": 31,
+      "uptime": 41249.16091366667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4713750022347085,
+      "phase": "mutation-initial",
+      "revision": 32,
+      "uptime": 41251.830945
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.667791668092832,
+      "phase": "mutation-gate",
+      "revision": 32,
+      "uptime": 41251.831141250004
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41251.83119645833
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 3.4560833373689093,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41251.834652708334
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 3.608958337281365,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41251.83480554167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.069666665804107,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41251.836266375
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.3533333343220875,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41251.83855020833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.139458332560025,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41251.841335958336
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.826708336069714,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41251.869023125
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.581291664741,
+      "phase": "mutation-result",
+      "revision": 32,
+      "uptime": 41251.86905475
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.23791666171746328,
+      "phase": "mutation-initial",
+      "revision": 33,
+      "uptime": 41254.544525875004
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.4200833282084204,
+      "phase": "mutation-gate",
+      "revision": 33,
+      "uptime": 41254.54470804167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012499367585405707,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41254.544769625005
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 0.8881249959813431,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41254.54565775
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 0.9652499938965775,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41254.545734750005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 1.6184583291760646,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41254.54638795833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.5225833271397278,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41254.548292375
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.6984583318117075,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41254.55146833334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 25.639708328526467,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41254.57040933333
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 26.224416666082107,
+      "phase": "mutation-result",
+      "revision": 33,
+      "uptime": 41254.570512583334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.33795832860050723,
+      "phase": "mutation-initial",
+      "revision": 34,
+      "uptime": 41257.24328958333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6376666642609052,
+      "phase": "mutation-gate",
+      "revision": 34,
+      "uptime": 41257.24358929167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002916640369221568,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41257.243696625
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.003874997782987,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41257.24870029167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.105083335365634,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41257.248801208334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.62433333491208,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41257.25032091667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.075083329866175,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41257.25377166667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 14.061958332604263,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41257.257758375
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 39.59254166693427,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41257.283288833336
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 40.39874999580206,
+      "phase": "mutation-result",
+      "revision": 34,
+      "uptime": 41257.28335041667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4423749996931292,
+      "phase": "mutation-initial",
+      "revision": 35,
+      "uptime": 41259.98768579167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.8676249999552965,
+      "phase": "mutation-gate",
+      "revision": 35,
+      "uptime": 41259.988110625
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002500019036233425,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41259.98821379167
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.5223750015138648,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41259.98973575
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.6024166689021513,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41259.98981566667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.0884166660835035,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41259.990301750004
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.771499999857042,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41259.991984875
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.505166664079297,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41259.993718833335
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 29.681624997465406,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41260.017895000005
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 30.706958335940726,
+      "phase": "mutation-result",
+      "revision": 35,
+      "uptime": 41260.017949375004
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.2845416674972512,
+      "phase": "mutation-initial",
+      "revision": 36,
+      "uptime": 41262.76390633333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.45574999967357144,
+      "phase": "mutation-gate",
+      "revision": 36,
+      "uptime": 41262.764077375
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41262.764125291666
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 4.830999998375773,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41262.76895704167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 4.975541669409722,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41262.769100708334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.836166666995268,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41262.76996141667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.558375000371598,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41262.771683750005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.522541670070495,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41262.774647875005
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.333291668095626,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41262.802458625
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.88641666708281,
+      "phase": "mutation-result",
+      "revision": 36,
+      "uptime": 41262.80250804167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.20466667047003284,
+      "phase": "mutation-initial",
+      "revision": 37,
+      "uptime": 41265.492158458335
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.3775000004679896,
+      "phase": "mutation-gate",
+      "revision": 37,
+      "uptime": 41265.49233129167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002500019036233425,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41265.492429375
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 4.959541671269108,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41265.49738858334
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 5.064249999122694,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41265.497493333336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.811083334265277,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41265.49824016667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.7596250048372895,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41265.500188750004
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.543541666062083,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41265.501972625
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 40.23337500257185,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41265.5326625
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 40.77787500136765,
+      "phase": "mutation-result",
+      "revision": 37,
+      "uptime": 41265.532731583335
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.42195832793368027,
+      "phase": "mutation-initial",
+      "revision": 38,
+      "uptime": 41268.18189508333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.8202499957405962,
+      "phase": "mutation-gate",
+      "revision": 38,
+      "uptime": 41268.182292625
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0003333334461785853,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41268.182407875
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 3.6449166655074805,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41268.186052125006
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 3.866291663143784,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41268.1862735
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.8452916598762386,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41268.18725270833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.855083328147884,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41268.19226241667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 25.540416660078336,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41268.207947875
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 31.316541666456033,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41268.21372425
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 32.359208329580724,
+      "phase": "mutation-result",
+      "revision": 38,
+      "uptime": 41268.213831375004
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.23212499945657328,
+      "phase": "mutation-initial",
+      "revision": 39,
+      "uptime": 41270.91360308333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.4234166699461639,
+      "phase": "mutation-gate",
+      "revision": 39,
+      "uptime": 41270.91379429167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41270.91385075
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.953916665224824,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41270.92080466667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 7.091291663527954,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41270.92094216667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.525208329956513,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41270.922376083334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.412874999223277,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41270.92526358333
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 27.116541663417593,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41270.94096766667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 33.69662499608239,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41270.9475475
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 34.26633333583595,
+      "phase": "mutation-result",
+      "revision": 39,
+      "uptime": 41270.94763725
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4637916645151563,
+      "phase": "mutation-initial",
+      "revision": 40,
+      "uptime": 41303.24742766667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6790000043110922,
+      "phase": "mutation-gate",
+      "revision": 40,
+      "uptime": 41303.24764216667
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41303.247706
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 4.442708333954215,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41303.252148708336
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 4.5595000046887435,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41303.252265375006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.621625001367647,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41303.253327583334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.7028333325870335,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41303.255409375
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.656666672730353,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41303.25836266667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.64008333766833,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41303.286346
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 39.42941666900879,
+      "phase": "mutation-result",
+      "revision": 40,
+      "uptime": 41303.286392375005
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.19750000501517206,
+      "phase": "mutation-initial",
+      "revision": 41,
+      "uptime": 41305.941706791666
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.36987500061513856,
+      "phase": "mutation-gate",
+      "revision": 41,
+      "uptime": 41305.94187908334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41305.94192695834
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 5.772416669060476,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41305.94769991667
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.013083329889923,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41305.94794004167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.350125000812113,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41305.94927708334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.38095833407715,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41305.95130791667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.532000000646804,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41305.95445920833
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 42.99524999805726,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41305.984922208336
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 43.49233333778102,
+      "phase": "mutation-result",
+      "revision": 41,
+      "uptime": 41305.985001583336
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.38929166476009414,
+      "phase": "mutation-initial",
+      "revision": 42,
+      "uptime": 41308.66627579167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.518291664775461,
+      "phase": "mutation-gate",
+      "revision": 42,
+      "uptime": 41308.66640458334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00045833439799025655,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41308.66647325
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 9.96675000351388,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41308.67643954167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 10.10695833247155,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41308.6765795
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 11.454833336756565,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41308.67792770833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 16.090333338070195,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41308.682563
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 20.62475000275299,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41308.687097458336
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 46.534375003830064,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41308.713006958336
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 47.20916666701669,
+      "phase": "mutation-result",
+      "revision": 42,
+      "uptime": 41308.71309554167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4079166683368385,
+      "phase": "mutation-initial",
+      "revision": 43,
+      "uptime": 41311.538947458335
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.7436666710418649,
+      "phase": "mutation-gate",
+      "revision": 43,
+      "uptime": 41311.53928304167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00020833249436691403,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41311.53936333334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.7381666667643,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41311.546101625005
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 6.929166665941011,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41311.5462925
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.114416668831836,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41311.547477583335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 14.3117916668416,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41311.55367495833
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 17.96279166592285,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41311.557326
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.432124999933876,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41311.584795333336
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 46.3099583357689,
+      "phase": "mutation-result",
+      "revision": 43,
+      "uptime": 41311.58484925
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.6022500019753352,
+      "phase": "mutation-initial",
+      "revision": 44,
+      "uptime": 41314.68054291667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.9642083387007006,
+      "phase": "mutation-gate",
+      "revision": 44,
+      "uptime": 41314.68090483334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00045832712203264236,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41314.681019875
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.129666663473472,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41314.682149375
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.2680833315243945,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41314.68228754167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.6254999975208193,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41314.68364545834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.70066666114144,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41314.68672016667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.280791666242294,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41314.690300125
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.384499999461696,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41314.718403875006
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.52000000188127,
+      "phase": "mutation-result",
+      "revision": 44,
+      "uptime": 41314.718460041666
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.44691666698781773,
+      "phase": "mutation-initial",
+      "revision": 45,
+      "uptime": 41317.52915170834
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.656333337246906,
+      "phase": "mutation-gate",
+      "revision": 45,
+      "uptime": 41317.529361125
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 8.333154255524278e-05,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41317.529441375
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 8.040374996198807,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41317.53748229167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 8.211624997784384,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41317.53765325
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.350749998702668,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41317.53879220834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 15.084333332197275,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41317.544526125006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 18.209999994724058,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41317.547651416666
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 44.210791660589166,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41317.57365220834
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.00187500525499,
+      "phase": "mutation-result",
+      "revision": 45,
+      "uptime": 41317.57370645834
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.6101249964558519,
+      "phase": "mutation-initial",
+      "revision": 46,
+      "uptime": 41320.48257970834
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 1.0235000008833595,
+      "phase": "mutation-gate",
+      "revision": 46,
+      "uptime": 41320.48299308334
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002916640369221568,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41320.48306233333
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.3770000005024485,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41320.484439
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.460083331039641,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41320.484522000006
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.2381249984609894,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41320.48630045834
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.45804166601738,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41320.491520125004
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.210000000777654,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41320.49527204167
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 43.17208332940936,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41320.526234083336
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 44.33604166842997,
+      "phase": "mutation-result",
+      "revision": 46,
+      "uptime": 41320.526305458334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.37237499782349914,
+      "phase": "mutation-initial",
+      "revision": 47,
+      "uptime": 41323.230319
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.691583329171408,
+      "phase": "mutation-gate",
+      "revision": 47,
+      "uptime": 41323.23063866667
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0004999965312890708,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41323.23079008333
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 6.959916667256039,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41323.23774929167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 7.157208332500886,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41323.237946500005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.77504166419385,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41323.239564166666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 14.232041663490236,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41323.245021166666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 17.716708331136033,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41323.24850658334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 55.593833334569354,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41323.28638291667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 56.51208333438262,
+      "phase": "mutation-result",
+      "revision": 47,
+      "uptime": 41323.28645870834
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.33529166830703616,
+      "phase": "mutation-initial",
+      "revision": 48,
+      "uptime": 41326.05954333334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.5650416642311029,
+      "phase": "mutation-gate",
+      "revision": 48,
+      "uptime": 41326.05977320833
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002500019036233425,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41326.05983779167
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.2547083315439522,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41326.061092625
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.4155416647554375,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41326.06125329167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.7885833333129995,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41326.06262629167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 5.732999998144805,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41326.065570708335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 8.896375002223067,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41326.06873408334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.2417083310429,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41326.09807941667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 39.020791664370336,
+      "phase": "mutation-result",
+      "revision": 48,
+      "uptime": 41326.09822870834
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.4518749992712401,
+      "phase": "mutation-initial",
+      "revision": 49,
+      "uptime": 41328.84487241667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.7000416662776843,
+      "phase": "mutation-gate",
+      "revision": 49,
+      "uptime": 41328.84512029167
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00016666308511048555,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41328.845191625005
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 8.904000002075918,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41328.85409570834
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 9.050749999005347,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41328.85424225
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 10.045625000202563,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41328.855237250005
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 15.068499997141771,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41328.860260125
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 17.97620833531255,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41328.863167875
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 35.80683332984336,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41328.88099870834
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 36.648375004006084,
+      "phase": "mutation-result",
+      "revision": 49,
+      "uptime": 41328.88106858334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.3752083357539959,
+      "phase": "mutation-initial",
+      "revision": 50,
+      "uptime": 41331.54869458333
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6582500063814223,
+      "phase": "mutation-gate",
+      "revision": 50,
+      "uptime": 41331.548977625
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00020833249436691403,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41331.54905954167
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 8.14587499917252,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41331.55720554167
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 8.2569166625035,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41331.55731625
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.47187499696156,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41331.55853129167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 12.84954166476382,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41331.561908958334
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 16.08420833508717,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41331.565143625005
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": false,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 169.77504166425206,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41331.7188345
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 170.57362500054296,
+      "phase": "mutation-result",
+      "revision": 50,
+      "uptime": 41331.718892833334
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 68.2902499975171,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 41373.789482
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.2290833363076672,
+      "phase": "mutation-initial",
+      "revision": 286,
+      "uptime": 41379.995337583336
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.4117083371966146,
+      "phase": "mutation-gate",
+      "revision": 286,
+      "uptime": 41379.995520083336
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.00012500095181167126,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41379.99557208334
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 0.9667916674516164,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41379.99653925
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.1612500020419247,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41379.99673316667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.090125002723653,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41379.99766225
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 3.9704583323327824,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41379.99954254167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.355791665555444,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41380.001927833335
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 27.206291662878357,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41380.02277841667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 27.718500001356006,
+      "phase": "mutation-result",
+      "revision": 286,
+      "uptime": 41380.022826875
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.20258333097444847,
+      "phase": "mutation-initial",
+      "revision": 287,
+      "uptime": 41383.399889375
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6298333319136873,
+      "phase": "mutation-gate",
+      "revision": 287,
+      "uptime": 41383.4003165
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002916640369221568,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41383.40042016667
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 3.246291664254386,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41383.40366625
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 3.421583336603362,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41383.403841375
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.5732916696579196,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41383.404993083335
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 7.259500001964625,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41383.40767954167
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 9.198083331284579,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41383.40961808334
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "target": true,
+        "verified": true
+      },
+      "elapsedMilliseconds": 32.201083333347924,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41383.43262083334
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 32.966208331345115,
+      "phase": "mutation-result",
+      "revision": 287,
+      "uptime": 41383.43265270834
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": true
+      },
+      "elapsedMilliseconds": 0.40045833156909794,
+      "phase": "mutation-initial",
+      "revision": 288,
+      "uptime": 41386.784253125
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": true,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.7671249986742623,
+      "phase": "mutation-gate",
+      "revision": 288,
+      "uptime": 41386.78461966667
+    },
+    {
+      "checks": {},
+      "elapsedMilliseconds": 0.0002916640369221568,
+      "phase": "native-paste-enter",
+      "revision": -1,
+      "uptime": 41386.78474891667
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "backend": true,
+        "boundedEdit": true,
+        "current": true,
+        "editValid": true,
+        "payloadAllowed": true,
+        "postAccess": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "secureInputClear": true,
+        "snapshotAvailable": true,
+        "sourceCreated": true
+      },
+      "elapsedMilliseconds": 1.3184999988880008,
+      "phase": "native-paste-initial-snapshot",
+      "revision": -1,
+      "uptime": 41386.786067
+    },
+    {
+      "checks": {
+        "matched": true
+      },
+      "elapsedMilliseconds": 1.405708331731148,
+      "phase": "native-paste-clipboard",
+      "revision": -1,
+      "uptime": 41386.78615416667
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 2.188124999520369,
+      "phase": "native-paste-frame-started",
+      "revision": -1,
+      "uptime": 41386.786936916666
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 4.41487500211224,
+      "phase": "native-paste-V-sent",
+      "revision": -1,
+      "uptime": 41386.789163458336
+    },
+    {
+      "checks": {
+        "posted": true
+      },
+      "elapsedMilliseconds": 6.8173749968991615,
+      "phase": "native-paste-frame-completed",
+      "revision": -1,
+      "uptime": 41386.79156591667
+    },
+    {
+      "checks": {
+        "clipboardMatched": true,
+        "current": true,
+        "deadlineExpired": true,
+        "pendingSelection": false,
+        "target": true,
+        "unchanged": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 160.30745833268156,
+      "phase": "native-paste-ACK",
+      "revision": -1,
+      "uptime": 41386.945056125005
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": true,
+        "notApplied": false,
+        "uncertain": true,
+        "verified": false
+      },
+      "elapsedMilliseconds": 161.27925000182586,
+      "phase": "mutation-result",
+      "revision": 288,
+      "uptime": 41386.94513170834
+    }
+  ],
+  "schemaVersion": 1,
+  "session": "9F5A9EE1-C14E-49BD-953C-88FFB85E071B"
+}

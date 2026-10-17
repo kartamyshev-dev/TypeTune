@@ -1,0 +1,3308 @@
+{
+  "notice": "Opt-in test timing and boolean checks only; capped at 1000 records.",
+  "records": [
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4972083299653605,
+      "phase": "capture",
+      "revision": 3,
+      "uptime": 45701.34879129167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8909583339118399,
+      "phase": "capture",
+      "revision": 3,
+      "uptime": 45701.3553025
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.608333332114853,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 45701.367545458335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.6769583307905123,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 45701.37553925
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.7115416630986147,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 45701.383968625
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.7942499942146242,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 45701.39041583334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 20.243791666871402,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 45701.41746254167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.846541668579448,
+      "phase": "capture",
+      "revision": 4,
+      "uptime": 45701.42437833334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8405833286815323,
+      "phase": "boundary",
+      "revision": 9,
+      "uptime": 45701.6822955
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 9,
+      "uptime": 45701.68580366667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.3899583389284089,
+      "phase": "mutation-initial",
+      "revision": 9,
+      "uptime": 45701.68624058334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.5799999998998828,
+      "phase": "mutation-gate",
+      "revision": 9,
+      "uptime": 45701.686430625006
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 37.28533333924133,
+      "phase": "mutation-result",
+      "revision": 9,
+      "uptime": 45701.72313670834
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 9,
+      "uptime": 45701.72348375
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.7994583356776275,
+      "phase": "capture",
+      "revision": 11,
+      "uptime": 45701.77710975
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.6667500056209974,
+      "phase": "capture",
+      "revision": 11,
+      "uptime": 45701.78373054167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.6518750014947727,
+      "phase": "capture",
+      "revision": 11,
+      "uptime": 45701.789766333335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 6.01312499929918,
+      "phase": "capture",
+      "revision": 11,
+      "uptime": 45701.801654375005
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 17.887208334286697,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 45701.82601304167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.8117083343677223,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 45701.83335929167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 13.868416666809935,
+      "phase": "boundary",
+      "revision": 17,
+      "uptime": 45702.123645708336
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 13.270041665236931,
+      "phase": "boundary",
+      "revision": 24,
+      "uptime": 45702.53814720834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.36216666054679,
+      "phase": "boundary",
+      "revision": 31,
+      "uptime": 45702.96232395834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.7575833369628526,
+      "phase": "boundary",
+      "revision": 38,
+      "uptime": 45703.366981
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.270458335056901,
+      "phase": "boundary",
+      "revision": 38,
+      "uptime": 45703.37389804167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.6460416663903743,
+      "phase": "boundary",
+      "revision": 45,
+      "uptime": 45703.787764625005
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.8011666727252305,
+      "phase": "boundary",
+      "revision": 45,
+      "uptime": 45703.79599033334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4705833382322453,
+      "phase": "boundary",
+      "revision": 45,
+      "uptime": 45703.80331166667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2737916695186868,
+      "phase": "boundary",
+      "revision": 52,
+      "uptime": 45704.20561520834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3584583284682594,
+      "phase": "boundary",
+      "revision": 52,
+      "uptime": 45704.21245045833
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9290000016335398,
+      "phase": "boundary",
+      "revision": 59,
+      "uptime": 45704.63198316667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8058750026975758,
+      "phase": "boundary",
+      "revision": 66,
+      "uptime": 45705.058149833334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 8.250041661085561,
+      "phase": "boundary",
+      "revision": 73,
+      "uptime": 45705.469502
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2552500047604553,
+      "phase": "boundary",
+      "revision": 80,
+      "uptime": 45705.89041491667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8443749975413084,
+      "phase": "boundary",
+      "revision": 87,
+      "uptime": 45706.307133208335
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.0769583386718296,
+      "phase": "boundary",
+      "revision": 94,
+      "uptime": 45706.73210754167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5471250007976778,
+      "phase": "boundary",
+      "revision": 101,
+      "uptime": 45707.149635458336
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2758333323290572,
+      "phase": "boundary",
+      "revision": 108,
+      "uptime": 45707.66270125
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.8216250027762726,
+      "phase": "boundary",
+      "revision": 108,
+      "uptime": 45707.670210250006
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.7034583288477734,
+      "phase": "boundary",
+      "revision": 108,
+      "uptime": 45707.678503166666
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.126916664361488,
+      "phase": "boundary",
+      "revision": 108,
+      "uptime": 45707.68605533334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.666333329922054,
+      "phase": "boundary",
+      "revision": 108,
+      "uptime": 45707.69433870834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 12.136916666349862,
+      "phase": "boundary",
+      "revision": 108,
+      "uptime": 45707.712969
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.5757916660513729,
+      "phase": "boundary",
+      "revision": 115,
+      "uptime": 45708.16509958333
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 5.169708332687151,
+      "phase": "boundary",
+      "revision": 115,
+      "uptime": 45708.17674766667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.937291668378748,
+      "phase": "boundary",
+      "revision": 115,
+      "uptime": 45708.18396245834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.871083335368894,
+      "phase": "boundary",
+      "revision": 122,
+      "uptime": 45708.60686383334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.75854166445788,
+      "phase": "boundary",
+      "revision": 129,
+      "uptime": 45709.02776408334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.675791667366866,
+      "phase": "boundary",
+      "revision": 129,
+      "uptime": 45709.035820375
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2076249986421317,
+      "phase": "boundary",
+      "revision": 129,
+      "uptime": 45709.042546625
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4776666648685932,
+      "phase": "boundary",
+      "revision": 136,
+      "uptime": 45709.44464920834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.6424583338666707,
+      "phase": "boundary",
+      "revision": 136,
+      "uptime": 45709.45375291667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.6039583351812325,
+      "phase": "boundary",
+      "revision": 136,
+      "uptime": 45709.46172025
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1652500033960678,
+      "phase": "boundary",
+      "revision": 143,
+      "uptime": 45709.86472654167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5258333296515048,
+      "phase": "boundary",
+      "revision": 144,
+      "uptime": 45710.53230195834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8696666700416245,
+      "phase": "capture",
+      "revision": 145,
+      "uptime": 45739.36292575
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.7760833323118277,
+      "phase": "capture",
+      "revision": 146,
+      "uptime": 45739.723370708336
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1061666664318182,
+      "phase": "capture",
+      "revision": 152,
+      "uptime": 45857.93647983333
+    },
+    {
+      "checks": {
+        "boundary": false
+      },
+      "elapsedMilliseconds": 13.701666670385748,
+      "phase": "snapshot-unavailable-or-stale",
+      "revision": 153,
+      "uptime": 45858.35418154167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 7.206499998574145,
+      "phase": "capture",
+      "revision": 154,
+      "uptime": 45858.406271125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.9619583361200057,
+      "phase": "capture",
+      "revision": 154,
+      "uptime": 45858.413632125004
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 158,
+      "uptime": 45859.004387500005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 158,
+      "uptime": 45859.073187375005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 158,
+      "uptime": 45859.18771208334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": true,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 158,
+      "uptime": 45859.25200516667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "phase": "gesture-action",
+      "revision": 158,
+      "uptime": 45859.252014125006
+    },
+    {
+      "checks": {
+        "anchor": true
+      },
+      "phase": "explicit-enqueue",
+      "revision": 158,
+      "uptime": 45859.252015708335
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "allowed": true,
+        "revision": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "snapshot": true
+      },
+      "phase": "explicit-context",
+      "revision": 158,
+      "uptime": 45859.254065416666
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 158,
+      "uptime": 45859.254132333335
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.4270416684448719,
+      "phase": "mutation-initial",
+      "revision": 158,
+      "uptime": 45859.254617000006
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6408749977708794,
+      "phase": "mutation-gate",
+      "revision": 158,
+      "uptime": 45859.254830791666
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 16.224333332502283,
+      "phase": "mutation-result",
+      "revision": 158,
+      "uptime": 45859.270414000006
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 158,
+      "uptime": 45859.271154375005
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 14.277458336437121,
+      "phase": "boundary",
+      "revision": 159,
+      "uptime": 45859.935632500004
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.743916673352942,
+      "phase": "boundary",
+      "revision": 160,
+      "uptime": 45860.01568420834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2184583392809145,
+      "phase": "boundary",
+      "revision": 160,
+      "uptime": 45860.0229295
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.6387499999837019,
+      "phase": "boundary",
+      "revision": 160,
+      "uptime": 45860.03104791667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.4209583387128077,
+      "phase": "capture",
+      "revision": 161,
+      "uptime": 45881.99947716667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 12.544416662422009,
+      "phase": "capture",
+      "revision": 162,
+      "uptime": 45882.388861750005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 167,
+      "uptime": 45883.03531729167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 167,
+      "uptime": 45883.10229729167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 167,
+      "uptime": 45883.206373125
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": true,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 167,
+      "uptime": 45883.285884916666
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "phase": "gesture-action",
+      "revision": 167,
+      "uptime": 45883.28589291667
+    },
+    {
+      "checks": {
+        "anchor": true
+      },
+      "phase": "explicit-enqueue",
+      "revision": 167,
+      "uptime": 45883.28589420833
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "allowed": true,
+        "revision": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "snapshot": true
+      },
+      "phase": "explicit-context",
+      "revision": 167,
+      "uptime": 45883.2868295
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 167,
+      "uptime": 45883.28684379167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.40283333510160446,
+      "phase": "mutation-initial",
+      "revision": 167,
+      "uptime": 45883.2872865
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6137500022305176,
+      "phase": "mutation-gate",
+      "revision": 167,
+      "uptime": 45883.287497833335
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 20.286958337237593,
+      "phase": "mutation-result",
+      "revision": 167,
+      "uptime": 45883.307170750006
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 167,
+      "uptime": 45883.30801741667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4537083334289491,
+      "phase": "boundary",
+      "revision": 168,
+      "uptime": 45883.924012166666
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 6.978791665460449,
+      "phase": "boundary",
+      "revision": 168,
+      "uptime": 45883.937516375
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8270416656159796,
+      "phase": "boundary",
+      "revision": 169,
+      "uptime": 45883.985502166666
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9693333340692334,
+      "phase": "boundary",
+      "revision": 169,
+      "uptime": 45883.99252941667
+    },
+    {
+      "checks": {
+        "cannotComplete": true,
+        "focusedField": true,
+        "selection": false,
+        "success": false,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 151.94120832893532,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 45960.17885920834
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 137.3398333307705,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 45960.31683691667
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": false,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 75.52800000121351,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 45960.39237679167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.6111666627693921,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.821408250005
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.185875000373926,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.82892683334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3434583306661807,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.83660004167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.6833750012447126,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.843664583335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4186666667228565,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.85075929167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.833958329167217,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.857882125005
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 92.89937499852385,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 46005.957601458336
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 97.39512499800185,
+      "phase": "capture",
+      "revision": 209,
+      "uptime": 46005.96177741667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.37900000117952,
+      "phase": "capture",
+      "revision": 210,
+      "uptime": 46006.090352125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.738124996132683,
+      "phase": "capture",
+      "revision": 210,
+      "uptime": 46006.09745108333
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 12.447125001926906,
+      "phase": "capture",
+      "revision": 212,
+      "uptime": 46006.39240233334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9246249974239618,
+      "phase": "capture",
+      "revision": 212,
+      "uptime": 46006.39957383334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.710333330265712,
+      "phase": "boundary",
+      "revision": 216,
+      "uptime": 46006.92795991667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9347916711703874,
+      "phase": "boundary",
+      "revision": 216,
+      "uptime": 46006.935231166666
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 17.866916670755018,
+      "phase": "capture",
+      "revision": 217,
+      "uptime": 46007.22989333334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3607916625915095,
+      "phase": "capture",
+      "revision": 217,
+      "uptime": 46007.23772366667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2329166711424477,
+      "phase": "capture",
+      "revision": 217,
+      "uptime": 46007.24550204167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4546250022249296,
+      "phase": "capture",
+      "revision": 217,
+      "uptime": 46007.253554125
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.0647500021150336,
+      "phase": "capture",
+      "revision": 218,
+      "uptime": 46007.437413375
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4610833313781768,
+      "phase": "capture",
+      "revision": 218,
+      "uptime": 46007.44547120834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.201500002935063,
+      "phase": "boundary",
+      "revision": 220,
+      "uptime": 46007.73585158333
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8315000013681129,
+      "phase": "boundary",
+      "revision": 220,
+      "uptime": 46007.743271458334
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 220,
+      "uptime": 46007.74330779167
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.16662500274833292,
+      "phase": "mutation-initial",
+      "revision": 220,
+      "uptime": 46007.743489458335
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.31404166657011956,
+      "phase": "mutation-gate",
+      "revision": 220,
+      "uptime": 46007.743636875006
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 45.62137500033714,
+      "phase": "mutation-result",
+      "revision": 220,
+      "uptime": 46007.78894429167
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 220,
+      "uptime": 46007.78945883334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 14.110166666796431,
+      "phase": "capture",
+      "revision": 221,
+      "uptime": 46008.43783441667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.370500001939945,
+      "phase": "capture",
+      "revision": 221,
+      "uptime": 46008.445860625005
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.449541661713738,
+      "phase": "capture",
+      "revision": 221,
+      "uptime": 46008.45387741667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 12.825833335227799,
+      "phase": "capture",
+      "revision": 222,
+      "uptime": 46008.616645125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8697083321749233,
+      "phase": "capture",
+      "revision": 222,
+      "uptime": 46008.62413604167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1519583349581808,
+      "phase": "capture",
+      "revision": 223,
+      "uptime": 46008.813063125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5629999979864806,
+      "phase": "capture",
+      "revision": 223,
+      "uptime": 46008.82091204167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 12.17887500388315,
+      "phase": "capture",
+      "revision": 224,
+      "uptime": 46008.996544
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4034583291504532,
+      "phase": "capture",
+      "revision": 224,
+      "uptime": 46009.00437429167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 13.680583331733942,
+      "phase": "capture",
+      "revision": 225,
+      "uptime": 46009.658294
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8725416628294624,
+      "phase": "capture",
+      "revision": 225,
+      "uptime": 46009.66582091667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.185000000987202,
+      "phase": "capture",
+      "revision": 226,
+      "uptime": 46010.282152583335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1132500003441237,
+      "phase": "capture",
+      "revision": 227,
+      "uptime": 46010.89882375
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8868333316058852,
+      "phase": "capture",
+      "revision": 227,
+      "uptime": 46010.905984625
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2808750034309924,
+      "phase": "capture",
+      "revision": 228,
+      "uptime": 46011.07032541667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5185000011115335,
+      "phase": "capture",
+      "revision": 228,
+      "uptime": 46011.07841766667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9431250000488944,
+      "phase": "boundary",
+      "revision": 231,
+      "uptime": 46011.489266375
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.893791664566379,
+      "phase": "boundary",
+      "revision": 231,
+      "uptime": 46011.49650166667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3076666728011332,
+      "phase": "boundary",
+      "revision": 231,
+      "uptime": 46011.50441766667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.987583333393559,
+      "phase": "capture",
+      "revision": 232,
+      "uptime": 46011.6593755
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.0444166691740975,
+      "phase": "capture",
+      "revision": 232,
+      "uptime": 46011.66629670834
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 238,
+      "uptime": 46012.57323691667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3035833326284774,
+      "phase": "capture",
+      "revision": 239,
+      "uptime": 46012.769597375
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9080000018002465,
+      "phase": "capture",
+      "revision": 239,
+      "uptime": 46012.77712775
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.1377916709752753,
+      "phase": "capture",
+      "revision": 239,
+      "uptime": 46012.78498733333
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.728000002913177,
+      "phase": "capture",
+      "revision": 239,
+      "uptime": 46012.793341250006
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 239,
+      "uptime": 46012.88649175
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8306666713906452,
+      "phase": "boundary",
+      "revision": 240,
+      "uptime": 46013.1870445
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1601666701608337,
+      "phase": "boundary",
+      "revision": 240,
+      "uptime": 46013.194599625
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.6426666697952896,
+      "phase": "boundary",
+      "revision": 240,
+      "uptime": 46013.20177575
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.397791664407123,
+      "phase": "boundary",
+      "revision": 240,
+      "uptime": 46013.210777875
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5829166659386829,
+      "phase": "boundary",
+      "revision": 240,
+      "uptime": 46013.21835479167
+    },
+    {
+      "checks": {
+        "boundary": true
+      },
+      "elapsedMilliseconds": 0.5793333330075257,
+      "phase": "snapshot-unavailable-or-stale",
+      "revision": 240,
+      "uptime": 46013.22558200001
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 33.42437500396045,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 46114.20932720834
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": false,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 95.64224999485305,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 46114.304987958334
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 45.93791667139158,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 46119.21017666667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 48.9709999965271,
+      "phase": "capture",
+      "revision": 356,
+      "uptime": 46119.21302266667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 6.96566666738363,
+      "phase": "capture",
+      "revision": 357,
+      "uptime": 46119.328943375
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.271666660613846,
+      "phase": "capture",
+      "revision": 357,
+      "uptime": 46119.33656254167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 4.80579166469397,
+      "phase": "capture",
+      "revision": 358,
+      "uptime": 46119.54582095834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.7271666656597517,
+      "phase": "capture",
+      "revision": 358,
+      "uptime": 46119.55387704167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.169166665931698,
+      "phase": "capture",
+      "revision": 358,
+      "uptime": 46119.56141145834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 7.141999994928483,
+      "phase": "capture",
+      "revision": 359,
+      "uptime": 46119.880067000006
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9265833286917768,
+      "phase": "capture",
+      "revision": 359,
+      "uptime": 46119.88644475
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.0005000003729947,
+      "phase": "capture",
+      "revision": 359,
+      "uptime": 46119.89380441667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.7351250023930334,
+      "phase": "capture",
+      "revision": 360,
+      "uptime": 46120.168658625
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.6467083367169835,
+      "phase": "capture",
+      "revision": 360,
+      "uptime": 46120.175586833335
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1426666678744368,
+      "phase": "capture",
+      "revision": 360,
+      "uptime": 46120.183360375006
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 6.718083335726988,
+      "phase": "capture",
+      "revision": 361,
+      "uptime": 46120.36278725
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3408750019152649,
+      "phase": "capture",
+      "revision": 361,
+      "uptime": 46120.370235
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.889458337042015,
+      "phase": "capture",
+      "revision": 362,
+      "uptime": 46120.53584620834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1831249939859845,
+      "phase": "capture",
+      "revision": 362,
+      "uptime": 46120.54379254167
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1457500004325993,
+      "phase": "boundary",
+      "revision": 363,
+      "uptime": 46120.71924120834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2865000026067719,
+      "phase": "boundary",
+      "revision": 363,
+      "uptime": 46120.72720104167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.100041663448792,
+      "phase": "boundary",
+      "revision": 363,
+      "uptime": 46120.73486933333
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9315833303844556,
+      "phase": "capture",
+      "revision": 364,
+      "uptime": 46122.56002279167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4852916719974019,
+      "phase": "capture",
+      "revision": 365,
+      "uptime": 46123.06179375
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.959666671406012,
+      "phase": "capture",
+      "revision": 366,
+      "uptime": 46123.143529500005
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4192500020726584,
+      "phase": "capture",
+      "revision": 367,
+      "uptime": 46123.22753033334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 3.6222916678525507,
+      "phase": "capture",
+      "revision": 368,
+      "uptime": 46123.31568941667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.094374994863756,
+      "phase": "capture",
+      "revision": 369,
+      "uptime": 46123.394502625
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.0202083285548724,
+      "phase": "capture",
+      "revision": 370,
+      "uptime": 46123.477641708334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8447916698059998,
+      "phase": "capture",
+      "revision": 371,
+      "uptime": 46123.56013616667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.929291665670462,
+      "phase": "capture",
+      "revision": 372,
+      "uptime": 46123.64412341667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.3307499975780956,
+      "phase": "capture",
+      "revision": 373,
+      "uptime": 46123.72850616667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 373,
+      "uptime": 46126.05311595833
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 374,
+      "uptime": 46126.28721729167
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 31.62779167178087,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 46140.22304891667
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": false,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 63.215166665031575,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 46140.286348625006
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.769833334255964,
+      "phase": "capture",
+      "revision": 699,
+      "uptime": 46141.26644670834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.037249996443279,
+      "phase": "boundary",
+      "revision": 705,
+      "uptime": 46141.62145591667
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 705,
+      "uptime": 46141.62150358334
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.19295833772048354,
+      "phase": "mutation-initial",
+      "revision": 705,
+      "uptime": 46141.62172866667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.3848750056931749,
+      "phase": "mutation-gate",
+      "revision": 705,
+      "uptime": 46141.62192054167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.61133333703037,
+      "phase": "mutation-result",
+      "revision": 705,
+      "uptime": 46141.660147250004
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 705,
+      "uptime": 46141.66086829167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.834541661082767,
+      "phase": "boundary",
+      "revision": 707,
+      "uptime": 46142.283004250006
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 25.327083327283617,
+      "phase": "capture",
+      "revision": 708,
+      "uptime": 46144.025967458336
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.799874999269377,
+      "phase": "boundary",
+      "revision": 713,
+      "uptime": 46144.32912333334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.575041671458166,
+      "phase": "boundary",
+      "revision": 714,
+      "uptime": 46144.982913625005
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 10.876833330257796,
+      "phase": "capture",
+      "revision": 715,
+      "uptime": 46146.728962125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2075833365088329,
+      "phase": "boundary",
+      "revision": 721,
+      "uptime": 46147.08260154167
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 721,
+      "uptime": 46147.082630375
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.2105416642734781,
+      "phase": "mutation-initial",
+      "revision": 721,
+      "uptime": 46147.082875625005
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.37404166505439207,
+      "phase": "mutation-gate",
+      "revision": 721,
+      "uptime": 46147.083039083336
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 38.4126249991823,
+      "phase": "mutation-result",
+      "revision": 721,
+      "uptime": 46147.12107783333
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 721,
+      "uptime": 46147.12175416667
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 6.600500004424248,
+      "phase": "capture",
+      "revision": 723,
+      "uptime": 46147.18317604167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": false,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 0.6194999950821511,
+      "phase": "capture",
+      "revision": 723,
+      "uptime": 46147.18968995834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 10.041875000752043,
+      "phase": "boundary",
+      "revision": 729,
+      "uptime": 46147.518887625
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8845416668918915,
+      "phase": "boundary",
+      "revision": 736,
+      "uptime": 46147.924707708335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.204458334541414,
+      "phase": "boundary",
+      "revision": 743,
+      "uptime": 46148.340952750004
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4557499962393194,
+      "phase": "boundary",
+      "revision": 743,
+      "uptime": 46148.34884408334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2665416652453132,
+      "phase": "boundary",
+      "revision": 750,
+      "uptime": 46148.75734841667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4675416678073816,
+      "phase": "boundary",
+      "revision": 757,
+      "uptime": 46149.170322833335
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9242916712537408,
+      "phase": "boundary",
+      "revision": 764,
+      "uptime": 46149.588658458335
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 18.945041665574536,
+      "phase": "boundary",
+      "revision": 771,
+      "uptime": 46150.03365870834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.0592083344818093,
+      "phase": "boundary",
+      "revision": 771,
+      "uptime": 46150.040103125
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5345833307947032,
+      "phase": "boundary",
+      "revision": 778,
+      "uptime": 46150.59504658334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 13.107916667649988,
+      "phase": "boundary",
+      "revision": 785,
+      "uptime": 46151.00947241667
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 8.913541671063285,
+      "phase": "boundary",
+      "revision": 792,
+      "uptime": 46151.41778333334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8905416616471484,
+      "phase": "boundary",
+      "revision": 799,
+      "uptime": 46151.82651008334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1354583330103196,
+      "phase": "boundary",
+      "revision": 806,
+      "uptime": 46152.244372375004
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.1177916676388122,
+      "phase": "boundary",
+      "revision": 813,
+      "uptime": 46152.649963
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.989708329550922,
+      "phase": "boundary",
+      "revision": 813,
+      "uptime": 46152.65862183334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4892916660755873,
+      "phase": "boundary",
+      "revision": 813,
+      "uptime": 46152.66666620834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.186750001797918,
+      "phase": "boundary",
+      "revision": 820,
+      "uptime": 46153.078201625
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 13.905750005505979,
+      "phase": "boundary",
+      "revision": 827,
+      "uptime": 46153.497273500005
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.4921666661393829,
+      "phase": "boundary",
+      "revision": 827,
+      "uptime": 46153.5052775
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2005833341390826,
+      "phase": "boundary",
+      "revision": 834,
+      "uptime": 46153.90833054167
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 2.2217916703084484,
+      "phase": "boundary",
+      "revision": 834,
+      "uptime": 46153.916088125006
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.2489166692830622,
+      "phase": "boundary",
+      "revision": 841,
+      "uptime": 46154.32609775
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5658333286410198,
+      "phase": "boundary",
+      "revision": 848,
+      "uptime": 46154.739494416666
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.9314999988419004,
+      "phase": "boundary",
+      "revision": 855,
+      "uptime": 46155.156824708334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 11.465958334156312,
+      "phase": "boundary",
+      "revision": 856,
+      "uptime": 46155.821514625
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.5107916624401696,
+      "phase": "boundary",
+      "revision": 856,
+      "uptime": 46155.82946241667
+    }
+  ],
+  "schemaVersion": 1,
+  "session": "9DF7EECA-DFDC-4BA1-8416-B25EA3DF4F05",
+  "targetSha256": "94aa34c27022489f534b67c765b7abdb99b7aaf701865d1b03a4279ab2fe065d"
+}

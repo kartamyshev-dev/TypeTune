@@ -1,0 +1,12 @@
+{
+  "phase": "original_partial_800",
+  "cases": 800,
+  "matchesAuthoredExpected": 647,
+  "paths": [
+    "research/evidence/native-corpus-original/focused/00.json",
+    "research/evidence/native-corpus-original/focused-retry/01.json",
+    "research/evidence/native-corpus-original/focused-retry/02.json",
+    "research/evidence/native-corpus-original/focused-retry-window/03.json"
+  ],
+  "notice": "Partial original results only; no prototype comparison, no quality acceptance."
+}

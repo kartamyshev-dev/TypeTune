@@ -1,0 +1,9 @@
+{
+  "status": "stopped",
+  "error": "Incomplete probe",
+  "pid": 31882,
+  "binarySha256": "447ca03385c7459bd12c93ebe62a83402f233cd06c59e142fcac8454d9c3666e",
+  "medianSampleCPUPercent": 0.15,
+  "peakSampleCPUPercent": 0.3,
+  "peakRSSKiB": 100000
+}

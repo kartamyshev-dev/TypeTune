@@ -1,0 +1,22 @@
+{
+  "earlyCorrection": false,
+  "traceAbsent": true,
+  "selectionDelayAbsent": true,
+  "flags": {
+    "singleShift": true,
+    "automatic": true,
+    "yo": true,
+    "shiftChordPause": false,
+    "optionCorrection": false,
+    "typos": true,
+    "sound": false,
+    "plainPaste": true
+  },
+  "collectionCounts": {
+    "excludedApps": 0,
+    "excludedWords": 0,
+    "rules": 0,
+    "learnedWords": 0
+  },
+  "settingsSha256": "78d105b8fd9ae7f41e69417bcf8dae124d057c3ff263473dcbc5f879d712e8fb"
+}

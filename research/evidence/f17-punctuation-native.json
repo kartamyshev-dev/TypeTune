@@ -1,0 +1,480 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 508
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 508,
+      "maxMilliseconds": 6.5198750016861595,
+      "totalMilliseconds": 76.99875001708278
+    },
+    "AXFocusedUIElement:0": {
+      "count": 508,
+      "maxMilliseconds": 9.818458333029412,
+      "totalMilliseconds": 68.32133320858702
+    },
+    "AXFocusedWindow:0": {
+      "count": 508,
+      "maxMilliseconds": 37.84912500123028,
+      "totalMilliseconds": 644.2678333260119
+    },
+    "AXRole:0": {
+      "count": 508,
+      "maxMilliseconds": 1.9114999959128909,
+      "totalMilliseconds": 26.423375027661677
+    },
+    "AXSelectedTextRange:0": {
+      "count": 151,
+      "maxMilliseconds": 0.24462500005029142,
+      "totalMilliseconds": 10.090833304275293
+    },
+    "AXSubrole:-25205": {
+      "count": 508,
+      "maxMilliseconds": 2.2889583342475817,
+      "totalMilliseconds": 67.09895825770218
+    },
+    "AXValue:0": {
+      "count": 151,
+      "maxMilliseconds": 0.7599583332194015,
+      "totalMilliseconds": 9.164833289105445
+    },
+    "AXWindow:0": {
+      "count": 508,
+      "maxMilliseconds": 16.695208330929745,
+      "totalMilliseconds": 78.94162489537848
+    }
+  },
+  "cases": 15,
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.results.json",
+  "completed": 15,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "results": [
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.13680616666533751,
+        "firstChangeSeconds": 0.030478874999971595,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.2872842500000843,
+      "events": 18,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-unknown",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ZZword",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "Zzword "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14333045833336655,
+        "firstChangeSeconds": 0.03239204166311538,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.038814125000499,
+      "events": 24,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-unknown-tail",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "XYzzY",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "Xyzzy "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14140749999933178,
+        "firstChangeSeconds": 0.03175020833441522,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 1.8786028750037076,
+      "events": 20,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-brand",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "DBus",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 5
+      },
+      "text": "Dbus "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.13681162500142818,
+        "firstChangeSeconds": 0.031941000001097564,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.3804744166700402,
+      "events": 30,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-camel-tail",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "FAceBook",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 9
+      },
+      "text": "FAceBook "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14165762499760604,
+        "firstChangeSeconds": 0.02935050000087358,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 1.6647097500026575,
+      "events": 16,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-two",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "XX",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 3
+      },
+      "text": "XX "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14135062499553896,
+        "firstChangeSeconds": 0.030293541662103962,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 1.7809434166701976,
+      "events": 18,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-three",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ABc",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 4
+      },
+      "text": "Abc "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.12885862500115763,
+        "firstChangeSeconds": 0.02829100000235485,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 1.9722903333386057,
+      "events": 22,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-ru",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "CKjdj",
+      "requestedSource": "com.apple.keylayout.RussianWin",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "Слово "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.143700374996115,
+        "firstChangeSeconds": 0.03139599999849452,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.079505166664603,
+      "events": 22,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-no-caps",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "iPhone",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "iPhone "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14554737500293413,
+        "firstChangeSeconds": 0.03341408333653817,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.1102002916668425,
+      "events": 24,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-layout",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "GHbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "Привет "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14034724999510217,
+        "firstChangeSeconds": 0.029127333327778615,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 1.7661474166670814,
+      "events": 18,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-layout-short",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "GHb",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 4
+      },
+      "text": "При "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14314833333628485,
+        "firstChangeSeconds": 0.02951562499947613,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.3236060833296506,
+      "events": 28,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-facebook",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "FAcebook",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 9
+      },
+      "text": "FAcebook "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.13273512500018114,
+        "firstChangeSeconds": 0.029260791670822073,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.130865833336429,
+      "events": 26,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-github",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "GItHub",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "Github "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1449416250034119,
+        "firstChangeSeconds": 0.03374808333319379,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.274029583335505,
+      "events": 28,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-youtube",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "YOuTube",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 8
+      },
+      "text": "Youtube "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14142170832928969,
+        "firstChangeSeconds": 0.031117666665522847,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.11143808333145,
+      "events": 24,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-iphone",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "IPhone",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 7
+      },
+      "text": "IPhone "
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.147545291663846,
+        "firstChangeSeconds": 0.03927941666188417,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/caramba/research/private/probes/C3089F40-2444-4BB6-A132-8FC04E1400C8.txt",
+      "elapsedSeconds": 2.0037521666672546,
+      "events": 22,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "caps-hello",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "HEllo",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 6
+      },
+      "text": "Hello "
+    }
+  ],
+  "totalEvents": 340,
+  "processExitCode": 0,
+  "identity": {
+    "targetBinarySha256": "fd875bcede1270794fb203771d263ca75762788c711bc61c6ba13c5886ead9f7",
+    "probeBinarySha256": "3263c4b765ab7cee6687715095bf26e5d7833b8fa320ce0f3b46743f7362658e",
+    "probeSourceSha256": "7e82f9a6b9682c285ce4c107782fde9d071fd812c46270423c68d454a35a63a4",
+    "caseFileSha256": "8c3d42b45ee8e46b129535996e907e2dac6a2685e718c496bd1b927c62d79af3",
+    "targetBundleSha256": "75d1121c09d557a6cf30012513fd0368d936299dd128a45521e722484a2e55a3",
+    "pid": 56302,
+    "target": "prototype",
+    "sourceCommit": "385adb9e5256a44e14a34bbfdc007a2b1b76489d",
+    "sourceDirty": true,
+    "processStart": "Thu Oct 15 23:44:45 2026",
+    "probeStartUptime": 44662.417204875
+  },
+  "probeEndUptime": 44701.075872458,
+  "identityUnchanged": true,
+  "targetProcessUnchanged": true
+}

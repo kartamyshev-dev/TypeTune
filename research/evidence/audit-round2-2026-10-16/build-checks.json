@@ -1,0 +1,10 @@
+[
+  {
+    "check": "cli-build",
+    "exitCode": 0
+  },
+  {
+    "check": "gui-build",
+    "exitCode": 0
+  }
+]

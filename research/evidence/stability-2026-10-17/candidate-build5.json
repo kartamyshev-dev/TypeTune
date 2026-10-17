@@ -1,0 +1,35 @@
+{
+  "sourceCommit": "4e029473230c594cabe30302c889d53e6195a40e",
+  "cleanBeforeBuild": true,
+  "app": "/Applications/LayoutPilot.app",
+  "version": "0.1.3",
+  "build": "5",
+  "binarySha256": "6a3b4af8c062e774ae2f137e6d84173d977c522690649859ac01164a19f48bad",
+  "bundleSha256": "52be9047fe5a96d35e95169064e22426589c195f77cf645f417c456cadc62bbe",
+  "nativeBundleSha256": "f1a42509a29542bdc6d2b091c7ebe8f7e090432106e15f36af116bb6cd7dd401",
+  "nativeBundleAlgorithm": "paths-files-modes-symlinks-v1",
+  "signatureVerified": true,
+  "candidateFilesMatched": 10,
+  "pid": 56846,
+  "oldProcessExited": true,
+  "permissionsRefreshedThroughSystemUI": true,
+  "restartedAfterPermissionRefresh": true,
+  "appUIStatus": "Обработчик готов",
+  "profile": {
+    "automatic": true,
+    "earlyCorrection": false,
+    "plainPaste": false
+  },
+  "nativeAcceptance": "FAIL",
+  "releaseSelftest": {
+    "passed": 720,
+    "failed": 0
+  },
+  "releaseCorpus": {
+    "passed": 4420,
+    "failed": 0
+  },
+  "controllerProbePassed": 50,
+  "backup": "research/private/stability-2026-10-17/replaced-installed-0.1.3-build4.app",
+  "evaluationNote": "Initial report-prefix path was rejected by evaluate_corpus.py; corrected prefix completed with exit 0."
+}

@@ -1,0 +1,20 @@
+{
+  "version": "0.1.2",
+  "path": "/Applications/LayoutPilot.app",
+  "bundleFiles": {
+    "Contents/Info.plist": "a82410c7f80717a66c809104e0c913b3ff20fc3e70e02d1099748e2cc5e774b9",
+    "Contents/_CodeSignature/CodeResources": "d4160d222491681e8185c7b9028c8554b4ba7bd9015a4b41d3dc9d93017983c9",
+    "Contents/MacOS/LayoutPilot": "7d6745f62b2cf5c8fb3b9df6894d42ba1dbf9119e72a886e1eb1ba629d75e4f3",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Info.plist": "2a22a924be70b1734fc4286ffecc7f12a58a955e5fc76441b932648b4dcb271e",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeResources": "73c252357b639fef15f06141b585ea2c593171981fbddf265f83eb92ccec56a9",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeDirectory": "df7413c6601b72d01ca2213117a69cdd54c06ce274f643b2f6a681a49b2f3ccf",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeSignature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeRequirements": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/layoutpilot.zsh": "ed41b97161558fb33398fb023748712acb944618f706fe8b96ce0d03c80effe5",
+    "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+  },
+  "candidateMatchesInstalled": true,
+  "oldBackupVerified": true,
+  "nativeAcceptance": "PENDING",
+  "cleanCommit": false
+}

@@ -1,0 +1,9 @@
+{
+  "Sources/LayoutPilot/TerminalBridge.swift": "34b8922115029dac0177d73f5810f2d8a627874d80407f31f2b638e8d8e7b28c",
+  "Sources/LayoutPilot/KeyboardService.swift": "c8dea43e1850af3945f35112ea26b8e179521ed5387cc2b27e232677f586e5b4",
+  "Sources/LayoutPilotCore/EditorSupport.swift": "1e7618a6a08cf81fc5f1420fb6e5b80d0c7223996e6a1b0daa1e3e8c2367a0e2",
+  "Sources/LayoutPilotCore/Resources/layoutpilot.zsh": "ed41b97161558fb33398fb023748712acb944618f706fe8b96ce0d03c80effe5",
+  "Tools/TerminalFixture.zsh": "ee5b4bf8c342f180ff8afe075d9dcdc6dae9fe247f06d5d855bb80b1acef5ae7",
+  "Tools/TerminalProbe.swift": "7c9f8b00b2f460777af120d9a753bd29d83af48696ed7b01b70f91ba8071bfc0",
+  "scripts/test_terminal_zle.py": "80694a4f25c4bf72f5ad95f72fcdd7631a21b9e739de0ccefbf9af9c33b31c54"
+}

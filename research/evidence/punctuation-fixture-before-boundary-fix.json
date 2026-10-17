@@ -1,0 +1,70 @@
+[
+  {
+    "id": "punctuation-file",
+    "feature": "F17/F01",
+    "split": "train",
+    "text": "ABc.txt",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "ABc.txt ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    },
+    "originalResult": null,
+    "provenance": "Independently authored safety regression: preserve filenames/code and acronym while allowing known physical-layout punctuation. No original parity assertion."
+  },
+  {
+    "id": "punctuation-code",
+    "feature": "F17/F01",
+    "split": "train",
+    "text": "ABc;def",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "ABc;def ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    },
+    "originalResult": null,
+    "provenance": "Independently authored safety regression: preserve filenames/code and acronym while allowing known physical-layout punctuation. No original parity assertion."
+  },
+  {
+    "id": "punctuation-physical",
+    "feature": "F17/F01",
+    "split": "train",
+    "text": "Rjvgm.nth",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "Компьютер ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 10,
+      "length": 0
+    },
+    "originalResult": null,
+    "provenance": "Independently authored safety regression: preserve filenames/code and acronym while allowing known physical-layout punctuation. No original parity assertion."
+  },
+  {
+    "id": "punctuation-acronym",
+    "feature": "F17/F01",
+    "split": "train",
+    "text": "HTTP",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "HTTP ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "originalResult": null,
+    "provenance": "Independently authored safety regression: preserve filenames/code and acronym while allowing known physical-layout punctuation. No original parity assertion."
+  }
+]

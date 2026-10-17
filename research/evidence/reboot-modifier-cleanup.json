@@ -1,0 +1,36 @@
+{
+  "axReadErrors" : {
+    "AXSubrole:-25205" : 8
+  },
+  "beforeGesture" : {
+
+  },
+  "boundary" : false,
+  "boundaryObservation" : {
+    "performed" : false
+  },
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/1A41715E-D43C-4332-B906-3D3002511544.results.json",
+  "clipboardRestore" : "not_used",
+  "completed" : 1,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/1A41715E-D43C-4332-B906-3D3002511544.txt",
+  "elapsedSeconds" : 1.3375074166669947,
+  "events" : 2,
+  "eventTag" : 1280331858,
+  "gesture" : "none",
+  "gestureIntermediate" : {
+
+  },
+  "id" : "single",
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "initialSyntheticText" : "",
+  "inputSource" : "com.apple.keylayout.ABC",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII" : "a",
+  "requestedSource" : "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture" : false,
+  "selection" : {
+    "length" : 0,
+    "location" : 1
+  },
+  "text" : "a"
+}

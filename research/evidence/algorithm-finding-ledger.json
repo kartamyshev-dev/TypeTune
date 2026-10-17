@@ -1,0 +1,327 @@
+{
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "provider": "REA6.5.0/Ghidra12.1.4",
+  "method": "pseudocode with targeted ARM64 corroboration; model data not copied",
+  "records": [
+    {
+      "evidence_id": "ev_e84321914a60e936245d9121da985a22ebf89a7e18be75bd2e59e926cafd1bbd",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002dbdfc"
+      },
+      "private_file": "research/private/phase2-autocorrect-rule-engine.json",
+      "file_sha256": "74aacdeb2bc08011df9a3cd82aa49ae0c7df3f30988e3d0651c2ce2126ebb682",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_7fd2facc652fe69fd39fe72f3180c64868929660ab3bcddbb11f25a3a5eb0b02",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e10b4"
+      },
+      "private_file": "research/private/phase2-classifier-inner-instructions.json",
+      "file_sha256": "edb5a39c19a990f0ae56641f442c179572cbc2dc99ed9c3e10317fd1431d9295",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_9d8880bb72af09b01dc75a8dab09744a86eb7dd26d84edc54012bb05720078be",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e10b4"
+      },
+      "private_file": "research/private/phase2-classifier-inner.json",
+      "file_sha256": "80a964621524fd9920192d6c0f6bcd9ff3a93acfcd06c445db6f22f605e310c1",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_e67d9a3a22a170903c622c2c41c79e7e9a41bd858ba9b7ebc11592ef5a4e9c0b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002db210"
+      },
+      "private_file": "research/private/phase2-classifier-model-init.json",
+      "file_sha256": "69b8632ba226213265e8b2b6a7ccb13b5ae0108357d7f3df91f07b417af210f8",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_75d491a274ba578743fd0754eee43abeafd4888e73ab23e44e275f37a5f4d96c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002d9888"
+      },
+      "private_file": "research/private/phase2-classifier.json",
+      "file_sha256": "266ccf80b711f70eae461efb0a64dcbb1506a98fb455f26f256d244948ff9f46",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_553c36bbbd783fd5fc798b6490493e954f4f003400aa0642b027570aeb2c6cab",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100255cec"
+      },
+      "private_file": "research/private/phase2-classify-candidate.json",
+      "file_sha256": "95d1a20a29fef4f3a0fa8743461f6568424b3325d07e2730ce415441823b10cf",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_b1dfc9ad4dd7dc08362eae0e1b86511fd244f87383e3087854174ce9ebf4cb71",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e3c28"
+      },
+      "private_file": "research/private/phase2-delimiter-instructions.json",
+      "file_sha256": "6f72a8037be9d6e26cf6344b6975be0bc08c7cee4c2587b19f7cbcb61b1c5341",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_f646a460d3e9a0758a7f3f622b2c8c5418f3f69eddc29a6bfa21e8daaf6538c5",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x100255420"
+      },
+      "private_file": "research/private/phase2-feature-gate-instructions.json",
+      "file_sha256": "1ade43cb35e259042319c656bcb3cdcb71196610b10de64511ded5f11bf53483",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_7e57d15fcd78498942357e2eda3d04ff5a83fbecbc692e9fe9ccb07dd275555b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100255420"
+      },
+      "private_file": "research/private/phase2-feature-gate.json",
+      "file_sha256": "3472577051409c2856ad50c366e5801fd6a7941d190d039ead2094c1b9099eeb",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_d984e908d21a5dd96e5c11e5e2a3565a4bd34cfab74fa831dc3c4ac99f5d6d20",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002519b0"
+      },
+      "private_file": "research/private/phase2-input-state-instructions.json",
+      "file_sha256": "12b77aeeaf8370e4317b83cfd630af6c188c1550e409953271b2bbdec321c3d6",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_25e7666d04bb7a81c4ec92714346dedb0d5b3e271a953e70189f89a62b07740f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002519b0"
+      },
+      "private_file": "research/private/phase2-input-state.json",
+      "file_sha256": "9917072a601620b70446cbf00f76f89f13bc7d6ef3d3e726cc222fe16e926423",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_dc4ca2427cec9987472c0444b6f5ed0b41d0da44de0005bd1275c566c8e189fe",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e0cec"
+      },
+      "private_file": "research/private/phase2-language-evaluate-instructions.json",
+      "file_sha256": "98d7e4362468f130bf20c1b7c538270961e8ebead972b4a44dddeac1c7fb58f5",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_255b39337cc3ba5b02da7915aed65ce67ee7abab2e41f557cc20d26056f3327c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e0cec"
+      },
+      "private_file": "research/private/phase2-language-evaluate.json",
+      "file_sha256": "62a279067cf871b29151754fe6826db712caf194d38038afc836b09c5697eb11",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_f41e7318948f8b8e620a31704c24552b17a171cac641648c45b631949e7996a9",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e6424"
+      },
+      "private_file": "research/private/phase2-language-method.json",
+      "file_sha256": "f01d30a7e8092e459a112e8a7cd2c8f3385789831b6bf2418e173530ef96ba7c",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_14dce3fdae82efababb4fa7d5decd091e64074ca782018830317cbc5ef4006b3",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e64f4"
+      },
+      "private_file": "research/private/phase2-language-method2.json",
+      "file_sha256": "26bd15e5a1ee83da8f93315e5b5f14b4d00c2331f832dfd971a1a324e4be6b56",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_ef75960aec2254ae04d247aa063a83bc3a39549a68a9368ef5caa9bb18a719e8",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e6428"
+      },
+      "private_file": "research/private/phase2-language-method3.json",
+      "file_sha256": "520fc5252c1d207efb7bd75a64713745b8a52d6a7998adb885177f7c4be872f8",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_93408285a7e01902352121bc95fd3fe4ba0f6db4cfc36ec13c6afdab171bdfc7",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002e083c"
+      },
+      "private_file": "research/private/phase2-language-score-instructions.json",
+      "file_sha256": "1c2d09afb10458d25e59d10d8e0f1177f602a54d10320b7ea43affefc548af15",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_2187e2427b9d45c96b48dc6829babb391dbd42a34e5edb78ad44b10500880f98",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e083c"
+      },
+      "private_file": "research/private/phase2-language-score.json",
+      "file_sha256": "134464dcc486f0aeb5ae149df03a1389e83fe5a26331d8ef9114dcff06f959dc",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_28f0d35cc15146a8c87d08db728204b3ada498ec7b581fe1bf29b69e19ceb015",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10025c6d8"
+      },
+      "private_file": "research/private/phase2-layout-getter.json",
+      "file_sha256": "1714b430e37c5f8e0c58ee65817911d1b5d6b12843b5582c1e51c13bd6acb7c1",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_bbc936557ae0b4708ac410070cbd1d8ec4109bfc3db7b811ad227172afbce25e",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100259f70"
+      },
+      "private_file": "research/private/phase2-layout-resolver.json",
+      "file_sha256": "287ce97cc8b3defe0328f04219f0aab866c5e72e765da4eebf4cb20daebbaede",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_d342430622a4059791d2d2a5929c6147d5ad99787243963dd1a02919432b2019",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10025a838"
+      },
+      "private_file": "research/private/phase2-process-result.json",
+      "file_sha256": "f07439e234c3af76a871020ac7ad6b9d0799d453d9f82fe7f6e79040c54ddac5",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_88dc0ec5db51c5c3fb90ee13cf714286683560d48d96c1517f4c2523a43e634f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10025575c"
+      },
+      "private_file": "research/private/phase2-reset-correction.json",
+      "file_sha256": "820cfca3c60e1ec2178254367c6786cb31ea219f635e8fd7e6c1bc399c8cea0e",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_f9fed34782aa76925320b9c9897dff0e467a386f0d538a4ccb17d8e8ea7abf86",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10025a220"
+      },
+      "private_file": "research/private/phase2-retype-instructions.json",
+      "file_sha256": "5d17104161babe60769f5a6ad356f8fd3a84abe3feb0a4219316e06a15dcd2f2",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_615e17fcaa53d9a95de5ea1b7a9280fb77e7f5a80ec0baecb255b6647643b4f2",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10025a220"
+      },
+      "private_file": "research/private/phase2-retype-operation.json",
+      "file_sha256": "410340c00f6b2a3e02497455b42d7edd87d69175e9683a15af8523aea77fdd5f",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_1b49e64d43848d34fe205522ffa94fbb08d37df10e76ce860628ae52dfac8e13",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002de9a8"
+      },
+      "private_file": "research/private/phase2-rule-graph-match.json",
+      "file_sha256": "e93312efaf19ca18593b8f375225d24ab15837e0c02fd41333a141540c0a1a98",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_e93326319a9703256be2cadf1e8b6a550952f2278015e104baa05fce33444865",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002dbb34"
+      },
+      "private_file": "research/private/phase2-rule-graph-search.json",
+      "file_sha256": "f0008fab375cf82b07eddc80f856b562ec02422737a83c8db867041488fa275e",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_79bce0abad7ec1b544bdfc1ae38c7f293127b97e6a8ef49545c4de4e9e8ab8d5",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002db840"
+      },
+      "private_file": "research/private/phase2-special-behaviors.json",
+      "file_sha256": "7c850aa7e2e0ff44eadc8eac1cd33e617d3e0c4fd7c577c307712d8d775917a1",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_f0752d57b8b93bc5c9ba25480c2bc9b21edfc8d8945d281e1714c36d60437915",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100255af0"
+      },
+      "private_file": "research/private/phase2-state-reducer.json",
+      "file_sha256": "59ff43ad5a79ed28e3339935275aa35ca93145015796024cc91286de67b8ddaa",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_fd52fc9ee791fa18913d4e4cf53c0882b625b5d879ee860b8cb3ee048391634f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e3ca8"
+      },
+      "private_file": "research/private/phase2-token-check.json",
+      "file_sha256": "47e4f4ff7dbf7775723a42ea8a734e128cb5bb5ff4c8d73d9c13ce3c239ba9c5",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_73f6b65f2c61cdb52fea0bbb1629d6b83b281dcbece5b259a3f85463aa74ab18",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002e3c28"
+      },
+      "private_file": "research/private/phase2-token-check2.json",
+      "file_sha256": "0adca93d656d5e1ab7dfed08f90de9bfef3223b5d5f6a2c2ed94f306ec786a27",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_be489b2355f4fcf09f3960fe792af2fcdfab7314069d999bdbbe1c7637bcad83",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x10060b850"
+      },
+      "private_file": "research/private/phase2-xrefs-model-vtable.json",
+      "file_sha256": "8946ecb06471d6f7aae5272b5b4a68599ef2d9532e5f6b3a64c92c9e01764219",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_413a2fd4923faf3f347d70357588c8a0d7d583c1ccf3703e481f3b976aa33723",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x10060b838"
+      },
+      "private_file": "research/private/phase2-xrefs-model.json",
+      "file_sha256": "f0453f7aec82aa8f8d7bcc0a63d68e74b21dee2debecb4782a99f3165323c3a9",
+      "profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    }
+  ]
+}

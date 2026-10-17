@@ -1,0 +1,22 @@
+{
+  "pid": 92604,
+  "targetBinarySha256": "102ad5b5e8326662751a31947a51183481a38e366b1c475db67967433e139791",
+  "comparisonRun": "final-fifo",
+  "stabilityBatches": [
+    {
+      "index": 0,
+      "cases": 167,
+      "textIntegrityFailures": [],
+      "matchesCorrectionExpectation": 104
+    }
+  ],
+  "notice": "Synthetic new TextEdit documents only; session includes bounded clearing and setup pauses. CPU sampled every 2s; no correction-only latency claim.",
+  "status": "completed",
+  "durationSeconds": 2170.2868135000026,
+  "atLeast30Minutes": true,
+  "telemetry": {
+    "samples": 1080,
+    "peakCPUPercent": 52.3,
+    "peakRSSKiB": 115056
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "evidence_id": "LP-STORAGE-20261015-01",
+  "producer": "local Python stdlib plistlib/sqlite3/hashlib; no new REA session",
+  "scope": "immutable bundle model/resources and existing private SQLite backup schema only; no original row values, no dictionary extraction, no application mutation",
+  "target": {
+    "path": "research/private/caramba-arm64",
+    "sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+    "bytes": 6274800
+  },
+  "prior_REA_evidence_ids": [
+    "ev_8ed31ebf42477ac0055078501fb15f1f96ac3730a8b1466271ccc94b582e36b3"
+  ],
+  "current_model": {
+    "artifact": {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/VersionInfo.plist",
+      "sha256": "47ebe940dd66b5b4657e5528327c3942f32a3cf9178ebd6b9bdb52e2888b7e41",
+      "bytes": 1342
+    },
+    "name": "Caramba.8"
+  },
+  "models": [
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.2.mom",
+      "sha256": "bcb9fcec547a5dc40e9d5dcecb809137e4ce5dd6270f1f74a1aa6fe78d841fbf",
+      "bytes": 4393,
+      "entities": {
+        "AppStats": {
+          "asw": {
+            "archive_object": 12,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "msw": {
+            "archive_object": 16,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "startedAt": {
+            "archive_object": 17,
+            "type_code": 900,
+            "optional": true,
+            "default": null
+          }
+        },
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 28,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "targetLanguage": {
+            "archive_object": 59,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "sourceLanguage": {
+            "archive_object": 75,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.3.mom",
+      "sha256": "86ac599466d4f1f5b1324dfd3c5e53b3c0e6c364082d493d76fa5afc6945c5de",
+      "bytes": 3884,
+      "entities": {
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 11,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "targetLanguage": {
+            "archive_object": 43,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "sourceLanguage": {
+            "archive_object": 59,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.4.mom",
+      "sha256": "f7739f968b5837379f29dde60b26e4355aebc56c1946019f39118877d410fac3",
+      "bytes": 3566,
+      "entities": {
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 12,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "additions": {
+            "archive_object": 44,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "sourceLanguage": {
+            "archive_object": 47,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "disabled": {
+            "archive_object": 63,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.5.mom",
+      "sha256": "b02279cb57294bdf97940a1049abda9da552a952a28773eaca52c277f264713d",
+      "bytes": 3688,
+      "entities": {
+        "AutoswitchException": {
+          "disabled": {
+            "archive_object": 13,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          },
+          "additions": {
+            "archive_object": 16,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "pattern": {
+            "archive_object": 18,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "sourceLanguage": {
+            "archive_object": 49,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "createdAt": {
+            "archive_object": 65,
+            "type_code": 900,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.6.mom",
+      "sha256": "93bf5548b80e1b77bcdde9b42f28422c8a6c58700eabd8135effe0704b52f588",
+      "bytes": 3113,
+      "entities": {
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 12,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "additions": {
+            "archive_object": 44,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "visibleToUser": {
+            "archive_object": 47,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          },
+          "disabled": {
+            "archive_object": 48,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.7.mom",
+      "sha256": "c67ec56d8fca4aec402e5468a91dc2aa67c578af47e074b6515c6bfaf2801914",
+      "bytes": 3112,
+      "entities": {
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 12,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "additions": {
+            "archive_object": 44,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "visible": {
+            "archive_object": 47,
+            "type_code": 800,
+            "optional": true,
+            "default": false
+          },
+          "disabled": {
+            "archive_object": 49,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.8.mom",
+      "sha256": "309116244e07a0e8df5b7d7b05a3e2061a4fb2e284b6ff83c7a47a24384e6f78",
+      "bytes": 3590,
+      "entities": {
+        "AppException": {
+          "enabled": {
+            "archive_object": 12,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          },
+          "bundleID": {
+            "archive_object": 15,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "path": {
+            "archive_object": 17,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          }
+        },
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 28,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "additions": {
+            "archive_object": 58,
+            "type_code": 200,
+            "optional": true,
+            "default": 0
+          },
+          "visible": {
+            "archive_object": 60,
+            "type_code": 800,
+            "optional": true,
+            "default": false
+          },
+          "disabled": {
+            "archive_object": 62,
+            "type_code": 800,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.mom",
+      "sha256": "86ac599466d4f1f5b1324dfd3c5e53b3c0e6c364082d493d76fa5afc6945c5de",
+      "bytes": 3884,
+      "entities": {
+        "AutoswitchException": {
+          "pattern": {
+            "archive_object": 11,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "targetLanguage": {
+            "archive_object": 43,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          },
+          "sourceLanguage": {
+            "archive_object": 59,
+            "type_code": 700,
+            "optional": true,
+            "default": null
+          }
+        }
+      }
+    }
+  ],
+  "resources": [
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/en.lproj/Exceptions.strings",
+      "sha256": "f568fd7d6c42449587bf54c4c270733e012df3fed86871ea577358bf51f6ae90",
+      "bytes": 2062,
+      "entries": 13,
+      "selected_key_anchors": [
+        "DeG-P5-Gzn.title",
+        "S2x-DJ-lQj.title",
+        "Wp8-nN-1kz.title",
+        "eOc-Zc-YpP.title"
+      ],
+      "all_selected_keys_present": true
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/en.lproj/Localizable.strings",
+      "sha256": "5aa702b849bbdad26851a9150b1f0b1ff3d277e04461eceb289469dc871ee0bb",
+      "bytes": 16192,
+      "entries": 97,
+      "selected_key_anchors": [
+        "Add to User Rules",
+        "Would you like to add this word to your user rules?",
+        "Delete all rules?",
+        "appex.autoswitching-on",
+        "appex.autoswitching-off"
+      ],
+      "all_selected_keys_present": true
+    },
+    {
+      "path": "research/private/Caramba Switcher Pro.app/Contents/Resources/CarambaSwitcherUI_CarambaSwitcherUI.bundle/Contents/Resources/en.lproj/Localizable.strings",
+      "sha256": "b5d747bd6c81a5ddd7beef5c9852d94f77b9cb7232a0ce59e524a05c0a6ab1c2",
+      "bytes": 13782,
+      "entries": 73,
+      "selected_key_anchors": [
+        "Paste without formatting — on any hotkey, even ⌘V itself",
+        "Remove custom sound",
+        "This word is untouchable"
+      ],
+      "all_selected_keys_present": true
+    }
+  ],
+  "binary_key_markers": [
+    {
+      "literal": "tech.caramba.switcher.paste-no-format",
+      "byte_offsets": [
+        4968352
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.auto-enabled",
+      "byte_offsets": [
+        4972208
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.singleshift-enabled",
+      "byte_offsets": [
+        4972256
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.autocorrect-on",
+      "byte_offsets": [
+        4972304
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.yofikator-on",
+      "byte_offsets": [
+        4972352
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.alt-enabled",
+      "byte_offsets": [
+        4972400
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.splitshift-enabled",
+      "byte_offsets": [
+        4972448
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.sounds.enabled",
+      "byte_offsets": [
+        4972672
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.sounds.main-sound-override",
+      "byte_offsets": [
+        4972720
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.counters.sounds",
+      "byte_offsets": [
+        4973232,
+        4973600
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.counters.doubleshift",
+      "byte_offsets": [
+        4973280,
+        4973648
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.counters.singleshift",
+      "byte_offsets": [
+        4973328,
+        4973744
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.counters.yofikator",
+      "byte_offsets": [
+        4973376,
+        4973792
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.counters.cupertino",
+      "byte_offsets": [
+        4973424,
+        4973840
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.counters.autoswitch",
+      "byte_offsets": [
+        4973472,
+        4973696
+      ]
+    },
+    {
+      "literal": "tech.caramba.switcher.personalization.header-color",
+      "byte_offsets": [
+        4976960
+      ]
+    }
+  ],
+  "backup_schema": {
+    "files": [
+      {
+        "path": "research/private/initial-state/sqlite/7b3838572d60.sqlite",
+        "sha256": "7e0ffb02b7024d77d986bea90ac485aba7583fe70e2aaa4dbc509120590ff9ea",
+        "bytes": 73728
+      },
+      {
+        "path": "research/private/initial-state/sqlite/7b3838572d60.sqlite-wal",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "research/private/initial-state/sqlite/7b3838572d60.sqlite-shm",
+        "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+        "bytes": 32768
+      }
+    ],
+    "tables": {
+      "ZAPPEXCEPTION": [
+        {
+          "name": "Z_PK",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": true
+        },
+        {
+          "name": "Z_ENT",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "Z_OPT",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZENABLED",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZBUNDLEID",
+          "type": "VARCHAR",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZPATH",
+          "type": "VARCHAR",
+          "not_null": false,
+          "primary_key": false
+        }
+      ],
+      "ZAUTOSWITCHEXCEPTION": [
+        {
+          "name": "Z_PK",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": true
+        },
+        {
+          "name": "Z_ENT",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "Z_OPT",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZADDITIONS",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZDISABLED",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZVISIBLE",
+          "type": "INTEGER",
+          "not_null": false,
+          "primary_key": false
+        },
+        {
+          "name": "ZPATTERN",
+          "type": "VARCHAR",
+          "not_null": false,
+          "primary_key": false
+        }
+      ]
+    },
+    "mode": "read-only immutable, WAL excluded; sqlite_master/PRAGMA schema only; no rows selected"
+  },
+  "limitations": [
+    "Resource declarations and literal keys do not establish UI reachability or runtime behavior.",
+    "Historical model versions do not prove current feature support or migration behavior.",
+    "Meaning of additions/visible/disabled and exact pattern matching remain unknown.",
+    "Snapshot schema does not establish WAL transaction consistency or row data semantics.",
+    "User rules have no replacement field in current supplied model; replacement may theoretically live elsewhere, not proven absent from whole app."
+  ],
+  "followup_symbol_markers": [
+    {
+      "literal": "AppExceptionsStore.swift",
+      "byte_offsets": [
+        4968640,
+        4968745
+      ]
+    },
+    {
+      "literal": "AutoswitchExceptionsStore.swift",
+      "byte_offsets": [
+        4968960,
+        4969065
+      ]
+    },
+    {
+      "literal": "fetchAppExceptions",
+      "byte_offsets": [
+        4968784
+      ]
+    },
+    {
+      "literal": "updateAppException",
+      "byte_offsets": [
+        4968816
+      ]
+    },
+    {
+      "literal": "fetchAutoswitchExceptions",
+      "byte_offsets": [
+        4969104
+      ]
+    },
+    {
+      "literal": "removeAutoswitchExceptions",
+      "byte_offsets": [
+        4969232
+      ]
+    },
+    {
+      "literal": "addAutoswitchException",
+      "byte_offsets": [
+        4976304
+      ]
+    },
+    {
+      "literal": "removeAppException",
+      "byte_offsets": [
+        4976384
+      ]
+    },
+    {
+      "literal": "patternSet",
+      "byte_offsets": [
+        4870788,
+        4900835
+      ]
+    }
+  ]
+}

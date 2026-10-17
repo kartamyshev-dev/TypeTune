@@ -1,0 +1,18 @@
+{
+  "boundary" : true,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/69188324-1317-466C-BA70-5B55F0B20E08.txt",
+  "elapsedSeconds" : 2.760599708330119,
+  "events" : 14,
+  "eventTag" : 1280331858,
+  "gesture" : "none",
+  "initialInputSource" : "com.apple.keylayout.ABC",
+  "inputSource" : "com.apple.keylayout.ABC",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+  "physicalASCII" : "ghbdtn",
+  "requestedSource" : "com.apple.keylayout.ABC",
+  "selection" : {
+    "length" : 0,
+    "location" : 7
+  },
+  "text" : "ghbdtn "
+}

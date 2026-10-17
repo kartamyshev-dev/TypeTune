@@ -1,0 +1,98 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 21
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 21,
+      "maxMilliseconds": 0.3112499980488792,
+      "totalMilliseconds": 2.8782500012312084
+    },
+    "AXFocusedUIElement:0": {
+      "count": 21,
+      "maxMilliseconds": 0.1867500031949021,
+      "totalMilliseconds": 1.5495416664634831
+    },
+    "AXFocusedWindow:0": {
+      "count": 21,
+      "maxMilliseconds": 27.56654167023953,
+      "totalMilliseconds": 39.65137498744298
+    },
+    "AXRole:0": {
+      "count": 21,
+      "maxMilliseconds": 0.07575000199722126,
+      "totalMilliseconds": 0.9575000003678724
+    },
+    "AXSelectedTextRange:0": {
+      "count": 4,
+      "maxMilliseconds": 0.08129166235448793,
+      "totalMilliseconds": 0.24966667115222663
+    },
+    "AXSubrole:-25205": {
+      "count": 21,
+      "maxMilliseconds": 0.2959583362098783,
+      "totalMilliseconds": 3.290791661129333
+    },
+    "AXValue:0": {
+      "count": 4,
+      "maxMilliseconds": 0.07341666059801355,
+      "totalMilliseconds": 0.1858749965322204
+    },
+    "AXWindow:0": {
+      "count": 21,
+      "maxMilliseconds": 0.17070833564503118,
+      "totalMilliseconds": 1.6808750151540153
+    }
+  },
+  "beforeGesture": {
+    "inputSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 23,
+      "location": 0
+    },
+    "text": "ghbdtn é\nhello\t👩🏽‍💻"
+  },
+  "boundary": false,
+  "boundaryObservation": {
+    "performed": false
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/0CAF2924-DF5F-44F2-9DA4-F7CF9966418A.results.json",
+  "clipboardRestore": "restored_all_representations",
+  "completed": 1,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/0CAF2924-DF5F-44F2-9DA4-F7CF9966418A.txt",
+  "elapsedSeconds": 1.711396375001641,
+  "events": 8,
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "gesture": "doubleShift",
+  "gestureIntermediate": {},
+  "id": "single",
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "initialSyntheticText": "ghbdtn é\nhello\t👩🏽‍💻",
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII": "",
+  "requestedSource": "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture": true,
+  "selection": {
+    "length": 0,
+    "location": 23
+  },
+  "text": "привет é\nруддщ\t👩🏽‍💻",
+  "processExitCode": 0,
+  "identity": {
+    "targetBinarySha256": "d2855030616863709a571a076777d1eea64adf4d4d3ee065555ca3513b5a63e5",
+    "probeBinarySha256": "3263c4b765ab7cee6687715095bf26e5d7833b8fa320ce0f3b46743f7362658e",
+    "probeSourceSha256": "7e82f9a6b9682c285ce4c107782fde9d071fd812c46270423c68d454a35a63a4",
+    "targetBundleSha256": "fb7c6a9366b8c116587eb414874bcd357d78c1c46a8acd8e8f08fae4e45b4d49",
+    "pid": 48643,
+    "target": "original",
+    "sourceCommit": "385adb9e5256a44e14a34bbfdc007a2b1b76489d",
+    "sourceDirty": true,
+    "processStart": "Thu Oct 15 23:14:57 2026",
+    "probeStartUptime": 43558.152523875
+  },
+  "probeEndUptime": 43560.887530166,
+  "identityUnchanged": true,
+  "targetProcessUnchanged": true
+}

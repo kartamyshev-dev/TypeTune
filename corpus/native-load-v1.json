@@ -1,0 +1,86 @@
+[
+  {
+    "id": "load-0",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-1",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-2",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-3",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-4",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-5",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-6",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-7",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-8",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-9",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-10",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  },
+  {
+    "id": "load-11",
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+    "source": "ABC",
+    "boundary": true,
+    "expected": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  "
+  }
+]

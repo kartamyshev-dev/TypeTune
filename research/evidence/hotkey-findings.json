@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "authority": "shipped-artifact static; no UI/native actions",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "tools": {
+    "rea": "6.5.0",
+    "ghidra": "12.1.4",
+    "skill_version": 42
+  },
+  "lifecycle": {
+    "prior_export_checked": "settings-evidence-bundle.json",
+    "prior_snapshot_checked": "settings-snapshot.json",
+    "required_bodies_missing_from_prior_cache": true,
+    "fresh_imports": 1,
+    "new_pseudocode_bodies": 8,
+    "new_asm_records": 5,
+    "new_xrefs": 3,
+    "new_direct_caller_queries": 3,
+    "new_bytes_reads": 1,
+    "new_total_records": 20,
+    "note": "8 pseudo + 5 ASM + 3 callers + 3 xrefs + 1 bytes = 20 new records.",
+    "export_records": 138,
+    "session_closed": true,
+    "snapshot_primitive_entries": 1,
+    "snapshot_workflow_entries": 1
+  },
+  "artifacts": [
+    {
+      "private_path": "research/private/hotkey-evidence-bundle.json",
+      "bytes": 8843304,
+      "sha256": "407cb9addf51070f471c401ac97c5b43e937799e1714745a13d0e2bd523548ab"
+    },
+    {
+      "private_path": "research/private/hotkey-snapshot.json",
+      "bytes": 15504203,
+      "sha256": "2348d49430dfb4e27f5b8aa16de0f8c5f98bea2c73003430501b2521ed279b81"
+    },
+    {
+      "private_path": "research/private/hotkey-main-objc-metadata.txt",
+      "bytes": 2344165,
+      "sha256": "5e18228e3f9290da102b8b108bef2be06f683a83132cdb69c0dc471de8f915e6"
+    }
+  ],
+  "references": [
+    {
+      "operation": "procedure_callers",
+      "parameters": {
+        "procedure": "0x1001bf490"
+      },
+      "evidence_id": "ev_1b1437fac0995d880fdd89e004279c5629df798cf446c7a5e3038be4acf11fcc"
+    },
+    {
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1001b6fd8"
+      },
+      "evidence_id": "ev_250b801dc733a6c461205b3ef6fdc8b7410720a8e1973b636a96a41bf17a68ee"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001bf490"
+      },
+      "evidence_id": "ev_30314fd0c43ed92449ec942ba7b9c0cc17e4f365cede705c465535905bda958a"
+    },
+    {
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10000a45c"
+      },
+      "evidence_id": "ev_46963dcc506cb1399c9ac3518d76631b29687f9885614218967c87d15806787c"
+    },
+    {
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1000239bc"
+      },
+      "evidence_id": "ev_4c249e803c0a53f159382f8f89719965a638104bdae6433fe7291e86937b913e"
+    },
+    {
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10004ce18"
+      },
+      "evidence_id": "ev_534a148222b3b09c97ab24fa012844e81f8353b72da22c73c2664be387657891"
+    },
+    {
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x1001bf490"
+      },
+      "evidence_id": "ev_542c8dabd0bd6f6fbcf6c4e49cf142e8938fa71f220456e7c7aedb72bd2f95e8"
+    },
+    {
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x100422540",
+        "length": 8
+      },
+      "evidence_id": "ev_7442e9228b011a8c20899106dc8ecc3a0b5d636053118d9adbd783e7c37f7c3f"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001b507c"
+      },
+      "evidence_id": "ev_7840ed190148705b56001c490f0e53a23e78fc2d73a09ba73a0737bf6c212922"
+    },
+    {
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x10058e748"
+      },
+      "evidence_id": "ev_85b61737702553d1309cd6e624a516f10467af0b2721f1b51cac1f9c747f6c93"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001bf170"
+      },
+      "evidence_id": "ev_8b35d117bcf26f92e89846b2de56c9dbb9136de0454a0bc3557a18e544de3704"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1000239bc"
+      },
+      "evidence_id": "ev_8ed2291e99b6b267e37909bb1c6f21f9d4ab47d0f0b0d6908535652ef058f2c9"
+    },
+    {
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x100632943"
+      },
+      "evidence_id": "ev_942a52f9fb35dda933abefe1394afec6f6bf29414349c779286b6d5cae929d78"
+    },
+    {
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1001bf170"
+      },
+      "evidence_id": "ev_c68ede2706644be8a3565edaf9cb30e6b5997124c6a38af81ab1b2c61c6777d3"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001c3ac0"
+      },
+      "evidence_id": "ev_d08daaf499f58c06e797c0cb646205eb8f432b2035891f67438ce6539027e99c"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001c415c"
+      },
+      "evidence_id": "ev_d66ca495b7abf8dab5c275c63bd926f5c0ea9c32835a78ab554bbf98e5078855"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004ce18"
+      },
+      "evidence_id": "ev_ec6edabd6abbe814263c9ff004303458dd44f658e9e267e650e449ae36b721c9"
+    },
+    {
+      "operation": "procedure_callers",
+      "parameters": {
+        "procedure": "0x1001c37ec"
+      },
+      "evidence_id": "ev_f3113a4a35019e6901470ee13b7eac01f20d80f1d952028adb8a143d7b25b186"
+    },
+    {
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001b6fd8"
+      },
+      "evidence_id": "ev_f57699c1beefca0fbcfd114615d09946e54a401bb3c48fe615683057432e0469"
+    },
+    {
+      "operation": "procedure_callers",
+      "parameters": {
+        "procedure": "0x1001c3eb0"
+      },
+      "evidence_id": "ev_f8a398466313272fd1d00234fff4948344fd28be64768d5846046c33eb03b707"
+    }
+  ],
+  "observations": [
+    {
+      "id": "HK-OPTION-FIXED",
+      "anchors": [
+        "0x10004a588",
+        "0x10004ce18",
+        "0x1001b507c",
+        "0x100422540"
+      ],
+      "claim": "Main option1 callback persists Bool and selects fixed CmdShiftV pair/tag0 when enabled, absent pair/tag1 when disabled. Key9 and flags0x120000 confirmed ASM and8-byte read."
+    },
+    {
+      "id": "HK-NAME-NO-RECORDER",
+      "anchors": [
+        "0x10000a45c",
+        "0x1001bf170"
+      ],
+      "claim": "a45c supplies name, pair0/0,optionalTag1; constructor copies33-byte name/default structure and skips default setter atthis callsite. It does not open recorder."
+    },
+    {
+      "id": "HK-RECORDER-LIBRARY",
+      "anchors": [
+        "0x1001bf490",
+        "0x1001c3ac0",
+        "0x10058e748"
+      ],
+      "claim": "RecorderCocoa NSSearchField implementation exists with name/onChange initialization. No settings reachability established."
+    },
+    {
+      "id": "HK-XREF-BOUNDARY",
+      "anchors": [
+        "0x1001bf490",
+        "0x100632943"
+      ],
+      "claim": "No direct callers found for1bf490. Sole xref632943 liesin__LINKEDIT (VM610000+58000), not an application caller/witness UI proof. Its incoming xrefs empty; indirect runtime uses remain unknown."
+    },
+    {
+      "id": "SOUND-RESET-CACHE",
+      "anchors": [
+        "0x10004a898",
+        "0x1000239bc"
+      ],
+      "claim": "After optional Data clear,239bc reads persisted overrideData and replaces cached NSSound+1b0 with NSSound(initWithData) ornil. No source-file deletion or specificfallback playback proven."
+    }
+  ],
+  "unknowns": [
+    "Arbitrary hotkey editable UI and howtoopen recorder inthisversion.",
+    "Exact shortcut persistence/registration under1b71e4.",
+    "Exact modifier helper semantics1c5f1c/1c6d6c.",
+    "Actual soundfallback playback consumer and native audio afterreset."
+  ],
+  "next_queries": [
+    {
+      "address": "0x1001b71e4",
+      "reason": "Namedshortcut setter reachedfrom enabledoption; determine persistence andregistration"
+    },
+    {
+      "address": "0x1001bdaa0",
+      "reason": "Nameconstructor final helper, validation/registration unknown"
+    },
+    {
+      "address": "0x39308",
+      "component": "CarambaSwitcherUI.framework",
+      "reason": "Onlyifdirect mainwiring supports recorder branch; fullbody notyetinspected"
+    }
+  ]
+}

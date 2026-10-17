@@ -1,0 +1,20 @@
+{
+  "targetSha256": "944f9ccec18becc8fb72e2ca991582443aa7231ee21ff0399f5cd04e76707455",
+  "normalQuitObserved": true,
+  "noSwitcherProcessBetweenQuitAndLaunch": true,
+  "relaunchedSameBundle": true,
+  "nativeUIBeforeAndAfter": {
+    "automatic": 9,
+    "typo": 1,
+    "yo": 1,
+    "manual": 5,
+    "singleShift": 1,
+    "sound": 0,
+    "historicalUnclassified": 3430,
+    "oldTotal": 3446
+  },
+  "categoriesAndHistoryPreserved": true,
+  "traceEnabled": false,
+  "originalParity": false,
+  "notice": "Exact own UI values observed before and after normal quit/relaunch; historical counts were not reset. Not a login/sleep test."
+}

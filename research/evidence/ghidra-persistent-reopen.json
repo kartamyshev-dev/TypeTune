@@ -1,0 +1,203 @@
+{
+  "checked_at_utc": "2026-10-15T10:09:20.497523+00:00",
+  "result": "PASS_SEPARATE_GHIDRA_HEADLESS_PROJECT_SAVE_REOPEN",
+  "rea_session_project_save_reopen": "UNSUPPORTED_BY_INSTALLED_REA_6.5_PROVIDER",
+  "snapshot_replay": "separate previously verified result; not used as project reopening proof",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "tools": {
+    "ghidra": "12.1.4",
+    "jdk": "21",
+    "heap_limit": "2G",
+    "max_cpu": 2,
+    "nice": 10
+  },
+  "initial_private_project_artifacts": [],
+  "project": "research/private/ghidra-persistent/caramba.gpr",
+  "commands": [
+    "scripts/ghidra_checkpoint.sh create",
+    "scripts/ghidra_checkpoint.sh reopen"
+  ],
+  "processes": {
+    "create_exit_code": 0,
+    "reopen_exit_code": 0,
+    "sequential_distinct_processes": true,
+    "new_import_count": 1,
+    "reopen_noanalysis": true,
+    "reopen_readOnly": true,
+    "reopen_import": false
+  },
+  "create": {
+    "phase": "create",
+    "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+    "program": "caramba-arm64",
+    "language": "AARCH64:LE:64:AppleSilicon",
+    "function_entry": "0x1002e0030",
+    "function_body_bytes": 2060,
+    "function_body_sha256": "658ea9d830af0b5195253868172b7a18f18188122547c696932f688787d9442d",
+    "function_count": 24472,
+    "saved_marker": "layoutpilot-persistent-project-v1"
+  },
+  "reopen": {
+    "phase": "reopen",
+    "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+    "program": "caramba-arm64",
+    "language": "AARCH64:LE:64:AppleSilicon",
+    "function_entry": "0x1002e0030",
+    "function_body_bytes": 2060,
+    "function_body_sha256": "658ea9d830af0b5195253868172b7a18f18188122547c696932f688787d9442d",
+    "function_count": 24472,
+    "saved_marker": "layoutpilot-persistent-project-v1"
+  },
+  "project_files_before": {
+    "caramba.gpr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "caramba.rep/project.prp": {
+      "bytes": 164,
+      "sha256": "c9f759248f596d24ae4a478b720abc8d9b49a0432aaec77accebfac44bddb347"
+    },
+    "caramba.rep/versioned/~index.bak": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/versioned/~index.dat": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/user/~index.dat": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/idata/~journal.bak": {
+      "bytes": 74,
+      "sha256": "1c8dce71c8cb87586fc212840a0a5726c3108b4a099fd5bd285c9f3e5df17763"
+    },
+    "caramba.rep/idata/~index.bak": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/idata/~index.dat": {
+      "bytes": 108,
+      "sha256": "10bf2fe9f5369955df1da15de02014a5b84326b3834b2b0df5d7acfcdf37468a"
+    },
+    "caramba.rep/idata/00/00000000.prp": {
+      "bytes": 488,
+      "sha256": "e2212ea1cd7f813d89014eb365978ecabafc18bc7c5770f5f072a14ae3fe03d4"
+    },
+    "caramba.rep/idata/00/~00000000.db/db.1.gbf": {
+      "bytes": 116277248,
+      "sha256": "d41eefd47f75194b17a55607191359f1439dbb13926b8eae19cd08cf787d546e"
+    }
+  },
+  "project_files_after": {
+    "caramba.gpr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "caramba.rep/project.prp": {
+      "bytes": 164,
+      "sha256": "c9f759248f596d24ae4a478b720abc8d9b49a0432aaec77accebfac44bddb347"
+    },
+    "caramba.rep/versioned/~index.bak": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/versioned/~index.dat": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/user/~index.dat": {
+      "bytes": 59,
+      "sha256": "0a5034997e47499d758115fa580ad21d96557d2a32c89f2263bcfd3fa8a9a6e5"
+    },
+    "caramba.rep/idata/~index.bak": {
+      "bytes": 108,
+      "sha256": "10bf2fe9f5369955df1da15de02014a5b84326b3834b2b0df5d7acfcdf37468a"
+    },
+    "caramba.rep/idata/~index.dat": {
+      "bytes": 108,
+      "sha256": "10bf2fe9f5369955df1da15de02014a5b84326b3834b2b0df5d7acfcdf37468a"
+    },
+    "caramba.rep/idata/00/00000000.prp": {
+      "bytes": 488,
+      "sha256": "e2212ea1cd7f813d89014eb365978ecabafc18bc7c5770f5f072a14ae3fe03d4"
+    },
+    "caramba.rep/idata/00/~00000000.db/db.1.gbf": {
+      "bytes": 116277248,
+      "sha256": "d41eefd47f75194b17a55607191359f1439dbb13926b8eae19cd08cf787d546e"
+    }
+  },
+  "project_file_count_before": 10,
+  "project_file_count_after": 9,
+  "all_project_files_identical": false,
+  "unchanged_primary_program_database": true,
+  "changed_metadata_backup_paths": [
+    "caramba.rep/idata/~index.bak",
+    "caramba.rep/idata/~journal.bak"
+  ],
+  "checks": {
+    "saved_options_marker_retrieved": true,
+    "function_body_digest_recomputed_identical": true,
+    "target_digest_identical": true,
+    "existing_project_opened": true,
+    "project_program_database_files_unchanged": true,
+    "no_new_import_or_analysis_on_reopen": true
+  },
+  "analysis": {
+    "reported_success": true,
+    "reported_total_seconds": 218,
+    "function_count": 24472,
+    "objective_c_type_encoding_errors": 4,
+    "external_demangled_table_warning_count": 40
+  },
+  "limitations": [
+    "This separate workflow does not save/reopen an REA session or import REA annotations.",
+    "Ghidra default analysis reported Objective C type encoding errors and external demangling warnings; complete semantics are not claimed.",
+    "Ghidra readOnly Program access does not guarantee zero project metadata filesystem writes: two index/journal backup paths changed. Primary database files and .gpr remained byte-identical.",
+    "Function hash is over ascending Ghidra body AddressSet bytes; not original source or execution evidence.",
+    "No GUI, native input, target execution or prototype functional acceptance is established."
+  ],
+  "artifacts": {
+    "scripts/ghidra_checkpoint.java": {
+      "sha256": "b5792ab885f7d7035356c000365686e5aea9b41eeab30bd228c5363a1974db3a",
+      "bytes": 3102
+    },
+    "scripts/ghidra_checkpoint.sh": {
+      "sha256": "bb83408bfb2d7d84f7a175321ccd2fe91c084698a4da76f729790212fc0650bb",
+      "bytes": 1690
+    },
+    "research/private/ghidra-persistent/create.json": {
+      "sha256": "b3127f8f154141771f3a0c010623d348c81f11d6853462ef4a4b72ea69a70063",
+      "bytes": 427
+    },
+    "research/private/ghidra-persistent/reopen.json": {
+      "sha256": "0c6fb6e5f7406e96e837ef6e64c920fd1c0942409e6dbb678a4bc87662bf60fe",
+      "bytes": 427
+    },
+    "research/private/ghidra-persistent/create.log": {
+      "sha256": "fb59517fd06d7b426c4f96972656390b7d7dff9b46e25cc5db61eb24d0405e1a",
+      "bytes": 33816
+    },
+    "research/private/ghidra-persistent/reopen.log": {
+      "sha256": "f0893093a939ba527720c8827348fb91d2c6a9251506e4c00156e0ee4c51a7ce",
+      "bytes": 4332
+    },
+    "research/private/ghidra-persistent/manifest-before-reopen.json": {
+      "sha256": "18400b8f46ce20881819bcdb7866fb163d0e8f6366fe0d6bfb2a98b198dd98a3",
+      "bytes": 1408
+    },
+    "research/private/ghidra-persistent/manifest-after-reopen.json": {
+      "sha256": "92b01182aa80eea7bf47d2448946f98a467252141026d5f4929173277c64745d",
+      "bytes": 1268
+    },
+    "research/private/ghidra-persistent-launch.log": {
+      "sha256": "f7e1c001eeef424e23b3ba24dcaabbca1925050179db6193a83404ea9175dfe4",
+      "bytes": 31303
+    },
+    "research/private/ghidra-persistent-reopen-launch.log": {
+      "sha256": "2a1b29778a261a5964f12cb7167cbe5693fe0851fc31e581783abca0e736b8d4",
+      "bytes": 3984
+    }
+  }
+}

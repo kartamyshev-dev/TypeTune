@@ -1,0 +1,12 @@
+{
+  "accessibilityTrusted" : true,
+  "axReadErrors" : {
+
+  },
+  "events" : 0,
+  "inputSource" : "com.apple.keylayout.RussianWin",
+  "modifierFlags" : 538443776,
+  "postEventAccess" : true,
+  "secureInput" : false,
+  "statusOnly" : true
+}

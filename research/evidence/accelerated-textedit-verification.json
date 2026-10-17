@@ -1,0 +1,1 @@
+{"cases": 13, "requestedCases": 13, "rowsFromStoppedCheckpoint": false, "failures": ["single-shift: inputSource", "selected-manual: text", "selected-manual: inputSource", "selected-manual: selection"], "modifierCleanupVerified": true, "notice": "Only supplied native scenarios; stopped/incomplete runs cannot pass."}

@@ -1,0 +1,10 @@
+{
+  "bundle_path": "research/private/phase2-evidence-bundle.json",
+  "sha256": "a5fab91ffb7d0f04831e16d7297612fc2b332f669d501bcbc05e8010b010f38f",
+  "record_count": 69,
+  "ledger_records": 32,
+  "missing_ledger_ids": [],
+  "snapshot_path": "research/private/phase2-snapshot.json",
+  "provider_closed": true,
+  "warning": "Evidence replay/readback is not a live preserved Ghidra database; unqueried callee code requires a new provider import."
+}

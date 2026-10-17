@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "executedAt": "2026-10-17T19:35:27.181447+00:00",
+  "command": [
+    "/tmp/layoutpilot-event-translation-readonly"
+  ],
+  "exitCode": 0,
+  "sourcePath": "research/private/stability-2026-10-17/event-translation-readonly.swift",
+  "sourceSha256": "730d6927da466f2ab5095a7c62f169165b6b6ea0b318814d30ad6e0ddb700657",
+  "binarySha256": "91ffd89f179e76db9574ecab1131707c0b3e5b23a721f7960b049531fb8faed0",
+  "result": {
+    "AXReads": 0,
+    "cases": [
+      {
+        "adjustedMatchesABC": true,
+        "adjustedMatchesRaw": true,
+        "adjustedMatchesRussian": false,
+        "fixture": "constructor",
+        "nseCharactersMatchesRaw": true,
+        "rawMatchesABC": true,
+        "rawMatchesRussian": false
+      },
+      {
+        "adjustedMatchesABC": true,
+        "adjustedMatchesRaw": true,
+        "adjustedMatchesRussian": false,
+        "fixture": "explicit-ABC",
+        "nseCharactersMatchesRaw": true,
+        "rawMatchesABC": true,
+        "rawMatchesRussian": false
+      },
+      {
+        "adjustedMatchesABC": true,
+        "adjustedMatchesRaw": false,
+        "adjustedMatchesRussian": false,
+        "fixture": "explicit-Russian",
+        "nseCharactersMatchesRaw": true,
+        "rawMatchesABC": false,
+        "rawMatchesRussian": true
+      }
+    ],
+    "eventsPosted": 0,
+    "inputSourceChanges": 0,
+    "notice": "Constructed events only. Does not reproduce a live source-transition race or inspect real keyboard input.",
+    "sourceAfter": "com.apple.keylayout.ABC",
+    "sourceBefore": "com.apple.keylayout.ABC",
+    "syntheticKey": "fixed g position"
+  },
+  "stderr": "",
+  "boundary": "Constructed synthetic CGEvents only: no posts, no AX field reads, no TISSelectInputSource. This proves API translation behavior in the current source; it does not reproduce a live source-transition cache race.",
+  "finding": "For a constructed event with Unicode from the other enabled layout, keyboardGetUnicodeString and NSEvent.characters preserve that payload, while characters(byApplyingModifiers:[]) returns the current layout mapping. Reproduced without posting events, in both RussianWin and ABC observations.",
+  "priorObservation": {
+    "recordedFrom": "Successful first no-post invocation tool output before the evidence recording run; timestamp not retained",
+    "sourceBefore": "com.apple.keylayout.RussianWin",
+    "sourceAfter": "com.apple.keylayout.RussianWin",
+    "eventsPosted": 0,
+    "inputSourceChanges": 0,
+    "AXReads": 0,
+    "cases": [
+      {
+        "fixture": "constructor",
+        "rawMatchesABC": false,
+        "rawMatchesRussian": true,
+        "nseCharactersMatchesRaw": true,
+        "adjustedMatchesRaw": true,
+        "adjustedMatchesABC": false,
+        "adjustedMatchesRussian": true
+      },
+      {
+        "fixture": "explicit-ABC",
+        "rawMatchesABC": true,
+        "rawMatchesRussian": false,
+        "nseCharactersMatchesRaw": true,
+        "adjustedMatchesRaw": false,
+        "adjustedMatchesABC": false,
+        "adjustedMatchesRussian": true
+      },
+      {
+        "fixture": "explicit-Russian",
+        "rawMatchesABC": false,
+        "rawMatchesRussian": true,
+        "nseCharactersMatchesRaw": true,
+        "adjustedMatchesRaw": true,
+        "adjustedMatchesABC": false,
+        "adjustedMatchesRussian": true
+      }
+    ]
+  }
+}

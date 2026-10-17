@@ -1,0 +1,31 @@
+{
+  "checks" : {
+    "always_enabled" : true,
+    "automatic_fault_saved" : true,
+    "completion_on_main" : true,
+    "concurrent_late_fault_retained" : true,
+    "concurrent_ring_bounded" : true,
+    "directory_private" : true,
+    "file_private" : true,
+    "invalid_codes_not_recorded" : true,
+    "late_event_retained" : true,
+    "legacy_evidence_preserved" : true,
+    "nonfinite_timing_omitted" : true,
+    "only_nonnegative_technical_counters" : true,
+    "ordinary_flush_creates_no_files" : true,
+    "ring_chronological" : true,
+    "ring_keeps_last_1000" : true,
+    "rotation_files_private" : true,
+    "rotation_keeps_three_managed_files" : true,
+    "schema_has_no_raw_payload_fields" : true,
+    "schema_version_2" : true,
+    "unrelated_file_preserved" : true,
+    "write_failure_preserves_blocking_file" : true,
+    "write_failure_reported_without_crash" : true
+  },
+  "nativeAcceptance" : false,
+  "nativeEventsPosted" : false,
+  "passed" : true,
+  "retainedManagedFiles" : 3,
+  "standardDefaultsUsed" : false
+}

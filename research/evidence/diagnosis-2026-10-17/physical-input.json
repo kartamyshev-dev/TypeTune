@@ -1,0 +1,14 @@
+{
+  "reportedSymptom": "automatic and Double Shift fail in all apps",
+  "baselineGuiKeyEvents": 101,
+  "baselineCorrected": 5522,
+  "testDocument": "research/private/probes/CF39ADC4-BE53-4DA5-B46B-9AE110632F73.txt",
+  "helperEventsForNewDocument": 0,
+  "physicalTest": "User confirmed ghbdtn+Space -> привет+Space",
+  "reason": "Synthetic native success does not prove physical keyboard delivery",
+  "uiReadback": "привет ",
+  "guiKeyEventsAfter": 143,
+  "correctedAfter": 5523,
+  "inputSourceAfter": "com.apple.keylayout.RussianWin",
+  "conclusion": "Physical automatic correction works in this bounded TextEdit case; reported broader failure not reproduced"
+}

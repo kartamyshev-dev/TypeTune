@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "target": "original",
+  "fixtureSha256": "7641000317728441d456fbae1c6c254f8344a5b8ced860adb5cbdadb78e163ad",
+  "requested": 2,
+  "completed": 2,
+  "results": [
+    {
+      "id": "multiline-selection",
+      "failures": [],
+      "evidence": "research/evidence/manual-multiline-original-protected/00.json"
+    },
+    {
+      "id": "multiline-unicode-selection",
+      "failures": [
+        "text"
+      ],
+      "evidence": "research/evidence/manual-multiline-original-protected/01.json"
+    }
+  ],
+  "passed": false,
+  "notice": "Only these seeded TextEdit selections; no other-host or full F05 acceptance."
+}

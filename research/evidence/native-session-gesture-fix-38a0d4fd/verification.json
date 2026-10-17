@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "durationSeconds": 1968.278791249999,
+  "samples": 980,
+  "maxSampleGapSeconds": 2.120999999999981,
+  "identityVerified": true,
+  "evidence": [
+    {
+      "path": "/Users/kartamyshev/git/caramba/research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/00.json",
+      "sha256": "83ee5c97f78ac1155376a3b4c9a3ebe06475d4907de18adbced8ebd624d677cf"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/01.json",
+      "sha256": "8d75bc948bcc17fa5744b2f7edf24eae3bbeb91f8a4028599bfad86f2b4218cb"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/02.json",
+      "sha256": "f6a9b478b426835d8685c17bafa0252f1b6d5032d82657be7e3ff16d6458b375"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/03.json",
+      "sha256": "e6640e7ebd88ecf9f51a96010e99779e9dac26cc1b08d88b90094c35fb0c4c37"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/research/evidence/native-corpus-prototype/gesture-fix-38a0d4fd/04.json",
+      "sha256": "9d586ae0871992bf25d481db282a1589c9aaf2ceb884d44d27a8812c188cfd8d"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/research/evidence/native-session-gesture-fix-38a0d4fd/stability-0.json",
+      "sha256": "29ad30474743e326285038ccc07968ce8a7a4b9ff0d135ad0d4cf0cea8d550bf"
+    }
+  ],
+  "first30sMedianRSSKiB": 86144,
+  "last30sMedianRSSKiB": 73040,
+  "medianCPUPercent": 3.0,
+  "stabilityCases": 100,
+  "notice": "Bound synthetic TextEdit session only; not other-host, sleep/wake, physical input or correction-only latency acceptance."
+}

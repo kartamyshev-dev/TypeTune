@@ -1,0 +1,6 @@
+{
+  "source": "initial coherent SQLite backup",
+  "query_scope": "exact bundleID com.apple.TextEdit in ZAPPEXCEPTION; no word rows read",
+  "rows": [],
+  "limitation": "Initial snapshot only; absence does not establish current runtime exception state"
+}

@@ -1,0 +1,31 @@
+{
+  "evidence_id": "ev_8ed31ebf42477ac0055078501fb15f1f96ac3730a8b1466271ccc94b582e36b3",
+  "operation": "inspect_keyed_archive",
+  "subject": {
+    "name": "Caramba.8.mom",
+    "digest": {
+      "sha256": "309116244e07a0e8df5b7d7b05a3e2061a4fb2e284b6ff83c7a47a24384e6f78"
+    },
+    "local_path": "/Users/kartamyshev/git/caramba/research/private/Caramba Switcher Pro.app/Contents/Resources/Caramba.momd/Caramba.8.mom",
+    "format": "plist",
+    "architecture": null
+  },
+  "limitations": [
+    "Archive classes are never instantiated. Class names and serialized fields are observed; class-specific semantics are unknown.",
+    "Conditional references serialized as UID 0 cannot be distinguished from ordinary nil references. Missing fields remain absent in the raw serialized value.",
+    "Root selection selects the named $top entry; object pagination retains original indices and does not recursively expand references."
+  ],
+  "entities": {
+    "AppException": {
+      "enabled": "optional Boolean",
+      "bundleID": "optional String",
+      "path": "optional String"
+    },
+    "AutoswitchException": {
+      "pattern": "optional String; predicates length > 1 and length < 100",
+      "additions": "optional Integer16; default 0",
+      "visible": "optional Boolean; default false",
+      "disabled": "optional Boolean"
+    }
+  }
+}

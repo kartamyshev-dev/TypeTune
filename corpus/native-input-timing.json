@@ -1,0 +1,47 @@
+[
+  {
+    "id": "firstword-0",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin"
+  },
+  {
+    "id": "firstword-1",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin"
+  },
+  {
+    "id": "firstword-2",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin"
+  },
+  {
+    "id": "to-english",
+    "text": "hello",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello ",
+    "expectedSource": "com.apple.keylayout.ABC"
+  },
+  {
+    "id": "manual-trace",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "gesture": "manual",
+    "boundary": false,
+    "expected": "привет123",
+    "expectedSource": "com.apple.keylayout.RussianWin"
+  }
+]

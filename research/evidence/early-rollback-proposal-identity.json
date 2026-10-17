@@ -1,0 +1,15 @@
+{
+  "kind": "unapplied-proposal",
+  "baseKeyboardServiceSha256": "cbd077455c19980bd3cbe8a484cba60936cb0ccfb2803ab4726b3488ffb5c7b3",
+  "patchSha256": "518e8174d4f95e4b4af6cb942be6d747ad2205fcbafc21752a43ad4b6be0bc02",
+  "applied": true,
+  "compiled": false,
+  "nativeVerified": false,
+  "coreChecksPrepared": 10,
+  "corePolicy": "PartialMutationRollbackPlan",
+  "sourceIdentities": {
+    "Sources/LayoutPilot/KeyboardService.swift": "71c13cdab5cd40cd0382011c852174fecc297b6f75edf08ecd27fdac94a8cd7a",
+    "Sources/LayoutPilotCore/PartialMutationRollbackPlan.swift": "78afc0d45caf6709e3ef143eab88ce552e983a2133f78aec63ccff3fd75405f5",
+    "Sources/LayoutPilotCLI/EarlyRollbackChecks.swift": "dbadb9f35ff6e758be1ae0c378fb4e0a4a9a3822a19f4cd6a0691919e9f64335"
+  }
+}

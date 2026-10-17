@@ -1,0 +1,288 @@
+[
+  {
+    "id": "caps-unknown",
+    "text": "ZZword",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "Zzword ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 7
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Zzword ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-unknown-tail",
+    "text": "XYzzY",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "Xyzzy ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 6
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Xyzzy ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-brand",
+    "text": "DBus",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "Dbus ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 5
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Dbus ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-camel-tail",
+    "text": "FAceBook",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "FAceBook ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 9
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "FAceBook ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-two",
+    "text": "XX",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "XX ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 3
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "XX ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-three",
+    "text": "ABc",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "Abc ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 4
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Abc ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-ru",
+    "text": "CKjdj",
+    "source": "RussianWin",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "Слово ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 6
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Слово ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-no-caps",
+    "text": "iPhone",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation.",
+    "expected": "iPhone ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 7
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "iPhone ",
+    "originalEvidence": "research/evidence/double-caps-exploration-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-layout",
+    "text": "GHbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "Привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "GHbdtn ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "intentional_improvement",
+    "differenceReason": "Compose case correction with wrong-layout correction; reference left the clearly mistyped greeting unchanged."
+  },
+  {
+    "id": "caps-layout-short",
+    "text": "GHb",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "При ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 4
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "При ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-facebook",
+    "text": "FAcebook",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "FAcebook ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 9
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "FAcebook ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-github",
+    "text": "GItHub",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "Github ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 7
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Github ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-youtube",
+    "text": "YOuTube",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "Youtube ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 8
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Youtube ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-iphone",
+    "text": "IPhone",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "IPhone ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 7
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "IPhone ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "match_reference"
+  },
+  {
+    "id": "caps-hello",
+    "text": "HEllo",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 inputs, no oracle before observation.",
+    "expected": "Hello ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 6
+    },
+    "feature": "F17",
+    "split": "train",
+    "originalResult": "Hello ",
+    "originalEvidence": "research/evidence/double-caps-exploration2-original.json",
+    "classification": "match_reference"
+  }
+]

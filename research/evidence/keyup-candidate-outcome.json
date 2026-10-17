@@ -1,0 +1,21 @@
+{
+  "binarySha256": "447ca03385c7459bd12c93ebe62a83402f233cd06c59e142fcac8454d9c3666e",
+  "nativeLoad": "Stopped twice at first case: focused_window_unverified. No complete load measurement.",
+  "smokeCompleted": 7,
+  "completedRowFailures": [
+    {
+      "id": "auto-ru",
+      "field": "text",
+      "actual": "ghbdtn ",
+      "expected": "привет "
+    },
+    {
+      "id": "auto-ru",
+      "field": "inputSource",
+      "actual": "com.apple.keylayout.ABC",
+      "expected": "com.apple.keylayout.RussianWin"
+    }
+  ],
+  "smokeStop": "focused_window_unverified",
+  "acceptance": "NOT_ACCEPTED. Source switching before buffered release delivery replaced with deferred switching after ACK/drain. Cause of AX unavailable not established; do not infer causality from sequence alone."
+}

@@ -1,0 +1,9 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>LayoutPilot isolated input LP-CODEX-001</title><style>body{font:18px system-ui;max-width:800px;margin:45px auto}input,textarea,[contenteditable]{display:block;width:100%;min-height:110px;border:2px solid #617499;padding:12px;margin:16px 0;white-space:pre-wrap}pre{font-size:12px;white-space:pre-wrap}</style><h1>LayoutPilot — отдельный тест ввода</h1><p>Локальная страница. Отправки сообщений и сетевых запросов нет.</p><label>Однострочное поле<input id="single" type="text" autocomplete="off" aria-label="LP-CODEX-001 single"></label><label>Обычное поле<textarea id="plain" aria-label="LP-CODEX-001 plain"></textarea></label><label>Редактор содержимого<div id="rich" role="textbox" contenteditable="true" aria-label="LP-CODEX-001 rich"></div></label><output id="format" aria-label="LP-CODEX-001 format"></output><output id="delivery" aria-label="LP-CODEX-001 delivery"></output><pre id="log"></pre><script>
+// Observe only completed edits and key delivery. Never read clipboardData or
+// update DOM during paste/beforeinput/textInput default processing.
+window.testEvents=[];
+let scheduled=false;
+function render(){scheduled=false;log.textContent=testEvents.slice(-12).map(x=>x.type+":"+(x.key||x.inputType||"-")).join(" | ");format.textContent="LP-CODEX-001 rich formatting: "+(rich.querySelector("b,strong,i,em,font,[style]")?"present":"absent");delivery.textContent="LP-CODEX-001 observation: completed input/key events only"}
+for(const el of [single,plain,rich])for(const type of ["input","keydown","keyup"])el.addEventListener(type,e=>{testEvents.push({field:el.id,type,inputType:e.inputType||null,key:e.key||null});if(testEvents.length>256)testEvents.shift();if(!scheduled){scheduled=true;setTimeout(render,0)}});
+render();
+</script></html>

@@ -1,0 +1,22 @@
+{
+  "guiSha256": "efd117a012e6bc9c46d58a469c2f718854d723a36e8cee9086e05bf96550995e",
+  "pid": 17088,
+  "installedMatchesInstallationEvidence": true,
+  "uiRunning": true,
+  "accessibility": true,
+  "inputMonitoring": true,
+  "postEventAccess": true,
+  "earlyCorrection": true,
+  "automatic": true,
+  "excludedAppsCount": 0,
+  "otherSwitchersRunning": false,
+  "traceEnabled": false,
+  "testDelayEnabled": false,
+  "nativeObservations": 2,
+  "nativeStrictSuite": "NOT_RUN",
+  "rootCause": "NOT_ESTABLISHED; waiting for failing host and symptom",
+  "settingsChanged": false,
+  "codeChanged": false,
+  "testDocumentsClosed": true,
+  "inputSourceRestoredByHelper": true
+}

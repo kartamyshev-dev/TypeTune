@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "text": true,
+    "source": true,
+    "caret": true,
+    "identity": true,
+    "modifiers": true
+  },
+  "expected": "😀 é привет ",
+  "notice": "One bounded synthetic TextEdit case, emoji and NFD prefix."
+}

@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-17T18:23:55.475813+00:00",
+  "scope": "offline harness duration, identity, quality and mocked orchestration; no native GUI, keyboard events, settings or app launch",
+  "durationPolicy": {
+    "defaultMinutes": 30,
+    "minimumMinutes": 30,
+    "maximumMinutes": 1440,
+    "fourHourFlagFromActualElapsed": true
+  },
+  "covered": [
+    "default 30 minutes",
+    "4 hour mocked run requires five batches, not capped at four",
+    "24 hour evidence upper bound",
+    "invalid/missing/noninteger requested duration",
+    "short evidence and false 4 hour flags rejected",
+    "first failed helper stops long session"
+  ],
+  "syntaxChecked": [
+    "scripts/native_evidence.py",
+    "scripts/native_integrity.py",
+    "scripts/run_native_corpus.py",
+    "scripts/run_native_session.py",
+    "scripts/verify_native_session.py",
+    "scripts/verify_existing_build.py",
+    "scripts/test_native_evidence.py",
+    "scripts/test_native_integrity.py",
+    "scripts/test_native_harness.py"
+  ],
+  "sourceHashes": {
+    "scripts/native_evidence.py": "a008ac945a8f4242201db5257f60a018ea31ef1f1ca597535961e869aab5985c",
+    "scripts/native_integrity.py": "0d524c746bc01a163bf66bf0de148e59e3b36d363501b4b84b091aa361aba299",
+    "scripts/run_native_corpus.py": "ca42cbb14afab04d20fcd95418a55456a57c227d26cc55a83671b241290f0535",
+    "scripts/run_native_session.py": "b3794114399b1e372c9424cdc8f536d3c394cebd7329a6015afba48882481f87",
+    "scripts/verify_native_session.py": "47e4d2b6172d9d1f5a540f86737c4b4ecc07af01be4f2af622a8c6f3b5da0b1b",
+    "scripts/verify_existing_build.py": "bc19c2d1c9c27c967f88381354afad92b61c6d3779171364843518d97fdc8425",
+    "scripts/test_native_evidence.py": "127f4e1e7b33cb65afdc2a93929181d4f0ba758f6fda3a14d69eb62f574e1ce2",
+    "scripts/test_native_integrity.py": "6b7244097cd959eaa9eb7a6cd4e3b6f810271170091aa75fddf2fa13488151d0",
+    "scripts/test_native_harness.py": "9001eca1a33aac976319d88492d94676020b6efe215520d23d86e7e0d0091806"
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_evidence.py"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_native_evidence-duration.txt",
+      "output": "49 offline identity/session/tamper checks PASS; no native acceptance\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_integrity.py"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_native_integrity-duration.txt",
+      "output": "26 offline corpus integrity checks PASS; no native/quality acceptance\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_native_harness.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_native_harness-duration.txt",
+      "output": "test_corpus_selected_app_reports_raw_as_quality_failure (__main__.NativeHarnessTests.test_corpus_selected_app_reports_raw_as_quality_failure) ... ok\ntest_long_session_stops_after_first_failed_helper (__main__.NativeHarnessTests.test_long_session_stops_after_first_failed_helper) ... ok\ntest_package_verifier_requires_matching_bundle_and_quality (__main__.NativeHarnessTests.test_package_verifier_requires_matching_bundle_and_quality) ... ok\ntest_session_forwards_exact_app_and_stream_expectations (__main__.NativeHarnessTests.test_session_forwards_exact_app_and_stream_expectations) ... ok\ntest_session_rejects_invalid_duration_before_process_or_file_access (__main__.NativeHarnessTests.test_session_rejects_invalid_duration_before_process_or_file_access) ... ok\ntest_verifier_uses_app_and_exits_nonzero_for_quality_failure (__main__.NativeHarnessTests.test_verifier_uses_app_and_exits_nonzero_for_quality_failure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.054s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_audit_gates.py"
+      ],
+      "exitCode": 0,
+      "log": "research/evidence/stability-2026-10-17/test_audit_gates-duration.txt",
+      "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 1.181s\n\nOK\n"
+    }
+  ],
+  "allPassed": true
+}

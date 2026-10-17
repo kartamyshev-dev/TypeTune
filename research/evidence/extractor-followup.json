@@ -1,0 +1,90 @@
+{
+  "targetSha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "procedure": "0x1002e0030",
+  "bodyRange": [
+    "0x1002e0030",
+    "0x1002e083b"
+  ],
+  "bodyBytes": 2060,
+  "instructions": 515,
+  "provider": "Ghidra12.1.4 / REA6.5.0",
+  "pseudoEvidence": "ev_389ea798cd7848c4d5ca94ff2a8aaafdff9cae88620302c4bceb9e390aaf8219",
+  "instructionsEvidence": "ev_29a976e554936d241a1421c1dca8f062979cc9aefc268fe72270c49413829bff",
+  "privateBundleSha256": "16cacd94405e64f9b8ff3fe4e0748b3d791b76b58baa2ac7a950ab94e716128f",
+  "privateSnapshotSha256": "0b3711dfff57f5f0ed631d82c87adfc5f7ae4c3f26ff625a8221051b7a1e96e4",
+  "claims": {
+    "earlyReturn": "0x1002e0070..0x1002e00bc: preprocessing and result helper; nonempty result returned before fallback",
+    "trimModeGate": {
+      "mask": "0x200100002600",
+      "ascii": [
+        9,
+        10,
+        13,
+        32,
+        45
+      ],
+      "anchors": [
+        "0x1002e00d0",
+        "0x1002e0158"
+      ],
+      "semanticFlagName": "unknown"
+    },
+    "suffixModes": [
+      {
+        "mask": "0x4000000010000581",
+        "base": 33,
+        "characters": [
+          "!",
+          "(",
+          ")",
+          "+",
+          "=",
+          "_"
+        ],
+        "anchors": [
+          "0x1002e0468",
+          "0x1002e04fc"
+        ]
+      },
+      {
+        "mask": "0x20000000c00057a9",
+        "base": 33,
+        "characters": [
+          "!",
+          "$",
+          "&",
+          "(",
+          ")",
+          "*",
+          "+",
+          "-",
+          "/",
+          "?",
+          "@",
+          "^"
+        ],
+        "anchors": [
+          "0x1002e015c",
+          "0x1002e01f8"
+        ]
+      }
+    ],
+    "prefixCharacters": [
+      "-",
+      "("
+    ],
+    "prefixAnchors": [
+      "0x1002e0744",
+      "0x1002e0754"
+    ],
+    "fallbackElementStride": 40,
+    "iteratorEnd": "FUN_1002e6124 result first word -2 stops copying; 0x1002e0304..031c and0x1002e05f8..0610"
+  },
+  "limitations": [
+    "Static observations only; no runtime behavior or complete dictionary semantics claim",
+    "Pseudocode removed unreachable blocks and type propagation did not settle",
+    "Terminal call0x1002e0438 reflects Ghidra no-return flag, not independent proof",
+    "Early-return helper, format strings, iterator and TLS lookup remain to trace",
+    "Snapshot persists Evidence, not a reopenable Ghidra project"
+  ]
+}

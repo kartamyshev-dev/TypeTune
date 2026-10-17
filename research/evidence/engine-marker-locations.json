@@ -1,0 +1,66 @@
+{
+  "source_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "method": "literal byte scan; Mach-O LC_SEGMENT_64 mapping; does not establish references or runtime",
+  "markers": [
+    {
+      "marker": "src/keyboard.rs",
+      "file_offset": "0x4d8023",
+      "address": "0x1004d8023",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "src/event_tap/layout_converter.rs",
+      "file_offset": "0x4d7e2d",
+      "address": "0x1004d7e2d",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "Avoiding retyping, it's not necessary",
+      "file_offset": "0x4283e5",
+      "address": "0x1004283e5",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "Optimizing retyping: skipping ",
+      "file_offset": "0x4d8034",
+      "address": "0x1004d8034",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "is_double_caps_preventative",
+      "file_offset": "0x430e85",
+      "address": "0x100430e85",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "delay_between_layout_activation_and_backspaces",
+      "file_offset": "0x430d51",
+      "address": "0x100430d51",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "delay_between_backspaces_and_retyping",
+      "file_offset": "0x430d7f",
+      "address": "0x100430d7f",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "layout_switch_num_retries",
+      "file_offset": "0x430da4",
+      "address": "0x100430da4",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "is_yofikator",
+      "file_offset": "0x430e3b",
+      "address": "0x100430e3b",
+      "segment": "__TEXT"
+    },
+    {
+      "marker": "sl:dblshift:cancel",
+      "file_offset": "0x4be200",
+      "address": "0x1004be200",
+      "segment": "__TEXT"
+    }
+  ]
+}

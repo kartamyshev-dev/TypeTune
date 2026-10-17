@@ -1,0 +1,1229 @@
+{
+  "sourceReportSha256": "ccd1ad821e773bd3509670c5bbc89ed989460c6c013c117354996e00677ce99a",
+  "notice": "Review against authored synthetic requirements; no natural-language superiority or original-bug claim. No holdout tuning performed.",
+  "counts": {
+    "intentional_difference": 197,
+    "prototype_error": 4,
+    "ambiguous": 2
+  },
+  "differences": [
+    {
+      "id": "2a986c822393-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "03c7af31e5c0-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "17a5809e845d-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "26945b80b087-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "376feb0e53f6-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0c7624b88011-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0b05530512e6-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "26be857b55fe-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "7764d00a5263-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "265dbac2fb53-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "04cbd7a754fb-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "46a71d963333-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "4beaeed4078c-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "392e05fe5c23-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "68152fc2cf98-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "3c5c81d90e38-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "2a2618891cb2-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "52664fcf45f8-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6fcc8b4eb98d-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "139e1a70061a-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1bae03362f07-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0a61073eee6a-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "402f2c80501a-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "376feb0e53f6-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "29f67479abd3-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "538707c20314-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0da869a705d3-1",
+      "category": "wrong",
+      "classification": "prototype_error",
+      "reason": "Expected correction was omitted; input preserved. Precise runtime cause not instrumented; do not infer timing solely from final text."
+    },
+    {
+      "id": "2d47de6e74bf-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "19377cc4e066-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "3c25bfdb644e-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0dd145b8e204-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "53ec0cc35e15-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0e6e9bf8bfdb-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "5f21daa88d34-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "37c3034873cd-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1bf72186d4d5-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "7f4d45fe5e39-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "54fdc9145e4d-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1efc479d8f42-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0e427fcee683-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "00adefa79fb8-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "4d8ca91abe73-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "26be857b55fe-doublecaps",
+      "category": "doublecaps",
+      "classification": "ambiguous",
+      "reason": "Prototype satisfies authored double-caps expectation; original preserved input. Cause and intended original behavior remain unproven."
+    },
+    {
+      "id": "3b829483fec1-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "458f6651bebe-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "672c7152b810-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "70e4a767aea0-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "38443aecfe6a-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "47f63db5c907-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "25bc7d7e59f4-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1b328121adac-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "672c7152b810-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "5a2cb2f90b57-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "629b7659cdb4-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "37e65562574c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "20945b133940-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0d54d9ccbe3d-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0e28ab735d43-4",
+      "category": "case_wrong_title",
+      "classification": "prototype_error",
+      "reason": "Expected correction was omitted; input preserved. Precise runtime cause not instrumented; do not infer timing solely from final text."
+    },
+    {
+      "id": "2b05406a93cf-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "02ca7011e998-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "63d22f164004-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "11c41e7232ca-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "5065eabcdc45-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "42e1874b103a-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6a7a46fdd800-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "5fdcc6cc6be8-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "26945b80b087-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1147676e212f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "2fe23fa2292c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "06660400b905-doublecaps",
+      "category": "doublecaps",
+      "classification": "prototype_error",
+      "reason": "Expected correction was omitted; input preserved. Precise runtime cause not instrumented; do not infer timing solely from final text."
+    },
+    {
+      "id": "1b4ee79061c4-6",
+      "category": "url",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "336866debd2f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1857b2793618-1",
+      "category": "wrong",
+      "classification": "prototype_error",
+      "reason": "Expected correction was omitted; input preserved. Precise runtime cause not instrumented; do not infer timing solely from final text."
+    },
+    {
+      "id": "40b26c302cd6-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "11c41e7232ca-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0a61073eee6a-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "001f206d02fa-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "439ec5a605c7-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0208636b9670-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "00e625edc4a8-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "67b937ba497c-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "3cdc326d49a8-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "29ff0f584e2f-doublecaps",
+      "category": "doublecaps",
+      "classification": "ambiguous",
+      "reason": "Prototype satisfies authored double-caps expectation; original preserved input. Cause and intended original behavior remain unproven."
+    },
+    {
+      "id": "64132d7c9d22-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "74c79c9a9a08-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "402f2c80501a-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6e1ab6473040-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "004bf5351856-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "682b6afe5bb2-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "7bfef643341d-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "7c618c2f9a43-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "00fb5f9fb16d-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6e1ab6473040-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "06d2997e10c7-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "21fe0ef5ebfc-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "70e4a767aea0-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "3411e46c8a18-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "2d1944fcec3f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "25e45eb6799b-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "52da9f50cc7f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "018103960d97-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0dc1336e07ee-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0c23c76fb09c-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "184e297e422e-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "080fff1605af-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "31633394ec2a-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0a61073eee6a-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "00eda6c7f3ed-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "4fdb45c7bcbf-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6f5e5652ae94-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "303d3b07b987-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "2e5eb5943aba-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "31633394ec2a-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "554bb4a3b430-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "53ec0cc35e15-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "19b9f3e9337c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0726eaf151ef-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "538707c20314-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1857b2793618-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6cd395e98d8b-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "3ecfe7edcd28-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1bae03362f07-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0682bf39f35d-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6bf0921baa5c-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "05592386adfd-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "787dce9e863c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "018103960d97-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "492286fb4f46-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "210c8c014b10-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "04cbd7a754fb-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "0309a6fa236e-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "1fa764a92f4e-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "22493164c28c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "3e87026b3719-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "06d2997e10c7-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "6cc866bae5f9-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "85d5ebc9f52a-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "85d5ebc9f52a-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "ade225489e80-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "88bf106e3c87-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "challenge-019",
+      "category": "punctuation",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a3ae42041ead-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a24598243ca2-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8490369bf314-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "81f2c7273f06-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "820ba491220b-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a04f50bb32f6-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8aeea03b7b00-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "ade225489e80-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "ac0b4718806e-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "80034cb78062-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "80034cb78062-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "aa31065739ef-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "91e88f77d876-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8fd3e89e5bf0-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a2bbd7d3b3df-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8de8c405363f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8e719cb3f67c-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "83dbf880c90e-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "84ab34d6b26f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "882a1659538d-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "89230e1bad76-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "9400daec18bf-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "83dbf880c90e-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "85a5e35f2eda-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "9eb3dfa14d4a-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8422d1ea682f-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8c63906e80b8-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a1640b64ae98-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "93365c380503-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8d6677ce57a2-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8490369bf314-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8d073a2bbea1-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8156d694d5fd-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "852e365f7079-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "92e7a74dbb32-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "9b281e387db6-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "930753d60583-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8902b6cf1ed6-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "92ba46128b2f-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a3da001d25d3-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "94149c5e9673-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8422d1ea682f-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "930753d60583-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8902b6cf1ed6-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "96bd2f321bc6-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8868c61fedf0-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "81f2c7273f06-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "aa04bf33a925-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8de8c405363f-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8ab40be26274-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "894378aae38b-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "9ca2f94db5d8-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "94f47657e4cb-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a66f91f0475c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "9fa8ae5a3323-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "9e2f6dd6906c-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a1640b64ae98-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "acd9f6af0c63-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "84989fe74016-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "abebc8562363-7",
+      "category": "email",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "a1640b64ae98-5",
+      "category": "digits",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    },
+    {
+      "id": "8eca28878e0f-8",
+      "category": "code",
+      "classification": "intentional_difference",
+      "reason": "Prototype deliberately preserves digits, structured tokens or unsupported token boundaries. Original changed this synthetic token; this does not establish a general product bug or user intent."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+Building for production...
+[Planning deferred tasks]
+[7 / 14] LayoutPilotCore
+[8 / 15] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[14 / 15] LayoutPilot-product
+[15 / 58]
+[21 / 58]
+[23 / 58]
+[28 / 58]
+[29 / 58]
+[30 / 58]
+[33 / 58]
+[35 / 58]
+[44 / 58]
+[45 / 58]
+[49 / 58]
+[54 / 58]
+[55 / 58]
+[56 / 58]
+[57 / 58] LayoutPilot-product
+[61 / 63] LayoutPilot-product
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[62 / 63] LayoutPilot-product
+Build complete! (25,99 с)
+Building for production...
+[Planning deferred tasks]
+[2 / 4]
+[3 / 5] LayoutPilotCore
+[4 / 6] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[10 / 11] layoutpilot-cli-product
+[11 / 12] layoutpilot-cli-product
+[14 / 16] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+Build complete! (4,39 с)
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app

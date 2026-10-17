@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "binarySHA256": "425e44e3be9a2832aac60fd91bc950e7e88be3c4309a1b9650393b3b26e3facc",
+  "sourceFilesStillMatchBuild": true,
+  "nativeCases": [
+    {
+      "case": "paste-plain",
+      "file": "research/evidence/phase3-handshake-paste-plain.json",
+      "sha256": "27583e6479145267f67a99c0dcd6b433281efe1187b5aabf23bc49098234100c",
+      "passed": true
+    },
+    {
+      "case": "post-paste-plain",
+      "file": "research/evidence/phase3-handshake-post-paste-plain.json",
+      "sha256": "471e49042b5999e85215e1b187b38131750d7275719bfc0d326506fb6c78d49d",
+      "passed": true
+    },
+    {
+      "case": "plain-wrong",
+      "file": "research/evidence/phase3-handshake-plain-wrong.json",
+      "sha256": "149771ffbcf362c350f305576e308d201a15743c9530189436f2337d1aaf3708",
+      "passed": true
+    },
+    {
+      "case": "plain-correct",
+      "file": "research/evidence/phase3-handshake-plain-correct.json",
+      "sha256": "9ca1c2c504b7cbd678de2b896e90e6702a945d50d81a0824930fc61b2e6c015b",
+      "passed": true
+    },
+    {
+      "case": "plain-stream",
+      "file": "research/evidence/phase3-handshake-plain-stream.json",
+      "sha256": "7c4143cbee283a093504f166b036c2ec209096cb82efa9fbfb175b17d93dcfdf",
+      "passed": true
+    },
+    {
+      "case": "paste-rich",
+      "file": "research/evidence/phase3-handshake-paste-rich.json",
+      "sha256": "f444822c997589721c2c3a318a8fc316541935b3807ee3cc312b86b97ad3f5b0",
+      "passed": true
+    },
+    {
+      "case": "post-paste-rich",
+      "file": "research/evidence/phase3-handshake-post-paste-rich.json",
+      "sha256": "471e49042b5999e85215e1b187b38131750d7275719bfc0d326506fb6c78d49d",
+      "passed": true
+    },
+    {
+      "case": "rich-wrong",
+      "file": "research/evidence/phase3-handshake-rich-wrong.json",
+      "sha256": "d2103a0531e0cae394e9ba54bdafa865522b68c836657025b60a743054c8ae6e",
+      "passed": true
+    },
+    {
+      "case": "rich-correct",
+      "file": "research/evidence/phase3-handshake-rich-correct.json",
+      "sha256": "04681c294ffae6bbb7dc982d9e66d4b8fdc6508ad84f0bf8aab49157787551ff",
+      "passed": true
+    },
+    {
+      "case": "rich-stream",
+      "file": "research/evidence/phase3-handshake-rich-stream.json",
+      "sha256": "a5b85b80eda1be367cb70796ec3d9236a6ae4a6b7752c8f8bb62066aac3d0986",
+      "passed": true
+    },
+    {
+      "case": "paste-timeout",
+      "file": "research/evidence/phase3-handshake-paste-timeout.json",
+      "sha256": "5ad3796020cbf1bbacdde2796f5e1e9401561a3bf070f957f4d2f5e607a302eb",
+      "passed": true
+    },
+    {
+      "case": "app-off",
+      "file": "research/evidence/phase3-handshake-app-off.json",
+      "sha256": "3f1b55cf470ef6755b66123fc61cea1f8be86e34735c42471edc2bac620d7f42",
+      "passed": true
+    },
+    {
+      "case": "app-on",
+      "file": "research/evidence/phase3-handshake-app-on.json",
+      "sha256": "d2103a0531e0cae394e9ba54bdafa865522b68c836657025b60a743054c8ae6e",
+      "passed": true
+    },
+    {
+      "case": "global-off-app-on",
+      "file": "research/evidence/phase3-handshake-global-off-app-on.json",
+      "sha256": "3f1b55cf470ef6755b66123fc61cea1f8be86e34735c42471edc2bac620d7f42",
+      "passed": true
+    },
+    {
+      "case": "yo-global-off",
+      "file": "research/evidence/phase3-handshake-yo-global-off.json",
+      "sha256": "3f2a68ee6a445779130b4a1183d2b8f9fa1cd0c42e519430f037f5b2e13b69d9",
+      "passed": true
+    }
+  ],
+  "passedCount": 15,
+  "uiReadbacks": {
+    "plainPasteAcknowledged": true,
+    "richPasteAcknowledged": true,
+    "richFormatting": "absent (test fixture checks formatting tags/style attributes)",
+    "ordinaryCmdVPasteControl": "present (different no-switcher control)",
+    "timeoutMessageObserved": true,
+    "restartGlobalAutomatic": false,
+    "restartChromeAppAutomatic": true,
+    "restoredGlobalAutomatic": true,
+    "temporaryChromeAppRuleRemoved": true,
+    "pendingInputRecoveryPromptObserved": false
+  },
+  "baseline": {
+    "file": "research/evidence/phase3-plain-paste-no-switcher-control.json",
+    "allSixFramesAndNeutral": true,
+    "inserted": false,
+    "helperTextOraclePassed": false,
+    "interpretation": "No-switcher CmdShiftV does not paste here; failed insertion oracle is intentional baseline observation, not native acceptance."
+  },
+  "limitations": [
+    "Only isolated Chrome fixture, not real Codex composer",
+    "Not complete F07 parity, clipboard-race/native-focus negative cases still open",
+    "No new native1000/30min acceptance on this binary",
+    "Not a source archive or public release"
+  ],
+  "textEditRegression": {
+    "file": "research/evidence/phase3-handshake-textedit-smoke.json",
+    "verifier": "research/evidence/phase3-handshake-textedit-verification.json",
+    "cases": 13,
+    "passed": true,
+    "testLearnedWordRemovedViaUI": "ghbdtn"
+  }
+}

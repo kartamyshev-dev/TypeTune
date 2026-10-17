@@ -1,0 +1,13 @@
+{
+  "status": "stopped",
+  "error": "Incomplete probe",
+  "pid": 45564,
+  "binarySha256": "c0f9e2174046026e83202004e8345e5bcaa97d2f843c950d2f1f1fe1035d9524",
+  "completed": 0,
+  "probeError": "focused_window_unverified",
+  "fixtureSha256": "5bffb592fe2368091d897eb2bbf7d93947b5b94b0180937085154c4f3b0070ee",
+  "probeSourceSha256": "524b3faf502632f2e6f3f5aca4c23ef33c5cab0dedae838167ddf2cdac25504a",
+  "medianSampleCPUPercent": 2.5999999999999996,
+  "peakSampleCPUPercent": 5.1,
+  "peakRSSKiB": 70048
+}

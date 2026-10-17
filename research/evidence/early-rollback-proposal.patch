@@ -1,0 +1,158 @@
+--- a/Sources/LayoutPilot/KeyboardService.swift
++++ b/Sources/LayoutPilot/KeyboardService.swift
+@@ -507,7 +507,7 @@
+         guard store.earlyCorrection, allowedFrontmost(), InputSources.language != nil,
+               let proposal = Engine(settings: store.settings).partialProposal(
+                 in: snapshot.text, selection: snapshot.selection, context: context(snapshot)) else { return }
+-        apply(snapshot, range: proposal.range, decision: proposal.decision)
++        apply(snapshot, range: proposal.range, decision: proposal.decision, partial: true)
+     }
+     func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
+         if store.useSystemDictionary {
+@@ -539,7 +539,8 @@
+                         reason: value.reason, targetLanguage: value.targetLanguage)
+     }
+     private func apply(_ before: EditorSnapshot, range: NSRange, decision: Decision, keepSelection: Bool = false,
+-                       statisticsDecisions: [Decision]? = nil, learnOnUndo: Bool = true) {
++                       statisticsDecisions: [Decision]? = nil, learnOnUndo: Bool = true,
++                       partial: Bool = false) {
+         InputDiagnostics.shared.record("apply-enqueued", revision: revision)
+         if let language = decision.targetLanguage, !InputSources.isAvailable(language) {
+             skipped("Добавьте нужную русскую или английскую раскладку в macOS"); return
+@@ -554,10 +555,21 @@
+             if case .verified = result { verified = true } else { verified = false }
+             InputDiagnostics.shared.record("apply-result", revision: expectedRevision, checks: ["verified": verified, "gated": gated])
+             DispatchQueue.main.async {
+-                defer { if gated { self.finishMutation(result, before: before, settled: settled,
++                var finishHere = true
++                defer { if gated && finishHere { self.finishMutation(result, before: before, settled: settled,
+                     allowAutomaticReplay: decision.reason != .manual) } }
+                 guard case .verified(let after) = result else {
+                     self.skipped("Замена пропущена или прервана: проверьте текст поля"); return
++                }
++                if partial && self.inputReplay.containsPending(where: { !self.preservesContext($0) }) {
++                    // This main-serialized decision precedes stats/TIS/transaction.
++                    // Keep mutationGate throughout inverse replacement: later
++                    // delivered hardware remains in the same FIFO. This covers
++                    // observed pending input, not future OS/event delivery timing.
++                    finishHere = false
++                    self.rollbackPartial(before: before, after: after, range: range,
++                        decision: decision, expectedRevision: expectedRevision)
++                    return
+                 }
+                 for item in statisticsDecisions ?? [decision] {
+                     self.store.recordCorrection(category: self.statisticsCategory(item))
+@@ -575,6 +587,45 @@
+                 self.store.lastStatus = selected ? "Текст исправлен. ⌘⌥Z — отменить" :
+                     (self.sourceAfterReplay != nil ? "Текст исправлен; смена раскладки ожидает завершения ввода" : "Текст исправлен, раскладка не переключена")
+                 if self.store.settings.sound { self.store.playCorrectionSound() }
++            }
++        }
++    }
++    /// Invert a partial replacement only while the existing mutation gate owns
++    /// the FIFO. No second mutate()/timer, no source change, and no automatic retry.
++    private func rollbackPartial(before: EditorSnapshot, after: EditorSnapshot, range: NSRange,
++                                 decision: Decision, expectedRevision: Int) {
++        transaction = nil; cachedSnapshot = nil; sourceAfterReplay = nil
++        guard let plan = PartialMutationRollbackPlan(isPartial: true, hasQueuedEditingInput: true,
++            beforeText: before.text, beforeSelection: before.selection, replacementRange: range,
++            decision: decision, afterText: after.text, afterSelection: after.selection) else {
++            InputDiagnostics.shared.record("partial-rollback-plan-rejected", revision: expectedRevision)
++            finishMutation(.uncertain, before: before, settled: nil)
++            return
++        }
++        axQueue.async { [weak self] in
++            guard let self else { return }
++            // replace() rechecks pinned field/window/document/full text/caret
++            // and permissions/current revision before its own AX writes.
++            let reverted = AccessibilityEditor.replace(after, range: plan.edit.range,
++                replacement: plan.edit.replacement, keepSelection: false,
++                isCurrent: { self.isCurrent(expectedRevision) })
++            let readback = AccessibilityEditor.snapshot()
++            DispatchQueue.main.async {
++                let verified: Bool
++                if case .verified(let value) = reverted {
++                    verified = self.revision == expectedRevision && self.allowedFrontmost() &&
++                        AccessibilityEditor.sameTarget(before, value) &&
++                        value.text.utf16.elementsEqual(before.text.utf16) && value.selection == before.selection &&
++                        readback.map { AccessibilityEditor.sameTarget(before, $0) &&
++                            $0.text.utf16.elementsEqual(before.text.utf16) && $0.selection == before.selection } == true
++                } else { verified = false }
++                InputDiagnostics.shared.record("partial-rollback-result", revision: expectedRevision,
++                    checks: ["verified": verified, "pendingReplay": !self.inputReplay.isEmpty])
++                // An uncertain inverse NEVER authorizes draining, even if a
++                // coincidental snapshot looks original. Keep all pending input
++                // for explicit recovery; never blindly repeat the inverse.
++                self.finishMutation(.notApplied, before: before, settled: verified ? readback : nil)
++                if verified { self.store.lastStatus = "Раннее исправление отложено: ввод продолжается" }
+             }
+         }
+     }
+--- /dev/null
++++ b/Sources/LayoutPilotCore/PartialMutationRollbackPlan.swift
+@@ -0,0 +1,24 @@
++import Foundation
++
++/// Pure inverse-edit proof. Runtime must separately pin the same AX target,
++/// permissions, source/revision and the still-active FIFO barrier.
++public struct PartialMutationRollbackPlan: Sendable {
++    public let edit: TextEdit
++    public init?(isPartial: Bool, hasQueuedEditingInput: Bool,
++                 beforeText: String, beforeSelection: NSRange, replacementRange: NSRange,
++                 decision: Decision, afterText: String, afterSelection: NSRange) {
++        guard isPartial, hasQueuedEditingInput, beforeSelection.length == 0,
++              let originalRange = TextEdit.validatedRange(replacementRange, in: beforeText),
++              replacementRange.location + replacementRange.length == beforeSelection.location,
++              String(beforeText[originalRange]).utf16.elementsEqual(decision.original.utf16),
++              let forward = TextEdit(text: beforeText, selection: replacementRange, replacement: decision.replacement),
++              forward.expectedText.utf16.elementsEqual(afterText.utf16),
++              afterSelection == NSRange(location: forward.cursor, length: 0),
++              let inverse = TextEdit(text: afterText,
++                  selection: NSRange(location: replacementRange.location, length: decision.replacement.utf16.count),
++                  replacement: decision.original),
++              inverse.expectedText.utf16.elementsEqual(beforeText.utf16),
++              inverse.cursor == beforeSelection.location else { return nil }
++        edit = inverse
++    }
++}
+--- /dev/null
++++ b/Sources/LayoutPilotCLI/EarlyRollbackChecks.swift
+@@ -0,0 +1,38 @@
++import Foundation
++import LayoutPilotCore
++
++func earlyRollbackChecks() -> [(Bool, String)] {
++    var checks: [(Bool,String)] = []
++    func check(_ result: Bool, _ name: String) { checks.append((result,"partial rollback: " + name)) }
++    let decision = Decision(original: "ghb", replacement: "при", reason: .layout, targetLanguage: .russian)
++    func plan(partial: Bool = true, pending: Bool = true, after: String = "say при",
++              caret: NSRange = NSRange(location: 7,length: 0), original: Decision? = nil) -> PartialMutationRollbackPlan? {
++        PartialMutationRollbackPlan(isPartial: partial, hasQueuedEditingInput: pending,
++            beforeText:"say ghb",beforeSelection:NSRange(location:7,length:0),replacementRange:NSRange(location:4,length:3),
++            decision:original ?? decision,afterText:after,afterSelection:caret)
++    }
++    check(plan()?.edit.expectedText == "say ghb" && plan()?.edit.cursor == 7,
++          "pending editing suffix restores the whole pre-correction text and caret")
++    check(plan(pending:false) == nil, "release-only queue does not request rollback")
++    check(plan(partial:false) == nil, "completed-word correction is not rolled back by this policy")
++    check(plan(after:"say приx") == nil, "unexpected text cannot authorize inverse write")
++    check(plan(caret:NSRange(location:6,length:0)) == nil, "changed caret cannot authorize inverse write")
++    check(plan(caret:NSRange(location:4,length:3)) == nil, "changed selection cannot authorize inverse write")
++    check(plan(original:Decision(original:"other",replacement:"при",reason:.layout,targetLanguage:.russian)) == nil,
++          "unrelated original token cannot be restored")
++    let nfdBefore = "e\u{301} ghb", nfdAfter = "e\u{301} при"
++    let nfd = PartialMutationRollbackPlan(isPartial:true,hasQueuedEditingInput:true,beforeText:nfdBefore,
++        beforeSelection:NSRange(location:6,length:0),replacementRange:NSRange(location:3,length:3),
++        decision:decision,afterText:nfdAfter,afterSelection:NSRange(location:6,length:0))
++    check(nfd?.edit.expectedText.utf16.elementsEqual(nfdBefore.utf16) == true,
++          "inverse preserves unrelated decomposed Unicode exactly")
++    check(PartialMutationRollbackPlan(isPartial:true,hasQueuedEditingInput:true,beforeText:"say ghb tail",
++        beforeSelection:NSRange(location:8,length:0),replacementRange:NSRange(location:4,length:3),
++        decision:decision,afterText:"say при tail",afterSelection:NSRange(location:7,length:0)) == nil,
++          "only a token ending at the original caret permits the inverse")
++    check(PartialMutationRollbackPlan(isPartial:true,hasQueuedEditingInput:true,beforeText:"😀ghb",
++        beforeSelection:NSRange(location:5,length:0),replacementRange:NSRange(location:1,length:4),
++        decision:decision,afterText:"при",afterSelection:NSRange(location:3,length:0)) == nil,
++          "a range splitting a surrogate cannot authorize rollback")
++    return checks
++}

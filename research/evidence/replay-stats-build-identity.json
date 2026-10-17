@@ -1,0 +1,70 @@
+{
+  "sourceCommit": "45188395ead944f47c186d7cffd91224b573acbb",
+  "sourceDirty": true,
+  "sources": {
+    "Package.swift": "60549aaf7885c414fdeeb67a22ed588fbe01d691a9788f05c63629d481327ae4",
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "b265cb375701059a512bd992b97caa27a5258f307ba9fd7e27376ce0406c4b37",
+    "Sources/LayoutPilot/InputDiagnostics.swift": "a3f8b5ae347e7bb7cff931f9b61b73f1dc9c7245de5c644599f6aed8cbdc4f00",
+    "Sources/LayoutPilot/InputSources.swift": "2229c9c6b75a386d6e2b6115902e0d267befb8c795e35449b4c5a7a6aba3e6eb",
+    "Sources/LayoutPilot/KeyboardService.swift": "1dd91cdc96faad52fff5dfa261e807ea247507b404d8981939490ac5b148639f",
+    "Sources/LayoutPilot/SettingsView.swift": "925f8b6cf6451f382cdf352ea491f99f3a42b40a47c97353c7e3dca8ab88dea9",
+    "Sources/LayoutPilot/Store.swift": "10f94bffa6f76172064513e939230a13f4da0d35551b8d5e1f88988772c42661",
+    "Sources/LayoutPilot/SystemVocabulary.swift": "d4d28f983c55dc85c6999f9cb5a7293c4e163f9e2c6f5435cc15b8ab41a2566f",
+    "Sources/LayoutPilot/main.swift": "e32614099a0d43e25b09852f470195135a2470d3635eb6842dffff4114676a58",
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "7e03708af658da86d77f1307dcdd128107e3d5b312a9c0f781819fb81f534679",
+    "Sources/LayoutPilotCLI/ReplayProjectionChecks.swift": "270e0254ace0b6eb26f656bd6372af60e3b85754e4d022c957c94bc690e0059b",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "e996d1692c5d7f86fa88259e9ad17f0ab0ca55e3a70e65ee0b0af8e97bfd1441",
+    "Sources/LayoutPilotCLI/StatisticsChecks.swift": "9a74996f77f46f21ffbba8465588c0384c96577a731cb9ef76cdf99baa7d80a9",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "7a578ff0c7744f52569c524c9dd36d140f64504231bd295083b718ece1f9d32f",
+    "Sources/LayoutPilotCore/Engine.swift": "9b0c04bad9d1df8ac2ead76151e57b1c22b419f776d145da2abfb1e7d618e274",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "4248329ead35e70648514c8fe4f8e5ac7ac4fd17ecc60e5cc2d79fa78ec2898f",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "a0ac5cb3495416ffd4a4f7c9a688dea55d87e7eec6bbe20050c338281ff52e32",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6",
+    "Sources/LayoutPilotCore/ReplayInsertionProjection.swift": "c415e76de7ec9a16a5977a402ae5e5f1bb87415ffbe5053a32924646fb00a585",
+    "Sources/LayoutPilotCore/UsageStatistics.swift": "33ce6cc82593ac4241292ee591157debb6a958694f44569fe8fa3885a51afd0d",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+  },
+  "binarySha256": "944f9ccec18becc8fb72e2ca991582443aa7231ee21ff0399f5cd04e76707455",
+  "bundleSha256": "00508652cd11c6eab8b3e9aea811e23b64f09f79890dacc58b17aeba9e0ada8b",
+  "bundleManifest": [
+    [
+      "Contents/Info.plist",
+      "2c84d2b1a7223bd631660917bd4d9b8b31b20e002fdab678a3f174988758f3ee"
+    ],
+    [
+      "Contents/MacOS/LayoutPilot",
+      "944f9ccec18becc8fb72e2ca991582443aa7231ee21ff0399f5cd04e76707455"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Info.plist",
+      "2a22a924be70b1734fc4286ffecc7f12a58a955e5fc76441b932648b4dcb271e"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/Resources/lexicon.json",
+      "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeDirectory",
+      "a34dd329da22f58183c6b504ff2d975be5270ca7e6610dfa2841cb0a9667ec5d"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeRequirements",
+      "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeResources",
+      "a75991e7e9cc0d66949a0ab7c987d8952388ef76ee1a0afeb5740e0df848ea5a"
+    ],
+    [
+      "Contents/Resources/LayoutPilot_LayoutPilotCore.bundle/Contents/_CodeSignature/CodeSignature",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    ],
+    [
+      "Contents/_CodeSignature/CodeResources",
+      "e3b0cdd704dcf2693f8a4c153ca172285b850f71951ca4f763039ee6efb2df4c"
+    ]
+  ],
+  "notice": "Replay exact-readback/catch-up and percategory statistics candidate; runtime acceptance not yet performed."
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "synthetic-UI-fixtures-preparation-only",
+  "files": [
+    {
+      "path": "/Users/kartamyshev/git/caramba/.build/settings-fixtures/LP-F19-drop.png",
+      "bytes": 245,
+      "sha256": "359ed70bb24c82bd5d34dc86f669d7056d3406a0b4184a94fe0957505d526f4c"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/.build/settings-fixtures/LP-F19-drop.tiff",
+      "bytes": 24716,
+      "sha256": "a2287a483c43598588e2da0531f18691423662c2ee35594ef088a809f81ae90f"
+    },
+    {
+      "path": "/Users/kartamyshev/git/caramba/.build/settings-fixtures/LP-F08-soft.wav",
+      "bytes": 9746,
+      "sha256": "677749970db5e199c8c77c4338c4423b1b6dc87817fa735cec5528737ae32b57"
+    }
+  ],
+  "image": {
+    "width": 128,
+    "height": 64,
+    "pixels": "own blue/green checkerboard",
+    "formats": [
+      "png",
+      "tiff"
+    ]
+  },
+  "sound": {
+    "format": "PCM16 mono WAV",
+    "sampleRate": 22050,
+    "seconds": 0.22,
+    "frequencyHz": 440,
+    "maximumAmplitude": 800
+  },
+  "originalAssetsUsed": false,
+  "guiUsed": false,
+  "soundPlayed": false,
+  "nativeDropVerified": false,
+  "audibilityVerified": false
+}

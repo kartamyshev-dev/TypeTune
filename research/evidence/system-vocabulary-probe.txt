@@ -1,0 +1,138 @@
+{
+  "guardChecks" : {
+    "allOff" : true,
+    "basePriority" : true,
+    "excludedApp" : true,
+    "excludedWord" : true,
+    "learned" : true,
+    "noProviderQueriesForGuards" : true,
+    "secondPassUsesCache" : true,
+    "secure" : true,
+    "unreliable" : true
+  },
+  "guessQueries" : 2,
+  "notice" : "Sparse independent synthetic diagnostics only; NSSpellChecker correctness\/provider availability varies by system. Not Caramba parity or corpus quality.",
+  "providerAvailable" : true,
+  "results" : [
+    {
+      "actual" : "телескоп",
+      "base" : "телескоп",
+      "elapsedSeconds" : 0.0035185416782042012,
+      "expected" : "телескоп",
+      "id" : "ru-natural-outside-bundle",
+      "input" : "телескоп",
+      "passed" : true
+    },
+    {
+      "actual" : "телескоп",
+      "base" : "ntktcrjg",
+      "elapsedSeconds" : 1.7083322745747864e-05,
+      "expected" : "телескоп",
+      "id" : "ru-wrong-layout-outside-bundle",
+      "input" : "ntktcrjg",
+      "passed" : true
+    },
+    {
+      "actual" : "microscope",
+      "base" : "microscope",
+      "elapsedSeconds" : 0.0016167916619451717,
+      "expected" : "microscope",
+      "id" : "en-natural-outside-bundle",
+      "input" : "microscope",
+      "passed" : true
+    },
+    {
+      "actual" : "microscope",
+      "base" : "ьшскщысщзу",
+      "elapsedSeconds" : 2.3458342184312642e-05,
+      "expected" : "microscope",
+      "id" : "en-wrong-layout-outside-bundle",
+      "input" : "ьшскщысщзу",
+      "passed" : true
+    },
+    {
+      "actual" : "жонглирование",
+      "base" : ";jyukbhjdfybt",
+      "elapsedSeconds" : 0.00059145833074580878,
+      "expected" : "жонглирование",
+      "id" : "ru-physical-punctuation-outside-bundle",
+      "input" : ";jyukbhjdfybt",
+      "passed" : true
+    },
+    {
+      "actual" : "microscope",
+      "base" : "microscoppe",
+      "elapsedSeconds" : 0.017843208333943039,
+      "expected" : "microscope",
+      "id" : "en-generic-one-edit-typo",
+      "input" : "microscoppe",
+      "passed" : true
+    },
+    {
+      "actual" : "телескоп",
+      "base" : "телесккоп",
+      "elapsedSeconds" : 0.032882125000469387,
+      "expected" : "телескоп",
+      "id" : "ru-generic-one-edit-typo",
+      "input" : "телесккоп",
+      "passed" : true
+    },
+    {
+      "actual" : "ntktcrjg42",
+      "base" : "ntktcrjg42",
+      "elapsedSeconds" : 7.1666727308183908e-06,
+      "expected" : "ntktcrjg42",
+      "id" : "digits-guard",
+      "input" : "ntktcrjg42",
+      "passed" : true
+    },
+    {
+      "actual" : "https:\/\/ntktcrjg.test",
+      "base" : "https:\/\/ntktcrjg.test",
+      "elapsedSeconds" : 7.499998901039362e-06,
+      "expected" : "https:\/\/ntktcrjg.test",
+      "id" : "url-guard",
+      "input" : "https:\/\/ntktcrjg.test",
+      "passed" : true
+    },
+    {
+      "actual" : "helloЁ",
+      "base" : "helloЁ",
+      "elapsedSeconds" : 2.6666675694286823e-06,
+      "expected" : "helloЁ",
+      "id" : "mixed-guard",
+      "input" : "helloЁ",
+      "passed" : true
+    },
+    {
+      "actual" : "Microscoppe",
+      "base" : "Microscoppe",
+      "elapsedSeconds" : 1.5999990864656866e-05,
+      "expected" : "Microscoppe",
+      "id" : "proper-name-typo-guard",
+      "input" : "Microscoppe",
+      "passed" : true
+    },
+    {
+      "actual" : "HTTP",
+      "base" : "HTTP",
+      "elapsedSeconds" : 0.00042391667375341058,
+      "expected" : "HTTP",
+      "id" : "acronym-guard",
+      "input" : "HTTP",
+      "passed" : true
+    },
+    {
+      "actual" : "сестры",
+      "base" : "сестры",
+      "elapsedSeconds" : 0.00025758333504199982,
+      "expected" : "сестры",
+      "id" : "ambiguous-yo-guard",
+      "input" : "сестры",
+      "passed" : true
+    }
+  ],
+  "spellQueries" : 13,
+  "status" : "Системный словарь RU\/EN: ru, en_GB; кэш 13\/4096, только в памяти",
+  "totalElapsedSeconds" : 0.059797708338010125
+}

@@ -1,0 +1,60 @@
+{
+  "checks": {
+    "completed12": true,
+    "asciiPreserved": true,
+    "sourceABC": true,
+    "identity": true,
+    "modifiersNeutral": true
+  },
+  "axReadErrors": {
+    "AXSubrole:-25205": 2721
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 2721,
+      "maxMilliseconds": 4.921541667499696,
+      "totalMilliseconds": 412.1564166925964
+    },
+    "AXFocusedUIElement:0": {
+      "count": 2721,
+      "maxMilliseconds": 5.617708333375049,
+      "totalMilliseconds": 225.42616662940418
+    },
+    "AXFocusedWindow:0": {
+      "count": 2721,
+      "maxMilliseconds": 32.98558333335677,
+      "totalMilliseconds": 752.3531249862572
+    },
+    "AXRole:0": {
+      "count": 2721,
+      "maxMilliseconds": 10.76137500058394,
+      "totalMilliseconds": 165.29816668844433
+    },
+    "AXSelectedTextRange:0": {
+      "count": 121,
+      "maxMilliseconds": 0.30304166648420505,
+      "totalMilliseconds": 9.5449583404843
+    },
+    "AXSubrole:-25205": {
+      "count": 2721,
+      "maxMilliseconds": 3.5367083346500294,
+      "totalMilliseconds": 392.93766672562924
+    },
+    "AXValue:0": {
+      "count": 121,
+      "maxMilliseconds": 0.4961666672897991,
+      "totalMilliseconds": 8.198000001357286
+    },
+    "AXWindow:0": {
+      "count": 2721,
+      "maxMilliseconds": 2.4151666675606975,
+      "totalMilliseconds": 236.70516671154473
+    }
+  },
+  "settings": {
+    "automatic": false,
+    "typos": false,
+    "yo": false
+  },
+  "notice": "Synthetic TextEdit observer-only run; no automatic corrections or source switching."
+}

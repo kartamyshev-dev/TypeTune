@@ -1,0 +1,13 @@
+{
+  "timeUTC": "2026-10-15T10:34:04.211815+00:00",
+  "process": {
+    "pid": 59071,
+    "path": "/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot"
+  },
+  "uiStatus": "Работает",
+  "automatic": true,
+  "typos": true,
+  "yo": true,
+  "otherKnownSwitchersStopped": true,
+  "purpose": "User requested manual testing; leave LayoutPilot running and Lang Switcher stopped. No synthetic input was sent."
+}

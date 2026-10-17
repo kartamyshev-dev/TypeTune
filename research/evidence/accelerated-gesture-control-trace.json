@@ -1,0 +1,1024 @@
+{
+  "notice": "Opt-in test timing and boolean checks only; capped at 1000 records.",
+  "records": [
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 94.58741667185677,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 49799.82085158334
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": false,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "elapsedMilliseconds": 79.69825000327546,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 49799.90058491667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 2,
+      "uptime": 49801.30617825
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 2,
+      "uptime": 49801.374901
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": false,
+        "knownSource": true,
+        "switch": true,
+        "toggleAuto": false
+      },
+      "phase": "gesture-action",
+      "revision": 2,
+      "uptime": 49801.71105391667
+    },
+    {
+      "checks": {
+        "selected": true,
+        "sourceChanged": true
+      },
+      "phase": "gesture-source-result",
+      "revision": 3,
+      "uptime": 49801.726686500006
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 3,
+      "uptime": 49802.01972091667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 4,
+      "uptime": 49802.13857895834
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 9.261458333639894,
+      "phase": "capture",
+      "revision": 5,
+      "uptime": 49802.191069875
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 3.847874999337364,
+      "phase": "capture",
+      "revision": 6,
+      "uptime": 49802.575754833335
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 10,
+      "uptime": 49803.755193000005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 11,
+      "uptime": 49803.82112695833
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 11,
+      "uptime": 49803.988320000004
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 11,
+      "uptime": 49804.05098216667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 11,
+      "uptime": 49804.13071429167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": true,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 11,
+      "uptime": 49804.187506291666
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "phase": "gesture-action",
+      "revision": 11,
+      "uptime": 49804.18751479167
+    },
+    {
+      "checks": {
+        "anchor": true
+      },
+      "phase": "explicit-enqueue",
+      "revision": 11,
+      "uptime": 49804.187517000006
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "allowed": true,
+        "revision": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "snapshot": true
+      },
+      "phase": "explicit-context",
+      "revision": 11,
+      "uptime": 49804.18851566667
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 11,
+      "uptime": 49804.19214325
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.6205833269632421,
+      "phase": "mutation-initial",
+      "revision": 11,
+      "uptime": 49804.19316170834
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.9572499984642491,
+      "phase": "mutation-gate",
+      "revision": 11,
+      "uptime": 49804.19349954167
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 19.706749997567385,
+      "phase": "mutation-result",
+      "revision": 11,
+      "uptime": 49804.21224783333
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 11,
+      "uptime": 49804.213030750005
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 11,
+      "uptime": 49804.21514108334
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 11,
+      "uptime": 49804.220116250006
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.5031666625873186,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.223053500005
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 2.0888750004814938,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.230743875
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.2266249977983534,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.23816475
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.8548750012996607,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.24566358334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.8366250005783513,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.25423195834
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.2486666673794389,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.261796583334
+    },
+    {
+      "checks": {
+        "insertionVisible": false,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 1.2543333359644748,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.269739083335
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": false
+      },
+      "elapsedMilliseconds": 30.76650000002701,
+      "phase": "capture",
+      "revision": 12,
+      "uptime": 49917.30643020834
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 20,
+      "uptime": 49918.82724229167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": true,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 20,
+      "uptime": 49918.86235641667
+    },
+    {
+      "checks": {
+        "previous": true
+      },
+      "phase": "manual",
+      "revision": 21,
+      "uptime": 49918.87250870834
+    },
+    {
+      "checks": {
+        "anchor": true
+      },
+      "phase": "explicit-enqueue",
+      "revision": 21,
+      "uptime": 49918.872542833335
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "allowed": true,
+        "revision": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "snapshot": true
+      },
+      "phase": "explicit-context",
+      "revision": 21,
+      "uptime": 49918.89212908334
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 21,
+      "uptime": 49918.89222241667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.47462500515393913,
+      "phase": "mutation-initial",
+      "revision": 21,
+      "uptime": 49918.89275354167
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.6591666679014452,
+      "phase": "mutation-gate",
+      "revision": 21,
+      "uptime": 49918.89293791667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 4.8569999999017455,
+      "phase": "mutation-result",
+      "revision": 21,
+      "uptime": 49918.89713583334
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 21,
+      "uptime": 49918.897616500006
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 21,
+      "uptime": 49918.89954829167
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 21,
+      "uptime": 49918.90252475
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": true,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 21,
+      "uptime": 49918.922890458336
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 21,
+      "uptime": 49918.96259229167
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 21,
+      "uptime": 49919.581157625005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 22,
+      "uptime": 49919.653746625
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 1.113333331886679,
+      "phase": "capture",
+      "revision": 23,
+      "uptime": 49919.68918591667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 23,
+      "uptime": 49920.67511466667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 23,
+      "uptime": 49920.73640875
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": false,
+        "knownSource": true,
+        "switch": true,
+        "toggleAuto": false
+      },
+      "phase": "gesture-action",
+      "revision": 23,
+      "uptime": 49921.07131691667
+    },
+    {
+      "checks": {
+        "selected": true,
+        "sourceChanged": true
+      },
+      "phase": "gesture-source-result",
+      "revision": 24,
+      "uptime": 49921.078472500005
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 24,
+      "uptime": 49921.34828316667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 25,
+      "uptime": 49921.411359708334
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": true,
+        "matchesPredictedCaret": false,
+        "matchesPredictedText": false,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8385833352804184,
+      "phase": "capture",
+      "revision": 26,
+      "uptime": 49921.46926425
+    },
+    {
+      "checks": {
+        "insertionVisible": true,
+        "matchesBeforeText": false,
+        "matchesPredictedCaret": true,
+        "matchesPredictedText": true,
+        "previous": true,
+        "sameTarget": true
+      },
+      "elapsedMilliseconds": 0.8992916700663045,
+      "phase": "capture",
+      "revision": 27,
+      "uptime": 49921.855549
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 31,
+      "uptime": 49923.023558458335
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 32,
+      "uptime": 49923.07689991667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 32,
+      "uptime": 49923.247479000005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 32,
+      "uptime": 49923.31710983333
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "down": true,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 32,
+      "uptime": 49923.39610916667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": true,
+        "down": false,
+        "option": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "shift": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "phase": "gesture-modifier",
+      "revision": 32,
+      "uptime": 49923.460805625
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "phase": "gesture-action",
+      "revision": 32,
+      "uptime": 49923.46081275
+    },
+    {
+      "checks": {
+        "anchor": true
+      },
+      "phase": "explicit-enqueue",
+      "revision": 32,
+      "uptime": 49923.46082270834
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "allowed": true,
+        "revision": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "snapshot": true
+      },
+      "phase": "explicit-context",
+      "revision": 32,
+      "uptime": 49923.482291375
+    },
+    {
+      "checks": {},
+      "phase": "apply-enqueued",
+      "revision": 32,
+      "uptime": 49923.48235016667
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "elapsedMilliseconds": 0.24995833518914878,
+      "phase": "mutation-initial",
+      "revision": 32,
+      "uptime": 49923.48403741667
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true
+      },
+      "elapsedMilliseconds": 0.4484999954001978,
+      "phase": "mutation-gate",
+      "revision": 32,
+      "uptime": 49923.484236000004
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "elapsedMilliseconds": 3.833708331512753,
+      "phase": "mutation-result",
+      "revision": 32,
+      "uptime": 49923.48762125
+    },
+    {
+      "checks": {
+        "gated": true,
+        "verified": true
+      },
+      "phase": "apply-result",
+      "revision": 32,
+      "uptime": 49923.48824641667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "currentRevision": true,
+        "pendingReplay": false
+      },
+      "phase": "apply-commit",
+      "revision": 32,
+      "uptime": 49923.49015695834
+    },
+    {
+      "checks": {
+        "deferred": false,
+        "selected": true
+      },
+      "phase": "source-selection",
+      "revision": 32,
+      "uptime": 49923.49508916667
+    }
+  ],
+  "schemaVersion": 1,
+  "session": "9A752700-F453-4D78-B8A3-B9E2DC62D39C"
+}

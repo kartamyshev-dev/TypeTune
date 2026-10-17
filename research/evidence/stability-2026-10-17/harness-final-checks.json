@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "offlinePassed": true,
+  "checks": [
+    {
+      "name": "native-probe-build",
+      "command": [
+        "swiftc",
+        "-swift-version",
+        "5",
+        "-module-cache-path",
+        ".build/native-probe-module-cache",
+        "Tools/NativeProbe.swift",
+        "-o",
+        ".build/native-probe",
+        "-framework",
+        "AppKit",
+        "-framework",
+        "ApplicationServices",
+        "-framework",
+        "Carbon"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 0.837,
+      "log": "research/evidence/stability-2026-10-17/native-probe-build-final.txt",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "test_native_evidence",
+      "command": [
+        "python3",
+        "scripts/test_native_evidence.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 0.269,
+      "log": "research/evidence/stability-2026-10-17/test_native_evidence-final.txt",
+      "logSha256": "ec6a824c3b31301bfc6f47b1cd7c72e8c300f7d7a6933dc55a2fb488efa5a6a1"
+    },
+    {
+      "name": "test_native_integrity",
+      "command": [
+        "python3",
+        "scripts/test_native_integrity.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 0.037,
+      "log": "research/evidence/stability-2026-10-17/test_native_integrity-final.txt",
+      "logSha256": "d32a1b5b9db12c353147411d6fb4446d797c0f7c7fa7e58bfa1e83031ee0f36d"
+    },
+    {
+      "name": "test_native_harness",
+      "command": [
+        "python3",
+        "scripts/test_native_harness.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 0.142,
+      "log": "research/evidence/stability-2026-10-17/test_native_harness-final.txt",
+      "logSha256": "6009f5b2f49fac2b061c165dc846394f5aac0ac4d6b20653331aa7c86f9bf954"
+    },
+    {
+      "name": "test_native_probe_fixtures",
+      "command": [
+        "python3",
+        "scripts/test_native_probe_fixtures.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 0.53,
+      "log": "research/evidence/stability-2026-10-17/test_native_probe_fixtures-final.txt",
+      "logSha256": "4ab70ef784cba622a97887721d6e15c7fe72c4077529cdab4fbcd7d22efe57a5"
+    },
+    {
+      "name": "test_audit_gates",
+      "command": [
+        "python3",
+        "scripts/test_audit_gates.py"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 1.254,
+      "log": "research/evidence/stability-2026-10-17/test_audit_gates-final.txt",
+      "logSha256": "c853f4c7fbfedd885054fb6de095856edcc887998fa5061cbba8c11f8764c988"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 0.015,
+      "log": "research/evidence/stability-2026-10-17/diff-check-final.txt",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "counts": {
+    "identitySessionTamper": 77,
+    "corpusIntegrity": 26,
+    "orchestrationUnittest": 11,
+    "fixtureTimingUnittest": 4,
+    "auditGatesUnittest": 3
+  },
+  "sources": {
+    "Tools/NativeProbe.swift": "8a18574fd9606f45e9fbf4b3586eadd228043a6eaa2a0d9ff3d4d195e43ba40e",
+    "scripts/native_evidence.py": "85e17b2eca8bf21da3a200aaee14c7f210c33997788211be28853d14639a3eb2",
+    "scripts/native_integrity.py": "052b879e2a8cd9ceb9ae90126b0395781a7efefc921537b56010d29621faf168",
+    "scripts/run_native_corpus.py": "267c2dc2e85953c884e8ed88742e4ec3e16a58d71c969708c1946cd167c1a55d",
+    "scripts/run_native_session.py": "edabd934f5c7fdbf9e9a64b8d1ab0d7f9db47bde10fbf5a814d3b3242ba4ba5e",
+    "scripts/verify_native_session.py": "28aceb57a6f9792082badd8d10ba3db42d27b98653c435e676f51a1c8156286e",
+    "scripts/verify_existing_build.py": "bc19c2d1c9c27c967f88381354afad92b61c6d3779171364843518d97fdc8425",
+    "scripts/record_native_probe.py": "a62ff899abab5f2b602ee5409c83fa8d6917300598cfb400177dfdfe894de04b",
+    "scripts/measure_native_load.py": "6be471a954636d0a361434505e1ef2a15d4fca75d1aa1336aa3d7d8fc394b1bd",
+    "scripts/record_native_initial_cases.py": "037bdda9998a25a0d4d084bc6d002d9b4c3473eaef01bd67020465bce29ef365",
+    "scripts/verify_native_suite.py": "261bbcd04caaf30640ca25353c9f052be458195ef8eb02616f89b00f67aac38d",
+    "scripts/test_native_evidence.py": "8a934c7043bc3a3c126704a1280426d1bffaed41ea6a0de8bb6485d31d47693f",
+    "scripts/test_native_integrity.py": "6b7244097cd959eaa9eb7a6cd4e3b6f810271170091aa75fddf2fa13488151d0",
+    "scripts/test_native_harness.py": "ed3aad75b6c4c35264c7c0f97b20caa010e6ffad90677e109008d8280fa27fea",
+    "scripts/test_native_probe_fixtures.py": "0b51daa3ccc41adbd2c39a47ac0ab3a0a1b88ea80d1324e9c941d61a1a92a872",
+    "scripts/test_audit_gates.py": "232078b271f2b13b76e112afc378529c312d1d8c438c61e0c018f95d7fe429af",
+    "corpus/native-stability-regressions-v1.json": "b794c2e1daaff7e913e512820de1912420054eb3b017bb9711af5e82192a1002",
+    "corpus/native-fast-stream-v1.json": "fa8933321aeeb73d2c4ebbca28c1158809e2aa2f05b22abfc1971e7273937791",
+    "corpus/native-v1.json": "9308f60080c71e4da8b3bb4da0adbfda7ef8f164ab40296fccf5964d734b3163",
+    "corpus/synthetic-v2.jsonl": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26"
+  },
+  "probeBinarySha256": "c4b0dda3368e227a559ff66141c847103ef5ce6d025b37648cc77f876eeddef4",
+  "pythonSyntaxParsed": 15,
+  "nativeAcceptance": "NOT_RUN",
+  "fourHourAcceptance": "NOT_RUN",
+  "bounds": [
+    "Tests use fake processes/time or --validate-cases (pure argument decoder). No native input, app launch, settings change or lifecycle acceptance.",
+    "30s idle is guarded AX/text/caret/source sampling approximately every 250ms; idleEvents counts only helper-generated events.",
+    "inputSegmentSeconds includes input, clearing, preparation and readback, not correction-only latency.",
+    "First-word skips extra activation/source settling only after positive ownership; mandatory guards remain and unverified ownership stops.",
+    "Immediate Double Shift removes explicit pre-gesture delay and last-character interval; event transport/ownership checks remain and actual gap is reported.",
+    "The 4h runner stops on integrity or correction-quality failure, runs until requested duration and does not simulate app switching/sleep."
+  ],
+  "nativeSmokeCommands": [
+    [
+      "python3",
+      "scripts/record_native_probe.py",
+      "--app",
+      "/Applications/LayoutPilot.app",
+      "--output",
+      "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01.json",
+      "--batch",
+      "corpus/native-stability-regressions-v1.json",
+      "--interval-ms",
+      "10",
+      "--settle-ms",
+      "100"
+    ],
+    [
+      "python3",
+      "scripts/verify_native_suite.py",
+      "research/evidence/stability-2026-10-17/candidate-20261017-regressions-01.json",
+      "--fixtures",
+      "corpus/native-stability-regressions-v1.json"
+    ]
+  ],
+  "fourHourCommand": [
+    "python3",
+    "scripts/run_native_session.py",
+    "--run-id",
+    "candidate-20261017-4h-01",
+    "--app",
+    "/Applications/LayoutPilot.app",
+    "--duration-minutes",
+    "240"
+  ]
+}

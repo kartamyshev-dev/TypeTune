@@ -1,0 +1,42 @@
+Building for production...
+[Planning deferred tasks]
+[6 / 13]
+[7 / 14] LayoutPilotCore
+[9 / 15] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[15 / 17] LayoutPilot-product
+[17 / 60]
+[23 / 60]
+[25 / 60]
+[31 / 60]
+[32 / 60]
+[34 / 60]
+[36 / 60]
+[37 / 60]
+[46 / 60]
+[47 / 60]
+[51 / 60]
+[56 / 60]
+[57 / 60]
+[58 / 60]
+[59 / 60] LayoutPilot-product
+[61 / 63] LayoutPilot-product
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[62 / 63] LayoutPilot-product
+Build complete! (29,13 с)
+Building for production...
+[Planning deferred tasks]
+[6 / 13] LayoutPilotCore
+[7 / 14] LayoutPilotCore
+/Users/kartamyshev/git/caramba/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[13 / 18] layoutpilot-cli-product
+[15 / 19] layoutpilot-cli-product
+[17 / 19] layoutpilot-cli-product
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/caramba/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+Build complete! (7,47 с)
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/caramba/dist/LayoutPilot.app

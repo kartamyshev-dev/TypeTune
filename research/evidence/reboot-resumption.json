@@ -1,0 +1,35 @@
+{
+  "afterRebootOriginalRunning": false,
+  "langSwitcherInitiallyRunning": true,
+  "langSwitcherPIDs": [
+    1500
+  ],
+  "action": "SIGTERM exact executable after UI getApp timed out; restore at cleanup",
+  "candidateSHA256": "3c5c90c3d76982470e2d14ac25bd72135048cc0024bf79a52d9699b55a68c2f5",
+  "pendingBufferAfterReboot": "Gone with old process; no discard action performed",
+  "helperStatus": "reboot-probe-status.json: AX and post-event access true; Secure Input false; RussianWin",
+  "layoutPilotPermission": "Refreshed only existing LayoutPilot record through system UI; user completed password prompt. UI confirms running, no pending input before each candidate.",
+  "offlineSelftest": "163/163",
+  "offlineCorpus": "4420/4420",
+  "langSwitcherAfterTermination": "Not yet restored; restore only when prototype stopped.",
+  "candidateReplacedBy": {
+    "sourceCommit": "e3a9180b83f25676e27cacc3ed2a9ca24e8ff192",
+    "binarySha256": "396e410a3b27a11e76d0abeb3e831a9ad9c44bd791cf9890f1061d4d41fcf5d1"
+  },
+  "helperDiagnosticSourceSha256": "5fcde0c84cb1bfacfae2a5d447d355d32ca699999d0832af3e247be495421361",
+  "helperBaselineNoSwitcher": "5/5 exact text/source/selection",
+  "helperBaselineWithPrototype": "5/5 exact text/source/selection; no correction required",
+  "oldBufferAction": "No discard performed: old process absent after user reboot.",
+  "finalState": {
+    "prototypeRunning": false,
+    "originalRunning": false,
+    "langSwitcherRestoredPID": 33413,
+    "initialStateAfterReboot": "Lang Switcher running, Caramba/TypeTune/LayoutPilot stopped",
+    "inputSource": "RussianWin",
+    "secureInput": false,
+    "activeUserModifiers": 0,
+    "pendingBuffer": "Old process gone after reboot; no manual discard. New candidates had no recovery pending at exit.",
+    "testModifiers": "Synthetic command/option flags detected after stopped manual chord; neutralized by authenticated new TextEdit document, reboot-modifier-cleanup.json",
+    "originalBundle": "70 entries unchanged"
+  }
+}

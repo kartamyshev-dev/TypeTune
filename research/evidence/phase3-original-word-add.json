@@ -1,0 +1,19 @@
+{
+  "operation": "synthetic UI add, developer-send disabled",
+  "wherePattern": "lpfixture",
+  "columns": [
+    "additions",
+    "disabled",
+    "visible",
+    "pattern"
+  ],
+  "rows": [
+    [
+      0,
+      0,
+      1,
+      "lpfixture"
+    ]
+  ],
+  "readMode": "readonly SQLite connection including live WAL; query constrained to own synthetic record"
+}

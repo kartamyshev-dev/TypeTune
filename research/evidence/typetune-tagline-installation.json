@@ -1,0 +1,14 @@
+{
+  "installed_path": "/Applications/TypeTune.app",
+  "files_matched": 10,
+  "sha256": "3fde69fd918f023556c5c39386f9f2077ba24cf0c2e79acfa51a20502d60ef88",
+  "signature_verified": true,
+  "settings_preserved": true,
+  "backup": "/Users/kartamyshev/git/caramba/research/private/typetune-tagline-install/previous.zip",
+  "backup_files_verified": 10,
+  "source_sha256": "80346660515d73234fe54254e69ad64a4328824bef177f43151e8aa16da6d606",
+  "subtitle": "Чтобы мысли не спотыкались о клавиши",
+  "permissions": "Accessibility and Input Monitoring refreshed via System Settings; OS restart completed",
+  "ui_readback": "NOT_RUN: CUA still resolves path to removed dev.kartamyshev.TypeTune",
+  "native_input": "NOT_RUN"
+}

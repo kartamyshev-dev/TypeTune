@@ -1,0 +1,222 @@
+[
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/06E4BB94-F3DD-497B-BCEE-E12A40022D15.txt",
+    "elapsedSeconds": 2.755064291675808,
+    "events": 14,
+    "eventTag": 1280331858,
+    "gesture": "none",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "ghbdtn",
+    "requestedSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 0,
+      "location": 7
+    },
+    "text": "привет ",
+    "id": "auto-en-ru",
+    "expected": "привет ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/A3882940-E111-485A-AD98-E74B31CD6B24.txt",
+    "elapsedSeconds": 2.637167708337074,
+    "events": 12,
+    "eventTag": 1280331858,
+    "gesture": "none",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.ABC",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "hello",
+    "requestedSource": "com.apple.keylayout.RussianWin",
+    "selection": {
+      "length": 0,
+      "location": 6
+    },
+    "text": "hello ",
+    "id": "auto-ru-en",
+    "expected": "hello ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/E59A3D1A-1241-4725-90FB-DB5FED5B4100.txt",
+    "elapsedSeconds": 2.771658625002601,
+    "events": 14,
+    "eventTag": 1280331858,
+    "gesture": "none",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "ghtdtn",
+    "requestedSource": "com.apple.keylayout.RussianWin",
+    "selection": {
+      "length": 0,
+      "location": 7
+    },
+    "text": "привет ",
+    "id": "typo-ru",
+    "expected": "привет ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/B7FB7220-125C-4EAE-B5D7-9902E76A3FE8.txt",
+    "elapsedSeconds": 2.75343883332971,
+    "events": 14,
+    "eventTag": 1280331858,
+    "gesture": "none",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "GHbdtn",
+    "requestedSource": "com.apple.keylayout.RussianWin",
+    "selection": {
+      "length": 0,
+      "location": 7
+    },
+    "text": "Привет ",
+    "id": "doublecaps",
+    "expected": "Привет ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/F0956286-2E72-4F05-91CF-FA28800E274E.txt",
+    "elapsedSeconds": 2.4050900000002002,
+    "events": 8,
+    "eventTag": 1280331858,
+    "gesture": "none",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "tot",
+    "requestedSource": "com.apple.keylayout.RussianWin",
+    "selection": {
+      "length": 0,
+      "location": 4
+    },
+    "text": "ещё ",
+    "id": "yo",
+    "expected": "ещё ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/6D31F036-DA6E-44FE-8777-2F32E9C1C034.txt",
+    "elapsedSeconds": 3.0963869583356427,
+    "events": 20,
+    "eventTag": 1280331858,
+    "gesture": "none",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.ABC",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "ghbdtn123",
+    "requestedSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 0,
+      "location": 10
+    },
+    "text": "ghbdtn123 ",
+    "id": "digits-preserve",
+    "expected": "ghbdtn123 ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/9986A7C0-D282-4B3D-9AE3-216E348F7799.txt",
+    "elapsedSeconds": 3.3404517916642362,
+    "events": 24,
+    "eventTag": 1280331858,
+    "gesture": "doubleShift",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "ghbdtn123",
+    "requestedSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 0,
+      "location": 10
+    },
+    "text": "привет123 ",
+    "id": "manual-double-shift",
+    "expected": "привет123 ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/15653667-51B9-4613-B531-B69549D8CE49.txt",
+    "elapsedSeconds": 3.1357291666645324,
+    "events": 22,
+    "eventTag": 1280331858,
+    "gesture": "manual",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "ghbdtn123",
+    "requestedSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 0,
+      "location": 10
+    },
+    "text": "привет123 ",
+    "id": "manual-shortcut",
+    "expected": "привет123 ",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": false,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/0042664B-629D-43CF-940B-C2F7B077356F.txt",
+    "elapsedSeconds": 2.106171874998836,
+    "events": 2,
+    "eventTag": 1280331858,
+    "gesture": "singleShift",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "",
+    "requestedSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 0,
+      "location": 0
+    },
+    "text": "",
+    "id": "single-shift",
+    "expected": "",
+    "exitCode": 0,
+    "passed": true
+  },
+  {
+    "boundary": true,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/D8452E50-6134-4203-8DCC-826D2F06B457.txt",
+    "elapsedSeconds": 2.774382958334172,
+    "events": 16,
+    "eventTag": 1280331858,
+    "gesture": "undo",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "inputSource": "com.apple.keylayout.ABC",
+    "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95.",
+    "physicalASCII": "ghbdtn",
+    "requestedSource": "com.apple.keylayout.ABC",
+    "selection": {
+      "length": 0,
+      "location": 7
+    },
+    "text": "ghbdtn ",
+    "id": "undo",
+    "expected": "ghbdtn ",
+    "exitCode": 0,
+    "passed": true
+  }
+]

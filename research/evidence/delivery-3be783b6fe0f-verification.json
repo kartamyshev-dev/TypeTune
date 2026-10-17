@@ -1,0 +1,20 @@
+{
+  "archive": "dist/LayoutPilot-0.1.0-3be783b6fe0f-arm64.zip",
+  "sourceCommit": "3be783b6fe0f0445d87ce007c7995a67bb1bbf76",
+  "archiveSha256": "726bdba04ab6def1927aae5925bc1754a1652a73a42e002d38e99305c4c7d3f5",
+  "manifestFilesVerified": 32,
+  "nativeCandidateBundleIdentical": true,
+  "binarySha256": "b911718f071b06d166c09a2648fa67cc21fe6c7d84651ae1ef1b6c8a88773957",
+  "oldArchiveUnchanged": true,
+  "experimental": true,
+  "deepStrictSignatureVerified": true,
+  "architecture": "/Users/kartamyshev/git/caramba/dist/verification-3be783b6fe0f/delivery-3be783b6fe0f/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64",
+  "launchVerified": true,
+  "launchedPath": "/Users/kartamyshev/git/caramba/dist/verification-3be783b6fe0f/delivery-3be783b6fe0f/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+  "launchedPID": 57934,
+  "previewVerified": "ghbdtn → привет; automatic rule UI",
+  "adHocSignatureVerified": true,
+  "cliSelftest": "204/204 offline invariants; not XCTest",
+  "sourceCommitFileMatches": true,
+  "notice": "Byte-identical full app bundle to limited native candidate; existing native failures/acceptance limits apply. Archive launch and preview are not inter-app retesting."
+}

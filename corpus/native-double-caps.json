@@ -1,0 +1,6 @@
+[
+ {"id":"double-caps-positive","text":"GHbdtn","source":"RussianWin","boundary":true,"gesture":"none","expected":"Привет ","expectedSource":"com.apple.keylayout.RussianWin","expectedSelection":{"location":7,"length":0}},
+ {"id":"double-caps-acronym","text":"HTTP","source":"ABC","boundary":true,"gesture":"none","expected":"HTTP ","expectedSource":"com.apple.keylayout.ABC","expectedSelection":{"location":5,"length":0}},
+ {"id":"double-caps-mixed-brand","text":"iPhone","source":"ABC","boundary":true,"gesture":"none","expected":"iPhone ","expectedSource":"com.apple.keylayout.ABC","expectedSelection":{"location":7,"length":0}},
+ {"id":"double-caps-three-letters","text":"GHb","source":"RussianWin","boundary":true,"gesture":"none","expected":"При ","expectedSource":"com.apple.keylayout.RussianWin","expectedSelection":{"location":4,"length":0}}
+]

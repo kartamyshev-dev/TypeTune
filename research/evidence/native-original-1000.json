@@ -1,0 +1,13 @@
+{
+  "target": "original",
+  "cases": 1000,
+  "matchesAuthoredExpected": 801,
+  "files": {
+    "research/evidence/native-corpus-original/focused/00.json": "01fa24f03cfec6637d697cb6f759ecda4384a8b15f3ffb3091edeb7106551eab",
+    "research/evidence/native-corpus-original/focused-retry/01.json": "07858c5eb05dc629687cb0c72f48e0e2217c5641a1fcbc89fb59e8021590f610",
+    "research/evidence/native-corpus-original/focused-retry/02.json": "079f72c5e842d5f7dcf0cc165c103f6724fad6051e4b4058ae498a4f4ee33a2f",
+    "research/evidence/native-corpus-original/focused-retry-window/03.json": "8c051dc081e9e8a15a284b148f78193b01f88257999dc92cc685d49412c89a94",
+    "research/evidence/native-corpus-original/focused-final-batch/04.json": "a58c57fa6b5e35505f31f014e88aef3d51cf1f0e6ec27183937512af742cf0a7"
+  },
+  "notice": "Complete original sample; authored lexicon expectations, not quality acceptance or correction latency."
+}

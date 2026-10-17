@@ -1,0 +1,373 @@
+{
+  "evidence_id": "LP-LOCAL-SETTINGS-20261015-01",
+  "target": {
+    "path": "research/private/caramba-arm64",
+    "sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+    "bytes": 6274800
+  },
+  "source_bundle": {
+    "path": "research/private/settings-evidence-bundle.json",
+    "sha256": "704e102feb2a914235467e2e3b269af096dc193189451cd611bc4b43c753217a",
+    "bytes": 8710773
+  },
+  "snapshot": {
+    "path": "research/private/settings-snapshot.json",
+    "sha256": "57c67d1399494872745ded5f4d82b497946d9c0ad9bb2df3ac24fcf0e52fa1a5",
+    "bytes": 15371672
+  },
+  "source_record_count": 118,
+  "new_records": [
+    {
+      "evidence_id": "ev_034b5bcf8f5468d6905e21b16d41056db134c10a696b8b52cf7a4e8bdadab53b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004b160"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_0b1a4b89962ec12f98177432522ede85a2adf361873a2d4c071e0d1c263bce5d",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x100022cb4"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_1f3afaf2c6215ed19be0170362a04352aa09d0b6798c219988d7f8749ab9e197",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10004a898"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_31c89858e50a664e59a6c8e77fa56f80d3ce170db5e1d8d8c6eb1d94a68b0bc5",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004a898"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_4c2a85517ee68711dc65f83edcbd173c88b4749086ac9b08fee399eb131a9805",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004d19c"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_4ea5e7200eb94d6cd6fba66d711b41b90e337477297c170f902d987c0942ac62",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10000a45c"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_6904cc698e13354182cc3ebbf7e3f1cc923dac45b74bc5fc9f6a71339917e42f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100076108"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_6c510fdf02f056be77e6970e712f04a92bfab297a602d3613314d6dba8b60238",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x100023dd4"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_734199f05f45a9750c2e948596578f59d613d77a439bce9c7a4560cd3ec7da20",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002d68a0"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_7d582fc95526c35381759537eb5cfc95c40b8954acdf8870138da875f625ae10",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004d510"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_9366214b18d17718302648c3f2272b7773a32d6797211d0569123829a6c89712",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004a588"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_a34775c63fcffa9defa9839ec87e46dd1e9c8f40b97692e90fc451cdb8ed7c0d",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10004d3a0"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_b9a191b73902b5cd924684cd4302344929e552801f3daaf8a27f9bc9ba45cca2",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10025a030"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_d097d90d8d28327c856cacfc41fad42a7995aaa5cd4169b25c143040110602de",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x100076108"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_e60b7ef624501ebbc7a968d8bf73491e850bc5fa0b48e2480710e401b18c0b6e",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x100076734"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_ee50288560065df2f3dd5980eb4027b247859f6030b5a44007f640ecc79cde21",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10004d3a0"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    {
+      "evidence_id": "ev_f80f837dfceb641a53759ad036a4bc8cd22c4e5a55307754050423cb886acd16",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10004a588"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    }
+  ],
+  "new_pseudocode_bodies": 11,
+  "new_instruction_records": 6,
+  "tool_identity": {
+    "package": "rea-agents6.5.0",
+    "provider": "Ghidra12.1.4",
+    "skill_version": "42",
+    "analysis_profile_digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28",
+    "tool_catalog_sha256": "805433f17bb4f709558ff20c04f96fe561fca2938fd0f459b1f8cc0f6b438ded"
+  },
+  "lifecycle": {
+    "matching_origin_snapshot_loaded": true,
+    "cache_missing_priority_bodies": true,
+    "fresh_imports": 1,
+    "duplicate_imports": 0,
+    "export_then_close": true,
+    "session_open_after": false,
+    "snapshot_primitive_entries": 1,
+    "snapshot_workflow_entries": 1
+  },
+  "findings": [
+    {
+      "id": "S01",
+      "kind": "observed-static",
+      "procedures": [
+        "0x10004a588",
+        "0x10004b160",
+        "0x10004a898"
+      ],
+      "summary": "SettingsPane.init receives nonnil reset callback via wrapper4b160→4a898. Writer submits empty/nil-encoded optional Data to settingsstore+0x190 (initialized with sounds.main-sound-override) and calls239bc. No physical file deletion or audible fallback acceptance claimed."
+    },
+    {
+      "id": "S02",
+      "kind": "observed-static",
+      "procedures": [
+        "0x10004a588",
+        "0x10004d3a0",
+        "0x10004d510",
+        "0x100023dd4"
+      ],
+      "summary": "Nonnil header callback writes string through persisted wrapper at store+0x150 and Published view state. Builder reads stored color name, otherwise legacy integer via HeaderColor.name and defaultColor. Available picker colors and runtime persistence remain untested."
+    },
+    {
+      "id": "S03",
+      "kind": "observed-static-partial",
+      "procedures": [
+        "0x10000a45c",
+        "0x100023dd4"
+      ],
+      "summary": "Main registers named paste-no-format shortcut through1bf170. Generic named-recorder linkage and arbitrary-hotkey UI reachability not yet recovered."
+    },
+    {
+      "id": "S04",
+      "kind": "observed-static",
+      "procedures": [
+        "0x100022cb4",
+        "0x100076108",
+        "0x100076734"
+      ],
+      "summary": "Plainpaste native path constructs enum0x15 mapped to keycode9,V, modifierindex1→Command0x100000, CGEventSource state1 and both down/up via CGEventPost location0(HID). This is shipped code observation, not an executed native clipboard test."
+    },
+    {
+      "id": "S05",
+      "kind": "observed-static-partial",
+      "procedures": [
+        "0x1002d68a0",
+        "0x1002db840"
+      ],
+      "summary": "FocusEN marker labels a wiretype2 delimited/repeated0x18-entry vector deserialization branch, not a demonstrated Boolean toggle; type/string-list interpretation still bounded by recovered ABI. Consumers/focus activation not recovered."
+    },
+    {
+      "id": "S06",
+      "kind": "correction-to-prior-hypothesis",
+      "procedure": "0x10025a030",
+      "summary": "Function chooses alternate retained TIS source by comparing language IDs; not a special-behavior pattern matcher and not evidence of focusEN handling."
+    }
+  ],
+  "paste_selected_table_observations": {
+    "method": "read original frozen selected scalar constants through Mach-O LC_SEGMENT_64 mapping, no dictionary/model extraction",
+    "input_enum": 21,
+    "key_table_base": "0x10041781e",
+    "selected_key_table_address": "0x100417848",
+    "virtual_keycode": 9,
+    "static_modifier_object": "0x10058fe10",
+    "modifier_count": 1,
+    "modifier_index": 1,
+    "modifier_flag_table_base": "0x1004178f8",
+    "flags": 1048576,
+    "created_source_state_constructor": 1,
+    "post_location": 0,
+    "down_and_up": true,
+    "helper_relays": [
+      "0x100077ecc",
+      "0x100076104",
+      "0x100076108"
+    ]
+  },
+  "sdk_anchors": [
+    {
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGEventTypes.h",
+      "sha256": "0eb5b0aca9a77730d7c1b0449113b18419765771ae02a596708281f56f6c45b4"
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Carbon.framework/Frameworks/HIToolbox.framework/Headers/Events.h",
+      "sha256": "b80b0c6e10ea4a06494d02399424cb806cc04a2971724688cb2063e04f2149d6"
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/hidsystem/IOLLEvent.h",
+      "sha256": "d4678012e68b7738e460693441ef82d271828a0632f844757c69b5b662287377"
+    }
+  ],
+  "remaining_queries": [
+    {
+      "procedure": "0x1001bf170",
+      "question": "Named shortcut constructor/default and caller linking to editable recorder."
+    },
+    {
+      "procedure": "0x1000239bc",
+      "question": "Post-reset propagation/reload; physical file lifecycle and sound fallback remain unknown."
+    },
+    {
+      "procedure": "0x1002d4bf0",
+      "question": "Confirm exact delimited value type for focusEN list; then trace consumers of model repeated field."
+    }
+  ],
+  "limitations": [
+    "Static reachability/writers are not UI/native acceptance.",
+    "Generic Swift setter storage behavior is inferred from initialized property wrapper and calls; no disk readback performed.",
+    "No original settings changed and no original/prototype UI/process/input actions performed.",
+    "Clipboard selected native key/source path is established independently of preservation/focus/changeCount guarantees.",
+    "No original dictionaries, full decompilation or binary component distributed."
+  ]
+}

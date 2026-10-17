@@ -1,0 +1,29 @@
+{
+  "activeCase" : "single",
+  "activeCaseEvents" : 52,
+  "activeCaseIndex" : 0,
+  "autoResume" : false,
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/FF55E508-34A7-424E-BDA7-8BD56CC2A95A.results.json",
+  "checkpointWriteFailed" : false,
+  "completed" : 0,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/FF55E508-34A7-424E-BDA7-8BD56CC2A95A.txt",
+  "error" : "target_not_frontmost",
+  "persistedCompleted" : 0,
+  "requestedCases" : 1,
+  "tagTrace" : {
+    "maxTaggedSamples" : 512,
+    "nonzeroTagTypeHistogram" : {
+      "0x000000004c505052" : {
+        "keyDown" : 30,
+        "keyUp" : 29
+      }
+    },
+    "started" : true,
+    "state" : "stopped",
+    "taggedSamples" : 59,
+    "taggedTypeCounts" : {
+      "keyDown" : 30,
+      "keyUp" : 29
+    }
+  }
+}

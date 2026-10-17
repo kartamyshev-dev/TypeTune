@@ -1,0 +1,16 @@
+{
+  "completedSyntheticCases": 12,
+  "helperExitCode": 0,
+  "identityUnchanged": true,
+  "modifiersNeutral": true,
+  "syntheticRuleRowsBefore": 0,
+  "syntheticRuleRowsAfter": 0,
+  "allRuleCountsUnchanged": true,
+  "originalStopped": true,
+  "redbRestoredFromQuiescentBackupByteEqual": true,
+  "postExperimentRecoveryCopyRetainedPrivately": true,
+  "configurationKeysChanged": false,
+  "storeKitCheckTimestampChanged": true,
+  "sourceRestoredByHelper": true,
+  "observation": "In 12 bounded cases Backspace removed one preceding character (two taps removed two), not a layout undo; no new User Rules row observed. This does not prove absence of other learning triggers."
+}

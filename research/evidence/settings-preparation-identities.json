@@ -1,0 +1,68 @@
+{
+  "kind": "preparation-and-isolated-process-check-identities",
+  "files": [
+    {
+      "path": "Tools/StatisticsProcessProbe.swift",
+      "sha256": "628adb4104357febd21ce945cbfdd6b0fb250829b550535a291f3434ce5c804c",
+      "bytes": 5276
+    },
+    {
+      "path": "scripts/statistics_process_probe.sh",
+      "sha256": "db253d1a68539cd121df06cf6ac8f6d56f962a67e213ba8abc8d28c1c1341d77",
+      "bytes": 718
+    },
+    {
+      "path": "Tools/SettingsArtifactsReadback.swift",
+      "sha256": "31e4c30f8ecd5c6cdf864d1f0af29b33cf19cc50cf48077da69ecf18e7d2a145",
+      "bytes": 6102
+    },
+    {
+      "path": "scripts/settings_artifacts_readback.sh",
+      "sha256": "1750f8bffb6b6b36e2b4489d0af998394a7e5253c1c30645f9a3c1d8ddd8bfdc",
+      "bytes": 757
+    },
+    {
+      "path": "Sources/LayoutPilot/Store.swift",
+      "sha256": "10f94bffa6f76172064513e939230a13f4da0d35551b8d5e1f88988772c42661",
+      "bytes": 13857
+    },
+    {
+      "path": "Sources/LayoutPilotCore/UsageStatistics.swift",
+      "sha256": "33ce6cc82593ac4241292ee591157debb6a958694f44569fe8fa3885a51afd0d",
+      "bytes": 4840
+    },
+    {
+      "path": ".build/debug/LayoutPilotCore.o",
+      "sha256": "4debca5f5d09253ef577aadbd2855820d3e81fe6f561385776391ca10ece311c",
+      "bytes": 740432
+    },
+    {
+      "path": ".build/statistics-process-probe",
+      "sha256": "8bcb0df785125bbc9c7170afa65d9126305e3b0d75d1e9d60bacbe3180bc8344",
+      "bytes": 848408
+    },
+    {
+      "path": ".build/settings-artifacts-readback",
+      "sha256": "6ca5eff2601c70c696feb77538501dd6bbd91bea565173a4430eda462fb44fb7",
+      "bytes": 730040
+    },
+    {
+      "path": "research/evidence/replay-stats-process-probe.json",
+      "sha256": "7de2722a373dfe86568148a96eaf84c1a626d8a6dd7ff57d64fb47f84420f755",
+      "bytes": 1593
+    },
+    {
+      "path": "research/evidence/settings-fixtures-decoder-check.json",
+      "sha256": "1ead4253c4964eb9797fc9454edd2166d44dd5c90e3e91cfaadef482a8c2e906",
+      "bytes": 330
+    },
+    {
+      "path": "research/evidence/settings-fixtures-preparation.json",
+      "sha256": "0bf4b39ab539cbe78ecf7f621f1c59a00b7645fa444c92d500119319ce941239",
+      "bytes": 1124
+    }
+  ],
+  "GUIUsed": false,
+  "nativeDropVerified": false,
+  "soundPlaybackOrAudibilityVerified": false
+}

@@ -1,0 +1,55 @@
+{
+  "boundary" : true,
+  "boundaryObservation" : {
+    "elapsedSeconds" : 0.14589758332294878,
+    "firstChangeSeconds" : 0.029708041663980111,
+    "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+    "performed" : true,
+    "textTransitionsObserved" : 1
+  },
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/EE3D2E54-B810-4362-A528-F8B2B094313E.results.json",
+  "clipboardRestore" : "not_used",
+  "completed" : 1,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/EE3D2E54-B810-4362-A528-F8B2B094313E.txt",
+  "elapsedSeconds" : 2.4692456666671205,
+  "events" : 52,
+  "eventTag" : 1280331858,
+  "gesture" : "none",
+  "id" : "single",
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "initialSyntheticText" : "",
+  "inputSource" : "com.apple.keylayout.ABC",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII" : "ghbdtn hello ghbdtn hello",
+  "requestedSource" : "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture" : false,
+  "selection" : {
+    "length" : 0,
+    "location" : 26
+  },
+  "tagTrace" : {
+    "maxTaggedSamples" : 512,
+    "nonzeroTagTypeHistogram" : {
+      "0x000000004c505052" : {
+        "keyDown" : 26,
+        "keyUp" : 26
+      },
+      "0x4c50525200000001" : {
+        "keyDown" : 3,
+        "keyUp" : 3
+      },
+      "0x4c50525200000002" : {
+        "keyDown" : 1,
+        "keyUp" : 1
+      }
+    },
+    "started" : true,
+    "state" : "stopped",
+    "taggedSamples" : 60,
+    "taggedTypeCounts" : {
+      "keyDown" : 30,
+      "keyUp" : 30
+    }
+  },
+  "text" : "ghbdtn hello привет hello "
+}

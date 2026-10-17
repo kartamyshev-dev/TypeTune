@@ -1,0 +1,128 @@
+[
+  {
+    "id": "early-explore-0",
+    "text": "ghb",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "при",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 3
+    }
+  },
+  {
+    "id": "early-explore-1",
+    "text": "ghbd",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "прив",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 4
+    }
+  },
+  {
+    "id": "early-explore-2",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "привет",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "length": 0,
+      "location": 6
+    }
+  },
+  {
+    "id": "early-explore-3",
+    "text": "hello",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "hello",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 5
+    }
+  },
+  {
+    "id": "early-explore-4",
+    "text": "ABc.txt",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "ABc.txt",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 7
+    }
+  },
+  {
+    "id": "early-explore-5",
+    "text": "ABc;def",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "ABc;def",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 7
+    }
+  },
+  {
+    "id": "early-explore-6",
+    "text": "MBps",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "MBps",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 4
+    }
+  },
+  {
+    "id": "early-explore-7",
+    "text": "MHz",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "MHz",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 3
+    }
+  },
+  {
+    "id": "early-explore-8",
+    "text": "RJvgm.nth",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "provenance": "Bounded F01 regression from early-exploration-original.json; historical observed text/source/caret, not a full model or timing oracle. Own early option must be ON.",
+    "expected": "RJvgm.nth",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "length": 0,
+      "location": 9
+    }
+  }
+]

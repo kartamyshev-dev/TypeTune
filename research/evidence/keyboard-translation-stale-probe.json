@@ -1,0 +1,34 @@
+{
+  "eventsPosted" : 0,
+  "rows" : [
+    {
+      "keyCode" : 4,
+      "passed" : true,
+      "plain" : "р",
+      "shift" : "Р",
+      "staleEventCharacters" : "x"
+    },
+    {
+      "keyCode" : 0,
+      "passed" : true,
+      "plain" : "ф",
+      "shift" : "Ф",
+      "staleEventCharacters" : "x"
+    },
+    {
+      "keyCode" : 41,
+      "passed" : true,
+      "plain" : "ж",
+      "shift" : "Ж",
+      "staleEventCharacters" : "x"
+    },
+    {
+      "keyCode" : 18,
+      "passed" : true,
+      "plain" : "1",
+      "shift" : "!",
+      "staleEventCharacters" : "x"
+    }
+  ],
+  "source" : "com.apple.keylayout.RussianWin"
+}

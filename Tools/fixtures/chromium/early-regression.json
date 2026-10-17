@@ -1,0 +1,12 @@
+{
+  "id": "early-chromium-mixed-script-2026-10-17",
+  "host": "com.google.Chrome",
+  "field": "textarea",
+  "physicalASCII": "ghbdtn",
+  "boundary": "two spaces",
+  "earlyCorrection": true,
+  "observed": "приdtn  ",
+  "expected": "привет  ",
+  "evidence": "research/evidence/diagnosis-2026-10-17/chromium-early-comparison.json",
+  "notice": "Runtime regression fixture; not a core corpus oracle or independent quality acceptance"
+}

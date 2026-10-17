@@ -1,0 +1,75 @@
+{
+  "app": "/Applications/LayoutPilot.app",
+  "version": "0.1.3",
+  "candidateFilesMatched": 10,
+  "binarySha256": "a46c7c6a69410118fca48b66e36abc37cc05068efef48f99f8c01000179a1391",
+  "signatureVerified": true,
+  "oldProcessExited": true,
+  "userTextReviewConfirmed": true,
+  "oldRecoveryDiscardConfirmed": true,
+  "oldDeliveryReplayed": false,
+  "nativeAcceptance": "FAIL",
+  "profile": {
+    "automatic": true,
+    "earlyCorrection": false,
+    "plainPaste": false
+  },
+  "profileVerifiedBy": "native app UI",
+  "accessibilityPermission": "granted; refresh completed after user confirmation",
+  "originalRecoveryClearedWithoutReplay": true,
+  "installationCheckpointHistory": [
+    {
+      "accessibilityPermission": "awaiting macOS Touch ID for refresh",
+      "nativeAcceptance": "NOT_RUN",
+      "notice": "Historical state before the permission refresh and first regression run."
+    }
+  ],
+  "permissionsRefreshCompleted": true,
+  "permissions": {
+    "accessibility": true,
+    "inputMonitoring": true,
+    "postEvents": true
+  },
+  "tapActive": true,
+  "permissionsAndTapVerifiedBy": "native app UI observed by coordinating agent after permission refresh and restart",
+  "currentObservedProcess": {
+    "pid": 53149,
+    "command": "/Applications/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+    "started": "Sat Oct 17 22:04:25 2026",
+    "evidence": "candidate-20261017-regressions-01.json"
+  },
+  "fourHourAcceptance": "NOT_RUN",
+  "workingDayAcceptance": "NOT_RUN",
+  "nativeRegression": {
+    "result": "candidate-20261017-regressions-01.json",
+    "verification": "candidate-20261017-regressions-01.verification.json",
+    "diagnostics": "candidate-20261017-regressions-01-diagnostics.json",
+    "validatorExitCode": 1,
+    "failedCases": [
+      "stability-first-word-after-focus"
+    ],
+    "failureFields": [
+      "text",
+      "inputSource"
+    ],
+    "matchingObservedCases": [
+      "stability-immediate-double-shift",
+      "stability-continuous-stream"
+    ],
+    "notice": "Three bounded synthetic TextEdit cases on this exact GUI; two matching cases do not make the suite pass or prove long-run stability."
+  },
+  "pid": 53149,
+  "candidateFilesStillMatchedAfterNativeObservation": true,
+  "diagnosticExportModeVerified": "0600",
+  "diagnosticExportModeVerifiedBy": "coordinating agent checked the actual exported file",
+  "bundleIdentities": {
+    "nativeEvidence": {
+      "algorithm": "paths-files-modes-symlinks-v1",
+      "sha256": "b88fec0ec345926131aac10ffa9f1bcc14303d569db4a924304afaf1e91b42d5"
+    },
+    "candidateFileManifest": {
+      "sha256": "3157e15085e1ab05bdb1a6d7aa1689a5fb45ef2f7aa251faf4b857c265e4ec56"
+    },
+    "notice": "Different hash formats; not a file mismatch. The executable SHA-256 is shared by both observations."
+  }
+}

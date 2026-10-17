@@ -1,0 +1,14 @@
+{
+  "audibilityVerified" : false,
+  "checks" : {
+    "pngDecodes128x64" : true,
+    "tiffDecodes128x64" : true,
+    "wavDecodesWithoutPlayback" : true
+  },
+  "kind" : "synthetic-fixtures-decoder-check",
+  "nativeDropVerified" : false,
+  "originalAccessed" : false,
+  "passed" : true,
+  "soundPlayed" : false,
+  "uiUsed" : false
+}

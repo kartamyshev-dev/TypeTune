@@ -1,0 +1,1 @@
+{"after":{"length":0,"location":21,"text":"первая\nвторая\tстрока "},"before":{"length":0,"location":20,"text":"первая\nвторая\tстрока"},"expected":"первая\nвторая\tстрока ","finalModifiersNeutral":true,"fixtureURL":"http:\/\/127.0.0.1:18763\/?fixture=LP-CODEX-001","mode":"post-paste-space","passed":true}

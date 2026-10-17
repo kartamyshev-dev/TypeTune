@@ -1,0 +1,448 @@
+{
+  "evidence_id": "LP-INPUT-ORIGIN-20261015-01",
+  "target_sha256": "19d0057a9bfc38ba590babff82b28b5bf496c0833bbbd221f502722c6e2a26e9",
+  "source_bundle": {
+    "path": "research/private/origin-evidence-bundle.json",
+    "sha256": "0f407f5d98f8485082586652b6027afab24898862b9d701d074dd1bf64305f51",
+    "bytes": 8281263
+  },
+  "snapshot": {
+    "path": "research/private/origin-snapshot.json",
+    "sha256": "b95ca86fb2c9dcf57f657070c07951980df643bafd4c7d71d123b87fe9e07547",
+    "bytes": 14942162
+  },
+  "export_record_count": 101,
+  "new_and_relevant_records": [
+    {
+      "evidence_id": "ev_1553a01c4cb9e062f9e4a36debe81edb564580202061f77a05cd4efd66aebda3",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1001c8910"
+      }
+    },
+    {
+      "evidence_id": "ev_1c06051f78df1ee083cc8c9186c36d52b88ad8de0d3fd47376a43c8254fc8c32",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002dfac8"
+      }
+    },
+    {
+      "evidence_id": "ev_1fcc051a516cbbcfaf60fd74d8108040b6c6543ef55ed57d2243e90687311694",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x10003e968"
+      }
+    },
+    {
+      "evidence_id": "ev_2816387e75b133278d3e019d3f6d2779a0a4c6bae7557de58c9ecea083216265",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x1003f1e0c"
+      }
+    },
+    {
+      "evidence_id": "ev_418c12c79e6781ed3bd99530cd493d58eb90af84e69b4eb61f7225f96ffcbb81",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x10055d8d8"
+      }
+    },
+    {
+      "evidence_id": "ev_70b49bff3fb0ad93b1bcb4ff0a0680aa1628299bdc778e0d003917dea54696bd",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002dfac8"
+      }
+    },
+    {
+      "evidence_id": "ev_7cc638553aed6d8497a67d382c635bedd6edecb93d543d108a1d88765e7b9a35",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1002d2718"
+      }
+    },
+    {
+      "evidence_id": "ev_a292b40074cdffc8cfdff07a6bf115c768d56cf8580bb8b401a792e70239b42f",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x1002d2718"
+      }
+    },
+    {
+      "evidence_id": "ev_b80d1647c6294afc36d368583dceaf4b702de8153fa0a7fdd9606202cdf175e3",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1002d2718"
+      }
+    },
+    {
+      "evidence_id": "ev_d56b61a99c02030fda5b5edc1cd245dd297c79dcaf3cd627b3977ffe6cdff620",
+      "operation": "search_procedures",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "regex",
+        "pattern": "CGEventSource|CGEventGetIntegerValueField|CGEventGetFlags|CGEventGetType"
+      }
+    },
+    {
+      "evidence_id": "ev_e5f618b96c8727033a52f2c12b19b2f5e81ee6009460ce2cc35ffb93d92ad862",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x1001c8910"
+      }
+    },
+    {
+      "evidence_id": "ev_e7ccc8bbe2fdd7ab248b1826a33f8302db49194e164b85e5aa9b344197a85ae4",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10003e968"
+      }
+    }
+  ],
+  "prior_instruction_anchors": [
+    {
+      "evidence_id": "ev_54abcbb290d0284a7c3a4379d0f64d20971949efd3cd7a84d937ed6d8f9565d9",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1000076c0"
+      }
+    },
+    {
+      "evidence_id": "ev_688c920dc5b1b7fb68351c2335b067218eadc31cfe501cb222cc66fb63aa725d",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x1000411fc"
+      }
+    },
+    {
+      "evidence_id": "ev_ea292b3bb58925ad27fbb09082cf745c615e6e6e1ecef03f975569377bf62001",
+      "operation": "read_function_instructions",
+      "parameters": {
+        "procedure": "0x10025e7d8"
+      }
+    }
+  ],
+  "runtime_evidence": [
+    {
+      "path": "research/evidence/phase3-original-input-auto-on-verified.json",
+      "sha256": "36934fc057d4314fda4515acf1bc13a6de23109dc55419e55388b0deec2137fd",
+      "bytes": 918
+    },
+    {
+      "path": "research/evidence/phase3-original-hid-source.json",
+      "sha256": "c9d1f94ef27b6141d2fe1ea93fcc876338d2a9fc1e11eb56c3e629e15e311c23",
+      "bytes": 1110
+    }
+  ],
+  "sdk_header": {
+    "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGEventTypes.h",
+    "sha256": "0eb5b0aca9a77730d7c1b0449113b18419765771ae02a596708281f56f6c45b4",
+    "selected_enum_values": {
+      "kCGEventSourceUnixProcessID": 41,
+      "kCGEventSourceUserData": 42,
+      "kCGEventSourceStateID": 45,
+      "kCGEventSourceStatePrivate": -1,
+      "kCGEventSourceStateHIDSystemState": 1
+    }
+  },
+  "findings": [
+    {
+      "id": "O01",
+      "status": "observed-static",
+      "anchor": "0x1001c8910..0x1001c8917",
+      "claim": "Secondary keyboard-only tap callback returns event unchanged,8bytes; not an origin-filter implementation."
+    },
+    {
+      "id": "O02",
+      "status": "observed-static",
+      "anchor": "0x10003e968..0x10003e9bb",
+      "claim": "Main callback retains event, calls0x1000411fc(type,event,context), releases temporary retain, returns gate result. No origin metadata read here."
+    },
+    {
+      "id": "O03",
+      "status": "bounded-negative",
+      "anchor": "0x1003f1e0c→0x1002d2718 callers0x10025e82c/86c/894",
+      "claim": "Resolved direct integer getter code callers use keycode field9; no41/42/45 origin-field access in this resolved path. Indirect/dynamic or external code is outside this negative result."
+    },
+    {
+      "id": "O04",
+      "status": "historical-runtime-not-reproduced-by-later-control",
+      "claim": "Earlier separate original Chrome runs differed(private missed,HID corrected), but later four controlled baseline/original runs do not reproduce the difference."
+    },
+    {
+      "id": "O05",
+      "status": "unresolved",
+      "claim": "Historical differing runs remain unexplained; later controlled runs do not reproduce a source distinction. Direct origin-filter is not proven. Original session13trace is not proof of delivery failure: original may suppress/rewrite the triggering event."
+    },
+    {
+      "id": "O06",
+      "status": "observed-static",
+      "anchor": "0x1002dfac8",
+      "claim": "Calls feature extractor0x1002e0030, scans0x28-byte candidate records and returns true on record flagbit0 subject to sentinel handling. No direct persistence writer in this body."
+    },
+    {
+      "id": "O07",
+      "status": "observed-runtime-from-prior-run",
+      "claim": "New LayoutPilot passive probes see both requested constructor variants14/14 at cghid andcgSession; both observed flags0x20000000 after creation flags0. Private event source ID is opaque positive identity; original-process behavior remains separate."
+    },
+    {
+      "id": "O08",
+      "status": "independently-verified-recorded-runtime",
+      "claim": "Four controlled results: baseline private/HID bothghbdtn ; original private/HID bothпривет /RussianWin. Exact keyDown(type10,keycode11) absent from taggedsession trace for both original runs; all other taggedtype/key events preserve order. Four private-original session timestamps differ; no delivery failure inferred."
+    }
+  ],
+  "lifecycle": {
+    "opened_matching_phase3_snapshot": true,
+    "new_imports": 1,
+    "duplicate_projects_created": false,
+    "exported_then_closed": true,
+    "session_open_after": false,
+    "snapshot_primitive_entries": 1,
+    "snapshot_workflow_entries": 1
+  },
+  "limitations": [
+    "REA export unknowns0 means no recorded unknown objects, not algorithm completeness.",
+    "Snapshot has sparse primitive cache; missing next request can force a new import.",
+    "No original/prototype processes, UI, settings or keyboard input were changed by this static worker.",
+    "The main app callback and the secondary probe callback must not be conflated."
+  ],
+  "pilot_passive_observer_followup": [
+    {
+      "path": "research/evidence/phase3-origin-pilot-private-flags.json",
+      "sha256": "e008d6c92bfa0d626c5052c7dd3c569c7b8186103feb06b29df7225f4983c887",
+      "app_under_test": "LayoutPilot; not original Caramba",
+      "requested_constructor_state_enum": -1,
+      "actual_created_source_state_ids": [
+        1516266761
+      ],
+      "actual_tap_source_state_ids": [
+        1516266761
+      ],
+      "created_flags": [
+        0
+      ],
+      "observed_tap_flags": [
+        536870912
+      ],
+      "trace_counts": {
+        "cghid": 14,
+        "cgSession": 14
+      },
+      "own_delivery_observed_at_both_taps": true,
+      "probe_completed": true,
+      "not_proof_of_original_code_filter": true
+    },
+    {
+      "path": "research/evidence/phase3-origin-pilot-hid-flags.json",
+      "sha256": "8f348b631a808c03c769a66da9caa3c4c6b4e87feb801f5ba523097095bb9d9b",
+      "app_under_test": "LayoutPilot; not original Caramba",
+      "requested_constructor_state_enum": 1,
+      "actual_created_source_state_ids": [
+        1
+      ],
+      "actual_tap_source_state_ids": [
+        1
+      ],
+      "created_flags": [
+        0
+      ],
+      "observed_tap_flags": [
+        536870912
+      ],
+      "trace_counts": {
+        "cghid": 14,
+        "cgSession": 14
+      },
+      "own_delivery_observed_at_both_taps": true,
+      "probe_completed": true,
+      "not_proof_of_original_code_filter": true
+    }
+  ],
+  "source_id_semantics": "CGEventSource constructor enumprivate=-1 requests private state; recorded eventSourceStateID is an actual private source identity, not necessarily enum-1. Never substitute constructor request for observed field45.",
+  "bit29_bounded_check": {
+    "evidence_id": "ev_22551d5be75cb66f6fa304046951cfbd21865eedd28e2f1850f0ad3064b9e18f",
+    "scope": "complete saved dispatch assembly textual search for explicit0x20000000 or bit29 literal; main gate/decoder separately read",
+    "matches": [],
+    "limitation": "Not symbolic flag dataflow; compound masks, indirect processing and other procedures not excluded. Both new Pilot traces have the same bit29, so they do not supply a differing bit29 condition. Original passive trace is a separate next control."
+  },
+  "controlled_original_baseline_followup": {
+    "evidence_id": "LP-INPUT-ORIGIN-CONTROL-20261015",
+    "independent_checks": "Exact14-event g,h,b,d,t,n,Space down/up order, location counts, per-event timestamp/source identity comparison, flags, result/cursor/source and guard/cleanup flags",
+    "results": [
+      {
+        "path": "research/evidence/phase3-origin-baseline-private.json",
+        "sha256": "6c403fde482112416028b256b48785f7df959346495d33003f5e59c9fce082c3",
+        "declared_condition": "baseline",
+        "condition_provenance": "coordinator process/settings preflight; independent checker reads these four result files only",
+        "requested_constructor_enum": -1,
+        "actual_source_ids": [
+          2002495425
+        ],
+        "created_sequence_verified": true,
+        "cghid_sequence_verified": true,
+        "session_type_key_sequence_verified": true,
+        "session_is_timestamp_identity_subsequence_of_hid": true,
+        "changed_timestamps": [],
+        "cghid_count": 14,
+        "cgSession_count": 14,
+        "missing_tagged_events": [],
+        "extra_tagged_events": [],
+        "observed_flags": [
+          536870912
+        ],
+        "afterFirstSpace": {
+          "length": 0,
+          "location": 7,
+          "text": "ghbdtn "
+        },
+        "source_after_first_space": "com.apple.keylayout.ABC",
+        "guards_and_cleanup_passed": true,
+        "ax_errors_reported": {
+          "AXURL:-25212": 40
+        },
+        "interpretation": "No correction expected baseline; ghbdtn preserved."
+      },
+      {
+        "path": "research/evidence/phase3-origin-baseline-hid.json",
+        "sha256": "3541bb930c19415ad65a8b09e0b27e2c12bc27489fb1e7c743428b40f5b510bd",
+        "declared_condition": "baseline",
+        "condition_provenance": "coordinator process/settings preflight; independent checker reads these four result files only",
+        "requested_constructor_enum": 1,
+        "actual_source_ids": [
+          1
+        ],
+        "created_sequence_verified": true,
+        "cghid_sequence_verified": true,
+        "session_type_key_sequence_verified": true,
+        "session_is_timestamp_identity_subsequence_of_hid": true,
+        "changed_timestamps": [],
+        "cghid_count": 14,
+        "cgSession_count": 14,
+        "missing_tagged_events": [],
+        "extra_tagged_events": [],
+        "observed_flags": [
+          536870912
+        ],
+        "afterFirstSpace": {
+          "length": 0,
+          "location": 7,
+          "text": "ghbdtn "
+        },
+        "source_after_first_space": "com.apple.keylayout.ABC",
+        "guards_and_cleanup_passed": true,
+        "ax_errors_reported": {
+          "AXURL:-25212": 40
+        },
+        "interpretation": "No correction expected baseline; ghbdtn preserved."
+      },
+      {
+        "path": "research/evidence/phase3-origin-original-private-control.json",
+        "sha256": "5e313789404e0b093d8e7189a5f5b254cbfda7a7417b41dce04f5e8603ca60a3",
+        "declared_condition": "Caramba",
+        "condition_provenance": "coordinator process/settings preflight; independent checker reads these four result files only",
+        "requested_constructor_enum": -1,
+        "actual_source_ids": [
+          2016764524
+        ],
+        "created_sequence_verified": true,
+        "cghid_sequence_verified": true,
+        "session_type_key_sequence_verified": true,
+        "session_is_timestamp_identity_subsequence_of_hid": false,
+        "changed_timestamps": [
+          {
+            "type": 11,
+            "keyCode": 11,
+            "hid_timestamp_ns": 37422406926208,
+            "session_timestamp_ns": 37422598265125,
+            "delta_ns": 191338917
+          },
+          {
+            "type": 10,
+            "keyCode": 2,
+            "hid_timestamp_ns": 37422435231416,
+            "session_timestamp_ns": 37422598949416,
+            "delta_ns": 163718000
+          },
+          {
+            "type": 11,
+            "keyCode": 2,
+            "hid_timestamp_ns": 37422465265250,
+            "session_timestamp_ns": 37422598960166,
+            "delta_ns": 133694916
+          },
+          {
+            "type": 10,
+            "keyCode": 17,
+            "hid_timestamp_ns": 37422498199916,
+            "session_timestamp_ns": 37422598967458,
+            "delta_ns": 100767542
+          }
+        ],
+        "cghid_count": 14,
+        "cgSession_count": 13,
+        "missing_tagged_events": [
+          {
+            "type": 10,
+            "keyCode": 11
+          }
+        ],
+        "extra_tagged_events": [],
+        "observed_flags": [
+          536870912
+        ],
+        "afterFirstSpace": {
+          "length": 0,
+          "location": 7,
+          "text": "привет "
+        },
+        "source_after_first_space": "com.apple.keylayout.RussianWin",
+        "guards_and_cleanup_passed": true,
+        "ax_errors_reported": {
+          "AXURL:-25212": 40
+        },
+        "interpretation": "Correction observed for either source. Tagged keyDown(keycode11) absent at session tap; suppression/rewrite by original is possible. Modified timestamps in private run are retained, not mislabeled identityPASS."
+      },
+      {
+        "path": "research/evidence/phase3-origin-original-hid-control.json",
+        "sha256": "e2d280b48d2d29c01c65e6ced5ccdaac7ae03660294a58b8146d9b86430ae9a1",
+        "declared_condition": "Caramba",
+        "condition_provenance": "coordinator process/settings preflight; independent checker reads these four result files only",
+        "requested_constructor_enum": 1,
+        "actual_source_ids": [
+          1
+        ],
+        "created_sequence_verified": true,
+        "cghid_sequence_verified": true,
+        "session_type_key_sequence_verified": true,
+        "session_is_timestamp_identity_subsequence_of_hid": true,
+        "changed_timestamps": [],
+        "cghid_count": 14,
+        "cgSession_count": 13,
+        "missing_tagged_events": [
+          {
+            "type": 10,
+            "keyCode": 11
+          }
+        ],
+        "extra_tagged_events": [],
+        "observed_flags": [
+          536870912
+        ],
+        "afterFirstSpace": {
+          "length": 0,
+          "location": 7,
+          "text": "привет "
+        },
+        "source_after_first_space": "com.apple.keylayout.RussianWin",
+        "guards_and_cleanup_passed": true,
+        "ax_errors_reported": {
+          "AXURL:-25212": 40
+        },
+        "interpretation": "Correction observed for either source. Tagged keyDown(keycode11) absent at session tap; suppression/rewrite by original is possible. Modified timestamps in private run are retained, not mislabeled identityPASS."
+      }
+    ],
+    "conclusion": "Earlier private/HID correction differential was not reproduced under these controlled conditions. Both baseline variants preserveghbdtn and both original variants correctпривет. No source-state rejection proven.",
+    "scope": "one synthetic word per constructor variant; not general original input parity or long-run validation"
+  }
+}

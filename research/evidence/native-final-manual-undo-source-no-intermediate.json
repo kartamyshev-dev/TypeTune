@@ -1,0 +1,27 @@
+{
+  "boundary" : false,
+  "boundaryObservation" : {
+    "performed" : false
+  },
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/4ECFF01F-79EF-441D-B58F-F2060244C611.results.json",
+  "clipboardRestore" : "not_used",
+  "completed" : 1,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/4ECFF01F-79EF-441D-B58F-F2060244C611.txt",
+  "elapsedSeconds" : 1.8705603749986039,
+  "events" : 8,
+  "eventTag" : 1280331858,
+  "gesture" : "manualUndo",
+  "id" : "single",
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "initialSyntheticText" : "hello",
+  "inputSource" : "com.apple.keylayout.RussianWin",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII" : "",
+  "requestedSource" : "com.apple.keylayout.RussianWin",
+  "selectAllBeforeGesture" : true,
+  "selection" : {
+    "length" : 5,
+    "location" : 0
+  },
+  "text" : "hello"
+}

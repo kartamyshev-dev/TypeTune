@@ -1,0 +1,28 @@
+{
+  "boundary" : true,
+  "boundaryObservation" : {
+    "elapsedSeconds" : 0.15085716666362714,
+    "firstChangeSeconds" : 0.032549416660913266,
+    "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+    "performed" : true,
+    "textTransitionsObserved" : 1
+  },
+  "clipboardRestore" : "not_used",
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/F3804A5A-B727-4C50-8C6C-E182BB60C401.txt",
+  "elapsedSeconds" : 3.3443494166567689,
+  "events" : 22,
+  "eventTag" : 1280331858,
+  "gesture" : "none",
+  "id" : "single",
+  "initialInputSource" : "com.apple.keylayout.ABC",
+  "inputSource" : "com.apple.keylayout.RussianWin",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII" : "gj;fkeqcnf",
+  "requestedSource" : "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture" : false,
+  "selection" : {
+    "length" : 0,
+    "location" : 11
+  },
+  "text" : "пожалуйста "
+}

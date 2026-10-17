@@ -1,0 +1,27 @@
+{
+  "id": "CODEX-001",
+  "timeUTC": "2026-10-15T17:26:14.765427+00:00",
+  "reportedHost": "com.openai.codex",
+  "reportedTrigger": "Word followed by Space in current Codex conversation input",
+  "reportedEffect": "Word becomes selected and is deleted",
+  "exactWord": null,
+  "allWordsAffected": "User suspects; not independently confirmed",
+  "incidentReproduced": false,
+  "lastPreviouslyLaunchedBinarySha256": "b911718f071b06d166c09a2648fa67cc21fe6c7d84651ae1ef1b6c8a88773957",
+  "incidentBinaryCaptured": false,
+  "currentGuardedBinarySha256": "86ff47a1e80bbb9ab5e8ebd3ce5e4ff66af92a72e440c72abf721a953ed62af7",
+  "containment": "Only com.apple.TextEdit may authorize keyboard handling, AX snapshot or replacement; reject other hosts before selection. Positive TextArea/window and selected-text readback required.",
+  "checks": {
+    "debugSelftest": "212/212",
+    "releaseSelftest": "212/212",
+    "authoredCorpus": "4420/4420",
+    "productionEntryProbe": "6/6, no AX work authorized",
+    "buildAndAdHocSignature": "passed"
+  },
+  "nativeCodexReproduction": "NOT_RUN; no user conversation input touched",
+  "nativeTextEditOnNewBinary": "NOT_RUN; old native PASS not transferred",
+  "switchersAtEnd": [],
+  "prototypeStopped": true,
+  "restartedForUser": false,
+  "oldArchiveContainsGuard": false
+}

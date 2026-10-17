@@ -1,0 +1,13 @@
+{
+  "activeCase": "load-5",
+  "activeCaseEvents": 214,
+  "activeCaseIndex": 5,
+  "autoResume": false,
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/F8713213-6961-4702-90F6-B451B27FEBF5.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 5,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/F8713213-6961-4702-90F6-B451B27FEBF5.txt",
+  "error": "target_not_frontmost",
+  "persistedCompleted": 5,
+  "requestedCases": 12
+}

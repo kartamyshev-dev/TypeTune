@@ -1,0 +1,8 @@
+{
+  "error": "target_not_frontmost",
+  "target": "original",
+  "probeSourceSha256": "84641164fa3a77c6af09f733a886f567e234caf7dd41d5dc6b6def3507df18b4",
+  "caseFileSha256": "9308f60080c71e4da8b3bb4da0adbfda7ef8f164ab40296fccf5964d734b3163",
+  "wallSeconds": 152.28182629199,
+  "processExitCode": 2
+}

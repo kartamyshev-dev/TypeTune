@@ -1,0 +1,80 @@
+[
+  {
+    "id": "option-correction",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "optionTap",
+    "expected": "привет123",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  },
+  {
+    "id": "pause-on",
+    "text": "",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "chord",
+    "expected": "",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 0,
+      "length": 0
+    }
+  },
+  {
+    "id": "paused-layout",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "ghbdtn ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "paused-typo-independent",
+    "text": "ghtdtn",
+    "source": "RussianWin",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "pause-off",
+    "text": "",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "chord",
+    "expected": "",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 0,
+      "length": 0
+    }
+  },
+  {
+    "id": "resumed-layout",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "byCategory" : {
+    "context-safety" : {
+      "corrections" : 1,
+      "count" : 3,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 3
+    }
+  },
+  "bySplit" : {
+    "train" : {
+      "corrections" : 1,
+      "count" : 3,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 3
+    }
+  },
+  "failures" : [
+
+  ],
+  "notice" : "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",
+  "schemaVersion" : 1,
+  "total" : {
+    "corrections" : 1,
+    "count" : 3,
+    "falseCorrections" : 0,
+    "misses" : 0,
+    "originalCompared" : 0,
+    "originalMatches" : 0,
+    "passed" : 3
+  }
+}

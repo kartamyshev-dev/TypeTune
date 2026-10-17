@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "sourceBaseCommit": "833a4aadbf3b499f45b267270829433e3959f7b9",
+  "sourceWasUncommittedAtBuild": true,
+  "sourceFilesSHA256": {
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "63b6c302df226333bff19b25e1fbbbab1fefd4bd5104ae977df497b985eec8ef",
+    "Sources/LayoutPilot/InputDiagnostics.swift": "a3f8b5ae347e7bb7cff931f9b61b73f1dc9c7245de5c644599f6aed8cbdc4f00",
+    "Sources/LayoutPilot/InputSources.swift": "2229c9c6b75a386d6e2b6115902e0d267befb8c795e35449b4c5a7a6aba3e6eb",
+    "Sources/LayoutPilot/KeyboardService.swift": "dabf99b57d4dac977a22977ce82904630002b61c6b022e9d8e6df37563cba5e6",
+    "Sources/LayoutPilot/SettingsView.swift": "3937f2ebbeffb9d752a49e7644438e4990c2670da1dd6c65bff3ef3bd4769207",
+    "Sources/LayoutPilot/Store.swift": "98222c8a3beed570ec350750b3ae9742baff0522f1c3ff9359cccd07e62e6f14",
+    "Sources/LayoutPilot/SystemVocabulary.swift": "d4d28f983c55dc85c6999f9cb5a7293c4e163f9e2c6f5435cc15b8ab41a2566f",
+    "Sources/LayoutPilot/main.swift": "e32614099a0d43e25b09852f470195135a2470d3635eb6842dffff4114676a58",
+    "Sources/LayoutPilotCLI/GestureChecks.swift": "7e03708af658da86d77f1307dcdd128107e3d5b312a9c0f781819fb81f534679",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "bf44e1888de517e31e6782c20255ae0004fd94e9b01a58a1953ab987d6eccd20",
+    "Sources/LayoutPilotCLI/main.swift": "1aa7667ac4c2e00445f36372a06213d0f688438e5c95ad6f0714aa411b401fd9",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "7a578ff0c7744f52569c524c9dd36d140f64504231bd295083b718ece1f9d32f",
+    "Sources/LayoutPilotCore/Engine.swift": "d368ccf2607fdde52ed21d02fc855dc574f2a1832fdfc2202585526c50358dbb",
+    "Sources/LayoutPilotCore/InputReplayQueue.swift": "4248329ead35e70648514c8fe4f8e5ac7ac4fd17ecc60e5cc2d79fa78ec2898f",
+    "Sources/LayoutPilotCore/Layout.swift": "bcd7a4e63e6fc3172952d318bdc5c7a87cd8e2b5ab2c404aeedcd91874f59ca6",
+    "Sources/LayoutPilotCore/ModifierGesture.swift": "a0ac5cb3495416ffd4a4f7c9a688dea55d87e7eec6bbe20050c338281ff52e32",
+    "Sources/LayoutPilotCore/Replay.swift": "c3a89630c954088dedd4cac80051d06af7f3e033dc60af600ef8f03d0ecc44c6",
+    "Sources/LayoutPilotCore/Resources/lexicon.json": "1764cd67ed823ea70551fb8c856ad0599f1a3765242d329c0710451b70d0aced",
+    "Package.swift": "60549aaf7885c414fdeeb67a22ed588fbe01d691a9788f05c63629d481327ae4"
+  },
+  "binarySHA256": "425e44e3be9a2832aac60fd91bc950e7e88be3c4309a1b9650393b3b26e3facc",
+  "cliSHA256": "edfbbe73e9b365247f374913e3c0e54aa099fca7bd5d2ccf1f3ca47afc27b743",
+  "nativeAcceptance": "NOT_RUN on this binary",
+  "priorFailedBinary": "800d263fb5b7244f9a5be35bea4a51477b7eae6755c452d42ecd5afb3b7e5b00",
+  "offlineEvidence": [
+    "phase3-handshake-release-selftest.txt",
+    "phase3-handshake-corpus.txt"
+  ]
+}

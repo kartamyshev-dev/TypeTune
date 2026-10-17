@@ -1,0 +1,18 @@
+{
+  "activeCase" : "manual-shortcut",
+  "activeCaseEvents" : 23,
+  "activeCaseIndex" : 7,
+  "autoResume" : false,
+  "axReadErrors" : {
+    "AXFocusedUIElement:-25204" : 1,
+    "AXFocusedWindow:-25204" : 2,
+    "AXSubrole:-25205" : 227
+  },
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/ED97861F-CBE8-46C2-BC43-CA1562050850.results.json",
+  "checkpointWriteFailed" : false,
+  "completed" : 7,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/ED97861F-CBE8-46C2-BC43-CA1562050850.txt",
+  "error" : "focused_window_unverified",
+  "persistedCompleted" : 7,
+  "requestedCases" : 13
+}

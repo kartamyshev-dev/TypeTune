@@ -1,0 +1,22 @@
+{
+  "installed_path": "/Applications/TypeTune.app",
+  "files_matched": 10,
+  "sha256": "318c3d710823020537c139e72b51e0c4c3fd8e91c952ee3833938ecb501d8750",
+  "signature_verified": true,
+  "settings_preserved": true,
+  "backup": "/Users/kartamyshev/git/caramba/research/private/typetune-rename-install/previous.zip",
+  "backup_files_verified": 13,
+  "source_sha256": "d62df1dbb527e7f763a194650dfb033c7d8eece46ecd8afa67631ee6fb1fe87a",
+  "bundle_id_preserved": "dev.layoutpilot.mac",
+  "previous_typetune_bundle_id": "dev.kartamyshev.TypeTune",
+  "previous_apps_removed_from_applications": true,
+  "zsh_integration_path_updated": true,
+  "permissions": "both refreshed via System Settings for /Applications/TypeTune.app; restarted",
+  "observed_pid": 82622,
+  "process_path": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+  "selftest": "720/720 offline",
+  "conflict_checks": "5/5 isolated",
+  "ui_readback": "BLOCKED: CUA resolves installed path to removed dev.kartamyshev.TypeTune; correct-identifier binding times out",
+  "native_input": "NOT_RUN",
+  "login_after_relocation": "NOT_RUN"
+}

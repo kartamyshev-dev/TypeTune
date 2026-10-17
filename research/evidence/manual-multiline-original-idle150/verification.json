@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "target": "original",
+  "fixtureSha256": "8eac3e119cf502cbb93c12b097fa152de96a2665f1a35931da4ca1e6d883957b",
+  "requested": 2,
+  "completed": 1,
+  "results": [
+    {
+      "id": "multiline-selection",
+      "failures": [
+        "selection"
+      ],
+      "evidence": "research/evidence/manual-multiline-original-idle150/00.json"
+    }
+  ],
+  "passed": false,
+  "notice": "Only these seeded TextEdit selections; no other-host or full F05 acceptance."
+}

@@ -1,0 +1,170 @@
+{
+  "axReadErrors" : {
+    "AXSubrole:-25205" : 194
+  },
+  "cases" : 5,
+  "checkpoint" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.results.json",
+  "completed" : 5,
+  "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.txt",
+  "eventTag" : 1280331858,
+  "initialInputSource" : "com.apple.keylayout.RussianWin",
+  "notice" : "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "results" : [
+    {
+      "beforeGesture" : {
+
+      },
+      "boundary" : true,
+      "boundaryObservation" : {
+        "elapsedSeconds" : 0.13911195833316015,
+        "firstChangeSeconds" : 0.031929291666529025,
+        "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed" : true,
+        "textTransitionsObserved" : 1
+      },
+      "clipboardRestore" : "not_used",
+      "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.txt",
+      "elapsedSeconds" : 2.6495508333337057,
+      "events" : 24,
+      "gesture" : "none",
+      "gestureIntermediate" : {
+
+      },
+      "id" : "helper-baseline-0",
+      "inputSource" : "com.apple.keylayout.ABC",
+      "physicalASCII" : "hello world",
+      "requestedSource" : "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture" : false,
+      "selection" : {
+        "length" : 0,
+        "location" : 12
+      },
+      "text" : "hello world "
+    },
+    {
+      "beforeGesture" : {
+
+      },
+      "boundary" : true,
+      "boundaryObservation" : {
+        "elapsedSeconds" : 0.15125587500006077,
+        "firstChangeSeconds" : 0.032139041666596313,
+        "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed" : true,
+        "textTransitionsObserved" : 1
+      },
+      "clipboardRestore" : "not_used",
+      "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.txt",
+      "elapsedSeconds" : 2.6252557083334978,
+      "events" : 28,
+      "gesture" : "none",
+      "gestureIntermediate" : {
+
+      },
+      "id" : "helper-baseline-1",
+      "inputSource" : "com.apple.keylayout.ABC",
+      "physicalASCII" : "hello world",
+      "requestedSource" : "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture" : false,
+      "selection" : {
+        "length" : 0,
+        "location" : 12
+      },
+      "text" : "hello world "
+    },
+    {
+      "beforeGesture" : {
+
+      },
+      "boundary" : true,
+      "boundaryObservation" : {
+        "elapsedSeconds" : 0.14500483333358716,
+        "firstChangeSeconds" : 0.034203666667053767,
+        "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed" : true,
+        "textTransitionsObserved" : 1
+      },
+      "clipboardRestore" : "not_used",
+      "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.txt",
+      "elapsedSeconds" : 2.6325653750000129,
+      "events" : 28,
+      "gesture" : "none",
+      "gestureIntermediate" : {
+
+      },
+      "id" : "helper-baseline-2",
+      "inputSource" : "com.apple.keylayout.ABC",
+      "physicalASCII" : "hello world",
+      "requestedSource" : "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture" : false,
+      "selection" : {
+        "length" : 0,
+        "location" : 12
+      },
+      "text" : "hello world "
+    },
+    {
+      "beforeGesture" : {
+
+      },
+      "boundary" : true,
+      "boundaryObservation" : {
+        "elapsedSeconds" : 0.14261775000068155,
+        "firstChangeSeconds" : 0.032894875000238244,
+        "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed" : true,
+        "textTransitionsObserved" : 1
+      },
+      "clipboardRestore" : "not_used",
+      "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.txt",
+      "elapsedSeconds" : 2.6380644999999276,
+      "events" : 28,
+      "gesture" : "none",
+      "gestureIntermediate" : {
+
+      },
+      "id" : "helper-baseline-3",
+      "inputSource" : "com.apple.keylayout.ABC",
+      "physicalASCII" : "hello world",
+      "requestedSource" : "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture" : false,
+      "selection" : {
+        "length" : 0,
+        "location" : 12
+      },
+      "text" : "hello world "
+    },
+    {
+      "beforeGesture" : {
+
+      },
+      "boundary" : true,
+      "boundaryObservation" : {
+        "elapsedSeconds" : 0.13751833333390096,
+        "firstChangeSeconds" : 0.032917750000706292,
+        "notice" : "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed" : true,
+        "textTransitionsObserved" : 1
+      },
+      "clipboardRestore" : "not_used",
+      "document" : "\/Users\/kartamyshev\/git\/caramba\/research\/private\/probes\/E4A3DBA3-7415-49EA-BA4A-8AC0F5E1A495.txt",
+      "elapsedSeconds" : 2.6233736249996582,
+      "events" : 28,
+      "gesture" : "none",
+      "gestureIntermediate" : {
+
+      },
+      "id" : "helper-baseline-4",
+      "inputSource" : "com.apple.keylayout.ABC",
+      "physicalASCII" : "hello world",
+      "requestedSource" : "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture" : false,
+      "selection" : {
+        "length" : 0,
+        "location" : 12
+      },
+      "text" : "hello world "
+    }
+  ],
+  "totalEvents" : 136
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "durationSeconds": 2170.2868135000026,
+  "samples": 1080,
+  "maxSampleGapSeconds": 2.070999999999998,
+  "samePrototypePIDAlive": true,
+  "first30sMedianRSSKiB": 109952,
+  "last30sMedianRSSKiB": 58464,
+  "medianCPUPercent": 29.1,
+  "stabilityCases": 167,
+  "notice": "TextEdit synthetic session with bounded clear/setup pauses; no other-app, sleep/wake, physical-keyboard or correction-only latency acceptance."
+}

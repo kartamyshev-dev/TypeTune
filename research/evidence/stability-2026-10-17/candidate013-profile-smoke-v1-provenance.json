@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "sourceFixture": "corpus/native-smoke.json",
+  "sourceFixtureSha256": "2edaf5336daffa7d49eb2c2c1a5de1e43c7c5495cc922b26481beb0f0e80e587",
+  "fixture": "research/private/native-batches/candidate013-profile-smoke-v1.json",
+  "caseFileSha256": "be0fb8439c57af7b05fc03f7439448734926f25fc87e9c5afb2d316772e3f662",
+  "sourceCases": 13,
+  "selectedCases": 12,
+  "selectedIDs": [
+    "auto-ru",
+    "auto-en",
+    "typo",
+    "double-caps",
+    "yo",
+    "digits",
+    "double-shift",
+    "manual-shortcut",
+    "single-shift",
+    "physical-punctuation",
+    "selected-manual",
+    "auto-undo"
+  ],
+  "excluded": [
+    {
+      "id": "plain-paste",
+      "reason": "Current stability profile explicitly keeps plainPaste=false; do not enable interception for acceptance."
+    }
+  ],
+  "selectionMethod": "Preserve all original fields, values and order; omit only the explicit unsupported-profile case. Source fixture unchanged.",
+  "requiredProfile": {
+    "automatic": true,
+    "earlyCorrection": false,
+    "plainPaste": false,
+    "typos": true,
+    "yo": true,
+    "singleShift": true
+  },
+  "profileSource": "Parent observed installed app UI before regression01; this preparation does not inspect or change settings.",
+  "nativeAcceptance": "NOT_RUN",
+  "notice": "Prepared only. Broad smoke waits for root analysis of regression01 first-word failure.",
+  "expectedSettingsSideEffect": {
+    "caseID": "auto-undo",
+    "operation": "undo of non-manual correction may call Store.learn(decision.original)",
+    "testWord": "ghbdtn",
+    "source": "Sources/LayoutPilot/KeyboardService.swift undo(); Sources/LayoutPilot/Store.swift learn(_:)",
+    "cleanupOwner": "parent via application UI",
+    "cleanupRule": "Compare with private preferences backup/current pre-smoke vocabulary; remove only a newly introduced test learned word ghbdtn through UI, preserve all pre-existing user words and other settings, then verify readback before any later auto/regression/stream run. Do not disable learning or change the undo fixture."
+  },
+  "nativeCommands": [
+    [
+      "python3",
+      "scripts/record_native_probe.py",
+      "--app",
+      "/Applications/LayoutPilot.app",
+      "--output",
+      "research/evidence/stability-2026-10-17/candidate-20261017-profile-smoke-01.json",
+      "--batch",
+      "research/private/native-batches/candidate013-profile-smoke-v1.json",
+      "--interval-ms",
+      "80",
+      "--settle-ms",
+      "600"
+    ],
+    [
+      "python3",
+      "scripts/verify_native_suite.py",
+      "research/evidence/stability-2026-10-17/candidate-20261017-profile-smoke-01.json",
+      "--fixtures",
+      "research/private/native-batches/candidate013-profile-smoke-v1.json"
+    ]
+  ]
+}

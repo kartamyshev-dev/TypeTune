@@ -1,0 +1,114 @@
+{
+  "baselineRows": 4020,
+  "currentRows": 4420,
+  "unchangedSplitForAllPreviousRows": true,
+  "addedRows": 400,
+  "changedExpectations": [
+    {
+      "id": "4d8ca91abe73-0",
+      "split": "train",
+      "input": "звезды",
+      "beforeExpected": "звёзды",
+      "afterExpected": "звезды"
+    },
+    {
+      "id": "4d8ca91abe73-1",
+      "split": "train",
+      "input": "pdtpls",
+      "beforeExpected": "звёзды",
+      "afterExpected": "звезды"
+    },
+    {
+      "id": "4d8ca91abe73-2",
+      "split": "train",
+      "input": "ЗВЕЗДЫ",
+      "beforeExpected": "ЗВЁЗДЫ",
+      "afterExpected": "ЗВЕЗДЫ"
+    },
+    {
+      "id": "4d8ca91abe73-3",
+      "split": "train",
+      "input": "PDTPLS",
+      "beforeExpected": "ЗВЁЗДЫ",
+      "afterExpected": "ЗВЕЗДЫ"
+    },
+    {
+      "id": "4d8ca91abe73-4",
+      "split": "train",
+      "input": "Pdtpls",
+      "beforeExpected": "Звёзды",
+      "afterExpected": "Звезды"
+    },
+    {
+      "id": "5fdcc6cc6be8-0",
+      "split": "train",
+      "input": "узнает",
+      "beforeExpected": "узнаёт",
+      "afterExpected": "узнает"
+    },
+    {
+      "id": "5fdcc6cc6be8-1",
+      "split": "train",
+      "input": "epyftn",
+      "beforeExpected": "узнаёт",
+      "afterExpected": "узнает"
+    },
+    {
+      "id": "5fdcc6cc6be8-2",
+      "split": "train",
+      "input": "УЗНАЕТ",
+      "beforeExpected": "УЗНАЁТ",
+      "afterExpected": "УЗНАЕТ"
+    },
+    {
+      "id": "5fdcc6cc6be8-3",
+      "split": "train",
+      "input": "EPYFTN",
+      "beforeExpected": "УЗНАЁТ",
+      "afterExpected": "УЗНАЕТ"
+    },
+    {
+      "id": "5fdcc6cc6be8-4",
+      "split": "train",
+      "input": "Epyftn",
+      "beforeExpected": "Узнаёт",
+      "afterExpected": "Узнает"
+    },
+    {
+      "id": "8d6677ce57a2-0",
+      "split": "holdout",
+      "input": "сестры",
+      "beforeExpected": "сёстры",
+      "afterExpected": "сестры"
+    },
+    {
+      "id": "8d6677ce57a2-1",
+      "split": "holdout",
+      "input": "ctcnhs",
+      "beforeExpected": "сёстры",
+      "afterExpected": "сестры"
+    },
+    {
+      "id": "8d6677ce57a2-2",
+      "split": "holdout",
+      "input": "СЕСТРЫ",
+      "beforeExpected": "СЁСТРЫ",
+      "afterExpected": "СЕСТРЫ"
+    },
+    {
+      "id": "8d6677ce57a2-3",
+      "split": "holdout",
+      "input": "CTCNHS",
+      "beforeExpected": "СЁСТРЫ",
+      "afterExpected": "СЕСТРЫ"
+    },
+    {
+      "id": "8d6677ce57a2-4",
+      "split": "holdout",
+      "input": "Ctcnhs",
+      "beforeExpected": "Сёстры",
+      "afterExpected": "Сестры"
+    }
+  ],
+  "rationale": "Independent semantic review removed ambiguous yo rules: сестры can be genitive singular; звезды can be genitive singular; узнает can be future tense. Old semantic oracle was invalid; changing it invalidates cross-version score comparisons. No holdout examples moved into train; no original observations exist."
+}

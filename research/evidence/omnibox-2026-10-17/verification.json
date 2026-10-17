@@ -1,0 +1,45 @@
+{
+  "version": "0.1.2",
+  "guiSha256": "7d6745f62b2cf5c8fb3b9df6894d42ba1dbf9119e72a886e1eb1ba629d75e4f3",
+  "installedMatchesCandidate": true,
+  "settingsPreserved": true,
+  "earlyCorrection": false,
+  "traceEnabled": false,
+  "omniboxAttempts": 13,
+  "omniboxMatches": 12,
+  "blockedBeforeEvents": [
+    {
+      "clipboardUsed": false,
+      "error": "seed_not_verified",
+      "frames": 0,
+      "mode": "omnibox-url-4",
+      "returnEvents": 0
+    }
+  ],
+  "nativeStrictSuite": "NOT_RUN; LaunchServices child exit not captured",
+  "pageRegression": {
+    "singleAuto": "привет  ",
+    "singleSelectedDoubleShiftThenSpaces": "привет  ",
+    "manualPageEvents": "Shift releases and following two spaces observed in own DOM event output"
+  },
+  "textEditAuto": "привет ",
+  "initialAndRestoredInputSource": "com.apple.keylayout.ABC",
+  "helperSha256": "06454c5dfe2504ead0b750ad81a012a83ce082613d080a2676a08bbbfe99194a",
+  "sourceHashes": {
+    "Sources/LayoutPilot/AccessibilityEditor.swift": "36a4c0303107cedb6a977138f9b2a188e2272804fc9840e31c99c9d28246ecbc",
+    "Sources/LayoutPilot/KeyboardService.swift": "1eb8cd8c6c236a2344eee74941d9e04971ea7ed00ded6b892aa8001239557bd1",
+    "Sources/LayoutPilot/SettingsView.swift": "94600f92de22ec934354a0bbec32c0e97e386eec758dd42dda64c64e1584a032",
+    "Sources/LayoutPilotCore/EditorSupport.swift": "daa6a9a8c3f129040761931714f656fc6fb25ebbb473de233c8a84677d1deaf8",
+    "Sources/LayoutPilotCLI/SelfTest.swift": "ed417bf744a48b4902e15fe25c757d9ab0219428dc13887e49b25640fdc63b98",
+    "Tools/OmniboxProbe.swift": "1227f2cd6f7c2444e892ec38e8e1de2036d31f80bbe83302adb7611dd29054e6",
+    "Tools/CodexFixtureProbe.swift": "b2ab7e6bf68308561ae6a2c575fae69a815933f96038943e84f6c8072a3d699d",
+    "scripts/chromium_fixture_probe.sh": "8e1af12a77cc8717abc9a9f20d10ffc2838091587a45414a43dcac290faedb58"
+  },
+  "process": "25237 /Applications/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+  "cleanup": {
+    "ownChromeWindowClosed": true,
+    "ownTextEditDocumentsClosed": true,
+    "localServerStopped": true
+  },
+  "finalNativeInputNotice": "No Enter in native omnibox payloads; setup-only navigation was to local HTTP fixture. No test URLs opened."
+}

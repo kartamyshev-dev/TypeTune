@@ -1,0 +1,119 @@
+{
+  "activeCase": "stability-first-word-after-focus",
+  "activeCaseEvents": 14,
+  "activeCaseIndex": 0,
+  "autoResume": false,
+  "axReadErrors": {
+    "AXSubrole:-25205": 28
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 28,
+      "maxMilliseconds": 0.14808333435212262,
+      "totalMilliseconds": 2.195833334553754
+    },
+    "AXFocusedUIElement:0": {
+      "count": 28,
+      "maxMilliseconds": 0.27075000252807513,
+      "totalMilliseconds": 1.3517500046873465
+    },
+    "AXFocusedWindow:0": {
+      "count": 28,
+      "maxMilliseconds": 20.913458331051515,
+      "totalMilliseconds": 81.27016666185227
+    },
+    "AXRole:0": {
+      "count": 28,
+      "maxMilliseconds": 0.04037499820697121,
+      "totalMilliseconds": 0.7598749944008887
+    },
+    "AXSelectedTextRange:0": {
+      "count": 11,
+      "maxMilliseconds": 0.0722083350410685,
+      "totalMilliseconds": 0.4236666645738296
+    },
+    "AXSubrole:-25205": {
+      "count": 28,
+      "maxMilliseconds": 2.5253333333239425,
+      "totalMilliseconds": 4.348250000475673
+    },
+    "AXValue:0": {
+      "count": 11,
+      "maxMilliseconds": 0.2517916655051522,
+      "totalMilliseconds": 0.538624997716397
+    },
+    "AXWindow:0": {
+      "count": 28,
+      "maxMilliseconds": 0.12320833411649801,
+      "totalMilliseconds": 1.3027500026510097
+    }
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/55B77EAD-0E12-4EC8-A29C-E73BA0B03894.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 0,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/55B77EAD-0E12-4EC8-A29C-E73BA0B03894.txt",
+  "error": "helper_exit_not_verified",
+  "finalModifierFlags": 256,
+  "persistedCompleted": 0,
+  "requestedCases": 3,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "ce3b8d0ee93596d15883b88a64a2508b499f9345612a3f21de419646bdb6f748",
+    "targetBinarySha256": "1ce3e00080bc011b438903592cf12099b2a3c4bf7bd09bb5216e196245dea66b",
+    "probeSourceSha256": "8a18574fd9606f45e9fbf4b3586eadd228043a6eaa2a0d9ff3d4d195e43ba40e",
+    "probeBinarySha256": "c4b0dda3368e227a559ff66141c847103ef5ce6d025b37648cc77f876eeddef4",
+    "targetProcess": {
+      "pid": 59875,
+      "command": "/Applications/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+      "started": "Sat Oct 17 22:29:31 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/caramba/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 60608,
+    "command": "/Users/kartamyshev/git/caramba/.build/native-probe",
+    "started": "Sat Oct 17 22:32:04 2026"
+  },
+  "processExitCode": 2,
+  "helperWallSeconds": 0.9972382080013631,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "ce3b8d0ee93596d15883b88a64a2508b499f9345612a3f21de419646bdb6f748",
+    "targetBinarySha256": "1ce3e00080bc011b438903592cf12099b2a3c4bf7bd09bb5216e196245dea66b",
+    "probeSourceSha256": "8a18574fd9606f45e9fbf4b3586eadd228043a6eaa2a0d9ff3d4d195e43ba40e",
+    "probeBinarySha256": "c4b0dda3368e227a559ff66141c847103ef5ce6d025b37648cc77f876eeddef4",
+    "targetProcess": {
+      "pid": 59875,
+      "command": "/Applications/LayoutPilot.app/Contents/MacOS/LayoutPilot",
+      "started": "Sat Oct 17 22:29:31 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/LayoutPilot.app",
+  "pid": 59875,
+  "sourceCommit": "056afed46d0af914a70302f274fa450d8bdd380f",
+  "sourceDirty": true,
+  "probeStartUptime": 27753.137746041,
+  "probeEndUptime": 27754.184497833,
+  "caseFileSha256": "b794c2e1daaff7e913e512820de1912420054eb3b017bb9711af5e82192a1002",
+  "savedCheckpoint": {
+    "activeCase": "stability-first-word-after-focus",
+    "activeCaseEvents": 14,
+    "activeCaseIndex": 0,
+    "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/55B77EAD-0E12-4EC8-A29C-E73BA0B03894.results.json",
+    "completed": 0,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/55B77EAD-0E12-4EC8-A29C-E73BA0B03894.txt",
+    "error": "target_not_frontmost",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "notice": "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+    "requestedCases": 3,
+    "results": [],
+    "schemaVersion": 1,
+    "status": "failed",
+    "totalEventsCompletedCases": 0
+  }
+}

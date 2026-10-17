@@ -1,0 +1,67 @@
+[
+  {
+    "id": "helper-baseline-0",
+    "text": "hello world",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello world ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 12,
+      "length": 0
+    }
+  },
+  {
+    "id": "helper-baseline-1",
+    "text": "hello world",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello world ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 12,
+      "length": 0
+    }
+  },
+  {
+    "id": "helper-baseline-2",
+    "text": "hello world",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello world ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 12,
+      "length": 0
+    }
+  },
+  {
+    "id": "helper-baseline-3",
+    "text": "hello world",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello world ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 12,
+      "length": 0
+    }
+  },
+  {
+    "id": "helper-baseline-4",
+    "text": "hello world",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello world ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 12,
+      "length": 0
+    }
+  }
+]

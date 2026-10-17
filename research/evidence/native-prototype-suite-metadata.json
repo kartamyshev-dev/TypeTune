@@ -1,0 +1,6 @@
+{
+  "phase": "native TextEdit initial 10-case suite + learned exception",
+  "executableSha256": "92e02c985be14c4cc9a0407a89131d09c8ef715bd28ad82bda44945a766f1d29",
+  "version": "0.1.0",
+  "limitation": "Before final independent-auto-feature/punctuation changes; repeat on final build."
+}

@@ -1,0 +1,10 @@
+{
+  "sourceCommit": "ae3f565b39a319825b7cdae8dbebc4746940f0a5",
+  "pidBeforeAndAfter": 92604,
+  "revokedUI": "paused, accessibility required",
+  "restoredUI": "running",
+  "revokedResult": "native-final-permission-revoked.json",
+  "restoredResult": "native-final-permission-restored.json",
+  "restarted": false,
+  "scope": "Revocation while idle between operations; revocation during AX mutation and Secure Input not tested."
+}

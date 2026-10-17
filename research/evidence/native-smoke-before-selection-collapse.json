@@ -1,0 +1,174 @@
+[
+  {
+    "id": "auto-ru",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "auto-en",
+    "text": "hello",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 6,
+      "length": 0
+    }
+  },
+  {
+    "id": "typo",
+    "text": "ghtdtn",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "double-caps",
+    "text": "GHbdtn",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "Привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "yo",
+    "text": "tot",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "ещё ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "digits",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "ghbdtn123 ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 10,
+      "length": 0
+    }
+  },
+  {
+    "id": "double-shift",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "gesture": "doubleShift",
+    "boundary": false,
+    "expected": "привет123",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  },
+  {
+    "id": "manual-shortcut",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "gesture": "manual",
+    "boundary": false,
+    "expected": "привет123",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  },
+  {
+    "id": "single-shift",
+    "text": "",
+    "source": "ABC",
+    "gesture": "singleShift",
+    "boundary": false,
+    "expected": "",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 0,
+      "length": 0
+    }
+  },
+  {
+    "id": "physical-punctuation",
+    "text": "gj;fkeqcnf",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "пожалуйста ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 11,
+      "length": 0
+    }
+  },
+  {
+    "id": "selected-manual",
+    "text": "hello",
+    "source": "ABC",
+    "gesture": "doubleShift",
+    "boundary": false,
+    "expected": "руддщ",
+    "selectAllBeforeGesture": true,
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 0,
+      "length": 5
+    }
+  },
+  {
+    "id": "plain-paste",
+    "text": "replace",
+    "source": "ABC",
+    "gesture": "plainPaste",
+    "boundary": false,
+    "expected": "synthetic clipboard",
+    "selectAllBeforeGesture": true,
+    "pasteText": "synthetic clipboard",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 19,
+      "length": 0
+    }
+  },
+  {
+    "id": "auto-undo",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "undo",
+    "boundary": true,
+    "expected": "ghbdtn ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  }
+]

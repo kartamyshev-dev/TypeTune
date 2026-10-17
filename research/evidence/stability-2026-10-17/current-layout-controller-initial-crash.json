@@ -1,0 +1,16 @@
+{
+  "error": "Swift/ContiguousArrayBuffer.swift:695: Fatal error: Index out of range",
+  "eventTapCreated": false,
+  "exitCode": 251,
+  "explanation": "The probe indexed an empty requested-context array after a fixture used the real 60ms wall-clock deadline. A cold CGEvent construction/handle path can exhaust this fixture deadline. Production correctness was not established by this failed run; the ordinary state-machine fixtures will use explicit finite non-expiring deadlines, with separate expiry checks.",
+  "nativeAcceptance": false,
+  "nativeEventsPosted": false,
+  "outcome": "probe-crashed-before-json",
+  "passed": false,
+  "realFieldsRead": false,
+  "sourceHashes": {
+    "Sources/LayoutPilot/InputSources.swift": "4ecb1a4daf95b893462a2db787c7a7aec1eaf8b63eb2a7c253216d8f8a66a953",
+    "Sources/LayoutPilot/KeyboardService.swift": "c3d85b40f825b2f49c79646db806df3076a71d8e7dbbaaa18f517f11e3a68a46",
+    "Tools/RuntimeRecoveryProbe.swift": "9c6cdf3f9012b859f953ec7c52ac3a556dac23d2529da7110399b657ca368545"
+  }
+}

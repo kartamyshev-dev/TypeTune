@@ -1,0 +1,16 @@
+{
+  "ui": "Автопереключение выключено",
+  "rows": [
+    [
+      0,
+      "com.google.Chrome",
+      "/Applications/Google Chrome.app"
+    ]
+  ],
+  "columns": [
+    "enabled",
+    "bundleID",
+    "path"
+  ],
+  "queryScope": "only temporary Chrome rule"
+}

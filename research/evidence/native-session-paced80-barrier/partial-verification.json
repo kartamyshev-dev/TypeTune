@@ -1,0 +1,11 @@
+{
+  "status": "stopped",
+  "completed": 129,
+  "expectedMatches": 129,
+  "caretMatchesActualText": 129,
+  "incompleteCase": "47f63db5c907-3",
+  "reason": "focused_window_unverified",
+  "modifierCleanupVerified": true,
+  "fullAcceptance": false,
+  "notice": "Completed rows only. The active partial case, 1000-case comparison and 30-minute stability remain unaccepted."
+}

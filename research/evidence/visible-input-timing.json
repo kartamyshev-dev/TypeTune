@@ -1,0 +1,45 @@
+{
+  "activeCase": "firstword-0",
+  "activeCaseEvents": 14,
+  "activeCaseIndex": 0,
+  "autoResume": false,
+  "axReadErrors": {
+    "AXFocusedUIElement:-25204": 1,
+    "AXFocusedWindow:-25204": 1,
+    "AXSubrole:-25205": 20
+  },
+  "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/6AAC7918-3FA3-4C1C-9BF5-6C4D68C37CF5.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 0,
+  "document": "/Users/kartamyshev/git/caramba/research/private/probes/6AAC7918-3FA3-4C1C-9BF5-6C4D68C37CF5.txt",
+  "error": "focused_window_unverified",
+  "persistedCompleted": 0,
+  "requestedCases": 5,
+  "processExitCode": 2,
+  "identity": {
+    "targetBinarySha256": "df21f5ca52998782bafceeb362a8ecf702d72ceb56c2cf4954ddbb9393c9a550",
+    "probeBinarySha256": "e92ce642f30a24608c3eaade61f21f977d0e050b1bda8262c7a73114c176682b",
+    "probeSourceSha256": "5fcde0c84cb1bfacfae2a5d447d355d32ca699999d0832af3e247be495421361",
+    "pid": 36121,
+    "sourceCommit": "7f1f27ec9f285053f3601d4bff001b388d5bc090",
+    "sourceDirty": true,
+    "processStart": "Thu Oct 15 12:33:44 2026"
+  },
+  "identityUnchanged": true,
+  "savedCheckpoint": {
+    "activeCase": "firstword-0",
+    "activeCaseEvents": 14,
+    "activeCaseIndex": 0,
+    "checkpoint": "/Users/kartamyshev/git/caramba/research/private/probes/6AAC7918-3FA3-4C1C-9BF5-6C4D68C37CF5.results.json",
+    "completed": 0,
+    "document": "/Users/kartamyshev/git/caramba/research/private/probes/6AAC7918-3FA3-4C1C-9BF5-6C4D68C37CF5.txt",
+    "error": "focused_window_unverified",
+    "initialInputSource": "com.apple.keylayout.RussianWin",
+    "notice": "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+    "requestedCases": 5,
+    "results": [],
+    "schemaVersion": 1,
+    "status": "failed",
+    "totalEventsCompletedCases": 0
+  }
+}

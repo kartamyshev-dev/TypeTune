@@ -1,0 +1,86 @@
+[
+  {
+    "id": "early-delayed-0",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "expected": "привет",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 6,
+      "length": 0
+    },
+    "provenance": "Independent F01 regression; own early option ON, test.axSelectionDelayMilliseconds30, interval10ms. Checks final text/source/caret; actual rollback-path execution needs separate observation."
+  },
+  {
+    "id": "early-delayed-1",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Independent F01 regression; own early option ON, test.axSelectionDelayMilliseconds30, interval10ms. Checks final text/source/caret; actual rollback-path execution needs separate observation."
+  },
+  {
+    "id": "early-delayed-2",
+    "text": "hello",
+    "source": "RussianWin",
+    "boundary": false,
+    "gesture": "none",
+    "expected": "hello",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Independent F01 regression; own early option ON, test.axSelectionDelayMilliseconds30, interval10ms. Checks final text/source/caret; actual rollback-path execution needs separate observation."
+  },
+  {
+    "id": "early-delayed-3",
+    "text": "hello",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "expected": "hello",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "provenance": "Independent F01 regression; own early option ON, test.axSelectionDelayMilliseconds30, interval10ms. Checks final text/source/caret; actual rollback-path execution needs separate observation."
+  },
+  {
+    "id": "early-delayed-4",
+    "text": "Ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "expected": "Привет",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 6,
+      "length": 0
+    },
+    "provenance": "Independent F01 regression; own early option ON, test.axSelectionDelayMilliseconds30, interval10ms. Checks final text/source/caret; actual rollback-path execution needs separate observation."
+  },
+  {
+    "id": "early-delayed-5",
+    "text": "ABc.txt",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "none",
+    "expected": "ABc.txt",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "provenance": "Independent F01 regression; own early option ON, test.axSelectionDelayMilliseconds30, interval10ms. Checks final text/source/caret; actual rollback-path execution needs separate observation."
+  }
+]

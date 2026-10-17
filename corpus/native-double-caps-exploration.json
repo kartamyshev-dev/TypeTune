@@ -1,0 +1,66 @@
+[
+  {
+    "id": "caps-unknown",
+    "text": "ZZword",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-unknown-tail",
+    "text": "XYzzY",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-brand",
+    "text": "DBus",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-camel-tail",
+    "text": "FAceBook",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-two",
+    "text": "XX",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-three",
+    "text": "ABc",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-ru",
+    "text": "CKjdj",
+    "source": "RussianWin",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  },
+  {
+    "id": "caps-no-caps",
+    "text": "iPhone",
+    "source": "ABC",
+    "boundary": true,
+    "gesture": "none",
+    "provenance": "Own exploratory F17 input; no expected result asserted before observation."
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "pid": 54925,
+  "targetBinarySha256": "b911718f071b06d166c09a2648fa67cc21fe6c7d84651ae1ef1b6c8a88773957",
+  "probeSourceSha256": "6370bcf5c374e5a0ce200d4f7382f186be8432974ad455f92c8b86ae3231ff19",
+  "probeBinarySha256": "5d2ed6d2bfa211b58cd7746af3e0a438770b6c7b615a7beb4fefa48c193a2798",
+  "intervalMilliseconds": 80,
+  "comparisonRun": "paced80-barrier",
+  "stabilityBatches": [],
+  "notice": "Synthetic new TextEdit documents only; session includes bounded clearing and setup pauses. CPU sampled every 2s; no correction-only latency claim.",
+  "status": "stopped",
+  "reason": "Comparison stopped; no automatic resume",
+  "durationSeconds": 252.7266485,
+  "atLeast30Minutes": false,
+  "telemetry": {
+    "samples": 126,
+    "peakCPUPercent": 11.3,
+    "peakRSSKiB": 64832
+  }
+}

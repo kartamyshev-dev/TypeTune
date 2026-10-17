@@ -1,0 +1,46 @@
+{
+  "sourceCommit": "e3a9180b83f25676e27cacc3ed2a9ca24e8ff192",
+  "binarySha256": "396e410a3b27a11e76d0abeb3e831a9ad9c44bd791cf9890f1061d4d41fcf5d1",
+  "helperDiagnosticSourceSha256": "5fcde0c84cb1bfacfae2a5d447d355d32ca699999d0832af3e247be495421361",
+  "selftest": "167/167 offline invariants",
+  "corpus": "4420/4420; authored lexicon, not independent language quality",
+  "completedNativeBaseline": {
+    "withoutSwitcher": 5,
+    "withPrototype": 5,
+    "scope": "Exact text, source and selection; correct input only, no mutation required"
+  },
+  "diagnosticSmoke": {
+    "completed": 7,
+    "requested": 13,
+    "stop": "focused_window_unverified",
+    "readErrors": {
+      "AXFocusedUIElement:-25204": 1,
+      "AXFocusedWindow:-25204": 2,
+      "AXSubrole:-25205": 227
+    },
+    "completedFailures": [
+      "auto-ru text and inputSource"
+    ],
+    "acceptance": "NOT_PASSED"
+  },
+  "cleanup": {
+    "prototypeRunning": false,
+    "originalRunning": false,
+    "langSwitcherRestoredPID": 33413,
+    "initialStateAfterReboot": "Lang Switcher running, Caramba/TypeTune/LayoutPilot stopped",
+    "inputSource": "RussianWin",
+    "secureInput": false,
+    "activeUserModifiers": 0,
+    "pendingBuffer": "Old process gone after reboot; no manual discard. New candidates had no recovery pending at exit.",
+    "testModifiers": "Synthetic command/option flags detected after stopped manual chord; neutralized by authenticated new TextEdit document, reboot-modifier-cleanup.json",
+    "originalBundle": "70 entries unchanged"
+  },
+  "notRun": [
+    "New30-minute session",
+    "Other editors",
+    "Full focus/replay native recovery",
+    "correction-only p95",
+    "New delivery archive"
+  ],
+  "nextAction": "Instrument candidate boundary decisions using text-free timing/status for synthetic tests; determine whether first-word omission is stale snapshot or another branch. Separate helper AXCannotComplete diagnosis. Do not weaken identity checks."
+}

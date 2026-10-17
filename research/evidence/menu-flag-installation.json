@@ -1,0 +1,19 @@
+{
+  "installed_path": "/Applications/LayoutPilot.app",
+  "files_matched": 10,
+  "sha256": "3a0411ef8d1c4e7f11d1414f4d383cdf9cb34d457b82bc606c87ee48ca4a08fe",
+  "signature_verified": true,
+  "settings_preserved": true,
+  "backup": "/Users/kartamyshev/git/caramba/research/private/menu-flag-install/previous.zip",
+  "backup_files_verified": 10,
+  "source_sha256": "3faff58350204053aeaba60c74acf22991347d7ba5b0642ce4650ffaedcbca84",
+  "ui_status": "Работает",
+  "accessibility": "Разрешён",
+  "input_monitoring": "Разрешён",
+  "posting": "Разрешена",
+  "handler": "Подключён",
+  "restored_input_source": "com.apple.keylayout.RussianWin",
+  "cli_selftest": "720/720 offline",
+  "native_text_input": "NOT_RUN",
+  "menu_bar_visual": "NOT_RUN"
+}

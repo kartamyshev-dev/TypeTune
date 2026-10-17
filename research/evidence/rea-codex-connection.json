@@ -1,0 +1,168 @@
+{
+  "open": false,
+  "server_identity": {
+    "package": {
+      "name": "rea-agents",
+      "version": "6.5.0",
+      "root_path": "/Users/kartamyshev/.npm/_npx/ad9a3fdbcad992c6/node_modules/rea-agents",
+      "build_commit": null
+    },
+    "server": {
+      "name": "rea",
+      "version": "6.5.0",
+      "started_at": "2026-10-14T20:40:24.045Z",
+      "command_path": "/Users/kartamyshev/.npm/_npx/ad9a3fdbcad992c6/node_modules/.bin/rea"
+    },
+    "sdk": {
+      "server": "2.3.1",
+      "client_test": "2.3.1",
+      "core": "2.3.1"
+    },
+    "negotiated_protocol_version": "2025-06-18",
+    "client": {
+      "name": "codex-mcp-client",
+      "version": "0.162.0-alpha.17.2"
+    },
+    "skill": {
+      "name": "reverse-engineer-anything",
+      "expected_version": "42"
+    },
+    "catalog": {
+      "counts": {
+        "cli_commands": 153,
+        "mcp_tools": 207,
+        "mcp_prompts": 6
+      },
+      "digests": {
+        "tools_sha256": "805433f17bb4f709558ff20c04f96fe561fca2938fd0f459b1f8cc0f6b438ded",
+        "prompts_sha256": "7152916ab48bd2a9677a5ad9cdbde0a51dc53c113934952ad096e93f5f18aa7e",
+        "combined_sha256": "405725e736ec8dc8483435b970acbf20f9f26b9f1fd25203b992f5ab4cd2a4f4"
+      }
+    },
+    "protocol_features": {
+      "progress": true,
+      "cancellation": true,
+      "elicitation": false
+    },
+    "alignment": {
+      "state": "aligned",
+      "reasons": [],
+      "remediation": null
+    }
+  },
+  "analysis_provider_candidates": [
+    {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": null
+      },
+      "availability": {
+        "status": "available",
+        "code": null,
+        "reason": null,
+        "diagnostics": {
+          "install_dir": "/opt/homebrew/opt/ghidra/libexec",
+          "analyze_headless_path": "/opt/homebrew/opt/ghidra/libexec/support/analyzeHeadless",
+          "native_decompiler_path": "/opt/homebrew/opt/ghidra/libexec/Ghidra/Features/Decompiler/os/mac_arm_64/decompile",
+          "application_properties_path": "/opt/homebrew/opt/ghidra/libexec/Ghidra/application.properties",
+          "provider_version": "12.1.4",
+          "java_command": "/opt/homebrew/Cellar/openjdk@21/21.0.12.1/libexec/openjdk.jdk/Contents/Home/bin/java",
+          "java_home": "/opt/homebrew/Cellar/openjdk@21/21.0.12.1/libexec/openjdk.jdk/Contents/Home",
+          "java_version": "21.0.12.1",
+          "java_vm_name": "OpenJDK 64-Bit Server VM",
+          "java_os_arch": "aarch64",
+          "java_os_name": "Mac OS X",
+          "platform": "darwin",
+          "architecture": "arm64",
+          "checks": [
+            {
+              "name": "configuration",
+              "ok": true,
+              "code": null,
+              "detail": "/opt/homebrew/opt/ghidra/libexec"
+            },
+            {
+              "name": "platform",
+              "ok": true,
+              "code": null,
+              "detail": "darwin"
+            },
+            {
+              "name": "architecture",
+              "ok": true,
+              "code": null,
+              "detail": "arm64"
+            },
+            {
+              "name": "installation",
+              "ok": true,
+              "code": null,
+              "detail": "/opt/homebrew/opt/ghidra/libexec/Ghidra/application.properties"
+            },
+            {
+              "name": "version",
+              "ok": true,
+              "code": null,
+              "detail": "12.1.4"
+            },
+            {
+              "name": "headless",
+              "ok": true,
+              "code": null,
+              "detail": "/opt/homebrew/opt/ghidra/libexec/support/analyzeHeadless"
+            },
+            {
+              "name": "native_decompiler",
+              "ok": true,
+              "code": null,
+              "detail": "/opt/homebrew/opt/ghidra/libexec/Ghidra/Features/Decompiler/os/mac_arm_64/decompile reports mach-o arm64, which matches darwin/arm64"
+            },
+            {
+              "name": "java",
+              "ok": true,
+              "code": null,
+              "detail": "21.0.12.1; 64-bit; JDK; /opt/homebrew/Cellar/openjdk@21/21.0.12.1/libexec/openjdk.jdk/Contents/Home; accepted a 64-bit full JDK 21 or newer"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": null
+      },
+      "availability": {
+        "status": "unavailable",
+        "code": "executable_missing",
+        "reason": "Hopper launcher is missing or not executable: /Applications/Hopper Disassembler.app/Contents/MacOS/hopper",
+        "diagnostics": {
+          "launcher_path": "/Applications/Hopper Disassembler.app/Contents/MacOS/hopper",
+          "platform": "darwin"
+        }
+      }
+    },
+    {
+      "provider": {
+        "id": "ida",
+        "name": "IDA MCP adapter",
+        "version": "1"
+      },
+      "availability": {
+        "status": "unavailable",
+        "code": "not_configured",
+        "reason": "Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/ida-provider.md.",
+        "diagnostics": {
+          "configured": false,
+          "live_connection_probed": false
+        }
+      }
+    }
+  ],
+  "analysis_activity": {
+    "status": "not_observed",
+    "providers": []
+  }
+}

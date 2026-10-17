@@ -1,0 +1,17 @@
+{
+  "restoredSwitcher": {
+    "pid": 58019,
+    "path": "/Applications/Lang Switcher.app/Contents/MacOS/Lang Switcher"
+  },
+  "prototypeStopped": true,
+  "originalCarambaStoppedAsAtStart": true,
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "modifiersNeutral": true,
+  "secureInput": false,
+  "probeEvents": 0,
+  "testRulesAndExclusionsEmpty": true,
+  "traceAndDelayKeysAbsent": true,
+  "note": "Restored the sole switcher observed at this stage start after reboot: Lang Switcher, not historical Caramba-on state. No personal documents closed or data restored over newer changes.",
+  "diagnosticFilesUnchangedInDefaultOffMode": true,
+  "originalManifestEntriesVerified": 70
+}

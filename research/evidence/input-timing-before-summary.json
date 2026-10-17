@@ -1,0 +1,16 @@
+{
+  "binarySha256": null,
+  "sourceCommit": "c742e0e",
+  "traceSha256": "09fe739b0c156566121dddb91affb9e1dbff527f566246219bd71a5dbe052919",
+  "cases": 5,
+  "firstWordCorrectionMissed": true,
+  "subsequentExpectedMatches": 4,
+  "capturesEqualToPreEventText": 2,
+  "readFailuresInProbe": {
+    "AXFocusedWindow:-25204": 1,
+    "AXSubrole:-25205": 139
+  },
+  "manualMutationMilliseconds": 9.321125000496977,
+  "notice": "Timing diagnostics enabled. Equal pre-event values prove early/stale captures can occur, not the precise cause of every omission. Manual shortcut succeeded in this attempt; previous intermittent AXCannotComplete not explained.",
+  "identityLimitation": "Binary was not hashed before replacement by next build. Source c742e0e known, exact prior executable digest not recorded. Diagnostic observations only."
+}

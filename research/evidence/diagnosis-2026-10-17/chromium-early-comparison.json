@@ -1,0 +1,39 @@
+{
+  "guiSha256": "efd117a012e6bc9c46d58a469c2f718854d723a36e8cee9086e05bf96550995e",
+  "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+  "field": "LP-CODEX-001 plain",
+  "before": {
+    "earlyCorrection": true,
+    "mode": "type-wrong",
+    "uiText": "приdtn  ",
+    "expected": "привет  ",
+    "matchesExpected": false
+  },
+  "after": [
+    {
+      "earlyCorrection": false,
+      "mode": "type-wrong",
+      "uiText": "привет  ",
+      "matchesExpected": true
+    },
+    {
+      "earlyCorrection": false,
+      "mode": "type-manual",
+      "uiText": "привет  ",
+      "matchesExpected": true,
+      "scope": "Final UI readback after selected Double Shift and two spaces; helper stdout and child exit not captured"
+    }
+  ],
+  "helperPath": ".build/LayoutPilot Chrome Tests.app",
+  "helperSha256": "e91f043f8ee43e9345f9dd55ff58b4d395b7390e969784ec37d52c876e6e7a98",
+  "childExitVerified": false,
+  "strictNativeSuite": "NOT_RUN",
+  "change": "earlyCorrection disabled through settings UI; automatic remains enabled",
+  "codeChanged": false,
+  "permissionsChanged": false,
+  "chatGPTBundleID": "com.openai.codex",
+  "chatGPTNativeInput": "NOT_RUN; user checks own composer",
+  "mechanism": "Early partial replacement interleaves with suffix typing on keyboardEvents backend; exact race branch not traced",
+  "userPhysicalRetest": "User reports no improvement in normal Chrome/ChatGPT fields",
+  "mainComplaintResolved": false
+}
