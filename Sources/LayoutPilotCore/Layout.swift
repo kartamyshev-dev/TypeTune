@@ -3,11 +3,32 @@ import Foundation
 public enum Language: String, Codable, Sendable { case english, russian }
 
 public enum Layout {
-    // Independently authored standard US / Russian physical-key correspondence.
-    private static let latin = Array("`qwertyuiop[]asdfghjkl;'zxcvbnm,./~QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?")
-    private static let cyrillic = Array("ёйцукенгшщзхъфывапролджэячсмитьбю.ЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,")
-    private static let toRussian = Dictionary(uniqueKeysWithValues: zip(latin, cyrillic))
-    private static let toEnglish = Dictionary(uniqueKeysWithValues: zip(cyrillic, latin))
+    /// Physical-key correspondence: each pair is what one key (with or without Shift)
+    /// produces in the English and in the Russian layout. Keys that produce the same
+    /// character in both layouts (digits, `-`, `!` …) are omitted and stay unchanged.
+    public struct Mapping: Equatable, Sendable {
+        public let toRussian: [Character: Character]
+        public let toEnglish: [Character: Character]
+
+        /// nil when a character occurs in two pairs on either side: conversion
+        /// must stay reversible key by key.
+        public init?(pairs: [(latin: Character, cyrillic: Character)]) {
+            var toRussian: [Character: Character] = [:], toEnglish: [Character: Character] = [:]
+            for pair in pairs {
+                guard pair.latin != pair.cyrillic, toRussian[pair.latin] == nil, toEnglish[pair.cyrillic] == nil else { return nil }
+                toRussian[pair.latin] = pair.cyrillic; toEnglish[pair.cyrillic] = pair.latin
+            }
+            self.toRussian = toRussian; self.toEnglish = toEnglish
+        }
+
+        // Independently authored standard US / Russian PC (Windows) layouts.
+        public static let standardPC: Mapping = {
+            let latin = Array("`qwertyuiop[]asdfghjkl;'zxcvbnm,./~QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?@#$^&|")
+            let cyrillic = Array("ёйцукенгшщзхъфывапролджэячсмитьбю.ЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,\"№;:?/")
+            precondition(latin.count == cyrillic.count)
+            return Mapping(pairs: zip(latin, cyrillic).map { (latin: $0, cyrillic: $1) })!
+        }()
+    }
 
     public static func language(of text: String) -> Language? {
         let ru = text.unicodeScalars.filter { (0x410...0x44f).contains($0.value) || $0 == "ё" || $0 == "Ё" }.count
@@ -16,9 +37,9 @@ public enum Layout {
         return ru > en ? .russian : .english
     }
 
-    public static func convert(_ text: String, to target: Language? = nil) -> String {
+    public static func convert(_ text: String, to target: Language? = nil, mapping: Mapping = .standardPC) -> String {
         let direction = target ?? (language(of: text) == .russian ? .english : .russian)
-        let table = direction == .russian ? toRussian : toEnglish
+        let table = direction == .russian ? mapping.toRussian : mapping.toEnglish
         return String(text.map { table[$0] ?? $0 })
     }
 

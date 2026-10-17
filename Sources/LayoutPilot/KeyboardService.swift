@@ -23,7 +23,7 @@ final class KeyboardService {
         guard let self, self.allowedFrontmost(), self.terminalPolicyPermitsAction,
               NSWorkspace.shared.frontmostApplication?.bundleIdentifier == host else { return }
         if let previousSource {
-            if decision.reason != .manual { self.store.learn(decision.original) }
+            if decision.reason != .manual { self.store.learn(decision.learnAs ?? decision.original) }
             _ = InputSources.restore(identifier: previousSource)
         } else {
             self.store.recordCorrection(category: self.statisticsCategory(decision))
@@ -805,7 +805,7 @@ final class KeyboardService {
               let swift = Range(range, in: snapshot.text),
               let decision = Engine(settings: store.settings).completedTokenDecision(String(snapshot.text[swift]), decide: {
                   decide($0, context: context(snapshot))
-              }) else { return }
+              }, isKnownWord: { self.isKnownWord($0) }) else { return }
         apply(snapshot, range: NSRange(location: range.location, length: decision.original.utf16.count), decision: decision)
     }
     private func automaticPartial(_ snapshot: EditorSnapshot) {
@@ -813,6 +813,12 @@ final class KeyboardService {
               let proposal = Engine(settings: store.settings).partialProposal(
                 in: snapshot.text, selection: snapshot.selection, context: context(snapshot)) else { return }
         apply(snapshot, range: proposal.range, decision: proposal.decision, partial: true)
+    }
+    /// A token that is itself a word never becomes a layout prefix plus converted punctuation.
+    private func isKnownWord(_ word: String) -> Bool {
+        if Lexicon.bundled.contains(word) { return true }
+        guard store.useSystemDictionary else { return false }
+        return MainActor.assumeIsolated { vocabulary.accepts(word) }
     }
     func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
         if store.useSystemDictionary {
@@ -838,10 +844,11 @@ final class KeyboardService {
     private func completedTokenDecision(_ token: String, context: InputContext) -> Decision? {
         guard let value = Engine(settings: store.settings).completedTokenDecision(token, decide: {
             decide($0, context: context)
-        }) else { return nil }
+        }, isKnownWord: { self.isKnownWord($0) }) else { return nil }
         let punctuation = token.dropFirst(value.original.count)
         return Decision(original: token, replacement: value.replacement + punctuation,
-                        reason: value.reason, targetLanguage: value.targetLanguage)
+                        reason: value.reason, targetLanguage: value.targetLanguage,
+                        learnAs: value.learnAs ?? (punctuation.isEmpty ? nil : value.original))
     }
     private func apply(_ before: EditorSnapshot, range: NSRange, decision: Decision, keepSelection: Bool = false,
                        statisticsDecisions: [Decision]? = nil, learnOnUndo: Bool = true,
@@ -955,7 +962,9 @@ final class KeyboardService {
                     self.skipped("Отмена пропущена или прервана: проверьте текст"); return
                 }
                 guard self.revision == expectedRevision, self.allowedFrontmost() else { return }
-                if value.learnOnUndo && value.decision.reason != .manual { self.store.learn(value.decision.original) }
+                if value.learnOnUndo && value.decision.reason != .manual {
+                    self.store.learn(value.decision.learnAs ?? value.decision.original)
+                }
                 let restored = self.selectSource(.restore(value.sourceID), pid: value.before.pid)
                 self.store.inputSource = InputSources.identifier
                 self.cachedSnapshot = (expectedRevision, after)

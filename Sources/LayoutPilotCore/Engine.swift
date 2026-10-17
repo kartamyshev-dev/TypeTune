@@ -67,8 +67,12 @@ public struct Decision: Codable, Equatable, Sendable {
     public var replacement: String
     public var reason: Reason
     public var targetLanguage: Language?
-    public init(original: String, replacement: String, reason: Reason, targetLanguage: Language? = nil) {
-        self.original = original; self.replacement = replacement; self.reason = reason; self.targetLanguage = targetLanguage
+    /// The word an undo learns when original also covers converted punctuation.
+    public var learnAs: String?
+    public init(original: String, replacement: String, reason: Reason, targetLanguage: Language? = nil,
+                learnAs: String? = nil) {
+        self.original = original; self.replacement = replacement; self.reason = reason
+        self.targetLanguage = targetLanguage; self.learnAs = learnAs
     }
 }
 
@@ -94,8 +98,9 @@ public struct Engine: Sendable {
     ]
     public var settings: Settings
     public var lexicon: Lexicon
-    public init(settings: Settings = Settings(), lexicon: Lexicon = .bundled) {
-        self.settings = settings; self.lexicon = lexicon
+    public var mapping: Layout.Mapping
+    public init(settings: Settings = Settings(), lexicon: Lexicon = .bundled, mapping: Layout.Mapping = .standardPC) {
+        self.settings = settings; self.lexicon = lexicon; self.mapping = mapping
     }
     public func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
         guard !context.secure, context.reliable,
@@ -109,7 +114,7 @@ public struct Engine: Sendable {
             return value == word ? nil : Decision(original: word, replacement: value, reason: .userRule,
                                                    targetLanguage: Layout.language(of: value))
         }
-        let converted = Layout.convert(word)
+        let converted = Layout.convert(word, mapping: mapping)
         // Physical US punctuation keys can represent Russian letters (компьютер, пожалуйста).
         // A candidate must be a known all-letter word; paths, digits and mixed scripts stay intact.
         guard word.count >= 3, !Layout.isMixed(word),
@@ -126,7 +131,7 @@ public struct Engine: Sendable {
         }
         // Stages compose in order: layout and spelling operate on the case-
         // corrected candidate, otherwise GHbdtn would become ПРивет again.
-        let candidate = Layout.convert(result)
+        let candidate = Layout.convert(result, mapping: mapping)
         if !lexicon.contains(result.lowercased()) {
             if automatic, lexicon.contains(candidate) {
                 result = candidate; reason = .layout
@@ -142,10 +147,31 @@ public struct Engine: Sendable {
         return Decision(original: word, replacement: result, reason: reason, targetLanguage: Layout.language(of: result))
     }
 
-    /// Returns the whole-token decision or a prefix decision before sentence punctuation.
-    public func completedTokenDecision(_ token: String, decide: (String) -> Decision?) -> Decision? {
+    /// Sentence punctuation that a trailing physical key may stand for in the other layout.
+    /// `;` and `:` are excluded: in RU→EN they come from ж/Ж, which end many Russian words.
+    public static let physicalSuffixPunctuation: Set<Character> = [".", ",", "?", "!"]
+
+    /// Returns the whole-token decision, a layout decision whose trailing keys are the
+    /// other layout's sentence punctuation (ghbdtn/ → привет., руддщю → hello.), or a
+    /// prefix decision before literal sentence punctuation.
+    /// isKnownWord protects a token that is itself a word; the default is the lexicon.
+    public func completedTokenDecision(_ token: String, decide: (String) -> Decision?,
+                                       isKnownWord: ((String) -> Bool)? = nil) -> Decision? {
         guard !settings.excludes(token) else { return nil }
         if let value = decide(token) { return value }
+        let converted = Array(Layout.convert(token, mapping: mapping))
+        // Only keys that differ between layouts: `!` is literal punctuation in both.
+        let original = Array(token)
+        let physical = zip(original.reversed(), converted.reversed())
+            .prefix(while: { $0 != $1 && Self.physicalSuffixPunctuation.contains($1) }).count
+        if physical > 0, physical < original.count, converted.count == original.count,
+           !(isKnownWord ?? { lexicon.contains($0) })(token) {
+            let prefix = String(token.dropLast(physical))
+            if let value = decide(prefix), value.reason == .layout {
+                return Decision(original: token, replacement: value.replacement + String(converted.suffix(physical)),
+                                reason: .layout, targetLanguage: value.targetLanguage, learnAs: value.learnAs ?? prefix)
+            }
+        }
         let suffix = token.reversed().prefix(while: { ".,!?;:".contains($0) }).count
         guard suffix > 0, suffix < token.count else { return nil }
         return decide(String(token.dropLast(suffix)))
@@ -154,7 +180,7 @@ public struct Engine: Sendable {
     public func manual(_ text: String, context: InputContext = InputContext()) -> Decision? {
         guard !context.secure, context.reliable, !settings.excludedApps.contains(context.application),
               !text.isEmpty, Layout.language(of: text) != nil else { return nil }
-        let replacement = Layout.convert(text)
+        let replacement = Layout.convert(text, mapping: mapping)
         guard replacement != text else { return nil }
         return Decision(original: text, replacement: replacement, reason: .manual,
                         targetLanguage: Layout.language(of: replacement))

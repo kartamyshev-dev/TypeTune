@@ -83,6 +83,11 @@ final class SystemVocabulary {
         }
         return edits + long.count - j == 1
     }
+    /// Whether macOS accepts the whole token as a word of its own single script.
+    func accepts(_ word: String) -> Bool {
+        guard isAvailable, (1...40).contains(word.count), let language = Self.pureLanguage(word) else { return false }
+        return spelling(word, language: language)
+    }
     func decision(_ word: String, settings: Settings, context: InputContext = InputContext()) -> Decision? {
         let base = Engine(settings: settings)
         if let decision = base.decide(word, context: context) { return decision }

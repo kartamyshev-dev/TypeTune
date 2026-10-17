@@ -1,0 +1,2 @@
+840/840 offline invariants passed; 0 failures. No runtime input claim.
+exit=0

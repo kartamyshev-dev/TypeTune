@@ -435,6 +435,7 @@ func runSelfTests() -> Int {
     for (passed, label) in replayRoutingChecks() { check(passed, label) }
     for (passed, label) in partialLayoutChecks() { check(passed, label) }
     for (passed, label) in earlyRollbackChecks() { check(passed, label) }
+    for (passed, label) in physicalPunctuationChecks() { check(passed, label) }
     print("\(count - failures)/\(count) offline invariants passed; \(failures) failures. No runtime input claim.")
     return failures
 }
