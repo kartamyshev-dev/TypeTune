@@ -46,7 +46,8 @@ try:
         require(digest(case_file) == case_digest, 'case_file_changed_during_run')
         validate_workload_segments(result, 30 if '--idle-after-batch' in probe_args else 0)
 except Exception as error:
-    result['error'] = str(error)
+    result['validationError'] = str(error)
+    result.setdefault('error', str(error))
 if result.get('error') and result.get('checkpoint'):
     checkpoint = pathlib.Path(result['checkpoint']).resolve()
     if checkpoint.is_relative_to(root/'research/private/probes') and checkpoint.is_file():

@@ -23,6 +23,37 @@ struct EditorGuardProbe {
         sameSize.text = "e\u{0301} ghbdtn é"
         changed = sameSize; changed.text = "é ghbdtn e\u{0301}"
         if sameSize.matchesContent(changed) { failures.append("equal UTF16 length is not exact content") }
+        let range = NSRange(location: 3, length: 6)
+        let edit = TextEdit(text: original.text, selection: range, replacement: "привет")!
+        var pending = original; pending.selection = range
+        var inserted = original; inserted.text = edit.expectedText
+        inserted.selection = NSRange(location: edit.cursor, length: 0)
+        var reads = 0
+        let observed = AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: {
+                reads += 1; return reads < 3 ? pending : inserted
+            })
+        if observed == nil || reads != 3 { failures.append("delayed AX acknowledgement must settle") }
+        var other = inserted; other.pid += 1
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: { other }) != nil {
+            failures.append("same text in another target must fail")
+        }
+        var normalized = inserted; normalized.text = inserted.text.precomposedStringWithCanonicalMapping
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: { normalized }) != nil {
+            failures.append("normalized readback must not confirm UTF16 mutation")
+        }
+        var expiredReads = 0
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime - 1, isCurrent: { true }, read: { expiredReads += 1; return inserted }) != nil || expiredReads != 0 {
+            failures.append("expired observation must not read AX")
+        }
+        var staleReads = 0
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { false }, read: { staleReads += 1; return inserted }) != nil || staleReads != 0 {
+            failures.append("stale observation must not read AX")
+        }
         let blocked = ["com.openai.chat", "com.apple.Safari", "com.example.UnknownEditor", ""]
         let supported = ["com.apple.TextEdit", "com.openai.codex", "com.google.Chrome"]
         for application in blocked + supported {
@@ -37,7 +68,7 @@ struct EditorGuardProbe {
                 failures.append(application + ": host guard order")
             }
         }
-        let report: [String: Any] = ["cases": blocked.count + supported.count + 5, "failures": failures,
+        let report: [String: Any] = ["cases": blocked.count + supported.count + 10, "failures": failures,
             "notice": "Production replace entry point; current-check sentinel always denies all AX work. No live Codex reproduction or native TextEdit acceptance."]
         print(String(decoding: try! JSONSerialization.data(withJSONObject: report, options: [.sortedKeys]), as: UTF8.self))
         if !failures.isEmpty { exit(1) }

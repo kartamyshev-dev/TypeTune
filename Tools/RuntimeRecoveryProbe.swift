@@ -56,6 +56,9 @@ final class InputDiagnostics {
             checks["uncertain_empty_blocks_new_mutation_and_exit"] = !keyboard.store.running && keyboard.store.recoveryRequired && keyboard.hasPendingInput
             checks["uncertain_empty_does_not_invent_pending_keys"] = keyboard.store.pendingInput == 0 && keyboard.store.outstandingInput == 0
             checks["uncertain_fault_identified"] = InputDiagnostics.shared.faultReasons.last == "mutation-uncertain"
+            let faultCount = InputDiagnostics.shared.faultReasons.count
+            keyboard.testingSnapshotFailure(.deadlineExceeded)
+            checks["snapshot_failure_does_not_rotate_away_recovery_cause"] = InputDiagnostics.shared.faultReasons.count == faultCount
             keyboard.testingFinish(.verified)
             checks["later_verified_does_not_clear_uncertainty"] = keyboard.store.textReviewRequired && keyboard.store.serviceStatus == .uncertainResult
             keyboard.confirmTextReviewed()

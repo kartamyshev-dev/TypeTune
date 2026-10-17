@@ -644,6 +644,7 @@ final class ProbeCheckpoint {
     var activeCase: String?
     var activeCaseIndex: Int?
     var caseEventCount: (() -> Int)?
+    var initialReadback: [String: Any]?
     init(document: URL, requestedCases: Int, initialInputSource: String) throws {
         self.document = document; self.requestedCases = requestedCases; self.initialInputSource = initialInputSource
         self.url = document.deletingPathExtension().appendingPathExtension("results.json")
@@ -660,6 +661,7 @@ final class ProbeCheckpoint {
         if let activeCaseIndex { record["activeCaseIndex"] = activeCaseIndex }
         if activeCase != nil, let count = caseEventCount?() { record["activeCaseEvents"] = count }
         if let error { record["error"] = error }
+        if let initialReadback { record["initialReadback"] = initialReadback }
         let data = try JSONSerialization.data(withJSONObject: record, options: [.prettyPrinted, .sortedKeys])
         try data.write(to: url, options: .atomic)
         try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
@@ -748,6 +750,8 @@ func main() throws {
         try trace.start()
     }
     let initialSnapshot = try probe.snapshot()
+    // Only the authenticated, newly created synthetic document may be recorded.
+    checkpoint.initialReadback = ["text": initialSnapshot.0, "selection": initialSnapshot.1]
     try require(initialSnapshot.0.utf16.elementsEqual(args.initialText.utf16), "fresh_probe_initial_text_mismatch")
     let field = try probe.verifiedField()
     var endRange = CFRange(location: args.initialText.utf16.count, length: 0)

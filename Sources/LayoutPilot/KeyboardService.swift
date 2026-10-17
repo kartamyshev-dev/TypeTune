@@ -603,7 +603,7 @@ final class KeyboardService {
         contextFailure = failure
         if store.lastContextFailure != failure.message { store.lastContextFailure = failure.message }
         InputDiagnostics.shared.record("snapshot-failed", revision: revision, reason: failure.diagnosticCode)
-        if changed {
+        if changed && !recovery.requiresReview {
             switch failure {
             case .deadlineExceeded, .axCannotComplete, .axError:
                 InputDiagnostics.shared.fault(reason: "snapshot-" + failure.diagnosticCode, revision: revision,

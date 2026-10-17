@@ -200,14 +200,15 @@ enum AccessibilityEditor {
                                        isCurrent: () -> Bool = { true }) -> EditorSnapshot? {
         let deadline = deadline ?? ProcessInfo.processInfo.systemUptime + 0.15
         repeat {
-            guard let current = capture(deadline: deadline, isCurrent: isCurrent).snapshot,
+            guard let current = captureRetrying(deadline: deadline, isCurrent: isCurrent).snapshot,
                   sameTarget(before, current), current.text.utf16.elementsEqual(before.text.utf16) else { return nil }
             if current.selection == target { return current }
             guard current.selection == pending, ProcessInfo.processInfo.systemUptime < deadline else { return nil }
             Thread.sleep(forTimeInterval: 0.003)
         } while true
     }
-    private static func restoreSelectionIfOwned(_ before: EditorSnapshot, selectedRange: NSRange) {
+    @discardableResult
+    private static func restoreSelectionIfOwned(_ before: EditorSnapshot, selectedRange: NSRange) -> Bool {
         let began = ProcessInfo.processInfo.systemUptime
         let budget = EditorSnapshotBudget(deadline: began + 0.15)
         var restored = false
@@ -217,11 +218,13 @@ enum AccessibilityEditor {
                 elapsed: ProcessInfo.processInfo.systemUptime - began)
         }
         guard let current = capture(deadline: budget.deadline).snapshot, sameTarget(before, current), current.text.utf16.elementsEqual(before.text.utf16),
-              current.selection == selectedRange else { return }
+              current.selection == selectedRange else { return false }
+        if current.selection == before.selection { restored = true; return true }
         if (try? boundedAXOperation(current.element, budget: budget, isCurrent: { true },
             operation: { setSelection(before.selection, on: current.element) })) == true {
             restored = awaitSelection(before.selection, in: before, pending: selectedRange, deadline: budget.deadline) != nil
         }
+        return restored
     }
     /// Native keyboard insertion reaches Chromium's editor input path; its
     /// AXSelectedText setter may acknowledge success without changing text.
@@ -405,13 +408,34 @@ enum AccessibilityEditor {
             Thread.sleep(forTimeInterval: 0.003)
         } while true
     }
-    /// Only use an element with a writable selected-text attribute. No blind backspaces.
+    /// AX setters can acknowledge before their value and caret readbacks catch up.
+    static func awaitInsertion(in before: EditorSnapshot, range: NSRange, edit: TextEdit,
+                               deadline: TimeInterval, isCurrent: () -> Bool,
+                               read: () -> EditorSnapshot?) -> EditorSnapshot? {
+        let insertionCaret = NSRange(location: edit.cursor, length: 0)
+        while isCurrent(), ProcessInfo.processInfo.systemUptime < deadline {
+            guard let current = read(), isCurrent(), ProcessInfo.processInfo.systemUptime < deadline,
+                  sameTarget(before, current) else { return nil }
+            if current.text.utf16.elementsEqual(edit.expectedText.utf16), current.selection == insertionCaret { return current }
+            let pendingOriginal = current.text.utf16.elementsEqual(before.text.utf16) && current.selection == range
+            let pendingInsertion = current.text.utf16.elementsEqual(edit.expectedText.utf16) &&
+                (current.selection == range || current.selection == before.selection)
+            guard pendingOriginal || pendingInsertion else { return nil }
+            Thread.sleep(forTimeInterval: min(0.003, max(0, deadline - ProcessInfo.processInfo.systemUptime)))
+        }
+        return nil
+    }
+
     static func replace(_ before: EditorSnapshot, range: NSRange, replacement: String,
                         keepSelection: Bool = false, testSelectionDelay: TimeInterval = 0,
                         testKeyboardInsertion: ((String, pid_t) -> Bool)? = nil,
                         deadline: TimeInterval? = nil,
                         isCurrent: () -> Bool = { true }) -> ReplacementResult {
         let budget = EditorSnapshotBudget(deadline: deadline ?? ProcessInfo.processInfo.systemUptime + 0.2)
+        var stage = "preflight"
+        defer { InputDiagnostics.shared.record("replacement-stage", revision: -1,
+            checks: ["deadlineExpired": ProcessInfo.processInfo.systemUptime >= budget.deadline],
+            reason: stage) }
         guard EditorSupport.permitsTextReplacement(applicationID: before.application),
               isCurrent(), let now = capture(deadline: budget.stage(now: ProcessInfo.processInfo.systemUptime).deadline,
                   isCurrent: isCurrent).snapshot, sameTarget(before, now), before.matchesContent(now),
@@ -430,6 +454,7 @@ enum AccessibilityEditor {
                   CGPreflightPostEventAccess() else { return .notApplied }
         }
         guard isCurrent() else { return .notApplied }
+        stage = "selection-request"
         var selectionAttempted = false
         let selectionSet = try? boundedAXOperation(now.element, budget: budget, isCurrent: isCurrent) {
             selectionAttempted = true
@@ -441,23 +466,23 @@ enum AccessibilityEditor {
             return .uncertain
         }
         // Check focus and value again after moving the selection; never write into a new field.
+        stage = "selection-readback"
         let selectionDeadline = budget.stage(now: ProcessInfo.processInfo.systemUptime).deadline
         guard let selected = awaitSelection(range, in: now, pending: now.selection, deadline: selectionDeadline, isCurrent: isCurrent),
               let (selectionStatus, selectedText) = try? boundedAttribute(selected.element, kAXSelectedTextAttribute,
                   budget: .init(deadline: selectionDeadline), isCurrent: isCurrent), selectionStatus == .success,
               (selectedText as? String)?.utf16.elementsEqual(
                 (now.text as NSString).substring(with: range).utf16) == true else {
-            restoreSelectionIfOwned(now, selectedRange: range)
-            return .uncertain
+            return restoreSelectionIfOwned(now, selectedRange: range) ? .notApplied : .uncertain
         }
         // Explicit diagnostic fault injection; zero in normal launches, bounded by caller.
         if testSelectionDelay > 0 {
             Thread.sleep(forTimeInterval: max(0, min(testSelectionDelay, 0.15, budget.deadline - ProcessInfo.processInfo.systemUptime)))
         }
         guard (try? checkedTimeout(budget, isCurrent: isCurrent)) != nil else {
-            restoreSelectionIfOwned(now, selectedRange: range)
-            return .uncertain
+            return restoreSelectionIfOwned(now, selectedRange: range) ? .notApplied : .uncertain
         }
+        stage = "insertion-request"
         let inserted: Bool
         switch backend {
         case .selectedText:
@@ -472,30 +497,19 @@ enum AccessibilityEditor {
             restoreSelectionIfOwned(now, selectedRange: range)
             return .uncertain
         }
+        stage = "insertion-readback"
         let insertionCaret = NSRange(location: edit.cursor, length: 0)
-        // Posted keyboard events are asynchronous. Observe their result before
-        // restoring selection or releasing buffered user input.
         let deadline = budget.stage(now: ProcessInfo.processInfo.systemUptime).deadline
-        var candidate: EditorSnapshot?
-        repeat {
-            guard let current = capture(deadline: deadline, isCurrent: isCurrent).snapshot, sameTarget(now, current) else { break }
-            candidate = current
-            if current.text.utf16.elementsEqual(edit.expectedText.utf16) && current.selection == insertionCaret { break }
-            let pendingOriginal = current.text.utf16.elementsEqual(now.text.utf16) && current.selection == range
-            let pendingInsertion = current.text.utf16.elementsEqual(edit.expectedText.utf16) &&
-                (current.selection == range || current.selection == now.selection)
-            if !pendingOriginal && !pendingInsertion { break }
-            if backend == .selectedText || ProcessInfo.processInfo.systemUptime >= deadline { break }
-            Thread.sleep(forTimeInterval: 0.003)
-        } while true
-        guard let after = candidate, after.text.utf16.elementsEqual(edit.expectedText.utf16), after.selection == insertionCaret else {
+        guard let after = awaitInsertion(in: now, range: range, edit: edit, deadline: deadline,
+            isCurrent: isCurrent, read: { captureRetrying(deadline: deadline, isCurrent: isCurrent).snapshot }) else {
             // A no-op must not leave our temporary word selection behind: a
             // subsequent Space would otherwise erase that selected word.
             restoreSelectionIfOwned(now, selectedRange: range)
             return .uncertain
         }
         let finalSelection = edit.resultingSelection(from: now.selection, keepSelection: keepSelection)
-        if after.selection == finalSelection { return .verified(after) }
+        if after.selection == finalSelection { stage = "verified"; return .verified(after) }
+        stage = "final-selection"
         let finalDeadline = budget.stage(now: ProcessInfo.processInfo.systemUptime).deadline
         guard isCurrent(), let owned = capture(deadline: finalDeadline, isCurrent: isCurrent).snapshot,
               sameTarget(now, owned), owned.text.utf16.elementsEqual(edit.expectedText.utf16),
@@ -504,6 +518,7 @@ enum AccessibilityEditor {
                   operation: { setSelection(finalSelection, on: owned.element) })) == true,
               let final = awaitSelection(finalSelection, in: owned, pending: insertionCaret,
                   deadline: finalDeadline, isCurrent: isCurrent) else { return .uncertain }
+        stage = "verified"
         return .verified(final)
     }
 }
