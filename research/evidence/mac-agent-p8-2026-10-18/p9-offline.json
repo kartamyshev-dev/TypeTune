@@ -1,0 +1,28 @@
+{
+  "controller": {
+    "passed": true,
+    "checks": 93,
+    "nativeEvents": false
+  },
+  "cliSelftest": {
+    "passed": 1439,
+    "total": 1439
+  },
+  "corpora": [
+    {
+      "passed": 4420,
+      "total": 4420
+    },
+    {
+      "passed": 22000,
+      "total": 22000
+    }
+  ],
+  "auditGates": {
+    "passed": 4,
+    "total": 4
+  },
+  "ciCore": "FAIL only missing XCTest module in local CLT; preceding CLI/corpus stages passed",
+  "guiNative": "NOT_RUN; old GUI acceptance does not transfer",
+  "change": "Repeat unreadable observations within existing 80ms; selection/secure stop immediately. No proof timeout change."
+}

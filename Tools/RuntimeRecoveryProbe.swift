@@ -31,6 +31,12 @@ final class InputDiagnostics {
         let settings = try JSONEncoder().encode(Settings())
         defaults.set(settings, forKey: "settings.v1")
         var checks: [String: Bool] = [:]
+        let expectsPrefix: (String) -> Bool = { $0 == "ghbdtn " }
+        checks["transient_unreadable_retries_before_blind_fallback"] = AccessibilityEditor.FieldObservation.unreadable.needsAnotherRead(expects: expectsPrefix)
+        checks["matching_prefix_stops_observation_retry"] = !AccessibilityEditor.FieldObservation.textBeforeCaret("ghbdtn ").needsAnotherRead(expects: expectsPrefix)
+        checks["stale_prefix_still_retries"] = AccessibilityEditor.FieldObservation.textBeforeCaret("ghbdtn").needsAnotherRead(expects: expectsPrefix)
+        checks["selected_prefix_never_retries_as_unreadable"] = !AccessibilityEditor.FieldObservation.selection(textBeforeSelection: "ghbdtn ").needsAnotherRead(expects: expectsPrefix)
+        checks["secure_observation_never_retries"] = !AccessibilityEditor.FieldObservation.secure.needsAnotherRead(expects: expectsPrefix)
         let expiredProof = ["identity": true, "revision": true, "allowed": true, "trusted": true,
             "posting": true, "frontmost": true, "source": true, "leaseFresh": false, "replaySource": true]
         checks["expired_replay_proof_rechecks_instead_of_posting"] = KeyboardService.shouldRetryReplayIdentity(expiredProof, retries: 0)

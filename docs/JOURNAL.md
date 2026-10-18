@@ -1,5 +1,27 @@
 # Журнал TypeTune
 
+## 2026-10-18 — продолжение без картинки; Chrome contenteditable и новая вкладка
+
+Пользователь: «Проверку картинки пропускаем, продолжай остальное». S5 SKIP_USER
+во всей матрице; private image helper больше не запускать, разработка его pixel/parent
+механизма исключена из текущего продолжения. Это не PASS картинки.
+GUI по-прежнему 80652518, код 3244c81; scripts/matrix_input_probe.sh пересобран после
+исправления shared ClipboardLease, 0 событий при сборке.
+
+Chrome локальный contenteditable: S1/S2/S3/S4/S6/S7/S8/S9/S11 PASS, bound evidence
+chrome-rich-*-current.json. Свой текст сверялся и очищался CUA только после точного
+совпадения; S8 сохранил оба фрагмента abcdef. S6 vbh удалён через «Снова исправлять»,
+settings семантически равны исходным (bound/rich-undo-settings-restored.json).
+Никаких пользовательских полей/сообщений не менялось, Return 0.
+
+Новая вкладка warm S1: 4/5 PASS, пятый исходный ghbdtn сохранён без потери текста.
+Trace rev6127: decision=true, observe unreadable, anchored=false, fieldMatches=false;
+TypeTune законно пропустил первое слово. Это LIMIT, не 5/5 и не закрытие P1.
+Очередь пуста, manual-snapshot ready, faults последнего случая нет.
+Собственное ghbdtn проверено CUA и очищено; отчёт newtab-five-diagnostics.json.
+Холодный Chrome и Google с активными подсказками не приняты. CI 39150766561 success.
+
+
 ## 2026-10-18 — восстановление clipboard при modal исправлено; image helper упал
 
 Пользователь: «Буфер не важен, исправляй и продолжай». Исправление Tools/ClipboardLease:

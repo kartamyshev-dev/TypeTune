@@ -86,6 +86,14 @@ enum AccessibilityEditor {
         /// character, so this is never treated as unreadable or edited blind. Carries the
         /// text before the selection, which can still confirm an edit already made.
         case selection(textBeforeSelection: String)
+
+        func needsAnotherRead(expects: (String) -> Bool) -> Bool {
+            switch self {
+            case .unreadable: return true
+            case .textBeforeCaret(let text): return !expects(text)
+            case .secure, .selection: return false
+            }
+        }
     }
     enum SelectionObservation: Equatable {
         case unreadable, secure

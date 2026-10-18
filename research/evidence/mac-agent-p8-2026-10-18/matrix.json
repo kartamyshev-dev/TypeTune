@@ -44,10 +44,10 @@
     "appVersion": "155.0.8059.82",
     "field": "google.com",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
@@ -114,10 +114,10 @@
     "appVersion": "155.0.8059.82",
     "field": "новая вкладка",
     "scenario": "S1",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "LIMIT",
+    "observed": "Warm: 4/5 точных PASS; пятый ghbdtn пропущен при unreadable/anchored=false, текст цел, очередь пуста; cold не принят",
+    "statusText": "Обработчик готов",
+    "reportFile": "newtab-five-diagnostics.json"
   },
   {
     "app": "Google Chrome",
@@ -154,10 +154,10 @@
     "appVersion": "155.0.8059.82",
     "field": "новая вкладка",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
@@ -264,10 +264,10 @@
     "appVersion": "155.0.8059.82",
     "field": "адресная строка",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
@@ -334,50 +334,50 @@
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S1",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s1.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S2",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s2.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S3",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s3.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S4",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s4.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
@@ -394,30 +394,30 @@
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S7",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s7.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S8",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s8.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "textarea",
     "scenario": "S9",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source; реальный флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-plain-s9.json"
   },
   {
     "app": "Google Chrome",
@@ -505,10 +505,10 @@
     "appVersion": "155.0.8059.82",
     "field": "input",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
@@ -587,90 +587,90 @@
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S1",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s1-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S2",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s2-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S3",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s3-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S4",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s4-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S6",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s6-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S7",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s7-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S8",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s8-current.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "contenteditable",
     "scenario": "S9",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/chrome-rich-s9-current.json"
   },
   {
     "app": "Google Chrome",
@@ -737,10 +737,10 @@
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "Выделение и неизменность байтов картинки PASS; буквальная вставка картинки ещё NOT_RUN",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
-    "reportFile": "bound/aion-s5.json"
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Google Chrome",
@@ -974,26 +974,19 @@
     "field": "черновик Избранное",
     "scenario": "S1",
     "result": "PASS",
-    "observed": {
-      "textMatches": true,
-      "caretMatches": true,
-      "sourceMatches": true,
-      "inputSourceRestored": true,
-      "testTextCleared": true,
-      "events": 30
-    },
-    "statusText": "UI Работает после группы; per-case tooltip не снят",
-    "reportFile": "telegram-s1-empty-description.json"
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s1.json"
   },
   {
     "app": "Telegram",
     "appVersion": "7.3.1",
     "field": "черновик Избранное",
     "scenario": "S2",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s2.json"
   },
   {
     "app": "Telegram",
@@ -1001,16 +994,9 @@
     "field": "черновик Избранное",
     "scenario": "S3",
     "result": "PASS",
-    "observed": {
-      "textMatches": true,
-      "caretMatches": true,
-      "sourceMatches": true,
-      "inputSourceRestored": true,
-      "testTextCleared": true,
-      "events": 26
-    },
-    "statusText": "UI Работает после группы; per-case tooltip не снят",
-    "reportFile": "telegram-s3.json"
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s3.json"
   },
   {
     "app": "Telegram",
@@ -1018,36 +1004,29 @@
     "field": "черновик Избранное",
     "scenario": "S4",
     "result": "PASS",
-    "observed": {
-      "textMatches": true,
-      "caretMatches": true,
-      "sourceMatches": true,
-      "inputSourceRestored": true,
-      "testTextCleared": true,
-      "events": 30
-    },
-    "statusText": "UI Работает после группы; per-case tooltip не снят",
-    "reportFile": "telegram-s4.json"
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s4.json"
   },
   {
     "app": "Telegram",
     "appVersion": "7.3.1",
     "field": "черновик Избранное",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Telegram",
     "appVersion": "7.3.1",
     "field": "черновик Избранное",
     "scenario": "S6",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s6.json"
   },
   {
     "app": "Telegram",
@@ -1055,37 +1034,29 @@
     "field": "черновик Избранное",
     "scenario": "S7",
     "result": "PASS",
-    "observed": {
-      "textMatches": true,
-      "caretMatches": true,
-      "sourceMatches": true,
-      "inputSourceRestored": true,
-      "testTextCleared": true,
-      "events": 90,
-      "additionalExactRepeats": 10
-    },
-    "statusText": "UI Работает после группы; per-case tooltip не снят",
-    "reportFile": "telegram-s7.json"
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s7.json"
   },
   {
     "app": "Telegram",
     "appVersion": "7.3.1",
     "field": "черновик Избранное",
     "scenario": "S8",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s8.json"
   },
   {
     "app": "Telegram",
     "appVersion": "7.3.1",
     "field": "черновик Избранное",
     "scenario": "S9",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source, настоящий флаг совпадает с TIS; GUI 80652518",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/telegram-current-s9.json"
   },
   {
     "app": "Slack",
@@ -1132,10 +1103,10 @@
     "appVersion": null,
     "field": "черновик",
     "scenario": "S5",
-    "result": "SKIP",
-    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Slack",
@@ -1222,10 +1193,10 @@
     "appVersion": null,
     "field": "редактор",
     "scenario": "S5",
-    "result": "SKIP",
-    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "VS Code",
@@ -1312,10 +1283,10 @@
     "appVersion": null,
     "field": "поиск",
     "scenario": "S5",
-    "result": "SKIP",
-    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "VS Code",
@@ -1402,10 +1373,10 @@
     "appVersion": "1.21",
     "field": "новый synthetic document",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "TextEdit",
@@ -1561,10 +1532,10 @@
     "appVersion": "4.13",
     "field": "новая synthetic note",
     "scenario": "S5",
-    "result": "NOT_RUN",
-    "observed": "Выделение и неизменность байтов картинки PASS; буквальная вставка картинки ещё NOT_RUN",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
-    "reportFile": "bound/notes-s5.json"
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Заметки",
@@ -1645,10 +1616,10 @@
     "appVersion": null,
     "field": "новый документ",
     "scenario": "S5",
-    "result": "SKIP",
-    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Word",
@@ -1725,10 +1696,10 @@
     "appVersion": null,
     "field": "пустой черновик",
     "scenario": "S5",
-    "result": "SKIP",
-    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
     "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "reportFile": "image-helper-crash.json"
   },
   {
     "app": "Codex",

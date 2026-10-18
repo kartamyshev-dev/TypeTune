@@ -569,10 +569,10 @@ final class KeyboardService {
                 case .secure: verification = .secure
                 }
             } else {
-                // A just-delivered boundary may not be visible to Accessibility yet.
+                // The boundary or focused field may not be visible to Accessibility yet.
                 let deadline = ProcessInfo.processInfo.systemUptime + 0.080
                 var observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
-                while case .textBeforeCaret(let text) = observation, !plan.expects(textBeforeCaret: text),
+                while observation.needsAnotherRead(expects: { plan.expects(textBeforeCaret: $0) }),
                       ProcessInfo.processInfo.systemUptime < deadline {
                     Thread.sleep(forTimeInterval: 0.005)
                     observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
