@@ -1,0 +1,52 @@
+name: Release
+
+# A pushed tag vX.Y.Z builds, checks and publishes a prerelease on macOS. No Mac at hand
+# is needed: the archive comes from scripts/package.sh on a clean checkout of the tag.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package and publish (macOS)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag matches the bundle version
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          grep -q "<key>CFBundleShortVersionString</key><string>$version</string>" scripts/build.sh
+          grep -q "TypeTune-$version-" scripts/package.sh
+          test -f "docs/RELEASE_$version.md"
+      - name: Offline checks
+        run: scripts/ci_core.sh
+      - name: Recovery controller probe (test hooks, no permissions, no event tap)
+        run: scripts/runtime_recovery_probe.sh
+      - name: Package from the clean tag
+        run: scripts/package.sh
+      - name: Packaged app runs without the build directory
+        run: |
+          short=$(git rev-parse --short=12 HEAD)
+          app="dist/delivery-$short/TypeTune.app"
+          codesign --verify --deep --strict "$app"
+          "dist/delivery-$short/layoutpilot-cli" selftest
+          mv .build .build-hidden
+          "$app/Contents/MacOS/LayoutPilot" --background > /tmp/app.log 2>&1 &
+          pid=$!
+          sleep 8
+          if kill -0 "$pid" 2>/dev/null; then echo "app alive after 8 s"; kill "$pid"; status=0
+          else code=0; wait "$pid" || code=$?; echo "app exited with $code"; cat /tmp/app.log; status=1; fi
+          mv .build-hidden .build
+          exit $status
+      - name: Publish prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          build=$(sed -n 's|.*<key>CFBundleVersion</key><string>\([0-9]*\)</string>.*|\1|p' scripts/build.sh)
+          gh release create "$GITHUB_REF_NAME" --prerelease --verify-tag \
+            --title "TypeTune $version ($build)" --notes-file "docs/RELEASE_$version.md" \
+            dist/TypeTune-"$version"-*-arm64.zip dist/TypeTune-"$version"-*-arm64.zip.sha256

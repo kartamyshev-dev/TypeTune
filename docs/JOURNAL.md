@@ -1,5 +1,12 @@
 # Журнал TypeTune
 
+## Сниппеты в main, выпуск v0.1.6 через CI — 2026-10-19
+
+По решению пользователя (DECISIONS п. 33): ожидание стирания сокращения в Chrome — 600 мс вместо 80
+(`8bcc9fa`, CI [39177133686](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39177133686),
+native не проверялось); версия 0.1.6 (12); `main` перемотан на `snippets`; выпуск собирает и публикует
+`.github/workflows/release.yml` по тегу `v0.1.6`. Результат публикации — следующей записью.
+
 ## 2026-10-19 — повтор выбранной S8 завершён, исходные данные возвращены
 
 `agent native, user-authorized` / TextEdit NativeProbe; установленный TypeTune
