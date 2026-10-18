@@ -1,0 +1,28 @@
+{
+  "kind": "CI on macOS 15 (build + RuntimeRecoveryProbe); keystroke flow not exercised natively",
+  "date": "2026-10-17",
+  "run": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39090474351",
+  "headSha": "3583a25",
+  "conclusion": "success",
+  "probeChecks": {
+    "keystroke_target_never_matches_pinned_field": true,
+    "keystroke_targets_other_process_differ": true,
+    "keystroke_targets_same_process_match": true,
+    "typed_arrow_resets": true,
+    "typed_backspace_removes_letter": true,
+    "typed_click_resets": true,
+    "typed_key_up_and_scroll_keep_buffer": true,
+    "typed_letter_follows_current_layout": true,
+    "typed_return_resets_and_anchors": true,
+    "typed_shortcut_resets": true,
+    "universal_mode_off_by_default": true
+  },
+  "probePassed": true,
+  "linux": "selftest 1405/1405 (4 unicode chunk invariants)",
+  "confirmedAssumption": "two AXUIElementCreateApplication elements of one pid are CFEqual (keystroke_targets_same_process_match)",
+  "notRun": [
+    "posting Backspace/Unicode to real applications",
+    "AX verification in real fields",
+    "layout switch and replay after a keystroke edit"
+  ]
+}
