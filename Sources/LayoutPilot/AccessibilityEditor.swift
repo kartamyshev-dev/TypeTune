@@ -76,6 +76,28 @@ enum AccessibilityEditor {
         case secure
         case textBeforeCaret(String)
     }
+    enum SelectionObservation: Equatable {
+        case unreadable, secure
+        /// Readable field with a collapsed caret.
+        case none
+        case text(String)
+    }
+    /// Universal mode, read-only: the selected text of the focused field of `pid`.
+    static func observeSelection(pid: pid_t) -> SelectionObservation {
+        guard AXIsProcessTrusted() else { return .unreadable }
+        guard !IsSecureEventInputEnabled() else { return .secure }
+        let app = AXUIElementCreateApplication(pid)
+        AXUIElementSetMessagingTimeout(app, 0.050)
+        guard let raw = attribute(app, kAXFocusedUIElementAttribute), CFGetTypeID(raw) == AXUIElementGetTypeID() else {
+            return .unreadable
+        }
+        let field = raw as! AXUIElement
+        AXUIElementSetMessagingTimeout(field, 0.050)
+        if attribute(field, kAXSubroleAttribute) as? String == "AXSecureTextField" { return .secure }
+        guard let selected = attribute(field, kAXSelectedTextAttribute) as? String else { return .unreadable }
+        guard selected.utf16.count <= 65_536 else { return .unreadable }
+        return selected.isEmpty ? .none : .text(selected)
+    }
     static func observeTextBeforeCaret(pid: pid_t) -> FieldObservation {
         guard AXIsProcessTrusted() else { return .unreadable }
         guard !IsSecureEventInputEnabled() else { return .secure }

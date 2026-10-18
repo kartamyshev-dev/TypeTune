@@ -8,6 +8,21 @@ import LayoutPilotCore
 /// Posting is not proof of an edit; callers verify with Accessibility when it is readable.
 enum KeystrokeEditor {
     static let backspaceKey: CGKeyCode = 51
+    static let cKey: CGKeyCode = 8
+
+    /// ⌘C to one process (universal selection conversion when Accessibility cannot read it).
+    static func copy(pid: pid_t) -> Bool {
+        guard CGPreflightPostEventAccess(), !IsSecureEventInputEnabled(), pid > 0,
+              let source = CGEventSource(stateID: .privateState),
+              let down = CGEvent(keyboardEventSource: source, virtualKey: cKey, keyDown: true),
+              let up = CGEvent(keyboardEventSource: source, virtualKey: cKey, keyDown: false) else { return false }
+        for event in [down, up] {
+            event.flags = .maskCommand
+            event.setIntegerValueField(.eventSourceUserData, value: EditorSupport.syntheticEventTag)
+            event.postToPid(pid)
+        }
+        return true
+    }
     /// Returns false before posting anything when posting is not allowed. A false
     /// return after some events were posted is reported as `partial`.
     static func perform(_ plan: KeystrokeEditPlan, pid: pid_t) -> (posted: Bool, partial: Bool) {

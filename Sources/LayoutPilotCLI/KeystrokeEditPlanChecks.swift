@@ -74,6 +74,24 @@ func keystrokeEditPlanChecks() -> [(Bool, String)] {
     check(hello.applied(to: "Скажи ghbdtn ") == "Скажи привет ", "the expected result after the edit")
     check(hello.applied(to: "nope") == nil, "no expected result for a mismatching field")
 
+    // Selection conversion types over the selection.
+    if let decision = engine.manual("Ghbdtn vbh"),
+       let selection = KeystrokeEditPlan(replacingSelection: "Ghbdtn vbh", decision: decision) {
+        check(selection.deleteCount == 0 && selection.insertText == "Привет мир" && selection.selection == "Ghbdtn vbh",
+              "a selection is replaced by typing, without Backspace")
+        check(selection.expects(textBeforeCaret: "anything"), "selection edits do not depend on text before the caret")
+        let back = selection.inverse
+        check(back.before == "Привет мир" && back.after == "Ghbdtn vbh" && back.deleteCount == 10 && back.insertText == "Ghbdtn vbh",
+              "undo of a selection deletes the typed text and retypes the selection")
+        check(back.selection == nil, "the undo is an ordinary tail edit")
+    } else { check(false, "selection plan") }
+    check(KeystrokeEditPlan(replacingSelection: "a\nb", decision: Decision(original: "a\nb", replacement: "ф\nи", reason: .manual)) == nil,
+          "multi-line selections are not typed")
+    check(KeystrokeEditPlan(replacingSelection: "", decision: Decision(original: "", replacement: "x", reason: .manual)) == nil,
+          "an empty selection is nothing to convert")
+    check(KeystrokeEditPlan(replacingSelection: "abc", decision: Decision(original: "abd", replacement: "x", reason: .manual)) == nil,
+          "a decision for other text is rejected")
+
     // Unicode chunks for keyboard events.
     check(hello.unicodeChunks().map { $0.count } == [7] && String(utf16CodeUnits: hello.unicodeChunks()[0], count: 7) == "привет ",
           "a short insertion is one chunk")

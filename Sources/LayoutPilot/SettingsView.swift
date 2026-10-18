@@ -124,7 +124,7 @@ struct SettingsView: View {
                 Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused)
                 Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
                 Toggle("Исправлять во всех приложениях (экспериментально)", isOn: $store.universalInput)
-                if store.universalInput { Text("Слово стирается и набирается заново. Где текст поля доступен, он сверяется перед правкой; Double Shift и отмена пока работают только в прежних приложениях.").font(.caption).foregroundStyle(.secondary) }
+                if store.universalInput { Text("Слово стирается и набирается заново. Где текст поля доступен, он сверяется перед правкой. Выделение, недоступное через Универсальный доступ, копируется через буфер обмена; его прежнее содержимое возвращается.").font(.caption).foregroundStyle(.secondary) }
                 Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
                 if store.earlyCorrection { Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.").font(.caption).foregroundStyle(.secondary) }
                 Toggle("Исправлять известные опечатки", isOn: $store.settings.typos)

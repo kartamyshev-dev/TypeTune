@@ -12,6 +12,8 @@ public struct KeystrokeEditPlan: Equatable, Sendable {
     public let deleteCount: Int
     public let insertText: String
     public let decision: Decision
+    /// The selected text this edit replaces by typing over it (selection conversion).
+    public let selection: String?
 
     /// Builds the edit for a decision on `token`, the token typed just before `boundary`.
     /// The decision may cover the whole token or a prefix of it (literal trailing
@@ -26,17 +28,29 @@ public struct KeystrokeEditPlan: Equatable, Sendable {
         self.init(before: before, after: after, decision: decision)
     }
 
+    /// Converts a selection by typing the replacement over it: nothing is deleted first.
+    /// Multi-line selections are rejected (a line break cannot be typed as Unicode text).
+    public init?(replacingSelection selected: String, decision: Decision) {
+        guard !selected.isEmpty, decision.original == selected, !decision.replacement.isEmpty,
+              decision.replacement != selected, !Self.containsControl(selected),
+              !Self.containsControl(decision.replacement) else { return nil }
+        self.before = ""; self.after = decision.replacement
+        self.deleteCount = 0; self.insertText = decision.replacement
+        self.decision = decision; self.selection = selected
+    }
+
     private init(before: String, after: String, decision: Decision) {
         let shared = zip(before, after).prefix(while: { $0 == $1 }).count
         self.before = before; self.after = after
         self.deleteCount = before.count - shared
         self.insertText = String(after.dropFirst(shared))
-        self.decision = decision
+        self.decision = decision; self.selection = nil
     }
 
-    /// The undo of this edit: from `after` back to `before`.
+    /// The undo of this edit: from `after` back to the original text. For a selection
+    /// conversion the original is the selected text, now typed back at the caret.
     public var inverse: KeystrokeEditPlan {
-        KeystrokeEditPlan(before: after, after: before,
+        KeystrokeEditPlan(before: after, after: selection ?? before,
                           decision: Decision(original: decision.replacement, replacement: decision.original,
                                              reason: decision.reason, targetLanguage: nil, learnAs: decision.learnAs))
     }
