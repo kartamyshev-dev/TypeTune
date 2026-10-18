@@ -1,0 +1,8 @@
+{
+  "accepted": false,
+  "reason": "S6 learned vbh; not removed before S7",
+  "cuaExactOwnValue": "привет vbh привет мир ",
+  "serviceReady": true,
+  "ownVbhUnlearned": true,
+  "ownTextCleared": true
+}

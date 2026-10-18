@@ -1,0 +1,27 @@
+{
+  "settingsSemanticallyEqual": true,
+  "originalYfRulePreserved": true,
+  "testLearningRemoved": true,
+  "universalOn": true,
+  "plainPasteOff": true,
+  "notesAutocorrectRestoredOff": true,
+  "texteditOwnDocumentAutocorrectRestoredOff": true,
+  "inputStatus": {
+    "accessibilityTrusted": true,
+    "axReadErrors": {},
+    "axReadTiming": {},
+    "events": 0,
+    "finalModifierFlags": 536870912,
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "modifierFlags": 536870912,
+    "postEventAccess": true,
+    "secureInput": false,
+    "statusOnly": true
+  },
+  "guiSha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+  "carambaNotStarted": true,
+  "clipboardHistoricalLossNotRecovered": true,
+  "statsRestored": false,
+  "statsReason": "test increments retained; no blind rollback of possible user activity",
+  "ownFixturesRetainedPrivately": true
+}

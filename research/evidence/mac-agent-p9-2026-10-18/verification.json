@@ -1,0 +1,56 @@
+{
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "guiSha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+  "date": "2026-10-18",
+  "kind": "agent native, user-authorized; TextEdit NativeProbe; readonly AX/CUA visual where stated",
+  "authorizations": [
+    "Ввод в пустые поля и черновики всей матрицы без отправки",
+    "NativeProbe расширен на всю матрицу с прежними защитами",
+    "Обновлять прежние разрешения TypeTune самостоятельно",
+    "Картинку пропустить; Slack/VS Code/Word и Terminal/vim/Codex пропустить"
+  ],
+  "matrix": "matrix.json",
+  "matrixCounts": {
+    "PASS": 107,
+    "SKIP_USER": 15,
+    "NOT_RUN": 6,
+    "SKIP": 48
+  },
+  "referencedEvidenceFilesChecked": 162,
+  "googleWarmFirstWord": "5/5",
+  "newtabWarmFirstWord": "5/5",
+  "texteditSuites": {
+    "smoke": "13/13",
+    "review": "12/12",
+    "stream80": "12/12,192 words"
+  },
+  "extraStreamRepeats": {
+    "telegram": "10 completed PASS",
+    "chrome": "10 completed PASS; one frontmost_changed attempt separately retained"
+  },
+  "offline": {
+    "controller": "93/93",
+    "cli": "1439/1439",
+    "corpus": "4420/4420 + 22000/22000",
+    "audit": "4/4",
+    "matrixGuards": "2 unittest methods, 8 rejection + 9 policy cases",
+    "evidenceTamper": "77/77"
+  },
+  "applicationCI": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39151757178",
+  "stateAfter": "state-after.json",
+  "diagnostics": "final-diagnostics-verdict.json",
+  "remaining": [
+    "Cold Chrome without CUA enabling enhanced AX: not accepted",
+    "Selected inline suffix not exercised; visible search popup only",
+    "PWA command popup S14 not run: slash rejected before events",
+    "Safari secure-input state only; no typed-password E2E",
+    "S5 and unavailable/denied apps SKIP_USER",
+    "Four-hour run deferred; full PLAN/U8 not accepted"
+  ],
+  "testIncidents": [
+    "google-s7-test-order.json",
+    "chrome-s7-focus-interruption.json",
+    "textedit-s11-oracle-correction.json"
+  ],
+  "mergeMain": false
+}

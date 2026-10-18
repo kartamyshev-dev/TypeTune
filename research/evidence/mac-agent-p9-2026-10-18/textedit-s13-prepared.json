@@ -1,0 +1,119 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 3
+  },
+  "axReadTiming": {
+    "AXChildren:0": {
+      "count": 1,
+      "maxMilliseconds": 0.1808333327062428,
+      "totalMilliseconds": 0.1808333327062428
+    },
+    "AXDocument:0": {
+      "count": 3,
+      "maxMilliseconds": 0.2152083361579571,
+      "totalMilliseconds": 0.4310416661610361
+    },
+    "AXExtrasMenuBar:0": {
+      "count": 1,
+      "maxMilliseconds": 23.208958333270857,
+      "totalMilliseconds": 23.208958333270857
+    },
+    "AXFocusedUIElement:0": {
+      "count": 3,
+      "maxMilliseconds": 0.08433333277935162,
+      "totalMilliseconds": 0.19883332788594998
+    },
+    "AXFocusedWindow:0": {
+      "count": 3,
+      "maxMilliseconds": 18.391666664683726,
+      "totalMilliseconds": 18.58462499876623
+    },
+    "AXHelp:0": {
+      "count": 1,
+      "maxMilliseconds": 0.1341666647931561,
+      "totalMilliseconds": 0.1341666647931561
+    },
+    "AXRole:0": {
+      "count": 4,
+      "maxMilliseconds": 0.1477083351346664,
+      "totalMilliseconds": 0.24437500178464688
+    },
+    "AXSelectedTextRange:0": {
+      "count": 2,
+      "maxMilliseconds": 0.09704166586743668,
+      "totalMilliseconds": 0.16004166900529526
+    },
+    "AXSubrole:-25205": {
+      "count": 3,
+      "maxMilliseconds": 0.15216666361084208,
+      "totalMilliseconds": 0.3650833277788479
+    },
+    "AXTitle:0": {
+      "count": 1,
+      "maxMilliseconds": 0.17987500177696347,
+      "totalMilliseconds": 0.17987500177696347
+    },
+    "AXValue:0": {
+      "count": 2,
+      "maxMilliseconds": 0.07679166810703464,
+      "totalMilliseconds": 0.11145833559567109
+    },
+    "AXWindow:0": {
+      "count": 3,
+      "maxMilliseconds": 0.09337499795947224,
+      "totalMilliseconds": 0.23295832943404093
+    }
+  },
+  "bundle": "com.apple.TextEdit",
+  "events": 0,
+  "finalModifierFlags": 536870912,
+  "modifiersNeutral": true,
+  "observedInputSource": "com.apple.keylayout.RussianWin",
+  "passed": true,
+  "returnEvents": 0,
+  "statusFlagMatches": true,
+  "statusSourceMatches": true,
+  "textUnchanged": true,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "ec2ecc8dd93e9963404ee1e8bb3b89c96d598230c78dd7ff05e116968602046c",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "1e4d9c079618d75a2bc174628dd47ac66f13f1bcc7e78b1435ad24dcc8fa45bc",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "ec2ecc8dd93e9963404ee1e8bb3b89c96d598230c78dd7ff05e116968602046c",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "1e4d9c079618d75a2bc174628dd47ac66f13f1bcc7e78b1435ad24dcc8fa45bc",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/focus-doc-probe",
+  "helperProcess": {
+    "pid": 36907,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/focus-doc-probe",
+    "started": "Sun Oct 18 21:27:51 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 0,
+  "caseFileSha256": "932c249110a160c1327bd0b6c053302dbf04a5f4804e5ee234ab71f4f70c2072",
+  "caseFileUnchanged": true,
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "helperWallSeconds": 2.058782083000551
+}

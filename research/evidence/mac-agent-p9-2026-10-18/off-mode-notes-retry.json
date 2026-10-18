@@ -1,0 +1,63 @@
+{
+  "bundle": "com.apple.Notes",
+  "caretMatches": true,
+  "events": 30,
+  "inputSeconds": 0.8842889583356737,
+  "inputSourceRestored": true,
+  "modifiersNeutral": true,
+  "observedInputSource": "com.apple.keylayout.ABC",
+  "observedLength": 7,
+  "passed": true,
+  "pid": 20689,
+  "returnEvents": 0,
+  "sourceMatches": true,
+  "statusFlagMatches": true,
+  "statusSourceMatches": true,
+  "statusTooltip": "TypeTune · com.apple.keylayout.ABC\nВ активном приложении исправления не поддерживаются",
+  "testTextCleared": true,
+  "textMatches": true,
+  "windowTitleLength": 28,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "957989d179094149b2f7d7c18dda0f2a035e0197da8e04390782ca765236507a",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "efe8d3ae98ffc2517e44a1f1cdb711e5de83bca761cbd520556f44902e2cf470",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "957989d179094149b2f7d7c18dda0f2a035e0197da8e04390782ca765236507a",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "efe8d3ae98ffc2517e44a1f1cdb711e5de83bca761cbd520556f44902e2cf470",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+  "helperProcess": {
+    "pid": 39688,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+    "started": "Sun Oct 18 22:01:24 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 0,
+  "caseFileSha256": "48ac0317f627537d4e69023fdd4cd352c394cdb311c68bc5402a83e923b36c9c",
+  "caseFileUnchanged": true,
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "finalModifierFlags": 536870912,
+  "helperWallSeconds": 4.058210250001139
+}

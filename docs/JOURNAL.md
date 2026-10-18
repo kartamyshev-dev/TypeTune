@@ -1,5 +1,90 @@
 # Журнал TypeTune
 
+## 2026-10-18 — P9: Google warm5/5, отдельные окна и итоговый checkpoint
+
+GUI ab020042 / код6e07197 неизменен. Google search S1 warm5/5; S2/S3/S4/S6/S7/S8/S9 PASS.
+В первом S7 после S6 не было удалено собственное исключение vbh: точный «привет vbh привет мир »
+сохранён, ready; ошибка порядка тестов, не принято. Удалён только vbh, свой текст сверён/очищен;
+повтор S7 PASS. Google/newtab S14: открытый popup виден CUA, собственный точный запрос,
+без Enter и без сохранения скриншотов. Выбранный inline suffix отдельно не проверен.
+S10 отдельные google/newtab/address/textarea/contenteditable: по3 возврата из Notes,0событий,
+фактические флаг/tooltip=TIS. AX-пробники отдельных Chrome-полей записаны без текста.
+
+Ограничение PWA S14: slash отклонён helper до событий; сценарий остаётся NOT_RUN.
+Matrix:107 PASS,15 SKIP_USER,48 SKIP,6 NOT_RUN (из них5 явно NOT_APPLICABLE scaffold).
+Не переносить эти числа на полную приёмку/U8. Cold Chrome без CUA не принят.
+
+Test-only: parent wait NativeProbe180→300с для полного stream, production deadlines не менялись.
+Matrix helper повторяет только readonly отсутствие одного focus-атрибута при другой закреплённой
+identity; оба отсутствуют/объекты изменились → отказ; ни одного события до двух положительных
+проверок. 9 policy checks и8 reject workloads PASS. В успешном Notes retry счётчик0:
+ожидание на реальном transient в этом повторе не наблюдалось. Evidence77 tamper checks PASS.
+
+Итоговый trace1000 содержит1snapshot-deadlineExceeded uptime18373.800 при temporary universalOFF,
+до off-mode TextEdit start18382.026; не заявляется fault-free. Предыдущий universal-only trace
+отдельно0faults/0snapshot-failed; итог ready,pending/outstanding/uncertain0.
+Settings.v1 семантически равен исходному, sourceRussianWin, autocorrectOFF возвращены,
+yf сохранён; статистика не откатывалась. Своё тестовое обучение удалено.
+Image helper не запускался; четыре часа не запускались. Main не менялся.
+[Итог и ограничения](../research/evidence/mac-agent-p9-2026-10-18/verification.json).
+
+## 2026-10-18 — P9: текстовые группы и отдельные флаги TextEdit
+
+GUI ab020042 / 6e07197, никаких следующих изменений production-кода.
+Chrome input/textarea/contenteditable, Telegram, Notes, AionUi: доступные текстовые
+S1–S4/S6–S9 и правило yf проверены; точный состав — новая matrix.json, не декартово
+обобщение на ещё не проверенные поля. Telegram S7 дополнительно10/10 PASS.
+Chrome S7:10 завершённых PASS, одна дополнительная попытка остановлена frontmost_changed
+после полного правильно исправленного текста; точный собственный readback сохранён и очищен.
+Причина краткой смены frontmost не установлена, попытка не засчитана. Никакой ⌘⌥R не было.
+
+TextEdit: smoke13/13, review12/12, stream80 12/12 (192 слова,176.27с) PASS.
+Последние1000 записей сразу после потока:0faults/0rejections, ready,
+pending/outstanding/uncertain0; это не полный trace всей сессии.
+Отдельные matrix-кейсы S1/S2/S3/S4/S6/S7/S8/S9/S11 выполнены с чтением настоящего флага.
+Перед запуском original source выбран равным ожидаемому итоговому; NativeProbe выбирает
+начальный source теста, а его восстановление после кейса не меняет конечный source.
+Поэтому отдельный readonly StatusFlagRead (0 событий) действительно сверяет итог кейса.
+S6 beforeGesture подтвердил « мир »/RussianWin до ⌘⌥Z; после — « vbh »/ABC.
+Выучен только vbh, удалён через UI; исходные настройки сравнивались семантически.
+S11 первое ожидание sourceABC было ошибкой теста: public fixture требует RussianWin;
+текст «на » был правильным. Повтор с корректным итоговым source и флагом PASS.
+
+S8 — отдельный новый UUID.txt с собственным abcdef, точный document/PID/field fence
+NativeProbe, verified caret2 и реальные Left/Right сброса, затем ghbdtnspace:
+«abghbdtn cdef», caret9, sourceABC и флаг PASS. Без clipboard и Return.
+
+S13 TextEdit: первый запуск в другом новом документе не принят — настройка автозамены
+переносилась только в тот документ, где была включена. В том же собственном UUID-документе
+после включения checked=true, native «123 ghtdtn »→«123 привет », caret11/RussianWin PASS;
+после теста тот же документ всё ещё checked=true, затем через меню возвращено исходное off,
+readback равен baseline. Notes S13 также PASS, его autocorrect восстановлен.
+S5 SKIP_USER, image helper больше не запускался. Четырёхчасовой прогон не запускался.
+[Матрица и файлы](../research/evidence/mac-agent-p9-2026-10-18/matrix.json).
+
+
+## 2026-10-18 — P9, новая сборка ab020042: первые повторные проверки
+
+Код 6e07197, полная установленная identity в mac-agent-p9-2026-10-18/installed.json.
+Исправлена асимметрия runKeystrokes: прежний цикл80мс повторял несовпавший readable prefix,
+но не transient unreadable. Теперь оба состояния повторяются до прежнего порога;
+selection/secure останавливаются сразу. Критерии правки, proof50мс и blind-anchor не менялись.
+Предпосылка доказана на старом GUI: Safari focused AX cannotComplete54мс, затем диагностика
+видела поле; newtab4/5 с таким же безопасным пропуском. Точная причина newtab unreadable
+не доказана отдельно, переносить Safari AXError на него нельзя.
+
+Controller93/93, CLI1439/1439, corpora4420/4420+22000/22000, audit4/4; ci_core локально
+не проходит только XCTest отсутствующий в CLT. Release build/signature/selftest PASS.
+CI39151757178 Linux/macOS success. Обе только прежние записи разрешений TypeTune
+обновлены через System Settings UI; новый PID32477, один переключатель, Caramba не запускалась.
+
+Новый GUI: newtab warm S1 5/5 PASS; Safari input S1 5/5 + S2/S3/S4 PASS.
+Cold Chrome и Google с активными подсказками отдельно не приняты. TextEdit smoke13/13 PASS,
+plainPaste временно включался, возвращён off, ghbdtn unlearned; settings семантически равны
+исходным, yf сохранён. Review/stream ещё выполняются. Старые PASS не перенесены.
+[Evidence](../research/evidence/mac-agent-p9-2026-10-18/matrix.json).
+
+
 ## 2026-10-18 — продолжение без картинки; Chrome contenteditable и новая вкладка
 
 Пользователь: «Проверку картинки пропускаем, продолжай остальное». S5 SKIP_USER

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "texteditCorrects": true,
+  "notesUnchanged": true,
+  "universalRestoredOn": true,
+  "settingsSemanticallyEqual": true,
+  "firstNotesAttempt": "focus_unavailable after own g; exact CUA readback and cleanup; not accepted",
+  "retryNotesPassed": true,
+  "focusReadRetriesObservedInSuccessfulRetry": 0,
+  "readRetryPolicy": "no event until positive same PID/window/field; changed objects reject immediately; both identities missing reject; max300ms readonly wait"
+}

@@ -42,12 +42,34 @@ func identifier(_ source: TISInputSource) -> String {
 }
 func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { identifier($0.takeRetainedValue()) } ?? "" }
 
+enum FocusReadDecision { case verified, retry, reject }
+func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMatches: Bool) -> FocusReadDecision {
+    if windowMatches == false || fieldMatches == false { return .reject }
+    if windowMatches == true && fieldMatches == true { return .verified }
+    if windowMatches == true || (fieldMatches == true && fieldWindowMatches) { return .retry }
+    return .reject
+}
+
 @main struct MatrixInputProbe {
     static func main() {
         var result: [String: Any] = ["events": 0, "passed": false, "returnEvents": 0]
         var events = 0
         do {
             try require(CommandLine.arguments.count == 2, "one_case_file_required")
+            if CommandLine.arguments[1] == "--validate-focus-policy" {
+                let cases: [(Bool?, Bool?, Bool, FocusReadDecision)] = [
+                    (true, true, false, .verified), (true, nil, false, .retry),
+                    (nil, true, true, .retry), (nil, true, false, .reject),
+                    (nil, nil, false, .reject), (false, true, true, .reject),
+                    (true, false, true, .reject), (false, nil, false, .reject),
+                    (nil, false, true, .reject)]
+                for (window, field, fieldWindow, expected) in cases {
+                    try require(focusReadDecision(windowMatches: window, fieldMatches: field,
+                                                  fieldWindowMatches: fieldWindow) == expected, "focus_policy_failed")
+                }
+                print("{\"passed\":true,\"events\":0,\"focusPolicyCases\":9}")
+                return
+            }
             let item = try JSONDecoder().decode(MatrixCase.self, from: Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[1])))
             let allowed = ["com.google.Chrome", "com.apple.Safari", "com.tdesktop.Telegram", "com.tinyspeck.slackmacgap",
                 "com.microsoft.VSCode", "com.apple.Notes", "com.microsoft.Word", "com.openai.codex", "com.apple.Terminal"]
@@ -82,10 +104,28 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             var ownedModifiers = CGEventFlags()
             var ownedModifierKeys: Set<CGKeyCode> = []
             func authenticate() throws {
-                try require(AXIsProcessTrusted() && CGPreflightPostEventAccess() && !IsSecureEventInputEnabled(), "permissions_or_secure_input")
-                try require(NSWorkspace.shared.frontmostApplication?.processIdentifier == pid, "frontmost_changed")
-                guard let nowField = element(read(ax, kAXFocusedUIElementAttribute)), let nowWindow = element(read(ax, kAXFocusedWindowAttribute)) else { throw Failure(reason: "focus_unavailable") }
-                try require(CFEqual(field, nowField) && CFEqual(window, nowWindow), "field_or_window_changed")
+                let deadline = ProcessInfo.processInfo.systemUptime + 0.3
+                while true {
+                    try require(AXIsProcessTrusted() && CGPreflightPostEventAccess() && !IsSecureEventInputEnabled(), "permissions_or_secure_input")
+                    try require(NSWorkspace.shared.frontmostApplication?.processIdentifier == pid, "frontmost_changed")
+                    let nowWindow = element(read(ax, kAXFocusedWindowAttribute))
+                    let nowField = element(read(ax, kAXFocusedUIElementAttribute))
+                    let windowMatches = nowWindow.map { CFEqual(window, $0) }
+                    let fieldMatches = nowField.map { CFEqual(field, $0) }
+                    var fieldWindowMatches = false
+                    if nowWindow == nil && fieldMatches == true, let fieldWindow = element(read(field, kAXWindowAttribute)) {
+                        fieldWindowMatches = CFEqual(fieldWindow, window)
+                    }
+                    let decision = focusReadDecision(windowMatches: windowMatches, fieldMatches: fieldMatches,
+                                                     fieldWindowMatches: fieldWindowMatches)
+                    if decision == .verified { break }
+                    try require(decision == .retry, windowMatches == false || fieldMatches == false ? "field_or_window_changed" : "focus_unavailable")
+                    // Waiting never authorizes emission without both positive identities.
+                    try require(ProcessInfo.processInfo.systemUptime + 0.015 < deadline, "focus_unavailable")
+                    result["focusReadRetries"] = (result["focusReadRetries"] as? Int ?? 0) + 1
+                    pause(0.015)
+                }
+                try require(ProcessInfo.processInfo.systemUptime < deadline, "focus_read_deadline")
                 let windowTitle = read(window, kAXTitleAttribute) as? String
                 let fieldDescription = read(field, kAXDescriptionAttribute) as? String
                 result["windowTitleLength"] = windowTitle?.utf16.count

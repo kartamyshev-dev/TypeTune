@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "kind": "agent native plus CUA visual readback",
+  "nativeEvidence": "safari-address-s14-query.json",
+  "popupVisible": true,
+  "queryExact": "привет ",
+  "suggestionsConsistentWithOwnQuery": true,
+  "queryNotSubmitted": true,
+  "screenshotSavedToFilesystemOrGit": false,
+  "privateHistoryNotRecorded": true,
+  "scope": "Поисковые подсказки Safari; inline completion with selected suffix отдельно не заявляется"
+}

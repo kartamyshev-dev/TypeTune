@@ -36,6 +36,14 @@ class MatrixProbeGuards(unittest.TestCase):
                 self.assertEqual(result['events'], 0)
                 self.assertEqual(result['error'], error)
 
+    def test_focus_retry_requires_pinned_identity(self):
+        run = subprocess.run([str(ROOT / '.build/matrix-input-probe'), '--validate-focus-policy'],
+                             capture_output=True, text=True, check=True)
+        result = json.loads(run.stdout)
+        self.assertTrue(result['passed'])
+        self.assertEqual(result['focusPolicyCases'], 9)
+        self.assertEqual(result['events'], 0)
+
 
 if __name__ == '__main__':
     unittest.main()

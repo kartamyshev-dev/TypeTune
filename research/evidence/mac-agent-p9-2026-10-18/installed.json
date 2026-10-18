@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+  "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+  "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+  "probeSourceSha256": "1dc1861c85df0e76046e1cf88c08bc8fbe2910be3ab0fa09366d08a7296cccfc",
+  "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+  "probeBinarySha256": "310537da1a52a45d2962e66b9374763ae8a3477a01178a0de4fd9174513d80b2",
+  "targetProcess": {
+    "pid": 32477,
+    "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+    "started": "Sun Oct 18 20:57:28 2026"
+  },
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "permissionsRefreshedViaSystemUi": [
+    "existing input monitoring",
+    "existing accessibility"
+  ],
+  "signatureVerified": true
+}

@@ -1,0 +1,128 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 40
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 40,
+      "maxMilliseconds": 0.2631249990372453,
+      "totalMilliseconds": 5.319416675774846
+    },
+    "AXFocusedUIElement:0": {
+      "count": 40,
+      "maxMilliseconds": 0.22358333444572054,
+      "totalMilliseconds": 2.5769583371584304
+    },
+    "AXFocusedWindow:0": {
+      "count": 40,
+      "maxMilliseconds": 46.6158750023169,
+      "totalMilliseconds": 151.3242500150227
+    },
+    "AXRole:0": {
+      "count": 40,
+      "maxMilliseconds": 0.360250000085216,
+      "totalMilliseconds": 1.8022500116785523
+    },
+    "AXSelectedTextRange:0": {
+      "count": 13,
+      "maxMilliseconds": 0.1071666665666271,
+      "totalMilliseconds": 0.7074166678648908
+    },
+    "AXSubrole:-25205": {
+      "count": 40,
+      "maxMilliseconds": 0.2562916670285631,
+      "totalMilliseconds": 4.120583336771233
+    },
+    "AXValue:0": {
+      "count": 13,
+      "maxMilliseconds": 0.09158333341474645,
+      "totalMilliseconds": 0.5133333397679962
+    },
+    "AXWindow:0": {
+      "count": 40,
+      "maxMilliseconds": 0.13083333396934904,
+      "totalMilliseconds": 2.6596250172588043
+    }
+  },
+  "beforeGesture": {},
+  "boundary": true,
+  "boundaryObservation": {
+    "elapsedSeconds": 0.20056387499789707,
+    "firstChangeSeconds": 0.045853791663830634,
+    "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+    "performed": true,
+    "textTransitionsObserved": 2
+  },
+  "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/33CF2771-F711-4FC7-BA5C-956916CDE9D5.results.json",
+  "clipboardRestore": "not_used",
+  "completed": 1,
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/33CF2771-F711-4FC7-BA5C-956916CDE9D5.txt",
+  "elapsedSeconds": 3.4262873333354946,
+  "events": 24,
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "gesture": "none",
+  "gestureIntermediate": {},
+  "id": "single",
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "initialSyntheticText": "",
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "physicalASCII": "ghbdtn vbh",
+  "requestedSource": "com.apple.keylayout.ABC",
+  "selectAllBeforeGesture": false,
+  "selection": {
+    "length": 0,
+    "location": 11
+  },
+  "text": "привет мир ",
+  "timing": {
+    "firstWordAfterFocus": false,
+    "preGestureDelayMilliseconds": 1000
+  },
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "1dc1861c85df0e76046e1cf88c08bc8fbe2910be3ab0fa09366d08a7296cccfc",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "7cfd545deabb5e4b2761fd0d31427103f124810c795d2fc4d70072558ec425e8",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 36603,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 21:24:57 2026"
+  },
+  "processExitCode": 0,
+  "helperWallSeconds": 4.523673874999076,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "1dc1861c85df0e76046e1cf88c08bc8fbe2910be3ab0fa09366d08a7296cccfc",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "7cfd545deabb5e4b2761fd0d31427103f124810c795d2fc4d70072558ec425e8",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 32477,
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "sourceDirty": true,
+  "probeStartUptime": 16453.631513958,
+  "probeEndUptime": 16458.218447375
+}

@@ -34,7 +34,8 @@ metadata = {'target': args.target, 'app': str(binary.parents[2]), 'pid': pid,
             'sourceDirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()),
             'probeStartUptime': time.monotonic()}
 require(selected_switcher_pid(binary) == pid, 'Selected switcher changed before probe')
-result = run_probe(root, binary, pid, probe_args, timeout=180)
+# A valid 12-row 80ms stream takes 176–179s here; leave room before terminating the child.
+result = run_probe(root, binary, pid, probe_args, timeout=300)
 result.update(metadata)
 result['probeEndUptime'] = time.monotonic()
 if case_file:

@@ -1,0 +1,10 @@
+{
+  "classification": "test_expectation_corrected",
+  "nativeText": "на ",
+  "nativeSource": "com.apple.keylayout.RussianWin",
+  "incorrectExpectedSource": "com.apple.keylayout.ABC",
+  "correctExpectedSource": "com.apple.keylayout.RussianWin",
+  "sourceOfCorrectExpectation": "Tools/fixtures/matrix/scenarios.json S11",
+  "productFailure": false,
+  "flagNeedsRepeatWithoutRestorationChange": true
+}

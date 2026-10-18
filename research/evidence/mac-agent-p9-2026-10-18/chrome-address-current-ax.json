@@ -1,0 +1,413 @@
+{
+  "ancestors" : [
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXToolbar",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    }
+  ],
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : true
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "com.google.Chrome",
+  "focused" : {
+    "attributes" : {
+      "AXAccessKey" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXAutocompleteValue" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          4
+        ]
+      },
+      "AXBlockQuoteLevel" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXChildren" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXColumnHeaderUIElements" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXCustomContent" : {
+        "settable" : true,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          31
+        ]
+      },
+      "AXDOMClassList" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXDOMIdentifier" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          9
+        ]
+      },
+      "AXEditableAncestor" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXTextField"
+        ]
+      },
+      "AXElementBusy" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXEnabled" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFocusableAncestor" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXTextField"
+        ]
+      },
+      "AXFocused" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFrame" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          3
+        ]
+      },
+      "AXHelp" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXHighestEditableAncestor" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXTextField"
+        ]
+      },
+      "AXInsertionPointLineNumber" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXInvalid" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          5
+        ]
+      },
+      "AXKeyShortcutsValue" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          2
+        ]
+      },
+      "AXNumberOfCharacters" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXOwns" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXParent" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXGroup"
+        ]
+      },
+      "AXPlaceholderValue" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          183
+        ]
+      },
+      "AXPosition" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXRequired" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXRole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          11
+        ]
+      },
+      "AXRoleDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          14
+        ]
+      },
+      "AXRows" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXSelected" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXSelectedRows" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXSelectedText" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXSelectedTextRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          0
+        ]
+      },
+      "AXSelectedTextRanges" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXSize" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          2
+        ]
+      },
+      "AXSubrole" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXTitle" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          31
+        ]
+      },
+      "AXTitleUIElement" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXTopLevelUIElement" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      },
+      "AXURL" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXValue" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXVisibleCharacterRange" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          0
+        ]
+      },
+      "AXVisited" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXWindow" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      },
+      "ChromeAXNodeId" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          4
+        ]
+      }
+    },
+    "namesStatus" : 0,
+    "parameterized" : [
+      "AXStringForRange",
+      "AXAttributedStringForRange",
+      "AXLineForIndex",
+      "AXStyleRangeForIndex",
+      "AXReplaceRangeWithText",
+      "AXAttributedStringForTextMarkerRange"
+    ]
+  },
+  "focusedUIElementStatus" : 0,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 1492
+}
