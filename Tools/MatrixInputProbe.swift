@@ -14,6 +14,8 @@ struct MatrixCase: Decodable {
     let gesture: String
     let clearAfter: Bool?
     let expectedCaret: Int?
+    let beforeUndoText: String?
+    let beforeUndoSource: String?
 }
 struct Failure: Error {
     let reason: String
@@ -53,9 +55,13 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             let keys: [Character: CGKeyCode] = ["a":0,"s":1,"d":2,"f":3,"h":4,"g":5,"z":6,"x":7,"c":8,"v":9,"b":11,
                 "q":12,"w":13,"e":14,"r":15,"y":16,"t":17,"1":18,"2":19,"3":20,"4":21,"6":22,"5":23,"9":25,
                 "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,"n":45,"m":46," ":49]
-            try require((!item.text.isEmpty || item.gesture == "singleShift") && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
-            try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord"].contains(item.gesture), "unsupported_gesture")
+            try require((!item.text.isEmpty || ["singleShift", "focus"].contains(item.gesture)) && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
+            try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord", "undo", "focus"].contains(item.gesture), "unsupported_gesture")
             try require((0...item.expected.utf16.count).contains(item.expectedCaret ?? item.expected.utf16.count), "invalid_expected_caret")
+            if item.gesture == "undo" {
+                try require(item.beforeUndoText != nil && item.beforeUndoText != item.expected && item.beforeUndoSource != nil,
+                            "undo_precondition_required")
+            }
             let applications = NSWorkspace.shared.runningApplications.filter { $0.bundleIdentifier == item.bundle }
             try require(applications.count == 1, "one_target_process_required")
             let app = applications[0]
@@ -70,7 +76,9 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             try require(NSWorkspace.shared.frontmostApplication?.processIdentifier == app.processIdentifier, "wrong_frontmost_app")
             let pid = app.processIdentifier, ax = AXUIElementCreateApplication(pid)
             guard let field = element(read(ax, kAXFocusedUIElementAttribute)), let window = element(read(ax, kAXFocusedWindowAttribute)) else { throw Failure(reason: "no_focused_field_or_window") }
-            func authenticate(shiftHeld: Bool = false) throws {
+            var ownedModifiers = CGEventFlags()
+            var ownedModifierKeys: Set<CGKeyCode> = []
+            func authenticate() throws {
                 try require(AXIsProcessTrusted() && CGPreflightPostEventAccess() && !IsSecureEventInputEnabled(), "permissions_or_secure_input")
                 try require(NSWorkspace.shared.frontmostApplication?.processIdentifier == pid, "frontmost_changed")
                 guard let nowField = element(read(ax, kAXFocusedUIElementAttribute)), let nowWindow = element(read(ax, kAXFocusedWindowAttribute)) else { throw Failure(reason: "focus_unavailable") }
@@ -83,10 +91,10 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                 try require(fieldDescription == item.description, "field_description_changed")
                 try require([kAXTextFieldRole, kAXTextAreaRole, "AXComboBox"].contains(read(field, kAXRoleAttribute) as? String ?? ""), "not_text_field")
                 try require(read(field, kAXSubroleAttribute) as? String != kAXSecureTextFieldSubrole, "secure_field")
-                let allowedFlags: UInt64 = shiftHeld ? CGEventFlags.maskShift.rawValue | 0x2 : 0
+                let allowedFlags = ownedModifiers.rawValue
                 for state: CGEventSourceStateID in [.hidSystemState, .combinedSessionState] {
                     try require(CGEventSource.flagsState(state).rawValue & 0x9f207f & ~allowedFlags == 0, "foreign_modifier")
-                    for key: CGKeyCode in [54,55,56,60,58,61,59,62,57,63] where !(shiftHeld && key == 56) {
+                    for key: CGKeyCode in [54,55,56,60,58,61,59,62,57,63] where !ownedModifierKeys.contains(key) {
                         try require(!CGEventSource.keyState(state, key: key), "foreign_modifier_key")
                     }
                 }
@@ -118,23 +126,51 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                   let chosen = sources.first(where: { identifier($0) == item.source }),
                   let original = TISCopyCurrentKeyboardInputSource()?.takeRetainedValue(),
                   let source = CGEventSource(stateID: .hidSystemState) else { throw Failure(reason: "input_source_unavailable") }
-            defer { result["inputSourceRestored"] = TISSelectInputSource(original) == noErr && currentSource() == identifier(original) }
+            defer {
+                result["inputSourceRestored"] = item.gesture == "focus" ||
+                    (TISSelectInputSource(original) == noErr && currentSource() == identifier(original))
+            }
             try authenticate()
-            try require(TISSelectInputSource(chosen) == noErr, "source_selection_failed")
-            pause(0.2)
-            try require(currentSource() == item.source, "source_not_selected")
+            if item.gesture != "focus" {
+                try require(TISSelectInputSource(chosen) == noErr, "source_selection_failed")
+                pause(0.2)
+                try require(currentSource() == item.source, "source_not_selected")
+            }
             func emit(_ key: CGKeyCode, down: Bool, modifier: Bool = false) throws {
-                try authenticate(shiftHeld: modifier && !down)
+                try authenticate()
                 guard let event = CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: down) else { throw Failure(reason: "event_creation_failed") }
-                event.flags = modifier && down ? CGEventFlags(rawValue: CGEventFlags.maskShift.rawValue | 0x2) : []
-                if modifier { event.type = .flagsChanged }
+                var emittedModifiers = ownedModifiers
+                var releaseMask: UInt64?
+                if modifier {
+                    let masks: [CGKeyCode: UInt64] = [55: CGEventFlags.maskCommand.rawValue | 0x8,
+                        58: CGEventFlags.maskAlternate.rawValue | 0x20, 56: CGEventFlags.maskShift.rawValue | 0x2]
+                    guard let mask = masks[key] else { throw Failure(reason: "unsupported_modifier") }
+                    emittedModifiers = CGEventFlags(rawValue: down ? ownedModifiers.rawValue | mask : ownedModifiers.rawValue & ~mask)
+                    if down { ownedModifiers = emittedModifiers; ownedModifierKeys.insert(key) }
+                    else { releaseMask = mask }
+                    event.type = .flagsChanged
+                }
+                event.flags = emittedModifiers
                 event.setIntegerValueField(.eventSourceUserData, value: 0x4c505052)
                 event.post(tap: .cghidEventTap)
                 events += 1
                 pause(0.012)
+                if let releaseMask {
+                    // Our release can still be in the tap FIFO; keep ownership until both system states acknowledge it.
+                    let deadline = ProcessInfo.processInfo.systemUptime + 1
+                    while true {
+                        try authenticate()
+                        if [CGEventSourceStateID.hidSystemState, .combinedSessionState].allSatisfy({
+                            CGEventSource.flagsState($0).rawValue & releaseMask == 0 && !CGEventSource.keyState($0, key: key)
+                        }) { break }
+                        try require(ProcessInfo.processInfo.systemUptime < deadline, "modifier_release_not_settled")
+                        pause(0.005)
+                    }
+                    ownedModifiers = emittedModifiers; ownedModifierKeys.remove(key)
+                }
             }
             // CUA preparation bypasses the tap; reset its previous token with a real navigation event.
-            try emit(123, down: true); try emit(123, down: false)
+            if item.gesture != "focus" { try emit(123, down: true); try emit(123, down: false) }
             let ready = try snapshot()
             try require(ready.0.isEmpty && ready.1.location == 0 && ready.1.length == 0, "initial_navigation_changed_field")
             if item.gesture == "middleOfWord" {
@@ -197,7 +233,18 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                 }
             }
             pause(1)
+            if item.gesture == "undo" {
+                let before = try snapshot()
+                try require(before.0 == item.beforeUndoText && before.1.location == before.0.utf16.count &&
+                    before.1.length == 0 && currentSource() == item.beforeUndoSource, "undo_correction_not_confirmed")
+                result["undoPreconditionVerified"] = true
+                try emit(55, down: true, modifier: true); try emit(58, down: true, modifier: true)
+                try emit(6, down: true); try emit(6, down: false)
+                try emit(58, down: false, modifier: true); try emit(55, down: false, modifier: true)
+                pause(1)
+            }
             let final = try snapshot()
+            let expectedSource = item.gesture == "focus" ? currentSource() : item.expectedSource
             let matches = final.0.utf16.elementsEqual(item.expected.utf16)
             let clipboardPreserved = imageLease?.syntheticUnchanged() ?? true
             if imageLease != nil { result["clipboardImagePreserved"] = clipboardPreserved }
@@ -212,19 +259,27 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                     tooltip = read(item, kAXHelpAttribute) as? String
                 }
             }
-            let flagMatches = flag == (item.expectedSource.contains("Russian") ? "🇷🇺" : "🇺🇸")
-            let tooltipMatches = tooltip?.contains("TypeTune · " + item.expectedSource + "\n") == true
+            let flagMatches = flag == (expectedSource.contains("Russian") ? "🇷🇺" : "🇺🇸")
+            let tooltipMatches = tooltip?.contains("TypeTune · " + expectedSource + "\n") == true
             result["statusFlagMatches"] = flagMatches
             result["statusSourceMatches"] = tooltipMatches
             result["statusTooltip"] = tooltip
+            result["observedInputSource"] = currentSource()
             let caret = final.1.location == (item.expectedCaret ?? item.expected.utf16.count) && final.1.length == 0
             result.merge(["bundle": item.bundle, "pid": pid, "textMatches": matches, "caretMatches": caret,
-                "sourceMatches": currentSource() == item.expectedSource, "observedLength": final.0.utf16.count,
+                "sourceMatches": currentSource() == expectedSource, "observedLength": final.0.utf16.count,
                 "inputSeconds": ProcessInfo.processInfo.systemUptime - start - 1,
-                "passed": matches && caret && currentSource() == item.expectedSource && flagMatches && tooltipMatches && clipboardPreserved]) { _, new in new }
+                "passed": matches && caret && currentSource() == expectedSource && flagMatches && tooltipMatches && clipboardPreserved]) { _, new in new }
             if item.clearAfter == true {
                 try require(result["passed"] as? Bool == true, "mismatch_kept_for_diagnosis")
                 var remaining = item.expected
+                var cursor = final.1.location
+                while cursor < remaining.utf16.count {
+                    let before = try snapshot()
+                    try require(before.0 == remaining && before.1.location == cursor && before.1.length == 0, "cleanup_text_changed")
+                    try emit(124, down: true); try emit(124, down: false)
+                    cursor += 1; pause(0.08)
+                }
                 while !remaining.isEmpty {
                     let before = try snapshot()
                     try require(before.0.utf16.elementsEqual(remaining.utf16) && before.1.location == remaining.utf16.count && before.1.length == 0, "cleanup_text_changed")
@@ -240,6 +295,11 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             result["error"] = (error as? Failure)?.reason ?? String(describing: error)
         }
         result["events"] = events
+        let neutral = [CGEventSourceStateID.hidSystemState, .combinedSessionState].allSatisfy {
+            CGEventSource.flagsState($0).rawValue & 0x9f207f == 0
+        }
+        result["modifiersNeutral"] = neutral
+        if !neutral { result["passed"] = false }
         let data = try! JSONSerialization.data(withJSONObject: result, options: [.sortedKeys, .prettyPrinted])
         print(String(decoding: data, as: UTF8.self))
         if result["passed"] as? Bool != true { exit(1) }

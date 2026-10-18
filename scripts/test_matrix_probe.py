@@ -23,6 +23,7 @@ class MatrixProbeGuards(unittest.TestCase):
                                ({'bundle': 'com.apple.finder', 'description': None}, 'bundle_not_in_matrix'),
                                ({'text': '\n'}, 'bounded_ascii_keys_required'),
                                ({'text': '', 'gesture': 'none'}, 'bounded_ascii_keys_required'),
+                               ({'gesture': 'undo'}, 'undo_precondition_required'),
                                ({'gesture': 'Return'}, 'unsupported_gesture')]:
             with self.subTest(error=error), tempfile.NamedTemporaryFile(mode='w', suffix='.json') as case:
                 json.dump(base | changes, case)

@@ -1,0 +1,23 @@
+{
+  "bundle" : "com.tdesktop.Telegram",
+  "caretMatches" : true,
+  "clipboardImagePreserved" : true,
+  "clipboardRestore" : "restored_all_representations",
+  "events" : 30,
+  "fieldDescriptionLength" : 0,
+  "inputSeconds" : 1.1079025416656805,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.RussianWin",
+  "observedLength" : 5,
+  "passed" : true,
+  "pid" : 673,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : true,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 42
+}

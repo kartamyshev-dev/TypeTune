@@ -1,0 +1,16 @@
+{
+  "accessibilityTrusted" : true,
+  "axReadErrors" : {
+
+  },
+  "axReadTiming" : {
+
+  },
+  "events" : 0,
+  "finalModifierFlags" : 537919496,
+  "inputSource" : "com.apple.keylayout.ABC",
+  "modifierFlags" : 537919496,
+  "postEventAccess" : true,
+  "secureInput" : false,
+  "statusOnly" : true
+}
