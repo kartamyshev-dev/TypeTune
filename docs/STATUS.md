@@ -35,13 +35,18 @@
   раскладка RussianWin. Caramba выключена. Статистика содержит тестовые увеличения:
   не откатывать вслепую. [Состояние](../research/evidence/mac-agent-p9-2026-10-18/state-after.json).
 
-**Осталось:** cold Chrome без эффекта CUA на AX; выбранный inline suffix (проверялся popup);
+**P1 cold Chrome: user manual PASS.** Пользователь ответил «работает стабильно» на
+протокол google.com/newtab по5 повторов после перезапуска, без CUA. Это подтверждение
+пользователя, не наблюдение агента и не отдельный clean-profile тест.
+[Evidence](../research/evidence/mac-agent-p9-2026-10-18/chrome-cold-user-manual.json).
+
+**Осталось:** выбранный inline suffix (проверялся popup);
 PWA S14 командное меню (slash отклонён helper до событий). Safari S12 подтвердил
 Secure Input и паузу TypeTune без ввода пароля, это не typed-password E2E.
 Пять NOT_RUN в scaffold явно NOT_APPLICABLE: S14 у fixture без подсказок и TextEditS12.
 Один настоящий NOT_RUN — PWA S14. Картинки/S5, отсутствующие Slack/VS Code/Word,
 Terminal/vim/Codex — SKIP_USER. Четыре часа отложены. U8/полная готовность не закрыты,
-в main не сливать. Нужна отдельная проверка cold Chrome пользователем без CUA-наблюдения.
+в main не сливать. Следующие проверки — inline suffix и командное меню PWA.
 
 Пользователь разрешил NativeProbe для всей матрицы с прежними защитами и ввод без отправки.
 При отказе сохранять trace; остановки — MAC_AGENT_GUIDE §2.7. Не запускать image helper.
@@ -115,7 +120,7 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 ## Точка продолжения
 
 0. Ветка `universal-input`: агент на Mac проходит [MAC_AGENT_GUIDE](MAC_AGENT_GUIDE.md) (DECISIONS п. 31).
-   Главная открытая граница P1 — cold Chrome без вмешательства CUA; warm Google/newtab5/5 на текущем GUI.
+   P1: warm Google/newtab5/5 на текущем GUI; cold Chrome подтверждён пользователем отдельно (user manual PASS).
    Затем — сниппеты S5–S7 (ветка `snippets`).
 1. Chrome single-field: подтверждённая причина исправлена без ослабления
    проверки конечного текста/каретки. Ограниченная проверка 48/48 завершена.

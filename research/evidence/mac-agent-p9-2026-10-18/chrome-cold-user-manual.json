@@ -1,0 +1,11 @@
+{
+  "kind": "user manual",
+  "result": "PASS",
+  "userReply": "работает стабильно",
+  "requestedProtocol": "После обычного перезапуска Chrome, без CUA-наблюдения: ABC, ghbdtn + пробел в пустом поиске google.com и новой вкладки, по5 повторов, без Enter",
+  "scope": "Подтверждение пользователя в ответ на протокол; не agent-native и не отдельный clean-profile тест",
+  "agentObserved": false,
+  "sourceCommitContext": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "guiSha256Context": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+  "installedIdentityRecheckedAfterUserTest": false
+}

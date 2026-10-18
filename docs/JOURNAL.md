@@ -1,5 +1,15 @@
 # Журнал TypeTune
 
+## 2026-10-18 — P1: холодный Chrome подтверждён пользователем
+
+В ответ на протокол после обычного перезапуска Chrome без CUA, ABC, ghbdtnspace
+в пустом поиске google.com и новой вкладки по5 раз без Enter пользователь сообщил:
+«работает стабильно». Вид проверки **user manual PASS**, отдельно от agent-native warm5/5.
+Агент не наблюдал ввод, повторно не сверял identity после пользовательского теста и не
+проводил отдельный clean-profile тест. P1 закрыт в пределах этого протокола; остальные
+ограничения U8, inline suffix/PWA/password E2E и пропуски пользователя сохраняются.
+[Подтверждение](../research/evidence/mac-agent-p9-2026-10-18/chrome-cold-user-manual.json).
+
 ## 2026-10-18 — P9: Google warm5/5, отдельные окна и итоговый checkpoint
 
 GUI ab020042 / код6e07197 неизменен. Google search S1 warm5/5; S2/S3/S4/S6/S7/S8/S9 PASS.

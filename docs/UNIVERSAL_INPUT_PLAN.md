@@ -80,7 +80,8 @@
 ## Чек-лист U8 для Mac (приёмка частичная)
 
 Текущая ограниченная native-матрица на GUI ab020042 / код6e07197: [verification](../research/evidence/mac-agent-p9-2026-10-18/verification.json).
-U8 не закрыт: cold Chrome, inline suffix, PWA command popup и границы password E2E открыты;
+Cold Chrome подтверждён пользователем: [user manual PASS](../research/evidence/mac-agent-p9-2026-10-18/chrome-cold-user-manual.json).
+U8 не закрыт: inline suffix, PWA command popup и границы password E2E открыты;
 S5/несколько приложений пропущены пользователем, четыре часа отложены.
 
 Сборка ветки: `git switch universal-input && scripts/build.sh`; установка и обновление разрешений —

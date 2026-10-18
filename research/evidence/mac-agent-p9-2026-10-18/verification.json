@@ -40,7 +40,6 @@
   "stateAfter": "state-after.json",
   "diagnostics": "final-diagnostics-verdict.json",
   "remaining": [
-    "Cold Chrome without CUA enabling enhanced AX: not accepted",
     "Selected inline suffix not exercised; visible search popup only",
     "PWA command popup S14 not run: slash rejected before events",
     "Safari secure-input state only; no typed-password E2E",
@@ -52,5 +51,10 @@
     "chrome-s7-focus-interruption.json",
     "textedit-s11-oracle-correction.json"
   ],
-  "mergeMain": false
+  "mergeMain": false,
+  "chromeColdUserManual": {
+    "result": "PASS",
+    "evidence": "chrome-cold-user-manual.json",
+    "agentObserved": false
+  }
 }
