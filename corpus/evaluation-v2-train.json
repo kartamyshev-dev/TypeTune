@@ -166,7 +166,7 @@
     }
   },
   "corpusSha256": "de54f64fb4c4d8df745b1f20141a5e9c4dacaaac051df651f365c58238158e26",
-  "currentSourceLexiconSha256": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+  "currentSourceLexiconSha256": "66dc26ad2e514945932cfbc2a5712273e5dea701bebd66a68f5fabe809921751",
   "failures": [],
   "fixtureLexiconSha256": "1764cd67ed823ea70551fb8c856ad0599f1a3765242d329c0710451b70d0aced",
   "notice": "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",

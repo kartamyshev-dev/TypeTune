@@ -1,0 +1,129 @@
+{
+  "byCategory": {
+    "case": {
+      "corrections": 1,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "case_wrong_title": {
+      "corrections": 600,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "case_wrong_upper": {
+      "corrections": 600,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "code": {
+      "corrections": 0,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "correct": {
+      "corrections": 1,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "digits": {
+      "corrections": 0,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "doublecaps": {
+      "corrections": 599,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "email": {
+      "corrections": 0,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "mixed": {
+      "corrections": 0,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "url": {
+      "corrections": 0,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    },
+    "wrong": {
+      "corrections": 600,
+      "count": 600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 600
+    }
+  },
+  "bySplit": {
+    "holdout": {
+      "corrections": 2401,
+      "count": 6600,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 6600
+    }
+  },
+  "corpusSha256": "9ce270716f0d0fd4aea37bda834f6de4acf5edde1320675ab39343d911cb05d7",
+  "currentSourceLexiconSha256": "66dc26ad2e514945932cfbc2a5712273e5dea701bebd66a68f5fabe809921751",
+  "failures": [],
+  "fixtureLexiconSha256": "66dc26ad2e514945932cfbc2a5712273e5dea701bebd66a68f5fabe809921751",
+  "notice": "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",
+  "schemaVersion": 1,
+  "total": {
+    "corrections": 2401,
+    "count": 6600,
+    "falseCorrections": 0,
+    "misses": 0,
+    "originalCompared": 0,
+    "originalMatches": 0,
+    "passed": 6600
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "frozenAtUtc": "2026-10-18T00:01:22+00:00",
+  "corpusSha256": "9ce270716f0d0fd4aea37bda834f6de4acf5edde1320675ab39343d911cb05d7",
+  "lexiconSha256": "66dc26ad2e514945932cfbc2a5712273e5dea701bebd66a68f5fabe809921751",
+  "note": "Recorded before the first evaluation of corpus v3; the holdout split is not used for tuning."
+}

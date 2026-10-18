@@ -1,0 +1,11 @@
+decide wall=0.11s rss=26360KB
+decide wall=0.11s rss=26236KB
+decide wall=0.11s rss=26276KB
+selftest(incl. PartialLayoutDetector) wall=0.38s rss=32748KB
+selftest(incl. PartialLayoutDetector) wall=0.42s rss=32748KB
+selftest(incl. PartialLayoutDetector) wall=0.39s rss=32620KB
+BEFORE decide wall=0.01s rss=21376KB
+BEFORE decide wall=0.01s rss=21376KB
+BEFORE decide wall=0.01s rss=21248KB
+918439 Sources/LayoutPilotCore/Resources/lexicon.json
+13400 research/lexicon/authored-lexicon.json

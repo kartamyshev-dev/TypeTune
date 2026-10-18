@@ -54,6 +54,14 @@ func physicalPunctuationChecks() -> [(Bool, String)] {
     var noAuto = Settings(); noAuto.automatic = false
     check(token("ghbdtn/", noAuto) == nil, "automatic layout off disables converted punctuation")
 
+    // A known word followed by its own sentence punctuation is not a letter-bearing token.
+    var tiny = Lexicon.bundled; tiny.english = ["it"]; tiny.russian = ["шею"]
+    var unknownIt = tiny; unknownIt.english = []
+    check(Engine(lexicon: tiny).decide("it.") == nil, "known word plus period stays: it.")
+    check(Engine(lexicon: tiny).decide("It.") == nil, "known capitalized word plus period stays: It.")
+    check(Engine(lexicon: unknownIt).decide("it.")?.replacement == "шею", "unknown prefix keeps the period as the ю key")
+    check(Engine(lexicon: tiny).decide("it.x") == nil || Engine(lexicon: tiny).decide("it.x")?.reason == .layout,
+          "punctuation inside a token is not stripped as a sentence suffix")
     let events = #"[{"kind":"text","text":"ghbdtn/"},{"kind":"boundary","text":" "}]"#
     let replay = (try? JSONDecoder().decode([ReplayEvent].self, from: Data(events.utf8))).map { Replay.run($0) }
     check(replay?.text == "привет. " && replay?.reasons == ["layout"], "replay replaces the whole token")

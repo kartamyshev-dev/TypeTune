@@ -132,16 +132,23 @@ public struct Engine: Sendable {
         // A candidate must be a known all-letter word; paths, digits and mixed scripts stay intact.
         guard word.count >= 3, !Layout.isMixed(word),
               word.allSatisfy({ $0.isLetter }) || converted.allSatisfy({ $0.isLetter }) else { return nil }
+        // A known word followed by its own sentence punctuation is ordinary text: the
+        // period of "it." is not the Russian ю of шею.
+        let stripped = word.prefix(while: { !".,!?;:".contains($0) })
+        if stripped.count < word.count, word.dropFirst(stripped.count).allSatisfy({ ".,!?;:".contains($0) }),
+           lexicon.contains(String(stripped)) { return nil }
         var result = word
         var reason: Decision.Reason?
         let letters = Array(word)
         // Physical punctuation is admitted above for dictionary-backed layout lookup,
         // but it does not license unconditional case changes in filenames/code tokens.
         // Three letters are usually an acronym plural or unit (IDs, PCs, GHz): change
-        // those only when the corrected word is known in either layout (МИр, DAy).
+        // those only when the corrected word is known in either layout (МИр, DAy), and
+        // never two capitals plus a plural s, even when the lowercase word exists (ids).
         if settings.typos, Self.isDoubleCapitalTypo(word), !Self.doubleCapsPreservedWords.contains(lower) {
             let fixed = String(word.prefix(1)) + word.dropFirst().lowercased()
-            if letters.count > 3 || lexicon.contains(fixed) || lexicon.contains(Layout.convert(fixed, mapping: mapping)) {
+            if letters.count > 3 || (letters[2] != "s" &&
+                (lexicon.contains(fixed) || lexicon.contains(Layout.convert(fixed, mapping: mapping)))) {
                 result = fixed; reason = .typo
             }
         }

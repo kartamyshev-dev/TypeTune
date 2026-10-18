@@ -1,6 +1,7 @@
 import AppKit
 import Carbon
 import Combine
+import LayoutPilotCore
 import ServiceManagement
 import SwiftUI
 
@@ -12,6 +13,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var cancellables = Set<AnyCancellable>()
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
+        // Decode the ~60k-word lexicon and its prefix index off the main thread, so the
+        // first keystroke does not pay the one-time load (static lets are initialized once).
+        DispatchQueue.global(qos: .utility).async { _ = Lexicon.bundled; _ = PartialLayoutDetector.bundled }
         store.launchAtLogin = SMAppService.mainApp.status == .enabled
         keyboard = KeyboardService(store: store)
         keyboard.onRecoveryNeeded = { [weak self] in self?.showSettings() }

@@ -14,7 +14,7 @@
 - [x] Этап 3 (ядро; меню/жест/настройки не скомпилированы): полная пауза `Settings.paused` — [evidence](../research/evidence/stage3-pause-2026-10-17/verification.json).
 - [ ] Этап 4 (GUI): прокрутка/drag вне барьера, мёртвый код, предел буфера — код и Core-инварианты готовы ([evidence](../research/evidence/stage4-events-2026-10-17/verification.json)); открыто до сборки и native-проверки на Mac.
 - [ ] Этап 5 (GUI): таблица раскладки из UCKeyTranslate — Core-сборка и проверка таблицы готовы ([evidence](../research/evidence/stage5-layout-mapping-2026-10-17/verification.json)); открыто до сборки и native-проверки на Mac.
-- [ ] Этап 6: расширение собственного словаря, корпус v3, оценка на естественном тексте.
+- [x] Этап 6 (ядро; прогрев в приложении не скомпилирован): расширение словаря, корпус v3, оценка на естественном тексте — [evidence](../research/evidence/stage6-lexicon-2026-10-17/verification.json), [LEXICON](LEXICON.md). Открыто: решение по трёхбуквенным аббревиатурам.
 - [ ] Этап 7: MutationSession в Core.
 - [ ] Этап 8: CI.
 - [ ] Этап 9: README и реорганизация документации.

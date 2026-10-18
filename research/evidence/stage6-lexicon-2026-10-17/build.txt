@@ -1,0 +1,6 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write swift-version-2198EC330A9A1ACF.txt
+[1/3] Copying LEXICON-NOTICE.txt
+Build of product 'layoutpilot-cli' complete! (0.58s)
+exit=0

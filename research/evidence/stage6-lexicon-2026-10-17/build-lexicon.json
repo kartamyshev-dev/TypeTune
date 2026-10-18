@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "topEnglish": 30000,
+  "topRussian": 30000,
+  "dominance": 100.0,
+  "scowlLevels": [
+    10,
+    20,
+    35,
+    40,
+    50,
+    55,
+    60,
+    70
+  ],
+  "sources": {
+    "en_50k.txt": "5351ff405b1126ef555791dd4d9798a48e3e9a501a9fc481a9da957752cfb458",
+    "ru_50k.txt": "6095f507cc167488ec66ada5a85ac50433503a08ad24a07c6eabdf54352c4e7f",
+    "ru_RU.dic": "f6047416a0204adbecf3a451b874ec8a97ee37e2cbc714466ef04d8dbcc0d6fc",
+    "ru_RU.aff": "38ce7d4af78e211e9bafe4bf7e3d6a2c420591136cb738ec6648f8fdf6524cd7",
+    "scowl.tar.gz": "5587667caa20c4891390c2d42dbb4d5c4c3f41bee77af1457ece3ba23fb859cc"
+  },
+  "authoredSha256": "8f84de0b9d7628f9cc1667328426ccd13c8488b51e06d879e7113a5315334fee",
+  "counts": {
+    "englishRankedLetters": 46691,
+    "englishValid": 31647,
+    "russianRankedLetters": 48217,
+    "russianValid": 41901,
+    "englishSelected": 30000,
+    "russianSelected": 30000,
+    "englishPairProtection": 7,
+    "russianPairProtection": 27,
+    "englishFinal": 30022,
+    "russianFinal": 30057
+  },
+  "dominanceDropped": [
+    "вшу (ru 9.53e-07) → die (en 2.95e-04)",
+    "гр (ru 1.74e-06) → uh (en 8.17e-04)",
+    "еру (ru 9.53e-07) → the (en 3.14e-02)",
+    "tot (en 8.76e-07) → еще (ru 1.86e-03)",
+    "иге (ru 9.53e-07) → but (en 5.01e-03)",
+    "kb (en 2.19e-07) → ли (ru 1.25e-03)",
+    "лузе (ru 9.53e-07) → kept (en 1.05e-04)",
+    "ye (en 1.43e-05) → ну (ru 2.95e-03)",
+    "celt (en 2.19e-07) → суде (ru 4.83e-05)",
+    "туче (ru 9.53e-07) → next (en 4.63e-04)",
+    "ша (ru 1.82e-06) → if (en 3.63e-03)",
+    "шт (ru 9.53e-07) → in (en 1.01e-02)"
+  ],
+  "pairProtectionExamples": {
+    "english": [
+      "aby",
+      "celt",
+      "cere",
+      "kb",
+      "kerf",
+      "kex",
+      "leu"
+    ],
+    "russian": [
+      "вше",
+      "вшу",
+      "дул",
+      "дум",
+      "еру",
+      "зги",
+      "зуде",
+      "иге",
+      "иуд",
+      "иуде",
+      "кум",
+      "кумы",
+      "лузе",
+      "луп",
+      "лупы",
+      "нут",
+      "пуд",
+      "русл",
+      "руты",
+      "туе",
+      "туфе",
+      "туче",
+      "укусе",
+      "утешен",
+      "уч",
+      "фае",
+      "шт"
+    ]
+  },
+  "lexiconSha256": "66dc26ad2e514945932cfbc2a5712273e5dea701bebd66a68f5fabe809921751",
+  "lexiconBytes": 918439
+}

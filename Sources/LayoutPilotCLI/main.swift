@@ -48,9 +48,24 @@ func evaluate(_ path: String, split: String?) throws -> Evaluation {
     guard report.total.count > 0 else { throw NSError(domain: "No fixtures selected", code: 1) }
     return report
 }
+func rewrite(_ text: String, engine: Engine = Engine()) -> String {
+    var output = "", token = ""
+    func flush() {
+        guard !token.isEmpty else { return }
+        if let decision = engine.completedTokenDecision(token, decide: { engine.decide($0) }) {
+            output += decision.replacement + token.dropFirst(decision.original.count)
+        } else { output += token }
+        token = ""
+    }
+    for character in text {
+        if character.isWhitespace { flush(); output.append(character) } else { token.append(character) }
+    }
+    flush()
+    return output
+}
 let args = Array(CommandLine.arguments.dropFirst())
 do {
-    guard let command = args.first else { fail("Usage: layoutpilot-cli convert TEXT | decide TEXT | replay FILE.json | evaluate FILE.jsonl [--split train|holdout] | selftest") }
+    guard let command = args.first else { fail("Usage: layoutpilot-cli convert TEXT | decide TEXT | replay FILE.json | evaluate FILE.jsonl [--split train|holdout] | rewrite FILE.txt | selftest") }
     switch command {
     case "selftest": exit(runSelfTests() == 0 ? 0 : 1)
     case "convert": guard args.count >= 2 else { fail("Missing text") }; print(Layout.convert(args.dropFirst().joined(separator: " ")))
@@ -64,6 +79,11 @@ do {
         guard args.count == 2 || (args.count == 4 && args[2] == "--split" && ["train", "holdout"].contains(args[3])) else { fail("evaluate FILE.jsonl [--split train|holdout]") }
         let result = try evaluate(args[1], split: args.count == 4 ? args[3] : nil)
         try encode(result); if !result.failures.isEmpty { exit(1) }
+    case "rewrite":
+        // Offline evaluation aid: every whitespace-delimited token gets the same
+        // completed-token decision as automatic correction; separators are preserved.
+        guard args.count == 2 else { fail("rewrite requires a UTF-8 text file") }
+        print(rewrite(try String(contentsOfFile: args[1], encoding: .utf8)), terminator: "")
     default: fail("Unknown command: \(command)")
     }
 } catch { fail(String(describing: error)) }

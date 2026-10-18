@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "rows": 22000,
+  "roots": 2000,
+  "split": {
+    "train": 15400,
+    "holdout": 6600
+  },
+  "categories": {
+    "case": 2000,
+    "case_wrong_title": 2000,
+    "case_wrong_upper": 2000,
+    "code": 2000,
+    "correct": 2000,
+    "digits": 2000,
+    "doublecaps": 2000,
+    "email": 2000,
+    "mixed": 2000,
+    "url": 2000,
+    "wrong": 2000
+  },
+  "sha256": "9ce270716f0d0fd4aea37bda834f6de4acf5edde1320675ab39343d911cb05d7",
+  "lexiconSha256": "66dc26ad2e514945932cfbc2a5712273e5dea701bebd66a68f5fabe809921751",
+  "originalObservations": 0,
+  "notice": "Offline consistency only, roots from the expanded lexicon. No independent language quality or live equivalence claim."
+}

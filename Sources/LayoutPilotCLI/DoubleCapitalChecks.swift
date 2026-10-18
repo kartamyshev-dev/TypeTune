@@ -4,7 +4,7 @@ func doubleCapitalChecks() -> [(Bool, String)] {
     var checks: [(Bool, String)] = []
     func check(_ result: Bool, _ name: String) { checks.append((result, "double capital: " + name)) }
     let engine = Engine()
-    for word in ["IDs", "PCs", "TVs", "VMs", "OKs", "GHz", "KHz", "ЦРу"] {
+    for word in ["IDs", "PCs", "TVs", "VMs", "OKs", "GHz", "KHz", "ЦРу", "ADs"] {
         check(engine.decide(word) == nil, "unknown three-letter acronym form stays: \(word)")
     }
     for (word, expected) in [("DAy", "Day"), ("МИр", "Мир"), ("КОд", "Код"), ("ПРивет", "Привет"), ("HEllo", "Hello")] {
