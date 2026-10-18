@@ -1437,8 +1437,7 @@ final class KeyboardService {
             "Доставка приостановлена; контекст после команд неизвестен — требуется точное исходное состояние"
     }
     func recoverInput() {
-        guard !recovery.requiresReview, inputReplay.outstanding == 0,
-              let expected = recoveryTarget, mutationGate == nil,
+        guard let expected = session.recoveryCandidate,
               NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid,
               !IsSecureEventInputEnabled() else { return }
         if let source = recoverySourceID, source != InputSources.identifier {
@@ -1447,7 +1446,7 @@ final class KeyboardService {
         let expectedSource = recoverySourceID
         let expectedRevision = revision
         cancelGestureStateForInterception()
-        mutationGate = expected; mutationNonce = UUID(); mutationDeadline = nil
+        session.beginRecovery(expected)
         axQueue.async { [weak self] in
             guard let self else { return }
             // No recovery write moves a changed caret. Match the acknowledged
@@ -1467,25 +1466,22 @@ final class KeyboardService {
             }
         }
     }
-    var hasPendingInput: Bool { mutationGate != nil || !inputReplay.isDrained || recovery.requiresReview }
+    var hasPendingInput: Bool { session.hasPendingInput }
     func confirmTextReviewed() {
-        guard mutationGate == nil, inputReplay.outstanding == 0, recovery.requiresReview else { return }
-        recovery.confirmTextReviewed()
+        guard session.confirmReviewed() else { return }
         InputDiagnostics.shared.record("text-review-confirmed", revision: revision, counts: recoveryCounts)
         if inputReplay.isDrained {
-            recoveryTarget = nil; recoverySourceID = nil
             recoveryReplayProjection = nil; recoveryReplaySource = nil
         }
         resetTransient(); tapRecovery.reset(); refresh(); captureAfterEvent()
     }
     func discardPendingInput() {
-        guard mutationGate == nil, inputReplay.outstanding == 0, inputReplay.count > 0 else { return }
+        guard session.mayDiscardPending else { return }
         let alert = NSAlert(); alert.messageText = "Отбросить задержанные нажатия?"
         alert.informativeText = "Они хранятся только в памяти. После удаления восстановить их нельзя."
         alert.addButton(withTitle: "Сохранить"); alert.addButton(withTitle: "Отбросить")
-        if alert.runModal() == .alertSecondButtonReturn {
-            inputReplay.discardPending()
-            if !recovery.requiresReview { recoveryTarget = nil; recoverySourceID = nil }
+        // The modal panel runs the main loop; discard only if still applicable.
+        if alert.runModal() == .alertSecondButtonReturn, session.discardPending() {
             recoveryReplayProjection = nil; recoveryReplaySource = nil
             InputDiagnostics.shared.record("pending-discarded", revision: revision, counts: recoveryCounts)
             if stopRequested { stop() }
