@@ -81,6 +81,10 @@ enum AccessibilityEditor {
         /// A password field: universal mode must not touch it.
         case secure
         case textBeforeCaret(String)
+        /// The field is readable but text is selected (for example an inline autocompletion
+        /// after the caret). The first Backspace would delete the selection, not a typed
+        /// character, so this is never treated as unreadable or edited blind.
+        case selection
     }
     enum SelectionObservation: Equatable {
         case unreadable, secure
@@ -120,8 +124,9 @@ enum AccessibilityEditor {
             return .unreadable
         }
         var range = CFRange()
-        guard AXValueGetValue(rawRange as! AXValue, .cfRange, &range), range.length == 0,
-              let prefix = TextEdit.validatedRange(NSRange(location: 0, length: range.location), in: text) else {
+        guard AXValueGetValue(rawRange as! AXValue, .cfRange, &range) else { return .unreadable }
+        guard range.length == 0 else { return .selection }
+        guard let prefix = TextEdit.validatedRange(NSRange(location: 0, length: range.location), in: text) else {
             return .unreadable
         }
         return .textBeforeCaret(String(text[prefix]))

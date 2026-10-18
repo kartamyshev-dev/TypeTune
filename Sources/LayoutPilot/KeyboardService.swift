@@ -403,11 +403,19 @@ final class KeyboardService {
     }
     /// Corrects the token that `boundary`, the last typed text, has just completed.
     private func universalCorrectCompletedToken(boundary: String) {
-        guard let completed = typed.completedToken, completed.boundary == boundary,
-              let target = universalTarget(), InputSources.language != nil else { return }
+        let completed = typed.completedToken
+        let target = universalTarget()
+        // No text: whether a token was buffered, the target allowed and a decision made.
+        var checks = ["tokenBuffered": completed != nil, "boundaryMatches": completed?.boundary == boundary,
+                      "target": target != nil, "knownSource": InputSources.language != nil,
+                      "anchored": completed.map { typed.tokenIsAnchored(boundaryLength: $0.boundary.count) } ?? false]
+        defer { InputDiagnostics.shared.record("universal-boundary", revision: revision, checks: checks) }
+        guard let completed, completed.boundary == boundary, let target, InputSources.language != nil else { return }
         let context = InputContext(application: target.application, secure: IsSecureEventInputEnabled())
-        guard let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
-                  isKnownWord: { self.isKnownWord($0) }),
+        let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
+                                                     isKnownWord: { self.isKnownWord($0) })
+        checks["decision"] = decision != nil
+        guard let decision,
               let plan = KeystrokeEditPlan(token: completed.token, boundary: completed.boundary, decision: decision) else { return }
         if let language = decision.targetLanguage, !InputSources.isAvailable(language) {
             skipped("Добавьте нужную русскую или английскую раскладку в macOS"); return
@@ -555,9 +563,21 @@ final class KeyboardService {
                     Thread.sleep(forTimeInterval: 0.005)
                     observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
                 }
+                let kind: String
+                switch observation {
+                case .textBeforeCaret: kind = "text"
+                case .selection: kind = "selection"
+                case .unreadable: kind = "unreadable"
+                case .secure: kind = "secure"
+                }
+                // Field state only, never its text: tells blind, mismatch and autocomplete apart.
+                InputDiagnostics.shared.record("universal-observe", revision: expectedRevision,
+                    checks: ["anchored": anchored], reason: kind)
                 switch observation {
                 case .textBeforeCaret(let text):
                     verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .mismatch
+                // Readable, but Backspace would remove the selection first: never edit blind.
+                case .selection: verification = .mismatch
                 case .unreadable: verification = .unreadable
                 case .secure: verification = .secure
                 }
