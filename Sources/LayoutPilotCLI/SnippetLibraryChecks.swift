@@ -105,5 +105,24 @@ func snippetLibraryChecks() -> [(Bool, String)] {
     let invalid = Snippet(abbreviation: "x", text: "y")
     let usable = SnippetLibrary(snippets: [first, second, disabled, invalid]).usable()
     check(usable == [first], "only enabled, valid, first-of-colliding snippets can fire")
+
+    // Rules for the per-application path.
+    let plainRule = Snippet(abbreviation: "спс", text: "спасибо")
+    let escapedRule = Snippet(migrating: UserRule(source: "tpl", replacement: "{{x}}"))
+    let legacy = SnippetLibrary(snippets: [
+        plainRule, escapedRule,
+        Snippet(abbreviation: ";адр", text: "адрес"),
+        Snippet(abbreviation: "дт", text: "{{дата}}"),
+        Snippet(abbreviation: "пдп", text: "С уважением,\nВасилий"),
+        Snippet(abbreviation: "мл", text: "почта", applications: ApplicationFilter(mode: .only, applications: ["com.apple.mail"])),
+        Snippet(abbreviation: "вкл", text: "выключено", enabled: false)
+    ]).legacyRules()
+    check(legacy.map(\.source) == ["спс", "tpl"] && legacy.map(\.replacement) == ["спасибо", "{{x}}"],
+          "only literal whole-word snippets for every application become rules")
+    check(legacy.first?.id == plainRule.id, "a derived rule keeps the snippet id")
+    check(SnippetLibrary(snippets: [Snippet(migrating: rule)]).legacyRules().map(\.replacement) == [rule.replacement],
+          "a migrated rule survives the round trip unchanged")
+    check(SnippetTemplate.literal("a\\{{b") == "a{{b" && SnippetTemplate.literal("{{дата}}") == nil &&
+          SnippetTemplate.literal("") == nil, "literal text of a template")
     return checks
 }

@@ -101,7 +101,7 @@ struct SettingsView: View {
             TabView(selection: $form.tab) {
                 general.tabItem { Label("Основное", systemImage: "keyboard") }.tag(0)
                 exceptions.tabItem { Label("Исключения", systemImage: "hand.raised") }.tag(1)
-                rules.tabItem { Label("Правила", systemImage: "text.badge.plus") }.tag(2)
+                rules.tabItem { Label("Сниппеты", systemImage: "text.badge.plus") }.tag(2)
                 lab.tabItem { Label("Проверка", systemImage: "checkmark.circle") }.tag(3)
             }.padding(.horizontal, 16).padding(.top, 12).disabled(!store.settingsStorageAvailable)
             Divider()
@@ -231,24 +231,8 @@ struct SettingsView: View {
     }
     private var rules: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Собственные замены").font(.headline)
-            Text("Правило применяется к целому слову после разделителя. Исключения имеют приоритет.").foregroundStyle(.secondary)
-            HStack {
-                TextField("Исходное слово", text: $form.ruleSource)
-                Image(systemName: "arrow.right")
-                TextField("Заменить на", text: $form.ruleTarget)
-                Button("Добавить") {
-                    store.addRule(form.ruleSource, form.ruleTarget); form.ruleSource = ""; form.ruleTarget = ""
-                }.disabled(form.ruleSource.isEmpty || form.ruleTarget.isEmpty)
-            }
-            List {
-                ForEach(store.settings.rules) { rule in
-                    HStack {
-                        Text(rule.source); Image(systemName: "arrow.right"); Text(rule.replacement)
-                        Spacer(); Button("Убрать") { store.settings.rules.removeAll { $0.id == rule.id } }
-                    }.accessibilityElement(children: .contain)
-                }
-            }
+            // Former rules are snippets now; Settings.rules is derived from them.
+            SnippetsTab(store: store).frame(minHeight: 360)
             Text("Исключения после отмены").font(.headline)
             Text("Автоматически изменённое слово можно вернуть через ⌘⌥Z. После этого оно больше не меняется автоматически.")
                 .font(.caption).foregroundStyle(.secondary)
@@ -377,8 +361,6 @@ final class SettingsForm: ObservableObject {
     @Published var word = ""
     @Published var bundleID = ""
     @Published var autoBundleID = ""
-    @Published var ruleSource = ""
-    @Published var ruleTarget = ""
     @Published var sample = "ghbdtn"
     @Published var preview = ""
     @Published var tab = 0

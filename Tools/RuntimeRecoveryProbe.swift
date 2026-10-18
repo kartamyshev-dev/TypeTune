@@ -330,6 +330,35 @@ final class InputDiagnostics {
             keyboard.testingCompleteContextCapture(revision: 0, failure: .secureInput)
             checks["secure_failure_removes_manual_proposal"] = !keyboard.testingHasManualProposal
         }
+        do {
+            // Snippets (S7): migration of former rules, derived rules, persistence, damaged file.
+            let suite = "dev.layoutpilot.snippets-probe.\(UUID().uuidString)"
+            guard let isolated = UserDefaults(suiteName: suite) else { exit(2) }
+            defer { isolated.removePersistentDomain(forName: suite) }
+            var withRule = Settings(); withRule.rules = [UserRule(source: "спс", replacement: "спасибо")]
+            isolated.set(try JSONEncoder().encode(withRule), forKey: "settings.v1")
+            let file = FileManager.default.temporaryDirectory.appendingPathComponent("typetune-probe-\(UUID().uuidString).json")
+            defer { try? FileManager.default.removeItem(at: file) }
+            let store = Store(defaults: isolated, snippetsURL: file)
+            let ruleID = withRule.rules[0].id
+            checks["snippets_rules_migrated_with_ids"] = store.snippets.snippets.map(\.abbreviation) == ["спс"] &&
+                store.snippets.snippets.first?.id == ruleID && FileManager.default.fileExists(atPath: file.path)
+            checks["snippets_derived_rules_match_migrated"] = store.settings.rules.map(\.id) == [ruleID] &&
+                store.settings.rules.first?.replacement == "спасибо"
+            let address = Snippet(abbreviation: ";адр", text: "г. Москва\nул. Тверская")
+            checks["snippets_saved_and_usable"] = store.saveSnippet(address).isEmpty && store.usableSnippets.count == 2
+            checks["snippets_immediate_multiline_not_a_rule"] = store.settings.rules.map(\.id) == [ruleID]
+            checks["snippets_duplicate_refused"] = store.saveSnippet(Snippet(abbreviation: "СПС", text: "x")) == [.duplicate(of: ruleID)] &&
+                store.snippets.snippets.count == 2
+            store.deleteSnippet(ruleID)
+            checks["snippets_delete_removes_derived_rule"] = store.settings.rules.isEmpty && store.usableSnippets.map(\.id) == [address.id]
+            checks["snippets_persist_across_launch"] = Store(defaults: isolated, snippetsURL: file).snippets.snippets == [address]
+            try Data("{".utf8).write(to: file)
+            let broken = Store(defaults: isolated, snippetsURL: file)
+            _ = broken.saveSnippet(Snippet(abbreviation: ";x", text: "y"))
+            checks["snippets_damaged_file_never_overwritten"] = !broken.snippetsStorageAvailable &&
+                (try? Data(contentsOf: file)) == Data("{".utf8)
+        }
         checks["settings_bytes_preserved"] = defaults.data(forKey: "settings.v1") == settings
         let passed = checks.values.allSatisfy { $0 }
         let output: [String: Any] = ["passed": passed, "checks": checks,

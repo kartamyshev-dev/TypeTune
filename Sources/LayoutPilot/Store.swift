@@ -38,16 +38,35 @@ final class Store: ObservableObject {
     /// with Accessibility where the field is readable. On unless the user turned it off;
     /// off restores the earlier per-application path (TextEdit, Chrome, Codex, zsh).
     @Published var universalInput: Bool { didSet { defaults.set(universalInput, forKey: "universalInput") } }
+    /// Snippets (docs/SNIPPETS_PLAN.md): on by default; they fire in universal mode only.
+    @Published var snippetsEnabled: Bool { didSet { defaults.set(snippetsEnabled, forKey: "snippetsEnabled") } }
+    @Published private(set) var snippets = SnippetLibrary()
+    /// False when snippets.json is unreadable or newer: nothing is written until the user decides.
+    @Published private(set) var snippetsStorageAvailable = true
+    /// Snippets that can fire, computed once per change rather than on every key.
+    private(set) var usableSnippets: [Snippet] = []
+    private let snippetsURL: URL?
     @Published private(set) var headerImagePath: String { didSet { defaults.set(headerImagePath, forKey: "headerImagePath") } }
     @Published private(set) var headerImage: NSImage?
     private let defaults: UserDefaults
     private var activeSound: NSSound?
-    init(defaults: UserDefaults = .standard) {
+    /// `snippetsURL` defaults to Application Support for the standard defaults; isolated
+    /// defaults (probes) get an isolated temporary file, so they never touch the user's snippets.
+    init(defaults: UserDefaults = .standard, snippetsURL: URL? = nil) {
         self.defaults = defaults
         testSelectionDelay = Double(max(0, min(150, defaults.integer(forKey: "test.axSelectionDelayMilliseconds")))) / 1000
         useSystemDictionary = defaults.bool(forKey: "useSystemDictionary")
         earlyCorrection = defaults.bool(forKey: "earlyCorrection")
         universalInput = defaults.object(forKey: "universalInput") == nil ? true : defaults.bool(forKey: "universalInput")
+        snippetsEnabled = defaults.object(forKey: "snippetsEnabled") == nil ? true : defaults.bool(forKey: "snippetsEnabled")
+        if let snippetsURL { self.snippetsURL = snippetsURL }
+        else if defaults === UserDefaults.standard {
+            self.snippetsURL = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
+                appropriateFor: nil, create: true).appendingPathComponent("LayoutPilot/snippets.json")
+        } else {
+            self.snippetsURL = FileManager.default.temporaryDirectory
+                .appendingPathComponent("typetune-snippets-\(UUID().uuidString).json")
+        }
         customSoundPath = defaults.string(forKey: "customSoundPath") ?? ""
         headerImagePath = defaults.string(forKey: "headerImagePath") ?? ""
         headerImage = nil
@@ -83,6 +102,7 @@ final class Store: ObservableObject {
         statisticsStorageAvailable = storageAvailable
         if storageAvailable { persistStatistics() }
         else { lastStatus = "Сохранённая статистика недоступна. Прежний итог исправлений сохранён." }
+        loadSnippets()
         if !headerImagePath.isEmpty {
             do {
                 let selected = URL(fileURLWithPath: headerImagePath)
@@ -128,14 +148,96 @@ final class Store: ObservableObject {
         statistics.record(.sound, confirmed: true)
         persistStatistics()
     }
-    func addRule(_ source: String, _ replacement: String) {
-        let source = source.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !source.isEmpty, !replacement.isEmpty, !source.contains(where: { $0.isWhitespace }) else {
-            lastStatus = "Для правила укажите одно исходное слово и замену"; return
+    // MARK: Snippets
+
+    private func loadSnippets() {
+        guard settingsStorageAvailable, let url = snippetsURL else {
+            snippetsStorageAvailable = false; return
         }
-        settings.rules.removeAll { $0.source.caseInsensitiveCompare(source) == .orderedSame }
-        settings.rules.append(UserRule(source: source, replacement: replacement))
+        let data: Data?
+        if FileManager.default.fileExists(atPath: url.path) {
+            guard let read = try? Data(contentsOf: url) else {
+                snippetsStorageAvailable = false
+                lastStatus = "Файл сниппетов не читается; изменения сниппетов не сохраняются"
+                return
+            }
+            data = read
+        } else { data = nil }
+        switch SnippetLibrary.load(fileData: data, legacyRules: settings.rules) {
+        case .loaded(let library):
+            snippets = library; refreshUsableSnippets()
+        case .migrated(let library):
+            // First launch with snippets: the former rules become snippets with the same ids.
+            snippets = library; refreshUsableSnippets(); persistSnippets()
+        case .unavailable(let error):
+            snippetsStorageAvailable = false
+            if case .unsupportedVersion = error {
+                lastStatus = "Файл сниппетов создан более новой версией TypeTune; он не изменяется"
+            } else { lastStatus = "Файл сниппетов повреждён; он не изменяется" }
+        }
     }
+    private func refreshUsableSnippets() { usableSnippets = snippets.usable(mapping: InputSources.mapping) }
+    /// Writes the library atomically and keeps the former rules (used with universal mode off)
+    /// equal to the literal whole-word snippets.
+    @discardableResult
+    private func persistSnippets() -> Bool {
+        guard snippetsStorageAvailable, let url = snippetsURL else { return false }
+        do {
+            try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+            try snippets.encoded().write(to: url, options: .atomic)
+        } catch {
+            lastStatus = "Не удалось сохранить сниппеты: \(error.localizedDescription)"
+            return false
+        }
+        let rules = snippets.legacyRules(mapping: InputSources.mapping)
+        if settings.rules != rules { settings.rules = rules }
+        return true
+    }
+    func snippetIssues(_ snippet: Snippet) -> [SnippetIssue] {
+        snippets.issues(for: snippet, mapping: InputSources.mapping)
+    }
+    /// Adds or replaces a snippet. Returns its issues; nothing is saved when there are any.
+    @discardableResult
+    func saveSnippet(_ snippet: Snippet) -> [SnippetIssue] {
+        let issues = snippetIssues(snippet)
+        guard issues.isEmpty, snippetsStorageAvailable else { return issues }
+        if let index = snippets.snippets.firstIndex(where: { $0.id == snippet.id }) { snippets.snippets[index] = snippet }
+        else { snippets.snippets.append(snippet) }
+        refreshUsableSnippets(); persistSnippets()
+        return []
+    }
+    func deleteSnippet(_ id: UUID) {
+        guard snippetsStorageAvailable else { return }
+        snippets.snippets.removeAll { $0.id == id }
+        refreshUsableSnippets(); persistSnippets()
+    }
+    func setSnippet(_ id: UUID, enabled: Bool) {
+        guard snippetsStorageAvailable, let index = snippets.snippets.firstIndex(where: { $0.id == id }) else { return }
+        snippets.snippets[index].enabled = enabled
+        refreshUsableSnippets(); persistSnippets()
+    }
+    func exportSnippets(to url: URL) {
+        do {
+            try snippets.encoded().write(to: url, options: .atomic)
+            lastStatus = "Сниппеты сохранены в файл: \(snippets.snippets.count)"
+        } catch { lastStatus = "Не удалось сохранить файл сниппетов: \(error.localizedDescription)" }
+    }
+    /// Adds snippets from a TypeTune export. Snippets already present (same id) or with issues
+    /// against the current library are skipped and counted.
+    func importSnippets(from url: URL) {
+        guard snippetsStorageAvailable else { return }
+        guard let data = try? Data(contentsOf: url), let imported = try? SnippetLibrary.decode(data) else {
+            lastStatus = "Файл не похож на сниппеты TypeTune"; return
+        }
+        var added = 0, skipped = 0
+        for snippet in imported.snippets {
+            if snippets.snippets.contains(where: { $0.id == snippet.id }) || !snippetIssues(snippet).isEmpty { skipped += 1; continue }
+            snippets.snippets.append(snippet); added += 1
+        }
+        refreshUsableSnippets(); persistSnippets()
+        lastStatus = "Добавлено сниппетов: \(added); пропущено: \(skipped)"
+    }
+
     func learn(_ word: String) {
         let word = word.lowercased()
         if !settings.learnedWords.contains(word) { settings.learnedWords.append(word) }

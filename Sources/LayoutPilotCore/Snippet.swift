@@ -187,3 +187,20 @@ public struct SnippetLibrary: Codable, Equatable, Sendable {
             x == Layout.convert(y, to: .russian, mapping: mapping).lowercased()
     }
 }
+
+public extension SnippetLibrary {
+    /// Former literal rules for the per-application path (universal mode off), which does not
+    /// know snippets: usable whole-word snippets without variables or line breaks that work in
+    /// every application. Keeps each snippet's id. Universal mode ignores `Settings.rules` and
+    /// uses the library itself, so a deleted or restricted snippet never fires through a rule.
+    func legacyRules(mapping: Layout.Mapping = .standardPC) -> [UserRule] {
+        usable(mapping: mapping).compactMap { snippet in
+            guard snippet.trigger == .boundary, snippet.applications.mode == .all,
+                  let text = SnippetTemplate.literal(snippet.text), !text.contains(where: \.isNewline) else { return nil }
+            var rule = UserRule(source: snippet.abbreviation, replacement: text)
+            rule.id = snippet.id
+            return rule
+        }
+    }
+}
+

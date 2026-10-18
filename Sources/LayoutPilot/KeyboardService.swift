@@ -401,8 +401,30 @@ final class KeyboardService {
         // The idle context timer must not read the field while the user is typing.
         lastKeyDownTime = ProcessInfo.processInfo.systemUptime
         gestures.keyUsed(); shiftTask?.cancel()
-        guard let typedNow = universalBoundary(event) else { return }
+        guard let typedNow = universalBoundary(event) else {
+            if let inserted = universalInsertion(event) { universalImmediateSnippet(inserted: inserted) }
+            return
+        }
         universalCorrectCompletedToken(boundary: typedNow)
+    }
+    /// The non-whitespace text a non-repeated key-down typed (immediate snippets).
+    private func universalInsertion(_ event: CGEvent) -> String? {
+        guard event.getIntegerValueField(.keyboardEventAutorepeat) == 0,
+              event.flags.intersection([.maskCommand, .maskControl, .maskAlternate]).isEmpty,
+              let typedNow = InputSources.insertionText(for: event, sourceID: InputSources.identifier),
+              !typedNow.isEmpty, !typedNow.contains(where: { $0.isWhitespace }) else { return nil }
+        return typedNow
+    }
+    /// Snippets can fire: enabled, storage readable, not paused (excluded applications and
+    /// Secure Input are checked by universalTarget()).
+    private var snippetsActive: Bool {
+        store.snippetsEnabled && store.snippetsStorageAvailable && !store.settings.paused && !store.usableSnippets.isEmpty
+    }
+    private func universalImmediateSnippet(inserted: String) {
+        guard snippetsActive, let target = universalTarget(),
+              let match = SnippetMatcher.immediate(typed, inserted: inserted, snippets: store.usableSnippets,
+                                                   application: target.application, mapping: InputSources.mapping) else { return }
+        expandSnippet(match, target: target)
     }
     /// The whitespace a non-repeated key-down typed, when it is a token boundary.
     private func universalBoundary(_ event: CGEvent) -> String? {
@@ -421,7 +443,14 @@ final class KeyboardService {
                       "target": target != nil, "knownSource": InputSources.language != nil,
                       "anchored": completed.map { typed.tokenIsAnchored(boundaryLength: $0.boundary.count) } ?? false]
         defer { InputDiagnostics.shared.record("universal-boundary", revision: revision, checks: checks) }
-        guard let completed, completed.boundary == boundary, let target, InputSources.language != nil else { return }
+        guard let completed, completed.boundary == boundary, let target else { return }
+        // A snippet abbreviation takes precedence over layout correction (DECISIONS п. 28).
+        if snippetsActive, let match = SnippetMatcher.boundary(typed, boundary: boundary, snippets: store.usableSnippets,
+                                                               application: target.application, mapping: InputSources.mapping) {
+            checks["snippet"] = true
+            expandSnippet(match, target: target); return
+        }
+        guard InputSources.language != nil else { return }
         let context = InputContext(application: target.application, secure: IsSecureEventInputEnabled())
         let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
                                                      isKnownWord: { self.isKnownWord($0) })
@@ -533,6 +562,15 @@ final class KeyboardService {
 
     /// ⌘⌥Z: undo the last keystroke edit while the buffer still ends with its result.
     private func universalUndo() {
+        // A snippet can be undone while nothing has been typed since it was inserted.
+        if let previous = snippetTransaction {
+            snippetTransaction = nil
+            if typed.lastReset == .inserted, let target = universalTarget(), target.pid == previous.target.pid {
+                keystrokeTransaction = nil
+                runSnippet(SnippetOperation(plan: previous.plan.inverse, target: target, anchored: true))
+                return
+            }
+        }
         guard let previous = keystrokeTransaction, let target = universalTarget(), target.pid == previous.target.pid,
               typed.text.hasSuffix(previous.plan.after) else {
             keystrokeTransaction = nil
@@ -668,6 +706,149 @@ final class KeyboardService {
         }
     }
     private enum KeystrokeConfirmation { case confirmed, notShown, unknown }
+
+    // MARK: Snippets (docs/SNIPPETS_PLAN.md, S6)
+
+    private struct SnippetOperation {
+        let plan: SnippetEditPlan
+        let target: EditorSnapshot
+        /// A word boundary is known before the abbreviation, or none is needed.
+        let anchored: Bool
+    }
+    /// The last inserted snippet; ⌘⌥Z undoes it while nothing has been typed since.
+    private var snippetTransaction: SnippetOperation?
+
+    private func expandSnippet(_ match: SnippetMatch, target: EditorSnapshot) {
+        // The clipboard is read only for a snippet that uses it.
+        let clipboard = match.snippet.text.contains("{{") ? NSPasteboard.general.string(forType: .string) : nil
+        switch SnippetTemplate.render(match.snippet.text, caseStyle: match.caseStyle, now: Date(),
+                                      timeZone: .current, clipboard: clipboard) {
+        case .failure(let failure):
+            switch failure {
+            case .clipboardUnavailable: skipped("Сниппет не вставлен: в буфере обмена нет текста")
+            case .clipboardCharacters: skipped("Сниппет не вставлен: в буфере обмена недопустимые символы")
+            case .tooLong: skipped("Сниппет не вставлен: текст длиннее 10 000 символов")
+            case .template: skipped("Сниппет не вставлен: ошибка в шаблоне")
+            }
+        case .success(let expansion):
+            guard let plan = SnippetEditPlan(match: match, expansion: expansion) else { return }
+            runSnippet(SnippetOperation(plan: plan, target: target, anchored: match.anchored))
+        }
+    }
+
+    /// Holds the barrier, waits for modifier keys to be released, verifies the field when
+    /// Accessibility can read it, posts the steps, confirms them and releases the barrier.
+    private func runSnippet(_ operation: SnippetOperation) {
+        cancelGestureStateForInterception()
+        session.beginMutation(operation.target, deadline: ProcessInfo.processInfo.systemUptime + 0.3)
+        let expectedRevision = revision, sourceID = InputSources.identifier
+        let plan = operation.plan, pid = operation.target.pid, anchored = operation.anchored
+        InputDiagnostics.shared.record("snippet-begin", revision: expectedRevision, checks: [
+            "anchored": anchored, "paste": plan.insertion == .paste, "undo": plan.restoresTyped, "cursor": plan.moveLeft > 0])
+        axQueue.async { [weak self] in
+            guard let self else { return }
+            let released = SnippetEditor.waitForModifierRelease(timeout: 1.5)
+            let deadline = ProcessInfo.processInfo.systemUptime + 0.080
+            var observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
+            while observation.needsAnotherRead(expects: { plan.expects(textBeforeCaret: $0) }),
+                  ProcessInfo.processInfo.systemUptime < deadline {
+                Thread.sleep(forTimeInterval: 0.005)
+                observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
+            }
+            let verification: KeystrokeVerification
+            switch observation {
+            case .textBeforeCaret(let text):
+                verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .mismatch
+            case .selection: verification = .mismatch
+            case .unreadable: verification = .unreadable
+            case .secure: verification = .secure
+            }
+            DispatchQueue.main.async {
+                self.performSnippet(operation, verification: verification, released: released,
+                                    revision: expectedRevision, sourceID: sourceID)
+            }
+        }
+    }
+    private func performSnippet(_ operation: SnippetOperation, verification: KeystrokeVerification, released: Bool,
+                                revision expectedRevision: Int, sourceID: String) {
+        let target = operation.target, plan = operation.plan
+        let readable = verification == .matches || verification == .mismatch
+        let fieldMatches = verification == .matches || (verification == .unreadable && operation.anchored)
+        let current = revision == expectedRevision && sourceID == InputSources.identifier && !IsSecureEventInputEnabled() &&
+            NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        InputDiagnostics.shared.record("snippet-verify", revision: expectedRevision, checks: [
+            "readable": readable, "fieldMatches": fieldMatches, "current": current, "released": released])
+        guard released, fieldMatches, current else {
+            if verification == .mismatch { typed.reset(.untrackedKey) }
+            finishMutation(.notApplied, before: target, settled: current ? target : nil)
+            if !released { skipped("Сниппет не вставлен: отпустите клавиши-модификаторы") }
+            else if verification == .mismatch { skipped("Сниппет не вставлен: текст поля не совпал с набранным") }
+            else if verification == .unreadable { skipped("Сниппет не вставлен: поле недоступно, а перед сокращением нет пробела") }
+            return
+        }
+        let saved: ClipboardSwap.Saved?
+        switch SnippetEditor.perform(plan, pid: target.pid) {
+        case .notPosted:
+            finishMutation(.notApplied, before: target, settled: target)
+            skipped("Сниппет не вставлен: нет разрешения на ввод или буфер обмена недоступен"); return
+        case .partial:
+            typed.reset(.untrackedKey); snippetTransaction = nil
+            finishMutation(.uncertain, before: target, settled: nil); return
+        case .posted(let value): saved = value
+        }
+        axQueue.async { [weak self] in
+            guard let self else { return }
+            var outcome: KeystrokeConfirmation = readable ? .unknown : .confirmed
+            if readable {
+                let deadline = ProcessInfo.processInfo.systemUptime + 0.600
+                repeat {
+                    let text: String?
+                    switch AccessibilityEditor.observeTextBeforeCaret(pid: target.pid) {
+                    case .textBeforeCaret(let value): text = value
+                    case .selection(let value): text = value
+                    case .unreadable, .secure: text = nil
+                    }
+                    if let text, plan.confirms(textBeforeCaret: text) { outcome = .confirmed; break }
+                    if let text, plan.expects(textBeforeCaret: text) { outcome = .notShown } else { outcome = .unknown }
+                    Thread.sleep(forTimeInterval: 0.010)
+                } while ProcessInfo.processInfo.systemUptime < deadline
+            }
+            DispatchQueue.main.async { self.finishSnippet(operation, outcome: outcome, readable: readable, saved: saved) }
+        }
+    }
+    private func finishSnippet(_ operation: SnippetOperation, outcome: KeystrokeConfirmation, readable: Bool,
+                               saved: ClipboardSwap.Saved?) {
+        let target = operation.target, plan = operation.plan
+        let current = !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        InputDiagnostics.shared.record("snippet-result", revision: revision, checks: [
+            "confirmed": outcome == .confirmed, "notShown": outcome == .notShown, "readable": readable, "current": current])
+        if let saved {
+            // Give the clipboard back once the application has had time to read it.
+            let wait = max(0, saved.placedAt + ClipboardSwap.restoreDelay - ProcessInfo.processInfo.systemUptime)
+            DispatchQueue.main.asyncAfter(deadline: .now() + wait) { [weak self] in
+                if !ClipboardSwap.restore(saved) {
+                    self?.skipped("Буфер обмена изменился во время вставки; прежнее содержимое не возвращено")
+                }
+            }
+        }
+        switch outcome {
+        case .confirmed:
+            plan.update(&typed)
+            snippetTransaction = plan.restoresTyped ? nil : operation
+            keystrokeTransaction = nil
+            store.lastStatus = plan.restoresTyped ? "Сниппет отменён" :
+                (readable ? "Сниппет вставлен. ⌘⌥Z — отменить" : "Сниппет вставлен без проверки поля. ⌘⌥Z — отменить")
+            if store.settings.sound, !plan.restoresTyped { store.playCorrectionSound() }
+            finishMutation(.verified(target), before: target, settled: current ? target : nil)
+        case .notShown:
+            typed.reset(.untrackedKey); snippetTransaction = nil
+            finishMutation(.notApplied, before: target, settled: current ? target : nil)
+            skipped("Поле не показало сниппет; проверьте текст")
+        case .unknown:
+            typed.reset(.untrackedKey); snippetTransaction = nil
+            finishMutation(.uncertain, before: target, settled: nil)
+        }
+    }
     /// axQueue only. Once per process: Chromium and Electron then build web accessibility.
     /// Returns true when the request was made now (and was accepted).
     @discardableResult
@@ -1333,7 +1514,15 @@ final class KeyboardService {
         apply(snapshot, range: proposal.range, decision: proposal.decision, partial: true)
     }
     /// The decision engine for current settings and the installed layouts' key table.
-    private var engine: Engine { Engine(settings: store.settings, mapping: InputSources.mapping) }
+    private var engine: Engine { Engine(settings: decisionSettings, mapping: InputSources.mapping) }
+    /// In universal mode the former rules are snippets; Settings.rules only serves the
+    /// per-application path, so a deleted or app-restricted snippet never fires as a rule.
+    private var decisionSettings: Settings {
+        guard store.universalInput else { return store.settings }
+        var settings = store.settings
+        settings.rules = []
+        return settings
+    }
     /// A token that is itself a word never becomes a layout prefix plus converted punctuation.
     private func isKnownWord(_ word: String) -> Bool {
         if Lexicon.bundled.contains(word) { return true }
@@ -1342,7 +1531,7 @@ final class KeyboardService {
     }
     func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
         if store.useSystemDictionary {
-            return MainActor.assumeIsolated { vocabulary.decision(word, settings: store.settings, context: context, mapping: InputSources.mapping) }
+            return MainActor.assumeIsolated { vocabulary.decision(word, settings: decisionSettings, context: context, mapping: InputSources.mapping) }
         }
         return engine.decide(word, context: context)
     }

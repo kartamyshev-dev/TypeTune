@@ -41,6 +41,17 @@ public enum SnippetTemplate {
         return String(result)
     }
 
+    /// The text of a template made only of literal text; nil for variables, errors or empty text.
+    public static func literal(_ template: String) -> String? {
+        guard case .success(let parts) = parse(template), !parts.isEmpty else { return nil }
+        var text = ""
+        for part in parts {
+            guard case .literal(let value) = part else { return nil }
+            text += value
+        }
+        return text
+    }
+
     public static func parse(_ template: String) -> Result<[Part], Failure> {
         // Scalars, not Characters: a combining mark after `{{` or `}}` must not hide the braces.
         let scalars = Array(template.unicodeScalars)
