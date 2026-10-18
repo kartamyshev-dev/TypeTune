@@ -15,7 +15,7 @@
 - [ ] Этап 4 (GUI): прокрутка/drag вне барьера, мёртвый код, предел буфера — код и Core-инварианты готовы ([evidence](../research/evidence/stage4-events-2026-10-17/verification.json)); открыто до сборки и native-проверки на Mac.
 - [ ] Этап 5 (GUI): таблица раскладки из UCKeyTranslate — Core-сборка и проверка таблицы готовы ([evidence](../research/evidence/stage5-layout-mapping-2026-10-17/verification.json)); открыто до сборки и native-проверки на Mac.
 - [x] Этап 6 (ядро; прогрев в приложении не скомпилирован): расширение словаря, корпус v3, оценка на естественном тексте — [evidence](../research/evidence/stage6-lexicon-2026-10-17/verification.json), [LEXICON](LEXICON.md). Аббревиатуры оставлены как есть — DECISIONS п. 25.
-- [ ] Этап 7: MutationSession в Core.
+- [ ] Этап 7: MutationSession в Core — Core и 46 проверок готовы, KeyboardService переведён ([evidence](../research/evidence/stage7-mutation-session-2026-10-17/verification.json)); открыто до сборки GUI, runtime_recovery_probe и native-проверки на Mac.
 - [ ] Этап 8: CI.
 - [ ] Этап 9: README и реорганизация документации.
 

@@ -1,0 +1,74 @@
+{
+  "byCategory" : {
+    "doublecaps-acronym" : {
+      "corrections" : 0,
+      "count" : 2,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 2
+    },
+    "expanded-recall" : {
+      "corrections" : 2,
+      "count" : 2,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 2
+    },
+    "frequency-dominance" : {
+      "corrections" : 2,
+      "count" : 2,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 2
+    },
+    "known-word-punctuation" : {
+      "corrections" : 0,
+      "count" : 3,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 3
+    },
+    "pair-protection" : {
+      "corrections" : 0,
+      "count" : 4,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 4
+    }
+  },
+  "bySplit" : {
+    "train" : {
+      "corrections" : 4,
+      "count" : 13,
+      "falseCorrections" : 0,
+      "misses" : 0,
+      "originalCompared" : 0,
+      "originalMatches" : 0,
+      "passed" : 13
+    }
+  },
+  "failures" : [
+
+  ],
+  "notice" : "Synthetic offline checks; originalResult null excludes original comparison. No live or Caramba parity claim.",
+  "schemaVersion" : 1,
+  "total" : {
+    "corrections" : 4,
+    "count" : 13,
+    "falseCorrections" : 0,
+    "misses" : 0,
+    "originalCompared" : 0,
+    "originalMatches" : 0,
+    "passed" : 13
+  }
+}

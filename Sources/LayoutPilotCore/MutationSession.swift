@@ -29,19 +29,18 @@ public struct MutationSession<Target, Event> {
         public let suspendReplay: Bool
     }
 
-    // Stage 7 migration: setters stay public until KeyboardService writes only through
-    // the transitions below; the final migration step closes them (private(set)).
-    public var gate: Target?
-    public var deadline: Double?
-    public var mutationNonce: UUID?
-    public var replaying = false
-    public var queue = InputReplayQueue<Event>()
-    public var recovery = InputRecovery()
-    public var recoveryTarget: Target?
-    public var recoverySourceID: String?
-    public var identityNonce: UUID?
-    public var routeLease: ReplayDeliveryLease?
-    public var batchNonce = UUID()
+    // State changes only through the transitions below.
+    public private(set) var gate: Target?
+    public private(set) var deadline: Double?
+    public private(set) var mutationNonce: UUID?
+    public private(set) var replaying = false
+    public private(set) var queue = InputReplayQueue<Event>()
+    public private(set) var recovery = InputRecovery()
+    public private(set) var recoveryTarget: Target?
+    public private(set) var recoverySourceID: String?
+    public private(set) var identityNonce: UUID?
+    public private(set) var routeLease: ReplayDeliveryLease?
+    public private(set) var batchNonce = UUID()
 
     public init() {}
 
