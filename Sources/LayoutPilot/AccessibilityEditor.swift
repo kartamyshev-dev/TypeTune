@@ -109,6 +109,14 @@ enum AccessibilityEditor {
         guard selected.utf16.count <= 65_536 else { return .unreadable }
         return selected.isEmpty ? .none : .text(selected)
     }
+    /// Chromium and Electron build the accessibility tree of web content only on request.
+    /// `AXManualAccessibility` asks for it without VoiceOver side effects; other
+    /// applications answer with an error, which is harmless. Returns the AX status.
+    static func requestWebAccessibility(pid: pid_t) -> AXError {
+        let app = AXUIElementCreateApplication(pid)
+        AXUIElementSetMessagingTimeout(app, 0.050)
+        return AXUIElementSetAttributeValue(app, "AXManualAccessibility" as CFString, kCFBooleanTrue)
+    }
     static func observeTextBeforeCaret(pid: pid_t) -> FieldObservation {
         guard AXIsProcessTrusted() else { return .unreadable }
         guard !IsSecureEventInputEnabled() else { return .secure }
