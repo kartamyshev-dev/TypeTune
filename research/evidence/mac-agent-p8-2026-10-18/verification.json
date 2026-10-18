@@ -1,0 +1,75 @@
+{
+  "sourceCommit": "3244c813475a80856b154b23ecd7496a1f2f59c7",
+  "guiSHA256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+  "permissions": "Existing TypeTune AX and Input Monitoring entries refreshed through system UI; ready confirmed",
+  "authorization": "User authorized native input across matrix in this session; drafts/empty fields only, no send",
+  "controller": {
+    "passed": true,
+    "checks": 88,
+    "file": "second-controller.json",
+    "kind": "controller hooks, platform inputs stubbed"
+  },
+  "ci": {
+    "id": 39143449199,
+    "conclusion": "success",
+    "kind": "Linux core and macOS build/controller"
+  },
+  "native": [
+    {
+      "fixture": "corpus/native-stream-80ms-v1.json",
+      "result": "PASS",
+      "cases": 12,
+      "words": 192,
+      "file": "second-stream-full.json",
+      "verdict": "second-full-verdict.json"
+    },
+    {
+      "fixture": "corpus/native-stream-80ms-v1.json",
+      "result": "PASS",
+      "cases": 12,
+      "words": 192,
+      "file": "second-stream-repeat.json",
+      "verdict": "second-repeat-verdict.json"
+    },
+    {
+      "fixture": "first 11 cases of native-smoke.json",
+      "result": "PASS",
+      "cases": 11,
+      "file": "short-smoke.json",
+      "excluded": [
+        "plain-paste",
+        "auto-undo"
+      ]
+    },
+    {
+      "app": "Chrome",
+      "field": "local input",
+      "result": "PASS",
+      "scenarios": [
+        "S1",
+        "S3",
+        "S4",
+        "S7"
+      ],
+      "files": [
+        "chrome-s1.json",
+        "chrome-s3.json",
+        "chrome-s4.json",
+        "chrome-s7.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "System scheduling delay root cause not proven",
+    "Diagnostics ring limited to last 1000 records",
+    "Full matrix and U8 not accepted",
+    "Four-hour run deferred by user",
+    "Local XCTest unavailable in CLT; CI separate",
+    "Statistics restoration pending"
+  ],
+  "skippedByUser": [
+    "Slack",
+    "VS Code",
+    "Word"
+  ]
+}
