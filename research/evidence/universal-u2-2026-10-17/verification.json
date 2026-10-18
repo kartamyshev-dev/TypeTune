@@ -1,0 +1,20 @@
+{
+  "kind": "Linux offline (Core + CLI); no GUI change",
+  "date": "2026-10-17",
+  "baseCommit": "e199c58500a2e51300d534bd02cd2460a91e393a",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0",
+    "selftest": "1401/1401 (16 InputTarget invariants)"
+  },
+  "finding": "MutationSession is already generic over Target, so it needs no change; U2 adds the field-optional target and its matching rule",
+  "semantics": [
+    "pid and application always required",
+    "a window or field known when the target was taken must be observed again (losing it fails closed)",
+    "what was never known is not required",
+    "proof strength: application < window < field"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/InputTarget.swift": "f984e5a6cc8e238eaca6e9a82a968942c4171b01548ca38c8db5bfd9cf2a2022",
+    "Sources/LayoutPilotCLI/InputTargetChecks.swift": "8844d508994653ab7b3e0b87846884f22a7c652e64dfbd4751500c794c9a782e"
+  }
+}
