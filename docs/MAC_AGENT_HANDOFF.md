@@ -87,7 +87,7 @@ defaults read com.apple.HIToolbox AppleSelectedInputSources > $P/input-source-be
 
 ```sh
 scripts/build.sh                                   # release arm64, ad-hoc подпись, dist/LayoutPilot.app
-dist/layoutpilot-cli selftest                      # 1412/1412
+dist/layoutpilot-cli selftest                      # 1431/1431 (после слияния с v0.1.4)
 osascript -e 'quit app "TypeTune"' || true          # завершить прежний экземпляр
 ditto dist/LayoutPilot.app /Applications/TypeTune.app
 codesign --verify --deep --strict /Applications/TypeTune.app
