@@ -1,0 +1,19 @@
+{
+  "settingsSemanticEqual": null,
+  "changedKeys": [],
+  "inputSourceUnchanged": true,
+  "testTabClosed": false,
+  "permissionsRefreshedViaSystemUI": [
+    "Accessibility",
+    "Input Monitoring"
+  ],
+  "installedGUI": "62368559e2dc60853bfe92e24ff6e70190f497222e11f774339063f5bf64bb5f",
+  "originalSwitcherInitiallyRunning": false,
+  "TypeTuneLeftRunning": true,
+  "restoredTestStatistics": true,
+  "reasonStopped": null,
+  "checkpoint": "Mac locked during continuation",
+  "restorationPending": true,
+  "reason": "Restore settings/statistics/input source after unlock; prior completed restoration belongs to earlier stop",
+  "isolatedChromeProcessTerminated": true
+}

@@ -1,0 +1,16 @@
+{
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : true
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "com.google.Chrome",
+  "focusedUIElementStatus" : -25212,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 9952,
+  "setAXEnhancedUserInterface" : -25208
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "bundle_not_in_matrix",
+    "bounded_ascii_keys_required",
+    "unsupported_gesture"
+  ],
+  "events": 0
+}

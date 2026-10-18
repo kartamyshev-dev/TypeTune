@@ -1,0 +1,42 @@
+Building for production...
+[Planning deferred tasks]
+[10 / 22] LayoutPilotCore
+[12 / 23] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[18 / 23] LayoutPilot-product
+[20 / 66]
+[26 / 66]
+[28 / 66]
+[33 / 66]
+[34 / 66]
+[35 / 66]
+[38 / 66]
+[40 / 66]
+[49 / 66]
+[50 / 66]
+[54 / 66]
+[59 / 66]
+[60 / 66]
+[61 / 66]
+[62 / 66] LayoutPilot-product
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[64 / 66] LayoutPilot-product
+[65 / 66] LayoutPilot-product
+Build complete! (34,30 с)
+Building for production...
+[Planning deferred tasks]
+[6 / 13] LayoutPilotCore
+[7 / 14] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[13 / 18] layoutpilot-cli-product
+[15 / 19] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[17 / 19] layoutpilot-cli-product
+[18 / 19]
+Build complete! (12,53 с)
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app

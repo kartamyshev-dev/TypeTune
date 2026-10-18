@@ -35,7 +35,9 @@ jobs:
       - name: Recovery controller probe (test hooks, no permissions, no event tap)
         run: scripts/runtime_recovery_probe.sh
       - name: Diagnostic probes compile
-        run: scripts/ax_focus_probe.sh --build-only
+        run: |
+          scripts/ax_focus_probe.sh --build-only
+          python3 scripts/test_matrix_probe.py
       - name: Test build for manual checks (release arm64, ad-hoc signature)
         run: |
           scripts/build.sh

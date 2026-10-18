@@ -1,0 +1,423 @@
+{
+  "ancestors" : [
+    {
+      "role" : "AXList",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    },
+    {
+      "role" : "AXGroup",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : [
+        "string",
+        0
+      ]
+    }
+  ],
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : false
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "com.google.Chrome",
+  "focused" : {
+    "attributes" : {
+      "AXBlockQuoteLevel" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXChildren" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXColumnHeaderUIElements" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXCustomActions" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXCustomContent" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXDOMClassList" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXDOMIdentifier" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          5
+        ]
+      },
+      "AXElementBusy" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXEnabled" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXEndTextMarker" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "type",
+          "AXTextMarker"
+        ]
+      },
+      "AXFocusableAncestor" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXFocused" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFrame" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          3
+        ]
+      },
+      "AXHelp" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXInsertionPointLineNumber" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 9.2233720368547758e+18
+      },
+      "AXLinkedUIElements" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXNumberOfCharacters" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXParent" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXList"
+        ]
+      },
+      "AXPlaceholderValue" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXPosition" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXRequired" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXRole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          12
+        ]
+      },
+      "AXRoleDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          5
+        ]
+      },
+      "AXRows" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXSelected" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXSelectedRows" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXSelectedText" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXSelectedTextMarkerRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "type",
+          "AXTextMarkerRange"
+        ]
+      },
+      "AXSelectedTextRange" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          0
+        ]
+      },
+      "AXSelectedTextRanges" : {
+        "settable" : false,
+        "status" : -25200,
+        "value" : null
+      },
+      "AXSize" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          2
+        ]
+      },
+      "AXStartTextMarker" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "type",
+          "AXTextMarker"
+        ]
+      },
+      "AXSubrole" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXTitle" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXTitleUIElement" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXTopLevelUIElement" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      },
+      "AXURL" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXValue" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          16
+        ]
+      },
+      "AXVisibleCharacterRange" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          0
+        ]
+      },
+      "AXVisited" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXWindow" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      },
+      "ChromeAXNodeId" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          4
+        ]
+      }
+    },
+    "namesStatus" : 0,
+    "parameterized" : [
+      "AXPreviousParagraphStartTextMarkerForTextMarker",
+      "AXAttributedStringForTextMarkerRangeWithOptions",
+      "AXNextLineEndTextMarkerForTextMarker",
+      "AXBoundsForTextMarkerRange",
+      "AXLeftWordTextMarkerRangeForTextMarker",
+      "AXNextParagraphEndTextMarkerForTextMarker",
+      "AXBoundsForRange",
+      "AXStyleRangeForIndex",
+      "AXLineForIndex",
+      "AXUIElementCountForSearchPredicate",
+      "AXLeftLineTextMarkerRangeForTextMarker",
+      "AXNextWordEndTextMarkerForTextMarker",
+      "AXPreviousTextMarkerForTextMarker",
+      "AXStartTextMarkerForBounds",
+      "AXLineTextMarkerRangeForTextMarker",
+      "AXTextMarkerRangeForLine",
+      "AXTextMarkerRangeForUIElement",
+      "AXTextMarkerForPosition",
+      "AXPreviousSentenceStartTextMarkerForTextMarker",
+      "AXLengthForTextMarkerRange",
+      "AXRightWordTextMarkerRangeForTextMarker",
+      "AXIndexForChildUIElement",
+      "AXStyleTextMarkerRangeForTextMarker",
+      "AXTextMarkerRangeForUnorderedTextMarkers",
+      "AXPreviousLineStartTextMarkerForTextMarker",
+      "AXRightLineTextMarkerRangeForTextMarker",
+      "AXSentenceTextMarkerRangeForTextMarker",
+      "AXUIElementForTextMarker",
+      "AXSelectTextWithCriteria",
+      "AXStringForTextMarkerRange",
+      "AXLineForTextMarker",
+      "AXPreviousWordStartTextMarkerForTextMarker",
+      "AXAttributedStringForTextMarkerRange",
+      "AXParagraphTextMarkerRangeForTextMarker",
+      "AXNextSentenceEndTextMarkerForTextMarker",
+      "AXStringForRange",
+      "AXEndTextMarkerForBounds",
+      "AXUIElementsForSearchPredicate",
+      "AXAttributedStringForRange",
+      "AXReplaceRangeWithText",
+      "AXNextTextMarkerForTextMarker"
+    ]
+  },
+  "focusedUIElementStatus" : 0,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 1492
+}

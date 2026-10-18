@@ -1,0 +1,12 @@
+{
+  "switchersStoppedDuringControl": true,
+  "cuaTypeTextRequested": "https://www.google.com/",
+  "cuaAXObservedWithoutTypeTune": "://.l.cm/",
+  "cuaPasteObserved": "https://www.google.com/",
+  "cuaIndividualPressKeysObserved": "ghbdtn ",
+  "TypeTuneObservedKeyEventsAfterPressKeys": 0,
+  "conclusion": "CUA input is not qualified to test event-tap correction; direct key events reach field but TypeTune diagnostics remain at zero. Cause of CUA typeText truncation is not determined.",
+  "AXEnhancedUserInterfaceObservedBeforeProbe": true,
+  "AXEnhancedUserInterfaceAfterTemporaryReset": false,
+  "P1NativePass": false
+}

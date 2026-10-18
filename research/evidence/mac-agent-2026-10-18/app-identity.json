@@ -1,0 +1,7 @@
+{
+  "app": "/Applications/TypeTune.app",
+  "guiSHA256": "62368559e2dc60853bfe92e24ff6e70190f497222e11f774339063f5bf64bb5f",
+  "sourceCommit": "adb0283dfe764beeec515f0f183db9e2bdd751c8",
+  "productionSourceUnchanged": true,
+  "scope": "Native results only apply to this installed binary; matrix incomplete"
+}
