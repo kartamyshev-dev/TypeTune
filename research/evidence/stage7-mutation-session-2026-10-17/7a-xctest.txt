@@ -1,0 +1,52 @@
+Building for debugging...
+[0/10] Write swift-version-2198EC330A9A1ACF.txt
+[2/11] Compiling LayoutPilotCoreTests CoreTests.swift
+[3/11] Emitting module LayoutPilotCoreTests
+[4/11] Compiling LayoutPilotCoreTests ModifierGestureTests.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking LayoutPilotPackageTests.xctest
+Build complete! (1.51s)
+Test Suite 'All tests' started at 2026-10-17 17:36:31.126
+Test Suite 'debug.xctest' started at 2026-10-17 17:36:31.129
+Test Suite 'CoreTests' started at 2026-10-17 17:36:31.129
+Test Case 'CoreTests.testConservativeBoundaries' started at 2026-10-17 17:36:31.129
+Test Case 'CoreTests.testConservativeBoundaries' passed (0.094 seconds)
+Test Case 'CoreTests.testContextAndSettingsGuards' started at 2026-10-17 17:36:31.223
+Test Case 'CoreTests.testContextAndSettingsGuards' passed (0.001 seconds)
+Test Case 'CoreTests.testDoubleCapitalAndSemanticYoRegressions' started at 2026-10-17 17:36:31.223
+Test Case 'CoreTests.testDoubleCapitalAndSemanticYoRegressions' passed (0.0 seconds)
+Test Case 'CoreTests.testKnownDecisionsAndCase' started at 2026-10-17 17:36:31.224
+Test Case 'CoreTests.testKnownDecisionsAndCase' passed (0.0 seconds)
+Test Case 'CoreTests.testLiteralRuleAndFeatureSwitches' started at 2026-10-17 17:36:31.224
+Test Case 'CoreTests.testLiteralRuleAndFeatureSwitches' passed (0.002 seconds)
+Test Case 'CoreTests.testPhysicalMappingAndUnicode' started at 2026-10-17 17:36:31.226
+Test Case 'CoreTests.testPhysicalMappingAndUnicode' passed (0.0 seconds)
+Test Case 'CoreTests.testRejectGraphemeSplitsAndOverflowRanges' started at 2026-10-17 17:36:31.226
+Test Case 'CoreTests.testRejectGraphemeSplitsAndOverflowRanges' passed (0.0 seconds)
+Test Case 'CoreTests.testReplayBoundaryBackspaceResetAndContext' started at 2026-10-17 17:36:31.227
+Test Case 'CoreTests.testReplayBoundaryBackspaceResetAndContext' passed (0.001 seconds)
+Test Case 'CoreTests.testSelectionAfterReplacementRegressions' started at 2026-10-17 17:36:31.228
+Test Case 'CoreTests.testSelectionAfterReplacementRegressions' passed (0.0 seconds)
+Test Case 'CoreTests.testUTF16EditsAndCursor' started at 2026-10-17 17:36:31.229
+Test Case 'CoreTests.testUTF16EditsAndCursor' passed (0.0 seconds)
+Test Suite 'CoreTests' passed at 2026-10-17 17:36:31.229
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.1 (0.1) seconds
+Test Suite 'ModifierGestureTests' started at 2026-10-17 17:36:31.229
+Test Case 'ModifierGestureTests.testChordInvalidatesBothReleases' started at 2026-10-17 17:36:31.229
+Test Case 'ModifierGestureTests.testChordInvalidatesBothReleases' passed (0.001 seconds)
+Test Case 'ModifierGestureTests.testDoubleCancelsDelayedSingle' started at 2026-10-17 17:36:31.230
+Test Case 'ModifierGestureTests.testDoubleCancelsDelayedSingle' passed (0.101 seconds)
+Test Case 'ModifierGestureTests.testInclusiveDoubleBoundary' started at 2026-10-17 17:36:31.330
+Test Case 'ModifierGestureTests.testInclusiveDoubleBoundary' passed (0.0 seconds)
+Test Case 'ModifierGestureTests.testTypingAndResetCancelGestures' started at 2026-10-17 17:36:31.331
+Test Case 'ModifierGestureTests.testTypingAndResetCancelGestures' passed (0.0 seconds)
+Test Suite 'ModifierGestureTests' passed at 2026-10-17 17:36:31.331
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.102 (0.102) seconds
+Test Suite 'debug.xctest' passed at 2026-10-17 17:36:31.331
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.202 (0.202) seconds
+Test Suite 'All tests' passed at 2026-10-17 17:36:31.331
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.202 (0.202) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.
+exit=0
