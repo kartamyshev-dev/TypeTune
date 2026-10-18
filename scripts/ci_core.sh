@@ -8,7 +8,7 @@ cli=.build/debug/layoutpilot-cli
 "$cli" selftest
 python3 scripts/evaluate_corpus.py
 python3 scripts/evaluate_corpus.py --corpus corpus/synthetic-v3.jsonl --manifest corpus/manifest-v3.json --report-prefix evaluation-v3
-for fixtures in corpus/review-regressions.jsonl corpus/lexicon-regressions.jsonl corpus/context-regressions.jsonl; do
+for fixtures in corpus/review-regressions.jsonl corpus/lexicon-regressions.jsonl corpus/context-regressions.jsonl corpus/user-rule-regressions.jsonl; do
   "$cli" evaluate "$fixtures" > /dev/null
   echo "$fixtures: passed"
 done
