@@ -89,7 +89,7 @@ public struct Lexicon: Codable, Sendable {
     public var typos: [String: String]
     public var yo: [String: String]
     public static let bundled: Lexicon = {
-        let url = Bundle.module.url(forResource: "lexicon", withExtension: "json")!
+        let url = CoreResources.url(forResource: "lexicon", withExtension: "json")!
         return try! JSONDecoder().decode(Lexicon.self, from: Data(contentsOf: url))
     }()
     public func contains(_ word: String) -> Bool {

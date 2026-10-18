@@ -55,7 +55,7 @@ jobs:
           pid=$!
           sleep 8
           if kill -0 "$pid" 2>/dev/null; then echo "app alive after 8 s"; kill "$pid"; status=0
-          else wait "$pid"; echo "app exited with $?"; cat /tmp/app.log; status=1; fi
+          else code=0; wait "$pid" || code=$?; echo "app exited with $code"; cat /tmp/app.log; status=1; fi
           mv .build-hidden .build
           exit $status
       - name: Upload test build
