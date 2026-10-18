@@ -1,0 +1,26 @@
+{
+  "kind": "Linux offline (Core + CLI) and CI on macOS (build, runtime_recovery_probe with real Store, launch without .build); no native input claim",
+  "date": "2026-10-18",
+  "commit": "ebd4e9e165f1a1a4dddfc9a28be49c454e5d6ca6",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0, selftest 1635/1635",
+    "ci": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39162932150 Linux and macOS success, no compiler warnings, app alive 8 s without .build",
+    "probeSnippetChecks": "8/8 true: rules migrated with ids, derived rules match, save and usable, multiline immediate snippet not a rule, duplicate refused, delete removes derived rule, persist across launch, damaged file never overwritten",
+    "firstCiRun": "39162774293 failed: runtime_recovery_probe.sh builds KeyboardService from a file list without the new SnippetEditor.swift; fixed",
+    "native": "NOT_RUN (S8 checklist in SNIPPETS_PLAN)",
+    "artifact": "TypeTune-test-ebd4e9e165f1a1a4dddfc9a28be49c454e5d6ca6"
+  },
+  "knownGaps": [
+    "immediate snippets do not fire for keys replayed after the barrier; boundary snippets do",
+    "snippet use is not counted in statistics",
+    "the layout is not switched after a snippet",
+    "Double Shift selection copy (copySelection) still restores the clipboard without the transient marker"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilot/SnippetEditor.swift": "cda4d248f35e525421db86f8a717c56b778f8a8f3935288a4e6a55bf33bc9ca8",
+    "Sources/LayoutPilot/SnippetsView.swift": "7a54308afaee1b7b07e9b7c893de17c982b0f98370f320ebdba27dc9640ec797",
+    "Sources/LayoutPilot/KeyboardService.swift": "aca4e210a96e91c119c14f87a96aa4879e96bab738cae26a1c27a0764eb217c7",
+    "Sources/LayoutPilot/Store.swift": "6da280455a4ff15d6e8e2762a8300dbc6c87aba65412706cf37f670c5001c148",
+    "Sources/LayoutPilotCore/Snippet.swift": "ee1d168db54cb7ac46ecf99addde01f4ba54b16df0c87e364386a9c6b0151068"
+  }
+}

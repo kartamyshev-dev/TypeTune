@@ -1,5 +1,14 @@
 # Журнал TypeTune
 
+## Сниппеты: этапы S5–S7 (вставка, срабатывание, вкладка) — 2026-10-18
+
+Ветка `snippets`, коммит `ebd4e9e`. Linux offline: `ci_core.sh` exit 0, selftest 1635/1635. CI на macOS
+[39162932150](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39162932150): сборка без
+предупреждений, `runtime_recovery_probe.sh` passed, в нём 8 проверок хранения на настоящем Store,
+приложение запускается без `.build`. Первый запуск CI упал: сборка пробника по списку файлов не
+включала `SnippetEditor.swift`. Native S8 не выполнялась.
+[Evidence](../research/evidence/snippets-s5-s7-2026-10-18/verification.json).
+
 ## Универсальный режим в main — 2026-10-18
 
 По решению пользователя (DECISIONS п. 32) `main` перемотан на `universal-input` после проверки

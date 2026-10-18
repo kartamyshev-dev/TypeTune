@@ -8,7 +8,8 @@
 
 - `main` = `universal-input` (перемотка 2026-10-18, DECISIONS п. 32): универсальный режим в `main`,
   U8 частичная — пропуски перечислены в п. 32. Дальнейшая работа универсального режима — в `main`.
-- `snippets`: сниппеты S5–S7 (GUI) — следующий этап, [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
+- `snippets`: сниппеты S1–S7 готовы — ядро на Linux, приложение в CI на macOS (сборка, пробник с
+  настоящим Store 8/8); **native S8 NOT_RUN**. Тестовая сборка `TypeTune-test-ebd4e9e…`. [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
 
 ## Mac agent — текущая точка продолжения
 

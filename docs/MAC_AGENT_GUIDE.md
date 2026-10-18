@@ -263,6 +263,12 @@ S7 в Telegram, Slack, VS Code по 10 повторов. В отчёте: `repla
 `replay-event-rejected` с `allowed=false` — значит, проверка приложения всё ещё отсекает.
 Код: `allowedFrontmost(for:)`, `drainReplay`.
 
+### Сниппеты (ветка `snippets`)
+
+Проверка S8 — чек-лист в [SNIPPETS_PLAN](SNIPPETS_PLAN.md#чек-лист-s8-для-mac-всё-not_run), те же правила
+этого документа. Собирай ветку `snippets`; в отчёте ищи `snippet-begin`, `snippet-verify`, `snippet-result`.
+Перед проверкой сохрани `~/Library/Application Support/LayoutPilot/snippets.json` в `$P` и верни его в конце.
+
 ### Новые проблемы
 
 Каждая новая проблема получает номер P8, P9… в этом документе (таблица раздела 1) и строку в
