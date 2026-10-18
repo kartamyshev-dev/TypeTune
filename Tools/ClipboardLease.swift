@@ -73,10 +73,6 @@ final class ClipboardLease {
     @discardableResult func restore() -> String {
         if let completed { return completed }
         let board = NSPasteboard.general
-        if let referenceContext {
-            do { try referenceContext() }
-            catch { completed = "skipped_unverified_reference_context"; return completed! }
-        }
         guard var ownedChange else { completed = "skipped_newer_clipboard"; return completed! }
         if board.changeCount != ownedChange {
             guard let referenceContext, !syntheticItems.isEmpty else {
@@ -99,11 +95,7 @@ final class ClipboardLease {
             self.ownedChange = returnedChange
             ownedChange = returnedChange
         }
-        // Reauthenticate immediately before a restore, including after adoption.
-        if let referenceContext {
-            do { try referenceContext() }
-            catch { completed = "skipped_unverified_reference_context"; return completed! }
-        }
+        // An unchanged owned generation needs no document focus; modal windows must not lose saved data.
         guard board.changeCount == ownedChange else { completed = "skipped_newer_clipboard"; return completed! }
         let items = saved.map { values -> NSPasteboardItem in
             let item = NSPasteboardItem()

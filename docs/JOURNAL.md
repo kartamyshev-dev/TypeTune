@@ -1,5 +1,26 @@
 # Журнал TypeTune
 
+## 2026-10-18 — восстановление clipboard при modal исправлено; image helper упал
+
+Пользователь: «Буфер не важен, исправляй и продолжай». Исправление Tools/ClipboardLease:
+если generation ещё принадлежит lease, восстановление не зависит от поля документа.
+Принятие exact nonce после чужой generation по-прежнему требует pinned context и сравнения
+всех представлений. ClipboardLeaseProbe: modalRestore/newerOwnerPreserved/исходный clipboard
+PASS, 0 событий; NativeProbe fixture tests 8/8.
+[Проверка](../research/evidence/mac-agent-p8-2026-10-18/clipboard-modal-fix.json).
+
+Три предварительные попытки нового RTFD не дошли до ввода: directory mode 0600,
+затем несовпадение URL без trailing slash; выставлены 0700 и isDirectory:true.
+В готовом RTFD преобразование и настоящая вставка картинки выполнены, но необязательный
+разбор AXRTFForRange дал пустую NSAttributedString. Чтение attachment at 0 вызвало
+Objective-C exception/SIGABRT, Swift catch/defer не выполнились. Исходный clipboard
+не подтверждён восстановленным. Собственный документ по CUA: привет[вложенное изображение].
+TypeTune жив, модификаторы нейтральны, source RussianWin. Native остановлен по §2.7;
+пиксели и S5 PASS не заявлены. [Технические факты](../research/evidence/mac-agent-p8-2026-10-18/image-helper-crash.json).
+Рекомендуемая следующая правка — убрать ненужный разбор RTF, исходный clipboard держать
+в supervising parent, дочерний emitter не должен его перезаписывать. Ждём ответа пользователя.
+
+
 ## 2026-10-18 — остановка: буфер обмена при буквальной вставке картинки
 
 Частный ImagePasteMain helper, GUI без изменений. Выделение мышью + Double Shift

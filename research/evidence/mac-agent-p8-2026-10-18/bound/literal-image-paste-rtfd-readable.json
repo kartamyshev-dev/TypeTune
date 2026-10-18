@@ -1,0 +1,85 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 1
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 1,
+      "maxMilliseconds": 0.0680833345541032,
+      "totalMilliseconds": 0.0680833345541032
+    },
+    "AXFocusedUIElement:0": {
+      "count": 1,
+      "maxMilliseconds": 0.05620833326247521,
+      "totalMilliseconds": 0.05620833326247521
+    },
+    "AXFocusedWindow:0": {
+      "count": 1,
+      "maxMilliseconds": 28.93029166807537,
+      "totalMilliseconds": 28.93029166807537
+    },
+    "AXRole:0": {
+      "count": 1,
+      "maxMilliseconds": 0.024041666620178148,
+      "totalMilliseconds": 0.024041666620178148
+    },
+    "AXSubrole:-25205": {
+      "count": 1,
+      "maxMilliseconds": 0.07108333375072107,
+      "totalMilliseconds": 0.07108333375072107
+    },
+    "AXWindow:0": {
+      "count": 1,
+      "maxMilliseconds": 0.04616666592482943,
+      "totalMilliseconds": 0.04616666592482943
+    }
+  },
+  "error": "ProbeFailure(message: \"focused_window_is_not_fresh_probe_document\", initiallyMissing: false)",
+  "finalModifierFlags": 0,
+  "passed": false,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "812f079f91077451f86daee886d16afe3b5ba27a71cb66c8a48127f120204acd",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "d8dde7dc0e665d6f2637cf22f8f25448ad6113cca3f336d92cafdefcc90d3e78",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    },
+    "probePrefixSha256": "60361bdd087ca1f471ea691ee8b486c470e7be249124972548506d299a0be848"
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "812f079f91077451f86daee886d16afe3b5ba27a71cb66c8a48127f120204acd",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "d8dde7dc0e665d6f2637cf22f8f25448ad6113cca3f336d92cafdefcc90d3e78",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    },
+    "probePrefixSha256": "60361bdd087ca1f471ea691ee8b486c470e7be249124972548506d299a0be848"
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/image-paste-probe",
+  "helperProcess": {
+    "pid": 28995,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/image-paste-probe",
+    "started": "Sun Oct 18 20:39:44 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 0,
+  "caseFileSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "caseFileUnchanged": true,
+  "sourceCommit": "0f695a2c7fff6b6aa363e7c0709cf6cd2e0182ba",
+  "helperWallSeconds": 1.5645071670005564,
+  "validationError": "helper_exit_not_verified"
+}
