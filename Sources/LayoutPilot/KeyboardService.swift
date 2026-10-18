@@ -49,6 +49,9 @@ final class KeyboardService {
     private var inputReplay: InputReplayQueue<CGEvent> { session.queue }
     private var recoveryTarget: EditorSnapshot? { session.recoveryTarget }
     private var recovery: InputRecovery { session.recovery }
+    /// Universal mode (U3): what was typed immediately before the caret, kept for every
+    /// application from delivered events only. Not used for corrections yet.
+    private var typed = TypedWordBuffer()
     private var tapRecovery = TapRecovery()
     private var sleeping = false
     private var observesSystem = true
@@ -114,11 +117,11 @@ final class KeyboardService {
             })
         }
         observer = center.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: .main) { [weak self] _ in
-            self?.contextFailure = nil
+            self?.contextFailure = nil; self?.typed.reset(.focus)
             self?.resetTransient(); self?.captureAfterEvent(); self?.refresh()
         }
         sleepObserver = center.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: .main) { [weak self] _ in
-            self?.sleeping = true; self?.resetTransient(); self?.stop(); self?.refresh()
+            self?.sleeping = true; self?.typed.reset(.explicit); self?.resetTransient(); self?.stop(); self?.refresh()
         }
         wakeObserver = center.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: .main) { [weak self] _ in
             self?.sleeping = false; self?.tapRecovery.reset(); self?.refresh(); self?.captureAfterEvent()
@@ -299,6 +302,33 @@ final class KeyboardService {
     private func conflictingApp() -> String? {
         cachedConflict
     }
+    /// Maintains `typed` from one delivered event. Anything the buffer cannot follow
+    /// resets it; what lies before the caret after a reset is unknown.
+    private func trackTyping(_ type: CGEventType, _ event: CGEvent) {
+        switch type {
+        case .leftMouseDown, .rightMouseDown, .otherMouseDown:
+            typed.reset(.pointer)
+        case .keyDown:
+            guard !IsSecureEventInputEnabled() else { typed.reset(.secureInput); return }
+            guard event.flags.intersection([.maskCommand, .maskControl, .maskAlternate]).isEmpty else {
+                typed.reset(.shortcut); return
+            }
+            switch Int(event.getIntegerValueField(.keyboardEventKeycode)) {
+            case 51: typed.backspace()
+            case 117: break // forward delete only removes text after the caret
+            case 36, 76: typed.reset(.newline)
+            case 48: typed.reset(.tab)
+            case 53: typed.reset(.escape)
+            case 115, 116, 119, 121, 123, 124, 125, 126: typed.reset(.navigation)
+            default:
+                if let text = InputSources.insertionText(for: event, sourceID: InputSources.identifier) {
+                    typed.insert(text)
+                } else { typed.reset(.untrackedKey) }
+            }
+        default:
+            break
+        }
+    }
     private func handle(_ type: CGEventType, _ event: CGEvent) -> Bool {
         if type == .tapDisabledByTimeout || type == .tapDisabledByUserInput {
             if replaying, let target = mutationGate { suspendReplay(target: target) }
@@ -321,6 +351,7 @@ final class KeyboardService {
             switch session.receiveReplay(token: batchToken, routingAllowed: allowed) {
             case .forward:
                 projectReplayedEvent(type, event)
+                trackTyping(type, event)
                 InputDiagnostics.shared.record("replay-forward", revision: revision, checks: [
                     "keyDown": type == .keyDown,
                     "queueEmpty": inputReplay.isEmpty, "outstanding": inputReplay.outstanding > 0])
@@ -351,6 +382,9 @@ final class KeyboardService {
             }
             revision += 1 // external focus/secure change cancels mutation; never intercept the new app's input
         }
+        // Not intercepted: this event reaches the application (a consumed shortcut has
+        // ⌘/⌥ and only resets the buffer).
+        trackTyping(type, event)
         if let target = recoveryTarget {
             if NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid, !IsSecureEventInputEnabled() {
                 if type == .keyDown, event.getIntegerValueField(.keyboardEventKeycode) == 53,
@@ -1369,6 +1403,7 @@ final class KeyboardService {
         guard replaying, inputReplay.outstanding > 0 else { return }
         let anchor = mutationGate.map { replayRecoveryTarget($0) }
         session.timeOutDelivery(recoveryTarget: anchor?.value, sourceID: anchor?.source)
+        typed.reset(.untrackedKey)
         sourceAfterReplay = nil
         recoveryReplayProjection = nil; recoveryReplaySource = nil
         replayProjection = nil; replayProjectionSource = nil; replayAllowsPartial = false; replayReadbackNonce = UUID()
@@ -1426,6 +1461,7 @@ final class KeyboardService {
         replayProjection = nil; replayProjectionSource = nil; replayAllowsPartial = false; replayReadbackNonce = UUID()
         sourceAfterReplay = nil
         session.suspendReplay(recoveryTarget: recovery.value, sourceID: recovery.source)
+        typed.reset(.untrackedKey)
         recoveryReplayProjection = nil; recoveryReplaySource = nil
         cachedSnapshot = nil; transaction = nil
         InputDiagnostics.shared.fault(reason: "replay-suspended", revision: revision, counts: recoveryCounts)
@@ -1521,6 +1557,9 @@ final class KeyboardService {
             deadline ?? ProcessInfo.processInfo.systemUptime + 0.060)
     }
     func testingMarkPrimaryCapture() { precondition(!observesSystem); contextCaptureRevision = revision }
+    var testingTyped: TypedWordBuffer { typed }
+    @discardableResult
+    func testingHandle(_ type: CGEventType, _ event: CGEvent) -> Bool { precondition(!observesSystem); return handle(type, event) }
     func testingReleaseKey(keyCode: Int = 0) {
         precondition(!observesSystem)
         _ = handle(.keyUp, CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: false)!)

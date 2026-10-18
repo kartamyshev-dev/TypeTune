@@ -1,4 +1,5 @@
 import AppKit
+import Carbon
 import Foundation
 import LayoutPilotCore
 
@@ -223,6 +224,42 @@ final class InputDiagnostics {
             keyboard.testingCompleteContextCapture(revision: next, now: .greatestFiniteMagnitude)
             checks["late_ready_readback_cannot_publish_anchor"] = requestedBeforeExpiry &&
                 !keyboard.testingHasCurrentContext && !keyboard.testingContextCapturePending
+        }
+        do {
+            // Universal mode U3: the typed buffer follows delivered events through handle().
+            let keyboard = service()
+            func key(_ code: Int, _ flags: CGEventFlags = []) {
+                let event = CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(code), keyDown: true)!
+                event.flags = flags
+                keyboard.testingHandle(.keyDown, event)
+            }
+            if IsSecureEventInputEnabled() {
+                key(5)
+                checks["typed_secure_input_resets"] = keyboard.testingTyped.lastReset == .secureInput
+            } else {
+                key(5) // G key: a letter in ABC/US and Russian layouts
+                checks["typed_letter_follows_current_layout"] = InputSources.language != nil ?
+                    keyboard.testingTyped.text.count == 1 : keyboard.testingTyped.lastReset == .untrackedKey
+                key(51)
+                checks["typed_backspace_removes_letter"] = keyboard.testingTyped.text.isEmpty
+                key(5); key(36)
+                checks["typed_return_resets_and_anchors"] = keyboard.testingTyped.text.isEmpty &&
+                    keyboard.testingTyped.anchoredStart && keyboard.testingTyped.lastReset == .newline
+                key(5); key(123)
+                checks["typed_arrow_resets"] = keyboard.testingTyped.text.isEmpty && keyboard.testingTyped.lastReset == .navigation
+                key(5); key(9, .maskCommand)
+                checks["typed_shortcut_resets"] = keyboard.testingTyped.lastReset == .shortcut
+                key(5)
+                keyboard.testingHandle(.leftMouseDown, CGEvent(mouseEventSource: nil, mouseType: .leftMouseDown,
+                    mouseCursorPosition: .zero, mouseButton: .left)!)
+                checks["typed_click_resets"] = keyboard.testingTyped.lastReset == .pointer
+                key(5)
+                let before = keyboard.testingTyped
+                keyboard.testingHandle(.keyUp, CGEvent(keyboardEventSource: nil, virtualKey: 5, keyDown: false)!)
+                keyboard.testingHandle(.scrollWheel, CGEvent(scrollWheelEvent2Source: nil, units: .pixel,
+                    wheelCount: 1, wheel1: 3, wheel2: 0, wheel3: 0)!)
+                checks["typed_key_up_and_scroll_keep_buffer"] = keyboard.testingTyped == before
+            }
         }
         checks["settings_bytes_preserved"] = defaults.data(forKey: "settings.v1") == settings
         let passed = checks.values.allSatisfy { $0 }
