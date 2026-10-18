@@ -36,22 +36,25 @@ final class KeyboardService {
     private static let replayPrefix: UInt64 = 0x4c505252
     var onRecoveryNeeded: (() -> Void)?
     private let replaySource = CGEventSource(stateID: .privateState)
-    private var replaying = false
-    private var replayBatchNonce = UUID()
-    private var replayIdentityNonce: UUID?
-    private var replayRouteLease: ReplayDeliveryLease?
-    private var mutationNonce: UUID?
-    private var mutationGate: EditorSnapshot?
-    private var mutationDeadline: TimeInterval?
-    private var inputReplay = InputReplayQueue<CGEvent>()
-    private var recoveryTarget: EditorSnapshot?
-    private var recovery = InputRecovery()
+    /// Barrier, replay and recovery state (Core). The properties below are migration
+    /// proxies (stage 7): transitions move into session methods one at a time.
+    private var session = MutationSession<EditorSnapshot, CGEvent>()
+    private var replaying: Bool { get { session.replaying } set { session.replaying = newValue } }
+    private var replayBatchNonce: UUID { get { session.batchNonce } set { session.batchNonce = newValue } }
+    private var replayIdentityNonce: UUID? { get { session.identityNonce } set { session.identityNonce = newValue } }
+    private var replayRouteLease: ReplayDeliveryLease? { get { session.routeLease } set { session.routeLease = newValue } }
+    private var mutationNonce: UUID? { get { session.mutationNonce } set { session.mutationNonce = newValue } }
+    private var mutationGate: EditorSnapshot? { get { session.gate } set { session.gate = newValue } }
+    private var mutationDeadline: TimeInterval? { get { session.deadline } set { session.deadline = newValue } }
+    private var inputReplay: InputReplayQueue<CGEvent> { get { session.queue } set { session.queue = newValue } }
+    private var recoveryTarget: EditorSnapshot? { get { session.recoveryTarget } set { session.recoveryTarget = newValue } }
+    private var recovery: InputRecovery { get { session.recovery } set { session.recovery = newValue } }
     private var tapRecovery = TapRecovery()
     private var sleeping = false
     private var observesSystem = true
     private var permissionState: [Bool]?
     private var contextFailure: EditorSnapshotFailure?
-    private var recoverySourceID: String?
+    private var recoverySourceID: String? { get { session.recoverySourceID } set { session.recoverySourceID = newValue } }
     private var recoveryReplayProjection: ReplayInsertionProjection?
     private var recoveryReplaySource: String?
     private var replayProjection: ReplayInsertionProjection?
