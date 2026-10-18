@@ -1126,7 +1126,6 @@ final class KeyboardService {
     private func finishMutation(_ result: AccessibilityEditor.ReplacementResult, before: EditorSnapshot, settled: EditorSnapshot?,
                                 allowAutomaticReplay: Bool = false, allowPartialReplay: Bool = false,
                                 recoverySource: String? = nil) {
-        mutationGate = nil; mutationNonce = nil; mutationDeadline = nil
         let expected: EditorSnapshot
         if case .verified(let after) = result { expected = after } else { expected = before }
         let completion: InputRecovery.Completion
@@ -1135,14 +1134,11 @@ final class KeyboardService {
         case .verified: completion = .verified
         case .uncertain: completion = .uncertain
         }
-        recovery.observe(completion)
         let safe = settled.map { AccessibilityEditor.sameTarget(expected, $0) && expected.matchesContent($0) } ?? false
         let contextMatches = safe && NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid && !IsSecureEventInputEnabled()
-        recoveryTarget = expected
-        recoverySourceID = recoverySource ?? InputSources.identifier
-        switch recovery.action(pending: inputReplay.count, outstanding: inputReplay.outstanding, contextMatches: contextMatches) {
+        switch session.finish(completion, expected: expected, sourceID: recoverySource ?? InputSources.identifier,
+                              contextMatches: contextMatches) {
         case .resume:
-            recoveryTarget = nil; recoverySourceID = nil
             if !contextMatches {
                 resetTransient()
                 captureAfterEvent()
@@ -1163,14 +1159,15 @@ final class KeyboardService {
     }
     private func replayDelayedInput(target: EditorSnapshot, allowAutomatic: Bool = false,
                                     allowPartialReplay: Bool = false) {
-        guard !recovery.requiresReview, inputReplay.outstanding == 0 else { updateServiceStatus(); return }
-        recoveryTarget = nil; recoverySourceID = nil; store.pendingInput = 0; store.recoveryRequired = false
-        guard !inputReplay.isEmpty else { mutationGate = nil; mutationDeadline = nil; updateServiceStatus(); return }
+        switch session.startReplay(target: target) {
+        case .blocked: updateServiceStatus(); return
+        case .empty: store.pendingInput = 0; store.recoveryRequired = false; updateServiceStatus(); return
+        case .started: store.pendingInput = 0; store.recoveryRequired = false
+        }
         cancelGestureStateForInterception()
         revision += 1; cachedSnapshot = nil
         if inputReplay.containsPending(where: { !preservesContext($0) }) { transaction = nil }
         replayReadbackNonce = UUID()
-        replayIdentityNonce = nil; replayRouteLease = nil
         // Anchored-token catch-up is a separate, explicit authority granted only
         // after a verified partial rollback. Ordinary/manual/undo replay keeps
         // the existing first-boundary policy unchanged.
@@ -1180,7 +1177,6 @@ final class KeyboardService {
         replayProjectionSource = replayProjection != nil ? InputSources.identifier : nil
         recoveryReplayProjection = ReplayInsertionProjection(anchorText: target.text, selection: target.selection)
         recoveryReplaySource = InputSources.identifier
-        mutationGate = target; mutationDeadline = nil; replaying = true
         drainReplay()
     }
     private func selectSource(_ change: SourceChange, pid: pid_t) -> Bool {
