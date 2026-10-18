@@ -1777,7 +1777,7 @@ final class KeyboardService {
             if let source = sourceAfterReplay {
                 sourceAfterReplay = nil
                 if NSWorkspace.shared.frontmostApplication?.processIdentifier == source.pid, AXIsProcessTrusted(),
-                   anchor.map { allowedFrontmost(for: $0) } ?? allowedFrontmost(), source.change.apply() {
+                   anchor.map(allowedFrontmost(for:)) ?? allowedFrontmost(), source.change.apply() {
                     store.inputSource = InputSources.identifier
                     store.lastStatus = source.change.status
                 }
