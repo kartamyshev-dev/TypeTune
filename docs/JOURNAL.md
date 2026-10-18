@@ -5,6 +5,15 @@
 Каждая запись относится к своей версии кода и виду проверки; PASS между записями
 не переносится.
 
+## Слияние v0.1.4 в универсальный режим — 2026-10-18
+
+`main` с v0.1.4 влит в `universal-input` (`f6736e1`), затем в `snippets` (`fa6c1e2`). CI на macOS 15
+arm64 прошёл на обоих коммитах: сборка всех продуктов без предупреждений, `runtime_recovery_probe.sh`
+passed, selftest 1431/1431 и 1623/1623, XCTest 14/14 — запуски
+[39130142851](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39130142851) и
+[39130142574](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39130142574).
+Native-проверка универсального режима (U8) не выполнялась; проверки v0.1.4 на Mac относятся
+к прежнему механизму.
 ## Сниппеты: этап S4 (план правки) — 2026-10-18
 
 Ветка `snippets`. Linux offline, Swift 6.0.3: `scripts/ci_core.sh` exit 0, selftest 1604/1604
