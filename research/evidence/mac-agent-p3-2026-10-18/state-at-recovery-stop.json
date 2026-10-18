@@ -1,0 +1,12 @@
+{
+  "TypeTuneRunning": true,
+  "pendingInput": 1,
+  "serviceStatus": "recoveryPending",
+  "appNotRestarted": true,
+  "queueNotDiscarded": true,
+  "testDocumentKept": "/Users/kartamyshev/git/TypeTune/research/private/probes/E93765FB-3B07-4CA5-9859-1E9BB21FFCAC.txt",
+  "settingsPreviouslyRestored": "smoke-settings-restored.json",
+  "fullRestorationPending": true,
+  "nextActionRequiresUserResponse": "MAC_AGENT_GUIDE section 2 rule 7",
+  "fourHourRun": "NOT_RUN"
+}

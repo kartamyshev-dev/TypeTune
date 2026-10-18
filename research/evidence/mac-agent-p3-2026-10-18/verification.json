@@ -1,0 +1,17 @@
+{
+  "commit": "d145971243299354edcd86f7d08d01c8ab74e4d0",
+  "guiSHA256": "34439d48f36b7d675352a83e51101fb260e91032ede3d80f51806240b7c7bf07",
+  "checks": "matrix.json",
+  "P3": "limited native Chrome report: 0 snapshot failures, 0 faults, 6 confirmed edits with plainPaste=false; plainPaste positive TextEdit native smoke passed",
+  "CI": "success: run 39141018700",
+  "wholeMatrixAccepted": false,
+  "restorationPending": true,
+  "nativeStream80": "FAIL: partial completed rows contain uncorrected ghbdtn; run stopped; see stream-stopped-analysis.json",
+  "P1ColdStart": "NOT_ACCEPTED",
+  "unavailableApps": [
+    "Slack",
+    "VS Code",
+    "Word"
+  ],
+  "blocker": "MAC_AGENT_GUIDE 2.7: TypeTune recoveryPending, pendingInput=1; exact reason for expired 50ms lease not established"
+}

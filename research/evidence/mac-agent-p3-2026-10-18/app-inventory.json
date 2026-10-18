@@ -1,0 +1,63 @@
+{
+  "Chrome": {
+    "path": "/Applications/Google Chrome.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.google.Chrome",
+    "version": "155.0.8059.82",
+    "build": "8059.82"
+  },
+  "Safari": {
+    "path": "/Applications/Safari.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.apple.Safari",
+    "version": "27.0.1",
+    "build": "22625.1.29.11.28"
+  },
+  "Telegram": {
+    "path": "/Applications/Telegram Desktop.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.tdesktop.Telegram",
+    "version": "7.3.1",
+    "build": "7.3.1"
+  },
+  "TextEdit": {
+    "path": "/System/Applications/TextEdit.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.apple.TextEdit",
+    "version": "1.21",
+    "build": "419"
+  },
+  "Заметки": {
+    "path": "/System/Applications/Notes.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.apple.Notes",
+    "version": "4.13",
+    "build": "3195"
+  },
+  "Codex": {
+    "path": "/Applications/ChatGPT.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.openai.codex",
+    "version": "26.1013.40934",
+    "build": "20770"
+  },
+  "Terminal": {
+    "path": "/System/Applications/Utilities/Terminal.app",
+    "presentAtStandardPath": true,
+    "bundle": "com.apple.Terminal",
+    "version": "2.15",
+    "build": "488"
+  },
+  "Slack": {
+    "path": "/Applications/Slack.app",
+    "presentAtStandardPath": false
+  },
+  "VS Code": {
+    "path": "/Applications/Visual Studio Code.app",
+    "presentAtStandardPath": false
+  },
+  "Word": {
+    "path": "/Applications/Microsoft Word.app",
+    "presentAtStandardPath": false
+  }
+}

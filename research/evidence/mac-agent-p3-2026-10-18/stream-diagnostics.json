@@ -1,0 +1,5163 @@
+{
+  "createdAt": "2026-10-18T15:42:31Z",
+  "notice": "Last 1000 technical events only; no text, keycodes, document or clipboard data.",
+  "records": [
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "service-state",
+      "reason": "ready",
+      "revision": 0,
+      "uptime": 6295.593571166667
+    },
+    {
+      "checks": {
+        "accepted": false,
+        "unsupported": true
+      },
+      "counts": {},
+      "phase": "web-accessibility",
+      "reason": "activation",
+      "revision": -1,
+      "uptime": 6311.973717375
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 10,
+      "uptime": 6313.614550333334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 10,
+      "uptime": 6313.614555625
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 10,
+      "uptime": 6313.614563583334
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 10,
+      "uptime": 6313.626839583334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 10,
+      "uptime": 6313.627096541667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 10,
+      "uptime": 6313.656643416667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 10,
+      "uptime": 6313.658056916667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 10,
+      "uptime": 6313.6583640416675
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 11,
+      "uptime": 6313.684584541667
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 11,
+      "uptime": 6313.684616583334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 15,
+      "uptime": 6314.059399791667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 22,
+      "uptime": 6314.862761083334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 26,
+      "uptime": 6315.32191375
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 34,
+      "uptime": 6362.10317225
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 34,
+      "uptime": 6362.103196041667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 34,
+      "uptime": 6362.103215666667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 34,
+      "uptime": 6362.110392958334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 34,
+      "uptime": 6362.110600666667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 34,
+      "uptime": 6362.133478125001
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 34,
+      "uptime": 6362.134632083334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 34,
+      "uptime": 6362.134694125
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 35,
+      "uptime": 6362.161458583334
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 35,
+      "uptime": 6362.1615079583335
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 49,
+      "uptime": 6365.617521708334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 49,
+      "uptime": 6365.617526291667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 49,
+      "uptime": 6365.617531541667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 49,
+      "uptime": 6365.630831
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 49,
+      "uptime": 6365.631032458334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 49,
+      "uptime": 6365.6597375833335
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 49,
+      "uptime": 6365.661168166667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 49,
+      "uptime": 6365.661220416667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 50,
+      "uptime": 6365.683836583334
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 50,
+      "uptime": 6365.683861083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 63,
+      "uptime": 6369.1078916666675
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 63,
+      "uptime": 6369.165946791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 63,
+      "uptime": 6369.258308708334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": true,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 63,
+      "uptime": 6369.315892916667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "counts": {},
+      "phase": "gesture-action",
+      "revision": 63,
+      "uptime": 6369.315903416667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 63,
+      "uptime": 6369.316366375
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 63,
+      "uptime": 6369.316371458333
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 63,
+      "uptime": 6369.316821541667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 63,
+      "uptime": 6369.317160375001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 63,
+      "uptime": 6369.351047
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 63,
+      "uptime": 6369.353040541667
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 63,
+      "uptime": 6369.355997958333
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 77,
+      "uptime": 6372.771157458334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 77,
+      "uptime": 6372.771164000001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 77,
+      "uptime": 6372.77117325
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 77,
+      "uptime": 6372.776702458334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 77,
+      "uptime": 6372.776956500001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 77,
+      "uptime": 6372.810885916667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 77,
+      "uptime": 6372.8123258333335
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 77,
+      "uptime": 6372.812397875
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 78,
+      "uptime": 6372.841937333334
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 78,
+      "uptime": 6372.8419935833335
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 82,
+      "uptime": 6373.251532666667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 89,
+      "uptime": 6374.048647708334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 93,
+      "uptime": 6374.507328083334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 119,
+      "uptime": 6379.393865958334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 119,
+      "uptime": 6379.39387375
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 119,
+      "uptime": 6379.393886333333
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 119,
+      "uptime": 6379.401101416667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 119,
+      "uptime": 6379.401333958333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 119,
+      "uptime": 6379.434444041667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 119,
+      "uptime": 6379.4361591666675
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 119,
+      "uptime": 6379.43620575
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 120,
+      "uptime": 6379.4758403333335
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 120,
+      "uptime": 6379.475899666667
+    },
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "manual-snapshot",
+      "reason": "ready",
+      "revision": 123,
+      "uptime": 6402.4220296250005
+    },
+    {
+      "checks": {
+        "cannotComplete": true,
+        "focusedField": true,
+        "selection": false,
+        "success": false,
+        "text": false,
+        "window": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 15.177208332715963,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 6428.138414
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "snapshot-failed",
+      "reason": "deadlineExceeded",
+      "revision": 124,
+      "uptime": 6428.139096375
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 124,
+      "uptime": 6428.1391022083335
+    },
+    {
+      "checks": {
+        "accepted": false,
+        "unsupported": true
+      },
+      "counts": {},
+      "phase": "web-accessibility",
+      "reason": "activation",
+      "revision": -1,
+      "uptime": 6428.152838666667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 131,
+      "uptime": 6429.705154541667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 131,
+      "uptime": 6429.705179500001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 131,
+      "uptime": 6429.705210625
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 131,
+      "uptime": 6429.723807375
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 131,
+      "uptime": 6429.7240466250005
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 131,
+      "uptime": 6429.736846583333
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 131,
+      "uptime": 6429.739589125001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 131,
+      "uptime": 6429.739720041667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 132,
+      "uptime": 6429.778461458333
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 132,
+      "uptime": 6429.778586750001
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 132,
+      "uptime": 6431.867391958333
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 133,
+      "uptime": 6431.911753875001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 140,
+      "uptime": 6432.903924958334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 140,
+      "uptime": 6432.9039373333335
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 140,
+      "uptime": 6432.903956416667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 140,
+      "uptime": 6432.914067833333
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 140,
+      "uptime": 6432.914510708334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 140,
+      "uptime": 6432.954786208334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 140,
+      "uptime": 6432.957007
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 140,
+      "uptime": 6432.957084041667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 141,
+      "uptime": 6432.995153875
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 141,
+      "uptime": 6432.995224958334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 141,
+      "uptime": 6435.086566166667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 142,
+      "uptime": 6435.13904525
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 150,
+      "uptime": 6436.261498708333
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 150,
+      "uptime": 6436.261505833334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 150,
+      "uptime": 6436.2615169166675
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 150,
+      "uptime": 6436.271191875
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 150,
+      "uptime": 6436.271441208333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 150,
+      "uptime": 6436.304696583334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 150,
+      "uptime": 6436.306578875
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 150,
+      "uptime": 6436.306628291667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 151,
+      "uptime": 6436.34516075
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 151,
+      "uptime": 6436.345239833334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 151,
+      "uptime": 6438.415580291667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 152,
+      "uptime": 6438.463406708333
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 153,
+      "uptime": 6438.870864750001
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 154,
+      "uptime": 6438.909215083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 154,
+      "uptime": 6439.013836791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 155,
+      "uptime": 6439.054008041667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 160,
+      "uptime": 6439.621006083334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 160,
+      "uptime": 6439.621013041667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 160,
+      "uptime": 6439.621023958333
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 160,
+      "uptime": 6439.634564833334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 160,
+      "uptime": 6439.634864416667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 160,
+      "uptime": 6439.651405833334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 160,
+      "uptime": 6439.6527579583335
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 160,
+      "uptime": 6439.652822541667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 161,
+      "uptime": 6439.679683958334
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 161,
+      "uptime": 6439.679721541667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 161,
+      "uptime": 6441.778463333334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 162,
+      "uptime": 6441.8215435
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 167,
+      "uptime": 6442.579345625
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 167,
+      "uptime": 6442.579358166667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 167,
+      "uptime": 6442.579398625
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 167,
+      "uptime": 6442.597336333334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 167,
+      "uptime": 6442.5975772500005
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 167,
+      "uptime": 6442.618166791667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 167,
+      "uptime": 6442.61920525
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 167,
+      "uptime": 6442.619249416667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 168,
+      "uptime": 6442.653572375
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 168,
+      "uptime": 6442.6536320000005
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 168,
+      "uptime": 6444.738210083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 169,
+      "uptime": 6444.777155708333
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 180,
+      "uptime": 6446.237372750001
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 180,
+      "uptime": 6448.379586666667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 181,
+      "uptime": 6448.425700958333
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 191,
+      "uptime": 6450.903368083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 191,
+      "uptime": 6450.961179583333
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 191,
+      "uptime": 6451.044621541667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": true,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 191,
+      "uptime": 6451.105673083333
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "counts": {},
+      "phase": "gesture-action",
+      "revision": 191,
+      "uptime": 6451.105688583334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 191,
+      "uptime": 6451.105804666667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 191,
+      "uptime": 6451.105809416667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 191,
+      "uptime": 6451.10635075
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 191,
+      "uptime": 6451.106687
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 191,
+      "uptime": 6451.124801958334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 191,
+      "uptime": 6451.127131625
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 191,
+      "uptime": 6451.130527416667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 191,
+      "uptime": 6452.133680333333
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 192,
+      "uptime": 6452.171178041667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 202,
+      "uptime": 6454.645537875001
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 202,
+      "uptime": 6454.663875791667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 202,
+      "uptime": 6454.678962875
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 202,
+      "uptime": 6454.678970166667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 202,
+      "uptime": 6454.67926925
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 202,
+      "uptime": 6454.679388500001
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 31.903333333502815,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 6454.7246188750005
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 202,
+      "uptime": 6454.725406583334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 202,
+      "uptime": 6454.727209375001
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 202,
+      "uptime": 6454.728992458334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 202,
+      "uptime": 6454.748980791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 202,
+      "uptime": 6454.752772125001
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 202,
+      "uptime": 6455.7778835416675
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 203,
+      "uptime": 6455.824360166667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 204,
+      "uptime": 6457.248721083333
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 204,
+      "uptime": 6457.304279208333
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": false,
+        "knownSource": true,
+        "switch": true,
+        "toggleAuto": false
+      },
+      "counts": {},
+      "phase": "gesture-action",
+      "revision": 204,
+      "uptime": 6457.638388125
+    },
+    {
+      "checks": {
+        "selected": true,
+        "sourceChanged": true
+      },
+      "counts": {},
+      "phase": "gesture-source-result",
+      "revision": 205,
+      "uptime": 6457.647765583334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 205,
+      "uptime": 6458.3279642083335
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 206,
+      "uptime": 6458.370373916667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 218,
+      "uptime": 6459.949677875001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 218,
+      "uptime": 6459.949699833333
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 218,
+      "uptime": 6459.949709625001
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 218,
+      "uptime": 6459.95667525
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 218,
+      "uptime": 6459.957089375001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 218,
+      "uptime": 6459.985484875
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 218,
+      "uptime": 6459.986829500001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 218,
+      "uptime": 6459.986870833333
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 219,
+      "uptime": 6460.021709958333
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 219,
+      "uptime": 6460.021811333334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 219,
+      "uptime": 6462.111815083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 220,
+      "uptime": 6462.162970166667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 226,
+      "uptime": 6464.162364791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 227,
+      "uptime": 6464.203707916667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 227,
+      "uptime": 6464.378310416667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 227,
+      "uptime": 6464.430730541667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 227,
+      "uptime": 6464.522146708334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": true,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 227,
+      "uptime": 6464.578253541667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "counts": {},
+      "phase": "gesture-action",
+      "revision": 227,
+      "uptime": 6464.578260375
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 227,
+      "uptime": 6464.578272083334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": true
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 227,
+      "uptime": 6464.578525375
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 227,
+      "uptime": 6464.578910125
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 227,
+      "uptime": 6464.591792791667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 227,
+      "uptime": 6464.593051416667
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 227,
+      "uptime": 6464.595541000001
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 227,
+      "uptime": 6465.612284250001
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 228,
+      "uptime": 6465.6543762500005
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 236,
+      "uptime": 6467.904828083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 237,
+      "uptime": 6467.957825458334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 237,
+      "uptime": 6468.125838958334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 237,
+      "uptime": 6468.14516
+    },
+    {
+      "checks": {
+        "anchor": true
+      },
+      "counts": {},
+      "phase": "explicit-enqueue",
+      "revision": 238,
+      "uptime": 6468.163024
+    },
+    {
+      "checks": {
+        "accepted": true,
+        "allowed": true,
+        "revision": true,
+        "sameSelection": true,
+        "sameTarget": true,
+        "sameText": true,
+        "snapshot": true,
+        "source": true
+      },
+      "counts": {},
+      "phase": "explicit-context",
+      "revision": 238,
+      "uptime": 6468.165625875001
+    },
+    {
+      "checks": {
+        "current": true,
+        "nativePaste": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 0.5307916662786738,
+      "phase": "mutation-initial",
+      "revision": 238,
+      "uptime": 6468.166231958334
+    },
+    {
+      "checks": {
+        "allowedFrontmost": true,
+        "granted": true,
+        "nativePaste": false,
+        "noMutation": true,
+        "noRecovery": true,
+        "noReplay": true,
+        "postAccess": true,
+        "replaySource": true,
+        "revision": true,
+        "source": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 0.8725416664674412,
+      "phase": "mutation-gate",
+      "revision": 238,
+      "uptime": 6468.166572833334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 238,
+      "uptime": 6468.166575625
+    },
+    {
+      "checks": {
+        "content": true,
+        "snapshot": true,
+        "target": true
+      },
+      "counts": {},
+      "phase": "replacement-preflight",
+      "revision": -1,
+      "uptime": 6468.171416666667
+    },
+    {
+      "checks": {
+        "deadlineExpired": false
+      },
+      "counts": {},
+      "phase": "replacement-stage",
+      "reason": "verified",
+      "revision": -1,
+      "uptime": 6468.190129416667
+    },
+    {
+      "checks": {
+        "current": true,
+        "gated": true,
+        "nativePaste": false,
+        "notApplied": false,
+        "uncertain": false,
+        "verified": true
+      },
+      "counts": {},
+      "elapsedMilliseconds": 24.60941666686267,
+      "phase": "mutation-result",
+      "revision": 238,
+      "uptime": 6468.190309875001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 238,
+      "uptime": 6468.190512625
+    },
+    {
+      "checks": {
+        "accepted": true
+      },
+      "counts": {},
+      "phase": "replay-identity",
+      "reason": "final-focused-field",
+      "revision": -1,
+      "uptime": 6468.2221536666675
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 239,
+      "uptime": 6468.22762925
+    },
+    {
+      "checks": {
+        "accepted": true
+      },
+      "counts": {},
+      "phase": "replay-identity",
+      "reason": "final-focused-field",
+      "revision": -1,
+      "uptime": 6468.228505958334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": false
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 239,
+      "uptime": 6468.228800291667
+    },
+    {
+      "checks": {
+        "accepted": true
+      },
+      "counts": {},
+      "phase": "replay-identity",
+      "reason": "final-focused-field",
+      "revision": -1,
+      "uptime": 6468.229346375
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 239,
+      "uptime": 6468.237219375001
+    },
+    {
+      "checks": {
+        "pendingSource": false
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 239,
+      "uptime": 6468.237279291667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 239,
+      "uptime": 6469.228274875
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 240,
+      "uptime": 6469.2779885
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 248,
+      "uptime": 6470.394893208334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 248,
+      "uptime": 6470.394901500001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 248,
+      "uptime": 6470.39492725
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 248,
+      "uptime": 6470.404692041667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 248,
+      "uptime": 6470.404966541667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 248,
+      "uptime": 6470.426712083334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 248,
+      "uptime": 6470.427831375
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 248,
+      "uptime": 6470.427872583334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 249,
+      "uptime": 6470.462968541667
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 249,
+      "uptime": 6470.463016708334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 249,
+      "uptime": 6471.532943458334
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 249,
+      "uptime": 6471.554699208334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 249,
+      "uptime": 6471.570236250001
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 249,
+      "uptime": 6471.570249666667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 249,
+      "uptime": 6471.570699791667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 249,
+      "uptime": 6471.570875166667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 249,
+      "uptime": 6471.610511541667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 249,
+      "uptime": 6471.610911916667
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 249,
+      "uptime": 6471.614293416667
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 249,
+      "uptime": 6471.629426375001
+    },
+    {
+      "checks": {
+        "cacheCurrent": true,
+        "cached": true,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 249,
+      "uptime": 6471.629437875001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 257,
+      "uptime": 6514.089919083333
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 257,
+      "uptime": 6514.089926958333
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 257,
+      "uptime": 6514.089937416667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 257,
+      "uptime": 6514.099585666667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 257,
+      "uptime": 6514.099848791667
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 30.458125000222935,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 6514.1509445833335
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 257,
+      "uptime": 6514.151506208334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 257,
+      "uptime": 6514.153294083334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 257,
+      "uptime": 6514.153393958334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 258,
+      "uptime": 6514.1814620000005
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 258,
+      "uptime": 6514.181515083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 258,
+      "uptime": 6516.275394666667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 259,
+      "uptime": 6516.331952625001
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 266,
+      "uptime": 6517.464578083333
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 267,
+      "uptime": 6517.508551791667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 268,
+      "uptime": 6517.612675333334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 268,
+      "uptime": 6517.612681500001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 268,
+      "uptime": 6517.612690458333
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 268,
+      "uptime": 6517.620082458334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 268,
+      "uptime": 6517.620281166667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 268,
+      "uptime": 6517.637789416667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 268,
+      "uptime": 6517.638997916667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 268,
+      "uptime": 6517.639042083334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 269,
+      "uptime": 6517.656976125
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 269,
+      "uptime": 6517.657025791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 269,
+      "uptime": 6519.76424425
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 270,
+      "uptime": 6519.807610875
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 277,
+      "uptime": 6520.91425125
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 278,
+      "uptime": 6520.966571875
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 279,
+      "uptime": 6521.064946958334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 279,
+      "uptime": 6521.0649543750005
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 279,
+      "uptime": 6521.064967583334
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 279,
+      "uptime": 6521.074160333334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 279,
+      "uptime": 6521.074393791667
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": false,
+        "selection": false,
+        "success": false,
+        "text": false,
+        "window": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 34.219083332573064,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 6521.109369875
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 279,
+      "uptime": 6521.109734875
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 279,
+      "uptime": 6521.110911958333
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 279,
+      "uptime": 6521.1109925
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 280,
+      "uptime": 6521.14000475
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 280,
+      "uptime": 6521.1400595000005
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 280,
+      "uptime": 6523.239608375
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 281,
+      "uptime": 6523.2822671250005
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 289,
+      "uptime": 6524.390834541667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 289,
+      "uptime": 6524.390845541667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 289,
+      "uptime": 6524.390863541667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 289,
+      "uptime": 6524.399998916667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 289,
+      "uptime": 6524.400276291667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 289,
+      "uptime": 6524.434213833334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 289,
+      "uptime": 6524.436542041667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 289,
+      "uptime": 6524.436622833334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 290,
+      "uptime": 6524.464424041667
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 290,
+      "uptime": 6524.464489166667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 290,
+      "uptime": 6526.564638625
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 291,
+      "uptime": 6526.615208125
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 299,
+      "uptime": 6527.731210916667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 299,
+      "uptime": 6527.731218125
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 299,
+      "uptime": 6527.731238291667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 299,
+      "uptime": 6527.740605541667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 299,
+      "uptime": 6527.740854500001
+    },
+    {
+      "checks": {
+        "cannotComplete": false,
+        "focusedField": true,
+        "selection": false,
+        "success": true,
+        "text": false,
+        "window": false
+      },
+      "counts": {},
+      "elapsedMilliseconds": 34.04408333335596,
+      "phase": "ax-read",
+      "revision": -1,
+      "uptime": 6527.775519708333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 299,
+      "uptime": 6527.776012541667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 299,
+      "uptime": 6527.777107333333
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 299,
+      "uptime": 6527.782695791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 299,
+      "uptime": 6529.9316385
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 300,
+      "uptime": 6529.981826916667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 301,
+      "uptime": 6530.389439958334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 302,
+      "uptime": 6530.432271791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 302,
+      "uptime": 6530.530980541667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 303,
+      "uptime": 6530.581015958333
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 305,
+      "uptime": 6530.798012
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 305,
+      "uptime": 6532.95588
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 306,
+      "uptime": 6532.998799375
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 307,
+      "uptime": 6533.414421458334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 308,
+      "uptime": 6533.464465916667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 308,
+      "uptime": 6533.564398
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 309,
+      "uptime": 6533.614397916667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 311,
+      "uptime": 6533.822474666667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 311,
+      "uptime": 6533.822482875001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 311,
+      "uptime": 6533.822495625001
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 311,
+      "uptime": 6533.829529333334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 311,
+      "uptime": 6533.8297804583335
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 311,
+      "uptime": 6533.859104333334
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 311,
+      "uptime": 6533.860128541667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 311,
+      "uptime": 6533.860237916667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 312,
+      "uptime": 6533.890277
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 312,
+      "uptime": 6533.890332083333
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 312,
+      "uptime": 6535.989544791667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 313,
+      "uptime": 6536.039516541667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 318,
+      "uptime": 6536.8062998333335
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 318,
+      "uptime": 6538.964435416667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 319,
+      "uptime": 6539.014950500001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 324,
+      "uptime": 6539.772693416667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 324,
+      "uptime": 6539.7727015
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 324,
+      "uptime": 6539.772713166667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 324,
+      "uptime": 6539.78185525
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 324,
+      "uptime": 6539.782191666667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 324,
+      "uptime": 6539.808595041667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 324,
+      "uptime": 6539.81011775
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 324,
+      "uptime": 6539.8156544583335
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 324,
+      "uptime": 6541.9557655416675
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 325,
+      "uptime": 6541.9986652083335
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 335,
+      "uptime": 6543.3313575
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 335,
+      "uptime": 6543.331369708334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 335,
+      "uptime": 6543.331393583334
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 335,
+      "uptime": 6543.374389958334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 335,
+      "uptime": 6543.374662833334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 335,
+      "uptime": 6543.4097189583335
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 335,
+      "uptime": 6543.4119675
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 335,
+      "uptime": 6543.412045416667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 336,
+      "uptime": 6543.43994775
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 336,
+      "uptime": 6543.4400177083335
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 336,
+      "uptime": 6545.538787541667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 337,
+      "uptime": 6545.6137771250005
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 347,
+      "uptime": 6548.038919083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 347,
+      "uptime": 6548.099091666667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 347,
+      "uptime": 6548.189431166667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": true,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 347,
+      "uptime": 6548.249054291667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "counts": {},
+      "phase": "gesture-action",
+      "revision": 347,
+      "uptime": 6548.249067583334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 347,
+      "uptime": 6548.249156625
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 347,
+      "uptime": 6548.249164041667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 347,
+      "uptime": 6548.249713541667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 347,
+      "uptime": 6548.2499773750005
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 347,
+      "uptime": 6548.293532125001
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 347,
+      "uptime": 6548.296043666667
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 347,
+      "uptime": 6548.2994975
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 347,
+      "uptime": 6549.274339583334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 348,
+      "uptime": 6549.315546250001
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": true,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 354,
+      "uptime": 6551.314023875
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 355,
+      "uptime": 6551.364506958334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 355,
+      "uptime": 6551.530952625
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": true,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 355,
+      "uptime": 6551.609178083334
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": false,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 355,
+      "uptime": 6551.680586666667
+    },
+    {
+      "checks": {
+        "cacheCurrent": false,
+        "cached": false,
+        "correctAction": true,
+        "otherModifiers": false,
+        "pendingDeadline": false,
+        "singleEnabled": true,
+        "switchAction": false
+      },
+      "counts": {},
+      "phase": "gesture-modifier",
+      "revision": 355,
+      "uptime": 6551.740599958333
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "correct": true,
+        "knownSource": true,
+        "switch": false,
+        "toggleAuto": false
+      },
+      "counts": {},
+      "phase": "gesture-action",
+      "revision": 355,
+      "uptime": 6551.740616
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 355,
+      "uptime": 6551.740649750001
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": true
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 355,
+      "uptime": 6551.741254625001
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 355,
+      "uptime": 6551.7438099166675
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 355,
+      "uptime": 6551.761024750001
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 355,
+      "uptime": 6551.762504541667
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "recovery-empty-resume",
+      "revision": 355,
+      "uptime": 6551.765059833334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 362,
+      "uptime": 6575.022565625
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 368,
+      "uptime": 6575.706485291667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 375,
+      "uptime": 6576.522744875
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 375,
+      "uptime": 6576.522753416667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 375,
+      "uptime": 6576.522764375
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 375,
+      "uptime": 6576.532145
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 375,
+      "uptime": 6576.532340250001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 375,
+      "uptime": 6576.569974875
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 375,
+      "uptime": 6576.571527041667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 375,
+      "uptime": 6576.571601583334
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 376,
+      "uptime": 6576.594260916667
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 376,
+      "uptime": 6576.594308166667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 382,
+      "uptime": 6577.206293083334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 382,
+      "uptime": 6577.206310875001
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 382,
+      "uptime": 6577.206342541667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 382,
+      "uptime": 6577.216271083334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 382,
+      "uptime": 6577.216628333334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 382,
+      "uptime": 6577.251553625
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 382,
+      "uptime": 6577.25392825
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 382,
+      "uptime": 6577.254018291667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 383,
+      "uptime": 6577.2810759583335
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 383,
+      "uptime": 6577.281131041667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 390,
+      "uptime": 6578.006892166667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 390,
+      "uptime": 6578.006903333334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 390,
+      "uptime": 6578.006927666667
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 390,
+      "uptime": 6578.016846541667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 390,
+      "uptime": 6578.017186875
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 390,
+      "uptime": 6578.058698458333
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 390,
+      "uptime": 6578.060921583334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 390,
+      "uptime": 6578.061015625
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 391,
+      "uptime": 6578.089045291667
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 391,
+      "uptime": 6578.089109250001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 397,
+      "uptime": 6578.6993179166675
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 397,
+      "uptime": 6578.6993248750005
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 397,
+      "uptime": 6578.699335583334
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 397,
+      "uptime": 6578.7166343750005
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 397,
+      "uptime": 6578.717104916667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 397,
+      "uptime": 6578.737789791667
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 397,
+      "uptime": 6578.739101166667
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 397,
+      "uptime": 6578.739142291667
+    },
+    {
+      "checks": {
+        "keyDown": false,
+        "outstanding": false,
+        "queueEmpty": true
+      },
+      "counts": {},
+      "phase": "replay-forward",
+      "revision": 398,
+      "uptime": 6578.756681791667
+    },
+    {
+      "checks": {
+        "pendingSource": true
+      },
+      "counts": {},
+      "phase": "replay-drained",
+      "revision": 398,
+      "uptime": 6578.756732000001
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 405,
+      "uptime": 6579.514472333333
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 405,
+      "uptime": 6579.514488000001
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 405,
+      "uptime": 6579.514505125
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 405,
+      "uptime": 6579.524107708334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 405,
+      "uptime": 6579.524396125001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 405,
+      "uptime": 6579.5669493333335
+    },
+    {
+      "checks": {
+        "deferred": true,
+        "pendingReplay": true,
+        "selected": false
+      },
+      "counts": {},
+      "phase": "source-selection",
+      "revision": 405,
+      "uptime": 6579.568774083334
+    },
+    {
+      "checks": {},
+      "counts": {},
+      "phase": "gesture-interception-reset",
+      "revision": 405,
+      "uptime": 6579.568887791667
+    },
+    {
+      "checks": {
+        "allowed": true,
+        "frontmost": true,
+        "identity": true,
+        "leaseFresh": false,
+        "posting": true,
+        "replaySource": true,
+        "revision": true,
+        "source": true,
+        "trusted": true
+      },
+      "counts": {},
+      "phase": "replay-route-rejected",
+      "revision": 406,
+      "uptime": 6579.621890041667
+    },
+    {
+      "checks": {},
+      "counts": {
+        "outstanding": 0,
+        "pending": 1,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "replay-suspended",
+      "revision": 406,
+      "uptime": 6579.621905291667
+    },
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 1,
+        "uncertainDeliveries": 0
+      },
+      "phase": "service-state",
+      "reason": "recoveryPending",
+      "revision": 406,
+      "uptime": 6579.623518458334
+    },
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 1,
+        "uncertainDeliveries": 0
+      },
+      "phase": "manual-snapshot",
+      "reason": "recoveryPending",
+      "revision": 406,
+      "uptime": 6707.6550917916675
+    }
+  ],
+  "schemaVersion": 2,
+  "session": "D01C9313-D810-4530-9331-BBB0CC09215F"
+}

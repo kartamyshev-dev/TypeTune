@@ -1,0 +1,41 @@
+Building for production...
+[3 / 10]
+[4 / 11] LayoutPilotCore
+[6 / 12] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[11 / 12] LayoutPilot-product
+[12 / 55]
+[18 / 55]
+[20 / 55]
+[25 / 55]
+[26 / 55]
+[27 / 55]
+[30 / 55]
+[32 / 55]
+[41 / 55]
+[42 / 55]
+[46 / 55]
+[51 / 55]
+[52 / 55]
+[53 / 55]
+[54 / 55] LayoutPilot-product
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[57 / 59] LayoutPilot-product
+[58 / 59] LayoutPilot-product
+Build complete! (33,47 с)
+Building for production...
+[3 / 6] LayoutPilotCore
+[4 / 7] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[10 / 12] layoutpilot-cli-product
+[12 / 13] layoutpilot-cli-product
+[14 / 16] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[15 / 16] layoutpilot-cli-product
+Build complete! (11,85 с)
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app
