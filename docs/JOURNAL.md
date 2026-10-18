@@ -5,6 +5,16 @@
 Каждая запись относится к своей версии кода и виду проверки; PASS между записями
 не переносится.
 
+## Четвёртый отчёт; агент на Mac снова используется — 2026-10-18
+
+Отчёт сборки `07d55dc` (user manual, сессия `2D3DFDEB…`). Строка поиска Google в Chrome: Double Shift
+сработал трижды (`universal-result confirmed`, поле нечитаемо, правка вслепую по п. 30);
+автоисправление первого слова после клика пропущено (`anchored=false`). `unreadable-field`:
+`focusedField=false` — Chrome не отдаёт поле в фокусе; `web-accessibility`: `unsupported`.
+Пользователь вернул агента на Mac (DECISIONS п. 31): инструкция [MAC_AGENT_GUIDE](MAC_AGENT_GUIDE.md),
+AX-пробник `scripts/ax_focus_probe.sh` (компилируется в CI
+[39137057145](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39137057145)).
+
 ## Третий отчёт: Chrome отклоняет AXManualAccessibility — 2026-10-18
 
 Отчёт сборки `9ea6fd7` (user manual, сессия `84ED2F92…`). `web-accessibility` при переходе в

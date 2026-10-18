@@ -61,7 +61,7 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 `RuntimeRecoveryProbe` пройдены. **Native-проверки (U8) не проводились** — чек-лист в
 [UNIVERSAL_INPUT_PLAN](UNIVERSAL_INPUT_PLAN.md#чек-лист-u8-для-mac-всё-not_run). До них ветку
 не сливать в `main`. Native-PASS прежнего механизма к новому не переносятся.
-Проверка на Mac — вручную пользователем: [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md).
+Проверка на Mac — агентом по [MAC_AGENT_GUIDE](MAC_AGENT_GUIDE.md) или вручную по [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md).
 
 2026-10-18 в ветку влит `main` с v0.1.4. Конфликты: `replayIdentityMatches` (версия `main`
 с повтором AX и ранним выходом для целей без поля) и `RuntimeRecoveryProbe` (оставлены проверки
@@ -70,11 +70,10 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 
 ## Точка продолжения
 
-0. Ветка `universal-input`: пользователь проверяет тестовую сборку из CI по
-   [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md); агент на Mac не используется (DECISIONS п. 29).
-   Открыт случай пользователя: веб-приложение из Chrome — в v0.1.4 TypeTune не работает
-   (приложение-обёртка Chrome вне списка прежнего механизма), флаг не совпадает с раскладкой;
-   шаги 8–9 чек-листа. Затем — сниппеты S5–S7 (ветка `snippets`,
+0. Ветка `universal-input`: агент на Mac проходит [MAC_AGENT_GUIDE](MAC_AGENT_GUIDE.md) (DECISIONS п. 31).
+   Главная открытая проблема — P1: строка поиска Google в Chrome не отдаёт поле через AX,
+   автоисправление первого слова там не работает; Double Shift работает (отчёт пользователя).
+   Затем — сниппеты S5–S7 (ветка `snippets`,
    [SNIPPETS_PLAN](SNIPPETS_PLAN.md)): решения S0 приняты (DECISIONS п. 28), ядро S1–S4 готово
    (Linux offline).
 1. Chrome single-field: подтверждённая причина исправлена без ослабления
