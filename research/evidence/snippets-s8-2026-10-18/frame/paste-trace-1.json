@@ -1,0 +1,42 @@
+{
+  "clipboard" : [
+    {
+      "generation" : 109,
+      "matchesSnippet" : false,
+      "ms" : 48.323500002879882,
+      "types" : [
+        "org.chromium.internal.source-rfh-token",
+        "org.chromium.source-url",
+        "org.nspasteboard.TransientType",
+        "public.utf8-plain-text"
+      ]
+    },
+    {
+      "generation" : 110,
+      "matchesSnippet" : true,
+      "ms" : 1693.9069583349919,
+      "types" : [
+        "org.nspasteboard.ConcealedType",
+        "org.nspasteboard.TransientType",
+        "public.utf8-plain-text"
+      ]
+    },
+    {
+      "generation" : 111,
+      "matchesSnippet" : false,
+      "ms" : 2003.1245000027411,
+      "types" : [
+        "org.chromium.internal.source-rfh-token",
+        "org.chromium.source-url",
+        "org.nspasteboard.TransientType",
+        "public.utf8-plain-text"
+      ]
+    }
+  ],
+  "events" : [
+
+  ],
+  "exit" : 0,
+  "ordinaryInputLogged" : false,
+  "probeOutput" : "{\n  \"bundle\" : \"com.google.Chrome\",\n  \"caretMatches\" : true,\n  \"events\" : 74,\n  \"fieldDescriptionLength\" : 7,\n  \"inputSeconds\" : 0.74114891666613403,\n  \"inputSourceRestored\" : true,\n  \"modifiersNeutral\" : true,\n  \"observedInputSource\" : \"com.apple.keylayout.ABC\",\n  \"observedLength\" : 30,\n  \"passed\" : true,\n  \"pid\" : 1492,\n  \"returnEvents\" : 0,\n  \"sourceMatches\" : true,\n  \"statusFlagMatches\" : true,\n  \"statusSourceMatches\" : true,\n  \"statusTooltip\" : \"TypeTune · com.apple.keylayout.ABC\\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить\",\n  \"testTextCleared\" : true,\n  \"textMatches\" : true,\n  \"windowTitleLength\" : 36\n}\n"
+}

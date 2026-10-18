@@ -8,6 +8,7 @@ import LayoutPilotCore
 /// the synthetic tag, so the tap neither tracks nor intercepts them. Posting is not proof of an
 /// edit; the caller verifies with Accessibility when the field is readable. Main thread only.
 enum SnippetEditor {
+    enum Stage { case complete, deletion, insertion }
     static let leftArrow: CGKeyCode = 123
     static let rightArrow: CGKeyCode = 124
     static let vKey: CGKeyCode = 9
@@ -33,11 +34,11 @@ enum SnippetEditor {
         return [commandDown, vDown, vUp, commandUp]
     }
 
-    static func perform(_ plan: SnippetEditPlan, pid: pid_t) -> Outcome {
+    static func perform(_ plan: SnippetEditPlan, pid: pid_t, stage: Stage = .complete) -> Outcome {
         guard CGPreflightPostEventAccess(), !IsSecureEventInputEnabled(), pid > 0,
               let source = CGEventSource(stateID: .privateState) else { return .notPosted }
         var pasteFrame: [CGEvent] = []
-        if plan.insertion == .paste {
+        if plan.insertion == .paste, stage != .deletion {
             guard let events = pasteEvents(source: source) else { return .notPosted }
             pasteFrame = events
         }
@@ -55,8 +56,11 @@ enum SnippetEditor {
                 post(CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: false), flags: flags)
         }
         var failed: Outcome { postedAny ? .partial : .notPosted }
-        for _ in 0..<plan.moveRight { guard press(rightArrow) else { return failed } }
-        for _ in 0..<plan.deleteCount { guard press(KeystrokeEditor.backspaceKey) else { return failed } }
+        if stage != .insertion {
+            for _ in 0..<plan.moveRight { guard press(rightArrow) else { return failed } }
+            for _ in 0..<plan.deleteCount { guard press(KeystrokeEditor.backspaceKey) else { return failed } }
+        }
+        if stage == .deletion { return .posted(nil) }
         var saved: ClipboardSwap.Saved?
         if !plan.insertText.isEmpty {
             switch plan.insertion {

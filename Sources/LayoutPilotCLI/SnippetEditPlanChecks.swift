@@ -106,6 +106,16 @@ func snippetEditPlanChecks() -> [(Bool, String)] {
         check(p.inverse.confirms(textBeforeCaret: ";п", application: telegram), "Telegram undo confirms exact abbreviation")
     } else { check(false, "Telegram multiline plan") }
 
+    if let p = plan(";п", Snippet(abbreviation: ";п", text: "Первая\nВторая")) {
+        check(p.textAfterDeletion(from: ";п", application: app) == "", "paste deletion: empty prefix")
+        check(p.textAfterDeletion(from: "Мой текст ;п", application: app) == "Мой текст ", "paste deletion: preserves prefix")
+        check(p.textAfterDeletion(from: "Мой текст ;x", application: app) == nil, "paste deletion: changed abbreviation refused")
+        check(p.textAfterDeletion(from: ";пx", application: app) == nil, "paste deletion: changed caret refused")
+    } else { check(false, "paste deletion plan") }
+    if let p = plan(";b", bold) {
+        check(p.inverse.textAfterDeletion(from: p.expectedAfter, application: app) == nil, "paste deletion: cursor-move undo is not staged")
+    } else { check(false, "paste deletion cursor plan") }
+
     // Undo.
     if let p = plan("ok спс ", thanks) {
         let undo = p.inverse

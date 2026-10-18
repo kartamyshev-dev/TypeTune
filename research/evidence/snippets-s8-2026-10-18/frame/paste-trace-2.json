@@ -1,0 +1,42 @@
+{
+  "clipboard" : [
+    {
+      "generation" : 111,
+      "matchesSnippet" : false,
+      "ms" : 46.866166663676267,
+      "types" : [
+        "org.chromium.internal.source-rfh-token",
+        "org.chromium.source-url",
+        "org.nspasteboard.TransientType",
+        "public.utf8-plain-text"
+      ]
+    },
+    {
+      "generation" : 112,
+      "matchesSnippet" : true,
+      "ms" : 1655.387166665605,
+      "types" : [
+        "org.nspasteboard.ConcealedType",
+        "org.nspasteboard.TransientType",
+        "public.utf8-plain-text"
+      ]
+    },
+    {
+      "generation" : 113,
+      "matchesSnippet" : false,
+      "ms" : 2303.4676249990298,
+      "types" : [
+        "org.chromium.internal.source-rfh-token",
+        "org.chromium.source-url",
+        "org.nspasteboard.TransientType",
+        "public.utf8-plain-text"
+      ]
+    }
+  ],
+  "events" : [
+
+  ],
+  "exit" : 1,
+  "ordinaryInputLogged" : false,
+  "probeOutput" : "{\n  \"bundle\" : \"com.google.Chrome\",\n  \"caretMatches\" : false,\n  \"error\" : \"mismatch_kept_for_diagnosis\",\n  \"events\" : 14,\n  \"fieldDescriptionLength\" : 7,\n  \"inputSeconds\" : 0.67069129166702623,\n  \"inputSourceRestored\" : true,\n  \"modifiersNeutral\" : true,\n  \"observedInputSource\" : \"com.apple.keylayout.ABC\",\n  \"observedLength\" : 0,\n  \"passed\" : false,\n  \"pid\" : 1492,\n  \"returnEvents\" : 0,\n  \"sourceMatches\" : true,\n  \"statusFlagMatches\" : false,\n  \"statusSourceMatches\" : true,\n  \"statusTooltip\" : \"TypeTune · com.apple.keylayout.ABC\\nРезультат последней операции не подтверждён. Проверьте текст перед продолжением\",\n  \"textMatches\" : false,\n  \"windowTitleLength\" : 36\n}\n"
+}

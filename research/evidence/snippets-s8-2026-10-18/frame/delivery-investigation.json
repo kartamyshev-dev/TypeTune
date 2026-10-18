@@ -1,0 +1,10 @@
+{
+  "frameCandidate": "5984232681e8f4309cab94efe9dc1a6292bacae4",
+  "result": "FAIL, complete Command frame insufficient",
+  "plainFixture": "repeat1 PASS, repeat2 empty+mutation-uncertain",
+  "clipboardTrace": "both success and failure keep exact synthetic payload until restoration; no other writer observed",
+  "eventTap": "PID-targeted events not observed by session tap; no claim about delivery from empty trace",
+  "systemPaste": "Chrome invokes Command-V in both; success has an additional pasteboard read, failure does not",
+  "instrumentedFixture": "7/7 PASS; observer changes timing, not acceptance of original fixture",
+  "nextCandidate": "Only readable Chrome paste: exact post-deletion prefix ACK within80ms, same revision/source/PID/trust/Secure Input; one paste, no retry; failure keeps protection"
+}

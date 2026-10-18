@@ -89,6 +89,11 @@ public struct SnippetEditPlan: Equatable, Sendable {
         text.hasSuffix(fieldText(expectedAfter, application: application))
     }
 
+    public func textAfterDeletion(from text: String, application: String) -> String? {
+        guard moveRight == 0, expects(textBeforeCaret: text, application: application), text.count >= deleteCount else { return nil }
+        return String(text.dropLast(deleteCount))
+    }
+
     private func fieldText(_ text: String, application: String) -> String {
         // Telegram's AX value represents pasted line breaks as U+2028, including before undo.
         application == "com.tdesktop.Telegram" ? text.replacingOccurrences(of: "\n", with: "\u{2028}") : text

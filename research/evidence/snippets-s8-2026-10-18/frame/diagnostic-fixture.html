@@ -1,0 +1,4 @@
+<!doctype html><meta charset="utf-8"><title>TypeTune S8 isolated</title><h1>Проверка S8</h1><textarea aria-label="S8 test" autofocus rows="12" cols="60"></textarea><input type="password" aria-label="S8 password"><pre aria-label="S8 event log" id="events"></pre><script>
+const f=document.querySelector('textarea'),out=document.querySelector('#events'),rows=[];
+for(const type of ['keydown','keyup','paste','beforeinput','input'])f.addEventListener(type,e=>{rows.push({type,code:e.code||'',keyCode:e.keyCode||0,meta:!!e.metaKey,shift:!!e.shiftKey,repeat:!!e.repeat,inputType:e.inputType||'',payloadLength:e.clipboardData?e.clipboardData.getData('text/plain').length:null,valueLength:f.value.length,trusted:e.isTrusted});out.textContent=JSON.stringify(rows.slice(-60));});
+</script>

@@ -757,21 +757,25 @@ final class KeyboardService {
                 observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
             }
             let verification: KeystrokeVerification
+            var deletionText: String?
             switch observation {
             case .textBeforeCaret(let text):
                 verification = plan.expects(textBeforeCaret: text, anchored: !anchored, application: application) ? .matches : .mismatch
+                if application == "com.google.Chrome", plan.insertion == .paste {
+                    deletionText = plan.textAfterDeletion(from: text, application: application)
+                }
             case .selection: verification = .mismatch
             case .unreadable: verification = .unreadable
             case .secure: verification = .secure
             }
             DispatchQueue.main.async {
                 self.performSnippet(operation, verification: verification, released: released,
-                                    revision: expectedRevision, sourceID: sourceID)
+                                    revision: expectedRevision, sourceID: sourceID, deletionText: deletionText)
             }
         }
     }
     private func performSnippet(_ operation: SnippetOperation, verification: KeystrokeVerification, released: Bool,
-                                revision expectedRevision: Int, sourceID: String) {
+                                revision expectedRevision: Int, sourceID: String, deletionText: String?) {
         let target = operation.target, plan = operation.plan
         let readable = verification == .matches || verification == .mismatch
         let fieldMatches = verification == .matches || (verification == .unreadable && operation.anchored)
@@ -787,9 +791,48 @@ final class KeyboardService {
             else if verification == .unreadable { skipped("Сниппет не вставлен: поле недоступно, а перед сокращением нет пробела") }
             return
         }
-        let saved: ClipboardSwap.Saved?
-        switch SnippetEditor.perform(plan, pid: target.pid) {
+        guard let deletionText else { postSnippet(operation, readable: readable); return }
+        // Chrome must acknowledge deletion before its asynchronous paste command is sent.
+        switch SnippetEditor.perform(plan, pid: target.pid, stage: .deletion) {
         case .notPosted:
+            finishMutation(.notApplied, before: target, settled: target); return
+        case .partial:
+            finishSnippet(operation, outcome: .unknown, readable: readable, saved: nil); return
+        case .posted: break
+        }
+        axQueue.async { [weak self] in
+            guard let self else { return }
+            let deadline = ProcessInfo.processInfo.systemUptime + 0.080
+            var matches = false
+            repeat {
+                if case .textBeforeCaret(let text) = AccessibilityEditor.observeTextBeforeCaret(pid: target.pid),
+                   text.utf16.elementsEqual(deletionText.utf16), ProcessInfo.processInfo.systemUptime <= deadline {
+                    matches = true; break
+                }
+                Thread.sleep(forTimeInterval: 0.005)
+            } while ProcessInfo.processInfo.systemUptime < deadline
+            let proofMatches = matches
+            DispatchQueue.main.async {
+                let current = self.revision == expectedRevision && InputSources.identifier == sourceID &&
+                    AXIsProcessTrusted() && !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid &&
+                    ProcessInfo.processInfo.systemUptime <= deadline
+                InputDiagnostics.shared.record("snippet-deletion", revision: expectedRevision,
+                    checks: ["matches": proofMatches, "current": current])
+                guard proofMatches, current else {
+                    self.finishSnippet(operation, outcome: .unknown, readable: readable, saved: nil); return
+                }
+                self.postSnippet(operation, readable: readable, stage: .insertion)
+            }
+        }
+    }
+    private func postSnippet(_ operation: SnippetOperation, readable: Bool, stage: SnippetEditor.Stage = .complete) {
+        let target = operation.target, plan = operation.plan
+        let saved: ClipboardSwap.Saved?
+        switch SnippetEditor.perform(plan, pid: target.pid, stage: stage) {
+        case .notPosted:
+            if stage == .insertion {
+                finishSnippet(operation, outcome: .unknown, readable: readable, saved: nil); return
+            }
             finishMutation(.notApplied, before: target, settled: target)
             skipped("Сниппет не вставлен: нет разрешения на ввод или буфер обмена недоступен"); return
         case .partial:
