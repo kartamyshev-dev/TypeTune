@@ -339,7 +339,8 @@ final class KeyboardService {
     private struct KeystrokeOperation {
         let plan: KeystrokeEditPlan
         let target: EditorSnapshot
-        /// The buffer knows a word boundary before the token (blind edits need it).
+        /// A word boundary is known before the token, or none is needed (blind edits need
+        /// one of the two).
         let anchored: Bool
         let purpose: KeystrokePurpose
         /// The layout selected when the operation began (restored by undo).
@@ -443,8 +444,11 @@ final class KeyboardService {
         let context = InputContext(application: target.application, secure: IsSecureEventInputEnabled())
         if let word = typed.manualTarget, let decision = engine.manual(word.token, context: context),
            let plan = KeystrokeEditPlan(token: word.token, boundary: word.boundary, decision: decision) {
-            runKeystrokes(KeystrokeOperation(plan: plan, target: target,
-                anchored: typed.tokenIsAnchored(boundaryLength: word.boundary.count),
+            // An explicit command converts exactly the characters this process saw typed at
+            // the caret, so no word boundary is required, even when the field is unreadable
+            // (a Chrome search box): text left of them is never deleted. Automatic correction
+            // still needs a boundary, so it never converts a fragment appended to a word.
+            runKeystrokes(KeystrokeOperation(plan: plan, target: target, anchored: true,
                 purpose: .manual, sourceBefore: InputSources.identifier))
             return
         }
@@ -577,6 +581,11 @@ final class KeyboardService {
                 if case .unreadable = observation, self.requestWebAccessibility(pid: pid, trigger: "unreadable") {
                     Thread.sleep(forTimeInterval: 0.150)
                     observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
+                }
+                if case .unreadable = observation {
+                    let focused = AccessibilityEditor.describeFocused(pid: pid)
+                    InputDiagnostics.shared.record("unreadable-field", revision: expectedRevision,
+                        checks: focused.checks, reason: focused.role)
                 }
                 let kind: String
                 switch observation {

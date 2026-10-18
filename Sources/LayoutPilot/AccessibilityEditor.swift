@@ -117,6 +117,24 @@ enum AccessibilityEditor {
         AXUIElementSetMessagingTimeout(app, 0.050)
         return AXUIElementSetAttributeValue(app, "AXManualAccessibility" as CFString, kCFBooleanTrue)
     }
+    /// What an unreadable focused element offers, without its text: the AX role and
+    /// which text attributes answer. For reports only.
+    static func describeFocused(pid: pid_t) -> (role: String?, checks: [String: Bool]) {
+        let app = AXUIElementCreateApplication(pid)
+        AXUIElementSetMessagingTimeout(app, 0.050)
+        guard let raw = attribute(app, kAXFocusedUIElementAttribute), CFGetTypeID(raw) == AXUIElementGetTypeID() else {
+            return (nil, ["focusedField": false])
+        }
+        let field = raw as! AXUIElement
+        AXUIElementSetMessagingTimeout(field, 0.050)
+        func has(_ name: String) -> Bool { attribute(field, name) != nil }
+        let children = (attribute(field, kAXChildrenAttribute) as? [AnyObject])?.count ?? 0
+        return (attribute(field, kAXRoleAttribute) as? String, [
+            "focusedField": true, "value": attribute(field, kAXValueAttribute) is String,
+            "selectedRange": has(kAXSelectedTextRangeAttribute), "selectedText": has(kAXSelectedTextAttribute),
+            "characterCount": has(kAXNumberOfCharactersAttribute), "textMarker": has("AXSelectedTextMarkerRange"),
+            "editableAncestor": has("AXEditableAncestor"), "children": children > 0])
+    }
     static func observeTextBeforeCaret(pid: pid_t) -> FieldObservation {
         guard AXIsProcessTrusted() else { return .unreadable }
         guard !IsSecureEventInputEnabled() else { return .secure }
