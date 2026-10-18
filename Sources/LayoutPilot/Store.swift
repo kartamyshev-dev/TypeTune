@@ -176,7 +176,9 @@ final class Store: ObservableObject {
             } else { lastStatus = "Файл сниппетов повреждён; он не изменяется" }
         }
     }
-    private func refreshUsableSnippets() { usableSnippets = snippets.usable(mapping: InputSources.mapping) }
+    // Validation uses the standard table: Store stays independent of installed input sources
+    // (probes compile it alone). Matching while typing uses the installed table.
+    private func refreshUsableSnippets() { usableSnippets = snippets.usable() }
     /// Writes the library atomically and keeps the former rules (used with universal mode off)
     /// equal to the literal whole-word snippets.
     @discardableResult
@@ -189,12 +191,12 @@ final class Store: ObservableObject {
             lastStatus = "Не удалось сохранить сниппеты: \(error.localizedDescription)"
             return false
         }
-        let rules = snippets.legacyRules(mapping: InputSources.mapping)
+        let rules = snippets.legacyRules()
         if settings.rules != rules { settings.rules = rules }
         return true
     }
     func snippetIssues(_ snippet: Snippet) -> [SnippetIssue] {
-        snippets.issues(for: snippet, mapping: InputSources.mapping)
+        snippets.issues(for: snippet)
     }
     /// Adds or replaces a snippet. Returns its issues; nothing is saved when there are any.
     @discardableResult

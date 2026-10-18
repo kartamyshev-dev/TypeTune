@@ -12,7 +12,7 @@ swiftc -parse-as-library -swift-version 5 -D LAYOUTPILOT_TESTING \
  Tools/RuntimeRecoveryProbe.swift Sources/LayoutPilot/KeyboardService.swift Sources/LayoutPilot/Store.swift \
  Sources/LayoutPilot/AccessibilityEditor.swift Sources/LayoutPilot/InputSources.swift \
  Sources/LayoutPilot/SystemVocabulary.swift Sources/LayoutPilot/TerminalBridge.swift \
- Sources/LayoutPilot/KeystrokeEditor.swift "$@" \
+ Sources/LayoutPilot/KeystrokeEditor.swift Sources/LayoutPilot/SnippetEditor.swift "$@" \
  -framework AppKit -framework ApplicationServices -framework Carbon -framework ImageIO \
  -framework Combine -framework ServiceManagement -o .build/runtime-recovery-probe
 exec .build/runtime-recovery-probe
