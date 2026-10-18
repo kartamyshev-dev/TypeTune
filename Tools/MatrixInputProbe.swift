@@ -6,7 +6,7 @@ import Carbon
 struct MatrixCase: Decodable {
     let bundle: String
     let window: String
-    let description: String
+    let description: String?
     let text: String
     let expected: String
     let source: String
@@ -15,7 +15,12 @@ struct MatrixCase: Decodable {
     let clearAfter: Bool?
     let expectedCaret: Int?
 }
-struct Failure: Error { let reason: String }
+struct Failure: Error {
+    let reason: String
+    init(reason: String) { self.reason = reason }
+    init(message: String) { self.reason = message }
+}
+typealias ProbeFailure = Failure
 func require(_ value: @autoclosure () -> Bool, _ reason: String) throws {
     if !value() { throw Failure(reason: reason) }
 }
@@ -48,8 +53,8 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             let keys: [Character: CGKeyCode] = ["a":0,"s":1,"d":2,"f":3,"h":4,"g":5,"z":6,"x":7,"c":8,"v":9,"b":11,
                 "q":12,"w":13,"e":14,"r":15,"y":16,"t":17,"1":18,"2":19,"3":20,"4":21,"6":22,"5":23,"9":25,
                 "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,"n":45,"m":46," ":49]
-            try require(!item.text.isEmpty && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
-            try require(["none", "doubleShift", "middleOfWord"].contains(item.gesture), "unsupported_gesture")
+            try require((!item.text.isEmpty || item.gesture == "singleShift") && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
+            try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord"].contains(item.gesture), "unsupported_gesture")
             try require((0...item.expected.utf16.count).contains(item.expectedCaret ?? item.expected.utf16.count), "invalid_expected_caret")
             let applications = NSWorkspace.shared.runningApplications.filter { $0.bundleIdentifier == item.bundle }
             try require(applications.count == 1, "one_target_process_required")
@@ -89,7 +94,19 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             }
             func snapshot() throws -> (String, CFRange) {
                 try authenticate()
-                guard let text = read(field, kAXValueAttribute) as? String, text.utf16.count <= 4096,
+                var text = read(field, kAXValueAttribute) as? String
+                // Notes exposes its document through a parameterized range instead of AXValue.
+                if text == nil, let count = read(field, kAXNumberOfCharactersAttribute) as? Int, (0...4096).contains(count) {
+                    var range = CFRange(location: 0, length: count)
+                    if let parameter = AXValueCreate(.cfRange, &range) {
+                        var value: CFTypeRef?
+                        if AXUIElementCopyParameterizedAttributeValue(field, kAXStringForRangeParameterizedAttribute as CFString,
+                                                                     parameter, &value) == .success {
+                            text = value as? String
+                        }
+                    }
+                }
+                guard let text, text.utf16.count <= 4096,
                       let raw = read(field, kAXSelectedTextRangeAttribute), CFGetTypeID(raw) == AXValueGetTypeID() else { throw Failure(reason: "text_or_caret_unavailable") }
                 var range = CFRange()
                 try require(AXValueGetValue(raw as! AXValue, .cfRange, &range), "invalid_caret")
@@ -126,14 +143,55 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                 let middle = try snapshot()
                 try require(middle.0 == "abcdef" && middle.1.location == 2 && middle.1.length == 0, "middle_fixture_not_confirmed")
             }
+            var imageLease: ClipboardLease?
+            defer {
+                if let imageLease {
+                    let restored = imageLease.restore()
+                    result["clipboardRestore"] = restored
+                    if restored != "restored_all_representations" { result["passed"] = false }
+                }
+            }
             let start = ProcessInfo.processInfo.systemUptime
             for character in item.text {
                 try emit(keys[character]!, down: true)
                 try emit(keys[character]!, down: false)
                 pause(0.080)
             }
-            if item.gesture == "doubleShift" {
-                for _ in 0..<2 {
+            if item.gesture == "selectedDoubleShift" {
+                let before = try snapshot()
+                try require(before.0 == item.text && before.1.location == item.text.utf16.count && before.1.length == 0,
+                            "selection_fixture_changed")
+                var range = CFRange(location: 0, length: item.text.utf16.count)
+                guard let parameter = AXValueCreate(.cfRange, &range) else { throw Failure(reason: "selection_range_failed") }
+                var rawBounds: CFTypeRef?
+                try authenticate()
+                try require(AXUIElementCopyParameterizedAttributeValue(field, kAXBoundsForRangeParameterizedAttribute as CFString,
+                            parameter, &rawBounds) == .success, "selection_bounds_unavailable")
+                guard let rawBounds, CFGetTypeID(rawBounds) == AXValueGetTypeID() else { throw Failure(reason: "selection_bounds_invalid") }
+                var bounds = CGRect.zero
+                try require(AXValueGetValue(rawBounds as! AXValue, .cgRect, &bounds) && bounds.width > 0 && bounds.height > 0 &&
+                            bounds.width < 4096 && bounds.height < 4096, "selection_bounds_invalid")
+                for click in 1...2 {
+                    for type in [CGEventType.leftMouseDown, .leftMouseUp] {
+                        try authenticate()
+                        guard let event = CGEvent(mouseEventSource: source, mouseType: type,
+                            mouseCursorPosition: CGPoint(x: bounds.midX, y: bounds.midY), mouseButton: .left) else {
+                            throw Failure(reason: "selection_event_failed")
+                        }
+                        event.setIntegerValueField(.mouseEventClickState, value: Int64(click))
+                        event.setIntegerValueField(.eventSourceUserData, value: 0x4c505052)
+                        event.post(tap: .cghidEventTap); events += 1; pause(0.04)
+                    }
+                }
+                let selected = try snapshot()
+                try require(selected.0 == item.text && selected.1.location == 0 && selected.1.length == item.text.utf16.count,
+                            "mouse_selection_not_confirmed")
+                let image = NSImage(size: NSSize(width: 2, height: 2))
+                image.lockFocus(); NSColor.red.setFill(); NSBezierPath.fill(NSRect(x: 0, y: 0, width: 2, height: 2)); image.unlockFocus()
+                imageLease = try ClipboardLease(contents: [image], referenceContext: { try authenticate() })
+            }
+            if item.gesture == "doubleShift" || item.gesture == "selectedDoubleShift" || item.gesture == "singleShift" {
+                for _ in 0..<(item.gesture == "singleShift" ? 1 : 2) {
                     try emit(56, down: true, modifier: true); pause(0.04)
                     try emit(56, down: false, modifier: true); pause(0.07)
                 }
@@ -141,11 +199,29 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             pause(1)
             let final = try snapshot()
             let matches = final.0.utf16.elementsEqual(item.expected.utf16)
+            let clipboardPreserved = imageLease?.syntheticUnchanged() ?? true
+            if imageLease != nil { result["clipboardImagePreserved"] = clipboardPreserved }
+            let switchers = NSRunningApplication.runningApplications(withBundleIdentifier: "dev.layoutpilot.mac")
+            var flag: String?, tooltip: String?
+            if switchers.count == 1 {
+                let service = AXUIElementCreateApplication(switchers[0].processIdentifier)
+                if let menu = element(read(service, "AXExtrasMenuBar")),
+                   let items = read(menu, kAXChildrenAttribute) as? [AXUIElement],
+                   let item = items.first(where: { read($0, kAXRoleAttribute) as? String == "AXMenuBarItem" }) {
+                    flag = read(item, kAXTitleAttribute) as? String
+                    tooltip = read(item, kAXHelpAttribute) as? String
+                }
+            }
+            let flagMatches = flag == (item.expectedSource.contains("Russian") ? "🇷🇺" : "🇺🇸")
+            let tooltipMatches = tooltip?.contains("TypeTune · " + item.expectedSource + "\n") == true
+            result["statusFlagMatches"] = flagMatches
+            result["statusSourceMatches"] = tooltipMatches
+            result["statusTooltip"] = tooltip
             let caret = final.1.location == (item.expectedCaret ?? item.expected.utf16.count) && final.1.length == 0
             result.merge(["bundle": item.bundle, "pid": pid, "textMatches": matches, "caretMatches": caret,
                 "sourceMatches": currentSource() == item.expectedSource, "observedLength": final.0.utf16.count,
                 "inputSeconds": ProcessInfo.processInfo.systemUptime - start - 1,
-                "passed": matches && caret && currentSource() == item.expectedSource]) { _, new in new }
+                "passed": matches && caret && currentSource() == item.expectedSource && flagMatches && tooltipMatches && clipboardPreserved]) { _, new in new }
             if item.clearAfter == true {
                 try require(result["passed"] as? Bool == true, "mismatch_kept_for_diagnosis")
                 var remaining = item.expected

@@ -1,0 +1,16 @@
+{
+  "bundle" : "com.apple.Safari",
+  "caretMatches" : true,
+  "events" : 30,
+  "fieldDescriptionLength" : 17,
+  "inputSeconds" : 1.0909127916656871,
+  "inputSourceRestored" : true,
+  "observedLength" : 6,
+  "passed" : true,
+  "pid" : 19884,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 39
+}

@@ -1,5 +1,31 @@
 # Журнал TypeTune
 
+## 2026-10-18 — расширение текущей матрицы на GUI 806525181a5b
+
+Agent native, user-authorized; код приложения `3244c81` не менялся. Safari input
+S1/S3/S4/S7 и адресная строка S1/S3/S4 PASS. Telegram: S1/S3/S4/S7 и ещё 10 S7
+PASS в пустом черновике «Избранного», Return не отправлялся, собственный текст очищен.
+Chrome input ещё 10 S7 PASS. Заметки: S1/S3/S4/S11 PASS в новой заметке;
+S7 — LIMIT: первое ghbdtn осталось, остальные слова правильные, текст/каретка целы.
+Trace rev3860: unreadable, anchored=false, fieldMatches=false — ожидаемый безопасный
+пропуск (DECISIONS 26/30), не replay-сбой. UI ready, 0 pending/outstanding/uncertain;
+0 faults в сохранённом окне trace. [Матрица](../research/evidence/mac-agent-p8-2026-10-18/matrix.json).
+
+Пробник читает Notes через ограниченный AXStringForRange при отсутствии AXValue;
+идентичность поля/окна и все per-event защиты сохранены. Флаг и source ID берутся
+из настоящего status item TypeTune. Chrome Single Shift: текст/каретка/source/флаг PASS.
+Выделение слова мышью + Double Shift: текст/каретка/source/флаг PASS, тестовая картинка
+осталась побайтно той же во всех представлениях clipboard; исходный пользовательский
+clipboard восстановлен с readback. Буквальная вставка картинки после этого ещё NOT_RUN.
+Общий ClipboardLease вынесен из NativeProbe без изменения защит, обе сборки используют
+его; launcher NativeProbe переведён на @main. Offline guard-fixtures 5/5 и native-fixtures
+8/8, NativeProbe runtime launch 1/1. Это изменения тестового инструмента, не GUI.
+
+Computer Use запретил доступ к Terminal и Codex (`for safety reasons`); событий туда
+не отправляли, обхода не было. Пользователь явно выбрал пропуск Terminal/vim и Codex.
+Ранее он также разрешил пропуск отсутствующих Slack, VS Code и Word.
+
+
 ## 2026-10-18 — P8: восстановление очереди и повторная проверка доставки
 
 Пользователь поручил разобрать сохранённый stream-сбой и разрешил продолжение после §2.7.

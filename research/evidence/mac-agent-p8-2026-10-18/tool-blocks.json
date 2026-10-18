@@ -1,0 +1,14 @@
+{
+  "nativeEvents": 0,
+  "Terminal": {
+    "result": "BLOCKED",
+    "reason": "Computer Use is not allowed to use the app 'com.apple.Terminal' for safety reasons."
+  },
+  "Codex": {
+    "result": "BLOCKED",
+    "reason": "Computer Use is not allowed to use the app 'com.openai.codex' for safety reasons."
+  },
+  "bypassAttempted": false,
+  "userQuestion": "User explicitly chose to skip Terminal/vim and Codex",
+  "skipAuthorized": true
+}
