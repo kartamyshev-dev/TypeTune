@@ -77,14 +77,22 @@ public struct SnippetEditPlan: Equatable, Sendable {
     /// Whether text ending at the caret is the state the first step expects. With
     /// `anchored` a word boundary (or the start of the text) must precede the abbreviation:
     /// use it when the typed buffer itself does not prove one.
-    public func expects(textBeforeCaret text: String, anchored: Bool = false) -> Bool {
-        guard text.hasSuffix(expectedBefore) else { return false }
+    public func expects(textBeforeCaret text: String, anchored: Bool = false, application: String = "") -> Bool {
+        let expected = fieldText(expectedBefore, application: application)
+        guard text.hasSuffix(expected) else { return false }
         guard anchored else { return true }
-        return text.dropLast(expectedBefore.count).last.map { $0.isWhitespace } ?? true
+        return text.dropLast(expected.count).last.map { $0.isWhitespace } ?? true
     }
 
     /// Whether text ending at the caret shows the edit done.
-    public func confirms(textBeforeCaret text: String) -> Bool { text.hasSuffix(expectedAfter) }
+    public func confirms(textBeforeCaret text: String, application: String = "") -> Bool {
+        text.hasSuffix(fieldText(expectedAfter, application: application))
+    }
+
+    private func fieldText(_ text: String, application: String) -> String {
+        // Telegram's AX value represents pasted line breaks as U+2028, including before undo.
+        application == "com.tdesktop.Telegram" ? text.replacingOccurrences(of: "\n", with: "\u{2028}") : text
+    }
 
     /// `insertText` as keyboard-event chunks (only for `.keystrokes`).
     public func unicodeChunks(limit: Int = 16) -> [[UInt16]] {

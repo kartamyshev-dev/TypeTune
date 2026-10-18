@@ -269,6 +269,16 @@ S7 в Telegram, Slack, VS Code по 10 повторов. В отчёте: `repla
 этого документа. Собирай ветку `snippets`; в отчёте ищи `snippet-begin`, `snippet-verify`, `snippet-result`.
 Перед проверкой сохрани `~/Library/Application Support/LayoutPilot/snippets.json` в `$P` и верни его в конце.
 
+### P10. Сниппет Telegram: LF представлен как U+2028
+
+S8 на GUI `e862b158`/`4cf6030`: многострочная подпись вставлена без Return, но Telegram
+показывает перевод строки как U+2028. Точная сверка LF не подтвердила результат:
+`mutation-uncertain`, pending1. Trace сохранён до восстановления. Пользователь разрешил
+исправить и повторить S8. Ожидаемое AX-представление меняется только у сниппетов Telegram,
+включая preflight отмены; другие приложения, барьер и secure guards не меняются.
+[Evidence](../research/evidence/snippets-s8-2026-10-18/initial-verification.json).
+Исправленный GUI/native пока NOT_RUN.
+
 ### Новые проблемы
 
 Каждая новая проблема получает номер P8, P9… в этом документе (таблица раздела 1) и строку в

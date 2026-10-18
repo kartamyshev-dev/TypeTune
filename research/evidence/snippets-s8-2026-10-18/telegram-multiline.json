@@ -1,0 +1,21 @@
+{
+  "bundle" : "com.tdesktop.Telegram",
+  "caretMatches" : true,
+  "error" : "mismatch_kept_for_diagnosis",
+  "events" : 14,
+  "fieldDescriptionLength" : 0,
+  "inputSeconds" : 0.65960999999879277,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.ABC",
+  "observedLength" : 30,
+  "passed" : false,
+  "pid" : 673,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : false,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.ABC\nРезультат последней операции не подтверждён. Проверьте текст перед продолжением",
+  "textMatches" : false,
+  "windowTitleLength" : 42
+}

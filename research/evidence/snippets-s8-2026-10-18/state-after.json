@@ -1,0 +1,15 @@
+{
+  "snippetsInitiallyExisted": false,
+  "snippetsFinallyExists": false,
+  "defaultsSemanticallyEqual": false,
+  "changedDefaultsKeys": [
+    "statistics.v1"
+  ],
+  "clipboardAllRepresentationsEqualToCheckpoint": true,
+  "clipboardCheckpointScope": "after initial TextEdit and Notes groups; before browser fixture navigation",
+  "installedSHA256": "e862b15828fe38757104743e522fda2efac8ea42bcdfbb7dd73c03c815ffecfb",
+  "appState": "uncertainResult; pending=1; no forced termination; test snippets still in RAM until restart",
+  "telegramTestDraftCleared": true,
+  "initialInputSource": "ABC",
+  "inputSourceRestored": true
+}

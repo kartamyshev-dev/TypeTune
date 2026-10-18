@@ -1,0 +1,21 @@
+{
+  "bundle" : "com.apple.Safari",
+  "caretMatches" : true,
+  "events" : 56,
+  "fieldDescriptionLength" : 7,
+  "inputSeconds" : 0.68697229166718898,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.ABC",
+  "observedLength" : 16,
+  "passed" : true,
+  "pid" : 19884,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : true,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 20
+}

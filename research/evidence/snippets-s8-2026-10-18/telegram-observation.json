@@ -1,0 +1,9 @@
+{
+  "expected": "Тестовая подпись\nВторая строка",
+  "observed": "Тестовая подпись Вторая строка",
+  "expectedUTF16Length": 30,
+  "observedUTF16Length": 30,
+  "observedCaret": 30,
+  "returnEvents": 0,
+  "draftClearedAfterTrace": true
+}

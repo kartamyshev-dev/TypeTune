@@ -1,0 +1,21 @@
+{
+  "bundle" : "com.google.Chrome",
+  "caretMatches" : true,
+  "events" : 28,
+  "fieldDescriptionLength" : 7,
+  "inputSeconds" : 0.52820362499915063,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.RussianWin",
+  "observedLength" : 8,
+  "passed" : true,
+  "pid" : 1492,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : true,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 36
+}

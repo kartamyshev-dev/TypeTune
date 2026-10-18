@@ -93,6 +93,19 @@ func snippetEditPlanChecks() -> [(Bool, String)] {
         check(p.confirms(textBeforeCaret: "ok спасибо ") && !p.confirms(textBeforeCaret: "ok спс "), "confirmation")
     } else { check(false, "field verification") }
 
+    // Telegram exposes pasted newlines as U+2028; only this exact host representation matches.
+    if let p = plan(";п", Snippet(abbreviation: ";п", text: "Первая\nВторая")) {
+        let telegram = "com.tdesktop.Telegram", observed = "Первая\u{2028}Вторая"
+        check(p.confirms(textBeforeCaret: observed, application: telegram), "Telegram line separator confirms paste")
+        check(p.inverse.expects(textBeforeCaret: observed, application: telegram), "Telegram line separator permits undo")
+        check(!p.confirms(textBeforeCaret: observed, application: "com.apple.TextEdit"), "other apps still require LF")
+        check(!p.confirms(textBeforeCaret: "Первая\nВторая", application: telegram), "Telegram expects its exact AX representation")
+        check(!p.confirms(textBeforeCaret: "ПерваяВторая", application: telegram), "missing line break is refused")
+        check(!p.confirms(textBeforeCaret: "Первая\u{2028}Третья", application: telegram), "wrong text is refused")
+        check(!p.inverse.expects(textBeforeCaret: "Первая\u{2028}Втораяx", application: telegram), "wrong undo caret is refused")
+        check(p.inverse.confirms(textBeforeCaret: ";п", application: telegram), "Telegram undo confirms exact abbreviation")
+    } else { check(false, "Telegram multiline plan") }
+
     // Undo.
     if let p = plan("ok спс ", thanks) {
         let undo = p.inverse

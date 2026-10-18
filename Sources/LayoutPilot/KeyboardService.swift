@@ -743,6 +743,7 @@ final class KeyboardService {
         session.beginMutation(operation.target, deadline: ProcessInfo.processInfo.systemUptime + 0.3)
         let expectedRevision = revision, sourceID = InputSources.identifier
         let plan = operation.plan, pid = operation.target.pid, anchored = operation.anchored
+        let application = operation.target.application
         InputDiagnostics.shared.record("snippet-begin", revision: expectedRevision, checks: [
             "anchored": anchored, "paste": plan.insertion == .paste, "undo": plan.restoresTyped, "cursor": plan.moveLeft > 0])
         axQueue.async { [weak self] in
@@ -750,7 +751,7 @@ final class KeyboardService {
             let released = SnippetEditor.waitForModifierRelease(timeout: 1.5)
             let deadline = ProcessInfo.processInfo.systemUptime + 0.080
             var observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
-            while observation.needsAnotherRead(expects: { plan.expects(textBeforeCaret: $0) }),
+            while observation.needsAnotherRead(expects: { plan.expects(textBeforeCaret: $0, application: application) }),
                   ProcessInfo.processInfo.systemUptime < deadline {
                 Thread.sleep(forTimeInterval: 0.005)
                 observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
@@ -758,7 +759,7 @@ final class KeyboardService {
             let verification: KeystrokeVerification
             switch observation {
             case .textBeforeCaret(let text):
-                verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .mismatch
+                verification = plan.expects(textBeforeCaret: text, anchored: !anchored, application: application) ? .matches : .mismatch
             case .selection: verification = .mismatch
             case .unreadable: verification = .unreadable
             case .secure: verification = .secure
@@ -808,8 +809,8 @@ final class KeyboardService {
                     case .selection(let value): text = value
                     case .unreadable, .secure: text = nil
                     }
-                    if let text, plan.confirms(textBeforeCaret: text) { outcome = .confirmed; break }
-                    if let text, plan.expects(textBeforeCaret: text) { outcome = .notShown } else { outcome = .unknown }
+                    if let text, plan.confirms(textBeforeCaret: text, application: target.application) { outcome = .confirmed; break }
+                    if let text, plan.expects(textBeforeCaret: text, application: target.application) { outcome = .notShown } else { outcome = .unknown }
                     Thread.sleep(forTimeInterval: 0.010)
                 } while ProcessInfo.processInfo.systemUptime < deadline
             }

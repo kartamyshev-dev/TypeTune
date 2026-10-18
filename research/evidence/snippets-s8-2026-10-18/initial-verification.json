@@ -1,0 +1,18 @@
+{
+  "commit": "4cf6030d38bacd5b6987b5edc934b072584fbf80",
+  "appSHA256": "e862b15828fe38757104743e522fda2efac8ea42bcdfbb7dd73c03c815ffecfb",
+  "kind": "agent native, user-authorized; native TextEdit, NativeProbe",
+  "authorization": "2026-10-18: ввод в TextEdit, Заметки, Safari, Chrome и Telegram в пустые поля и черновики, ничего не отправляя; обновить прежние записи TypeTune в системном UI; исправить Telegram и повторить S8",
+  "result": "PARTIAL; stopped at Telegram multiline mutation-uncertain; no acceptance",
+  "note": "Telegram AX represents LF as U+2028. Literal ;flh does not match ;адр: physical equivalent is $flh. Uppercase/semicolon matrix helper extends only test key mapping; identity/secure guards unchanged.",
+  "notRun": [
+    "Slack",
+    "VS Code",
+    "Word",
+    "Terminal/sudo",
+    "clipboard image",
+    "10ms stream",
+    "remaining Telegram cases after multiline"
+  ],
+  "settings": "only statistics.v1 differs; original snippets.json absent and absence restored temporarily; app stopped before fix build"
+}
