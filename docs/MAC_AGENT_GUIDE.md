@@ -18,7 +18,7 @@ AX-пробнику, исправить их по одному и довести
 | P1 | Строка поиска Google в Chrome (google.com и новая вкладка): автоисправление первого слова не работает | `universal-observe: unreadable`; `unreadable-field: focusedField=false` (Chrome не отдаёт поле в фокусе); `web-accessibility: unsupported` — Chrome отклоняет `AXManualAccessibility` | Double Shift правит набранное слово вслепую (DECISIONS п. 30) — пользователь подтвердил, что работает | warm Google/newtab5/5 на6e07197; cold Chrome user manual PASS, «работает стабильно»; evidence chrome-cold-user-manual.json |
 | P2 | «Защита» (блокировка, «Проверьте последний текст») после правки в Chrome | Сверка до правки совпала, через 150 мс поле не показало результат → `mutation-uncertain`. Одно чтение AX в Chrome — 30–54 мс | Подтверждение ждёт до 600 мс; «поле не изменилось» больше не блокирует (`81b0a28`) | ограниченно: Chrome и Telegram S7 по10 завершённых PASS; одна frontmost_changed попытка отдельно, без mutation-uncertain |
 | P3 | Сотни `snapshot-failed deadlineExceeded` | Фоновые снимки прежнего механизма не укладываются в 60 мс в Chrome и занимают очередь AX | Таймер контекста в универсальном режиме выключен (`81b0a28`); снимки после событий остались | универсальная группа:0snapshot-failed/0faults в последних1000; итоговый trace включает legacy OFF deadline; не полный trace |
-| P4 | Веб-приложение, установленное из Chrome: TypeTune не работает, флаг в строке меню не той раскладки | В v0.1.4 обёртка Chrome вне списка прежнего механизма | Универсальный режим работает в любом приложении; флаг сверяет раскладку раз в 0,5 с (`db82a82`) | AionUi S1–S4/S6–S9/S11 и S10 три возврата PASS на6e07197; командное меню S14 NOT_RUN |
+| P4 | Веб-приложение, установленное из Chrome: TypeTune не работает, флаг в строке меню не той раскладки | В v0.1.4 обёртка Chrome вне списка прежнего механизма | Универсальный режим работает в любом приложении; флаг сверяет раскладку раз в 0,5 с (`db82a82`) | AionUi S1–S4/S6–S9/S11 и S10 PASS на6e07197; S14 home command menu15/15 и SingleShift PASS; evidence mac-agent-s14-2026-10-18 |
 | P5 | Быстрый набор во время правки в Telegram/Slack/VS Code | Чтение кода: воспроизведение проверяло прежний список приложений | `allowedFrontmost(for:)` (`5aeea11`) | Telegram S7 дополнительно10/10 PASS; Slack/VS Code SKIP_USER |
 | P6 | Правила замены | `пшерги,` → «github,» сработало у пользователя | fixtures `corpus/user-rule-regressions.jsonl` | yf сохранён; TextEdit/Chrome input/textarea/Notes/AionUi ограниченный PASS на6e07197 |
 | P7 | Сборка не запускалась на чужом Mac | CI без `.build`: `Trace/BPT trap` | `CoreResources` (`ec87be8`); CI проверяет запуск | закрыто в CI; опубликованная v0.1.4 затронута |
@@ -187,6 +187,18 @@ observed, statusText, reportFile}`. `statusText` — подсказка флаг
 Каждое исправление: воспроизведи → отчёт и пробник → fixture или проверка (если логика в Core)
 → минимальная правка → `scripts/ci_core.sh` → сборка, установка → повтор сценария и S1–S4 в
 TextEdit и Chrome → коммит с evidence → push → CI зелёный.
+
+### S14 — выбранный inline suffix и меню PWA
+
+На неизменном GUI ab020042 / код6e07197: Chrome и Safari numeric address inline suffix
+по5/5; дополнение перед Space подтверждается точно по одному из максимум2 известных
+значений и полному выделенному хвосту. Safari после Space может предложить новый suffix:
+введённый префикс должен остаться точным, новое продолжение — целиком выделенным.
+Это модель браузерной подсказки в тесте; production guards/таймауты не менялись.
+AionUi home composer: /, /open, /open space по5, меню подтверждено CUA; SingleShift
+при открытом меню сохранил команду/флаг, ничего не запускали. После меню auto5/5 + S7 PASS.
+[Полный scope и непринятые exploratory attempts](../research/evidence/mac-agent-s14-2026-10-18/verification.json).
+Это не приёмка всех сайтов, команд и окон PWA; S5 и пропущенные приложения не трогались.
 
 ### P1. Chrome не отдаёт веб-поле (строка поиска Google)
 

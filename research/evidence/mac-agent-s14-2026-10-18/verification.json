@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-18",
+  "kind": "agent native, user-authorized",
+  "applicationSourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "repositoryBaseCommit": "95f7ca64de8ab4517c116223b7da3c9361c7de54",
+  "guiSha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+  "productionCodeChanged": false,
+  "nativeAttempts": 48,
+  "acceptedAttempts": 44,
+  "inspectionOrHarnessOracleAttemptsNotAccepted": 4,
+  "groups": {
+    "chromeInline": [
+      "chrome-inline-space-1.json",
+      "chrome-inline-space-2.json",
+      "chrome-inline-space-3.json",
+      "chrome-inline-space-4.json",
+      "chrome-inline-space-5.json"
+    ],
+    "safariInline": [
+      "safari-inline-final-1.json",
+      "safari-inline-final-2.json",
+      "safari-inline-final-3.json",
+      "safari-inline-final-4.json",
+      "safari-inline-final-5.json"
+    ],
+    "chromeAutoAfter": [
+      "chrome-auto-after-inline-1.json",
+      "chrome-auto-after-inline-2.json",
+      "chrome-auto-after-inline-3.json",
+      "chrome-auto-after-inline-4.json",
+      "chrome-auto-after-inline-5.json"
+    ],
+    "safariAutoAfter": [
+      "safari-auto-after-inline-1.json",
+      "safari-auto-after-inline-2.json",
+      "safari-auto-after-inline-3.json",
+      "safari-auto-after-inline-4.json",
+      "safari-auto-after-inline-5.json"
+    ],
+    "pwaCommands": [
+      "aion-home-slash-repeat-1.json",
+      "aion-home-slash-repeat-2.json",
+      "aion-home-slash-repeat-3.json",
+      "aion-home-slash-repeat-4.json",
+      "aion-home-slash-repeat-5.json",
+      "aion-home-open-repeat-1.json",
+      "aion-home-open-repeat-2.json",
+      "aion-home-open-repeat-3.json",
+      "aion-home-open-repeat-4.json",
+      "aion-home-open-repeat-5.json",
+      "aion-home-open-space-repeat-1.json",
+      "aion-home-open-space-repeat-2.json",
+      "aion-home-open-space-repeat-3.json",
+      "aion-home-open-space-repeat-4.json",
+      "aion-home-open-space-repeat-5.json"
+    ],
+    "pwaInitial": [
+      "aion-home-slash.json",
+      "aion-home-open-shift-1.json"
+    ],
+    "pwaAutoAfter": [
+      "aion-home-auto-after-menu-1.json",
+      "aion-home-auto-after-menu-2.json",
+      "aion-home-auto-after-menu-3.json",
+      "aion-home-auto-after-menu-4.json",
+      "aion-home-auto-after-menu-5.json"
+    ],
+    "pwaStreamAfter": [
+      "aion-home-stream-after-menu.json"
+    ],
+    "dotKey": [
+      "aion-home-dot-key.json"
+    ]
+  },
+  "matrix": "matrix.json",
+  "offline": {
+    "matrixTests": "3 unittest methods;14 rejection subcases,9 focus policy,8 selected-suffix policy",
+    "evidenceTamper": "77 checks"
+  },
+  "helperChanges": [
+    "slash44/dot47 added to bounded key map; Return/Tab remain rejected",
+    "inlineSpace: exact known completion allowlist max2; selected suffix range confirmed before Space",
+    "after Space: exact typed prefix; any additional browser suffix must be entirely selected at its end; cleanup refuses selection"
+  ],
+  "helperIdentity": "Each attempt binds its actual helper source/binary hashes; helper evolved, production GUI unchanged",
+  "nonAccepted": [
+    "chrome-inline-discovery.json",
+    "safari-inline-discovery.json",
+    "safari-inline-space-1.json",
+    "safari-inline-verified-1.json"
+  ],
+  "nonAcceptedReason": "Discovery/oracle assumptions about browser completions; no user text lost; readonly evidence preserved. Safari variants and new selected suffix formally handled with tests. Not hidden product PASS.",
+  "pwaVisual": "aion-initial-visual.json",
+  "safariCleanup": "Own exact prefix checked and cleared via CUA after each of5 final cases; no other draft touched",
+  "diagnostics": [
+    "browser-diagnostics-verdict.json",
+    "final-diagnostics-verdict.json"
+  ],
+  "stateAfter": "state-after.json",
+  "privacy": "No screenshots or actual history-completion text published; case constants retained privately; no clipboard use",
+  "limits": [
+    "Inline test uses numeric address prefix127 on this Mac; does not cover all sites, IMEs or languages",
+    "PWA command menu tested in current home composer; commands not executed and no messages sent",
+    "Retained diagnostic ring is not a full session trace",
+    "S5/images and skipped apps untouched; four-hour run deferred",
+    "Password typed-E2E and full PLAN/U8 remain unaccepted"
+  ]
+}

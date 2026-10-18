@@ -16,6 +16,7 @@ struct MatrixCase: Decodable {
     let expectedCaret: Int?
     let beforeUndoText: String?
     let beforeUndoSource: String?
+    let completionTexts: [String]?
 }
 struct Failure: Error {
     let reason: String
@@ -50,12 +51,29 @@ func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMat
     return .reject
 }
 
+func selectedCompletionMatches(text: String, range: CFRange, prefix: String) -> Bool {
+    text.utf16.starts(with: prefix.utf16) && range.location == prefix.utf16.count && range.length > 0 &&
+        range.length == text.utf16.count - prefix.utf16.count
+}
+
 @main struct MatrixInputProbe {
     static func main() {
         var result: [String: Any] = ["events": 0, "passed": false, "returnEvents": 0]
         var events = 0
         do {
             try require(CommandLine.arguments.count == 2, "one_case_file_required")
+            if CommandLine.arguments[1] == "--validate-completion-policy" {
+                let cases: [(String, Int, Int, Bool)] = [
+                    ("127 hours",4,5,true), ("127 😀",4,2,true), ("127 ",4,0,false),
+                    ("128 hours",4,5,false), ("127 hours",3,6,false), ("127 hours",4,4,false),
+                    ("127 hours",4,6,false), ("127 hours",-1,10,false)]
+                for (text, location, length, expected) in cases {
+                    try require(selectedCompletionMatches(text: text, range: CFRange(location: location, length: length),
+                                                          prefix: "127 ") == expected, "completion_policy_failed")
+                }
+                print("{\"passed\":true,\"events\":0,\"completionPolicyCases\":8}")
+                return
+            }
             if CommandLine.arguments[1] == "--validate-focus-policy" {
                 let cases: [(Bool?, Bool?, Bool, FocusReadDecision)] = [
                     (true, true, false, .verified), (true, nil, false, .retry),
@@ -76,9 +94,9 @@ func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMat
             try require(allowed.contains(item.bundle) || item.bundle.hasPrefix("com.google.Chrome.app."), "bundle_not_in_matrix")
             let keys: [Character: CGKeyCode] = ["a":0,"s":1,"d":2,"f":3,"h":4,"g":5,"z":6,"x":7,"c":8,"v":9,"b":11,
                 "q":12,"w":13,"e":14,"r":15,"y":16,"t":17,"1":18,"2":19,"3":20,"4":21,"6":22,"5":23,"9":25,
-                "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,"n":45,"m":46," ":49]
+                "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,"/":44,"n":45,"m":46,".":47," ":49]
             try require((!item.text.isEmpty || ["singleShift", "focus"].contains(item.gesture)) && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
-            try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord", "undo", "focus"].contains(item.gesture), "unsupported_gesture")
+            try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord", "undo", "focus", "inlineSpace"].contains(item.gesture), "unsupported_gesture")
             try require((0...item.expected.utf16.count).contains(item.expectedCaret ?? item.expected.utf16.count), "invalid_expected_caret")
             if item.gesture == "focus" {
                 try require(item.text.isEmpty && item.expected.isEmpty, "focus_must_not_type")
@@ -86,6 +104,16 @@ func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMat
             if item.gesture == "undo" {
                 try require(item.beforeUndoText != nil && item.beforeUndoText != item.expected && item.beforeUndoSource != nil,
                             "undo_precondition_required")
+            }
+            if item.gesture == "inlineSpace" {
+                try require(["com.google.Chrome", "com.apple.Safari"].contains(item.bundle) &&
+                    item.window?.contains("LayoutPilot isolated input LP-CODEX-001") == true &&
+                    ["Адресная строка и строка поиска", "поле смарт-поиска"].contains(item.description ?? "") &&
+                    item.completionTexts.map { !$0.isEmpty && $0.count <= 2 && $0.allSatisfy {
+                        $0.hasPrefix(item.text) && $0.utf16.count > item.text.utf16.count && $0.utf16.count <= 4096
+                    } } == true &&
+                    item.expected == item.text + " " && item.expectedSource == item.source,
+                    "inline_completion_precondition_required")
             }
             let applications = NSWorkspace.shared.runningApplications.filter { $0.bundleIdentifier == item.bundle }
             try require(applications.count == 1, "one_target_process_required")
@@ -240,6 +268,17 @@ func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMat
                 try emit(keys[character]!, down: false)
                 pause(0.080)
             }
+            if item.gesture == "inlineSpace" {
+                pause(0.3)
+                let completed = try snapshot()
+                try require(item.completionTexts?.contains(completed.0) == true && completed.1.location == item.text.utf16.count &&
+                    completed.1.length == completed.0.utf16.count - item.text.utf16.count,
+                    "selected_completion_not_confirmed")
+                result["completionVerified"] = true
+                result["completionLength"] = completed.0.utf16.count
+                result["completionSelection"] = [completed.1.location, completed.1.length]
+                try emit(49, down: true); try emit(49, down: false)
+            }
             if item.gesture == "selectedDoubleShift" {
                 let before = try snapshot()
                 try require(before.0 == item.text && before.1.location == item.text.utf16.count && before.1.length == 0,
@@ -292,7 +331,16 @@ func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMat
             }
             let final = try snapshot()
             let expectedSource = item.gesture == "focus" ? currentSource() : item.expectedSource
-            let matches = final.0.utf16.elementsEqual(item.expected.utf16)
+            let exactText = final.0.utf16.elementsEqual(item.expected.utf16)
+            // Safari may offer another selected suggestion immediately after Space.
+            let nextCompletion = item.gesture == "inlineSpace" &&
+                selectedCompletionMatches(text: final.0, range: final.1, prefix: item.expected)
+            let matches = exactText || nextCompletion
+            if item.gesture == "inlineSpace" {
+                result["fullTextMatches"] = exactText
+                result["nextSelectedCompletion"] = nextCompletion
+                result["nextSelectedSuffixLength"] = final.1.length
+            }
             let clipboardPreserved = imageLease?.syntheticUnchanged() ?? true
             if imageLease != nil { result["clipboardImagePreserved"] = clipboardPreserved }
             let switchers = NSRunningApplication.runningApplications(withBundleIdentifier: "dev.layoutpilot.mac")
@@ -312,13 +360,14 @@ func focusReadDecision(windowMatches: Bool?, fieldMatches: Bool?, fieldWindowMat
             result["statusSourceMatches"] = tooltipMatches
             result["statusTooltip"] = tooltip
             result["observedInputSource"] = currentSource()
-            let caret = final.1.location == (item.expectedCaret ?? item.expected.utf16.count) && final.1.length == 0
+            let caret = final.1.location == (item.expectedCaret ?? item.expected.utf16.count) && (final.1.length == 0 || nextCompletion)
             result.merge(["bundle": item.bundle, "pid": pid, "textMatches": matches, "caretMatches": caret,
                 "sourceMatches": currentSource() == expectedSource, "observedLength": final.0.utf16.count,
                 "inputSeconds": ProcessInfo.processInfo.systemUptime - start - 1,
                 "passed": matches && caret && currentSource() == expectedSource && flagMatches && tooltipMatches && clipboardPreserved]) { _, new in new }
             if item.clearAfter == true {
                 try require(result["passed"] as? Bool == true, "mismatch_kept_for_diagnosis")
+                try require(final.1.length == 0, "cleanup_requires_no_selection")
                 var remaining = item.expected
                 var cursor = final.1.location
                 while cursor < remaining.utf16.count {

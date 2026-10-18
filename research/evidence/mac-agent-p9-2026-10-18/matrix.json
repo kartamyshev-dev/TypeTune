@@ -369,11 +369,16 @@
     "field": "адресная строка",
     "scenario": "S14",
     "result": "PASS",
-    "observed": "Native query + CUA visual: открытые поисковые подсказки, запрос точен, не отправлен; inline selected suffix отдельно не проверен",
+    "observed": "Native query + CUA visual: открытые поисковые подсказки, запрос точен, не отправлен; inline selected suffix отдельно не проверен; дополнительно выбранный native inline suffix5/5, scope numeric address prefix127; Safari может дать новую выделенную подсказку",
     "statusText": "Обработчик готов",
     "reportFile": [
       "chrome-address-s14-visual.json",
-      "chrome-address-s14-query.json"
+      "chrome-address-s14-query.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-1.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-2.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-3.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-4.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-5.json"
     ]
   },
   {
@@ -830,10 +835,13 @@
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S14",
-    "result": "NOT_RUN",
-    "observed": "Командное меню PWA: helper отклонил slash до событий (bounded_ascii_keys_required); проверка не выполнена, защиту не расширяли",
-    "statusText": "",
-    "reportFile": "aion-s14-command.json"
+    "result": "PASS",
+    "observed": "PWA AionUi: текущий пустой home composer; /, /open, /open space по5; меню/SingleShift/source/flag, без выполнения команд. Не все окна/команды PWA.",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "../mac-agent-s14-2026-10-18/matrix.json",
+      "../mac-agent-s14-2026-10-18/aion-initial-visual.json"
+    ]
   },
   {
     "app": "Safari",
@@ -954,11 +962,16 @@
     "field": "адресная строка",
     "scenario": "S14",
     "result": "PASS",
-    "observed": "Native query + CUA visual: открытые поисковые подсказки, запрос точен, не отправлен; inline selected suffix отдельно не проверен",
+    "observed": "Native query + CUA visual: открытые поисковые подсказки, запрос точен, не отправлен; inline selected suffix отдельно не проверен; дополнительно выбранный native inline suffix5/5, scope numeric address prefix127; Safari может дать новую выделенную подсказку",
     "statusText": "Обработчик готов",
     "reportFile": [
       "safari-address-s14-visual.json",
-      "safari-address-s14-query.json"
+      "safari-address-s14-query.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-1.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-2.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-3.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-4.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-5.json"
     ]
   },
   {

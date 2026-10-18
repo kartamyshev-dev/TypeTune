@@ -29,7 +29,7 @@
   Итог **ready,pending/outstanding/uncertain0**. Это не полный trace всей сессии.
 - Controller93/93, CLI1439/1439, корпуса4420/4420+22000/22000, audit4/4.
   CI39151757178 Linux/macOS success. Локальный XCTest отсутствует в CLT.
-  Тесты MatrixProbe:2 метода (8 отказов и9 проверок policy), evidence tamper77/77.
+  Тесты MatrixProbe:3 метода (14 отказов,9 focus и8 completion policy), evidence tamper77/77.
 - Настройки семантически равны исходным; yf сохранён, тестовое обучение удалено,
   universalON/plainPasteOFF, автозамена Notes/TextEdit восстановленаOFF,
   раскладка RussianWin. Caramba выключена. Статистика содержит тестовые увеличения:
@@ -40,18 +40,28 @@
 пользователя, не наблюдение агента и не отдельный clean-profile тест.
 [Evidence](../research/evidence/mac-agent-p9-2026-10-18/chrome-cold-user-manual.json).
 
-**Осталось:** выбранный inline suffix (проверялся popup);
-PWA S14 командное меню (slash отклонён helper до событий). Safari S12 подтвердил
+**S14 пройден в выбранных сценариях:** native inline suffix Chrome5/5 и Safari5/5
+на числовом адресном префиксе127; после каждой группы обычное автоисправление по5/5.
+PWA AionUi home composer: /, /open и /open space по5; меню/SingleShift/source/flag,
+затем auto5/5 и stream4words PASS. Продуктовый код не менялся; исправлен test helper
+(клавиши slash/dot и строгая проверка выделенного продолжения).
+[Итог S14](../research/evidence/mac-agent-s14-2026-10-18/verification.json).
+
+**Осталось:** Safari S12 подтвердил
 Secure Input и паузу TypeTune без ввода пароля, это не typed-password E2E.
 Пять NOT_RUN в scaffold явно NOT_APPLICABLE: S14 у fixture без подсказок и TextEditS12.
-Один настоящий NOT_RUN — PWA S14. Картинки/S5, отсутствующие Slack/VS Code/Word,
+Все5 оставшихся NOT_RUN — явно NOT_APPLICABLE scaffold. Картинки/S5, отсутствующие Slack/VS Code/Word,
 Terminal/vim/Codex — SKIP_USER. Четыре часа отложены. U8/полная готовность не закрыты,
-в main не сливать. Следующие проверки — inline suffix и командное меню PWA.
+в main не сливать. Последний запрос S14 выполнен в зафиксированных сценариях;
+все сайты/языки/окна PWA этим не принимаются. Password typed-E2E вне выполненного scope.
 
 Пользователь разрешил NativeProbe для всей матрицы с прежними защитами и ввод без отправки.
 При отказе сохранять trace; остановки — MAC_AGENT_GUIDE §2.7. Не запускать image helper.
 Собственные fixture/UUID-документы оставлены для проверки в research/private; чужие черновики
-не очищались. Локальный fixture server18763. История — JOURNAL.
+не очищались. Локальный fixture server18763. Настройки после S14 равны началу, RussianWin восстановлен,
+черновик PWA пуст, меню закрыто, pending/outstanding/uncertain0. В сохранившихся записях
+новее прежнего checkpoint19587:0faults/0snapshot-failed/0rejections; старый legacy OFF fault
+в ring оставлен. Это не полный trace. История — JOURNAL.
 
 ## Версии
 

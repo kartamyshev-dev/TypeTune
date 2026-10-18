@@ -1,0 +1,218 @@
+{
+  "ancestors" : [
+    {
+      "role" : "AXApplication",
+      "selectedRange" : null,
+      "value" : null
+    }
+  ],
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : true
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "dev.layoutpilot.mac",
+  "focused" : {
+    "attributes" : {
+      "AXActivationPoint" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXCancelButton" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXChildren" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          5
+        ]
+      },
+      "AXChildrenInNavigationOrder" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          5
+        ]
+      },
+      "AXCloseButton" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXButton"
+        ]
+      },
+      "AXDefaultButton" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXDocument" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXFocused" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFrame" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          3
+        ]
+      },
+      "AXFullScreen" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXFullScreenButton" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXGrowArea" : {
+        "settable" : false,
+        "status" : -25200,
+        "value" : null
+      },
+      "AXMain" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : true
+      },
+      "AXMinimizeButton" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXButton"
+        ]
+      },
+      "AXMinimized" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : false
+      },
+      "AXModal" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXParent" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXApplication"
+        ]
+      },
+      "AXPosition" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXProxy" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXRole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          8
+        ]
+      },
+      "AXRoleDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          15
+        ]
+      },
+      "AXSections" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "array",
+          5
+        ]
+      },
+      "AXSize" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          2
+        ]
+      },
+      "AXSubrole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          16
+        ]
+      },
+      "AXTitle" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          8
+        ]
+      },
+      "AXTitleUIElement" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXStaticText"
+        ]
+      },
+      "AXToolbarButton" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXZoomButton" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXButton"
+        ]
+      }
+    },
+    "namesStatus" : 0,
+    "parameterized" : [
+      "AXReplaceRangeWithText"
+    ]
+  },
+  "focusedUIElementStatus" : 0,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 32477
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "Retained ring only, not complete session; older legacy OFF fault is kept, not erased",
+  "countsAll": {
+    "fault": 1,
+    "snapshot-failed": 1,
+    "replay-route-rejected": 2,
+    "replay-event-rejected": 12
+  },
+  "sincePreviousCheckpointUptime": 19587.001451625,
+  "retainedRecordsSincePreviousCheckpoint": 284,
+  "countsSincePreviousCheckpoint": {
+    "fault": 0,
+    "snapshot-failed": 0,
+    "replay-route-rejected": 0,
+    "replay-event-rejected": 0
+  },
+  "final": {
+    "checks": {
+      "listening": true,
+      "posting": true,
+      "secure": false,
+      "tapActive": true,
+      "trusted": true
+    },
+    "counts": {
+      "outstanding": 0,
+      "pending": 0,
+      "uncertainDeliveries": 0
+    },
+    "phase": "manual-snapshot",
+    "reason": "ready",
+    "revision": 5422,
+    "uptime": 21236.142825125
+  }
+}

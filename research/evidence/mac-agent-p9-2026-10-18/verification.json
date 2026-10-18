@@ -11,12 +11,12 @@
   ],
   "matrix": "matrix.json",
   "matrixCounts": {
-    "PASS": 107,
+    "PASS": 108,
     "SKIP_USER": 15,
-    "NOT_RUN": 6,
+    "NOT_RUN": 5,
     "SKIP": 48
   },
-  "referencedEvidenceFilesChecked": 162,
+  "referencedEvidenceFilesChecked": 173,
   "googleWarmFirstWord": "5/5",
   "newtabWarmFirstWord": "5/5",
   "texteditSuites": {
@@ -40,8 +40,6 @@
   "stateAfter": "state-after.json",
   "diagnostics": "final-diagnostics-verdict.json",
   "remaining": [
-    "Selected inline suffix not exercised; visible search popup only",
-    "PWA command popup S14 not run: slash rejected before events",
     "Safari secure-input state only; no typed-password E2E",
     "S5 and unavailable/denied apps SKIP_USER",
     "Four-hour run deferred; full PLAN/U8 not accepted"
@@ -56,5 +54,6 @@
     "result": "PASS",
     "evidence": "chrome-cold-user-manual.json",
     "agentObserved": false
-  }
+  },
+  "s14FollowUp": "../mac-agent-s14-2026-10-18/verification.json"
 }

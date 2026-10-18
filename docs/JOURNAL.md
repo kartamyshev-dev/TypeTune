@@ -1,5 +1,43 @@
 # Журнал TypeTune
 
+## 2026-10-18 — S14: native inline suffix Chrome/Safari и меню PWA
+
+Пользователь: «Продолжай проверки встроенного автодополнения и командного меню PWA,
+исправляй до стабильной работы. Картинки и пропущенные приложения не трогай,
+четырёхчасовой прогон пока не запускай». Разрешение на ввод всей матрицы сохраняется.
+Вид проверки agent native, user-authorized, без Enter/clipboard в native probes.
+GUI ab020042 / production6e07197 неизменен; рабочая база95f7ca6.
+
+Chrome inline5/5: настоящий выделенный suffix адреса, сверка полного completion и range
+до Space, после точный собственный127space/caret/source/flag. Затем auto5/5.
+Safari inline5/5: браузер выбирал host либо полный собственный fixture URL; после Space
+предлагал новое целиком выделенное поисковое продолжение. Введённый127space сохранён,
+новый suffix весь выделен; затем auto5/5. Ни URL, ни поиск не отправлялись в native;
+CUA Return использовался только для открытия собственного localhost fixture в новой вкладке.
+
+PWA AionUi, текущий home composer: slash/open/open-space по5=15 PASS, отдельные slash и
+open+SingleShift PASS; меню действительно открывалось и содержало open-candidate (CUA),
+команда не исполнялась. Очистка собственного текста, затем dot1, auto5/5 и stream4words PASS.
+Другие окна/команды и все виды autocomplete этим не приняты.
+
+Всего48 native attempts,44 приняты. Четыре exploratory/harness attempts сохранены отдельно:
+два исходных discovery не ожидали browser completion; Safari затем предложил full URL вместо
+host (остановка до Space); после исправления предиката предложил новый suffix после Space.
+Это ошибки оракула, не потеря пользовательского текста. Не скрыты и не отмечены PASS.
+Test helper: slash44/dot47, inlineSpace только в fixture-адресной строке, максимум2 точных
+известных completion, строгие text/range проверки перед Space; финальный typed-prefix
+и полностью выделенный browser suffix. Native cleanup отказывает при selection;
+Safari после каждого из5 случаев очищен CUA только после собственного prefix readback.
+Return/Tab, field/PID/window/focus/perms/SecureInput guards не ослаблены.
+Offline:3 unittest methods,14 reject subcases,9focus policy,8selected-suffix policy; evidence77.
+
+Settings семантически равны началу S14, sourceRussianWin; один TypeTune PID32477,
+Caramba не запускалась. PWA draft пуст/меню закрыто, ready,pending/outstanding/uncertain0.
+В retained trace новее прошлого checkpoint19587 нет faults/snapshot-failed/rejections;
+старый legacyOFF fault сохранён в ring, это не полная сессия. Статистика тестов не откатывалась.
+Image helper/пропущенные приложения/4часа не запускались. Main не менялся.
+[Итог](../research/evidence/mac-agent-s14-2026-10-18/verification.json).
+
 ## 2026-10-18 — P1: холодный Chrome подтверждён пользователем
 
 В ответ на протокол после обычного перезапуска Chrome без CUA, ABC, ghbdtnspace
