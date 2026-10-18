@@ -213,8 +213,10 @@ final class KeyboardService {
         else if !terminal && !store.posting { status = .postingDenied }
         else if !supportedLayout { status = .unsupportedLayout }
         else if let id = front?.bundleIdentifier, store.settings.excludedApps.contains(id) { status = .excludedApplication }
-        else if !own && !terminal && !EditorSupport.permitsTextReplacement(applicationID: front?.bundleIdentifier) { status = .unsupportedApplication }
-        else if !own && !terminal, let failure = contextFailure {
+        // Universal mode works in every application; the per-application checks below
+        // describe only the earlier path.
+        else if !store.universalInput, !own && !terminal && !EditorSupport.permitsTextReplacement(applicationID: front?.bundleIdentifier) { status = .unsupportedApplication }
+        else if !store.universalInput, !own && !terminal, let failure = contextFailure {
             status = failure.retryable ? .waitingForContext : .unsupportedField
         } else { status = .ready }
         publish(\.running, status == .ready)

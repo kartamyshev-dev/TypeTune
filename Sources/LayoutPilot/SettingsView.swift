@@ -123,7 +123,8 @@ struct SettingsView: View {
             Section("Исправление текста") {
                 Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused)
                 Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
-                Toggle("Исправлять во всех приложениях (экспериментально)", isOn: $store.universalInput)
+                Toggle("Исправлять во всех приложениях", isOn: $store.universalInput)
+                if !store.universalInput { Text("Исправления выполняются только в TextEdit, Chrome и Codex, а в Terminal и Ghostty — через интеграцию с zsh.").font(.caption).foregroundStyle(.secondary) }
                 if store.universalInput { Text("Слово стирается и набирается заново. Где текст поля доступен, он сверяется перед правкой. Выделение, недоступное через Универсальный доступ, копируется через буфер обмена; его прежнее содержимое возвращается.").font(.caption).foregroundStyle(.secondary) }
                 Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
                 if store.earlyCorrection { Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.").font(.caption).foregroundStyle(.secondary) }

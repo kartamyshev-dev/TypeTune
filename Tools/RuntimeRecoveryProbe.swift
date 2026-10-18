@@ -271,7 +271,7 @@ final class InputDiagnostics {
             var pinned = first; pinned.keystrokes = false
             checks["keystroke_target_never_matches_pinned_field"] = !AccessibilityEditor.sameTarget(first, pinned)
             let keyboard = service()
-            checks["universal_mode_off_by_default"] = !keyboard.store.universalInput
+            checks["universal_mode_on_by_default"] = keyboard.store.universalInput
         }
         checks["settings_bytes_preserved"] = defaults.data(forKey: "settings.v1") == settings
         let passed = checks.values.allSatisfy { $0 }

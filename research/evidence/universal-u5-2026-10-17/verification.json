@@ -1,0 +1,18 @@
+{
+  "kind": "CI on macOS 15 (build + RuntimeRecoveryProbe); manual/selection/undo keystroke flows not exercised natively",
+  "date": "2026-10-17",
+  "run": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39090853089",
+  "headSha": "513933d",
+  "conclusion": "success",
+  "linux": "selftest 1412/1412 (7 selection-plan invariants)",
+  "notRun": [
+    "Double Shift/⌘⌥Space on the typed word in real apps",
+    "selection via AX and via ⌘C with clipboard restore",
+    "⌘⌥Z undo with learning and layout restore",
+    "Single Shift outside TextEdit/Chrome/Codex"
+  ],
+  "knownGaps": [
+    "multi-line selections are not typed",
+    "early correction is not implemented in universal mode"
+  ]
+}
