@@ -1,0 +1,53 @@
+{
+  "axReadErrors" : {
+    "AXSubrole:-25205" : 5
+  },
+  "axReadTiming" : {
+    "AXDocument:0" : {
+      "count" : 5,
+      "maxMilliseconds" : 0.18450000061420724,
+      "totalMilliseconds" : 0.61170833396317903
+    },
+    "AXFocusedUIElement:0" : {
+      "count" : 5,
+      "maxMilliseconds" : 0.1384999995934777,
+      "totalMilliseconds" : 0.36754166467289906
+    },
+    "AXFocusedWindow:0" : {
+      "count" : 5,
+      "maxMilliseconds" : 33.804916667577345,
+      "totalMilliseconds" : 34.359958333880058
+    },
+    "AXRole:0" : {
+      "count" : 5,
+      "maxMilliseconds" : 0.050999999075429514,
+      "totalMilliseconds" : 0.20699999913631473
+    },
+    "AXSelectedTextRange:0" : {
+      "count" : 2,
+      "maxMilliseconds" : 0.050458334953873418,
+      "totalMilliseconds" : 0.098041668024961837
+    },
+    "AXSubrole:-25205" : {
+      "count" : 5,
+      "maxMilliseconds" : 0.15362500016635749,
+      "totalMilliseconds" : 0.61370833464025054
+    },
+    "AXValue:0" : {
+      "count" : 2,
+      "maxMilliseconds" : 0.039958333218237385,
+      "totalMilliseconds" : 0.070416665039374493
+    },
+    "AXWindow:0" : {
+      "count" : 5,
+      "maxMilliseconds" : 0.16658333333907649,
+      "totalMilliseconds" : 0.45087500075169373
+    }
+  },
+  "events" : 2,
+  "finalModifierFlags" : 536870912,
+  "modifiersNeutral" : true,
+  "passed" : true,
+  "returnEvents" : 0,
+  "textUnchanged" : true
+}

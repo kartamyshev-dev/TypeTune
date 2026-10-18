@@ -11,6 +11,9 @@ clipboard не подтверждено, возможна утрата. Это �
 Нельзя считать S5 PASS. Sheet отменён через CUA, точный readback собственного документа —
 «привет», вставка отменена. Исходное содержимое clipboard не читалось/не логировалось.
 [Инцидент](../research/evidence/mac-agent-p8-2026-10-18/clipboard-incident.json).
+После sheet остались собственные V/Command нажатые. Узкий recovery в точном новом RTF
+отправил только V-up и Command-up (2 события), текст/каретка неизменны, modifiersNeutral=true.
+Исходная RussianWin восстановлена. [Readback](../research/evidence/mac-agent-p8-2026-10-18/image-owned-command-released.json).
 Дальнейшие тесты остановлены, вопрос пользователю по MAC_AGENT_GUIDE §2.7.
 До ответа никаких повторов; исправление должно обеспечить restore при модальных
 окнах, затем использовать новый RTFD, не RTF.

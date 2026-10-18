@@ -11,5 +11,8 @@
   "testDocument": "research/private/probes/5BE43D21-C191-4DA0-9634-1C615E5DEA4A.rtf",
   "rule": "MAC_AGENT_GUIDE §2.7: stop and ask user after potential data loss",
   "nativeTestsStopped": true,
-  "next": "Wait user response. Do not rerun image helper. Before any further image test, preserve restoration on modal failures and use a new RTFD fixture."
+  "next": "Wait user response. Do not rerun image helper. Before any further image test, preserve restoration on modal failures and use a new RTFD fixture.",
+  "ownCommandAndVReleased": true,
+  "releaseEvidence": "image-owned-command-released.json",
+  "originalSourceRestored": "com.apple.keylayout.RussianWin"
 }
