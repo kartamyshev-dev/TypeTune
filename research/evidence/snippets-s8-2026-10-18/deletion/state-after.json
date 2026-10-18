@@ -1,0 +1,25 @@
+{
+  "initialSnippetsExisted": false,
+  "finalSnippetsExist": false,
+  "originalRulesReloadedCount": 3,
+  "testSnippetsRemovedFromMemory": true,
+  "settingsEqualExceptStatistics": true,
+  "changedKeys": [
+    "statistics.v1"
+  ],
+  "installedAppSHA256": "2d4edbde58884b2d304978093171a44d1a57ea68a1f987a4a34eadcedf119426",
+  "appState": "ready after restart; Chrome multiline NOT_ACCEPTED",
+  "telegramDraftEmpty": true,
+  "chromeTestFieldEmpty": true,
+  "testKeyUpDiscardedAfterTrace": true,
+  "countsAfter": {
+    "outstanding": 0,
+    "pending": 0,
+    "uncertainDeliveries": 0
+  },
+  "inputSourceAfter": "com.apple.keylayout.ABC",
+  "sourceRestored": true,
+  "modifierKeysNeutral": true,
+  "clipboardEqualToCheckpoint": true,
+  "clipboardCheckpointScope": "after initial TextEdit/Notes group, before browser navigation"
+}

@@ -1,12 +1,12 @@
 {
-  "sourceCommit": "4af15f7765463a0601facc0c01cc802a9e098376",
-  "appSHA256": "04476538f2b349a1f3a69bd984bac9eec8771049872a414ab7f5fc43a438e27c",
-  "result": "PARTIAL; S8 NOT_ACCEPTED",
+  "sourceCommit": "92a0ba845c75ba767bc19cbb65c697a6bd9df008",
+  "appSHA256": "2d4edbde58884b2d304978093171a44d1a57ea68a1f987a4a34eadcedf119426",
+  "result": "FAIL/PARTIAL; S8 NOT_ACCEPTED; stopped after two unsuccessful Chrome fixes",
   "kind": "agent native, user-authorized; TextEdit NativeProbe",
-  "ciRun": 39164537323,
+  "ciRun": 39166705738,
   "ciLinuxAndMacOS": "success",
-  "offlineInvariants": "1643/1643",
-  "controllerChecks": "101/101",
+  "offlineInvariants": "1648/1648",
+  "controllerChecks": "102/102",
   "corpus": "4420/4420",
   "redRegressionFailures": 3,
   "textedit": {
@@ -15,12 +15,13 @@
     "streamExact": "10/10",
     "clipboardTextAndImageRestored": true,
     "imageClipboardVariableRefused": true,
-    "undo": "PASS"
+    "undo": "PASS",
+    "sourceCommit": "4af15f7"
   },
-  "notes": "10/10 exact observations, including ;flh negative",
-  "chrome": "5 exact observations, then FAIL: multiline paste left empty field, mutation-uncertain",
-  "telegram": "targeted multiline PASS with U+2028; extra native undo NOT_RUN (driver modifier_release_not_settled)",
-  "safari": "NOT_RUN on fixed binary; previous binary separate",
+  "notes": "4af15f7:10 observations, not transferred",
+  "chrome": "92a0ba8: original uninstrumented textarea, repeat1 PASS, repeat2 empty paste+mutation-uncertain; exact deletion ACK matched and current",
+  "telegram": "4af15f7: targeted multiline PASS; 92a0ba8 NOT_RUN",
+  "safari": "4cf6030:10 observations and secure-focus check; 92a0ba8 NOT_RUN",
   "maccy": "zero stored content matches for synthetic signature and clipboard nonce prefix",
   "literalEnglishAbbreviation": "$flh is physical equivalent of ;адр in RussianWin; ;flh is a negative case",
   "notRun": [
@@ -34,6 +35,21 @@
     "typed-password E2E",
     "four-hour acceptance"
   ],
-  "restoration": "state-after.json; snippets initially absent and absent again; original 3 rules reloaded; settings equal excluding statistics; clipboard equals recorded checkpoint; source ABC; ready and queue counts 0",
-  "next": "User authorized Chrome fix; complete modifier-frame candidate prepared, native NOT_RUN"
+  "restoration": "deletion/state-after.json; ready and queues0; original absence of snippets.json restored, original3 rules in memory, settings equal except statistics, clipboard equal recorded checkpoint, ABC restored",
+  "next": "Requires explicit user decision after MAC_AGENT_GUIDE 2.7 stop: two Chrome fix attempts failed",
+  "historicalResults": {
+    "4cf6030": "initial UI/native matrix in root files",
+    "4af15f7": "fixed/ directory; TextEdit24 cases, Notes10, targeted Telegram multiline PASS; Chrome FAIL",
+    "5984232": "frame/ directory; complete Command frame insufficient; 1 PASS then empty paste; diagnostic DOM fixture7/7 is observer-affected and not acceptance",
+    "92a0ba8": "deletion/ directory; only Chrome targeted repetition performed, FAIL; other S8 cells NOT_RUN on this binary"
+  },
+  "notRunOnCurrentBinary": [
+    "TextEdit complete repeat",
+    "Notes complete repeat",
+    "Safari complete repeat",
+    "Telegram complete repeat",
+    "clipboard text/image repeat",
+    "undo repeat",
+    "stream repeat"
+  ]
 }

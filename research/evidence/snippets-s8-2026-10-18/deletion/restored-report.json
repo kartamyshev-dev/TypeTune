@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-10-18T21:17:39Z",
+  "notice": "Last 1000 technical events only; no text, keycodes, document or clipboard data.",
+  "records": [
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "service-state",
+      "reason": "ready",
+      "revision": 0,
+      "uptime": 26766.44834829167
+    },
+    {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "manual-snapshot",
+      "reason": "ready",
+      "revision": 1,
+      "uptime": 26815.568393541667
+    }
+  ],
+  "schemaVersion": 2,
+  "session": "BB89E688-CC83-4D72-A5F1-8BBCAC00A62C"
+}

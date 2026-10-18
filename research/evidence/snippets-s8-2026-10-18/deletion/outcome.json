@@ -1,0 +1,13 @@
+{
+  "accepted": false,
+  "commit": "92a0ba845c75ba767bc19cbb65c697a6bd9df008",
+  "firstRepeat": "PASS",
+  "secondRepeat": "FAIL; empty; mutation-uncertain",
+  "deletionProof": {
+    "matches": true,
+    "current": true
+  },
+  "twoFixAttemptsExhausted": true,
+  "furtherInputStopped": true,
+  "stateAfter": "state-after.json"
+}

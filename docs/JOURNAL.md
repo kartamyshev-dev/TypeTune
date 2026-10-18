@@ -1,5 +1,25 @@
 # Журнал TypeTune
 
+## 2026-10-19 — S8 остановлен после двух неудачных кандидатов Chrome
+
+На `92a0ba8`, GUI `2d4edbde…`, CI39166705738 Linux/macOS success, CLI1648/1648,
+контроллер102/102. Chrome без DOM-наблюдателя:1 PASS, затем пустая multiline-вставка
+и `mutation-uncertain`; `snippet-deletion matches=true,current=true`. Второй кандидат
+Chrome не принят. Дальнейший ввод остановлен по MAC_AGENT_GUIDE §2.7 (две неудачные попытки).
+[Итог](../research/evidence/snippets-s8-2026-10-18/verification.json),
+[trace](../research/evidence/snippets-s8-2026-10-18/deletion/chrome-fault-report.json),
+[восстановление](../research/evidence/snippets-s8-2026-10-18/deletion/state-after.json).
+
+Ничего не отправлено, затронуты только свои fixtures/черновики. Исходного snippets.json
+не было: восстановлено отсутствие файла; исходные3 правила загружены в память, тестовых
+сниппетов там нет. ABC, clipboard checkpoint и все настройки кроме статистики возвращены.
+Maccy не содержит тестовую подпись/nonce. Итоговый readback ready, pending/outstanding/
+uncertainDeliveries0. Из очереди после сохранения trace удалён только остаток тестового
+кадра. Установленный кандидат оставлен по §9.5, но Chrome multiline **не принят**.
+Остальные S8-клетки на этом бинарнике NOT_RUN: прежние PASS не перенесены. Полный перечень
+по версиям — SNIPPETS_PLAN; S8/U8/полная готовность не закрыты, main не менялся.
+
+
 ## 2026-10-19 — S8: полный кадр ⌘V недостаточен; кандидат с подтверждением удаления
 
 `5984232`, GUI `43fca30f…`: Chrome multiline повтор1 PASS, повтор2 — пустое поле и защита.

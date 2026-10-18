@@ -9,11 +9,26 @@
 - `main` = `universal-input` (перемотка 2026-10-18, DECISIONS п. 32): универсальный режим в `main`,
   U8 частичная — пропуски перечислены в п. 32. Дальнейшая работа универсального режима — в `main`.
 - `snippets`: сниппеты S1–S7 готовы — ядро на Linux, приложение в CI на macOS (сборка, пробник с
-  настоящим Store 8/8); **native S8 PARTIAL**, остановлена на пустой multiline-вставке Chrome; Telegram U+2028 исправлен. [S8 evidence](../research/evidence/snippets-s8-2026-10-18/verification.json). Тестовая сборка `TypeTune-test-ebd4e9e…`. [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
+  настоящим Store 8/8); **native S8 PARTIAL/FAIL**, остановлена после двух неудачных кандидатов Chrome; Telegram U+2028 исправлен и ограниченно проверен отдельно. [S8 evidence](../research/evidence/snippets-s8-2026-10-18/verification.json). Установлена тестовая сборка `TypeTune-test-92a0ba8…`, Chrome multiline не принята. [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
 
-## Mac agent — текущая точка продолжения
+## Mac agent — текущая точка: сниппеты
 
-Ветка `universal-input`, код приложения `6e07197`, установлен GUI SHA-256
+Ветка `snippets`, код установленного приложения `92a0ba8`, GUI SHA-256
+`2d4edbde58884b2d304978093171a44d1a57ea68a1f987a4a34eadcedf119426`.
+**S8 не принят:** Chrome multiline1 PASS, затем пустая вставка и защита.
+Две попытки исправления не помогли; остановка по MAC_AGENT_GUIDE §2.7.
+Следующий шаг — решение пользователя о дальнейшем исследовании Chrome.
+[Итог](../research/evidence/snippets-s8-2026-10-18/verification.json), [план/матрица](SNIPPETS_PLAN.md).
+
+CI Linux/macOS прошёл, CLI1648/1648 и controller102/102 — offline. На этом бинарнике
+полная native-матрица не повторена; прежние результаты не перенесены. Telegram targeted
+multiline PASS относится к `4af15f7`. Все тестовые сниппеты удалены: исходное отсутствие
+snippets.json восстановлено, исходные3 правила в памяти. Настройки равны кроме статистики,
+ABC и clipboard checkpoint возвращены; ready, очереди0. Ничего не отправлено.
+
+## Ранее проверенный universal-input — историческая справка
+
+Ветка `universal-input`, ранее проверенный код приложения `6e07197`, GUI SHA-256
 `ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129`, PID32477.
 Подпись и неизменность бинарника проверены. Только прежние разрешения TypeTune обновлены UI.
 [Итог](../research/evidence/mac-agent-p9-2026-10-18/verification.json),
@@ -142,7 +157,7 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 
 ## Точка продолжения
 
-0. Ветка `universal-input`: агент на Mac проходит [MAC_AGENT_GUIDE](MAC_AGENT_GUIDE.md) (DECISIONS п. 31).
+0. Ветка `snippets`: S8 остановлен после двух неудачных кандидатов Chrome; продолжение только после нового решения пользователя. Подробности — текущая точка выше. Прежняя U8 ниже — историческая справка:
    P1: warm Google/newtab5/5 на текущем GUI; cold Chrome подтверждён пользователем отдельно (user manual PASS).
    Затем — сниппеты S5–S7 (ветка `snippets`,
    [SNIPPETS_PLAN](SNIPPETS_PLAN.md)): решения S0 приняты (DECISIONS п. 28), ядро S1–S4 готово

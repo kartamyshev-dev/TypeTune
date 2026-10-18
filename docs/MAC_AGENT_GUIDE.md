@@ -265,7 +265,7 @@ S7 в Telegram, Slack, VS Code по 10 повторов. В отчёте: `repla
 
 ### Сниппеты (ветка `snippets`)
 
-Проверка S8 — чек-лист в [SNIPPETS_PLAN](SNIPPETS_PLAN.md#чек-лист-s8-для-mac-всё-not_run), те же правила
+Проверка S8 — чек-лист в [SNIPPETS_PLAN](SNIPPETS_PLAN.md#чек-лист-s8-для-mac), те же правила
 этого документа. Собирай ветку `snippets`; в отчёте ищи `snippet-begin`, `snippet-verify`, `snippet-result`.
 Перед проверкой сохрани `~/Library/Application Support/LayoutPilot/snippets.json` в `$P` и верни его в конце.
 
@@ -279,14 +279,23 @@ S8 на GUI `e862b158`/`4cf6030`: многострочная подпись вс
 [Evidence](../research/evidence/snippets-s8-2026-10-18/initial-verification.json).
 На `4af15f7` / GUI `04476538` targeted multiline native PASS; полная S8 не закрыта.
 
-### P11. Chrome: многострочная вставка оставила пустое поле
+### P11. Chrome: многострочная вставка оставила пустое поле — OPEN, STOP
 
-На `4af15f7` / GUI `04476538`: после удаления сокращения подпись не появилась,
-`snippet-result confirmed=false`, `mutation-uncertain`, pending1. Только пустой локальный
-fixture. [Trace](../research/evidence/snippets-s8-2026-10-18/fixed/chrome-fault-report.json).
-Пользователь разрешил исправление и повтор. Кандидат использует полный кадр Command/V,
-как `pastePlainNative`; offline контроллер102/102. Native кандидата NOT_RUN, историческая
-причина пустого paste не доказана. Полный кадр `5984232` не устранил отказ (1 PASS, затем пустая вставка). Следующий кандидат ждёт точное подтверждение удаления в читаемом Chrome в80мс и лишь затем отправляет один paste. Native кандидата NOT_RUN. После установки сначала этот сценарий на fixture без наблюдателя, затем S8.
+`4af15f7`/GUI `04476538`: сокращение удалено, подпись не появилась,
+`mutation-uncertain`, pending1. Пользователь разрешил исследование и исправление.
+Кандидат1 `5984232`/GUI `43fca30f`: полный кадр Command/V —1 PASS, затем тот же отказ.
+Read-only трассы подтверждают правильный clipboard до восстановления; Chrome вызывает
+Command-V и в успешном, и в неудачном случае. Семь PASS с DOM-наблюдателем не принимаются
+за проверку исходного fixture: наблюдение меняет тайминг.
+
+Кандидат2 `92a0ba8`/GUI `2d4edbde`: точное подтверждение удаления в читаемом Chrome
+в80мс перед единственным paste —1 PASS, затем пустое поле. Deletion proof
+`matches=true,current=true`; подтверждения вставки нет. CLI1648/1648 и controller102/102
+offline, CI Linux/macOS success; native исправление **не принято**, причина не доказана.
+**Стоп по §2.7 после двух неудачных попыток.** Продолжение — после нового решения пользователя.
+[Итог](../research/evidence/snippets-s8-2026-10-18/verification.json),
+[последний trace](../research/evidence/snippets-s8-2026-10-18/deletion/chrome-fault-report.json).
+После сохранения trace исходные данные восстановлены, ready/очереди0. Ничего не отправлено.
 
 ### Новые проблемы
 
