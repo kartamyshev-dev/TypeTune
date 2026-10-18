@@ -34,3 +34,37 @@ jobs:
         run: scripts/ci_core.sh
       - name: Recovery controller probe (test hooks, no permissions, no event tap)
         run: scripts/runtime_recovery_probe.sh
+      - name: Test build for manual checks (release arm64, ad-hoc signature)
+        run: |
+          scripts/build.sh
+          find dist/LayoutPilot.app -maxdepth 4 | sort
+          dist/layoutpilot-cli selftest
+          short=$(git rev-parse --short=7 HEAD)
+          ditto dist/LayoutPilot.app "dist/TypeTune.app"
+          (cd dist && ditto -c -k --keepParent TypeTune.app "TypeTune-$short.zip")
+          shasum -a 256 dist/TypeTune.app/Contents/MacOS/LayoutPilot "dist/TypeTune-$short.zip" > dist/SHA256.txt
+          git rev-parse HEAD > dist/COMMIT.txt
+          cat dist/SHA256.txt dist/COMMIT.txt
+      - name: Test build runs without the build directory
+        # SwiftPM's Bundle.module falls back to the absolute .build path of the machine that
+        # compiled it; on any other Mac that path does not exist. Hide it and launch.
+        run: |
+          mv .build .build-hidden
+          dist/layoutpilot-cli selftest
+          dist/TypeTune.app/Contents/MacOS/LayoutPilot --background > /tmp/app.log 2>&1 &
+          pid=$!
+          sleep 8
+          if kill -0 "$pid" 2>/dev/null; then echo "app alive after 8 s"; kill "$pid"; status=0
+          else code=0; wait "$pid" || code=$?; echo "app exited with $code"; cat /tmp/app.log; status=1; fi
+          mv .build-hidden .build
+          exit $status
+      - name: Upload test build
+        uses: actions/upload-artifact@v4
+        with:
+          name: TypeTune-test-${{ github.sha }}
+          path: |
+            dist/TypeTune-*.zip
+            dist/SHA256.txt
+            dist/COMMIT.txt
+            dist/build-identity.json
+          retention-days: 30

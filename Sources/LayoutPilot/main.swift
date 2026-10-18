@@ -11,6 +11,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
     var window: NSWindow?
     var cancellables = Set<AnyCancellable>()
+    /// The input source the flag shows. macOS may switch the source per application or
+    /// window ("document input source", Chrome web-app windows) without a selection
+    /// notification reaching us, so the flag also rechecks the current source.
+    private var shownSource = ""
+    private var sourceTimer: Timer?
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         // Decode the ~60k-word lexicon and its prefix index off the main thread, so the
@@ -23,6 +28,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         rebuildMenu()
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(updateStatusItem),
             name: Notification.Name(kTISNotifySelectedKeyboardInputSourceChanged as String), object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(updateStatusItem),
+            name: NSWorkspace.didActivateApplicationNotification, object: nil)
+        sourceTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            guard let self, InputSources.identifier != self.shownSource else { return }
+            self.updateStatusItem()
+        }
         store.$settings.receive(on: RunLoop.main).sink { [weak self] _ in self?.rebuildMenu() }.store(in: &cancellables)
         store.$serviceStatus.receive(on: RunLoop.main).sink { [weak self] _ in self?.rebuildMenu() }.store(in: &cancellables)
         store.$recoveryRequired.receive(on: RunLoop.main).sink { [weak self] _ in self?.rebuildMenu() }.store(in: &cancellables)
@@ -39,6 +50,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     func applicationWillTerminate(_ notification: Notification) {
         DistributedNotificationCenter.default().removeObserver(self)
+        NSWorkspace.shared.notificationCenter.removeObserver(self); sourceTimer?.invalidate()
         keyboard?.stop(); InputDiagnostics.shared.flush()
     }
     func rebuildMenu() {
@@ -57,6 +69,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         updateStatusItem()
     }
     @objc func updateStatusItem() {
+        shownSource = InputSources.identifier
         let flag = InputSources.language == .russian ? "🇷🇺" : (InputSources.language == .english ? "🇺🇸" : "🌐")
         let suffix = store.recoveryRequired || store.serviceStatus == .tapFailed ? " !" : (store.settings.paused ? " Ⅱ" : "")
         let title = NSMutableAttributedString(string: flag, attributes: [

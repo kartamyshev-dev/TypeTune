@@ -10,6 +10,9 @@
   тег → `39ee28e88270`, GUI `c722c3d7`. CI Linux/macOS прошёл на этом SHA;
   архив распакован, подпись/манифест/CLI проверены, файлы скачаны с GitHub и совпали.
   Native релизного bundle и четыре часа — NOT_RUN. [Выпуск](RELEASE_0.1.4.md).
+  **Риск:** приложение ищет словарь по пути `.build` сборочной машины и, по всей видимости,
+  падает при запуске на любом другом Mac (CI-проверка 2026-10-18, см. журнал). Исправлено в
+  `universal-input` (`ec87be8`); перевыпуск 0.1.4 — решение пользователя.
 - **Локальный кандидат поверх `bcaf82a`** содержит исправления удержания,
   восстановления и быстрого потока.
   GUI SHA-256 `bdecb08fa24991ab1e19856736c59fe08fb433a4f0ded4886b93ce5b821befed`,
@@ -58,7 +61,7 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 `RuntimeRecoveryProbe` пройдены. **Native-проверки (U8) не проводились** — чек-лист в
 [UNIVERSAL_INPUT_PLAN](UNIVERSAL_INPUT_PLAN.md#чек-лист-u8-для-mac-всё-not_run). До них ветку
 не сливать в `main`. Native-PASS прежнего механизма к новому не переносятся.
-Пошаговая инструкция для агента на Mac — [MAC_AGENT_HANDOFF](MAC_AGENT_HANDOFF.md).
+Проверка на Mac — вручную пользователем: [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md).
 
 2026-10-18 в ветку влит `main` с v0.1.4. Конфликты: `replayIdentityMatches` (версия `main`
 с повтором AX и ранним выходом для целей без поля) и `RuntimeRecoveryProbe` (оставлены проверки
@@ -67,8 +70,11 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 
 ## Точка продолжения
 
-0. Ветка `universal-input`: выполнить U8 на Mac по [MAC_AGENT_HANDOFF](MAC_AGENT_HANDOFF.md)
-   на сборке после слияния с v0.1.4. Затем — сниппеты S5–S7 (ветка `snippets`,
+0. Ветка `universal-input`: пользователь проверяет тестовую сборку из CI по
+   [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md); агент на Mac не используется (DECISIONS п. 29).
+   Открыт случай пользователя: веб-приложение из Chrome — в v0.1.4 TypeTune не работает
+   (приложение-обёртка Chrome вне списка прежнего механизма), флаг не совпадает с раскладкой;
+   шаги 8–9 чек-листа. Затем — сниппеты S5–S7 (ветка `snippets`,
    [SNIPPETS_PLAN](SNIPPETS_PLAN.md)): решения S0 приняты (DECISIONS п. 28), ядро S1–S4 готово
    (Linux offline).
 1. Chrome single-field: подтверждённая причина исправлена без ослабления

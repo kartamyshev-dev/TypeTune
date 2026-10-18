@@ -444,6 +444,7 @@ func runSelfTests() -> Int {
     for (passed, label) in typedWordBufferChecks() { check(passed, label) }
     for (passed, label) in keystrokeEditPlanChecks() { check(passed, label) }
     for (passed, label) in inputTargetChecks() { check(passed, label) }
+    for (passed, label) in resourceChecks() { check(passed, label) }
     for (passed, label) in snippetLibraryChecks() { check(passed, label) }
     for (passed, label) in snippetTemplateChecks() { check(passed, label) }
     for (passed, label) in snippetMatcherChecks() { check(passed, label) }
