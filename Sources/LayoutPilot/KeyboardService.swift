@@ -321,6 +321,9 @@ final class KeyboardService {
         let sourceBefore: String
     }
     private enum KeystrokeVerification { case matches, mismatch, unreadable, secure }
+    /// Whitespace typed by the last replayed key-down. A token it completed during the
+    /// barrier is corrected once replay drains, if nothing was typed after it.
+    private var universalReplayBoundary: String?
     /// The last confirmed keystroke edit, undoable while the buffer still ends with its result.
     private var keystrokeTransaction: KeystrokeOperation?
 
@@ -362,10 +365,20 @@ final class KeyboardService {
     private func universalKeyDown(_ event: CGEvent) {
         revision += 1; cachedSnapshot = nil; pendingKeyRead = nil; transaction = nil
         gestures.keyUsed(); shiftTask?.cancel()
+        guard let typedNow = universalBoundary(event) else { return }
+        universalCorrectCompletedToken(boundary: typedNow)
+    }
+    /// The whitespace a non-repeated key-down typed, when it is a token boundary.
+    private func universalBoundary(_ event: CGEvent) -> String? {
         guard event.getIntegerValueField(.keyboardEventAutorepeat) == 0,
+              event.flags.intersection([.maskCommand, .maskControl, .maskAlternate]).isEmpty,
               let typedNow = InputSources.insertionText(for: event, sourceID: InputSources.identifier),
-              !typedNow.isEmpty, typedNow.allSatisfy({ $0.isWhitespace }),
-              let completed = typed.completedToken, completed.boundary == typedNow,
+              !typedNow.isEmpty, typedNow.allSatisfy({ $0.isWhitespace }) else { return nil }
+        return typedNow
+    }
+    /// Corrects the token that `boundary`, the last typed text, has just completed.
+    private func universalCorrectCompletedToken(boundary: String) {
+        guard let completed = typed.completedToken, completed.boundary == boundary,
               let target = universalTarget(), InputSources.language != nil else { return }
         let context = InputContext(application: target.application, secure: IsSecureEventInputEnabled())
         guard let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
@@ -654,6 +667,7 @@ final class KeyboardService {
             case .forward:
                 projectReplayedEvent(type, event)
                 trackTyping(type, event)
+                if store.universalInput, type == .keyDown { universalReplayBoundary = universalBoundary(event) }
                 InputDiagnostics.shared.record("replay-forward", revision: revision, checks: [
                     "keyDown": type == .keyDown,
                     "queueEmpty": inputReplay.isEmpty, "outstanding": inputReplay.outstanding > 0])
@@ -1658,6 +1672,10 @@ final class KeyboardService {
                     nonce: nonce, revision: revision, deadline: ProcessInfo.processInfo.systemUptime + 0.060,
                     allowPartialReplay: allowPartialReplay)
             } else { captureAfterEvent() }
+            if let boundary = universalReplayBoundary {
+                universalReplayBoundary = nil
+                if store.universalInput, !stopRequested { universalCorrectCompletedToken(boundary: boundary) }
+            }
             if stopRequested { stop() }
             updateServiceStatus()
             return
