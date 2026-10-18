@@ -318,9 +318,8 @@ final class KeyboardService {
                 now: ProcessInfo.processInfo.systemUptime) == true &&
                 NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid &&
                 allowedFrontmost() && AXIsProcessTrusted() && CGPreflightPostEventAccess()
-            switch inputReplay.receive(token: batchToken, routingAllowed: allowed) {
+            switch session.receiveReplay(token: batchToken, routingAllowed: allowed) {
             case .forward:
-                replayRouteLease = nil
                 projectReplayedEvent(type, event)
                 InputDiagnostics.shared.record("replay-forward", revision: revision, checks: [
                     "keyDown": type == .keyDown,
@@ -1294,17 +1293,18 @@ final class KeyboardService {
         }
     }
     private func drainReplay() {
-        guard replaying, inputReplay.outstanding == 0, replayIdentityNonce == nil else { return }
-        if inputReplay.isEmpty {
+        let target: EditorSnapshot
+        switch session.drainStep() {
+        case .wait: return
+        case .next(let next): target = next
+        case .drained(let anchor):
             InputDiagnostics.shared.record("replay-drained", revision: revision,
                 checks: ["pendingSource": sourceAfterReplay != nil])
-            let anchor = mutationGate
             let projection = replayProjection
             let projectionSource = replayProjectionSource
             let allowPartialReplay = replayAllowsPartial
             replayProjection = nil; replayProjectionSource = nil; replayAllowsPartial = false
             recoveryReplayProjection = nil; recoveryReplaySource = nil
-            replaying = false; mutationGate = nil; mutationNonce = nil; mutationDeadline = nil
             if let source = sourceAfterReplay {
                 sourceAfterReplay = nil
                 if NSWorkspace.shared.frontmostApplication?.processIdentifier == source.pid,
@@ -1324,25 +1324,23 @@ final class KeyboardService {
             updateServiceStatus()
             return
         }
-        guard let target = mutationGate else { return }
         guard NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
               allowedFrontmost(), AXIsProcessTrusted(), CGPreflightPostEventAccess() else {
             suspendReplay(target: target); return
         }
         // No AX IPC in the tap/main loop. At most one event is posted for each
         // fresh field/window/document proof; new hardware stays in the FIFO.
-        let identityNonce = UUID(), expectedRevision = revision
+        let expectedRevision = revision
         let sourceID = InputSources.identifier
-        replayIdentityNonce = identityNonce
+        let identityNonce = session.beginIdentityCheck()
         axQueue.async { [weak self] in
             guard let self else { return }
             let identityMatches = self.replayIdentityMatches(target)
             let checkedAt = ProcessInfo.processInfo.systemUptime
             DispatchQueue.main.async { [self] in
-                guard self.replayIdentityNonce == identityNonce, self.replaying,
-                      let active = self.mutationGate,
+                guard let active = self.session.identityCheckTarget(identityNonce),
                       AccessibilityEditor.sameTarget(active, target) else { return }
-                self.replayIdentityNonce = nil
+                self.session.clearIdentityCheck()
                 guard identityMatches, self.revision == expectedRevision,
                       self.allowedFrontmost(), AXIsProcessTrusted(), CGPreflightPostEventAccess(),
                       NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
@@ -1351,13 +1349,13 @@ final class KeyboardService {
                       let source = self.replaySource else {
                     self.suspendReplay(target: target); return
                 }
-                guard let batch = self.inputReplay.takeBatch(limit: 1), let event = batch.events.first else { return }
-                let deliveryTag = Int64(bitPattern: (Self.replayPrefix << 32) | UInt64(batch.token))
-                self.replayRouteLease = ReplayDeliveryLease(token: batch.token, revision: expectedRevision,
-                    sourceID: sourceID, issuedAt: checkedAt, deadline: checkedAt + 0.050)
+                guard let delivery = self.session.dispatchNext(revision: expectedRevision, sourceID: sourceID,
+                          issuedAt: checkedAt, leaseDuration: 0.050),
+                      let event = delivery.batch.events.first else { return }
+                let deliveryTag = Int64(bitPattern: (Self.replayPrefix << 32) | UInt64(delivery.batch.token))
                 source.userData = deliveryTag
                 source.localEventsSuppressionInterval = 0
-                let batchNonce = UUID(); self.replayBatchNonce = batchNonce
+                let batchNonce = delivery.batchNonce
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                     guard let self, self.replaying, self.replayBatchNonce == batchNonce,
                           self.inputReplay.outstanding > 0 else { return }
@@ -1372,15 +1370,10 @@ final class KeyboardService {
     private func deliveryTimedOut() {
         guard replaying, inputReplay.outstanding > 0 else { return }
         let anchor = mutationGate.map { replayRecoveryTarget($0) }
-        replaying = false
-        recovery.deliveryTimedOut(inputReplay.cancelOutstanding())
-        replayIdentityNonce = nil; replayRouteLease = nil
+        session.timeOutDelivery(recoveryTarget: anchor?.value, sourceID: anchor?.source)
         sourceAfterReplay = nil
-        recoveryTarget = anchor?.value ?? mutationGate
-        recoverySourceID = anchor?.source
         recoveryReplayProjection = nil; recoveryReplaySource = nil
         replayProjection = nil; replayProjectionSource = nil; replayAllowsPartial = false; replayReadbackNonce = UUID()
-        mutationGate = nil; mutationDeadline = nil
         InputDiagnostics.shared.fault(reason: "delivery-timeout", revision: revision, counts: recoveryCounts)
         updateServiceStatus()
         store.lastStatus = anchor?.predicted == true ?
@@ -1432,18 +1425,11 @@ final class KeyboardService {
 
     private func suspendReplay(target: EditorSnapshot) {
         let recovery = replayRecoveryTarget(target)
-        replayIdentityNonce = nil; replayRouteLease = nil
         replayProjection = nil; replayProjectionSource = nil; replayAllowsPartial = false; replayReadbackNonce = UUID()
         sourceAfterReplay = nil
-        replaying = false; replayBatchNonce = UUID()
-        self.recovery.deliveryTimedOut(inputReplay.cancelOutstanding())
-        mutationGate = nil; mutationNonce = nil; mutationDeadline = nil
-        recoveryTarget = recovery.value; recoverySourceID = recovery.source
+        session.suspendReplay(recoveryTarget: recovery.value, sourceID: recovery.source)
         recoveryReplayProjection = nil; recoveryReplaySource = nil
         cachedSnapshot = nil; transaction = nil
-        if inputReplay.isDrained && !self.recovery.requiresReview {
-            recoveryTarget = nil; recoverySourceID = nil
-        }
         InputDiagnostics.shared.fault(reason: "replay-suspended", revision: revision, counts: recoveryCounts)
         updateServiceStatus()
         store.lastStatus = recovery.predicted ?
