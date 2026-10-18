@@ -4,6 +4,12 @@
 [журнал](JOURNAL.md), план и приёмка — [PLAN](PLAN.md), функции — [FEATURES](FEATURES.md),
 исправления по ревью — [REVIEW_FIX_PLAN](REVIEW_FIX_PLAN.md), решения — [DECISIONS](DECISIONS.md).
 
+## Версии
+
+- **Опубликован [v0.1.6 (12)](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.6)** — предварительный
+  релиз, тег → `1f7b2c2`, собран и опубликован CI по тегу; файлы скачаны и сверены. Сниппеты и
+  исправления вставки. Native на релизном bundle NOT_RUN. [Выпуск](RELEASE_0.1.6.md).
+
 ## Ветки
 
 - `main` = `snippets` (перемотка 2026-10-19, DECISIONS п. 33): универсальный режим и сниппеты; U8 и S8
