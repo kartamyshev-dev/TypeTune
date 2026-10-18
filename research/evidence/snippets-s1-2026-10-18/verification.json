@@ -1,0 +1,23 @@
+{
+  "kind": "Linux offline (Core + CLI, Swift 6.0.3); no GUI change, no native claim",
+  "date": "2026-10-18",
+  "baseCommit": "65c195b9eb494074090aec535ba8e30734587135",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0 (selftest, corpus v2/v3, regression fixtures, swift test 14/14, audit gates, corpus diff clean)",
+    "selftest": "1462/1462 (50 snippet library invariants)",
+    "mutationCheck": "default trigger, version gate and other-layout collision deliberately broken: 6 snippet checks failed; restored code passes"
+  },
+  "semantics": [
+    "Snippet: abbreviation, template text, trigger immediate|boundary, otherLayout, matchCase, application filter all|only|except, enabled",
+    "default trigger: sign-led abbreviation fires immediately, letter/digit-led waits for the boundary (DECISIONS 28)",
+    "migration: UserRule -> boundary snippet, same id, otherLayout off, matchCase on; every '{{' escaped as '\\{{' so the text stays literal under S2 templates",
+    "storage: snippets.json with version 1; absent file migrates rules; newer/impossible version or malformed file -> unavailable (never overwritten, never migrated over)",
+    "validation: abbreviation 2-64 characters without whitespace/control; text 1-10000 characters, only LF and TAB among control characters; duplicates ignoring case and, when either snippet matches the other layout, on the same physical keys",
+    "usable(): enabled, valid, first of colliding snippets only",
+    "not yet used by the engine or the application: Settings.rules still drive replacement until stage S6"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/Snippet.swift": "d3805d6d03c0f4a9391bfb72b4f0909d8615622223d33caa26fa318769b9ac3e",
+    "Sources/LayoutPilotCLI/SnippetLibraryChecks.swift": "29d61b39a9258af3793e702729aa096e05b0ed730efbde634671dbdec82a5cb5"
+  }
+}
