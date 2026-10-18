@@ -65,6 +65,12 @@ Terminal/vim/Codex — SKIP_USER. Четыре часа отложены. U8/п�
 
 ## Версии
 
+- **Опубликован [v0.1.5 (11)](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.5)** — предварительный релиз из universal-input,
+  тег → `a6e6213a4729`. Универсальный ввод, исправления Chrome/PWA и переносимого словаря.
+  GUI8f554257; CI Linux/macOS на точном SHA прошёл, архив/93 manifest files/подпись/CLI
+  проверены, скачанные GitHub assets совпали побайтно. Native релизного bundle NOT_RUN,
+  установленный проверенный GUI ab020042 не заменён. Четыре часа не запускались,
+  main не менялся. [Выпуск](RELEASE_0.1.5.md).
 - **Опубликован [v0.1.4 (10)](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.4)** — предварительный релиз,
   тег → `39ee28e88270`, GUI `c722c3d7`. CI Linux/macOS прошёл на этом SHA;
   архив распакован, подпись/манифест/CLI проверены, файлы скачаны с GitHub и совпали.

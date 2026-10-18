@@ -24,3 +24,15 @@ stream80 12/12=192 слова. Ограниченная матрица Chrome/Sa
 Картинки/S5 и согласованные приложения пропущены пользователем.
 Password typed-E2E и полная приёмка PLAN/U8 не закрыты.
 Четырёхчасовой прогон отложен пользователем и не запускался.
+
+Опубликован [v0.1.5](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.5).
+Тег → `a6e6213a4729c53f42e2257d327f1c5287c2a1d5`.
+[CI Linux/macOS](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39161125663) прошёл,
+включая запуск без .build. Релизные offline: CLI1439/1439, corpus4420/4420+22000/22000,
+controller93/93, guard23/23, audit4/4, fixtures8/8.
+ZIP SHA-256 `9e06df8b53b9c5d984e82392fecfd263d4fceb5120f96af5fbe9238c1aeb1482`.
+GUI SHA-256 `8f554257fd8e01f014589afd37e357fb8279eafaddb5effcbf62d90ad38ed4f7`.
+После ditto-unpack проверены93 файла манифеста, версия, подпись и CLI.
+Оба GitHub assets скачаны обратно и побайтно совпали с локальными.
+[Проверка](../research/evidence/release-0.1.5/verification.json),
+[публикация](../research/evidence/release-0.1.5/publication.json).

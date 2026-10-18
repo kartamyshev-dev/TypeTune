@@ -1,0 +1,25 @@
+{
+  "releaseUrl": "https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.5",
+  "releaseId": 416675429,
+  "tag": "v0.1.5",
+  "sourceCommit": "a6e6213a4729c53f42e2257d327f1c5287c2a1d5",
+  "remoteTagPeeledCommitVerified": true,
+  "prerelease": true,
+  "draft": false,
+  "publishedAt": "2026-10-18T20:00:34Z",
+  "assets": {
+    "TypeTune-0.1.5-a6e6213a4729-arm64.zip": {
+      "sha256": "9e06df8b53b9c5d984e82392fecfd263d4fceb5120f96af5fbe9238c1aeb1482",
+      "bytes": 19050627,
+      "downloadedBytesEqual": true
+    },
+    "TypeTune-0.1.5-a6e6213a4729-arm64.zip.sha256": {
+      "sha256": "af51b59725cbc8aa219f5a5663ca8f6eda6028ef6b583bae67036b0daf544c45",
+      "bytes": 109,
+      "downloadedBytesEqual": true
+    }
+  },
+  "releaseCI": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39161125663",
+  "installedCandidateUnchanged": true,
+  "nativeReleaseBundle": "NOT_RUN"
+}

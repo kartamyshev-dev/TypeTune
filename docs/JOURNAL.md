@@ -1,5 +1,25 @@
 # Журнал TypeTune
 
+## 2026-10-18 — опубликован предварительный релиз0.1.5(11)
+
+Пользователь явно поручил push GitHub и новый релиз. Версия/build в build.sh0.1.5/11,
+package archive0.1.5; README download обновлён. Тегv0.1.5 → a6e6213a4729,
+из universal-input без merge main. Полная готовность не заявляется, prerelease=true.
+
+Release build/signature выполнены; финальная упаковка из чистого a6e6213 использовала
+candidate-build с проверкой source/resource/CLI/bundle identity (после первой сборки
+изменился только README). GUI8f554257. CLI1439/1439, корпуса4420/4420+22000/22000,
+controller93/93, guard23/23, audit4/4, fixtures8/8. CI39161125663 Linux/macOS success
+на точном исходном SHA, GUI CI запускался без .build. Native релизного bundle NOT_RUN.
+Установленный ab020042 и разрешения не менялись; второй переключатель локально не запускался.
+
+Финальный ZIP9e06df8b53b9c5d984e82392fecfd263d4fceb5120f96af5fbe9238c1aeb1482,
+19 050 627байт. Ditto-unpack:93 файла manifest, версия0.1.5(11), подпись и CLI PASS.
+GitHub release опубликован, remote annotated tag peeled commit сверён; ZIP и SHA256
+скачаны обратно, оба побайтно равны локальным. Картинки/пропущенные приложения/4часа
+не запускались. [Публикация](../research/evidence/release-0.1.5/publication.json),
+[полный выпуск](RELEASE_0.1.5.md).
+
 ## 2026-10-18 — S14: native inline suffix Chrome/Safari и меню PWA
 
 Пользователь: «Продолжай проверки встроенного автодополнения и командного меню PWA,
