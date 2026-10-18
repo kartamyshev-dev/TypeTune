@@ -1,0 +1,55 @@
+Building for production...
+[Planning deferred tasks]
+[4 / 11] LayoutPilotCore
+[6 / 12] LayoutPilotCore
+[9 / 12] LayoutPilot-product
+[21 / 123]
+[27 / 123]
+[32 / 123]
+[34 / 123]
+[40 / 123]
+[43 / 123]
+[51 / 123]
+[54 / 123]
+[56 / 123]
+[57 / 123]
+[70 / 123]
+[71 / 123]
+[75 / 123]
+[77 / 123]
+[78 / 123]
+[84 / 123]
+[86 / 123]
+[92 / 123]
+[93 / 123]
+[96 / 123]
+[98 / 123]
+[107 / 123]
+[108 / 123]
+[112 / 123]
+[117 / 123]
+[118 / 123]
+[119 / 123]
+[120 / 123] LayoutPilot-product
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[122 / 123] LayoutPilot-product
+[123 / 123] LayoutPilot-product
+Build complete! (31,50 с)
+Building for production...
+[Planning deferred tasks]
+[2 / 6]
+[3 / 7] LayoutPilotCore
+[5 / 8] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[10 / 13] layoutpilot-cli-product
+[11 / 14] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[13 / 14] layoutpilot-cli-product
+[16 / 16] layoutpilot-cli-product
+Build complete! (10,80 с)
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app

@@ -1,0 +1,34 @@
+{
+  "sourceCommit": "bcaf82a297be2abc03f71cf4dc13f56129c00ba3",
+  "applicationSourcesChanged": false,
+  "binarySha256": "bff09d98ebab7e97f1172c0e623a6e870ae8046af2aa0196115364ab0b532668",
+  "installedEqualsDist": true,
+  "nativeChecks": {
+    "native-smoke": true,
+    "native-pointer": true,
+    "stream80": true,
+    "native-paused": true,
+    "native-undo": true,
+    "native-first-word": true
+  },
+  "streamCases": 10,
+  "releaseSelftest": {
+    "passed": 1317,
+    "failed": 0
+  },
+  "corpusV2": 4420,
+  "corpusV3": 22000,
+  "controllerChecks": 62,
+  "auditTests": 4,
+  "probeFixtureTests": 6,
+  "xctest": "BLOCKED: XCTest unavailable in installed CLT",
+  "pcMapping": "FAIL: physical key 50 Shift gives U+00CB; authored table expects U+0401",
+  "appleRussianNative": "NOT_RUN: not enabled",
+  "delayed150Fast10": "FAIL correction quality; retained 10 synthetic events; UI discard verified",
+  "positiveExactRecovery": "NOT_RUN",
+  "fourHourRun": "DEFERRED by user",
+  "fullAcceptance": false,
+  "preferencesExactlyRestored": true,
+  "finalInputSource": "com.apple.keylayout.RussianWin",
+  "switchersRunning": []
+}

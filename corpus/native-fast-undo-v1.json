@@ -1,0 +1,22 @@
+[
+  {
+    "id": "single-word-undo",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "undo",
+    "expected": "ghbdtn ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    },
+    "expectedBeforeGesture": {
+      "text": "привет ",
+      "selection": {
+        "location": 7,
+        "length": 0
+      },
+      "inputSource": "com.apple.keylayout.RussianWin"
+    }
+  }
+]

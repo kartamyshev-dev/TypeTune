@@ -1,0 +1,16 @@
+[
+  {
+    "id": "interrupted-recovery",
+    "text": "ghbdtn he",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "interruptRecover",
+    "preGestureDelayMilliseconds": 0,
+    "expected": "ghbdtn he",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  }
+]

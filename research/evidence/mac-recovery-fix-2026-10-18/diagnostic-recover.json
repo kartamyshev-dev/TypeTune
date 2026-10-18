@@ -1,0 +1,62 @@
+{
+  "axReadErrors" : {
+    "AXSubrole:-25205" : 8
+  },
+  "axReadTiming" : {
+    "AXDocument:0" : {
+      "count" : 8,
+      "maxMilliseconds" : 0.19345834152773023,
+      "totalMilliseconds" : 0.72600001294631511
+    },
+    "AXFocusedUIElement:0" : {
+      "count" : 8,
+      "maxMilliseconds" : 0.17687500803731382,
+      "totalMilliseconds" : 0.47699999413453043
+    },
+    "AXFocusedWindow:0" : {
+      "count" : 8,
+      "maxMilliseconds" : 28.223916669958271,
+      "totalMilliseconds" : 48.554708351730369
+    },
+    "AXRole:0" : {
+      "count" : 8,
+      "maxMilliseconds" : 0.083958337199874222,
+      "totalMilliseconds" : 0.30354167392943054
+    },
+    "AXSelectedTextRange:0" : {
+      "count" : 2,
+      "maxMilliseconds" : 0.088416665676049888,
+      "totalMilliseconds" : 0.12116666766814888
+    },
+    "AXSubrole:-25205" : {
+      "count" : 8,
+      "maxMilliseconds" : 0.27637499442789704,
+      "totalMilliseconds" : 0.82308334822300822
+    },
+    "AXValue:0" : {
+      "count" : 2,
+      "maxMilliseconds" : 0.073791670729406178,
+      "totalMilliseconds" : 0.098583346698433161
+    },
+    "AXWindow:0" : {
+      "count" : 8,
+      "maxMilliseconds" : 0.14808333071414381,
+      "totalMilliseconds" : 0.54425002599600703
+    }
+  },
+  "beforeSelection" : {
+    "length" : 0,
+    "location" : 33
+  },
+  "beforeText" : "привет hello привет hello привет ",
+  "document" : "\/Users\/kartamyshev\/git\/TypeTune\/research\/private\/probes\/107AAB3D-BD07-4382-AACE-4558422DED4C.txt",
+  "events" : 6,
+  "finalModifierFlags" : 536870912,
+  "inputSource" : "com.apple.keylayout.ABC",
+  "pid" : 6445,
+  "selection" : {
+    "length" : 0,
+    "location" : 37
+  },
+  "text" : "привет hello привет hello привет hell"
+}

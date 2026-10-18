@@ -1,0 +1,6 @@
+Building for debugging...
+[2 / 11]
+[3 / 12] LayoutPilotCore
+[5 / 13] LayoutPilotCore
+Build complete! (0,75 с)
+{"cases":17,"failures":[],"notice":"Production replace entry point; current-check sentinel always denies all AX work. No live Codex reproduction or native TextEdit acceptance."}

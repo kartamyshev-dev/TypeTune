@@ -1,0 +1,19 @@
+{
+  "settingsAndStatisticsExactPlistEquality": true,
+  "testRuleCleanup": "learned-cleanup.json",
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "enabledKeyboardLayouts": [
+    "ABC",
+    "RussianWin"
+  ],
+  "modifiersNeutralHIDAndSession": true,
+  "modifierFlags": [
+    536870912,
+    536870912
+  ],
+  "allSwitchersStopped": true,
+  "secureInput": false,
+  "statusProbeEvents": 0,
+  "fourHourRun": "NOT_RUN",
+  "backup": "research/private/mac-fast-fix-2026-10-18/preferences-before.plist"
+}

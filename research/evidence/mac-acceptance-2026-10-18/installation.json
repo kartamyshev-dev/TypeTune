@@ -1,0 +1,8 @@
+{
+  "installed": "/Applications/TypeTune.app",
+  "bundleDigest": "224b8da6ca70d4755a24ef92028ff0ade40945cf6359be2d313566c982d4e313",
+  "sourceCommit": "bcaf82a297be2abc03f71cf4dc13f56129c00ba3",
+  "sourceEqualsInstalled": true,
+  "signatureVerified": true,
+  "oldBundle": "/Applications/.TypeTune-mac-acceptance-stage"
+}

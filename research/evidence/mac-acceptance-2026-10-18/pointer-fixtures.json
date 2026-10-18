@@ -1,0 +1,23 @@
+[
+  {
+    "id": "scroll-during-word",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "scrollAfterCharacters": 3,
+    "expected": "привет "
+  },
+  {
+    "id": "drag-double-shift",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "dragDoubleShift",
+    "expected": "привет"
+  },
+  {
+    "id": "typo-unpaused",
+    "text": "ghtdtn",
+    "source": "RussianWin",
+    "expected": "привет "
+  }
+]

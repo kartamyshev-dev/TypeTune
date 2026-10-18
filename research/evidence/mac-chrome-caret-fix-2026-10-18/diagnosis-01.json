@@ -1,0 +1,34 @@
+{
+  "after": {
+    "length": 0,
+    "location": 7,
+    "text": "ghbdtn "
+  },
+  "before": {
+    "length": 0,
+    "location": 7,
+    "text": "ghbdtn "
+  },
+  "diagnostics": {
+    "createdAt": "2026-10-18T12:27:19Z",
+    "notice": "Last 1000 technical events only; no text, keycodes, document or clipboard data.",
+    "records": [
+      {
+        "checks": {
+          "deadlineExpired": false
+        },
+        "counts": {},
+        "phase": "replacement-stage",
+        "reason": "preflight",
+        "revision": -1,
+        "uptime": 86163.33827812501
+      }
+    ],
+    "schemaVersion": 2,
+    "session": "C65F8527-6688-47BA-A19D-3B99C3A538E9"
+  },
+  "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+  "mode": "production",
+  "result": "notApplied",
+  "helperSHA256": "29438155ab51b7e003982d8fbedc208d7d083f97038526eb72979a6ad74110fc"
+}

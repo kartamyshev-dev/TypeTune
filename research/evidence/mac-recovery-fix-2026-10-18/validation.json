@@ -1,0 +1,266 @@
+{
+  "binarySha256": "0f6d2a79a8690e5f183c9808ef2400d14752b0a2724a7c1279d32b80a13c4738",
+  "native": {
+    "final-fast-10ms": {
+      "completed": 10,
+      "passed": 1,
+      "checks": [
+        {
+          "id": "fast-stream-00",
+          "text": false,
+          "caret": true,
+          "source": false
+        },
+        {
+          "id": "fast-stream-01",
+          "text": false,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-02",
+          "text": true,
+          "caret": true,
+          "source": false
+        },
+        {
+          "id": "fast-stream-03",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-04",
+          "text": false,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-05",
+          "text": true,
+          "caret": true,
+          "source": false
+        },
+        {
+          "id": "fast-stream-06",
+          "text": true,
+          "caret": true,
+          "source": false
+        },
+        {
+          "id": "fast-stream-07",
+          "text": true,
+          "caret": true,
+          "source": false
+        },
+        {
+          "id": "fast-stream-08",
+          "text": true,
+          "caret": true,
+          "source": false
+        },
+        {
+          "id": "fast-stream-09",
+          "text": true,
+          "caret": true,
+          "source": false
+        }
+      ]
+    },
+    "final-fast-80ms": {
+      "completed": 10,
+      "passed": 10,
+      "checks": [
+        {
+          "id": "fast-stream-00",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-01",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-02",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-03",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-04",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-05",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-06",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-07",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-08",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "fast-stream-09",
+          "text": true,
+          "caret": true,
+          "source": true
+        }
+      ]
+    },
+    "final-apple-russian": {
+      "completed": 8,
+      "passed": 8,
+      "checks": [
+        {
+          "id": "apple-auto-en-ru",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-auto-ru-en",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-manual-yo",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-manual-Yo",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-manual-grave",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-manual-tilde",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-physical-yo",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "apple-physical-Yo",
+          "text": true,
+          "caret": true,
+          "source": true
+        }
+      ]
+    },
+    "final-interrupted-recovery-2": {
+      "completed": 1,
+      "passed": 1,
+      "checks": [
+        {
+          "id": "interrupted-recovery",
+          "text": true,
+          "caret": true,
+          "source": true
+        }
+      ]
+    },
+    "final-mac-review": {
+      "completed": 7,
+      "passed": 7,
+      "checks": [
+        {
+          "id": "punctuation-en",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "punctuation-ru",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "acronym-IDs",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "double-shift-selection",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "scroll-during-word",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "drag-double-shift",
+          "text": true,
+          "caret": true,
+          "source": true
+        },
+        {
+          "id": "typo-unpaused",
+          "text": true,
+          "caret": true,
+          "source": true
+        }
+      ]
+    }
+  },
+  "positiveRecoveryConfirmed": {
+    "retainedBefore": 4,
+    "forwardedIncludingShortcutReleases": 7,
+    "finalCounts": {
+      "outstanding": 0,
+      "pending": 0,
+      "uncertainDeliveries": 0
+    },
+    "exactPrefixBeforeShortcut": true
+  },
+  "delayedLongStream": {
+    "textCaretSourceExact": true,
+    "requestedIntervalMs": 10,
+    "injectedAXDelayMs": 150
+  }
+}

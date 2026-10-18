@@ -1,0 +1,13 @@
+Building for debugging...
+[Planning deferred tasks]
+[4 / 13] LayoutPilotCore
+[15 / 24] LayoutPilotCore
+[21 / 25] LayoutPilotCore
+[22 / 26] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[35 / 37] layoutpilot-cli-product
+[35 / 38] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[37 / 38] layoutpilot-cli-product
+Build complete! (2,16 с)

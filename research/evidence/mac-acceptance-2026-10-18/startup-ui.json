@@ -1,0 +1,5 @@
+{
+  "launchRequestEpochMilliseconds": 1792317624988,
+  "readyWindowObservedEpochMilliseconds": 1792317625901,
+  "notice": "CUA launch-to-observation duration, not app-internal startup or lexicon-only timing."
+}

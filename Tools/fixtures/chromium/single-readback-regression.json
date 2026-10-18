@@ -1,0 +1,42 @@
+{
+  "id": "chrome-single-insertion-readback-2026-10-18",
+  "host": "com.google.Chrome",
+  "field": "LP-CODEX-001 single",
+  "helperMode": "type-wrong",
+  "physicalASCII": "ghbdtn",
+  "boundary": "two spaces",
+  "earlyCorrection": false,
+  "observed": {
+    "text": "привет  ",
+    "selection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  "expected": {
+    "text": "привет  ",
+    "selection": {
+      "location": 8,
+      "length": 0
+    }
+  },
+  "guiSHA256": "6f1d9cc51ab5bdf62efafb510948aba3c9d93234dfafd737de2759a94b396703",
+  "evidence": "research/evidence/mac-manual-chrome-fix-2026-10-18/chrome-single-auto.json",
+  "trace": "research/evidence/mac-manual-chrome-fix-2026-10-18/chrome-trace.json",
+  "observedFailureStage": "insertion-readback",
+  "notice": "Chrome AX reported the original full text with the insertion caret. Bounded readonly retry must require the exact expected text and caret; no repeated insertion. Guard regression reproduces the old failure.",
+  "diagnosticReproduction": {
+    "guiSHA256": "28247d26f4f94544477e0e1152e5d2295d15f5006ff357f15e7299610f56c870",
+    "attempt": 23,
+    "observation": {
+      "originalText": true,
+      "expectedText": false,
+      "insertionCaret": true,
+      "originalSelection": false,
+      "replacementSelection": false,
+      "pending": false
+    },
+    "evidence": "research/evidence/mac-chrome-caret-fix-2026-10-18/diagnostic-auto-23.json",
+    "trace": "research/evidence/mac-chrome-caret-fix-2026-10-18/diagnostic-failure-trace.json"
+  }
+}

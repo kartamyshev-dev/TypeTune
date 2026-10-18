@@ -1,0 +1,50 @@
+[
+  {
+    "id": "punctuation-en",
+    "text": "ghbdtn/",
+    "source": "ABC",
+    "expected": "привет. "
+  },
+  {
+    "id": "punctuation-ru",
+    "text": "hello.",
+    "source": "RussianWin",
+    "expected": "hello. "
+  },
+  {
+    "id": "acronym-IDs",
+    "text": "IDs",
+    "source": "ABC",
+    "expected": "IDs "
+  },
+  {
+    "id": "double-shift-selection",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "doubleShift",
+    "selectAllBeforeGesture": true,
+    "expected": "привет"
+  },
+  {
+    "id": "scroll-during-word",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "scrollAfterCharacters": 3,
+    "expected": "привет "
+  },
+  {
+    "id": "drag-double-shift",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "dragDoubleShift",
+    "expected": "привет"
+  },
+  {
+    "id": "typo-unpaused",
+    "text": "ghtdtn",
+    "source": "RussianWin",
+    "expected": "привет "
+  }
+]
