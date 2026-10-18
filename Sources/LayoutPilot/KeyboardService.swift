@@ -135,7 +135,9 @@ final class KeyboardService {
         }
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in self?.refresh() }
         contextTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
-            guard let self, self.store.running, self.streamReadback == nil,
+            // Universal mode edits by keystrokes and needs no idle field snapshot; in Chrome these
+            // reads miss their 60 ms deadline and occupy the queue that confirms edits.
+            guard let self, self.store.running, !self.store.universalInput, self.streamReadback == nil,
                   self.mutationGate == nil, self.recoveryTarget == nil, !self.recovery.requiresReview,
                   ProcessInfo.processInfo.systemUptime - self.lastKeyDownTime > 0.150 else { return }
             // Window changes inside one application do not send didActivateApplication.
@@ -618,25 +620,48 @@ final class KeyboardService {
         else { typed.replaceSuffix(plan.before, with: plan.after) }
         axQueue.async { [weak self] in
             guard let self else { return }
-            var confirmed = !readable // an unreadable field cannot confirm; blind edits count as sent
+            // An unreadable field cannot confirm; blind edits count as sent. Chrome publishes
+            // its accessibility text with a delay (one read alone takes 30–55 ms on a user's
+            // Mac), so a readable field gets 600 ms to show the result.
+            var outcome: KeystrokeConfirmation = readable ? .unknown : .confirmed
             if readable {
-                let deadline = ProcessInfo.processInfo.systemUptime + 0.150
+                let deadline = ProcessInfo.processInfo.systemUptime + 0.600
                 repeat {
-                    if case .textBeforeCaret(let text) = AccessibilityEditor.observeTextBeforeCaret(pid: target.pid),
-                       text.hasSuffix(plan.after) { confirmed = true; break }
-                    Thread.sleep(forTimeInterval: 0.005)
+                    let text: String?
+                    switch AccessibilityEditor.observeTextBeforeCaret(pid: target.pid) {
+                    case .textBeforeCaret(let value): text = value
+                    // An autocompletion selected after the inserted text does not hide it.
+                    case .selection(let value): text = value
+                    case .unreadable, .secure: text = nil
+                    }
+                    if let text, text.hasSuffix(plan.after) { outcome = .confirmed; break }
+                    // Still exactly the state before the edit: nothing visible has changed yet.
+                    if let text, plan.selection == nil, plan.expects(textBeforeCaret: text) { outcome = .notShown }
+                    else { outcome = .unknown }
+                    Thread.sleep(forTimeInterval: 0.010)
                 } while ProcessInfo.processInfo.systemUptime < deadline
             }
-            DispatchQueue.main.async { self.finishKeystrokes(operation, confirmed: confirmed, readable: readable) }
+            DispatchQueue.main.async { self.finishKeystrokes(operation, outcome: outcome, readable: readable) }
         }
     }
-    private func finishKeystrokes(_ operation: KeystrokeOperation, confirmed: Bool, readable: Bool) {
+    private enum KeystrokeConfirmation { case confirmed, notShown, unknown }
+    private func finishKeystrokes(_ operation: KeystrokeOperation, outcome: KeystrokeConfirmation, readable: Bool) {
         let target = operation.target, decision = operation.plan.decision
         let current = !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
         InputDiagnostics.shared.record("universal-result", revision: revision,
-            checks: ["confirmed": confirmed, "readable": readable, "current": current])
-        guard confirmed else {
-            // Sent but the readable field does not show the result: the user must check it.
+            checks: ["confirmed": outcome == .confirmed, "notShown": outcome == .notShown,
+                     "readable": readable, "current": current])
+        switch outcome {
+        case .confirmed: break
+        case .notShown:
+            // The field still shows exactly the text before the edit: nothing visible was
+            // damaged, the keystrokes are late or were dropped. No undo, no blocking review.
+            typed.reset(.untrackedKey); keystrokeTransaction = nil
+            finishMutation(.notApplied, before: target, settled: current ? target : nil)
+            skipped("Поле не показало исправление; проверьте последнее слово")
+            return
+        case .unknown:
+            // The readable field shows neither the old nor the new text: the user must check it.
             typed.reset(.untrackedKey); keystrokeTransaction = nil
             finishMutation(.uncertain, before: target, settled: nil)
             return

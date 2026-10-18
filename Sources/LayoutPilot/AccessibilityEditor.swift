@@ -83,8 +83,9 @@ enum AccessibilityEditor {
         case textBeforeCaret(String)
         /// The field is readable but text is selected (for example an inline autocompletion
         /// after the caret). The first Backspace would delete the selection, not a typed
-        /// character, so this is never treated as unreadable or edited blind.
-        case selection
+        /// character, so this is never treated as unreadable or edited blind. Carries the
+        /// text before the selection, which can still confirm an edit already made.
+        case selection(textBeforeSelection: String)
     }
     enum SelectionObservation: Equatable {
         case unreadable, secure
@@ -124,12 +125,11 @@ enum AccessibilityEditor {
             return .unreadable
         }
         var range = CFRange()
-        guard AXValueGetValue(rawRange as! AXValue, .cfRange, &range) else { return .unreadable }
-        guard range.length == 0 else { return .selection }
-        guard let prefix = TextEdit.validatedRange(NSRange(location: 0, length: range.location), in: text) else {
+        guard AXValueGetValue(rawRange as! AXValue, .cfRange, &range),
+              let prefix = TextEdit.validatedRange(NSRange(location: 0, length: range.location), in: text) else {
             return .unreadable
         }
-        return .textBeforeCaret(String(text[prefix]))
+        return range.length == 0 ? .textBeforeCaret(String(text[prefix])) : .selection(textBeforeSelection: String(text[prefix]))
     }
 
     private static func checkedTimeout(_ budget: EditorSnapshotBudget, isCurrent: () -> Bool) throws -> Float {
