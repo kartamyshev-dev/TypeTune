@@ -1,0 +1,324 @@
+{
+  "records": 393,
+  "faults": [
+    {
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "count": 6
+    }
+  ],
+  "universalResults": [
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 9,
+      "uptime": 4138.690623416667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 18,
+      "uptime": 4141.886089625
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 28,
+      "uptime": 4145.220339666667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 38,
+      "uptime": 4148.588038083333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 45,
+      "uptime": 4151.552790333333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 69,
+      "uptime": 4160.078730791667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 80,
+      "uptime": 4163.6631895
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 97,
+      "uptime": 4168.911123
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 106,
+      "uptime": 4173.534699416667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 126,
+      "uptime": 4179.346101
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 127,
+      "uptime": 4180.539593583334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 141,
+      "uptime": 4518.356826583334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 149,
+      "uptime": 4551.322674375
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 157,
+      "uptime": 4586.900986833333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 165,
+      "uptime": 4612.6324745833335
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 173,
+      "uptime": 4646.950215708333
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 181,
+      "uptime": 4708.646590541667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 226,
+      "uptime": 4724.744375791667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 271,
+      "uptime": 4731.776119791667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 316,
+      "uptime": 4738.8144865
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 360,
+      "uptime": 4745.835000791667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 405,
+      "uptime": 4752.8694886250005
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 450,
+      "uptime": 4759.89392925
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 495,
+      "uptime": 4766.924727375001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 540,
+      "uptime": 4773.977855916667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 585,
+      "uptime": 4781.011848875
+    }
+  ]
+}

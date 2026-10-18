@@ -1151,6 +1151,8 @@ final class KeyboardService {
             sourceID: pending.sourceID, deadline: pending.deadline, readOnlyBaseline: true)
     }
     private func captureAfterEvent() {
+        // Universal correction reads its own field; legacy context is only needed by plain paste.
+        guard !store.universalInput || store.settings.plainPaste else { return }
         guard contextCaptureRevision != revision else { return }
         #if LAYOUTPILOT_TESTING
         if !observesSystem, testingContextCaptureEnabled {
@@ -1158,6 +1160,7 @@ final class KeyboardService {
         }
         #endif
         guard observesSystem else { return }
+        guard !store.universalInput || allowedFrontmost() else { return }
         let expectedRevision = revision
         contextCaptureRevision = expectedRevision
         let pid = NSWorkspace.shared.frontmostApplication?.processIdentifier
@@ -2124,6 +2127,7 @@ final class KeyboardService {
     }
     #if LAYOUTPILOT_TESTING
     func testingEnableContextCapture() { precondition(!observesSystem); testingContextCaptureEnabled = true }
+    func testingCaptureAfterEvent() { precondition(!observesSystem); captureAfterEvent() }
     func testingPrepareKeyRead(inserted: String = "n", keyCode: Int = 0, deadline: TimeInterval? = nil) {
         precondition(!observesSystem)
         pendingKeyRead = (revision, -1, "test-source", keyCode, inserted,

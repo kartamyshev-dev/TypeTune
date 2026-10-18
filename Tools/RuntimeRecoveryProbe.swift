@@ -280,6 +280,16 @@ final class InputDiagnostics {
             checks["universal_mode_on_by_default"] = keyboard.store.universalInput
         }
         do {
+            let keyboard = service()
+            keyboard.testingEnableContextCapture()
+            keyboard.testingCaptureAfterEvent()
+            checks["universal_without_plain_paste_does_not_capture_legacy_context"] = keyboard.testingRequestedContextRevisions.isEmpty
+            keyboard.store.universalInput = false
+            keyboard.testingCaptureAfterEvent()
+            checks["legacy_mode_keeps_event_context_capture"] = keyboard.testingRequestedContextRevisions.count == 1
+            keyboard.store.universalInput = true
+        }
+        do {
             let after = EditorSnapshot(element: AXUIElementCreateApplication(-1), window: nil,
                 document: nil, pid: -1, application: "com.apple.TextEdit", text: "привет ",
                 selection: NSRange(location: 7, length: 0))

@@ -1,0 +1,16 @@
+{
+  "bundle" : "com.google.Chrome",
+  "caretMatches" : true,
+  "events" : 28,
+  "fieldDescriptionLength" : 0,
+  "inputSeconds" : 0.84262195833343867,
+  "inputSourceRestored" : true,
+  "observedLength" : 7,
+  "passed" : true,
+  "pid" : 1492,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 29
+}

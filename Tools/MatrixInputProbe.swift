@@ -13,6 +13,7 @@ struct MatrixCase: Decodable {
     let expectedSource: String
     let gesture: String
     let clearAfter: Bool?
+    let expectedCaret: Int?
 }
 struct Failure: Error { let reason: String }
 func require(_ value: @autoclosure () -> Bool, _ reason: String) throws {
@@ -48,7 +49,8 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                 "q":12,"w":13,"e":14,"r":15,"y":16,"t":17,"1":18,"2":19,"3":20,"4":21,"6":22,"5":23,"9":25,
                 "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,"n":45,"m":46," ":49]
             try require(!item.text.isEmpty && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
-            try require(["none", "doubleShift"].contains(item.gesture), "unsupported_gesture")
+            try require(["none", "doubleShift", "middleOfWord"].contains(item.gesture), "unsupported_gesture")
+            try require((0...item.expected.utf16.count).contains(item.expectedCaret ?? item.expected.utf16.count), "invalid_expected_caret")
             let applications = NSWorkspace.shared.runningApplications.filter { $0.bundleIdentifier == item.bundle }
             try require(applications.count == 1, "one_target_process_required")
             let app = applications[0]
@@ -114,6 +116,16 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
                 events += 1
                 pause(0.012)
             }
+            // CUA preparation bypasses the tap; reset its previous token with a real navigation event.
+            try emit(123, down: true); try emit(123, down: false)
+            let ready = try snapshot()
+            try require(ready.0.isEmpty && ready.1.location == 0 && ready.1.length == 0, "initial_navigation_changed_field")
+            if item.gesture == "middleOfWord" {
+                for character in "abcdef" { try emit(keys[character]!, down: true); try emit(keys[character]!, down: false) }
+                for _ in 0..<4 { try emit(123, down: true); try emit(123, down: false) }
+                let middle = try snapshot()
+                try require(middle.0 == "abcdef" && middle.1.location == 2 && middle.1.length == 0, "middle_fixture_not_confirmed")
+            }
             let start = ProcessInfo.processInfo.systemUptime
             for character in item.text {
                 try emit(keys[character]!, down: true)
@@ -129,7 +141,7 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             pause(1)
             let final = try snapshot()
             let matches = final.0.utf16.elementsEqual(item.expected.utf16)
-            let caret = final.1.location == item.expected.utf16.count && final.1.length == 0
+            let caret = final.1.location == (item.expectedCaret ?? item.expected.utf16.count) && final.1.length == 0
             result.merge(["bundle": item.bundle, "pid": pid, "textMatches": matches, "caretMatches": caret,
                 "sourceMatches": currentSource() == item.expectedSource, "observedLength": final.0.utf16.count,
                 "inputSeconds": ProcessInfo.processInfo.systemUptime - start - 1,
