@@ -44,6 +44,7 @@
 `RuntimeRecoveryProbe` пройдены. **Native-проверки (U8) не проводились** — чек-лист в
 [UNIVERSAL_INPUT_PLAN](UNIVERSAL_INPUT_PLAN.md#чек-лист-u8-для-mac-всё-not_run). До них ветку
 не сливать в `main`. Native-PASS прежнего механизма к новому не переносятся.
+Пошаговая инструкция для агента на Mac — [MAC_AGENT_HANDOFF](MAC_AGENT_HANDOFF.md).
 
 ## Точка продолжения
 

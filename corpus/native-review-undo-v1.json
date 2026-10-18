@@ -1,0 +1,42 @@
+[
+  {
+    "id": "auto-undo-punct",
+    "text": "ghbdtn/",
+    "source": "ABC",
+    "gesture": "undo",
+    "boundary": true,
+    "expected": "ghbdtn/ ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    }
+  },
+  {
+    "id": "learned-blocks-punct",
+    "text": "ghbdtn/",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "ghbdtn/ ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    },
+    "provenance": "The preceding undo must learn ghbdtn (without the slash); both forms stay unchanged afterwards. Remove the learned word through Settings after the run."
+  },
+  {
+    "id": "learned-blocks-word",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "ghbdtn ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  }
+]

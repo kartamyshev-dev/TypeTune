@@ -1,0 +1,159 @@
+[
+  {
+    "id": "punct-period-ru",
+    "text": "ghbdtn/",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет. ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    }
+  },
+  {
+    "id": "punct-comma-ru",
+    "text": "ghbdtn?",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет, ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    }
+  },
+  {
+    "id": "punct-question-ru",
+    "text": "ghbdtn&",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "привет? ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 8,
+      "length": 0
+    }
+  },
+  {
+    "id": "punct-period-en",
+    "text": "hello.",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello. ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "punct-comma-en",
+    "text": "hello,",
+    "source": "RussianWin",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "hello, ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "acronym-plural",
+    "text": "IDs",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "IDs ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "doublecaps-three-known",
+    "text": "VBh",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "Мир ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "known-word-period",
+    "text": "it.",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "it. ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "dominance-tot",
+    "text": "tot",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "ещё ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "expanded-lexicon",
+    "text": "gjkjdbyf",
+    "source": "ABC",
+    "gesture": "none",
+    "boundary": true,
+    "expected": "половина ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  },
+  {
+    "id": "double-shift-word",
+    "text": "ghbdtn123",
+    "source": "ABC",
+    "gesture": "doubleShift",
+    "boundary": false,
+    "expected": "привет123",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 9,
+      "length": 0
+    }
+  },
+  {
+    "id": "selected-manual",
+    "text": "hello",
+    "source": "ABC",
+    "gesture": "doubleShift",
+    "boundary": false,
+    "expected": "руддщ",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "expectedSelection": {
+      "location": 5,
+      "length": 0
+    },
+    "selectAllBeforeGesture": true
+  }
+]
