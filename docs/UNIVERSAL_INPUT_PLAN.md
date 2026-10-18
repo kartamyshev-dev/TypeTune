@@ -37,7 +37,7 @@
 
 Ядро (U0–U2) проверяется на Linux; GUI (U3–U7) — сборкой в CI на macOS и вручную на Mac.
 
-- [ ] **U0. `TypedWordBuffer` (Core).** Текст, набранный подряд после последнего сброса:
+- [x] **U0. `TypedWordBuffer` (Core)** — [evidence](../research/evidence/universal-u0-2026-10-17/verification.json). Текст, набранный подряд после последнего сброса:
   вставка, Backspace, сброс с причиной. Текущий токен, последний завершённый токен
   с разделителем (для Double Shift и отмены), предел длины, признак доверия.
 - [ ] **U1. `KeystrokeEditPlan` (Core).** По решению движка вычисляет:

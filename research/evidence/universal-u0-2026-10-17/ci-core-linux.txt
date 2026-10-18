@@ -1,0 +1,71 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write swift-version-2198EC330A9A1ACF.txt
+Build of product 'layoutpilot-cli' complete! (0.39s)
+1355/1355 offline invariants passed; 0 failures. No runtime input claim.
+train: {'corrections': 1134, 'count': 3094, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 3094}
+holdout: {'corrections': 484, 'count': 1326, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 1326}
+Integrity: 4420 rows; 420 disjoint root groups; exact 70/30; no original observations.
+train: {'corrections': 5599, 'count': 15400, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 15400}
+holdout: {'corrections': 2401, 'count': 6600, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 6600}
+Integrity: 22000 rows; 2000 disjoint root groups; exact 70/30; no original observations.
+corpus/review-regressions.jsonl: passed
+corpus/lexicon-regressions.jsonl: passed
+corpus/context-regressions.jsonl: passed
+Building for debugging...
+[0/10] Write swift-version-2198EC330A9A1ACF.txt
+[2/11] Emitting module LayoutPilotCoreTests
+[3/11] Compiling LayoutPilotCoreTests ModifierGestureTests.swift
+[4/11] Compiling LayoutPilotCoreTests CoreTests.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking LayoutPilotPackageTests.xctest
+Build complete! (1.52s)
+Test Suite 'All tests' started at 2026-10-17 18:26:50.610
+Test Suite 'debug.xctest' started at 2026-10-17 18:26:50.631
+Test Suite 'CoreTests' started at 2026-10-17 18:26:50.631
+Test Case 'CoreTests.testConservativeBoundaries' started at 2026-10-17 18:26:50.631
+Test Case 'CoreTests.testConservativeBoundaries' passed (0.097 seconds)
+Test Case 'CoreTests.testContextAndSettingsGuards' started at 2026-10-17 18:26:50.727
+Test Case 'CoreTests.testContextAndSettingsGuards' passed (0.0 seconds)
+Test Case 'CoreTests.testDoubleCapitalAndSemanticYoRegressions' started at 2026-10-17 18:26:50.728
+Test Case 'CoreTests.testDoubleCapitalAndSemanticYoRegressions' passed (0.001 seconds)
+Test Case 'CoreTests.testKnownDecisionsAndCase' started at 2026-10-17 18:26:50.728
+Test Case 'CoreTests.testKnownDecisionsAndCase' passed (0.0 seconds)
+Test Case 'CoreTests.testLiteralRuleAndFeatureSwitches' started at 2026-10-17 18:26:50.729
+Test Case 'CoreTests.testLiteralRuleAndFeatureSwitches' passed (0.002 seconds)
+Test Case 'CoreTests.testPhysicalMappingAndUnicode' started at 2026-10-17 18:26:50.730
+Test Case 'CoreTests.testPhysicalMappingAndUnicode' passed (0.0 seconds)
+Test Case 'CoreTests.testRejectGraphemeSplitsAndOverflowRanges' started at 2026-10-17 18:26:50.731
+Test Case 'CoreTests.testRejectGraphemeSplitsAndOverflowRanges' passed (0.0 seconds)
+Test Case 'CoreTests.testReplayBoundaryBackspaceResetAndContext' started at 2026-10-17 18:26:50.731
+Test Case 'CoreTests.testReplayBoundaryBackspaceResetAndContext' passed (0.001 seconds)
+Test Case 'CoreTests.testSelectionAfterReplacementRegressions' started at 2026-10-17 18:26:50.732
+Test Case 'CoreTests.testSelectionAfterReplacementRegressions' passed (0.0 seconds)
+Test Case 'CoreTests.testUTF16EditsAndCursor' started at 2026-10-17 18:26:50.732
+Test Case 'CoreTests.testUTF16EditsAndCursor' passed (0.0 seconds)
+Test Suite 'CoreTests' passed at 2026-10-17 18:26:50.733
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.102 (0.102) seconds
+Test Suite 'ModifierGestureTests' started at 2026-10-17 18:26:50.733
+Test Case 'ModifierGestureTests.testChordInvalidatesBothReleases' started at 2026-10-17 18:26:50.733
+Test Case 'ModifierGestureTests.testChordInvalidatesBothReleases' passed (0.0 seconds)
+Test Case 'ModifierGestureTests.testDoubleCancelsDelayedSingle' started at 2026-10-17 18:26:50.733
+Test Case 'ModifierGestureTests.testDoubleCancelsDelayedSingle' passed (0.0 seconds)
+Test Case 'ModifierGestureTests.testInclusiveDoubleBoundary' started at 2026-10-17 18:26:50.733
+Test Case 'ModifierGestureTests.testInclusiveDoubleBoundary' passed (0.0 seconds)
+Test Case 'ModifierGestureTests.testTypingAndResetCancelGestures' started at 2026-10-17 18:26:50.734
+Test Case 'ModifierGestureTests.testTypingAndResetCancelGestures' passed (0.0 seconds)
+Test Suite 'ModifierGestureTests' passed at 2026-10-17 18:26:50.734
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'debug.xctest' passed at 2026-10-17 18:26:50.734
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.103 (0.103) seconds
+Test Suite 'All tests' passed at 2026-10-17 18:26:50.734
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.103 (0.103) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.
+....
+----------------------------------------------------------------------
+Ran 4 tests in 1.865s
+
+OK
+exit=0

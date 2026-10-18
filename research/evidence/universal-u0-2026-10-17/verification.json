@@ -1,0 +1,19 @@
+{
+  "kind": "Linux offline (Core + CLI); no GUI change",
+  "date": "2026-10-17",
+  "baseCommit": "f89fd2a57d941906faf7568c9143020dad35483d",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0",
+    "selftest": "1355/1355 (38 TypedWordBuffer invariants)"
+  },
+  "semantics": [
+    "buffer = exact characters typed immediately before the caret since the last reset",
+    "anchoredStart only after Return/Tab or when the retained text begins after whitespace",
+    "capacity 128: oldest characters dropped, the suffix stays exact",
+    "Character (grapheme) granularity for backspace; real apps that delete a combining mark separately must reset via verification (U4)"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/TypedWordBuffer.swift": "d0ae8043c3855ec5913372316b0e5cb6b01c7db8c54606096e6acd2929926c99",
+    "Sources/LayoutPilotCLI/TypedWordBufferChecks.swift": "25276a7dc94e665e04ce936312b0a86cdadac04a6ef325420ee46d81c05f277c"
+  }
+}
