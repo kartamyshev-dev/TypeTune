@@ -48,6 +48,11 @@ final class InputDiagnostics {
         }
         do {
             let keyboard = service()
+            checks["route_and_event_rechecks_share_one_budget"] = keyboard.testingRetryReplayIdentity(expiredProof) &&
+                keyboard.testingRetryReplayIdentity(expiredProof) && !keyboard.testingRetryReplayIdentity(expiredProof)
+        }
+        do {
+            let keyboard = service()
             keyboard.testingFinish(.verified)
             checks["verified_empty_missing_readback_resumes"] = keyboard.store.serviceStatus == .ready && keyboard.store.running
             checks["verified_empty_has_no_phantom_recovery"] = !keyboard.store.recoveryRequired && !keyboard.hasPendingInput

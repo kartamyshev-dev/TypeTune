@@ -40,6 +40,7 @@ final class KeyboardService {
     /// transitions. The read-only views below keep the existing call sites readable.
     private var session = MutationSession<EditorSnapshot, CGEvent>()
     private var replaying: Bool { session.replaying }
+    private var replayIdentityRetries = 0
     private var replayBatchNonce: UUID { session.batchNonce }
     private var replayIdentityNonce: UUID? { session.identityNonce }
     private var replayRouteLease: ReplayDeliveryLease? { session.routeLease }
@@ -767,6 +768,7 @@ final class KeyboardService {
                 allowedFrontmost(for: target) && AXIsProcessTrusted() && CGPreflightPostEventAccess()
             switch session.receiveReplay(token: batchToken, routingAllowed: allowed) {
             case .forward:
+                replayIdentityRetries = 0
                 projectReplayedEvent(type, event)
                 trackTyping(type, event)
                 if store.universalInput, type == .keyDown { universalReplayBoundary = universalBoundary(event) }
@@ -776,14 +778,18 @@ final class KeyboardService {
                 if inputReplay.outstanding == 0 { DispatchQueue.main.async { [weak self] in self?.drainReplay() } }
                 return false
             case .retain:
-                InputDiagnostics.shared.record("replay-event-rejected", revision: revision, checks: [
+                let checks = [
                     "leasePresent": lease != nil, "token": lease?.token == batchToken,
                     "revision": lease?.revision == revision, "source": lease?.sourceID == InputSources.identifier,
                     "leaseFresh": lease.map { ProcessInfo.processInfo.systemUptime <= $0.deadline } ?? false,
                     "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
                     "allowed": allowedFrontmost(for: target), "trusted": AXIsProcessTrusted(),
-                    "posting": CGPreflightPostEventAccess()])
-                suspendReplay(target: target)
+                    "posting": CGPreflightPostEventAccess()]
+                InputDiagnostics.shared.record("replay-event-rejected", revision: revision, checks: checks)
+                if retryReplayIdentity(checks) {
+                    session.resetDeliveryProof()
+                    DispatchQueue.main.async { [weak self] in self?.drainReplay() }
+                } else { suspendReplay(target: target) }
                 return true
             case .suppress:
                 return true
@@ -1681,6 +1687,7 @@ final class KeyboardService {
         case .started: store.pendingInput = 0; store.recoveryRequired = false
         }
         cancelGestureStateForInterception()
+        replayIdentityRetries = 0
         revision += 1; cachedSnapshot = nil
         if inputReplay.containsPending(where: { !preservesContext($0) }) { transaction = nil }
         replayReadbackNonce = UUID()
@@ -1841,7 +1848,7 @@ final class KeyboardService {
             }
         }
     }
-    private func drainReplay(identityRetries: Int = 0) {
+    private func drainReplay() {
         let target: EditorSnapshot
         switch session.drainStep() {
         case .wait: return
@@ -1913,8 +1920,8 @@ final class KeyboardService {
                 guard checks.values.allSatisfy({ $0 }), let source = self.replaySource else {
                     InputDiagnostics.shared.record("replay-route-rejected", revision: expectedRevision, checks: checks,
                         elapsed: ProcessInfo.processInfo.systemUptime - checkedAt)
-                    if Self.shouldRetryReplayIdentity(checks, retries: identityRetries) {
-                        self.drainReplay(identityRetries: identityRetries + 1)
+                    if self.retryReplayIdentity(checks) {
+                        self.drainReplay()
                     } else { self.suspendReplay(target: target) }
                     return
                 }
@@ -1935,6 +1942,11 @@ final class KeyboardService {
                 event.post(tap: .cgSessionEventTap)
             }
         }
+    }
+    private func retryReplayIdentity(_ checks: [String: Bool]) -> Bool {
+        guard Self.shouldRetryReplayIdentity(checks, retries: replayIdentityRetries) else { return false }
+        replayIdentityRetries += 1
+        return true
     }
     // A delayed callback must obtain a new proof, never extend the expired lease.
     static func shouldRetryReplayIdentity(_ checks: [String: Bool], retries: Int) -> Bool {
@@ -2135,6 +2147,7 @@ final class KeyboardService {
         if store.lastStatus != message { store.lastStatus = message }
     }
     #if LAYOUTPILOT_TESTING
+    func testingRetryReplayIdentity(_ checks: [String: Bool]) -> Bool { precondition(!observesSystem); return retryReplayIdentity(checks) }
     func testingEnableContextCapture() { precondition(!observesSystem); testingContextCaptureEnabled = true }
     func testingCaptureAfterEvent() { precondition(!observesSystem); captureAfterEvent() }
     func testingPrepareKeyRead(inserted: String = "n", keyCode: Int = 0, deadline: TimeInterval? = nil) {
