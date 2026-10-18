@@ -802,20 +802,23 @@ final class KeyboardService {
         }
         axQueue.async { [weak self] in
             guard let self else { return }
-            let deadline = ProcessInfo.processInfo.systemUptime + 0.080
-            var matches = false
+            // Chrome publishes accessibility text late (30–55 ms per read on the user's Mac): wait
+            // up to 600 ms for the deletion, as for confirmations, but post the paste only on a
+            // proof at most 100 ms old.
+            let deadline = ProcessInfo.processInfo.systemUptime + 0.600
+            var matchedAt: TimeInterval?
             repeat {
                 if case .textBeforeCaret(let text) = AccessibilityEditor.observeTextBeforeCaret(pid: target.pid),
-                   text.utf16.elementsEqual(deletionText.utf16), ProcessInfo.processInfo.systemUptime <= deadline {
-                    matches = true; break
+                   text.utf16.elementsEqual(deletionText.utf16) {
+                    matchedAt = ProcessInfo.processInfo.systemUptime; break
                 }
                 Thread.sleep(forTimeInterval: 0.005)
             } while ProcessInfo.processInfo.systemUptime < deadline
-            let proofMatches = matches
+            let proofMatches = matchedAt != nil
             DispatchQueue.main.async {
                 let current = self.revision == expectedRevision && InputSources.identifier == sourceID &&
                     AXIsProcessTrusted() && !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid &&
-                    ProcessInfo.processInfo.systemUptime <= deadline
+                    matchedAt.map { ProcessInfo.processInfo.systemUptime - $0 <= 0.100 } == true
                 InputDiagnostics.shared.record("snippet-deletion", revision: expectedRevision,
                     checks: ["matches": proofMatches, "current": current])
                 guard proofMatches, current else {
