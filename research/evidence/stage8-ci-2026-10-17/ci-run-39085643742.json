@@ -1,0 +1,14 @@
+{
+  "run": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39085643742",
+  "headSha": "9c44f31",
+  "conclusion": "success",
+  "linux": "Core and CLI (Linux): success",
+  "macos": "App build and controller probe (macOS): success",
+  "macosToolchain": "Apple Swift 6.1.2, arm64-apple-macosx15.0 (macos-15 runner)",
+  "macosFacts": [
+    "swift build of all products including the LayoutPilot GUI target: Build complete, 0 warnings in the job log",
+    "scripts/ci_core.sh: selftest 1317/1317, XCTest 14/14, corpora and fixtures",
+    "scripts/runtime_recovery_probe.sh: passed=true, productionControllerUsed=true, eventTapCreated=false, nativeAcceptance=false"
+  ],
+  "notCovered": "native input, AX, TCC permissions, installed app"
+}

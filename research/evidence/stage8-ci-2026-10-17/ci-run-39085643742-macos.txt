@@ -1,0 +1,344 @@
+App build and controller probe (macOS)	Set up job	﻿2026-10-18T01:12:49.4811720Z Current runner version: '2.337.0'
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4834150Z ##[group]Runner Image Provisioner
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4834950Z Hosted Compute Agent
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4835390Z Version: 20260828.587
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4835800Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4836920Z Build Date: 2026-08-28T16:44:25Z
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4837860Z Worker ID: {7dbed20a-5b9f-4b77-a31b-e26c5fa81dbb}
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4838360Z Azure Region: westus
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4838730Z ##[endgroup]
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4840280Z ##[group]Operating System
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4841030Z macOS
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4841380Z 15.7.9
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4841750Z 24G830
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4842130Z ##[endgroup]
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4842560Z ##[group]Runner Image
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4842940Z Image: macos-15-arm64
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4843300Z Version: 20260907.0337.1
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4844030Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4845430Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4846080Z ##[endgroup]
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4846900Z ##[group]GITHUB_TOKEN Permissions
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4848980Z Contents: read
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4849350Z Metadata: read
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4849700Z ##[endgroup]
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4851440Z Secret source: Actions
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4852000Z Cache mode: write
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.4852460Z Prepare workflow directory
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.5125300Z Prepare all required actions
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.5166420Z Getting action download info
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:49.9301960Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+App build and controller probe (macOS)	Set up job	2026-10-18T01:12:50.2927410Z Complete job name: App build and controller probe (macOS)
+App build and controller probe (macOS)	Run actions/checkout@v4	﻿2026-10-18T01:12:50.3548850Z ##[group]Run actions/checkout@v4
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3549620Z with:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3550000Z   repository: kartamyshev-dev/TypeTune
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3553210Z   token: ***
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3553560Z   ssh-strict: true
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3553880Z   ssh-user: git
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3554220Z   persist-credentials: true
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3554570Z   clean: true
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3554910Z   sparse-checkout-cone-mode: true
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3555300Z   fetch-depth: 1
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3555620Z   fetch-tags: false
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3555950Z   show-progress: true
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3556280Z   lfs: false
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3556580Z   submodules: false
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3556910Z   set-safe-directory: true
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3557290Z   allow-unsafe-pr-checkout: false
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.3557870Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.7800770Z Syncing repository: kartamyshev-dev/TypeTune
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.7807510Z ##[group]Getting Git version info
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.7809470Z Working directory is '/Users/runner/work/TypeTune/TypeTune'
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.7812150Z [command]/opt/homebrew/bin/git version
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8342960Z git version 2.55.0
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8355330Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8362990Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/f2cf4c6b-af03-4d1d-a398-3a3293966b1c/.gitconfig'
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8374300Z Temporarily overriding HOME='/Users/runner/work/_temp/f2cf4c6b-af03-4d1d-a398-3a3293966b1c' before making global git config changes
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8378210Z Adding repository directory to the temporary git global config as a safe directory
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8385460Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/TypeTune/TypeTune
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8823750Z Deleting the contents of '/Users/runner/work/TypeTune/TypeTune'
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8829230Z ##[group]Initializing the repository
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.8832960Z [command]/opt/homebrew/bin/git init /Users/runner/work/TypeTune/TypeTune
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9087070Z hint: Using 'master' as the name for the initial branch. This default branch name
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9089890Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9093840Z hint: to use in all of your new repositories, which will suppress this warning,
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9095140Z hint: call:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9096700Z hint:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9100040Z hint: 	git config --global init.defaultBranch <name>
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9100890Z hint:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9101520Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9102420Z hint: 'development'. The just-created branch can be renamed via this command:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9103140Z hint:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9103550Z hint: 	git branch -m <name>
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9104080Z hint:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9106240Z hint: Disable this message with "git config set advice.defaultBranchName false"
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9107510Z Initialized empty Git repository in /Users/runner/work/TypeTune/TypeTune/.git/
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9132870Z [command]/opt/homebrew/bin/git remote add origin https://github.com/kartamyshev-dev/TypeTune
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9279410Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9280280Z ##[group]Disabling automatic garbage collection
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9281150Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9533520Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9592350Z ##[group]Setting up auth
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:50.9694490Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.0003550Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.1302280Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.1395610Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.2498550Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.2907380Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.4723090Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.4751830Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.4752930Z ##[group]Fetching the repository
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:51.4754220Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9c44f31f9827d0db4b6a9e230750e762bfdad464:refs/remotes/origin/main
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3634350Z From https://github.com/kartamyshev-dev/TypeTune
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3635180Z  * [new ref]         9c44f31f9827d0db4b6a9e230750e762bfdad464 -> origin/main
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3639570Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3640110Z ##[group]Determining the checkout info
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3650510Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3675010Z [command]/opt/homebrew/bin/git sparse-checkout disable
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3793190Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3866460Z ##[group]Checking out the ref
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.3867950Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.6521860Z Switched to a new branch 'main'
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.6548220Z branch 'main' set up to track 'origin/main'.
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.6550830Z ##[endgroup]
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.6625110Z [command]/opt/homebrew/bin/git log -1 --format=%H
+App build and controller probe (macOS)	Run actions/checkout@v4	2026-10-18T01:12:52.6701240Z 9c44f31f9827d0db4b6a9e230750e762bfdad464
+App build and controller probe (macOS)	Toolchain	﻿2026-10-18T01:12:52.6925240Z ##[group]Run swift --version
+App build and controller probe (macOS)	Toolchain	2026-10-18T01:12:52.6925820Z [36;1mswift --version[0m
+App build and controller probe (macOS)	Toolchain	2026-10-18T01:12:52.6979260Z shell: /bin/bash -e {0}
+App build and controller probe (macOS)	Toolchain	2026-10-18T01:12:52.6979660Z ##[endgroup]
+App build and controller probe (macOS)	Toolchain	2026-10-18T01:12:55.9733280Z Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+App build and controller probe (macOS)	Toolchain	2026-10-18T01:12:55.9828540Z Target: arm64-apple-macosx15.0
+App build and controller probe (macOS)	Toolchain	2026-10-18T01:12:55.9927660Z swift-driver version: 1.120.5 
+App build and controller probe (macOS)	Build every product	﻿2026-10-18T01:12:56.0015560Z ##[group]Run swift build
+App build and controller probe (macOS)	Build every product	2026-10-18T01:12:56.0016480Z [36;1mswift build[0m
+App build and controller probe (macOS)	Build every product	2026-10-18T01:12:56.0101410Z shell: /bin/bash -e {0}
+App build and controller probe (macOS)	Build every product	2026-10-18T01:12:56.0101810Z ##[endgroup]
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.1900090Z Building for debugging...
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2012910Z [0/15] Copying lexicon.json
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2024330Z [1/15] Copying layoutpilot.zsh
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2031380Z [2/15] Copying LEXICON-NOTICE.txt
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2031900Z [3/15] Write sources
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2032680Z [3/15] Write layoutpilot-cli-entitlement.plist
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2033170Z [5/15] Write sources
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.2033480Z [7/15] Write LayoutPilot-entitlement.plist
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:00.3972440Z [8/15] Write swift-version--79AA4F9932D1E87A.txt
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:05.8735270Z [10/26] Emitting module LayoutPilotCore
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4661150Z [11/30] Compiling LayoutPilotCore Layout.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4711790Z [12/30] Compiling LayoutPilotCore ModifierGesture.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4717800Z [13/30] Compiling LayoutPilotCore MutationSession.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4719790Z [14/30] Compiling LayoutPilotCore PartialLayoutDetector.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4720350Z [15/30] Compiling LayoutPilotCore PartialMutationRollbackPlan.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4720870Z [16/30] Compiling LayoutPilotCore EditorSnapshotFailure.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4721250Z [17/30] Compiling LayoutPilotCore EditorSupport.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4723410Z [18/30] Compiling LayoutPilotCore Engine.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4723780Z [19/30] Compiling LayoutPilotCore InputRecovery.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4724180Z [20/30] Compiling LayoutPilotCore InputReplayQueue.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4726550Z [21/30] Compiling LayoutPilotCore Replay.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4727930Z [22/30] Compiling LayoutPilotCore ReplayInsertionProjection.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4729430Z [23/30] Compiling LayoutPilotCore UsageStatistics.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:09.4731000Z [24/30] Compiling LayoutPilotCore resource_bundle_accessor.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.2084230Z [25/49] Emitting module LayoutPilotCLI
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.6953180Z [26/54] Compiling LayoutPilot AccessibilityEditor.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7036600Z [27/54] Compiling LayoutPilot InputDiagnostics.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7086640Z [28/54] Compiling LayoutPilot InputSources.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7098250Z [29/54] Compiling LayoutPilot KeyboardService.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7098920Z [30/54] Compiling LayoutPilot SettingsView.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7099560Z [31/54] Compiling LayoutPilot SingleInstance.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7133420Z [32/54] Compiling LayoutPilot Store.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7135110Z [33/54] Compiling LayoutPilotCLI PunctuationChecks.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7135480Z [34/54] Compiling LayoutPilotCLI RecoveryChecks.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:11.7135850Z [35/54] Compiling LayoutPilotCLI ReplayProjectionChecks.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.1571850Z [36/54] Compiling LayoutPilotCLI ReplayRoutingChecks.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.1572680Z [37/54] Compiling LayoutPilotCLI SelfTest.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.1573910Z [38/54] Compiling LayoutPilotCLI SnapshotChecks.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.1577760Z [39/54] Compiling LayoutPilotCLI StatisticsChecks.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.1579070Z [40/54] Compiling LayoutPilotCLI main.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.1709150Z [40/54] Write Objects.LinkFileList
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.9326820Z [41/54] Linking layoutpilot-cli
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:14.9615720Z [42/54] Applying layoutpilot-cli
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:17.6832130Z [44/54] Emitting module LayoutPilot
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.0441000Z [45/57] Compiling LayoutPilot SystemVocabulary.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.0542340Z [46/57] Compiling LayoutPilot TerminalBridge.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.0597270Z [47/57] Compiling LayoutPilot main.swift
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.0906930Z [54/57] Write Objects.LinkFileList
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.7321890Z [55/57] Linking LayoutPilot
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.7490950Z [56/57] Applying LayoutPilot
+App build and controller probe (macOS)	Build every product	2026-10-18T01:13:21.7510100Z Build complete! (21.64s)
+App build and controller probe (macOS)	Offline checks	﻿2026-10-18T01:13:21.7613350Z ##[group]Run scripts/ci_core.sh
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:21.7613640Z [36;1mscripts/ci_core.sh[0m
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:21.7653570Z shell: /bin/bash -e {0}
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:21.7654080Z ##[endgroup]
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:22.8427420Z [0/1] Planning build
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:22.8465590Z Building for debugging...
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:23.0223880Z [0/3] Write swift-version--79AA4F9932D1E87A.txt
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:23.0283850Z Build of product 'layoutpilot-cli' complete! (0.24s)
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:23.2595660Z 1317/1317 offline invariants passed; 0 failures. No runtime input claim.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:23.7658950Z train: {'corrections': 1134, 'count': 3094, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 3094}
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:23.7760560Z holdout: {'corrections': 484, 'count': 1326, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 1326}
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:23.7862300Z Integrity: 4420 rows; 420 disjoint root groups; exact 70/30; no original observations.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:25.2804690Z train: {'corrections': 5599, 'count': 15400, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 15400}
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:25.2808800Z holdout: {'corrections': 2401, 'count': 6600, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 6600}
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:25.2809650Z Integrity: 22000 rows; 2000 disjoint root groups; exact 70/30; no original observations.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:25.3737000Z corpus/review-regressions.jsonl: passed
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:25.4460830Z corpus/lexicon-regressions.jsonl: passed
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:25.5164570Z corpus/context-regressions.jsonl: passed
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:26.3795460Z [0/1] Planning build
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:26.3847300Z Building for debugging...
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:26.3864400Z [0/8] Write sources
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:26.3865270Z [0/8] /Users/runner/work/TypeTune/TypeTune/.build/arm64-apple-macosx/debug/LayoutPilotPackageTests.derived/runner.swift
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:26.3869450Z [2/10] Write sources
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:26.5801590Z [3/10] Write swift-version--79AA4F9932D1E87A.txt
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:34.4109470Z [5/9] Compiling LayoutPilotCoreTests ModifierGestureTests.swift
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:34.4712010Z [6/9] Emitting module LayoutPilotCoreTests
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:34.4748520Z [7/9] Compiling LayoutPilotCoreTests CoreTests.swift
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:36.1371620Z [8/11] Emitting module LayoutPilotPackageTests
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:36.1372460Z [9/11] Compiling LayoutPilotPackageTests runner.swift
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:36.1417570Z [9/11] Write Objects.LinkFileList
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:36.5555730Z [10/11] Linking LayoutPilotPackageTests
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:36.5574380Z Build complete! (10.24s)
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1280940Z Test Suite 'All tests' started at 2026-10-18 01:13:37.033.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1382340Z Test Suite 'LayoutPilotPackageTests.xctest' started at 2026-10-18 01:13:37.034.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1482380Z Test Suite 'CoreTests' started at 2026-10-18 01:13:37.034.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1578070Z Test Case '-[LayoutPilotCoreTests.CoreTests testConservativeBoundaries]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1587880Z Test Case '-[LayoutPilotCoreTests.CoreTests testConservativeBoundaries]' passed (0.044 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1602560Z Test Case '-[LayoutPilotCoreTests.CoreTests testContextAndSettingsGuards]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1614540Z Test Case '-[LayoutPilotCoreTests.CoreTests testContextAndSettingsGuards]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1654030Z Test Case '-[LayoutPilotCoreTests.CoreTests testDoubleCapitalAndSemanticYoRegressions]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1656180Z Test Case '-[LayoutPilotCoreTests.CoreTests testDoubleCapitalAndSemanticYoRegressions]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1658290Z Test Case '-[LayoutPilotCoreTests.CoreTests testKnownDecisionsAndCase]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1659810Z Test Case '-[LayoutPilotCoreTests.CoreTests testKnownDecisionsAndCase]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1666390Z Test Case '-[LayoutPilotCoreTests.CoreTests testLiteralRuleAndFeatureSwitches]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1667570Z Test Case '-[LayoutPilotCoreTests.CoreTests testLiteralRuleAndFeatureSwitches]' passed (0.001 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1668200Z Test Case '-[LayoutPilotCoreTests.CoreTests testPhysicalMappingAndUnicode]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1668850Z Test Case '-[LayoutPilotCoreTests.CoreTests testPhysicalMappingAndUnicode]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1669990Z Test Case '-[LayoutPilotCoreTests.CoreTests testRejectGraphemeSplitsAndOverflowRanges]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1670750Z Test Case '-[LayoutPilotCoreTests.CoreTests testRejectGraphemeSplitsAndOverflowRanges]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1672020Z Test Case '-[LayoutPilotCoreTests.CoreTests testReplayBoundaryBackspaceResetAndContext]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1672990Z Test Case '-[LayoutPilotCoreTests.CoreTests testReplayBoundaryBackspaceResetAndContext]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1673980Z Test Case '-[LayoutPilotCoreTests.CoreTests testSelectionAfterReplacementRegressions]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1674650Z Test Case '-[LayoutPilotCoreTests.CoreTests testSelectionAfterReplacementRegressions]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1675320Z Test Case '-[LayoutPilotCoreTests.CoreTests testUTF16EditsAndCursor]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1675840Z Test Case '-[LayoutPilotCoreTests.CoreTests testUTF16EditsAndCursor]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1676360Z Test Suite 'CoreTests' passed at 2026-10-18 01:13:37.080.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1676780Z 	 Executed 10 tests, with 0 failures (0 unexpected) in 0.046 (0.046) seconds
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1677340Z Test Suite 'ModifierGestureTests' started at 2026-10-18 01:13:37.080.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1678480Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testChordInvalidatesBothReleases]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1679140Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testChordInvalidatesBothReleases]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1679870Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testDoubleCancelsDelayedSingle]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1680540Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testDoubleCancelsDelayedSingle]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1681250Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testInclusiveDoubleBoundary]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1681880Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testInclusiveDoubleBoundary]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1682580Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testTypingAndResetCancelGestures]' started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1683320Z Test Case '-[LayoutPilotCoreTests.ModifierGestureTests testTypingAndResetCancelGestures]' passed (0.000 seconds).
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1684170Z Test Suite 'ModifierGestureTests' passed at 2026-10-18 01:13:37.081.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1684700Z 	 Executed 4 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1685150Z Test Suite 'LayoutPilotPackageTests.xctest' passed at 2026-10-18 01:13:37.081.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1685670Z 	 Executed 14 tests, with 0 failures (0 unexpected) in 0.046 (0.047) seconds
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1686100Z Test Suite 'All tests' passed at 2026-10-18 01:13:37.081.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1686480Z 	 Executed 14 tests, with 0 failures (0 unexpected) in 0.046 (0.048) seconds
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1687310Z ◇ Test run started.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1687660Z ↳ Testing Library Version: 124.4
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1687950Z ↳ Target Platform: arm64e-apple-macos14.0
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:37.1688420Z ✔ Test run with 0 tests passed after 0.001 seconds.
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:39.2617380Z ....
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:39.2617930Z ----------------------------------------------------------------------
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:39.2618530Z Ran 4 tests in 1.975s
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:39.2618790Z 
+App build and controller probe (macOS)	Offline checks	2026-10-18T01:13:39.2619000Z OK
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	﻿2026-10-18T01:13:39.2913860Z ##[group]Run scripts/runtime_recovery_probe.sh
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:39.2914430Z [36;1mscripts/runtime_recovery_probe.sh[0m
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:39.2960580Z shell: /bin/bash -e {0}
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:39.2960790Z ##[endgroup]
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.3954230Z {
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4010380Z   "checks" : {
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4011120Z     "baseline_capture_never_starts_mutation_or_replay" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4011610Z     "changed_pid_source_or_permissions_rejects_baseline" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4012170Z     "confirmation_keeps_exact_recovery_required" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4012650Z     "confirmation_never_clears_inflight" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4013780Z     "confirmation_preserves_pending_input" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4014350Z     "confirmation_without_review_does_not_discard_pending" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4014950Z     "current_status_is_independent_of_historical_message" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4015360Z     "delivery_timeout_fault_identified" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4015650Z     "different_key_release_does_not_bootstrap" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4016480Z     "exhausted_snapshot_failure_is_saved" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4016800Z     "expected_context_cancellation_is_not_a_fault" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4017120Z     "expired_capture_releases_coalescing_slot" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4017400Z     "explicit_retry_resets_attempt_budget" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4017690Z     "failed_primary_capture_releases_slot" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4017980Z     "first_safe_attempt_enables" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4018270Z     "key_release_requests_missing_baseline" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4018590Z     "keyup_does_not_queue_duplicate_of_primary_capture" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4018920Z     "late_ready_readback_cannot_publish_anchor" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4019250Z     "later_release_recovers_from_expired_baseline_capture" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4020060Z     "later_verified_does_not_clear_uncertainty" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4021060Z     "not_applied_empty_missing_readback_resumes" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4021950Z     "old_capture_cannot_publish_after_revision_change" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4022780Z     "old_completion_cannot_cancel_new_capture" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4023600Z     "pending_zero_still_counts_inflight_for_exit" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4024380Z     "pre_insertion_readback_never_becomes_anchor" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4025350Z     "readiness_baseline_does_not_authorize_a_write" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4026530Z     "ready_readback_after_stale_values_becomes_anchor" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4027100Z     "release_can_retry_after_primary_finished_within_original_budget" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4027500Z     "release_never_renews_expired_keydown_budget" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4027840Z     "release_preserves_existing_anchor_without_another_read" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4028200Z     "release_readback_bootstraps_current_anchor" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4028650Z     "release_without_matching_keydown_does_not_bootstrap" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4029020Z     "repeated_releases_coalesce_while_capture_is_pending" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4029380Z     "review_confirmation_clears_unknown_without_replay" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4029720Z     "review_confirmation_resumes_empty_queue" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4030340Z     "secure_input_off_preserves_unresolved_recovery" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4030640Z     "secure_input_off_restores_current_status" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4031010Z     "secure_input_pauses_status" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4031260Z     "settings_bytes_preserved" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4031560Z     "snapshot_failure_does_not_rotate_away_recovery_cause" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4031880Z     "subsequent_attempt_stays_failed" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4032160Z     "terminal_pause_after_decision_blocks_ack_effects" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4032490Z     "terminal_ready_allows_decision_and_ack_effects" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4032810Z     "terminal_recovery_blocks_commands_and_ack_effects" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4121480Z     "terminal_tap_failure_blocks_new_decisions" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4121860Z     "text_without_matching_caret_never_becomes_anchor" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4122210Z     "third_attempt_is_bounded_failure" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4122490Z     "timeout_confirmation_preserves_pending_suffix" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4123900Z     "timeout_suffix_still_needs_exact_recovery" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4124720Z     "timeout_zero_pending_preserves_unknown_delivery" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4125040Z     "timeout_zero_pending_requires_review" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4125390Z     "uncertain_empty_blocks_new_mutation_and_exit" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4125740Z     "uncertain_empty_does_not_invent_pending_keys" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4126030Z     "uncertain_empty_requires_review" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4126270Z     "uncertain_fault_identified" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4126600Z     "unchanged_snapshot_failure_does_not_flood_reports" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4127100Z     "unsafe_attempt_does_not_consume_budget" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4127410Z     "unsafe_tap_repair_waits" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4127690Z     "verified_empty_has_no_phantom_recovery" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4128010Z     "verified_empty_missing_readback_resumes" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4128650Z     "verified_empty_no_review" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4128920Z     "verified_pending_without_context_is_retained" : true
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4129180Z   },
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4129410Z   "diagnosticsAdapterStubbed" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4129690Z   "eventTapCreated" : false,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4130700Z   "nativeAcceptance" : false,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4131310Z   "nativeEventsPosted" : false,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4131840Z   "passed" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4132500Z   "platformInputsStubbed" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4132850Z   "productionControllerUsed" : true,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4133090Z   "realFieldsRead" : false,
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4133310Z   "standardDefaultsUsed" : false
+App build and controller probe (macOS)	Recovery controller probe (test hooks, no permissions, no event tap)	2026-10-18T01:13:50.4133530Z }
+App build and controller probe (macOS)	Post Run actions/checkout@v4	﻿2026-10-18T01:13:50.4261400Z Post job cleanup.
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7042380Z [command]/opt/homebrew/bin/git version
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7123970Z git version 2.55.0
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7148970Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/42d5080b-6712-434e-8f89-86748255a1f0/.gitconfig'
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7155900Z Temporarily overriding HOME='/Users/runner/work/_temp/42d5080b-6712-434e-8f89-86748255a1f0' before making global git config changes
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7156660Z Adding repository directory to the temporary git global config as a safe directory
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7160310Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/TypeTune/TypeTune
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7228490Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.7283690Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.8118310Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.8174370Z http.https://github.com/.extraheader
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.8181850Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.8257720Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.8979180Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+App build and controller probe (macOS)	Post Run actions/checkout@v4	2026-10-18T01:13:50.9032550Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+App build and controller probe (macOS)	Complete job	﻿2026-10-18T01:13:51.0255500Z Cleaning up orphan processes
+App build and controller probe (macOS)	Complete job	2026-10-18T01:13:51.6559850Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

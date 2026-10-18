@@ -16,7 +16,7 @@
 - [ ] Этап 5 (GUI): таблица раскладки из UCKeyTranslate — Core-сборка и проверка таблицы готовы ([evidence](../research/evidence/stage5-layout-mapping-2026-10-17/verification.json)); открыто до сборки и native-проверки на Mac.
 - [x] Этап 6 (ядро; прогрев в приложении не скомпилирован): расширение словаря, корпус v3, оценка на естественном тексте — [evidence](../research/evidence/stage6-lexicon-2026-10-17/verification.json), [LEXICON](LEXICON.md). Аббревиатуры оставлены как есть — DECISIONS п. 25.
 - [ ] Этап 7: MutationSession в Core — Core и 46 проверок готовы, KeyboardService переведён ([evidence](../research/evidence/stage7-mutation-session-2026-10-17/verification.json)); открыто до сборки GUI, runtime_recovery_probe и native-проверки на Mac.
-- [ ] Этап 8: CI — задание Linux воспроизведено локально в контейнере ([evidence](../research/evidence/stage8-ci-2026-10-17/verification.json)); открыто до первого зелёного прогона macOS после push.
+- [x] Этап 8: CI — оба задания зелёные на `9c44f31`, в том числе сборка приложения и runtime_recovery_probe на macOS ([запуск](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39085643742), [evidence](../research/evidence/stage8-ci-2026-10-17/ci-run-39085643742.json)).
 - [x] Этап 9: README и реорганизация документации — [evidence](../research/evidence/stage9-docs-2026-10-17/verification.json).
 
 ## Записи журнала, совпадавшие со STATUS
