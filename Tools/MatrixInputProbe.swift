@@ -5,7 +5,7 @@ import Carbon
 // User-authorized matrix input. Pins an initially empty field and window; never sends Return.
 struct MatrixCase: Decodable {
     let bundle: String
-    let window: String
+    let window: String?
     let description: String?
     let text: String
     let expected: String
@@ -58,6 +58,9 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             try require((!item.text.isEmpty || ["singleShift", "focus"].contains(item.gesture)) && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
             try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord", "undo", "focus"].contains(item.gesture), "unsupported_gesture")
             try require((0...item.expected.utf16.count).contains(item.expectedCaret ?? item.expected.utf16.count), "invalid_expected_caret")
+            if item.gesture == "focus" {
+                try require(item.text.isEmpty && item.expected.isEmpty, "focus_must_not_type")
+            }
             if item.gesture == "undo" {
                 try require(item.beforeUndoText != nil && item.beforeUndoText != item.expected && item.beforeUndoSource != nil,
                             "undo_precondition_required")
