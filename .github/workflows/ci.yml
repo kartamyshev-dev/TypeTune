@@ -34,3 +34,23 @@ jobs:
         run: scripts/ci_core.sh
       - name: Recovery controller probe (test hooks, no permissions, no event tap)
         run: scripts/runtime_recovery_probe.sh
+      - name: Test build for manual checks (release arm64, ad-hoc signature)
+        run: |
+          scripts/build.sh
+          dist/layoutpilot-cli selftest
+          short=$(git rev-parse --short=7 HEAD)
+          ditto dist/LayoutPilot.app "dist/TypeTune.app"
+          (cd dist && ditto -c -k --keepParent TypeTune.app "TypeTune-$short.zip")
+          shasum -a 256 dist/TypeTune.app/Contents/MacOS/LayoutPilot "dist/TypeTune-$short.zip" > dist/SHA256.txt
+          git rev-parse HEAD > dist/COMMIT.txt
+          cat dist/SHA256.txt dist/COMMIT.txt
+      - name: Upload test build
+        uses: actions/upload-artifact@v4
+        with:
+          name: TypeTune-test-${{ github.sha }}
+          path: |
+            dist/TypeTune-*.zip
+            dist/SHA256.txt
+            dist/COMMIT.txt
+            dist/build-identity.json
+          retention-days: 30

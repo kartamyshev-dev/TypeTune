@@ -58,7 +58,7 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 `RuntimeRecoveryProbe` пройдены. **Native-проверки (U8) не проводились** — чек-лист в
 [UNIVERSAL_INPUT_PLAN](UNIVERSAL_INPUT_PLAN.md#чек-лист-u8-для-mac-всё-not_run). До них ветку
 не сливать в `main`. Native-PASS прежнего механизма к новому не переносятся.
-Пошаговая инструкция для агента на Mac — [MAC_AGENT_HANDOFF](MAC_AGENT_HANDOFF.md).
+Проверка на Mac — вручную пользователем: [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md).
 
 2026-10-18 в ветку влит `main` с v0.1.4. Конфликты: `replayIdentityMatches` (версия `main`
 с повтором AX и ранним выходом для целей без поля) и `RuntimeRecoveryProbe` (оставлены проверки
@@ -67,8 +67,11 @@ Evidence и границы — [текущая проверка](MAC_CHROME_CARE
 
 ## Точка продолжения
 
-0. Ветка `universal-input`: выполнить U8 на Mac по [MAC_AGENT_HANDOFF](MAC_AGENT_HANDOFF.md)
-   на сборке после слияния с v0.1.4. Затем — сниппеты S5–S7 (ветка `snippets`).
+0. Ветка `universal-input`: пользователь проверяет тестовую сборку из CI по
+   [MAC_MANUAL_CHECK](MAC_MANUAL_CHECK.md); агент на Mac не используется (DECISIONS п. 29).
+   Открыт случай пользователя: веб-приложение из Chrome — в v0.1.4 TypeTune не работает
+   (приложение-обёртка Chrome вне списка прежнего механизма), флаг не совпадает с раскладкой;
+   шаги 8–9 чек-листа. Затем — сниппеты S5–S7 (ветка `snippets`).
 1. Chrome single-field: подтверждённая причина исправлена без ослабления
    проверки конечного текста/каретки. Ограниченная проверка 48/48 завершена.
    При новом отказе сохранить trace до перезапуска; все сайты не проверены.
