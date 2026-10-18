@@ -1,0 +1,29 @@
+{
+  "kind": "documentation; text checks only (no runtime claim)",
+  "date": "2026-10-17",
+  "baseCommit": "965270f4c6e931a8c1cede13ca882cd035fc8f56",
+  "checks": {
+    "journalMove": "48/48 former STATUS sections present verbatim in docs/JOURNAL.md",
+    "noLostLines": "0 non-empty lines of former STATUS/PLAN/FEATURES missing from JOURNAL+PLAN+FEATURES+STATUS",
+    "deduplicated": "6 sections in PLAN.md and 6 in FEATURES.md were verbatim STATUS copies; replaced by a pointer to the journal",
+    "links": "348 relative links in README and docs resolve, anchors included; the 3 former .log links replaced by notes",
+    "ciCore": "scripts/ci_core.sh exit 0 after the documentation change"
+  },
+  "readme": [
+    "supported applications section",
+    "first launch of the non-notarized release",
+    "release v0.1.3 predates the review fixes",
+    "pause semantics",
+    "Single Shift on by default",
+    "dictionary size and possible acronym/name conversions",
+    "Russian – PC layout; Apple Russian not verified"
+  ],
+  "files": {
+    "README.md": "49ffd20a70b6a40ff24dd66ff183b8a049fb6d6f8037c971f507089a6d2c7ef8",
+    "AGENTS.md": "2bd033a0022c6c47916ae91dcc0b5d926b71e82925384f4721ffc1c8db062832",
+    "docs/STATUS.md": "d8da887680a60c0c4521436367eeb150faaedd74b7cbe119d3fdb16396d3e34c",
+    "docs/JOURNAL.md": "7c3fb519c9dc090845c4e1462a5dfc5867e40029b3d0d2623597c89bbbc1aa0c",
+    "docs/PLAN.md": "f953f299702eeecd16c4adba125e67636edf47339ea8d45bcad0365b0b7ef1de",
+    "docs/FEATURES.md": "108a59875f27afc7248ed3133ab80790a6e663798ecbacaeb763d9e11360e96f"
+  }
+}

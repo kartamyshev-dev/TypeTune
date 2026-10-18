@@ -83,7 +83,7 @@ restart/read. Seed31historical, затем проверенные категор
 
 [Cross-process evidence4/4](../research/evidence/replay-stats-process-probe.json)
 подтвердил разные PID, счётчики/историю/итог/оценку и сохранение own settings на
-границе завершения процессов; [compile log](../research/evidence/replay-stats-process-probe-build.log).
+границе завершения процессов; compile log не сохранён (файл `replay-stats-process-probe-build.log` исключался из Git правилом `*.log`).
 Это новая проверка process boundary, не повтор предыдущих22in-processchecks.
 Она не запускает приложение, звук, AX, clipboard или клавиши и не доказывает
 runtime интеграцию GUIс native events.

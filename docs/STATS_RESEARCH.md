@@ -246,7 +246,7 @@ JSON `statistics.v1`, без engine config оригинала и без исхо
 и нормализации нулевых counts исполнено **451/451 CLI offline invariants**.
 Actual-Store probe с уникальным named defaults suite прошёл **22/22**;
 [финальный отчёт](../research/evidence/replay-stats-store-probe.json),
-[CLI selftest](../research/evidence/replay-stats-cli-selftest2.log).
+CLI selftest (лог `replay-stats-cli-selftest2.log` не сохранён: `*.log` исключался из Git).
 Это исполнение самостоятельной реализации, не native/UI или original parity.
 Первый Store probe21/22 сохранён отдельно: restart equality обнаружила sparse
 counts доencode против canonical counts послеdecode. Данные не терялись;
@@ -256,7 +256,7 @@ Core теперь нормализует zero categories и содержит par
 NSSound не воспроизводился; runtime sound acceptance остаётся открытым.
 
 
-GUI debug build после этих исправлений прошёл: [build2 log](../research/evidence/replay-stats-gui-debug-build2.log).
+GUI debug build после этих исправлений прошёл: build2 log не сохранён (`replay-stats-gui-debug-build2.log` исключался из Git правилом `*.log`).
 [Идентичности исходников/бинарников и границы проверки](../research/evidence/replay-stats-implementation-checks.json).
 Приложение не запускалось, dist не пересобирался; внешний вид и native mapping
 этим build не подтверждены. Линкер сообщил известные отсутствующие search paths
