@@ -1,0 +1,67 @@
+{
+  "after": {
+    "selection": {
+      "length": 0,
+      "location": 94
+    },
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghb"
+  },
+  "axReadErrors": {
+    "AXSubrole:-25205": 9
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 9,
+      "maxMilliseconds": 0.2413333331787726,
+      "totalMilliseconds": 1.0757500003819587
+    },
+    "AXFocusedUIElement:0": {
+      "count": 9,
+      "maxMilliseconds": 0.24770833351794863,
+      "totalMilliseconds": 0.7346666679950431
+    },
+    "AXFocusedWindow:0": {
+      "count": 9,
+      "maxMilliseconds": 19.878333333508635,
+      "totalMilliseconds": 28.13145833351882
+    },
+    "AXRole:0": {
+      "count": 9,
+      "maxMilliseconds": 0.0724166666259407,
+      "totalMilliseconds": 0.34587500067573274
+    },
+    "AXSelectedTextRange:0": {
+      "count": 2,
+      "maxMilliseconds": 0.08620833341410616,
+      "totalMilliseconds": 0.12145833352406044
+    },
+    "AXSubrole:-25205": {
+      "count": 9,
+      "maxMilliseconds": 0.23591666740685469,
+      "totalMilliseconds": 1.1822500000562286
+    },
+    "AXValue:0": {
+      "count": 2,
+      "maxMilliseconds": 0.06837500041001476,
+      "totalMilliseconds": 0.09033333390107146
+    },
+    "AXWindow:0": {
+      "count": 9,
+      "maxMilliseconds": 0.1325833327427972,
+      "totalMilliseconds": 0.6234999991647783
+    }
+  },
+  "before": {
+    "selection": {
+      "length": 0,
+      "location": 94
+    },
+    "text": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghb"
+  },
+  "events": 6,
+  "finalModifierFlags": 536870912,
+  "modifiersNeutral": true,
+  "status": "queue recovered; UI ready; text and caret unchanged",
+  "sameText": true,
+  "sameSelection": true
+}

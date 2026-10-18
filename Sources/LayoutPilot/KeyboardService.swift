@@ -1841,7 +1841,7 @@ final class KeyboardService {
             }
         }
     }
-    private func drainReplay() {
+    private func drainReplay(identityRetries: Int = 0) {
         let target: EditorSnapshot
         switch session.drainStep() {
         case .wait: return
@@ -1911,8 +1911,12 @@ final class KeyboardService {
                     "leaseFresh": ProcessInfo.processInfo.systemUptime - checkedAt <= 0.050,
                     "replaySource": self.replaySource != nil]
                 guard checks.values.allSatisfy({ $0 }), let source = self.replaySource else {
-                    InputDiagnostics.shared.record("replay-route-rejected", revision: expectedRevision, checks: checks)
-                    self.suspendReplay(target: target); return
+                    InputDiagnostics.shared.record("replay-route-rejected", revision: expectedRevision, checks: checks,
+                        elapsed: ProcessInfo.processInfo.systemUptime - checkedAt)
+                    if Self.shouldRetryReplayIdentity(checks, retries: identityRetries) {
+                        self.drainReplay(identityRetries: identityRetries + 1)
+                    } else { self.suspendReplay(target: target) }
+                    return
                 }
                 guard let delivery = self.session.dispatchNext(revision: expectedRevision, sourceID: sourceID,
                           issuedAt: checkedAt, leaseDuration: 0.050),
@@ -1931,6 +1935,11 @@ final class KeyboardService {
                 event.post(tap: .cgSessionEventTap)
             }
         }
+    }
+    // A delayed callback must obtain a new proof, never extend the expired lease.
+    static func shouldRetryReplayIdentity(_ checks: [String: Bool], retries: Int) -> Bool {
+        retries < 2 && checks["leaseFresh"] == false &&
+            checks.filter { $0.key != "leaseFresh" }.allSatisfy { $0.value }
     }
     private func deliveryTimedOut() {
         guard replaying, inputReplay.outstanding > 0 else { return }

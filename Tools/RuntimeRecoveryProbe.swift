@@ -31,6 +31,14 @@ final class InputDiagnostics {
         let settings = try JSONEncoder().encode(Settings())
         defaults.set(settings, forKey: "settings.v1")
         var checks: [String: Bool] = [:]
+        let expiredProof = ["identity": true, "revision": true, "allowed": true, "trusted": true,
+            "posting": true, "frontmost": true, "source": true, "leaseFresh": false, "replaySource": true]
+        checks["expired_replay_proof_rechecks_instead_of_posting"] = KeyboardService.shouldRetryReplayIdentity(expiredProof, retries: 0)
+        checks["expired_replay_proof_retry_is_bounded"] = !KeyboardService.shouldRetryReplayIdentity(expiredProof, retries: 2)
+        checks["fresh_replay_proof_needs_no_retry"] = !KeyboardService.shouldRetryReplayIdentity(expiredProof.merging(["leaseFresh": true]) { _, new in new }, retries: 0)
+        checks["other_replay_failures_never_retry"] = expiredProof.keys.filter { $0 != "leaseFresh" }.allSatisfy { key in
+            !KeyboardService.shouldRetryReplayIdentity(expiredProof.merging([key: false]) { _, new in new }, retries: 0)
+        }
         func service() -> KeyboardService {
             let store = Store(defaults: defaults)
             store.trusted = true; store.listening = true; store.posting = true; store.secure = false
