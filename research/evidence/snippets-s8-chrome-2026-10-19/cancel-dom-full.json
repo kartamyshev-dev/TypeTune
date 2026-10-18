@@ -1,0 +1,115 @@
+[
+  {
+    "prevented" : false,
+    "trusted" : true,
+    "meta" : true,
+    "active" : "TEXTAREA",
+    "caret" : 0,
+    "key" : "v",
+    "valueLength" : 0,
+    "type" : "keydown",
+    "focus" : true
+  },
+  {
+    "trusted" : true,
+    "active" : "TEXTAREA",
+    "length" : 30,
+    "prevented" : false,
+    "focus" : true,
+    "caret" : 30,
+    "valueLength" : 30,
+    "type" : "paste"
+  },
+  {
+    "active" : "TEXTAREA",
+    "type" : "beforeinput",
+    "valueLength" : 30,
+    "inputType" : "insertFromPaste",
+    "trusted" : true,
+    "caret" : 30,
+    "prevented" : false,
+    "focus" : true
+  },
+  {
+    "prevented" : false,
+    "focus" : true,
+    "valueLength" : 30,
+    "trusted" : true,
+    "caret" : 30,
+    "inputType" : "insertFromPaste",
+    "type" : "input",
+    "active" : "TEXTAREA"
+  },
+  {
+    "key" : "v",
+    "valueLength" : 0,
+    "type" : "keydown",
+    "prevented" : false,
+    "focus" : true,
+    "meta" : true,
+    "trusted" : true,
+    "caret" : 0,
+    "active" : "TEXTAREA"
+  },
+  {
+    "prevented" : false,
+    "valueLength" : 30,
+    "type" : "paste",
+    "caret" : 30,
+    "length" : 30,
+    "trusted" : true,
+    "focus" : true,
+    "active" : "TEXTAREA"
+  },
+  {
+    "valueLength" : 30,
+    "type" : "beforeinput",
+    "trusted" : true,
+    "active" : "TEXTAREA",
+    "prevented" : false,
+    "inputType" : "insertFromPaste",
+    "caret" : 30,
+    "focus" : true
+  },
+  {
+    "inputType" : "insertFromPaste",
+    "focus" : true,
+    "caret" : 30,
+    "valueLength" : 30,
+    "trusted" : true,
+    "type" : "input",
+    "prevented" : false,
+    "active" : "TEXTAREA"
+  },
+  {
+    "trusted" : true,
+    "valueLength" : 0,
+    "caret" : 0,
+    "key" : "v",
+    "active" : "TEXTAREA",
+    "meta" : true,
+    "focus" : true,
+    "prevented" : false,
+    "type" : "keydown"
+  },
+  {
+    "focus" : true,
+    "caret" : 0,
+    "trusted" : true,
+    "type" : "paste",
+    "length" : 30,
+    "valueLength" : 0,
+    "prevented" : false,
+    "active" : "TEXTAREA"
+  },
+  {
+    "valueLength" : 0,
+    "caret" : 0,
+    "type" : "beforeinput",
+    "inputType" : "insertFromPaste",
+    "focus" : true,
+    "prevented" : false,
+    "trusted" : true,
+    "active" : "TEXTAREA"
+  }
+]

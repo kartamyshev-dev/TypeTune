@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "kind": "native TextEdit, NativeProbe",
+  "requestedIntervalMs": 10,
+  "note": "Per-event guards add latency; this is not a claim of actual 10 ms cadence or long-duration acceptance.",
+  "checks": [
+    {
+      "id": "stream-1",
+      "passed": true
+    },
+    {
+      "id": "stream-2",
+      "passed": true
+    },
+    {
+      "id": "stream-3",
+      "passed": true
+    },
+    {
+      "id": "stream-4",
+      "passed": true
+    },
+    {
+      "id": "stream-5",
+      "passed": true
+    },
+    {
+      "id": "stream-6",
+      "passed": true
+    },
+    {
+      "id": "stream-7",
+      "passed": true
+    },
+    {
+      "id": "stream-8",
+      "passed": true
+    },
+    {
+      "id": "stream-9",
+      "passed": true
+    },
+    {
+      "id": "stream-10",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "focus" : true,
+    "active" : "TEXTAREA",
+    "prevented" : false,
+    "type" : "keydown",
+    "key" : "v",
+    "trusted" : true,
+    "meta" : true,
+    "valueLength" : 0,
+    "caret" : 0
+  },
+  {
+    "caret" : 30,
+    "type" : "paste",
+    "valueLength" : 30,
+    "focus" : true,
+    "trusted" : true,
+    "active" : "TEXTAREA",
+    "prevented" : false,
+    "length" : 30
+  },
+  {
+    "trusted" : true,
+    "meta" : true,
+    "focus" : true,
+    "caret" : 0,
+    "valueLength" : 0,
+    "prevented" : false,
+    "active" : "TEXTAREA",
+    "type" : "keydown",
+    "key" : "v"
+  },
+  {
+    "active" : "TEXTAREA",
+    "type" : "paste",
+    "prevented" : false,
+    "length" : 30,
+    "caret" : 30,
+    "focus" : true,
+    "trusted" : true,
+    "valueLength" : 30
+  },
+  {
+    "trusted" : true,
+    "key" : "v",
+    "valueLength" : 0,
+    "active" : "TEXTAREA",
+    "caret" : 0,
+    "prevented" : false,
+    "meta" : true,
+    "type" : "keydown",
+    "focus" : true
+  },
+  {
+    "caret" : 0,
+    "focus" : true,
+    "active" : "TEXTAREA",
+    "prevented" : false,
+    "length" : 30,
+    "valueLength" : 0,
+    "trusted" : true,
+    "type" : "paste"
+  }
+]

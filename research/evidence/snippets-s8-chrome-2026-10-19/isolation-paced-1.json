@@ -1,0 +1,23 @@
+{
+  "bundle" : "com.google.Chrome",
+  "caretMatches" : true,
+  "clipboardImagePreserved" : true,
+  "clipboardRestore" : "restored_all_representations",
+  "error" : "frontmost_changed",
+  "events" : 66,
+  "fieldDescriptionLength" : 7,
+  "inputSeconds" : 6.2077031250009895,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.ABC",
+  "observedLength" : 30,
+  "passed" : false,
+  "pid" : 1492,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : true,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+  "textMatches" : true,
+  "windowTitleLength" : 36
+}

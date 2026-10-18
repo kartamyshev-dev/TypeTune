@@ -1,0 +1,103 @@
+{
+  "bundle" : "com.google.Chrome",
+  "caretMatches" : false,
+  "clipboardImagePreserved" : true,
+  "clipboardRestore" : "restored_all_representations",
+  "error" : "mismatch_kept_for_diagnosis",
+  "events" : 2,
+  "fieldDescriptionLength" : 7,
+  "initialCaret" : [
+    0,
+    0
+  ],
+  "initialLength" : 0,
+  "inputSeconds" : 6.2191467499978899,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "nativeOutcome" : "uncertain",
+  "nativeTrace" : [
+    {
+      "checks" : {
+
+      },
+      "phase" : "native-paste-enter"
+    },
+    {
+      "checks" : {
+        "accepted" : true,
+        "backend" : true,
+        "boundedEdit" : true,
+        "current" : true,
+        "editValid" : true,
+        "payloadAllowed" : true,
+        "postAccess" : true,
+        "sameSelection" : true,
+        "sameTarget" : true,
+        "sameText" : true,
+        "secureInputClear" : true,
+        "snapshotAvailable" : true,
+        "sourceCreated" : true
+      },
+      "phase" : "native-paste-initial-snapshot"
+    },
+    {
+      "checks" : {
+        "matched" : true
+      },
+      "phase" : "native-paste-clipboard"
+    },
+    {
+      "checks" : {
+        "posted" : true
+      },
+      "phase" : "native-paste-frame-started"
+    },
+    {
+      "checks" : {
+        "posted" : true
+      },
+      "phase" : "native-paste-paste-sent"
+    },
+    {
+      "checks" : {
+        "posted" : true
+      },
+      "phase" : "native-paste-frame-completed"
+    },
+    {
+      "checks" : {
+        "postAccess" : true,
+        "secureInputClear" : true,
+        "snapshotAvailable" : false,
+        "trusted" : true
+      },
+      "phase" : "native-paste-target-failed"
+    },
+    {
+      "checks" : {
+        "clipboardMatched" : true,
+        "current" : true,
+        "target" : false,
+        "verified" : false
+      },
+      "phase" : "native-paste-ACK"
+    },
+    {
+      "checks" : {
+        "deadlineExpired" : false,
+        "released" : true
+      },
+      "phase" : "native-paste-cleanup"
+    }
+  ],
+  "observedInputSource" : "com.apple.keylayout.ABC",
+  "observedLength" : 0,
+  "passed" : false,
+  "pid" : 1492,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : false,
+  "statusSourceMatches" : false,
+  "textMatches" : false,
+  "windowTitleLength" : 36
+}

@@ -1,0 +1,22 @@
+{
+  "bundle" : "com.google.Chrome",
+  "caretMatches" : false,
+  "clipboardImagePreserved" : true,
+  "clipboardRestore" : "restored_all_representations",
+  "error" : "mismatch_kept_for_diagnosis",
+  "events" : 2,
+  "fieldDescriptionLength" : 7,
+  "inputSeconds" : 21.018763583335385,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.ABC",
+  "observedLength" : 0,
+  "passed" : false,
+  "pid" : 1492,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : false,
+  "statusSourceMatches" : false,
+  "textMatches" : false,
+  "windowTitleLength" : 36
+}

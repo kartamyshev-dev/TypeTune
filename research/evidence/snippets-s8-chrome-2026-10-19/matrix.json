@@ -1,0 +1,403 @@
+[
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-capital.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-date-cursor.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-fast-follow.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-immediate-en.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-immediate-ru.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-literal-plan-semicolon.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-migration.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-multiline-repeat-1.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-multiline-repeat-2.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-multiline-repeat-3.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-multiline-repeat-4.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-multiline-repeat-5.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-multiline.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-prefix-negative.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-thanks.json",
+    "passed": true
+  },
+  {
+    "app": "chrome",
+    "evidence": "s8-updated/chrome-undo.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-capital.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-date-cursor.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-fast-follow.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-immediate-en.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-immediate-ru.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-literal-plan-semicolon.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-migration.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-multiline.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-prefix-negative.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-thanks.json",
+    "passed": true
+  },
+  {
+    "app": "safari",
+    "evidence": "s8-updated/safari-undo.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-capital.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-date-cursor.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-fast-follow.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-immediate-en.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-immediate-ru.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-literal-plan-semicolon.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-migration.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-multiline.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-prefix-negative.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-thanks.json",
+    "passed": true
+  },
+  {
+    "app": "notes",
+    "evidence": "s8-updated/notes-undo.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-capital.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-date-cursor.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-fast-follow.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-immediate-en.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-immediate-ru.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-literal-plan-semicolon.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-migration.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-multiline.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-prefix-negative.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-thanks.json",
+    "passed": true
+  },
+  {
+    "app": "telegram",
+    "evidence": "s8-updated/telegram-undo.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "thanks",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "Thanks",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "prefix-negative",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "migration-yf",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "fast-follow",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "immediate-russian",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "immediate-english",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "multiline",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "date-cursor",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "undo-thanks",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "migration-github",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "migration-loginom",
+    "evidence": "s8-updated/textedit-all-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-1",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-2",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-3",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-4",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-5",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-6",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-7",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-8",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-9",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "stream-10",
+    "evidence": "s8-updated/textedit-stream10-verification.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "multiline-image",
+    "evidence": "s8-updated/textedit-clipboard-image.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "clipboard-image-refusal",
+    "evidence": "s8-updated/textedit-clipboard-image.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "multiline-text",
+    "evidence": "s8-updated/textedit-clipboard-text.json",
+    "passed": true
+  },
+  {
+    "app": "textedit",
+    "case": "multiline-repeat-text",
+    "evidence": "s8-updated/textedit-clipboard-text.json",
+    "passed": true
+  }
+]

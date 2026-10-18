@@ -1,0 +1,26 @@
+{
+  "snippetsInitiallyExisted": false,
+  "snippetsAbsentRestored": true,
+  "originalThreeRulesVerifiedInUI": true,
+  "testSnippetsInMemory": 0,
+  "clipboardAllRepresentationHashesEqual": true,
+  "settingsEqualExcept": [
+    "statistics.v1"
+  ],
+  "statisticsNotRolledBack": true,
+  "inputSource": "com.apple.keylayout.ABC",
+  "chromeAXEnhancedUserInterfaceRestored": true,
+  "carambaRunning": false,
+  "typeTuneReady": true,
+  "queues": {
+    "outstanding": 0,
+    "pending": 0,
+    "uncertainDeliveries": 0
+  },
+  "maccy": {
+    "visibleSyntheticItemRemoved": true,
+    "unrelatedContentUnchanged": true,
+    "orphanedSyntheticRepresentationsRemaining": 48,
+    "databaseNotModifiedDirectly": true
+  }
+}

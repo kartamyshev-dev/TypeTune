@@ -1,0 +1,55 @@
+{
+  "kind": "native TextEdit, NativeProbe",
+  "installedCode": "92a0ba845c75ba767bc19cbb65c697a6bd9df008",
+  "passed": true,
+  "checks": [
+    {
+      "id": "thanks",
+      "passed": true
+    },
+    {
+      "id": "Thanks",
+      "passed": true
+    },
+    {
+      "id": "prefix-negative",
+      "passed": true
+    },
+    {
+      "id": "migration-yf",
+      "passed": true
+    },
+    {
+      "id": "fast-follow",
+      "passed": true
+    },
+    {
+      "id": "immediate-russian",
+      "passed": true
+    },
+    {
+      "id": "immediate-english",
+      "passed": true
+    },
+    {
+      "id": "multiline",
+      "passed": true
+    },
+    {
+      "id": "date-cursor",
+      "passed": true
+    },
+    {
+      "id": "undo-thanks",
+      "passed": true
+    },
+    {
+      "id": "migration-github",
+      "passed": true
+    },
+    {
+      "id": "migration-loginom",
+      "passed": true
+    }
+  ]
+}

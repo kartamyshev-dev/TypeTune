@@ -1,0 +1,34 @@
+{
+  "Chrome": {
+    "version": "155.0.8059.85",
+    "build": "8059.85",
+    "bundleID": "com.google.Chrome"
+  },
+  "Safari": {
+    "version": "27.0.1",
+    "build": "22625.1.29.11.28",
+    "bundleID": "com.apple.Safari"
+  },
+  "TextEdit": {
+    "version": "1.21",
+    "build": "419",
+    "bundleID": "com.apple.TextEdit"
+  },
+  "Notes": {
+    "version": "4.13",
+    "build": "3195",
+    "bundleID": "com.apple.Notes"
+  },
+  "Telegram": {
+    "version": "7.3.1",
+    "build": "7.3.1",
+    "bundleID": "com.tdesktop.Telegram"
+  },
+  "TypeTune": {
+    "version": "0.1.5",
+    "build": "11",
+    "bundleID": "dev.layoutpilot.mac",
+    "executableSha256": "2d4edbde58884b2d304978093171a44d1a57ea68a1f987a4a34eadcedf119426",
+    "sourceCommit": "92a0ba845c75ba767bc19cbb65c697a6bd9df008"
+  }
+}

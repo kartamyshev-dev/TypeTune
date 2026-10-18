@@ -1,0 +1,24 @@
+{
+  "finding": "Chromium clipboard token changes twice for one unchanged NSPasteboard.changeCount; in-flight paste dropped",
+  "upstreamCommit": "fc5529f522a28df6ff5d5f7e572debc71d6f18e4",
+  "upstreamURL": "https://chromium.googlesource.com/chromium/src/+/fc5529f522a28df6ff5d5f7e572debc71d6f18e4",
+  "issue": "https://issues.chromium.org/issues/568453825",
+  "installedChromeBefore": "155.0.8059.82",
+  "installedChromeAfterOfficialUpdate": "155.0.8059.85",
+  "upstreamFixInEitherSourceTag": false,
+  "nativeEvidence": [
+    "cancel-listener-3.json",
+    "cancel-dom-full.json",
+    "generation-1.json"
+  ],
+  "nativeObservation": "Trusted keydown and paste with 30 characters, uncancelled beforeinput, no input, visible and AX field empty; NSPasteboard generation 204 unchanged throughout; TypeTune stopped. This matches upstream failure mechanism. No browser-internal token probe was performed.",
+  "sourceFiles": {
+    "clipboard_mac.mm": "e9e4b9cdedcca5a59e2464690e4113372615bc8c4b46657d6faa9e0fc876eaf1",
+    "clipboard_mac-155.0.8059.85.mm": "e9e4b9cdedcca5a59e2464690e4113372615bc8c4b46657d6faa9e0fc876eaf1",
+    "clipboard_commands.cc": "55144078add1364e668212e0254dc5208795dffeff5cf70eb5835ca1bda7e2bd",
+    "chromium-fix.json": "3d528ca02aa7012f8fcc0bb6b3bb94513f166c09d8b08ebeaf141515c45cdd40"
+  },
+  "S8": "PARTIAL; selected authorized native repeat 75/75 after Chrome update/restart",
+  "productCodeChangedThisSession": false,
+  "permanentRemedyEstablished": false
+}

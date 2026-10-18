@@ -1,0 +1,51 @@
+{
+  "kind": "agent native, user-authorized",
+  "installedCode": "92a0ba845c75ba767bc19cbb65c697a6bd9df008",
+  "installedGuiSha256": "2d4edbde58884b2d304978093171a44d1a57ea68a1f987a4a34eadcedf119426",
+  "checkoutAtProbe": "93809f3685e7dc4f9a837f8bbfdf570f3dab0bf2",
+  "productCodeChanged": false,
+  "chromeVersion": "155.0.8059.85",
+  "selectedNativeCases": {
+    "passed": 75,
+    "total": 75
+  },
+  "matrix": "matrix.json",
+  "secureGuard": {
+    "app": "Safari",
+    "expectedRejection": "permissions_or_secure_input",
+    "events": 0,
+    "typedPasswordE2E": false
+  },
+  "trace": {
+    "records": 858,
+    "faults": 0,
+    "finalState": "ready",
+    "pending": 0,
+    "outstanding": 0,
+    "uncertainDeliveries": 0
+  },
+  "rootCause": "root-cause.json",
+  "restoration": "state-after.json",
+  "S8": "PARTIAL; selected authorized scenarios PASS; full acceptance not closed",
+  "limitations": [
+    "Chrome upstream clipboard-token fix is absent in installed source tag; restart/update removed observed failure but permanent fix is not established.",
+    "AX paste-menu warmup not shipped: 4/4 diagnostic passes followed by 9/9 ordinary baseline and 3/3 clipboardchange-listener baseline passes; benefit unproven.",
+    "Slack, VS Code, Word and Terminal not authorized in this run.",
+    "Full U8, four-hour run and typed-password E2E not performed.",
+    "Stream interval requested 10 ms; per-event guards add latency.",
+    "No messages sent; an accidental Google search transmitted the local synthetic fixture path including home-directory name during setup.",
+    "48 orphaned synthetic clipboard representations remain in Maccy database after visible test item deletion."
+  ],
+  "authorization": {
+    "date": "2026-10-19",
+    "userInstruction": "Да, продолжай исследование Chrome: найди причину пустой вставки, исправь её и повтори S8 в разрешённых приложениях. Сохрани исходное состояние snippets.json и восстанови его в конце.",
+    "apps": [
+      "TextEdit",
+      "Заметки",
+      "Safari",
+      "Chrome",
+      "Telegram"
+    ],
+    "constraint": "Пустые поля и черновики, ничего не отправляя"
+  }
+}

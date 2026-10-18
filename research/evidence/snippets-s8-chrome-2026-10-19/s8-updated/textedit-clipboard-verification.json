@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "multiline-image",
+      "passed": true
+    },
+    {
+      "id": "clipboard-image-refusal",
+      "passed": true
+    },
+    {
+      "id": "multiline-text",
+      "passed": true
+    },
+    {
+      "id": "multiline-repeat-text",
+      "passed": true
+    }
+  ]
+}
