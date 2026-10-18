@@ -4,6 +4,12 @@
 [журнал](JOURNAL.md), план и приёмка — [PLAN](PLAN.md), функции — [FEATURES](FEATURES.md),
 исправления по ревью — [REVIEW_FIX_PLAN](REVIEW_FIX_PLAN.md), решения — [DECISIONS](DECISIONS.md).
 
+## Ветки
+
+- `main` = `universal-input` (перемотка 2026-10-18, DECISIONS п. 32): универсальный режим в `main`,
+  U8 частичная — пропуски перечислены в п. 32. Дальнейшая работа универсального режима — в `main`.
+- `snippets`: сниппеты S5–S7 (GUI) — следующий этап, [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
+
 ## Mac agent — текущая точка продолжения
 
 Ветка `universal-input`, код приложения `6e07197`, установлен GUI SHA-256
