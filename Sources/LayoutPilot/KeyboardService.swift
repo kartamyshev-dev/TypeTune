@@ -369,6 +369,13 @@ final class KeyboardService {
               let id = app.bundleIdentifier else { return false }
         return !store.settings.excludedApps.contains(id)
     }
+    /// Whether the frontmost application may still receive work for `target`: a universal
+    /// (keystroke) target is any permitted application, a pinned AX field keeps the adapter
+    /// list. Replay and the layout change after it must not use the adapter list alone, or
+    /// delayed input in other applications is never delivered.
+    private func allowedFrontmost(for target: EditorSnapshot) -> Bool {
+        target.keystrokes ? universalAllowed() : allowedFrontmost()
+    }
     private func universalTarget() -> EditorSnapshot? {
         guard universalAllowed(), session.permitsMutation, let app = NSWorkspace.shared.frontmostApplication,
               let id = app.bundleIdentifier else { return nil }
@@ -680,7 +687,7 @@ final class KeyboardService {
             let allowed = lease?.permits(token: batchToken, revision: revision, sourceID: InputSources.identifier,
                 now: ProcessInfo.processInfo.systemUptime) == true &&
                 NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid &&
-                allowedFrontmost() && AXIsProcessTrusted() && CGPreflightPostEventAccess()
+                allowedFrontmost(for: target) && AXIsProcessTrusted() && CGPreflightPostEventAccess()
             switch session.receiveReplay(token: batchToken, routingAllowed: allowed) {
             case .forward:
                 projectReplayedEvent(type, event)
@@ -697,7 +704,7 @@ final class KeyboardService {
                     "revision": lease?.revision == revision, "source": lease?.sourceID == InputSources.identifier,
                     "leaseFresh": lease.map { ProcessInfo.processInfo.systemUptime <= $0.deadline } ?? false,
                     "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
-                    "allowed": allowedFrontmost(), "trusted": AXIsProcessTrusted(),
+                    "allowed": allowedFrontmost(for: target), "trusted": AXIsProcessTrusted(),
                     "posting": CGPreflightPostEventAccess()])
                 suspendReplay(target: target)
                 return true
@@ -1567,7 +1574,7 @@ final class KeyboardService {
             // Commit the pinned-source proof before our own requested source change.
             if contextMatches, let source = sourceAfterReplay {
                 sourceAfterReplay = nil
-                if allowedFrontmost(), AXIsProcessTrusted(), source.change.apply() {
+                if allowedFrontmost(for: expected), AXIsProcessTrusted(), source.change.apply() {
                     store.inputSource = InputSources.identifier
                     store.lastStatus = source.change.status
                 }
@@ -1769,8 +1776,8 @@ final class KeyboardService {
             recoveryReplayProjection = nil; recoveryReplaySource = nil
             if let source = sourceAfterReplay {
                 sourceAfterReplay = nil
-                if NSWorkspace.shared.frontmostApplication?.processIdentifier == source.pid,
-                   AXIsProcessTrusted(), allowedFrontmost(), source.change.apply() {
+                if NSWorkspace.shared.frontmostApplication?.processIdentifier == source.pid, AXIsProcessTrusted(),
+                   anchor.map { allowedFrontmost(for: $0) } ?? allowedFrontmost(), source.change.apply() {
                     store.inputSource = InputSources.identifier
                     store.lastStatus = source.change.status
                 }
@@ -1800,7 +1807,7 @@ final class KeyboardService {
             return
         }
         guard NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
-              allowedFrontmost(), AXIsProcessTrusted(), CGPreflightPostEventAccess() else {
+              allowedFrontmost(for: target), AXIsProcessTrusted(), CGPreflightPostEventAccess() else {
             suspendReplay(target: target); return
         }
         // No AX IPC in the tap/main loop. At most one event is posted for each
@@ -1817,7 +1824,7 @@ final class KeyboardService {
                       AccessibilityEditor.sameTarget(active, target) else { return }
                 self.session.clearIdentityCheck()
                 let checks = ["identity": identityMatches, "revision": self.revision == expectedRevision,
-                    "allowed": self.allowedFrontmost(), "trusted": AXIsProcessTrusted(),
+                    "allowed": self.allowedFrontmost(for: target), "trusted": AXIsProcessTrusted(),
                     "posting": CGPreflightPostEventAccess(),
                     "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
                     "source": sourceID == InputSources.identifier,
