@@ -1,5 +1,24 @@
 # Журнал TypeTune
 
+## 2026-10-18 — остановка: буфер обмена при буквальной вставке картинки
+
+Частный ImagePasteMain helper, GUI без изменений. Выделение мышью + Double Shift
+в новом RTF подтвердило «привет», clipboard syntheticUnchanged. Настоящее CmdV открыло
+системный sheet TextEdit «Конвертировать RTF в RTFD». verifiedField остановил работу,
+а ClipboardLease.restore с referenceContext отказался восстанавливать при sheet.
+Процесс завершился, прежний RAM snapshot недоступен; восстановление пользовательского
+clipboard не подтверждено, возможна утрата. Это ошибка test harness, не P8 продукта.
+Нельзя считать S5 PASS. Sheet отменён через CUA, точный readback собственного документа —
+«привет», вставка отменена. Исходное содержимое clipboard не читалось/не логировалось.
+[Инцидент](../research/evidence/mac-agent-p8-2026-10-18/clipboard-incident.json).
+Дальнейшие тесты остановлены, вопрос пользователю по MAC_AGENT_GUIDE §2.7.
+До ответа никаких повторов; исправление должно обеспечить restore при модальных
+окнах, затем использовать новый RTFD, не RTF.
+
+Перед инцидентом Chrome textarea S1/S2/S3/S4/S7/S8/S9/S11 PASS;
+S5 только byte-subgate, literal paste не завершён. CI 39150068825 Linux/macOS успешен.
+
+
 ## 2026-10-18 — смешанные потоки в четырёх приложениях, GUI 80652518
 
 Agent native, user-authorized; приложение без изменений, код `3244c81`.
