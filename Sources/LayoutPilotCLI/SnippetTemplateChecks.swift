@@ -13,7 +13,7 @@ func snippetTemplateChecks() -> [(Bool, String)] {
         T.render(template, caseStyle: style, now: now, timeZone: zone, clipboard: clipboard)
     }
     func expands(_ template: String, _ style: T.CaseStyle = .asWritten, clipboard: String? = "буфер",
-                 zone: TimeZone = utc, to text: String, caret: Int = 0) -> Bool {
+                 zone: TimeZone = utc, to text: String, caret: Int? = nil) -> Bool {
         render(template, style, clipboard: clipboard, zone: zone) == .success(T.Expansion(text: text, caretOffset: caret))
     }
 
@@ -72,12 +72,13 @@ func snippetTemplateChecks() -> [(Bool, String)] {
     check(expands("<b>{{курсор}}</b>", to: "<b></b>", caret: 4), "caret offset counts the text after the cursor")
     check(expands("{{курсор}}конец", to: "конец", caret: 5), "cursor at the start")
     check(expands("конец{{курсор}}", to: "конец", caret: 0), "cursor at the end")
+    check(expands("конец", to: "конец", caret: nil), "no cursor is not a cursor at the end")
     check(expands("e{{курсор}}\u{301}x", to: "e\u{301}x", caret: 1), "the caret never splits a Character")
     check(expands("😀{{курсор}}👍🏽", to: "😀👍🏽", caret: 1), "emoji count as one Character each")
     check(expands("строка 1\nстрока 2", to: "строка 1\nстрока 2"), "line feeds stay")
     check(render("{{x") == .failure(.template(.unclosed(at: 0))), "a syntax error does not render")
     check(render("{{буфер}}", clipboard: String(repeating: "x", count: SnippetLibrary.maximumTextLength)) ==
-          .success(T.Expansion(text: String(repeating: "x", count: SnippetLibrary.maximumTextLength), caretOffset: 0)),
+          .success(T.Expansion(text: String(repeating: "x", count: SnippetLibrary.maximumTextLength), caretOffset: nil)),
           "the longest allowed expansion")
     check(render("!{{буфер}}", clipboard: String(repeating: "x", count: SnippetLibrary.maximumTextLength)) == .failure(.tooLong),
           "an expansion above the limit is refused")

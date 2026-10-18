@@ -11,6 +11,9 @@ public struct TypedWordBuffer: Equatable, Sendable {
         case newline, tab
         /// The caret or content may have changed in a way the buffer cannot follow.
         case pointer, navigation, shortcut, focus, secureInput, sourceChange, escape, untrackedKey, explicit
+        /// This process inserted text (a snippet). The inserted words are not typed and
+        /// must never be corrected; while this stays the last reset nothing was typed since.
+        case inserted
     }
     /// Longest retained text. Older characters are dropped from the front.
     public static let capacity = 128
@@ -49,6 +52,14 @@ public struct TypedWordBuffer: Equatable, Sendable {
         text = ""
         anchoredStart = reason == .newline || reason == .tab
         lastReset = reason
+    }
+
+    /// After this process inserted text that now ends at the caret: the buffer forgets
+    /// it, and the next typed token is anchored only when that text ends in whitespace.
+    public mutating func resetAfterInsertion(endingWith textBeforeCaret: String) {
+        text = ""
+        anchoredStart = textBeforeCaret.last?.isWhitespace == true
+        lastReset = .inserted
     }
 
     /// The unfinished token at the caret (characters after the last whitespace).

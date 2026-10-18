@@ -1,0 +1,27 @@
+{
+  "kind": "Linux offline (Core + CLI, Swift 6.0.3); GUI target not compiled (macOS only), no native claim",
+  "date": "2026-10-18",
+  "baseCommit": "b1434ace11e9fddcf45688779888548878cce642",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0 (selftest, corpus v2/v3, regression fixtures, swift test 14/14, audit gates, corpus diff clean)",
+    "selftest": "1604/1604 (37 snippet edit plan invariants, 1 new template invariant)",
+    "mutationCheck": "paste threshold off by one, undo without moving the caret right, inserted text always anchoring: 5 checks failed; restored code passes",
+    "foundByChecks": "without {{курсор}} the plan moved the caret back over the Space; Expansion.caretOffset is now nil when there is no cursor, so a cursor at the end differs from no cursor",
+    "guiImpact": "Sources/LayoutPilot has no switch over TypedWordBuffer.ResetReason; KeystrokeEditPlan.unicodeChunks() keeps its signature (KeystrokeEditor.swift:47)"
+  },
+  "semantics": [
+    "steps: moveRight (undo only), Backspaces for the changed tail, insert text, moveLeft to {{курсор}}; characters shared at the start are kept",
+    "expectedBefore/expectedAfter: text that must end at the caret before the first and after the last step; expects(anchored:) requires whitespace or the text start before the abbreviation",
+    "insertion: paste when the inserted text is longer than 100 characters or contains any control character (line feed, tab); otherwise Unicode keystrokes in 16-unit chunks",
+    "boundary: punctuation and Space stay after the expansion; with a cursor the caret moves back over the rest of the text, the punctuation and the Space; without one it stays after the Space",
+    "undo: caret back to the end of the insertion, then the abbreviation exactly as typed (other layout included), always as keystrokes",
+    "buffer: after an expansion it is empty with lastReset=.inserted (nothing typed since = undo window), anchored only if the inserted text ends in whitespace, so inserted words are never corrected; after undo it holds the typed abbreviation"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/SnippetEditPlan.swift": "03617cf2dbc1f10fe56ca2c6504a70f7fc038e1a25cad6d6e45443d588c0fe16",
+    "Sources/LayoutPilotCore/SnippetTemplate.swift": "466df80a2d67b5de22296f0d90551be436542a3bd93957cc67a4ffd54a0ca210",
+    "Sources/LayoutPilotCore/TypedWordBuffer.swift": "12d2fc12f7d4a3c5b1cfaa9e3aecef823e5f8d7869d4285343df48a9e31c3bd6",
+    "Sources/LayoutPilotCore/KeystrokeEditPlan.swift": "d03ea1f3c07416462c67070a2163067e97bb029aed53c094a404c0faae140ccb",
+    "Sources/LayoutPilotCLI/SnippetEditPlanChecks.swift": "4e6b6ef086a8a94c07c12b0128ebd7912637b793459389222c91ce283da5927a"
+  }
+}

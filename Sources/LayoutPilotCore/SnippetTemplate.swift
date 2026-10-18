@@ -88,11 +88,12 @@ public enum SnippetTemplate {
     /// Variables (date, clipboard) are never re-cased.
     public enum CaseStyle: Equatable, Sendable { case asWritten, capitalized, upper }
 
-    /// The text to insert and how many Characters stay after the caret (`{{курсор}}`).
+    /// The text to insert and how many Characters stay after the caret at `{{курсор}}`;
+    /// nil without a cursor: the caret ends after everything inserted.
     public struct Expansion: Equatable, Sendable {
         public let text: String
-        public let caretOffset: Int
-        public init(text: String, caretOffset: Int) { self.text = text; self.caretOffset = caretOffset }
+        public let caretOffset: Int?
+        public init(text: String, caretOffset: Int?) { self.text = text; self.caretOffset = caretOffset }
     }
 
     public enum RenderFailure: Error, Equatable {
@@ -143,6 +144,6 @@ public enum SnippetTemplate {
         }
         // Counted on the joined text: a Character can never be split by the caret.
         let text = before + after
-        return .success(Expansion(text: text, caretOffset: max(0, text.count - before.count)))
+        return .success(Expansion(text: text, caretOffset: cursorPassed ? max(0, text.count - before.count) : nil))
     }
 }
