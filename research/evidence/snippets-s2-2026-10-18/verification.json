@@ -1,0 +1,25 @@
+{
+  "kind": "Linux offline (Core + CLI, Swift 6.0.3); no GUI change, no native claim",
+  "date": "2026-10-18",
+  "baseCommit": "a9ebc40a3cd3ae33fb0c69e590b578f66f23f2ce",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0 (selftest, corpus v2/v3, regression fixtures, swift test 14/14, audit gates, corpus diff clean)",
+    "selftest": "1522/1522 (60 snippet template invariants)",
+    "mutationCheck": "second cursor allowed, upper case skipped, empty clipboard accepted: 4 template checks failed; restored code passes",
+    "foundByChecks": "a combining mark after '}}' or '{{' hid the braces when parsing and escaping by Characters; parse and escape now work on Unicode scalars"
+  },
+  "semantics": [
+    "variables {{дата}}, {{дата:format}}, {{время}}, {{время:format}}, {{буфер}}, {{курсор}} (at most one); names trimmed and case-insensitive; English names are not variables",
+    "'\\{{' is a literal '{{'; other backslashes literal; escaped(x) parses back to exactly x, including combining marks",
+    "syntax errors carry the Character offset: unclosed, unknown variable, empty format, format on clipboard/cursor, repeated cursor; a broken template is a snippet issue and cannot fire",
+    "render takes clock, time zone, locale and clipboard from the caller; default formats dd.MM.yyyy and HH:mm",
+    "clipboard: missing or empty -> snippet does not fire; CRLF/CR -> LF; other control characters refused",
+    "caret offset counts Characters after {{курсор}} in the joined text; expansion above 10000 characters refused",
+    "case style from the typed abbreviation (capitalized/upper) applies to literal text only, never to date or clipboard"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/SnippetTemplate.swift": "739a2e4c798ab6eed80ab26d00d0b5dbd4edfa91f7fca9fbe6dd841d6dee9fe6",
+    "Sources/LayoutPilotCore/Snippet.swift": "9920b641f03f4b9dda2e6c7a2355479e2e4d49d42ee6227d773c9b8d3df649ca",
+    "Sources/LayoutPilotCLI/SnippetTemplateChecks.swift": "1c5d96732fe7a765f806e0f0a8c68d9e794f50822aa9d12ad7af93263fb0551b"
+  }
+}

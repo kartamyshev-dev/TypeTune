@@ -91,6 +91,8 @@ public enum SnippetIssue: Equatable, Sendable {
     case textTooLong
     /// Control characters other than line feed and tab cannot be inserted.
     case textCharacters
+    /// `{{…}}` that is not a known variable, unclosed, or a second cursor.
+    case template(SnippetTemplate.Failure)
     /// The same abbreviation (ignoring case, and on the same keys when either snippet
     /// matches the other layout) already belongs to the snippet with this id.
     case duplicate(of: UUID)
@@ -158,6 +160,7 @@ public struct SnippetLibrary: Codable, Equatable, Sendable {
         if snippet.text.unicodeScalars.contains(where: {
             CharacterSet.controlCharacters.contains($0) && $0 != "\n" && $0 != "\t"
         }) { result.append(.textCharacters) }
+        if case .failure(let failure) = SnippetTemplate.parse(snippet.text) { result.append(.template(failure)) }
         if let other = snippets.first(where: { $0.id != snippet.id && Self.collide($0, snippet, mapping: mapping) }) {
             result.append(.duplicate(of: other.id))
         }
@@ -182,14 +185,5 @@ public struct SnippetLibrary: Codable, Equatable, Sendable {
         guard a.otherLayout || b.otherLayout else { return false }
         return x == Layout.convert(y, to: .english, mapping: mapping).lowercased() ||
             x == Layout.convert(y, to: .russian, mapping: mapping).lowercased()
-    }
-}
-
-/// Template text of a snippet. Stage S1 needs only the escape used when former literal
-/// rules are migrated; expansion of variables is stage S2.
-public enum SnippetTemplate {
-    /// Text whose every `{{` stays literal: each is written as `\{{`.
-    public static func escaped(_ literal: String) -> String {
-        literal.replacingOccurrences(of: "{{", with: "\\{{")
     }
 }
