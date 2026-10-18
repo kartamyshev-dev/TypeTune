@@ -96,6 +96,8 @@ final class KeyboardService {
     private var bufferedEventCount = 0
     private var skippedCount = 0
     private var lastKeyDownTime: TimeInterval = 0
+    /// Processes already asked for web accessibility (axQueue only).
+    private var webAccessibilityRequested = Set<pid_t>()
     private var gestures = ModifierGesture()
     private var shiftTask: DispatchWorkItem?
     private var pendingNativePaste: (id: UUID, revision: Int, handshake: NativePasteReleaseHandshake)?
@@ -126,6 +128,11 @@ final class KeyboardService {
         observer = center.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: .main) { [weak self] _ in
             self?.contextFailure = nil; self?.typed.reset(.focus)
             self?.resetTransient(); self?.captureAfterEvent(); self?.refresh()
+            // Ask early so the web field is readable by the time the first word ends.
+            if let self, self.store.universalInput, let pid = NSWorkspace.shared.frontmostApplication?.processIdentifier,
+               pid != ProcessInfo.processInfo.processIdentifier {
+                self.axQueue.async { self.requestWebAccessibility(pid: pid, trigger: "activation") }
+            }
         }
         sleepObserver = center.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: .main) { [weak self] _ in
             self?.sleeping = true; self?.typed.reset(.explicit); self?.resetTransient(); self?.stop(); self?.refresh()
@@ -565,6 +572,12 @@ final class KeyboardService {
                     Thread.sleep(forTimeInterval: 0.005)
                     observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
                 }
+                // Chromium exposes a web field only after being asked; the first time, give it
+                // a moment and look again before falling back to the blind-edit rules.
+                if case .unreadable = observation, self.requestWebAccessibility(pid: pid, trigger: "unreadable") {
+                    Thread.sleep(forTimeInterval: 0.150)
+                    observation = AccessibilityEditor.observeTextBeforeCaret(pid: pid)
+                }
                 let kind: String
                 switch observation {
                 case .textBeforeCaret: kind = "text"
@@ -645,6 +658,16 @@ final class KeyboardService {
         }
     }
     private enum KeystrokeConfirmation { case confirmed, notShown, unknown }
+    /// axQueue only. Once per process: Chromium and Electron then build web accessibility.
+    /// Returns true when the request was made now (and was accepted).
+    @discardableResult
+    private func requestWebAccessibility(pid: pid_t, trigger: String) -> Bool {
+        guard AXIsProcessTrusted(), webAccessibilityRequested.insert(pid).inserted else { return false }
+        let status = AccessibilityEditor.requestWebAccessibility(pid: pid)
+        InputDiagnostics.shared.record("web-accessibility", revision: -1,
+            checks: ["accepted": status == .success, "unsupported": status == .attributeUnsupported], reason: trigger)
+        return status == .success
+    }
     private func finishKeystrokes(_ operation: KeystrokeOperation, outcome: KeystrokeConfirmation, readable: Bool) {
         let target = operation.target, decision = operation.plan.decision
         let current = !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
