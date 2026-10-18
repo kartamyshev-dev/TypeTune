@@ -1,0 +1,124 @@
+debconf: delaying package configuration, since apt-utils is not installed
+Building for debugging...
+[0/10] Copying lexicon.json
+[1/10] Copying LEXICON-NOTICE.txt
+[2/10] Write sources
+[4/10] Copying layoutpilot.zsh
+[5/10] Write swift-version-24593BA9C3E375BF.txt
+[7/21] Emitting module LayoutPilotCore
+[8/25] Compiling LayoutPilotCore Replay.swift
+[9/25] Compiling LayoutPilotCore ReplayInsertionProjection.swift
+[10/25] Compiling LayoutPilotCore UsageStatistics.swift
+[11/25] Compiling LayoutPilotCore resource_bundle_accessor.swift
+[12/25] Compiling LayoutPilotCore Layout.swift
+[13/25] Compiling LayoutPilotCore ModifierGesture.swift
+[14/25] Compiling LayoutPilotCore MutationSession.swift
+[15/25] Compiling LayoutPilotCore PartialLayoutDetector.swift
+[16/25] Compiling LayoutPilotCore PartialMutationRollbackPlan.swift
+[17/25] Compiling LayoutPilotCore EditorSnapshotFailure.swift
+[18/25] Compiling LayoutPilotCore EditorSupport.swift
+[19/25] Compiling LayoutPilotCore Engine.swift
+[20/25] Compiling LayoutPilotCore InputRecovery.swift
+[21/25] Compiling LayoutPilotCore InputReplayQueue.swift
+[22/26] Wrapping AST for LayoutPilotCore for debugging
+[24/37] Emitting module LayoutPilotCLI
+[25/42] Compiling LayoutPilotCLI DoubleCapitalChecks.swift
+[26/42] Compiling LayoutPilotCLI EarlyRollbackChecks.swift
+[27/42] Compiling LayoutPilotCLI GestureChecks.swift
+[28/42] Compiling LayoutPilotCLI LayoutMappingChecks.swift
+[29/42] Compiling LayoutPilotCLI MutationSessionChecks.swift
+[30/42] Compiling LayoutPilotCLI PartialLayoutChecks.swift
+[31/42] Compiling LayoutPilotCLI PauseChecks.swift
+[32/42] Compiling LayoutPilotCLI PunctuationChecks.swift
+[33/42] Compiling LayoutPilotCLI RecoveryChecks.swift
+[34/42] Compiling LayoutPilotCLI ReplayProjectionChecks.swift
+[35/42] Compiling LayoutPilotCLI ReplayRoutingChecks.swift
+[36/42] Compiling LayoutPilotCLI SelfTest.swift
+[37/42] Compiling LayoutPilotCLI SnapshotChecks.swift
+[38/42] Compiling LayoutPilotCLI StatisticsChecks.swift
+[39/42] Compiling LayoutPilotCLI main.swift
+[40/43] Wrapping AST for LayoutPilotCLI for debugging
+[41/43] Write Objects.LinkFileList
+[42/43] Linking layoutpilot-cli
+Build of product 'layoutpilot-cli' complete! (22.03s)
+1317/1317 offline invariants passed; 0 failures. No runtime input claim.
+train: {'corrections': 1134, 'count': 3094, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 3094}
+holdout: {'corrections': 484, 'count': 1326, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 1326}
+Integrity: 4420 rows; 420 disjoint root groups; exact 70/30; no original observations.
+train: {'corrections': 5599, 'count': 15400, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 15400}
+holdout: {'corrections': 2401, 'count': 6600, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 6600}
+Integrity: 22000 rows; 2000 disjoint root groups; exact 70/30; no original observations.
+corpus/review-regressions.jsonl: passed
+corpus/lexicon-regressions.jsonl: passed
+corpus/context-regressions.jsonl: passed
+[0/1] Planning build
+Building for debugging...
+[0/12] Write sources
+[1/13] Write swift-version-24593BA9C3E375BF.txt
+[3/14] Compiling LayoutPilotCoreTests ModifierGestureTests.swift
+[4/14] Emitting module LayoutPilotCoreTests
+[5/14] Compiling LayoutPilotCoreTests CoreTests.swift
+[6/15] /work/.build/x86_64-unknown-linux-gnu/debug/LayoutPilotPackageDiscoveredTests.derived/all-discovered-tests.swift
+[7/15] Write sources
+[8/15] Wrapping AST for LayoutPilotCoreTests for debugging
+[10/18] Emitting module LayoutPilotPackageDiscoveredTests
+[11/18] Compiling LayoutPilotPackageDiscoveredTests all-discovered-tests.swift
+[12/18] Compiling LayoutPilotPackageDiscoveredTests LayoutPilotCoreTests.swift
+[13/19] /work/.build/x86_64-unknown-linux-gnu/debug/LayoutPilotPackageTests.derived/runner.swift
+[14/19] Write sources
+[15/19] Wrapping AST for LayoutPilotPackageDiscoveredTests for debugging
+[17/21] Emitting module LayoutPilotPackageTests
+[18/21] Compiling LayoutPilotPackageTests runner.swift
+[19/22] Wrapping AST for LayoutPilotPackageTests for debugging
+[20/22] Write Objects.LinkFileList
+[21/22] Linking LayoutPilotPackageTests.xctest
+Build complete! (7.52s)
+Test Suite 'All tests' started at 2026-10-18 00:45:58.535
+Test Suite 'debug.xctest' started at 2026-10-18 00:45:58.554
+Test Suite 'CoreTests' started at 2026-10-18 00:45:58.554
+Test Case 'CoreTests.testConservativeBoundaries' started at 2026-10-18 00:45:58.554
+Test Case 'CoreTests.testConservativeBoundaries' passed (0.107 seconds)
+Test Case 'CoreTests.testContextAndSettingsGuards' started at 2026-10-18 00:45:58.661
+Test Case 'CoreTests.testContextAndSettingsGuards' passed (0.002 seconds)
+Test Case 'CoreTests.testDoubleCapitalAndSemanticYoRegressions' started at 2026-10-18 00:45:58.663
+Test Case 'CoreTests.testDoubleCapitalAndSemanticYoRegressions' passed (0.0 seconds)
+Test Case 'CoreTests.testKnownDecisionsAndCase' started at 2026-10-18 00:45:58.664
+Test Case 'CoreTests.testKnownDecisionsAndCase' passed (0.001 seconds)
+Test Case 'CoreTests.testLiteralRuleAndFeatureSwitches' started at 2026-10-18 00:45:58.664
+Test Case 'CoreTests.testLiteralRuleAndFeatureSwitches' passed (0.002 seconds)
+Test Case 'CoreTests.testPhysicalMappingAndUnicode' started at 2026-10-18 00:45:58.666
+Test Case 'CoreTests.testPhysicalMappingAndUnicode' passed (0.0 seconds)
+Test Case 'CoreTests.testRejectGraphemeSplitsAndOverflowRanges' started at 2026-10-18 00:45:58.666
+Test Case 'CoreTests.testRejectGraphemeSplitsAndOverflowRanges' passed (0.001 seconds)
+Test Case 'CoreTests.testReplayBoundaryBackspaceResetAndContext' started at 2026-10-18 00:45:58.667
+Test Case 'CoreTests.testReplayBoundaryBackspaceResetAndContext' passed (0.001 seconds)
+Test Case 'CoreTests.testSelectionAfterReplacementRegressions' started at 2026-10-18 00:45:58.668
+Test Case 'CoreTests.testSelectionAfterReplacementRegressions' passed (0.0 seconds)
+Test Case 'CoreTests.testUTF16EditsAndCursor' started at 2026-10-18 00:45:58.668
+Test Case 'CoreTests.testUTF16EditsAndCursor' passed (0.0 seconds)
+Test Suite 'CoreTests' passed at 2026-10-18 00:45:58.669
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.114 (0.114) seconds
+Test Suite 'ModifierGestureTests' started at 2026-10-18 00:45:58.669
+Test Case 'ModifierGestureTests.testChordInvalidatesBothReleases' started at 2026-10-18 00:45:58.669
+Test Case 'ModifierGestureTests.testChordInvalidatesBothReleases' passed (0.101 seconds)
+Test Case 'ModifierGestureTests.testDoubleCancelsDelayedSingle' started at 2026-10-18 00:45:58.769
+Test Case 'ModifierGestureTests.testDoubleCancelsDelayedSingle' passed (0.0 seconds)
+Test Case 'ModifierGestureTests.testInclusiveDoubleBoundary' started at 2026-10-18 00:45:58.770
+Test Case 'ModifierGestureTests.testInclusiveDoubleBoundary' passed (0.0 seconds)
+Test Case 'ModifierGestureTests.testTypingAndResetCancelGestures' started at 2026-10-18 00:45:58.770
+Test Case 'ModifierGestureTests.testTypingAndResetCancelGestures' passed (0.0 seconds)
+Test Suite 'ModifierGestureTests' passed at 2026-10-18 00:45:58.771
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.102 (0.102) seconds
+Test Suite 'debug.xctest' passed at 2026-10-18 00:45:58.771
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.216 (0.216) seconds
+Test Suite 'All tests' passed at 2026-10-18 00:45:58.771
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.216 (0.216) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.
+....
+----------------------------------------------------------------------
+Ran 4 tests in 2.158s
+
+OK
+exit=0

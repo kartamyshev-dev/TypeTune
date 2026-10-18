@@ -1,5 +1,15 @@
 # Состояние TypeTune
 
+## Исправления по ревью: этап 8 (CI) — 2026-10-17
+
+`.github/workflows/ci.yml`: задание Linux (контейнер `swift:6.0.3-noble`) и задание macOS
+(`macos-15`). Общие офлайн-проверки собраны в `scripts/ci_core.sh`: CLI, selftest, корпуса v2/v3,
+fixtures, XCTest, audit gates и воспроизводимость отчётов корпуса. Задание Linux воспроизведено
+локально в том же контейнере на чистом клоне без Git-идентичности — exit 0. Задание macOS
+собирает все продукты (в том числе приложение) и запускает `runtime_recovery_probe.sh` —
+**NOT_RUN** до push. [Evidence](../research/evidence/stage8-ci-2026-10-17/verification.json).
+Продолжение: этап 9 — README и документация.
+
 ## Исправления по ревью: этап 7 (MutationSession) — 2026-10-17
 
 Вид проверки: **Linux offline только для Core**; перенесённый KeyboardService **не компилировался**.

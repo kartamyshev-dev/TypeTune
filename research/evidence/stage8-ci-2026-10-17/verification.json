@@ -1,0 +1,26 @@
+{
+  "kind": "CI definition; Linux job reproduced locally, macOS job NOT run (requires push to GitHub)",
+  "date": "2026-10-17",
+  "baseCommit": "aed2c2161d0be3e3dcf5ced23d3de36deaa74485",
+  "linuxJob": {
+    "local": "scripts/ci_core.sh in this workspace: exit 0 (ci-core-linux.txt)",
+    "container": "clean clone of HEAD + scripts/ci_core.sh in docker swift:6.0.3-noble without Git identity, as in GitHub Actions: exit 0 (ci-core-container.txt)",
+    "checks": "CLI build, selftest 1317/1317, corpus v2 4420/4420 and v3 22000/22000, review/lexicon/context fixtures, XCTest 14/14, audit gates 4/4, deterministic corpus reports"
+  },
+  "macosJob": {
+    "status": "NOT_RUN",
+    "runner": "macos-15 (Xcode 16, Swift 6)",
+    "steps": [
+      "swift build (all products, including GUI)",
+      "scripts/ci_core.sh",
+      "scripts/runtime_recovery_probe.sh (production KeyboardService with test hooks; no permissions, no event tap)"
+    ]
+  },
+  "notCovered": [
+    "native input, AX, TCC permissions, installed app — remain manual Mac checks"
+  ],
+  "files": {
+    ".github/workflows/ci.yml": "408bc3f29e1065f6786e39a229c155a7dfc3a0fd48b87df25e1d7bf9af724ce0",
+    "scripts/ci_core.sh": "2ba1d785f3f670968a34d412bcc05601123673cd79c09bee5d970791d46d0ce9"
+  }
+}

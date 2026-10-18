@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  linux-core:
+    name: Core and CLI (Linux)
+    runs-on: ubuntu-24.04
+    container: swift:6.0.3-noble
+    steps:
+      - name: Install Python and Git
+        run: apt-get update && apt-get install -y --no-install-recommends python3 git
+      - uses: actions/checkout@v4
+      - name: Trust the workspace for Git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Offline checks
+        run: scripts/ci_core.sh
+
+  macos:
+    name: App build and controller probe (macOS)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: swift --version
+      - name: Build every product
+        run: swift build
+      - name: Offline checks
+        run: scripts/ci_core.sh
+      - name: Recovery controller probe (test hooks, no permissions, no event tap)
+        run: scripts/runtime_recovery_probe.sh
