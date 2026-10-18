@@ -1259,3 +1259,10 @@ controller70, audit/fixtures12 прошли отдельно.
 прошла CLI1336, corpus4420, guard23, controller70, audit4 и fixtures8.
 Native PASS кандидата bdecb08f не перенесён на новый bundle. Четыре часа NOT_RUN.
 [Отчёт](RELEASE_0.1.4.md).
+
+### Публикация v0.1.4
+
+Код отправлен в main, тег установлен на `39ee28e88270` после зелёного CI Linux/macOS.
+ZIP и SHA-256 опубликованы как prerelease; скачанные assets совпали побайтово.
+Установленный на Mac кандидат bdecb08f не заменялся. Четыре часа NOT_RUN.
+[Evidence](../research/evidence/release-0.1.4/publication.json).

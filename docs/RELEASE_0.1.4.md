@@ -22,3 +22,13 @@ CLI1336/1336, corpus4420/4420, controller70/70, guard23/23. Native PASS
 На ней повторены CLI1336/1336, corpus4420/4420, guard23/23, controller70/70,
 audit4/4 и fixtures8/8. Native на релизном bundle не запускался.
 [Evidence](../research/evidence/release-0.1.4/).
+
+Опубликован [v0.1.4](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.4),
+тег `39ee28e8827011b605e732c84eb6b8fc49a8816f`.
+[CI Linux/macOS](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39129474270) прошёл.
+ZIP SHA-256 `6f17104e1771fce4ed36d5b94c4a60b068abfc73e5231658fad77007f104128e`.
+После распаковки ditto проверены манифест, версия, подпись и CLI1336/1336.
+Python zipfile не сохраняет необходимые права исполнения — его распаковка не
+подходила для проверки подписи; повтор штатным ditto прошёл.
+Загруженные файлы скачаны обратно и побайтово сверены.
+[Публикация](../research/evidence/release-0.1.4/publication.json).

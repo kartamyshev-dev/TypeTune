@@ -1,0 +1,46 @@
+{
+  "assets": [
+    {
+      "apiUrl": "https://api.github.com/repos/kartamyshev-dev/TypeTune/releases/assets/653498163",
+      "contentType": "application/zip",
+      "createdAt": "2026-10-18T12:58:32Z",
+      "digest": "sha256:6f17104e1771fce4ed36d5b94c4a60b068abfc73e5231658fad77007f104128e",
+      "downloadCount": 0,
+      "id": "RA_kwDOVNynYc4m85cz",
+      "label": "",
+      "name": "TypeTune-0.1.4-39ee28e88270-arm64.zip",
+      "size": 18498907,
+      "state": "uploaded",
+      "updatedAt": "2026-10-18T12:58:37Z",
+      "url": "https://github.com/kartamyshev-dev/TypeTune/releases/download/v0.1.4/TypeTune-0.1.4-39ee28e88270-arm64.zip"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/kartamyshev-dev/TypeTune/releases/assets/653498162",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-18T12:58:32Z",
+      "digest": "sha256:9df7d655332010eec36a21e1208484a18568ad019975900cbb21f39b6b216e51",
+      "downloadCount": 0,
+      "id": "RA_kwDOVNynYc4m85cy",
+      "label": "",
+      "name": "TypeTune-0.1.4-39ee28e88270-arm64.zip.sha256",
+      "size": 109,
+      "state": "uploaded",
+      "updatedAt": "2026-10-18T12:58:32Z",
+      "url": "https://github.com/kartamyshev-dev/TypeTune/releases/download/v0.1.4/TypeTune-0.1.4-39ee28e88270-arm64.zip.sha256"
+    }
+  ],
+  "isDraft": false,
+  "isPrerelease": true,
+  "publishedAt": "2026-10-18T12:59:26Z",
+  "targetCommitish": "39ee28e8827011b605e732c84eb6b8fc49a8816f",
+  "url": "https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.4",
+  "sourceCommit": "39ee28e8827011b605e732c84eb6b8fc49a8816f",
+  "ciRun": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39129474270",
+  "ciConclusion": "success",
+  "downloadedAssetsMatch": true,
+  "archiveManifestVerified": true,
+  "extractedCodesignVerified": true,
+  "extractedCLIChecks": 1336,
+  "fourHourRun": "NOT_RUN",
+  "releaseBundleNative": "NOT_RUN"
+}
