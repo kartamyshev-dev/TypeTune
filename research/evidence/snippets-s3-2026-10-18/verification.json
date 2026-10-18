@@ -1,0 +1,24 @@
+{
+  "kind": "Linux offline (Core + CLI, Swift 6.0.3); no GUI change, no native claim",
+  "date": "2026-10-18",
+  "baseCommit": "bc42707684dfdfb0bbb275670eaeba15a7b431c0",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0 (selftest, corpus v2/v3, regression fixtures, swift test 14/14, audit gates, corpus diff clean)",
+    "selftest": "1566/1566 (44 snippet matcher invariants)",
+    "mutationCheck": "left boundary removed, other layout always on, shortest-first order: 5 matcher checks failed; restored code passes",
+    "foundByChecks": "splitting the converted token first gave 'спс!?' the suffix '!,' ('?' is on different keys in both layouts) and double conversion matched 'спсб'; the try order is now: whole token, typed split, converted split, typed punctuation with converted abbreviation"
+  },
+  "semantics": [
+    "immediate: called with the characters a key just inserted; the abbreviation (or its other-layout form) must end the buffer; Backspace never fires",
+    "word-like abbreviation never fires inside a word; a sign-led one may; anchored=false only when the abbreviation begins the buffer after a reset",
+    "boundary: the whitespace typed now must be the whole boundary run (no second firing); Return/Tab reset the buffer and never fire",
+    "boundary keeps trailing . , ! ? ; : after the expansion; punctuation typed in the other layout is converted (cgc? -> спс,)",
+    "other layout only when the snippet allows it; migrated rules never match the other layout",
+    "longest abbreviation wins; equal length keeps library order; enabled and application filter respected; pause and excluded apps are the caller's",
+    "case: typed exactly as defined -> as written; otherwise 2+ capital letters -> upper, first capital and rest lower -> capitalized (DECISIONS 28 S3 note)"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/SnippetMatcher.swift": "11b16225bf136a75bf30397a1c9c5f069965be030fcacf4e4bc78033edcfde97",
+    "Sources/LayoutPilotCLI/SnippetMatcherChecks.swift": "e37126295d81f8debe3d03e9488ca5d3588b4c6a248bd8d1f10ff13361dc679f"
+  }
+}
