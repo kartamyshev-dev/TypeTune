@@ -1,0 +1,198 @@
+{
+  "conclusion": "success",
+  "headSha": "a6e6213a4729c53f42e2257d327f1c5287c2a1d5",
+  "jobs": [
+    {
+      "completedAt": "2026-10-18T19:59:59Z",
+      "conclusion": "success",
+      "databaseId": 117774486666,
+      "name": "App build and controller probe (macOS)",
+      "startedAt": "2026-10-18T19:57:59Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-18T19:58:00Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-18T19:58:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:02Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-18T19:58:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:05Z",
+          "conclusion": "success",
+          "name": "Toolchain",
+          "number": 3,
+          "startedAt": "2026-10-18T19:58:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:28Z",
+          "conclusion": "success",
+          "name": "Build every product",
+          "number": 4,
+          "startedAt": "2026-10-18T19:58:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:43Z",
+          "conclusion": "success",
+          "name": "Offline checks",
+          "number": 5,
+          "startedAt": "2026-10-18T19:58:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:54Z",
+          "conclusion": "success",
+          "name": "Recovery controller probe (test hooks, no permissions, no event tap)",
+          "number": 6,
+          "startedAt": "2026-10-18T19:58:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:59:00Z",
+          "conclusion": "success",
+          "name": "Diagnostic probes compile",
+          "number": 7,
+          "startedAt": "2026-10-18T19:58:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:59:46Z",
+          "conclusion": "success",
+          "name": "Test build for manual checks (release arm64, ad-hoc signature)",
+          "number": 8,
+          "startedAt": "2026-10-18T19:59:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:59:54Z",
+          "conclusion": "success",
+          "name": "Test build runs without the build directory",
+          "number": 9,
+          "startedAt": "2026-10-18T19:59:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:59:55Z",
+          "conclusion": "success",
+          "name": "Upload test build",
+          "number": 10,
+          "startedAt": "2026-10-18T19:59:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:59:56Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 20,
+          "startedAt": "2026-10-18T19:59:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:59:58Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "startedAt": "2026-10-18T19:59:56Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39161125663/job/117774486666"
+    },
+    {
+      "completedAt": "2026-10-18T19:58:55Z",
+      "conclusion": "success",
+      "databaseId": 117774486921,
+      "name": "Core and CLI (Linux)",
+      "startedAt": "2026-10-18T19:57:56Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-18T19:57:58Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-18T19:57:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:30Z",
+          "conclusion": "success",
+          "name": "Initialize containers",
+          "number": 2,
+          "startedAt": "2026-10-18T19:57:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:38Z",
+          "conclusion": "success",
+          "name": "Install Python and Git",
+          "number": 3,
+          "startedAt": "2026-10-18T19:58:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:39Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 4,
+          "startedAt": "2026-10-18T19:58:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:39Z",
+          "conclusion": "success",
+          "name": "Trust the workspace for Git",
+          "number": 5,
+          "startedAt": "2026-10-18T19:58:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:52Z",
+          "conclusion": "success",
+          "name": "Offline checks",
+          "number": 6,
+          "startedAt": "2026-10-18T19:58:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 11,
+          "startedAt": "2026-10-18T19:58:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:53Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 12,
+          "startedAt": "2026-10-18T19:58:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-18T19:58:54Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "startedAt": "2026-10-18T19:58:54Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39161125663/job/117774486921"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39161125663"
+}

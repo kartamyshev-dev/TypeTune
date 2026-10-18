@@ -1,0 +1,60 @@
+[
+  {
+    "app": "Google Chrome",
+    "field": "адресная строка: выделенный inline suffix",
+    "scenario": "S14",
+    "result": "PASS",
+    "kind": "agent native, user-authorized; guarded MatrixInputProbe",
+    "observed": "Числовой адресный префикс и выбранный suffix → Space; точный введённый префикс, caret/source/flag; Safari может дать новое целиком выделенное продолжение",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "chrome-inline-space-1.json",
+      "chrome-inline-space-2.json",
+      "chrome-inline-space-3.json",
+      "chrome-inline-space-4.json",
+      "chrome-inline-space-5.json"
+    ]
+  },
+  {
+    "app": "Safari",
+    "field": "адресная строка: выделенный inline suffix и следующая подсказка",
+    "scenario": "S14",
+    "result": "PASS",
+    "kind": "agent native, user-authorized; guarded MatrixInputProbe",
+    "observed": "Числовой адресный префикс и выбранный suffix → Space; точный введённый префикс, caret/source/flag; Safari может дать новое целиком выделенное продолжение",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "safari-inline-final-1.json",
+      "safari-inline-final-2.json",
+      "safari-inline-final-3.json",
+      "safari-inline-final-4.json",
+      "safari-inline-final-5.json"
+    ]
+  },
+  {
+    "app": "AionUi Chrome PWA",
+    "field": "пустой composer стартового экрана: меню команд",
+    "scenario": "S14",
+    "result": "PASS",
+    "kind": "agent native, user-authorized; guarded MatrixInputProbe",
+    "observed": "/, /open, /open space по5 повторов; отдельный Single Shift при открытом меню; меню видно CUA; команд не запускали",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "aion-home-slash-repeat-1.json",
+      "aion-home-slash-repeat-2.json",
+      "aion-home-slash-repeat-3.json",
+      "aion-home-slash-repeat-4.json",
+      "aion-home-slash-repeat-5.json",
+      "aion-home-open-repeat-1.json",
+      "aion-home-open-repeat-2.json",
+      "aion-home-open-repeat-3.json",
+      "aion-home-open-repeat-4.json",
+      "aion-home-open-repeat-5.json",
+      "aion-home-open-space-repeat-1.json",
+      "aion-home-open-space-repeat-2.json",
+      "aion-home-open-space-repeat-3.json",
+      "aion-home-open-space-repeat-4.json",
+      "aion-home-open-space-repeat-5.json"
+    ]
+  }
+]

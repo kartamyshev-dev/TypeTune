@@ -1,0 +1,71 @@
+{
+  "status": "STOPPED, not PASS",
+  "reason": "Observed correction misses, helper terminated; then TypeTune recoveryPending observed",
+  "completed": 5,
+  "activeCaseAtStop": "stream-80ms-06",
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/E93765FB-3B07-4CA5-9859-1E9BB21FFCAC.txt",
+  "checkpointSha256": "df6447d6599a39f92f669311f6f989e4dea5a6e3b7017b2222b4fc0c2fcff11a",
+  "workload": "corpus/native-stream-80ms-v1.json",
+  "fixtureSHA256": "5a9db38176bdccc0f85c7c6da77232cd68ac54bcfd82cb6271fedf9e0ffcfe2a",
+  "sourceCommit": "d145971243299354edcd86f7d08d01c8ab74e4d0",
+  "guiSHA256": "34439d48f36b7d675352a83e51101fb260e91032ede3d80f51806240b7c7bf07",
+  "rows": [
+    {
+      "id": "stream-80ms-01",
+      "textMatches": false,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "observedUTF16Length": 105,
+      "expectedUTF16Length": 105,
+      "unconvertedGhbdtn": 5
+    },
+    {
+      "id": "stream-80ms-02",
+      "textMatches": false,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "observedUTF16Length": 105,
+      "expectedUTF16Length": 105,
+      "unconvertedGhbdtn": 8
+    },
+    {
+      "id": "stream-80ms-03",
+      "textMatches": false,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "observedUTF16Length": 105,
+      "expectedUTF16Length": 105,
+      "unconvertedGhbdtn": 8
+    },
+    {
+      "id": "stream-80ms-04",
+      "textMatches": false,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "observedUTF16Length": 105,
+      "expectedUTF16Length": 105,
+      "unconvertedGhbdtn": 8
+    },
+    {
+      "id": "stream-80ms-05",
+      "textMatches": false,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "observedUTF16Length": 105,
+      "expectedUTF16Length": 105,
+      "unconvertedGhbdtn": 8
+    }
+  ],
+  "pendingInput": 1,
+  "replayRouteRejection": {
+    "identity": true,
+    "frontmost": true,
+    "allowed": true,
+    "source": true,
+    "trusted": true,
+    "posting": true,
+    "leaseFresh": false
+  },
+  "leaseExpiryRootCauseProven": false,
+  "helperTerminationEffectOnFinalState": "not isolated; do not claim causality"
+}

@@ -1,0 +1,84 @@
+{
+  "guiSha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+  "cases": {
+    "aion": {
+      "passed": true,
+      "events": 210,
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "statusFlagMatches": true,
+      "statusSourceMatches": true,
+      "testTextCleared": true,
+      "inputSourceRestored": true,
+      "modifiersNeutral": true,
+      "evidence": "bound/aion-mixed-stream.json"
+    },
+    "telegram": {
+      "passed": true,
+      "events": 210,
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "statusFlagMatches": true,
+      "statusSourceMatches": true,
+      "testTextCleared": true,
+      "inputSourceRestored": true,
+      "modifiersNeutral": true,
+      "evidence": "bound/telegram-mixed-stream.json"
+    },
+    "chrome": {
+      "passed": true,
+      "events": 210,
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "statusFlagMatches": true,
+      "statusSourceMatches": true,
+      "testTextCleared": true,
+      "inputSourceRestored": true,
+      "modifiersNeutral": true,
+      "evidence": "bound/chrome-mixed-stream.json"
+    },
+    "notes": {
+      "passed": true,
+      "events": 210,
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "statusFlagMatches": true,
+      "statusSourceMatches": true,
+      "testTextCleared": true,
+      "inputSourceRestored": true,
+      "modifiersNeutral": true,
+      "evidence": "bound/notes-mixed-stream-repeat.json"
+    }
+  },
+  "diagnosticRing": {
+    "records": 1000,
+    "rejections": 12,
+    "allRejectedOnlyForExpiredLease": true,
+    "faults": 0,
+    "final": {
+      "checks": {
+        "listening": true,
+        "posting": true,
+        "secure": false,
+        "tapActive": true,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "manual-snapshot",
+      "reason": "ready",
+      "revision": 5285,
+      "uptime": 12817.001398083334
+    },
+    "scope": "Последние 1000 записей, включая более ранние тесты; не полный trace четырёх потоков"
+  },
+  "notesFirstAttempt": "Остановка защиты пробника focus_unavailable, 8 событий, точный остаток ghb проверен UI и очищен перед повтором",
+  "reviewFirstAttempt": "focused_window_unverified после 2 событий; агент параллельно открыл вкладку TypeTune, результат не засчитан"
+}

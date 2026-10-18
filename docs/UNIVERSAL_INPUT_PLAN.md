@@ -77,7 +77,14 @@
 Каждый этап — отдельный коммит с evidence. Для этапов GUI сборку проверяет CI
 на macOS после push.
 
-## Чек-лист U8 для Mac (всё NOT_RUN)
+## Чек-лист U8 для Mac (приёмка частичная)
+
+Текущая ограниченная native-матрица на GUI ab020042 / код6e07197: [verification](../research/evidence/mac-agent-p9-2026-10-18/verification.json).
+Cold Chrome подтверждён пользователем: [user manual PASS](../research/evidence/mac-agent-p9-2026-10-18/chrome-cold-user-manual.json).
+S14 numeric inline Chrome/Safari5/5, PWA home command menu15/15 и последующий ввод прошли:
+[verification S14](../research/evidence/mac-agent-s14-2026-10-18/verification.json).
+U8 не закрыт: границы password E2E и полный приёмочный PLAN остаются открытыми;
+S5/несколько приложений пропущены пользователем, четыре часа отложены.
 
 Сборка ветки: `git switch universal-input && scripts/build.sh`; установка и обновление разрешений —
 по AGENTS.md. Во время проверки не держать запущенными другие переключатели раскладки.

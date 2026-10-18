@@ -1,0 +1,2 @@
+{"candidateArtifactVerified": true, "binarySha256": "8f554257fd8e01f014589afd37e357fb8279eafaddb5effcbf62d90ad38ed4f7", "nativeAcceptance": false, "notice": "Integrity only; candidate, not full release acceptance."}
+9e06df8b53b9c5d984e82392fecfd263d4fceb5120f96af5fbe9238c1aeb1482  dist/TypeTune-0.1.5-a6e6213a4729-arm64.zip

@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "nativeAcceptance": false,
+  "helperCrash": true,
+  "signal": "SIGABRT",
+  "frames": [
+    "__pthread_kill",
+    "pthread_kill",
+    "abort",
+    "__abort_message",
+    "demangling_terminate_handler()",
+    "_objc_terminate()",
+    "std::__terminate(void (*)())",
+    "__cxxabiv1::failed_throw(__cxxabiv1::__cxa_exception*)",
+    "__cxa_throw",
+    "objc_exception_throw",
+    "-[NSRLEArray objectAtIndex:effectiveRange:]",
+    "-[NSConcreteAttributedString attribute:atIndex:effectiveRange:]",
+    "static ImagePasteMain.main()",
+    "static ImagePasteMain.$main()",
+    "main"
+  ],
+  "cause": "RTF attachment-only range decoded to empty NSAttributedString; attribute at index 0 raised Objective-C exception",
+  "clipboardRestore": "NOT_CONFIRMED after crash; original snapshot was helper RAM",
+  "guiBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+  "readbackByCua": "собственный новый RTFD: привет[вложенное изображение]",
+  "document": "research/private/probes/15EBD575-6C97-4A6E-A41A-C2744438D793.rtfd",
+  "finalInputSource": "com.apple.keylayout.RussianWin",
+  "finalModifiersNeutral": true,
+  "completeBinding": "NOT_AVAILABLE: wrapper JSON decoder failed because child stdout empty",
+  "noUserDocumentChanged": true,
+  "next": "Native tests stopped under §2.7. Remove unnecessary RTF image decoding and keep original clipboard snapshot in a supervising process before any further image test."
+}

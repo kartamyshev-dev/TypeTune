@@ -1,0 +1,144 @@
+[
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": {
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "inputSourceRestored": true,
+      "events": 46
+    },
+    "statusText": "Работает (UI before series); per-case tooltip not sampled",
+    "reportFile": "chrome-rich-s7-01.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": {
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "inputSourceRestored": true,
+      "events": 30
+    },
+    "statusText": "Работает (UI before series); per-case tooltip not sampled",
+    "reportFile": "chrome-single-s1-01.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S11",
+    "result": "PASS",
+    "observed": {
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "inputSourceRestored": true,
+      "events": 14
+    },
+    "statusText": "Работает (UI before series); per-case tooltip not sampled",
+    "reportFile": "chrome-single-s11-01.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": {
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "inputSourceRestored": true,
+      "events": 26
+    },
+    "statusText": "Работает (UI before series); per-case tooltip not sampled",
+    "reportFile": "chrome-single-s3-01.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": {
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "inputSourceRestored": true,
+      "events": 30
+    },
+    "statusText": "Работает (UI before series); per-case tooltip not sampled",
+    "reportFile": "chrome-single-s4-01.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": {
+      "textMatches": true,
+      "caretMatches": true,
+      "sourceMatches": true,
+      "inputSourceRestored": true,
+      "events": 90
+    },
+    "statusText": "Работает (UI before series); per-case tooltip not sampled",
+    "reportFile": "chrome-single-s7-01.json"
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "new local test document",
+    "scenario": "native-smoke (13)",
+    "result": "PASS",
+    "observed": {
+      "cases": 13,
+      "requestedCases": 13,
+      "rowsFromStoppedCheckpoint": false,
+      "failures": [],
+      "fixtureIdentityVerified": true,
+      "modifierCleanupVerified": true,
+      "notice": "Only supplied native scenarios; stopped/incomplete runs cannot pass."
+    },
+    "statusText": "Работает (before series); no per-case tooltip sample",
+    "reportFile": "textedit-smoke.json"
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "new local test document",
+    "scenario": "review-regressions (12)",
+    "result": "PASS",
+    "observed": {
+      "cases": 12,
+      "requestedCases": 12,
+      "rowsFromStoppedCheckpoint": false,
+      "failures": [],
+      "fixtureIdentityVerified": true,
+      "modifierCleanupVerified": true,
+      "notice": "Only supplied native scenarios; stopped/incomplete runs cannot pass."
+    },
+    "statusText": "Работает (before series); no per-case tooltip sample",
+    "reportFile": "textedit-review.json"
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "fresh local document",
+    "scenario": "80ms continuous stream (partial run)",
+    "result": "FAIL",
+    "observed": "correction misses in completed cases; then recoveryPending with one retained event; series terminated",
+    "statusText": "Ожидает восстановления; Сохранено нажатий: 1",
+    "reportFile": "stream-stopped-analysis.json"
+  }
+]

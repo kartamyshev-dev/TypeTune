@@ -1,0 +1,11 @@
+{
+  "error" : "foreign_modifier",
+  "events" : 15,
+  "fieldDescriptionLength" : 19,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : false,
+  "passed" : false,
+  "returnEvents" : 0,
+  "undoPreconditionVerified" : true,
+  "windowTitleLength" : 55
+}

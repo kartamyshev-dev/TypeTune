@@ -1,0 +1,101 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 27
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 27,
+      "maxMilliseconds": 0.2973750015371479,
+      "totalMilliseconds": 3.835374995105667
+    },
+    "AXFocusedUIElement:0": {
+      "count": 27,
+      "maxMilliseconds": 2.210999999078922,
+      "totalMilliseconds": 4.334041659603827
+    },
+    "AXFocusedWindow:0": {
+      "count": 27,
+      "maxMilliseconds": 31.967833332601003,
+      "totalMilliseconds": 115.07545831773314
+    },
+    "AXRole:0": {
+      "count": 27,
+      "maxMilliseconds": 0.07054166781017557,
+      "totalMilliseconds": 1.0840833383554127
+    },
+    "AXSelectedTextRange:0": {
+      "count": 2,
+      "maxMilliseconds": 0.11049999739043415,
+      "totalMilliseconds": 0.15854166485951282
+    },
+    "AXSubrole:-25205": {
+      "count": 27,
+      "maxMilliseconds": 33.15633333477308,
+      "totalMilliseconds": 36.75512498739408
+    },
+    "AXValue:0": {
+      "count": 2,
+      "maxMilliseconds": 0.10958333223243244,
+      "totalMilliseconds": 0.1349166668660473
+    },
+    "AXWindow:0": {
+      "count": 27,
+      "maxMilliseconds": 0.1545416671433486,
+      "totalMilliseconds": 2.141250006388873
+    }
+  },
+  "bundle": "com.apple.TextEdit",
+  "caretMatches": true,
+  "events": 24,
+  "finalModifierFlags": 536870912,
+  "modifiersNeutral": true,
+  "observedInputSource": "com.apple.keylayout.RussianWin",
+  "passed": true,
+  "returnEvents": 0,
+  "sourceMatches": true,
+  "textMatches": true,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "b0b6893f4779dfde2222db886cd3b1ecc82453067ee80686684efa98f69b9032",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "73884dd7c9be03e5eea8450953d05ae741beefd2fcccbf99a3b57199522ca474",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    },
+    "probePrefixSha256": "60361bdd087ca1f471ea691ee8b486c470e7be249124972548506d299a0be848"
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "b0b6893f4779dfde2222db886cd3b1ecc82453067ee80686684efa98f69b9032",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "73884dd7c9be03e5eea8450953d05ae741beefd2fcccbf99a3b57199522ca474",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    },
+    "probePrefixSha256": "60361bdd087ca1f471ea691ee8b486c470e7be249124972548506d299a0be848"
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-s13-doc",
+  "helperProcess": {
+    "pid": 36987,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-s13-doc",
+    "started": "Sun Oct 18 21:28:46 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 0,
+  "caseFileSha256": "932c249110a160c1327bd0b6c053302dbf04a5f4804e5ee234ab71f4f70c2072",
+  "caseFileUnchanged": true,
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "helperWallSeconds": 3.681417625000904
+}

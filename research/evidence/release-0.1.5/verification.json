@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "a6e6213a4729c53f42e2257d327f1c5287c2a1d5",
+  "version": "0.1.5",
+  "build": "11",
+  "archive": "TypeTune-0.1.5-a6e6213a4729-arm64.zip",
+  "archiveSha256": "9e06df8b53b9c5d984e82392fecfd263d4fceb5120f96af5fbe9238c1aeb1482",
+  "archiveBytes": 19050627,
+  "guiSha256": "8f554257fd8e01f014589afd37e357fb8279eafaddb5effcbf62d90ad38ed4f7",
+  "manifestFilesVerified": 93,
+  "dittoUnpackPassed": true,
+  "signatureVerified": true,
+  "adHoc": true,
+  "notarized": false,
+  "nativeReleaseBundle": "NOT_RUN",
+  "installedCandidateReplaced": false,
+  "fullAcceptance": false,
+  "fourHourRun": "NOT_RUN_USER_DEFERRED",
+  "prerelease": true,
+  "offline": {
+    "cli": "1439/1439",
+    "corpus": "4420/4420",
+    "corpusV3": "22000/22000",
+    "audit": "4/4",
+    "fixtures": "8/8",
+    "controller": "93/93",
+    "editorGuard": "23/23"
+  },
+  "applicationCI": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39161125663",
+  "published": true,
+  "publication": "publication.json"
+}

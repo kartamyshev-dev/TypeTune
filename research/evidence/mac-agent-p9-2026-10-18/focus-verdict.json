@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "cases": 18,
+  "rounds": 3,
+  "nativeKeyboardEvents": 0,
+  "actualFlagAndSourceMatch": true,
+  "files": [
+    "focus-1-chrome.json",
+    "focus-1-safari.json",
+    "focus-1-telegram.json",
+    "focus-1-notes.json",
+    "focus-1-aion.json",
+    "focus-1-textedit.json",
+    "focus-2-chrome.json",
+    "focus-2-safari.json",
+    "focus-2-telegram.json",
+    "focus-2-notes.json",
+    "focus-2-aion.json",
+    "focus-2-textedit.json",
+    "focus-3-chrome.json",
+    "focus-3-safari.json",
+    "focus-3-telegram.json",
+    "focus-3-notes.json",
+    "focus-3-aion.json",
+    "focus-3-textedit.json"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "appCodeCommit": "3244c813475a80856b154b23ecd7496a1f2f59c7",
+  "guiSHA256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+  "previousProbeSourceSHA256": "830a52fedb88ba1216a21794d4c7d110e6c78b762076bf97ad3d16cae8529e37",
+  "rangeProbeSourceSHA256": "d8c28d2a55c3984a0fccd63ea90c36887c1fd8f3403b3c953624c5ece25127b1",
+  "notesReadback": "bounded AXStringForRange fallback; field/window identities and gates unchanged",
+  "preflightFailuresAreNotProductFailures": [
+    "telegram-s1.json",
+    "notes-s1.json"
+  ],
+  "notesS7": "LIMIT; first unreadable unanchored token skipped; remaining text correct; see notes-s7-limit.json",
+  "otherAppsBlocked": "tool-blocks.json"
+}

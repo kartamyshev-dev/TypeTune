@@ -1,0 +1,1 @@
+{"bundle": "com.google.Chrome", "window": "Google - Google Chrome", "description": "Найти", "text": "ghbdtn ", "expected": "привет ", "source": "com.apple.keylayout.ABC", "expectedSource": "com.apple.keylayout.RussianWin", "gesture": "none"}

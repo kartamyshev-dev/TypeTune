@@ -1,0 +1,54 @@
+{
+  "error": "field_or_window_changed",
+  "events": 8,
+  "fieldDescriptionLength": 5,
+  "inputSourceRestored": true,
+  "modifiersNeutral": true,
+  "passed": false,
+  "returnEvents": 0,
+  "windowTitleLength": 22,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "d187d860877b7177e5f83d4cd5ce082569e24e0d728de4b654db89cfc253f163",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "40e9506e30da3b650fc9138f202b9d93fbbe4ccf51c5f1c3330807296592b455",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    }
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "d187d860877b7177e5f83d4cd5ce082569e24e0d728de4b654db89cfc253f163",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "40e9506e30da3b650fc9138f202b9d93fbbe4ccf51c5f1c3330807296592b455",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    }
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+  "helperProcess": {
+    "pid": 26828,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+    "started": "Sun Oct 18 20:30:15 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 1,
+  "caseFileSha256": "2d8ae180d594ce554b7260554ad9c4314242f0f0a61cac9f0edbb2af8b9ce95b",
+  "caseFileUnchanged": true,
+  "sourceCommit": "3d6659e49b24c78d47455cfa5e6b6a639bfea134",
+  "finalModifierFlags": 536870912,
+  "helperWallSeconds": 1.5684062910004286,
+  "validationError": "helper_exit_not_verified"
+}

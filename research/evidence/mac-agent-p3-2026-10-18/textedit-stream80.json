@@ -1,0 +1,48 @@
+{
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "a7029668ef5c6ec38b6073bc070895c4b808619707bd217046dd9d7bb066b8c5",
+    "targetBinarySha256": "34439d48f36b7d675352a83e51101fb260e91032ede3d80f51806240b7c7bf07",
+    "probeSourceSha256": "6295fe5a26560012dccfbc77b8b557e80b3b97c6e557def9bf1b67721645bf31",
+    "probeBinarySha256": "e524b6cee4e1fa123f1e0c3aed52b3ef6fa6958826a203bbc113a56b5220f5a7",
+    "targetProcess": {
+      "pid": 14080,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 18:35:39 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": false,
+  "helperProcess": {
+    "pid": 14756,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 18:40:17 2026"
+  },
+  "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+  "processExitCode": -15,
+  "helperWallSeconds": 84.95536791700033,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "a7029668ef5c6ec38b6073bc070895c4b808619707bd217046dd9d7bb066b8c5",
+    "targetBinarySha256": "34439d48f36b7d675352a83e51101fb260e91032ede3d80f51806240b7c7bf07",
+    "probeSourceSha256": "6295fe5a26560012dccfbc77b8b557e80b3b97c6e557def9bf1b67721645bf31",
+    "probeBinarySha256": "e524b6cee4e1fa123f1e0c3aed52b3ef6fa6958826a203bbc113a56b5220f5a7",
+    "targetProcess": {
+      "pid": 14080,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 18:35:39 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 14080,
+  "sourceCommit": "d145971243299354edcd86f7d08d01c8ab74e4d0",
+  "sourceDirty": true,
+  "probeStartUptime": 6573.256221833,
+  "probeEndUptime": 6658.266600875,
+  "caseFileSha256": "5a9db38176bdccc0f85c7c6da77232cd68ac54bcfd82cb6271fedf9e0ffcfe2a",
+  "validationError": "helper_exit_not_verified"
+}

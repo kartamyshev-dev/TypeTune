@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "kind": "agent native plus CUA visual readback",
+  "nativeEvidence": "chrome-address-s14-query.json",
+  "popupVisible": true,
+  "queryExact": "привет ",
+  "suggestionsConsistentWithOwnQuery": true,
+  "queryNotSubmitted": true,
+  "privateHistoryNotRecorded": true,
+  "scope": "Поисковые подсказки в адресной строке; отдельный subtype inline completion with selected suffix не заявляется",
+  "screenshotSavedToFilesystemOrGit": false
+}

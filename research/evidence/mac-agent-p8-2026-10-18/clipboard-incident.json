@@ -1,0 +1,18 @@
+{
+  "type": "test_harness_failure",
+  "productionGuiUnchanged": true,
+  "helperSource": "private ImagePasteMain.swift + pinned NativeProbe prefix",
+  "phase": "literal image paste in fresh synthetic RTF",
+  "observed": "TextEdit RTF→RTFD conversion sheet replaced focused document; per-event/clipboard context verification failed closed",
+  "previousClipboardRestoration": "NOT_CONFIRMED; helper exited, previous clipboard snapshot existed only in helper RAM and may be lost",
+  "clipboardNotReadOrLogged": true,
+  "conversionCancelledByCua": true,
+  "testDocumentReadback": "привет",
+  "testDocument": "research/private/probes/5BE43D21-C191-4DA0-9634-1C615E5DEA4A.rtf",
+  "rule": "MAC_AGENT_GUIDE §2.7: stop and ask user after potential data loss",
+  "nativeTestsStopped": true,
+  "next": "Wait user response. Do not rerun image helper. Before any further image test, preserve restoration on modal failures and use a new RTFD fixture.",
+  "ownCommandAndVReleased": true,
+  "releaseEvidence": "image-owned-command-released.json",
+  "originalSourceRestored": "com.apple.keylayout.RussianWin"
+}

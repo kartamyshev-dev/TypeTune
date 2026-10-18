@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "open search suggestion popup, no selected inline suffix",
+  "ownQueryExact": "привет ",
+  "popupVisibleCUA": true,
+  "blocked": false,
+  "returnEvents": 0,
+  "screenshotSaved": false,
+  "ownQueryCleared": true
+}

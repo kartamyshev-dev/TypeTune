@@ -1,5 +1,400 @@
 # Журнал TypeTune
 
+## 2026-10-18 — опубликован предварительный релиз0.1.5(11)
+
+Пользователь явно поручил push GitHub и новый релиз. Версия/build в build.sh0.1.5/11,
+package archive0.1.5; README download обновлён. Тегv0.1.5 → a6e6213a4729,
+из universal-input без merge main. Полная готовность не заявляется, prerelease=true.
+
+Release build/signature выполнены; финальная упаковка из чистого a6e6213 использовала
+candidate-build с проверкой source/resource/CLI/bundle identity (после первой сборки
+изменился только README). GUI8f554257. CLI1439/1439, корпуса4420/4420+22000/22000,
+controller93/93, guard23/23, audit4/4, fixtures8/8. CI39161125663 Linux/macOS success
+на точном исходном SHA, GUI CI запускался без .build. Native релизного bundle NOT_RUN.
+Установленный ab020042 и разрешения не менялись; второй переключатель локально не запускался.
+
+Финальный ZIP9e06df8b53b9c5d984e82392fecfd263d4fceb5120f96af5fbe9238c1aeb1482,
+19 050 627байт. Ditto-unpack:93 файла manifest, версия0.1.5(11), подпись и CLI PASS.
+GitHub release опубликован, remote annotated tag peeled commit сверён; ZIP и SHA256
+скачаны обратно, оба побайтно равны локальным. Картинки/пропущенные приложения/4часа
+не запускались. [Публикация](../research/evidence/release-0.1.5/publication.json),
+[полный выпуск](RELEASE_0.1.5.md).
+
+## 2026-10-18 — S14: native inline suffix Chrome/Safari и меню PWA
+
+Пользователь: «Продолжай проверки встроенного автодополнения и командного меню PWA,
+исправляй до стабильной работы. Картинки и пропущенные приложения не трогай,
+четырёхчасовой прогон пока не запускай». Разрешение на ввод всей матрицы сохраняется.
+Вид проверки agent native, user-authorized, без Enter/clipboard в native probes.
+GUI ab020042 / production6e07197 неизменен; рабочая база95f7ca6.
+
+Chrome inline5/5: настоящий выделенный suffix адреса, сверка полного completion и range
+до Space, после точный собственный127space/caret/source/flag. Затем auto5/5.
+Safari inline5/5: браузер выбирал host либо полный собственный fixture URL; после Space
+предлагал новое целиком выделенное поисковое продолжение. Введённый127space сохранён,
+новый suffix весь выделен; затем auto5/5. Ни URL, ни поиск не отправлялись в native;
+CUA Return использовался только для открытия собственного localhost fixture в новой вкладке.
+
+PWA AionUi, текущий home composer: slash/open/open-space по5=15 PASS, отдельные slash и
+open+SingleShift PASS; меню действительно открывалось и содержало open-candidate (CUA),
+команда не исполнялась. Очистка собственного текста, затем dot1, auto5/5 и stream4words PASS.
+Другие окна/команды и все виды autocomplete этим не приняты.
+
+Всего48 native attempts,44 приняты. Четыре exploratory/harness attempts сохранены отдельно:
+два исходных discovery не ожидали browser completion; Safari затем предложил full URL вместо
+host (остановка до Space); после исправления предиката предложил новый suffix после Space.
+Это ошибки оракула, не потеря пользовательского текста. Не скрыты и не отмечены PASS.
+Test helper: slash44/dot47, inlineSpace только в fixture-адресной строке, максимум2 точных
+известных completion, строгие text/range проверки перед Space; финальный typed-prefix
+и полностью выделенный browser suffix. Native cleanup отказывает при selection;
+Safari после каждого из5 случаев очищен CUA только после собственного prefix readback.
+Return/Tab, field/PID/window/focus/perms/SecureInput guards не ослаблены.
+Offline:3 unittest methods,14 reject subcases,9focus policy,8selected-suffix policy; evidence77.
+
+Settings семантически равны началу S14, sourceRussianWin; один TypeTune PID32477,
+Caramba не запускалась. PWA draft пуст/меню закрыто, ready,pending/outstanding/uncertain0.
+В retained trace новее прошлого checkpoint19587 нет faults/snapshot-failed/rejections;
+старый legacyOFF fault сохранён в ring, это не полная сессия. Статистика тестов не откатывалась.
+Image helper/пропущенные приложения/4часа не запускались. Main не менялся.
+[Итог](../research/evidence/mac-agent-s14-2026-10-18/verification.json).
+
+## 2026-10-18 — P1: холодный Chrome подтверждён пользователем
+
+В ответ на протокол после обычного перезапуска Chrome без CUA, ABC, ghbdtnspace
+в пустом поиске google.com и новой вкладки по5 раз без Enter пользователь сообщил:
+«работает стабильно». Вид проверки **user manual PASS**, отдельно от agent-native warm5/5.
+Агент не наблюдал ввод, повторно не сверял identity после пользовательского теста и не
+проводил отдельный clean-profile тест. P1 закрыт в пределах этого протокола; остальные
+ограничения U8, inline suffix/PWA/password E2E и пропуски пользователя сохраняются.
+[Подтверждение](../research/evidence/mac-agent-p9-2026-10-18/chrome-cold-user-manual.json).
+
+## 2026-10-18 — P9: Google warm5/5, отдельные окна и итоговый checkpoint
+
+GUI ab020042 / код6e07197 неизменен. Google search S1 warm5/5; S2/S3/S4/S6/S7/S8/S9 PASS.
+В первом S7 после S6 не было удалено собственное исключение vbh: точный «привет vbh привет мир »
+сохранён, ready; ошибка порядка тестов, не принято. Удалён только vbh, свой текст сверён/очищен;
+повтор S7 PASS. Google/newtab S14: открытый popup виден CUA, собственный точный запрос,
+без Enter и без сохранения скриншотов. Выбранный inline suffix отдельно не проверен.
+S10 отдельные google/newtab/address/textarea/contenteditable: по3 возврата из Notes,0событий,
+фактические флаг/tooltip=TIS. AX-пробники отдельных Chrome-полей записаны без текста.
+
+Ограничение PWA S14: slash отклонён helper до событий; сценарий остаётся NOT_RUN.
+Matrix:107 PASS,15 SKIP_USER,48 SKIP,6 NOT_RUN (из них5 явно NOT_APPLICABLE scaffold).
+Не переносить эти числа на полную приёмку/U8. Cold Chrome без CUA не принят.
+
+Test-only: parent wait NativeProbe180→300с для полного stream, production deadlines не менялись.
+Matrix helper повторяет только readonly отсутствие одного focus-атрибута при другой закреплённой
+identity; оба отсутствуют/объекты изменились → отказ; ни одного события до двух положительных
+проверок. 9 policy checks и8 reject workloads PASS. В успешном Notes retry счётчик0:
+ожидание на реальном transient в этом повторе не наблюдалось. Evidence77 tamper checks PASS.
+
+Итоговый trace1000 содержит1snapshot-deadlineExceeded uptime18373.800 при temporary universalOFF,
+до off-mode TextEdit start18382.026; не заявляется fault-free. Предыдущий universal-only trace
+отдельно0faults/0snapshot-failed; итог ready,pending/outstanding/uncertain0.
+Settings.v1 семантически равен исходному, sourceRussianWin, autocorrectOFF возвращены,
+yf сохранён; статистика не откатывалась. Своё тестовое обучение удалено.
+Image helper не запускался; четыре часа не запускались. Main не менялся.
+[Итог и ограничения](../research/evidence/mac-agent-p9-2026-10-18/verification.json).
+
+## 2026-10-18 — P9: текстовые группы и отдельные флаги TextEdit
+
+GUI ab020042 / 6e07197, никаких следующих изменений production-кода.
+Chrome input/textarea/contenteditable, Telegram, Notes, AionUi: доступные текстовые
+S1–S4/S6–S9 и правило yf проверены; точный состав — новая matrix.json, не декартово
+обобщение на ещё не проверенные поля. Telegram S7 дополнительно10/10 PASS.
+Chrome S7:10 завершённых PASS, одна дополнительная попытка остановлена frontmost_changed
+после полного правильно исправленного текста; точный собственный readback сохранён и очищен.
+Причина краткой смены frontmost не установлена, попытка не засчитана. Никакой ⌘⌥R не было.
+
+TextEdit: smoke13/13, review12/12, stream80 12/12 (192 слова,176.27с) PASS.
+Последние1000 записей сразу после потока:0faults/0rejections, ready,
+pending/outstanding/uncertain0; это не полный trace всей сессии.
+Отдельные matrix-кейсы S1/S2/S3/S4/S6/S7/S8/S9/S11 выполнены с чтением настоящего флага.
+Перед запуском original source выбран равным ожидаемому итоговому; NativeProbe выбирает
+начальный source теста, а его восстановление после кейса не меняет конечный source.
+Поэтому отдельный readonly StatusFlagRead (0 событий) действительно сверяет итог кейса.
+S6 beforeGesture подтвердил « мир »/RussianWin до ⌘⌥Z; после — « vbh »/ABC.
+Выучен только vbh, удалён через UI; исходные настройки сравнивались семантически.
+S11 первое ожидание sourceABC было ошибкой теста: public fixture требует RussianWin;
+текст «на » был правильным. Повтор с корректным итоговым source и флагом PASS.
+
+S8 — отдельный новый UUID.txt с собственным abcdef, точный document/PID/field fence
+NativeProbe, verified caret2 и реальные Left/Right сброса, затем ghbdtnspace:
+«abghbdtn cdef», caret9, sourceABC и флаг PASS. Без clipboard и Return.
+
+S13 TextEdit: первый запуск в другом новом документе не принят — настройка автозамены
+переносилась только в тот документ, где была включена. В том же собственном UUID-документе
+после включения checked=true, native «123 ghtdtn »→«123 привет », caret11/RussianWin PASS;
+после теста тот же документ всё ещё checked=true, затем через меню возвращено исходное off,
+readback равен baseline. Notes S13 также PASS, его autocorrect восстановлен.
+S5 SKIP_USER, image helper больше не запускался. Четырёхчасовой прогон не запускался.
+[Матрица и файлы](../research/evidence/mac-agent-p9-2026-10-18/matrix.json).
+
+
+## 2026-10-18 — P9, новая сборка ab020042: первые повторные проверки
+
+Код 6e07197, полная установленная identity в mac-agent-p9-2026-10-18/installed.json.
+Исправлена асимметрия runKeystrokes: прежний цикл80мс повторял несовпавший readable prefix,
+но не transient unreadable. Теперь оба состояния повторяются до прежнего порога;
+selection/secure останавливаются сразу. Критерии правки, proof50мс и blind-anchor не менялись.
+Предпосылка доказана на старом GUI: Safari focused AX cannotComplete54мс, затем диагностика
+видела поле; newtab4/5 с таким же безопасным пропуском. Точная причина newtab unreadable
+не доказана отдельно, переносить Safari AXError на него нельзя.
+
+Controller93/93, CLI1439/1439, corpora4420/4420+22000/22000, audit4/4; ci_core локально
+не проходит только XCTest отсутствующий в CLT. Release build/signature/selftest PASS.
+CI39151757178 Linux/macOS success. Обе только прежние записи разрешений TypeTune
+обновлены через System Settings UI; новый PID32477, один переключатель, Caramba не запускалась.
+
+Новый GUI: newtab warm S1 5/5 PASS; Safari input S1 5/5 + S2/S3/S4 PASS.
+Cold Chrome и Google с активными подсказками отдельно не приняты. TextEdit smoke13/13 PASS,
+plainPaste временно включался, возвращён off, ghbdtn unlearned; settings семантически равны
+исходным, yf сохранён. Review/stream ещё выполняются. Старые PASS не перенесены.
+[Evidence](../research/evidence/mac-agent-p9-2026-10-18/matrix.json).
+
+
+## 2026-10-18 — продолжение без картинки; Chrome contenteditable и новая вкладка
+
+Пользователь: «Проверку картинки пропускаем, продолжай остальное». S5 SKIP_USER
+во всей матрице; private image helper больше не запускать, разработка его pixel/parent
+механизма исключена из текущего продолжения. Это не PASS картинки.
+GUI по-прежнему 80652518, код 3244c81; scripts/matrix_input_probe.sh пересобран после
+исправления shared ClipboardLease, 0 событий при сборке.
+
+Chrome локальный contenteditable: S1/S2/S3/S4/S6/S7/S8/S9/S11 PASS, bound evidence
+chrome-rich-*-current.json. Свой текст сверялся и очищался CUA только после точного
+совпадения; S8 сохранил оба фрагмента abcdef. S6 vbh удалён через «Снова исправлять»,
+settings семантически равны исходным (bound/rich-undo-settings-restored.json).
+Никаких пользовательских полей/сообщений не менялось, Return 0.
+
+Новая вкладка warm S1: 4/5 PASS, пятый исходный ghbdtn сохранён без потери текста.
+Trace rev6127: decision=true, observe unreadable, anchored=false, fieldMatches=false;
+TypeTune законно пропустил первое слово. Это LIMIT, не 5/5 и не закрытие P1.
+Очередь пуста, manual-snapshot ready, faults последнего случая нет.
+Собственное ghbdtn проверено CUA и очищено; отчёт newtab-five-diagnostics.json.
+Холодный Chrome и Google с активными подсказками не приняты. CI 39150766561 success.
+
+
+## 2026-10-18 — восстановление clipboard при modal исправлено; image helper упал
+
+Пользователь: «Буфер не важен, исправляй и продолжай». Исправление Tools/ClipboardLease:
+если generation ещё принадлежит lease, восстановление не зависит от поля документа.
+Принятие exact nonce после чужой generation по-прежнему требует pinned context и сравнения
+всех представлений. ClipboardLeaseProbe: modalRestore/newerOwnerPreserved/исходный clipboard
+PASS, 0 событий; NativeProbe fixture tests 8/8.
+[Проверка](../research/evidence/mac-agent-p8-2026-10-18/clipboard-modal-fix.json).
+
+Три предварительные попытки нового RTFD не дошли до ввода: directory mode 0600,
+затем несовпадение URL без trailing slash; выставлены 0700 и isDirectory:true.
+В готовом RTFD преобразование и настоящая вставка картинки выполнены, но необязательный
+разбор AXRTFForRange дал пустую NSAttributedString. Чтение attachment at 0 вызвало
+Objective-C exception/SIGABRT, Swift catch/defer не выполнились. Исходный clipboard
+не подтверждён восстановленным. Собственный документ по CUA: привет[вложенное изображение].
+TypeTune жив, модификаторы нейтральны, source RussianWin. Native остановлен по §2.7;
+пиксели и S5 PASS не заявлены. [Технические факты](../research/evidence/mac-agent-p8-2026-10-18/image-helper-crash.json).
+Рекомендуемая следующая правка — убрать ненужный разбор RTF, исходный clipboard держать
+в supervising parent, дочерний emitter не должен его перезаписывать. Ждём ответа пользователя.
+
+
+## 2026-10-18 — остановка: буфер обмена при буквальной вставке картинки
+
+Частный ImagePasteMain helper, GUI без изменений. Выделение мышью + Double Shift
+в новом RTF подтвердило «привет», clipboard syntheticUnchanged. Настоящее CmdV открыло
+системный sheet TextEdit «Конвертировать RTF в RTFD». verifiedField остановил работу,
+а ClipboardLease.restore с referenceContext отказался восстанавливать при sheet.
+Процесс завершился, прежний RAM snapshot недоступен; восстановление пользовательского
+clipboard не подтверждено, возможна утрата. Это ошибка test harness, не P8 продукта.
+Нельзя считать S5 PASS. Sheet отменён через CUA, точный readback собственного документа —
+«привет», вставка отменена. Исходное содержимое clipboard не читалось/не логировалось.
+[Инцидент](../research/evidence/mac-agent-p8-2026-10-18/clipboard-incident.json).
+После sheet остались собственные V/Command нажатые. Узкий recovery в точном новом RTF
+отправил только V-up и Command-up (2 события), текст/каретка неизменны, modifiersNeutral=true.
+Исходная RussianWin восстановлена. [Readback](../research/evidence/mac-agent-p8-2026-10-18/image-owned-command-released.json).
+Дальнейшие тесты остановлены, вопрос пользователю по MAC_AGENT_GUIDE §2.7.
+До ответа никаких повторов; исправление должно обеспечить restore при модальных
+окнах, затем использовать новый RTFD, не RTF.
+
+Перед инцидентом Chrome textarea S1/S2/S3/S4/S7/S8/S9/S11 PASS;
+S5 только byte-subgate, literal paste не завершён. CI 39150068825 Linux/macOS успешен.
+
+
+## 2026-10-18 — смешанные потоки в четырёх приложениях, GUI 80652518
+
+Agent native, user-authorized; приложение без изменений, код `3244c81`.
+По 4 пары «привет hello» при физическом интервале 80 мс: Chrome input, Telegram,
+Заметки и установленное Chrome-приложение AionUi — 4/4 PASS, 32 слова.
+Точные текст/каретка/source и настоящий флаг, очистка только собственного fixture,
+исходная раскладка восстановлена, модификаторы отпущены, Return 0.
+Первый запуск Notes безопасно остановлен `focus_unavailable` после 8 событий:
+UI подтвердил ровно собственное `ghb`, оно очищено, повтор PASS. Это не PASS первой попытки.
+
+[Вердикт и привязки](../research/evidence/mac-agent-p8-2026-10-18/mixed-stream-verification.json).
+Диагностический ring: 1000 записей, включая предыдущие тесты; 12 route/event rejections,
+во всех единственная отрицательная проверка — leaseFresh. Fault 0, итог ready,
+pending/outstanding/uncertain 0. Случаи не доказывают отсутствие задержек: безопасный
+повтор после новой полной проверки справляется с наблюдавшимися истечениями.
+Источник системной задержки по-прежнему не установлен.
+
+Дополнительная серия TextEdit review дважды дала 11/12: только первый punct-period-ru
+оставался исходным. Trace — decision=false, без попытки замены/блокировки. NativeProbe
+создавал новый документ программно в уже активном TextEdit, не отправляя событие сброса
+буфера; обычный пользовательский CmdN/клик такой сброс создаёт. В пробнике перед первым
+обычным случаем в пустом документе добавлена настоящая Left с проверкой пустоты/каретки0.
+Специальные firstWordAfterFocus и непустой initialText не меняются. GUI не изменён.
+После исправления пробника review 12/12 PASS: [вердикт](../research/evidence/mac-agent-p8-2026-10-18/current-review-reset-verdict.json).
+Предыдущая остановленная попытка review не засчитана: агент открыл вкладку TypeTune
+параллельно native-запуску, нарушив фокус. Повтор выполняется без UI-действий.
+
+Полный TextEdit smoke 13/13 PASS, включая plain paste и auto-undo; [вердикт](../research/evidence/mac-agent-p8-2026-10-18/current-smoke-full-verdict.json).
+Временный plainPaste выключен, выучен только ghbdtn и удалён через UI; настройки семантически
+равны исходным, yf сохранён ([проверка](../research/evidence/mac-agent-p8-2026-10-18/current-smoke-settings-restored.json)).
+
+Режим universal off: TextEdit «привет », Notes «ghbdtn » — PASS; обе проверки
+привязаны к прежнему GUI, настройка через UI возвращена в on, все settings семантически
+равны исходным ([вердикт](../research/evidence/mac-agent-p8-2026-10-18/universal-off-verdict.json)).
+Первый Notes-запуск остановлен focus_unavailable, собственная g подтверждена и очищена;
+повтор PASS. В Google warm поиск две остановки пробника: 0 событий при выбранной подсказке,
+после Escape — 8 событий и field_or_window_changed. UI подтвердил точное ghb, очищено,
+Return 0. Chrome передаёт AX-фокус выбранному тексту подсказки, поэтому строгий пробник
+прекращает ввод. Это не native-PASS Google и не доказанная порча текста продуктом.
+
+Terminal/vim и Codex SKIP по прямому ответу пользователя; ограничения инструмента не обходились.
+Матрица дополнена подтверждёнными Notes/PWA/focus-клетками; S5 всё ещё лишь byte-subgate,
+буквальная вставка картинки не засчитана. Полная приёмка и cold Chrome остаются открыты.
+
+
+## 2026-10-18 — Chrome-приложение, переходы и автозамена macOS
+
+GUI 806525181a5b (код 3244c81), agent native, user-authorized. В установленном
+AionUi (Chrome app shim 8059.82) прошли S1–S4, S6–S9, S11 и byte gate S5;
+ввод только в пустой черновик, Return=0, собственный текст очищен. Отмена подтвердила
+исправление до жеста; выученное vbh удалено, настройки семантически равны исходным.
+Окно shim не отдаёт AXTitle: fixture явно ожидает null, объект окна по-прежнему
+закреплён и сверяется перед каждым событием. Это изменение пробника, не ослабление PID,
+поля/окна, permissions, Secure Input или запрета отправки.
+
+Три круга Chrome → Safari → Telegram → Notes → AionUi → TextEdit: 18/18 focus-only
+проверок, 0 клавиатурных событий; флаг и source ID настоящего status item совпали с TIS.
+TextEdit использовал отдельный новый пустой документ с проверкой точного AXDocument.
+[Evidence](../research/evidence/mac-agent-p8-2026-10-18/bound/).
+
+Notes S2/S5(byte gate)/S6/S8/S9 PASS. Для S13 исходная автозамена macOS была выключена
+(AX mark отсутствует); временно включена через меню, положительная отметка ✓ проверена.
+Native `123 ghtdtn ` дал точные `123 привет `, каретку/source/флаг; префикс цел,
+собственный текст очищен. Исходная отметка меню восстановлена с точным readback.
+[Состояния](../research/evidence/mac-agent-p8-2026-10-18/bound/notes-spelling-restored.json).
+Это не закрывает холодный старт P1: CUA при работе с Chromium включает AX-доступность.
+
+
+## 2026-10-18 — подготовка S8 в Заметках
+
+Пробник остановился до ввода ghbdtn: немедленное AX-чтение после четырёх Left ещё
+не подтвердило каретку 2. Отдельный readonly-пробник затем показал точные 6 символов
+abcdef и диапазон {2,0}; GUI подтвердил собственный fixture. Он очищен без изменения
+чужих данных. Добавлено ограниченное ожидание только положительного полного readback
+(до 300 мс, прежние per-event guards). Повтор Notes S8 PASS: текст/каретка/source/флаг
+совпали, оба фрагмента слова целы, модификаторы нейтральны, собственный fixture очищен.
+[Evidence](../research/evidence/mac-agent-p8-2026-10-18/bound/notes-s8-settled.json).
+Матрица теперь связывает новые результаты с SHA приложения, helper, исходников,
+fixture и идентичностью процессов до/после; GUI по-прежнему 806525181a5b.
+
+
+## 2026-10-18 — отмена, середина слова и состояние модификаторов пробника
+
+GUI остаётся `806525181a5b` (код `3244c81`). Chrome: подтверждённое исправление
+перед ⌘⌥Z, точные восстановленные текст/каретка/source/флаг, обучение vbh и удаление
+только этого исключения; семантическое равенство настроек и yf→на подтверждены.
+S8 сохранил оба фрагмента собственного abcdef; S9 совпал с настоящим флагом;
+один focus-only переход S10 не отправлял событий. Telegram S5 (clipboard byte gate),
+S8/S9/S11 PASS. [Разбор пробника](../research/evidence/mac-agent-p8-2026-10-18/harness-undo-recovery.json).
+
+Первый пробник отмены остановился на foreign_modifier при отпускании Option:
+системная очередь ещё не подтвердила его отпускание. Отмена в TypeTune уже сработала,
+но пробник не завершил Command-up. Отдельным строго закреплённым пробником отпущен
+только его Command: одно событие, текст/каретка неизменны, модификаторы нейтральны.
+Теперь собственный модификатор учитывается до подтверждения обеими системными
+очередями (ограниченное ожидание с прежними проверками). Повтор S6 PASS.
+Это дефект тестового инструмента, не новый дефект TypeTune. Публичные синтетические
+шаблоны — Tools/fixtures/matrix/scenarios.json; private поля/названия аккаунтов не публикуются.
+
+
+## 2026-10-18 — расширение текущей матрицы на GUI 806525181a5b
+
+Agent native, user-authorized; код приложения `3244c81` не менялся. Safari input
+S1/S3/S4/S7 и адресная строка S1/S3/S4 PASS. Telegram: S1/S3/S4/S7 и ещё 10 S7
+PASS в пустом черновике «Избранного», Return не отправлялся, собственный текст очищен.
+Chrome input ещё 10 S7 PASS. Заметки: S1/S3/S4/S11 PASS в новой заметке;
+S7 — LIMIT: первое ghbdtn осталось, остальные слова правильные, текст/каретка целы.
+Trace rev3860: unreadable, anchored=false, fieldMatches=false — ожидаемый безопасный
+пропуск (DECISIONS 26/30), не replay-сбой. UI ready, 0 pending/outstanding/uncertain;
+0 faults в сохранённом окне trace. [Матрица](../research/evidence/mac-agent-p8-2026-10-18/matrix.json).
+
+Пробник читает Notes через ограниченный AXStringForRange при отсутствии AXValue;
+идентичность поля/окна и все per-event защиты сохранены. Флаг и source ID берутся
+из настоящего status item TypeTune. Chrome Single Shift: текст/каретка/source/флаг PASS.
+Выделение слова мышью + Double Shift: текст/каретка/source/флаг PASS, тестовая картинка
+осталась побайтно той же во всех представлениях clipboard; исходный пользовательский
+clipboard восстановлен с readback. Буквальная вставка картинки после этого ещё NOT_RUN.
+Общий ClipboardLease вынесен из NativeProbe без изменения защит, обе сборки используют
+его; launcher NativeProbe переведён на @main. Offline guard-fixtures 5/5 и native-fixtures
+8/8, NativeProbe runtime launch 1/1. Это изменения тестового инструмента, не GUI.
+
+Computer Use запретил доступ к Terminal и Codex (`for safety reasons`); событий туда
+не отправляли, обхода не было. Пользователь явно выбрал пропуск Terminal/vim и Codex.
+Ранее он также разрешил пропуск отсутствующих Slack, VS Code и Word.
+
+
+## 2026-10-18 — P8: восстановление очереди и повторная проверка доставки
+
+Пользователь поручил разобрать сохранённый stream-сбой и разрешил продолжение после §2.7.
+Очередь восстановлена в исходном synthetic TextEdit-документе без перезапуска/очистки;
+текст и каретка до/после совпали, UI «Работает» ([evidence](../research/evidence/mac-agent-p8-2026-10-18/recovery.json)).
+Trace старого GUI показывает suspension уже в первой строке, после rev405; последующие
+строки были набраны в recoveryPending. Точная причина задержки main callback не доказана.
+
+Код `7c84860`: при единственном отказе leaseFresh=false заново проверяется вся цель,
+не более двух повторов. Старое доказательство не используется, срок lease 50 мс не увеличен.
+Добавлена длительность просроченной проверки без текста/клавиш. Controller 87/87
+([evidence](../research/evidence/mac-agent-p8-2026-10-18/controller.json)), CLI 1439/1439,
+корпуса 4420/4420 и 22000/22000 offline. Локальный ci_core остановлен на отсутствии XCTest
+в CLT; это не PASS XCTest. Сборка/подпись успешны; GUI `a8b91960280f`, оба прежних
+разрешения TypeTune обновлены через системный UI. Первичная native-строка 80 мс PASS.
+Первая полная серия на `7c84860` FAIL: с шестой строки нет исправлений. Trace:
+replay-event-rejected leaseFresh=false, 1 событие; остальные проверки true. Очередь
+восстановлена: текст/каретка совпали. Это уточнило второй участок истечения допуска.
+Код `3244c81` повторяет полную проверку также для события, уже подавленного tap до
+доставки в приложение; общий бюджет двух повторов сбрасывается только после доставки
+или начала новой replay-сессии. Controller 88/88. GUI `806525181a5b`.
+Полная native-серия нового GUI: 12/12, 192 слова, точные текст/каретка/source
+([вердикт](../research/evidence/mac-agent-p8-2026-10-18/second-full-verdict.json)).
+Последние 1000 записей trace: 0 faults, 0 route/event rejected, pending/outstanding/uncertain=0,
+UI ready. Ранние записи могли вытесниться; это не полный trace всей серии.
+Короткая TextEdit-серия: 11/11, без plain paste и undo-learning.
+CI `39143449199` Linux/macOS success на `3244c81`.
+Второй полный поток: 12/12, суммарно 24/24 строки и 384 слова с точными текстом/кареткой/source.
+Chrome input S1/S3/S4/S7 PASS на том же GUI.
+Прежние PASS не перенесены.
+Slack, VS Code, Word пропущены по явному ответу пользователя: не установлены.
+
+
+## Mac agent: подготовка P1 — 2026-10-18
+
+Проверяемый код `adb0283dfe764beeec515f0f183db9e2bdd751c8`, ветка `universal-input`.
+Пользователь в этой сессии явно разрешил ввод в Chrome, Safari, Telegram, Slack, VS Code,
+Заметки, Word, Codex и Terminal: только пустые поля/черновики по матрице, ничего не отправлять.
+Дополнительно разрешил самостоятельно обновлять разрешения. Обе записи TypeTune обновлены
+через системный UI, остальные записи не изменялись. Исходный bundle и defaults сохранены
+в `research/private/mac-agent-2026-10-18/`.
+
+Release arm64 собран, подпись проверена, установлен GUI SHA-256
+`62368559e2dc60853bfe92e24ff6e70190f497222e11f774339063f5bf64bb5f`.
+Debug/release CLI: 1439/1439 offline; корпуса v2 4420/4420 и v3 22000/22000;
+четыре regression-набора прошли. `ci_core.sh` завершился ошибкой из-за отсутствия XCTest
+в CLT; это не полный PASS. Runtime recovery hooks: `passed=true`, без реальных полей;
+audit gates 4/4; AXFocusProbe собран. Native P1 пока NOT_RUN.
+Evidence: `research/evidence/mac-agent-2026-10-18/`.
+
+
 Хронологический журнал проверок и решений, новые записи сверху. До 2026-10-17 он вёлся
 в docs/STATUS.md и перенесён сюда дословно; текущее состояние — в [STATUS](STATUS.md).
 Каждая запись относится к своей версии кода и виду проверки; PASS между записями
@@ -1419,3 +1814,107 @@ Native PASS кандидата bdecb08f не перенесён на новый 
 ZIP и SHA-256 опубликованы как prerelease; скачанные assets совпали побайтово.
 Установленный на Mac кандидат bdecb08f не заменялся. Четыре часа NOT_RUN.
 [Evidence](../research/evidence/release-0.1.4/publication.json).
+
+### Остановка Mac agent по §2.7 — 2026-10-18
+
+При подготовке P1 Computer Use typeText получил полный тестовый URL Google,
+после Return AX показал `l.cm`. Причина не установлена; это не доказательство
+дефекта TypeTune. Дальнейший ввод остановлен; созданная вкладка закрыта,
+приватный отчёт сохранён до перезапуска. P1 и прочая матрица NOT_RUN.
+Точка продолжения — STATUS; восстановление — evidence/mac-agent-2026-10-18.
+
+### Продолжение и калибровка ввода — 2026-10-18
+
+Пользователь разрешил продолжить до стабильности всей матрицы. При всех
+остановленных переключателях CUA typeText снова потерял символы тестового URL.
+Вставка URL сохранила строку полностью. Отдельные CUA pressKey дали точное
+`ghbdtn ` в Google, но диагностический счётчик TypeTune остался 0. Такой ввод
+не квалифицирован для native-проверки системного event tap, FAIL продукту не ставится.
+Запрошено явное расширение разрешения NativeProbe за пределы TextEdit с сохранением
+всех защит. Результаты: evidence/mac-agent-2026-10-18/input-calibration.json.
+AXEnhancedUserInterface у Chrome уже был true после CUA; пробник временно сбросил
+его в false, текстовое поле осталось читаемым. Это не чистый cold-start P1.
+
+### Разрешение защищённого ввода всей матрицы — 2026-10-18
+
+На прямой вопрос о расширении NativeProbe за пределы TextEdit пользователь ответил:
+«Да, разрешаю для всей матрицы». Сохранены проверки PID, конкретных поля и окна,
+фокуса, разрешений и Secure Input перед каждым событием; ввод только в новые
+тестовые поля/черновики, без отправки. Разрешение текущей сессии имеет приоритет
+над прежним ограничением AGENTS.md. MatrixInputProbe требует начальное пустое
+поле с кареткой 0, ограниченный набор клавиш и не умеет отправлять Return.
+
+### Google: ограниченная системная серия — 2026-10-18
+
+Текущий GUI `62368559e2dc` на коде `adb0283`: S1 5/5 в уже читаемом поле
+(google-s1-08, google-s1-repeat02…05); S7 10/10, 40 слов, точные текст/каретка/source,
+с проверенной очисткой только собственного текста (google-s7-01…10). Интервал
+между клавишами включает проверки AX, это не строгая нагрузка 80 мс.
+Исходная P1 не закрыта: Computer Use включает расширенный AX-режим Chrome.
+В отдельном чистом профиле Chrome `AXEnhancedUserInterface=false`, focused-field
+отсутствовал и AXManualAccessibility был unsupported; включение enhanced само
+по себе не дало focused-field. Без подтверждённого начального фокуса этот опыт
+не доказывает причину P1. Изолированный процесс завершён; основной браузер сохранён.
+
+### Пауза по блокировке Mac — 2026-10-18
+
+Computer Use вернул: Mac locked, automatic unlock unavailable. Ввод остановлен.
+Ожидается ручное разблокирование; STATUS и verification/matrix обновлены.
+Стабильность всей матрицы не заявлялась; P1 после чистого запуска остаётся открытой.
+Настройки/статистика и исходная раскладка будут восстановлены после окончания тестов;
+исходные снимки сохранены. Сейчас TypeTune запущен и временная вкладка Google открыта.
+Производственный код не менялся. Добавлены MatrixInputProbe и отвергающие
+до отправки событий self-checks; финальная версия helper требует ровно один процесс
+целевого bundle ID. Native-наблюдения выше получены до последнего ужесточения
+проверки числа процессов, на том же неизменённом GUI приложения.
+
+### Продолжение после разблокирования и P3 — 2026-10-18
+
+Пользователь разблокировал Mac и разрешил продолжать всю матрицу. CI `555422d`
+успешен. Для прежнего GUI `62368559e2dc`: поиск новой вкладки S1 5/5
+(newtab-s1-02…06); input и textarea — S1/S3/S4/S7/S11 совпали; textarea S8
+сохранил `abcdef` по обе стороны вставки (каретка 9, длина 13). S8 использует
+клавиатурную навигацию в середину слова, мышиный вариант остаётся NOT_RUN.
+Rich: S1 текст/каретка совпали, но cleanup остановлен на пустом `<br>` (AX длина 1,
+каретка 0); S3/S4 прошли. S7 оставил первое слово `ghbdtn`: trace `decision=false`,
+до AX-сверки. CUA-сброс поля не попадает в event tap и оставлял предыдущий токен.
+MatrixInputProbe дополнен настоящим Left в подтверждённом пустом поле и проверкой
+его неизменности; это подготовка теста, не изменение механизма исправления.
+
+P3: в приватном отчёте серии Google 6 snapshot-deadlineExceeded, 26 подтверждённых
+universal-result, mutation-uncertain отсутствует; после следующих тестов 7 таймаутов.
+Причина: captureAfterEvent запрашивает legacy-контекст при universalInput=true и
+plainPaste=false. Новая проверка controller сначала red, затем green 83/83.
+Лишние снимки отключены, при plainPaste=true снимки остаются только для разрешённого
+прежнего адаптера. Текстовая сверка universal не изменялась. Native на новой сборке
+ещё NOT_RUN. Полное восстановление исходного состояния отложено до конца серии.
+
+Slack, VS Code и Word не найдены системным поиском; вопрос пользователю ожидает
+ответа. Их строки матрицы не принимаются без проверки реальных приложений.
+
+### P3: установленный кандидат и ограниченная приёмка — 2026-10-18
+
+Код `d145971243299354edcd86f7d08d01c8ab74e4d0`, GUI SHA-256
+`34439d48f36b7d675352a83e51101fb260e91032ede3d80f51806240b7c7bf07`.
+Оба разрешения обновлены через системный UI, подпись проверена. CI 39141018700
+успешен. Новая серия Chrome: input S1/S3/S4/S7/S11, rich S7 — точные текст,
+каретка, source. Отчёт: 6 confirmed, 0 snapshot-failed, 0 faults при plainPaste=false.
+TextEdit smoke 13/13 с временным plainPaste=true; затем plainPaste возвращён
+и только `ghbdtn` удалён через «Снова исправлять». Семантическое равенство настроек
+исходному снимку доказано. Review-набор 12/12. Поток 80 мс ещё выполняется.
+Эти результаты принадлежат новому бинарнику; вся матрица и cold-start P1 не приняты.
+Evidence: `research/evidence/mac-agent-p3-2026-10-18/`.
+
+### P8: поток 80 мс и истёкшая replay lease — остановка по §2.7
+
+На GUI 34439d48 поток native-stream-80ms-v1 не прошёл: завершённые строки
+содержат неисправленные ghbdtn, при совпадающих длине/каретке/source. При обнаружении
+серия остановлена SIGTERM только helper native-probe, checkpoint сохранён отдельно;
+обёртка закономерно не получила финальный JSON. Данные завершённых строк не выдаются
+за полный прогон. После этого UI TypeTune показал recoveryPending и 1 сохранённое
+нажатие. Trace: replay-route-rejected с identity/focus/source/permissions=true и
+leaseFresh=false. Почему истекли 50 мс и связь остановки helper с итоговым состоянием
+ещё не установлены. Дальнейший ввод остановлен по MAC_AGENT_GUIDE §2.7; приложение
+не перезапускалось, очередь не очищалась, тестовый документ сохранён.
+Evidence: mac-agent-p3-2026-10-18/stream-stopped-analysis.json и stream-diagnostics.json.
+Вся матрица остаётся открытой; восстановление исходного состояния ещё требуется.

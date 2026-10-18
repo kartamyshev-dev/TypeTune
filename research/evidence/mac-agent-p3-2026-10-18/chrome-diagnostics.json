@@ -1,0 +1,79 @@
+{
+  "records": 71,
+  "faults": [],
+  "snapshotFailures": [],
+  "universalResults": [
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 10,
+      "uptime": 6313.656643416667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 34,
+      "uptime": 6362.133478125001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 49,
+      "uptime": 6365.6597375833335
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 63,
+      "uptime": 6369.351047
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 77,
+      "uptime": 6372.810885916667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 119,
+      "uptime": 6379.434444041667
+    }
+  ]
+}

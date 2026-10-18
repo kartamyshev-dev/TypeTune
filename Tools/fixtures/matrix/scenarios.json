@@ -1,0 +1,101 @@
+{
+  "S1": {
+    "text": "ghbdtn ",
+    "expected": "привет ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "S2": {
+    "text": "ghbdtn vbh ",
+    "expected": "привет мир ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "S3": {
+    "text": "hello ",
+    "expected": "hello ",
+    "source": "com.apple.keylayout.RussianWin",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "S4": {
+    "text": "ghbdtn",
+    "expected": "привет",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "doubleShift",
+    "clearAfter": true
+  },
+  "S5": {
+    "text": "hello",
+    "expected": "руддщ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "selectedDoubleShift",
+    "clearAfter": true
+  },
+  "S6": {
+    "text": " vbh ",
+    "expected": " vbh ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "gesture": "undo",
+    "clearAfter": true,
+    "beforeUndoText": " мир ",
+    "beforeUndoSource": "com.apple.keylayout.RussianWin"
+  },
+  "S7": {
+    "text": "ghbdtn vbh ghbdtn vbh ",
+    "expected": "привет мир привет мир ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "S8": {
+    "text": "ghbdtn ",
+    "expected": "abghbdtn cdef",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "gesture": "middleOfWord",
+    "clearAfter": true,
+    "expectedCaret": 9
+  },
+  "S9": {
+    "text": "",
+    "expected": "",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "singleShift",
+    "clearAfter": true
+  },
+  "S10": {
+    "text": "",
+    "expected": "",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "focus",
+    "clearAfter": true
+  },
+  "S11": {
+    "text": "yf ",
+    "expected": "на ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "S13": {
+    "text": "123 ghtdtn ",
+    "expected": "123 привет ",
+    "source": "com.apple.keylayout.RussianWin",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  }
+}

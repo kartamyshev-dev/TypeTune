@@ -1,0 +1,12 @@
+{
+  "case": "chrome-s7-repeat-06.json",
+  "classification": "harness_interrupted",
+  "reason": "frontmost_changed",
+  "causeOfTransientFocusChange": "not_established",
+  "readbackByCua": "привет мир привет мир ",
+  "typeTuneReady": true,
+  "ownTextClearedByCuaAfterExactReadback": true,
+  "sourceRestored": true,
+  "modifiersNeutral": true,
+  "noProductPassClaim": true
+}

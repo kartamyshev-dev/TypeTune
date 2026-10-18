@@ -1,0 +1,55 @@
+[
+  {
+    "app": "Google Chrome",
+    "field": "google.com search",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "5/5 exact text, caret and source; AX already enabled, not cold-start acceptance",
+    "statusText": "Работает (UI before series; per-repeat tooltip NOT_CAPTURED)",
+    "reportFile": [
+      "google-s1-08.json",
+      "google-s1-repeat02.json",
+      "google-s1-repeat03.json",
+      "google-s1-repeat04.json",
+      "google-s1-repeat05.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "field": "google.com search",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "10/10 exact text, caret and source; AX already enabled, not cold-start acceptance",
+    "statusText": "Работает (UI before series; per-repeat tooltip NOT_CAPTURED)",
+    "reportFile": [
+      "google-s7-01.json",
+      "google-s7-02.json",
+      "google-s7-03.json",
+      "google-s7-04.json",
+      "google-s7-05.json",
+      "google-s7-06.json",
+      "google-s7-07.json",
+      "google-s7-08.json",
+      "google-s7-09.json",
+      "google-s7-10.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "field": "fresh local document",
+    "scenario": "native-smoke",
+    "result": "FAIL",
+    "observed": "12/13 expected results; plain-paste disabled in user settings, repeat with precondition needed",
+    "statusText": "Работает; after suite Исправление отменено",
+    "reportFile": "textedit-smoke.json"
+  },
+  {
+    "app": "ALL",
+    "field": "remaining matrix",
+    "scenario": "U8",
+    "result": "NOT_RUN",
+    "observed": "Mac locked; waiting for manual unlock",
+    "statusText": "unavailable while locked",
+    "reportFile": null
+  }
+]

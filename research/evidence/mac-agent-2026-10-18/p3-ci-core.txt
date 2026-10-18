@@ -1,0 +1,44 @@
+Building for debugging...
+[Planning deferred tasks]
+[3 / 15]
+[4 / 16] LayoutPilotCore
+[6 / 17] LayoutPilotCore
+[9 / 12] layoutpilot-cli-product
+[19 / 23] layoutpilot-cli-product
+[20 / 23] layoutpilot-cli-product
+[21 / 23] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[23 / 25] layoutpilot-cli-product
+Build complete! (2,15 с)
+1439/1439 offline invariants passed; 0 failures. No runtime input claim.
+train: {'corrections': 1134, 'count': 3094, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 3094}
+holdout: {'corrections': 484, 'count': 1326, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 1326}
+Integrity: 4420 rows; 420 disjoint root groups; exact 70/30; no original observations.
+train: {'corrections': 5599, 'count': 15400, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 15400}
+holdout: {'corrections': 2401, 'count': 6600, 'falseCorrections': 0, 'misses': 0, 'originalCompared': 0, 'originalMatches': 0, 'passed': 6600}
+Integrity: 22000 rows; 2000 disjoint root groups; exact 70/30; no original observations.
+corpus/review-regressions.jsonl: passed
+corpus/lexicon-regressions.jsonl: passed
+corpus/context-regressions.jsonl: passed
+corpus/user-rule-regressions.jsonl: passed
+Building for debugging...
+[Planning deferred tasks]
+[2 / 31]
+[3 / 32] LayoutPilotCore
+[14 / 43] LayoutPilotCore
+[18 / 42] layoutpilot-cli-product
+[19 / 43] LayoutPilotCore
+[28 / 54] layoutpilot-cli-product
+[29 / 54] layoutpilot-cli-product
+[29 / 151]
+[31 / 176]
+[33 / 176]
+[44 / 176]
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[47 / 175]
+error: /Users/kartamyshev/git/TypeTune/Tests/LayoutPilotCoreTests/CoreTests.swift:1:8 unable to resolve module dependency: 'XCTest'
+error: SwiftDriver LayoutPilotCoreTests normal arm64 com.apple.xcode.tools.swift.compiler failed with a nonzero exit code. Command line:     cd /Users/kartamyshev/git
+    builtin-SwiftDriver -- /Library/Developer/CommandLineTools/usr/bin/swiftc -parse-as-library -module-name LayoutPilotCoreTests -Onone @/Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/Objects-normal/arm64/LayoutPilotCoreTests.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DXcode -enable-experimental-feature DebugDescriptionMacro -sdk /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk -target arm64-apple-macos14.0 -g -module-cache-path /Users/kartamyshev/git/TypeTune/.build/out/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/kartamyshev/git/TypeTune/.build/out -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /Users/kartamyshev/git/TypeTune/.build/out/Products/Debug -Isystem /Library/Developer/CommandLineTools/Developer/usr/lib -F /Users/kartamyshev/git/TypeTune/.build/out/Products/Debug/PackageFrameworks -F /Users/kartamyshev/git/TypeTune/.build/out/Products/Debug -F /Library/Developer/CommandLineTools/Library/Developer/Frameworks -F /Library/Developer/CommandLineTools/Developer/Library/Frameworks -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/kartamyshev/git/TypeTune/.build/out/SDKStatCaches.noindex/macosx27.0-26A425-a0facfad118c1a7a18f0aad9463f6549ffd68ff603bdaacc80b00cb8898de72d.sdkstatcache -output-file-map /Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/Objects-normal/arm64/LayoutPilotCoreTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/kartamyshev/git/TypeTune/.build/out/ModuleCache.noindex -sdk-module-cache-path /Users/kartamyshev/git/TypeTune/.build/out/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/Objects-normal/arm64/LayoutPilotCoreTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/Objects-normal/arm64/LayoutPilotCoreTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/kartamyshev/git/TypeTune/.build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -package-name typetune -emit-const-values -const-gather-protocols-list /Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/Objects-normal/arm64/LayoutPilotCoreTests_const_extract_protocols.json -Xcc -I/Users/kartamyshev/git/TypeTune/.build/out/Products/Debug/include -Xcc -I/Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/DerivedSources-normal/arm64 -Xcc -I/Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/DerivedSources/arm64 -Xcc -I/Users/kartamyshev/git/TypeTune/.build/out/Intermediates.noindex/LayoutPilot.build/Debug/LayoutPilotCoreTests-p.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -working-directory /Users/kartamyshev/git -experimental-emit-module-separately -disable-cmo
+error: Build failed
+error: fatalError

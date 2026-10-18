@@ -1,0 +1,10 @@
+{
+  "texteditCorrected": true,
+  "notesUnchanged": true,
+  "settingsRestoredSemantically": true,
+  "evidence": [
+    "universal-off-textedit-repeat.json",
+    "bound/notes-universal-off-repeat.json"
+  ],
+  "firstNotesAttempt": "focus_unavailable, 4 события; UI подтвердил собственную g, очищено перед повтором"
+}

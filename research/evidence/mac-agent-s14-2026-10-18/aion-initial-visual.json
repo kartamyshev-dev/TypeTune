@@ -1,0 +1,12 @@
+{
+  "slashMenuVisible": true,
+  "filteredOpenMenuVisible": true,
+  "openCandidatePresent": true,
+  "afterSingleShiftOwnTextExact": true,
+  "commandsExecuted": 0,
+  "kind": "CUA AX visual; paired native files",
+  "files": [
+    "aion-home-slash.json",
+    "aion-home-open-shift-1.json"
+  ]
+}

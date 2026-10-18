@@ -1,0 +1,472 @@
+{
+  "lastUniversalEvents": [
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 914,
+      "uptime": 5777.279365041667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 914,
+      "uptime": 5777.286600166667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 914,
+      "uptime": 5777.287072125
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 914,
+      "uptime": 5777.301515583334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 935,
+      "uptime": 5814.339867541667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 935,
+      "uptime": 5814.339880500001
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 935,
+      "uptime": 5814.352983416667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 935,
+      "uptime": 5814.353342791667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 942,
+      "uptime": 5836.170311916667
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 942,
+      "uptime": 5836.170327333333
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 942,
+      "uptime": 5836.1768905
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 942,
+      "uptime": 5836.177296000001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 942,
+      "uptime": 5836.19128275
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 956,
+      "uptime": 5903.956243375001
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 956,
+      "uptime": 5903.956253416667
+    },
+    {
+      "checks": {
+        "anchored": false
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 956,
+      "uptime": 5903.963300833334
+    },
+    {
+      "checks": {
+        "anchored": false,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 956,
+      "uptime": 5903.963643708334
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 956,
+      "uptime": 5903.988619666667
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 963,
+      "uptime": 5919.128379250001
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 963,
+      "uptime": 5919.1288075
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 963,
+      "uptime": 5919.129044541667
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 963,
+      "uptime": 5919.157188375
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 970,
+      "uptime": 5958.608673208334
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "selection": false
+      },
+      "counts": {},
+      "phase": "universal-begin",
+      "revision": 974,
+      "uptime": 5959.06338475
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": true,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 974,
+      "uptime": 5959.06340625
+    },
+    {
+      "checks": {
+        "anchored": true
+      },
+      "counts": {},
+      "phase": "universal-observe",
+      "reason": "text",
+      "revision": 974,
+      "uptime": 5959.0705558750005
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "current": true,
+        "fieldMatches": true,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-verify",
+      "revision": 974,
+      "uptime": 5959.070851625001
+    },
+    {
+      "checks": {
+        "confirmed": true,
+        "current": true,
+        "notShown": false,
+        "readable": true
+      },
+      "counts": {},
+      "phase": "universal-result",
+      "revision": 974,
+      "uptime": 5959.097570875
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 982,
+      "uptime": 5959.861354375001
+    },
+    {
+      "checks": {
+        "anchored": true,
+        "boundaryMatches": true,
+        "decision": false,
+        "knownSource": true,
+        "target": true,
+        "tokenBuffered": true
+      },
+      "counts": {},
+      "phase": "universal-boundary",
+      "revision": 986,
+      "uptime": 5960.316554333333
+    }
+  ],
+  "faults": [
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 2,
+      "uptime": 4136.36342325
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 134,
+      "uptime": 4456.286204375
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 624,
+      "uptime": 4816.834742666667
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 627,
+      "uptime": 4928.3633928750005
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 642,
+      "uptime": 5494.355305208333
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 647,
+      "uptime": 5499.683227875001
+    },
+    {
+      "checks": {
+        "listening": true,
+        "secure": false,
+        "trusted": true
+      },
+      "counts": {
+        "outstanding": 0,
+        "pending": 0,
+        "uncertainDeliveries": 0
+      },
+      "phase": "fault",
+      "reason": "snapshot-deadlineExceeded",
+      "revision": 661,
+      "uptime": 5573.743861416667
+    }
+  ]
+}

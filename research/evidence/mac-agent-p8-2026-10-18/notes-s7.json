@@ -1,0 +1,15 @@
+{
+  "bundle" : "com.apple.Notes",
+  "caretMatches" : true,
+  "error" : "mismatch_kept_for_diagnosis",
+  "events" : 46,
+  "inputSeconds" : 3.1517120833323133,
+  "inputSourceRestored" : true,
+  "observedLength" : 22,
+  "passed" : false,
+  "pid" : 20689,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "textMatches" : false,
+  "windowTitleLength" : 28
+}

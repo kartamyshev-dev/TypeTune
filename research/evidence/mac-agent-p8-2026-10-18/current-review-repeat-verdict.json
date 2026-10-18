@@ -1,0 +1,1 @@
+{"cases": 12, "requestedCases": 12, "rowsFromStoppedCheckpoint": false, "failures": ["punct-period-ru: text", "punct-period-ru: inputSource"], "fixtureIdentityVerified": true, "modifierCleanupVerified": true, "notice": "Only supplied native scenarios; stopped/incomplete runs cannot pass."}

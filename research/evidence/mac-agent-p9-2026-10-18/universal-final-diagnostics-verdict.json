@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "scope": "Последние1000 записей перед временным выключением universal mode; не полный trace всех кейсов",
+  "counts": {
+    "fault": 0,
+    "snapshot-failed": 0,
+    "replay-route-rejected": 3,
+    "replay-event-rejected": 9
+  },
+  "final": {
+    "checks": {
+      "listening": true,
+      "posting": true,
+      "secure": false,
+      "tapActive": true,
+      "trusted": true
+    },
+    "counts": {
+      "outstanding": 0,
+      "pending": 0,
+      "uncertainDeliveries": 0
+    },
+    "phase": "manual-snapshot",
+    "reason": "ready",
+    "revision": 4398,
+    "uptime": 18314.68233875
+  },
+  "rejectionsAllOnlyExpiredLease": true
+}

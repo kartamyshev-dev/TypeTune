@@ -1,0 +1,254 @@
+{
+  "ancestors" : [
+    {
+      "role" : "AXTextField",
+      "selectedRange" : [
+        "range",
+        0,
+        0
+      ],
+      "value" : null
+    },
+    {
+      "role" : "AXWindow",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXApplication",
+      "selectedRange" : null,
+      "value" : null
+    }
+  ],
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : true
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "com.tdesktop.Telegram",
+  "focused" : {
+    "attributes" : {
+      "AXChildren" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXColumns" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXEnabled" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFocused" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFrame" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          3
+        ]
+      },
+      "AXHelp" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXIdentifier" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          129
+        ]
+      },
+      "AXIndex" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXInsertionPointLineNumber" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXLanguage" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          2
+        ]
+      },
+      "AXMaxValue" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXMinValue" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXNumberOfCharacters" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXOrientation" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          20
+        ]
+      },
+      "AXParent" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXTextField"
+        ]
+      },
+      "AXPosition" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXRole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          10
+        ]
+      },
+      "AXRoleDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          15
+        ]
+      },
+      "AXRows" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXSelectedChildren" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXSelectedText" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXSelectedTextRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          0
+        ]
+      },
+      "AXSize" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          2
+        ]
+      },
+      "AXTabs" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXTitle" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          12
+        ]
+      },
+      "AXTitleUIElement" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXValue" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXVisibleCharacterRange" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          0
+        ]
+      },
+      "AXWindow" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      }
+    },
+    "namesStatus" : 0,
+    "parameterized" : [
+      "AXLineForIndex",
+      "AXRangeForLine",
+      "AXBoundsForRange",
+      "AXStringForRange",
+      "AXAttributedStringForRange",
+      "AXRangeForPosition",
+      "AXStyleRangeForIndex",
+      "AXReplaceRangeWithText"
+    ]
+  },
+  "focusedUIElementStatus" : 0,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 673
+}

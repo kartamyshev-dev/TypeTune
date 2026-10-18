@@ -1,0 +1,80 @@
+{
+  "newtab-s1": {
+    "bundle": "com.google.Chrome",
+    "window": "Новая вкладка - Google Chrome",
+    "description": "",
+    "text": "ghbdtn ",
+    "expected": "привет ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "chrome-single-s1": {
+    "bundle": "com.google.Chrome",
+    "window": "LayoutPilot isolated input LP-CODEX-001 - Google Chrome",
+    "description": "LP-CODEX-001 single",
+    "text": "ghbdtn ",
+    "expected": "привет ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "chrome-single-s3": {
+    "bundle": "com.google.Chrome",
+    "window": "LayoutPilot isolated input LP-CODEX-001 - Google Chrome",
+    "description": "LP-CODEX-001 single",
+    "text": "hello ",
+    "expected": "hello ",
+    "source": "com.apple.keylayout.RussianWin",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "chrome-single-s4": {
+    "bundle": "com.google.Chrome",
+    "window": "LayoutPilot isolated input LP-CODEX-001 - Google Chrome",
+    "description": "LP-CODEX-001 single",
+    "text": "ghbdtn",
+    "expected": "привет",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "doubleShift",
+    "clearAfter": true
+  },
+  "chrome-single-s7": {
+    "bundle": "com.google.Chrome",
+    "window": "LayoutPilot isolated input LP-CODEX-001 - Google Chrome",
+    "description": "LP-CODEX-001 single",
+    "text": "ghbdtn vbh ghbdtn vbh ",
+    "expected": "привет мир привет мир ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "chrome-single-s11": {
+    "bundle": "com.google.Chrome",
+    "window": "LayoutPilot isolated input LP-CODEX-001 - Google Chrome",
+    "description": "LP-CODEX-001 single",
+    "text": "yf ",
+    "expected": "на ",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.RussianWin",
+    "gesture": "none",
+    "clearAfter": true
+  },
+  "chrome-textarea-s8": {
+    "bundle": "com.google.Chrome",
+    "window": "LayoutPilot isolated input LP-CODEX-001 - Google Chrome",
+    "description": "LP-CODEX-001 plain",
+    "text": "ghbdtn ",
+    "expected": "abghbdtn cdef",
+    "source": "com.apple.keylayout.ABC",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "gesture": "middleOfWord",
+    "clearAfter": false,
+    "expectedCaret": 9
+  }
+}

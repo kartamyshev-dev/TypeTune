@@ -1,0 +1,18 @@
+{
+  "classification": "LIMIT under MAC_AGENT_GUIDE S1/S7 and DECISIONS 26/30",
+  "strictProbeResult": "notes-s7.json",
+  "observedSyntheticText": "ghbdtn мир привет мир ",
+  "caret": 22,
+  "source": "com.apple.keylayout.RussianWin",
+  "firstTokenSkipped": true,
+  "remainingTokensCorrect": true,
+  "textIntegrityPreserved": true,
+  "traceFile": "matrix-notes-diagnostics.json",
+  "traceRevision": 3860,
+  "traceReason": "unreadable, anchored=false, fieldMatches=false",
+  "faultsInRetainedTrace": 0,
+  "pending": 0,
+  "outstanding": 0,
+  "uncertain": 0,
+  "cleanup": "Exact own test text verified through UI then cleared; same Note ID preserved"
+}

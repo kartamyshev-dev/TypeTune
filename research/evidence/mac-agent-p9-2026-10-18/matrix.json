@@ -1,0 +1,1883 @@
+[
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s1-warm-current.json",
+      "google-s1-warm-current-2.json",
+      "google-s1-warm-current-3.json",
+      "google-s1-warm-current-4.json",
+      "google-s1-warm-current-5.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s2.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s3.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s4.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s6.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s7-retry.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s8.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s9.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "focus-google-cycle-1-google.json",
+      "focus-google-cycle-2-google.json",
+      "focus-google-cycle-3-google.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "google.com",
+    "scenario": "S14",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и настоящий флаг; warm AX, не cold Chrome. S1 5/5; S14 открытые подсказки, без Enter; S7 повтор после удаления собственного исключения S6.",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "google-s14-current.json",
+      "google-s14-visual.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "Warm5/5: точный текст/каретка/source/флаг; cold отдельно NOT_RUN",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "newtab-s1-1.json",
+      "newtab-s1-2.json",
+      "newtab-s1-3.json",
+      "newtab-s1-4.json",
+      "newtab-s1-5.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s2.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s3.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s4.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s6.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s7.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s8.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "newtab-s9.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "Три цикла Notes → это точное поле/окно; 0 клавиатурных событий, фактический флаг/tooltip совпадают с TIS",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "focus-newtab-cycle-1-newtab.json",
+      "focus-newtab-cycle-2-newtab.json",
+      "focus-newtab-cycle-3-newtab.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "новая вкладка",
+    "scenario": "S14",
+    "result": "PASS",
+    "observed": "Открытый popup подсказок, точный собственный запрос, caret/source/флаг; не проверка inline suffix; без Enter",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "newtab-s14-current.json",
+      "newtab-s14-visual.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s1.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s2.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s3.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s4.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s6.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s7.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s8.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-address-s9.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "Три цикла Notes → это точное поле/окно; 0 клавиатурных событий, фактический флаг/tooltip совпадают с TIS",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "focus-address-cycle-1-address.json",
+      "focus-address-cycle-2-address.json",
+      "focus-address-cycle-3-address.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "адресная строка",
+    "scenario": "S14",
+    "result": "PASS",
+    "observed": "Native query + CUA visual: открытые поисковые подсказки, запрос точен, не отправлен; inline selected suffix отдельно не проверен; дополнительно выбранный native inline suffix5/5, scope numeric address prefix127; Safari может дать новую выделенную подсказку",
+    "statusText": "Обработчик готов",
+    "reportFile": [
+      "chrome-address-s14-visual.json",
+      "chrome-address-s14-query.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-1.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-2.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-3.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-4.json",
+      "../mac-agent-s14-2026-10-18/chrome-inline-space-5.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s1.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s2.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s3.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s4.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s6.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s7.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s8.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-plain-s9.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "Три цикла Notes → это точное поле/окно; 0 клавиатурных событий, фактический флаг/tooltip совпадают с TIS",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "focus-plain-cycle-1-plain.json",
+      "focus-plain-cycle-2-plain.json",
+      "focus-plain-cycle-3-plain.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "textarea",
+    "scenario": "S14",
+    "result": "NOT_RUN",
+    "observed": "Выбранная локальная fixture не имеет подсказок/автодополнения; S14 проверен отдельно в поиске и адресных строках. Это не PASS.",
+    "statusText": "",
+    "reportFile": null,
+    "applicability": "NOT_APPLICABLE"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s1.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s2.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s3.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s4.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s6.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s7.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s8.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "Новый GUI ab020042: точные текст/каретка/source/флаг, свой текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-input-s9.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "3 круга переходов; реальный флаг/TIS совпадают;0 событий",
+    "statusText": "Обработчик готов",
+    "reportFile": [
+      "focus-1-chrome.json",
+      "focus-2-chrome.json",
+      "focus-3-chrome.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "input",
+    "scenario": "S14",
+    "result": "NOT_RUN",
+    "observed": "Выбранная локальная fixture не имеет подсказок/автодополнения; S14 проверен отдельно в поиске и адресных строках. Это не PASS.",
+    "statusText": "",
+    "reportFile": null,
+    "applicability": "NOT_APPLICABLE"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s1.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s2.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s3.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s4.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s6.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s7.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s8.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "Native exact text/caret/source/flag; только собственный fixture очищен CUA после точного readback",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "chrome-rich-s9.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "Три цикла Notes → это точное поле/окно; 0 клавиатурных событий, фактический флаг/tooltip совпадают с TIS",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "focus-rich-cycle-1-rich.json",
+      "focus-rich-cycle-2-rich.json",
+      "focus-rich-cycle-3-rich.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "contenteditable",
+    "scenario": "S14",
+    "result": "NOT_RUN",
+    "observed": "Выбранная локальная fixture не имеет подсказок/автодополнения; S14 проверен отдельно в поиске и адресных строках. Это не PASS.",
+    "statusText": "",
+    "reportFile": null,
+    "applicability": "NOT_APPLICABLE"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s1.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s2.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s3.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s4.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s6.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s7.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s8.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "aion-s9.json"
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "3 круга переходов; реальный флаг/TIS совпадают;0 событий",
+    "statusText": "Обработчик готов",
+    "reportFile": [
+      "focus-1-aion.json",
+      "focus-2-aion.json",
+      "focus-3-aion.json"
+    ]
+  },
+  {
+    "app": "Google Chrome",
+    "appVersion": "155.0.8059.82",
+    "field": "Chrome web app",
+    "scenario": "S14",
+    "result": "PASS",
+    "observed": "PWA AionUi: текущий пустой home composer; /, /open, /open space по5; меню/SingleShift/source/flag, без выполнения команд. Не все окна/команды PWA.",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "../mac-agent-s14-2026-10-18/matrix.json",
+      "../mac-agent-s14-2026-10-18/aion-initial-visual.json"
+    ]
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source/флаг; S1 также5/5",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-s1-1.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source/флаг; S1 также5/5",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-s2-case.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source/флаг; S1 также5/5",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-s3-case.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source/флаг; S1 также5/5",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-s4-case.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S12",
+    "result": "PASS",
+    "observed": "Readonly protection-state: SecureInput=true, TypeTune приостановлен; после выхода ready. 0 вводимых символов; typed-password E2E не заявляется",
+    "statusText": "Защищённый ввод включён. Исправления приостановлены",
+    "reportFile": "safari-password-verdict.json",
+    "verificationScope": "readonly_runtime_protection_state"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S14",
+    "result": "NOT_RUN",
+    "observed": "Выбранная локальная fixture не имеет подсказок/автодополнения; S14 проверен отдельно в поиске и адресных строках. Это не PASS.",
+    "statusText": "",
+    "reportFile": null,
+    "applicability": "NOT_APPLICABLE"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "адресная строка",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-address-s1.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "адресная строка",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-address-s2.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "адресная строка",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-address-s3.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "адресная строка",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-address-s4.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "адресная строка",
+    "scenario": "S12",
+    "result": "PASS",
+    "observed": "Readonly protection-state: SecureInput=true, TypeTune приостановлен; после выхода ready. 0 вводимых символов; typed-password E2E не заявляется",
+    "statusText": "Защищённый ввод включён. Исправления приостановлены",
+    "reportFile": "safari-password-verdict.json",
+    "verificationScope": "readonly_runtime_protection_state"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "адресная строка",
+    "scenario": "S14",
+    "result": "PASS",
+    "observed": "Native query + CUA visual: открытые поисковые подсказки, запрос точен, не отправлен; inline selected suffix отдельно не проверен; дополнительно выбранный native inline suffix5/5, scope numeric address prefix127; Safari может дать новую выделенную подсказку",
+    "statusText": "Обработчик готов",
+    "reportFile": [
+      "safari-address-s14-visual.json",
+      "safari-address-s14-query.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-1.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-2.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-3.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-4.json",
+      "../mac-agent-s14-2026-10-18/safari-inline-final-5.json"
+    ]
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s1.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s2.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s3.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s4.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s6.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s7.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s8.json"
+  },
+  {
+    "app": "Telegram",
+    "appVersion": "7.3.1",
+    "field": "черновик Избранное",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "telegram-s9.json"
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S6",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S7",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S8",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Slack",
+    "appVersion": null,
+    "field": "черновик",
+    "scenario": "S9",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S6",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S7",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S8",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "редактор",
+    "scenario": "S9",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S6",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S7",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S8",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "VS Code",
+    "appVersion": null,
+    "field": "поиск",
+    "scenario": "S9",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s1.json",
+      "textedit-s1-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s2.json",
+      "textedit-s2-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s3.json",
+      "textedit-s3-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s4.json",
+      "textedit-s4-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s6.json",
+      "textedit-s6-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s7.json",
+      "textedit-s7-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S8",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s8.json",
+      "textedit-s8-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S9",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s9.json",
+      "textedit-s9-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S10",
+    "result": "PASS",
+    "observed": "3 круга переходов; реальный флаг/TIS совпадают;0 событий",
+    "statusText": "Обработчик готов",
+    "reportFile": [
+      "focus-1-textedit.json",
+      "focus-2-textedit.json",
+      "focus-3-textedit.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S11",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s11-repeat.json",
+      "textedit-s11-repeat-flag.json"
+    ]
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S12",
+    "result": "NOT_RUN",
+    "observed": "S12 относится к паролям Safari/Terminal; в новом документе TextEdit нет password field. Safari protection gate записан отдельно, typed-password E2E не проводился.",
+    "statusText": "",
+    "reportFile": null,
+    "applicability": "NOT_APPLICABLE"
+  },
+  {
+    "app": "TextEdit",
+    "appVersion": "1.21",
+    "field": "новый synthetic document",
+    "scenario": "S13",
+    "result": "PASS",
+    "observed": "NativeProbe: точные текст/каретка/source; реальный флаг прочитан отдельно при той же итоговой раскладке; для S13 автозамена подтверждена в этом же документе",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "textedit-s13-same-doc.json",
+      "textedit-s13-same-doc-flag.json",
+      "textedit-s13-verdict.json"
+    ]
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s1.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S2",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s2.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S3",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s3.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S4",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s4.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S6",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s6.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s7.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S13",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s13.json"
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S6",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S7",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Word",
+    "appVersion": null,
+    "field": "новый документ",
+    "scenario": "S13",
+    "result": "SKIP",
+    "observed": "Не установлен; пропуск явно разрешён пользователем",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S5",
+    "result": "SKIP_USER",
+    "observed": "Пользователь явно пропустил проверку картинки после аварии test helper; прежние byte-subgate не являются полным PASS",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": "../mac-agent-p8-2026-10-18/image-helper-crash.json"
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S6",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S7",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Codex",
+    "appVersion": null,
+    "field": "пустой черновик",
+    "scenario": "S13",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "zsh",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "zsh",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "zsh",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "zsh",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "zsh",
+    "scenario": "S12",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "vim insert",
+    "scenario": "S1",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "vim insert",
+    "scenario": "S2",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "vim insert",
+    "scenario": "S3",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "vim insert",
+    "scenario": "S4",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Terminal",
+    "appVersion": null,
+    "field": "vim insert",
+    "scenario": "S12",
+    "result": "SKIP",
+    "observed": "Доступ запрещён инструментом; пользователь явно разрешил пропуск",
+    "statusText": "Не снят отдельно для каждого случая",
+    "reportFile": null
+  },
+  {
+    "app": "Выключенный universal mode",
+    "appVersion": null,
+    "field": "TextEdit",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "TextEdit исправляет, Notes не исправляет; переключатель и настройки восстановлены",
+    "statusText": "Обработчик готов",
+    "reportFile": "off-mode-verdict.json"
+  },
+  {
+    "app": "Выключенный universal mode",
+    "appVersion": null,
+    "field": "Заметки",
+    "scenario": "S1",
+    "result": "PASS",
+    "observed": "TextEdit исправляет, Notes не исправляет; переключатель и настройки восстановлены",
+    "statusText": "Обработчик готов",
+    "reportFile": "off-mode-verdict.json"
+  },
+  {
+    "app": "Safari",
+    "appVersion": "27.0.1",
+    "field": "страница input",
+    "scenario": "S7",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/реальный флаг; Enter не отправлялся",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "safari-s7.json"
+  },
+  {
+    "app": "Заметки",
+    "appVersion": "4.13",
+    "field": "новая synthetic note",
+    "scenario": "S11",
+    "result": "PASS",
+    "observed": "GUI ab020042: точные текст/каретка/source/флаг, только собственный текст, Return0",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "notes-s11.json"
+  }
+]

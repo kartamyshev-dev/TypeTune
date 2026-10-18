@@ -1,0 +1,16 @@
+{
+  "bundle" : "com.tdesktop.Telegram",
+  "caretMatches" : true,
+  "events" : 90,
+  "fieldDescriptionLength" : 0,
+  "inputSeconds" : 2.5042647083337215,
+  "inputSourceRestored" : true,
+  "observedLength" : 22,
+  "passed" : true,
+  "pid" : 673,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 42
+}

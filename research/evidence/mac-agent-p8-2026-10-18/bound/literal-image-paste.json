@@ -1,0 +1,107 @@
+{
+  "axReadErrors": {
+    "AXFocusedUIElement:-25204": 1,
+    "AXFocusedWindow:-25204": 2,
+    "AXSubrole:-25205": 17
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 17,
+      "maxMilliseconds": 0.41329166560899466,
+      "totalMilliseconds": 2.6390416624053614
+    },
+    "AXFocusedUIElement:-25204": {
+      "count": 1,
+      "maxMilliseconds": 144.8454999990645,
+      "totalMilliseconds": 144.8454999990645
+    },
+    "AXFocusedUIElement:0": {
+      "count": 18,
+      "maxMilliseconds": 66.25158333372383,
+      "totalMilliseconds": 99.74908333242638
+    },
+    "AXFocusedWindow:-25204": {
+      "count": 2,
+      "maxMilliseconds": 155.02529166769818,
+      "totalMilliseconds": 308.92191666862345
+    },
+    "AXFocusedWindow:0": {
+      "count": 17,
+      "maxMilliseconds": 23.004249998848536,
+      "totalMilliseconds": 35.22004166916304
+    },
+    "AXRole:0": {
+      "count": 17,
+      "maxMilliseconds": 0.12058333413733635,
+      "totalMilliseconds": 0.7912500022939639
+    },
+    "AXSelectedTextRange:0": {
+      "count": 4,
+      "maxMilliseconds": 0.12616666572284885,
+      "totalMilliseconds": 0.3075833337788936
+    },
+    "AXSubrole:-25205": {
+      "count": 17,
+      "maxMilliseconds": 0.16633333325444255,
+      "totalMilliseconds": 1.8971250028698705
+    },
+    "AXValue:0": {
+      "count": 4,
+      "maxMilliseconds": 0.05400000009103678,
+      "totalMilliseconds": 0.17045833374140784
+    },
+    "AXWindow:0": {
+      "count": 17,
+      "maxMilliseconds": 0.14204166654963046,
+      "totalMilliseconds": 1.2845000019297004
+    }
+  },
+  "error": "ProbeFailure(message: \"focused_window_unverified\", initiallyMissing: false)",
+  "finalModifierFlags": 537919496,
+  "passed": false,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "5e0507ea8a41c14e677fa6b9664d58b94c12a7d4d159d4ec20495b586054063b",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "c0da33c8de8e8cd5be7e516b5a7564cc886281695294fe00c7b6a71373b2c6e5",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    },
+    "probePrefixSha256": "60361bdd087ca1f471ea691ee8b486c470e7be249124972548506d299a0be848"
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "5e0507ea8a41c14e677fa6b9664d58b94c12a7d4d159d4ec20495b586054063b",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "c0da33c8de8e8cd5be7e516b5a7564cc886281695294fe00c7b6a71373b2c6e5",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    },
+    "probePrefixSha256": "60361bdd087ca1f471ea691ee8b486c470e7be249124972548506d299a0be848"
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/image-paste-probe",
+  "helperProcess": {
+    "pid": 27758,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/image-paste-probe",
+    "started": "Sun Oct 18 20:35:16 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 0,
+  "caseFileSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "caseFileUnchanged": true,
+  "sourceCommit": "3e6dad069314d8f3982d39cf7fc5c32e834d3cab",
+  "helperWallSeconds": 3.5255482499997015,
+  "validationError": "helper_exit_not_verified"
+}

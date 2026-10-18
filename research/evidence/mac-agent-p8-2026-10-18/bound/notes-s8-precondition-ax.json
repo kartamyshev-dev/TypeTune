@@ -1,0 +1,252 @@
+{
+  "ancestors" : [
+    {
+      "role" : "AXScrollArea",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXSplitGroup",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXWindow",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXApplication",
+      "selectedRange" : null,
+      "value" : null
+    }
+  ],
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : true
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "com.apple.Notes",
+  "focused" : {
+    "attributes" : {
+      "AXChildren" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXChildrenInNavigationOrder" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXCustomActions" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXDescription" : {
+        "settable" : false,
+        "status" : -25200,
+        "value" : null
+      },
+      "AXFocused" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFrame" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          3
+        ]
+      },
+      "AXHelp" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXIdentifier" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          45
+        ]
+      },
+      "AXInsertionPointLineNumber" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXLinkedUIElements" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXNumberOfCharacters" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 6
+      },
+      "AXParent" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXScrollArea"
+        ]
+      },
+      "AXPosition" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXRole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          10
+        ]
+      },
+      "AXRoleDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          20
+        ]
+      },
+      "AXSelectedText" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          0
+        ]
+      },
+      "AXSelectedTextRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "range",
+          2,
+          0
+        ]
+      },
+      "AXSelectedTextRanges" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXSharedCharacterRange" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          6
+        ]
+      },
+      "AXSharedTextUIElements" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          1
+        ]
+      },
+      "AXSize" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          2
+        ]
+      },
+      "AXTextInputMarkedRange" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "range",
+          6,
+          0
+        ]
+      },
+      "AXTopLevelUIElement" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      },
+      "AXValue" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          6
+        ]
+      },
+      "AXVisibleCharacterRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          6
+        ]
+      },
+      "AXWindow" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      }
+    },
+    "namesStatus" : 0,
+    "parameterized" : [
+      "AXLineForIndex",
+      "AXRangeForLine",
+      "AXBoundsForRange",
+      "AXStringForRange",
+      "AXAttributedStringForRange",
+      "AXRangeForPosition",
+      "AXRangeForIndex",
+      "AXStyleRangeForIndex",
+      "AXSharedTextElementForIndex",
+      "AXReplaceRangeWithText",
+      "AXRTFForRange"
+    ]
+  },
+  "focusedUIElementStatus" : 0,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 20689
+}

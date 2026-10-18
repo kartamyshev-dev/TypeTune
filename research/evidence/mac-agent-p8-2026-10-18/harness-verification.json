@@ -1,0 +1,17 @@
+{
+  "matrixProbeOffline": {
+    "tests": 1,
+    "subcases": 5,
+    "passed": true,
+    "events": 0
+  },
+  "nativeProbeOffline": {
+    "tests": 8,
+    "passed": true,
+    "events": 0
+  },
+  "nativeProbeMainRefactor": "shared-lease-native-launch.json; 1/1 exact authenticated case passed",
+  "imageClipboard": "chrome-s5-image.json; all representations restored; no private bytes logged",
+  "matrixSourceSHA256": "6d18c117d6d9167255102b5a2bab7ac2e22f9cc8b7f440425f87411abfad1c54",
+  "sharedClipboardSourceSHA256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6"
+}

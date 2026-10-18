@@ -1,0 +1,52 @@
+{
+  "error": "middle_fixture_not_confirmed",
+  "events": 22,
+  "inputSourceRestored": true,
+  "modifiersNeutral": true,
+  "passed": false,
+  "returnEvents": 0,
+  "windowTitleLength": 28,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "090f323913c1ce985bc2cc61556858420e58a2408fbfc2af12eeca24c8079ff8",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "0087faa22f25b089d5c53d7e95852f847014c09aa7751713afefca95ea5643d0",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    }
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "090f323913c1ce985bc2cc61556858420e58a2408fbfc2af12eeca24c8079ff8",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "0087faa22f25b089d5c53d7e95852f847014c09aa7751713afefca95ea5643d0",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    }
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+  "helperProcess": {
+    "pid": 23062,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+    "started": "Sun Oct 18 19:49:16 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 1,
+  "caseFileSha256": "cb886485ed8711f94ac58522ae9bb503383c62edac2de00b16e1e24bdee7d1e6",
+  "caseFileUnchanged": true,
+  "sourceCommit": "f0071c52bae17f76ec063839b02472a7f776953b",
+  "finalModifierFlags": 536870912,
+  "helperWallSeconds": 1.791316499999084,
+  "validationError": "helper_exit_not_verified"
+}

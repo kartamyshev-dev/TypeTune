@@ -1,0 +1,15 @@
+{
+  "bundle" : "com.apple.Notes",
+  "caretMatches" : true,
+  "events" : 30,
+  "inputSeconds" : 1.1738857500004087,
+  "inputSourceRestored" : true,
+  "observedLength" : 6,
+  "passed" : true,
+  "pid" : 20689,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 28
+}

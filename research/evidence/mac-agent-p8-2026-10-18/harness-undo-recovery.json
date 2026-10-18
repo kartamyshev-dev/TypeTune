@@ -1,0 +1,10 @@
+{
+  "initialAttempt": "chrome-s6-undo.json",
+  "reason": "Probe removed owned Option state before combined-session queue acknowledged its release; foreign-modifier guard stopped the probe",
+  "observedProductOutcome": "Undo executed; raw vbh and ABC restored; app ready; learned vbh visible",
+  "ownedCommandRelease": "undo-owned-command-released.json; one authenticated Command-up; text/caret unchanged; modifiers neutral",
+  "fix": "Keep ownership of a released modifier until both HID and combined-session acknowledge it; bounded wait, same per-event guards",
+  "retry": "chrome-s6-undo-settled.json; confirmed correction before undo; exact text/caret/source/flag; neutral modifiers; test text cleared",
+  "settings": "chrome-undo-settings-restored.json; only test vbh unlearned; semantic baseline equality and yf rule preserved",
+  "runtimeIsProductFix": false
+}

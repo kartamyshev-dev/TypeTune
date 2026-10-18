@@ -73,6 +73,7 @@ def capture(root, binary, pid):
     return {'schemaVersion': 1, 'bundleHashAlgorithm': 'paths-files-modes-symlinks-v1',
             'targetBundleSha256': bundle_digest(binary.parents[2]),
             'targetBinarySha256': digest(binary), 'probeSourceSha256': digest(root/'Tools/NativeProbe.swift'),
+            'clipboardLeaseSourceSha256': digest(root/'Tools/ClipboardLease.swift'),
             'probeBinarySha256': digest(root/'.build/native-probe'), 'targetProcess': process}
 
 

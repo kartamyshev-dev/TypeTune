@@ -1,0 +1,23 @@
+{
+  "commit": "adb0283dfe764beeec515f0f183db9e2bdd751c8",
+  "date": "2026-10-18",
+  "authorization": "Ввод в Chrome, Safari, Telegram, Slack, VS Code, Заметки, Word, Codex и Terminal: пустые поля и черновики, ничего не отправляя; разрешения обновлять самостоятельно.",
+  "guiSHA256": "62368559e2dc60853bfe92e24ff6e70190f497222e11f774339063f5bf64bb5f",
+  "offline": {
+    "debugCLI": "1439/1439",
+    "releaseCLI": "1439/1439",
+    "corpusV2": "4420/4420",
+    "corpusV3": "22000/22000",
+    "runtimeRecoveryPassed": true,
+    "auditGates": "4/4",
+    "ciCore": "FAIL: XCTest unavailable in CLT"
+  },
+  "native": "Partial only: Google warm AX S1 5/5, S7 10/10; TextEdit 12/13 expected; full U8 NOT_RUN",
+  "diagnosticReportRecords": 5,
+  "restoration": "state-after.json",
+  "matrix": "matrix.json",
+  "blocker": "Mac locked; computer-use automatic unlock unavailable",
+  "P1": "OPEN: cold profile had no authenticated initial field; enhanced alone did not establish focus",
+  "sourceCodeChanged": false,
+  "instrumentationChanged": true
+}

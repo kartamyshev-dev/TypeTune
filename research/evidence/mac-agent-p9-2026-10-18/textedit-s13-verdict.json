@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "sameOwnDocumentAutocorrectBeforeAndAfter": true,
+  "prefixAndCaretExact": true,
+  "actualFlagMatches": true,
+  "originalAutocorrectRestored": true,
+  "initialNewDocumentAttempt": "Not accepted as S13 because TextEdit applies autocorrection per document; record retained separately"
+}

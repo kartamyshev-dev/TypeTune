@@ -31,12 +31,31 @@ final class InputDiagnostics {
         let settings = try JSONEncoder().encode(Settings())
         defaults.set(settings, forKey: "settings.v1")
         var checks: [String: Bool] = [:]
+        let expectsPrefix: (String) -> Bool = { $0 == "ghbdtn " }
+        checks["transient_unreadable_retries_before_blind_fallback"] = AccessibilityEditor.FieldObservation.unreadable.needsAnotherRead(expects: expectsPrefix)
+        checks["matching_prefix_stops_observation_retry"] = !AccessibilityEditor.FieldObservation.textBeforeCaret("ghbdtn ").needsAnotherRead(expects: expectsPrefix)
+        checks["stale_prefix_still_retries"] = AccessibilityEditor.FieldObservation.textBeforeCaret("ghbdtn").needsAnotherRead(expects: expectsPrefix)
+        checks["selected_prefix_never_retries_as_unreadable"] = !AccessibilityEditor.FieldObservation.selection(textBeforeSelection: "ghbdtn ").needsAnotherRead(expects: expectsPrefix)
+        checks["secure_observation_never_retries"] = !AccessibilityEditor.FieldObservation.secure.needsAnotherRead(expects: expectsPrefix)
+        let expiredProof = ["identity": true, "revision": true, "allowed": true, "trusted": true,
+            "posting": true, "frontmost": true, "source": true, "leaseFresh": false, "replaySource": true]
+        checks["expired_replay_proof_rechecks_instead_of_posting"] = KeyboardService.shouldRetryReplayIdentity(expiredProof, retries: 0)
+        checks["expired_replay_proof_retry_is_bounded"] = !KeyboardService.shouldRetryReplayIdentity(expiredProof, retries: 2)
+        checks["fresh_replay_proof_needs_no_retry"] = !KeyboardService.shouldRetryReplayIdentity(expiredProof.merging(["leaseFresh": true]) { _, new in new }, retries: 0)
+        checks["other_replay_failures_never_retry"] = expiredProof.keys.filter { $0 != "leaseFresh" }.allSatisfy { key in
+            !KeyboardService.shouldRetryReplayIdentity(expiredProof.merging([key: false]) { _, new in new }, retries: 0)
+        }
         func service() -> KeyboardService {
             let store = Store(defaults: defaults)
             store.trusted = true; store.listening = true; store.posting = true; store.secure = false
             let service = KeyboardService(store: store, startAutomatically: false)
             service.testingRefreshStatus()
             return service
+        }
+        do {
+            let keyboard = service()
+            checks["route_and_event_rechecks_share_one_budget"] = keyboard.testingRetryReplayIdentity(expiredProof) &&
+                keyboard.testingRetryReplayIdentity(expiredProof) && !keyboard.testingRetryReplayIdentity(expiredProof)
         }
         do {
             let keyboard = service()
@@ -278,6 +297,16 @@ final class InputDiagnostics {
             checks["keystroke_target_never_matches_pinned_field"] = !AccessibilityEditor.sameTarget(first, pinned)
             let keyboard = service()
             checks["universal_mode_on_by_default"] = keyboard.store.universalInput
+        }
+        do {
+            let keyboard = service()
+            keyboard.testingEnableContextCapture()
+            keyboard.testingCaptureAfterEvent()
+            checks["universal_without_plain_paste_does_not_capture_legacy_context"] = keyboard.testingRequestedContextRevisions.isEmpty
+            keyboard.store.universalInput = false
+            keyboard.testingCaptureAfterEvent()
+            checks["legacy_mode_keeps_event_context_capture"] = keyboard.testingRequestedContextRevisions.count == 1
+            keyboard.store.universalInput = true
         }
         do {
             let after = EditorSnapshot(element: AXUIElementCreateApplication(-1), window: nil,

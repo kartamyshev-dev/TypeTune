@@ -1,0 +1,25 @@
+{
+  "records": 1000,
+  "scope": "Последние1000 технических записей; ранние события могли вытесниться",
+  "faults": 0,
+  "rejections": 0,
+  "final": {
+    "checks": {
+      "listening": true,
+      "posting": true,
+      "secure": false,
+      "tapActive": true,
+      "trusted": true
+    },
+    "counts": {
+      "outstanding": 0,
+      "pending": 0,
+      "uncertainDeliveries": 0
+    },
+    "phase": "manual-snapshot",
+    "reason": "ready",
+    "revision": 1929,
+    "uptime": 15241.864384791668
+  },
+  "passed": true
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "harness precondition, not product text corruption",
+  "observedCompletionLengths": [
+    15,
+    37
+  ],
+  "observedSelectionStart": 3,
+  "nativeSpaceEmittedOnRejectedAttempt": false,
+  "knownExactCompletionsAllowed": 2,
+  "allowlistBound": 2,
+  "reason": "Safari offered bare local host first, full own fixture URL on next attempt; both discovered readonly and retained privately",
+  "productionChanged": false,
+  "postSpaceBehavior": "Browser offered another selected search suffix after exact typed prefix 127 + space; moving focus dismissed it and retained exact prefix; TypeTune ready, sourceABC"
+}

@@ -1,0 +1,222 @@
+{
+  "ancestors" : [
+    {
+      "role" : "AXGroup",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXToolbar",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXWindow",
+      "selectedRange" : null,
+      "value" : null
+    },
+    {
+      "role" : "AXApplication",
+      "selectedRange" : null,
+      "value" : null
+    }
+  ],
+  "AXEnhancedUserInterface" : {
+    "status" : 0,
+    "value" : true
+  },
+  "AXManualAccessibility" : {
+    "status" : -25205,
+    "value" : null
+  },
+  "bundleID" : "com.apple.Safari",
+  "focused" : {
+    "attributes" : {
+      "AXAlternateUIVisible" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : false
+      },
+      "AXChildren" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXChildrenInNavigationOrder" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "array",
+          0
+        ]
+      },
+      "AXDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          17
+        ]
+      },
+      "AXEnabled" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFocused" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : true
+      },
+      "AXFrame" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          3
+        ]
+      },
+      "AXHelp" : {
+        "settable" : false,
+        "status" : -25212,
+        "value" : null
+      },
+      "AXIdentifier" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          36
+        ]
+      },
+      "AXInsertionPointLineNumber" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 0
+      },
+      "AXNumberOfCharacters" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : 37
+      },
+      "AXParent" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXGroup"
+        ]
+      },
+      "AXPlaceholderValue" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          19
+        ]
+      },
+      "AXPosition" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          1
+        ]
+      },
+      "AXRole" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          11
+        ]
+      },
+      "AXRoleDescription" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "string",
+          14
+        ]
+      },
+      "AXSelectedText" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          34
+        ]
+      },
+      "AXSelectedTextRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "range",
+          3,
+          34
+        ]
+      },
+      "AXSize" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "axvalue",
+          2
+        ]
+      },
+      "AXTopLevelUIElement" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      },
+      "AXValue" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "string",
+          37
+        ]
+      },
+      "AXVisibleCharacterRange" : {
+        "settable" : true,
+        "status" : 0,
+        "value" : [
+          "range",
+          0,
+          37
+        ]
+      },
+      "AXWindow" : {
+        "settable" : false,
+        "status" : 0,
+        "value" : [
+          "element",
+          "AXWindow"
+        ]
+      }
+    },
+    "namesStatus" : 0,
+    "parameterized" : [
+      "AXLineForIndex",
+      "AXRangeForLine",
+      "AXBoundsForRange",
+      "AXStringForRange",
+      "AXAttributedStringForRange",
+      "AXRangeForPosition",
+      "AXRangeForIndex",
+      "AXStyleRangeForIndex",
+      "AXReplaceRangeWithText",
+      "AXRTFForRange"
+    ]
+  },
+  "focusedUIElementStatus" : 0,
+  "focusedWindowStatus" : 0,
+  "note" : "No text is printed: strings appear as their UTF-16 length. AXError 0 = success, -25205 = attribute unsupported, -25204 = cannot complete, -25212 = no value.",
+  "pid" : 19884
+}

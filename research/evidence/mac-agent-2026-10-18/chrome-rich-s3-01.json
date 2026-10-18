@@ -1,0 +1,6 @@
+{
+  "error" : "Error Domain=NSCocoaErrorDomain Code=260 \"The file “chrome-rich-s3.json” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=\/Users\/kartamyshev\/git\/TypeTune\/research\/private\/mac-agent-2026-10-18\/chrome-rich-s3.json, NSURL=research\/private\/mac-agent-2026-10-18\/chrome-rich-s3.json -- file:\/\/\/Users\/kartamyshev\/git\/TypeTune\/, NSUnderlyingError=0x104cfb390 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}",
+  "events" : 0,
+  "passed" : false,
+  "returnEvents" : 0
+}

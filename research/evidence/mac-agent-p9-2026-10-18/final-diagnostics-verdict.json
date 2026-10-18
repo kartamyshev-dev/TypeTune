@@ -1,0 +1,28 @@
+{
+  "scope": "last1000 after remaining matrix; not full-session trace",
+  "counts": {
+    "fault": 1,
+    "snapshot-failed": 1,
+    "replay-route-rejected": 2,
+    "replay-event-rejected": 13
+  },
+  "final": {
+    "checks": {
+      "listening": true,
+      "posting": true,
+      "secure": false,
+      "tapActive": true,
+      "trusted": true
+    },
+    "counts": {
+      "outstanding": 0,
+      "pending": 0,
+      "uncertainDeliveries": 0
+    },
+    "phase": "manual-snapshot",
+    "reason": "ready",
+    "revision": 4725,
+    "uptime": 19587.001451625
+  },
+  "faultContext": "snapshot-deadlineExceeded at uptime18373.800 after switching universal OFF and before off-mode TextEdit start18382.026; final ready with zero pending/outstanding/uncertain. This report is not fault-free; universal-only previous snapshot is separate."
+}

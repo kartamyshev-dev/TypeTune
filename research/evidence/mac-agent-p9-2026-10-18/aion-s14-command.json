@@ -1,0 +1,51 @@
+{
+  "error": "bounded_ascii_keys_required",
+  "events": 0,
+  "modifiersNeutral": true,
+  "passed": false,
+  "returnEvents": 0,
+  "sourceDirty": true,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "63c9a3fb77f5269d7a5f2272e574d475451a789632cd6327725f9b93c7004a42",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "dc6e3f4dac79bf9cb5b08481cf61c8378fb8126fd0b5df7c471ab84530128983",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "8ac52d320f669ef13dee1e0343da9c76350f983bfa9fac9c14927b0c035b8dea",
+    "targetBinarySha256": "ab020042b1f89b42bcf3cca79fedbf10a3a5dd7e6b5710ec9e11fb60f7eec129",
+    "probeSourceSha256": "63c9a3fb77f5269d7a5f2272e574d475451a789632cd6327725f9b93c7004a42",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "dc6e3f4dac79bf9cb5b08481cf61c8378fb8126fd0b5df7c471ab84530128983",
+    "targetProcess": {
+      "pid": 32477,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 20:57:28 2026"
+    }
+  },
+  "identityUnchanged": true,
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+  "helperProcess": {
+    "pid": 41951,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/matrix-input-probe",
+    "started": "Sun Oct 18 22:16:59 2026"
+  },
+  "helperChildWaitVerified": true,
+  "processExitCode": 1,
+  "caseFileSha256": "56a9b46f911bf1aa16be5133978b689283095fb7a967e53e46bed5d2924dab80",
+  "caseFileUnchanged": true,
+  "sourceCommit": "6e07197aeef257f777569c6901771d5a20fcdbab",
+  "finalModifierFlags": 536870912,
+  "helperWallSeconds": 0.2430385000006936,
+  "validationError": "helper_exit_not_verified"
+}
