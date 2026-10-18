@@ -1,0 +1,21 @@
+{
+  "bundle" : "com.google.Chrome",
+  "caretMatches" : false,
+  "error" : "mismatch_kept_for_diagnosis",
+  "events" : 14,
+  "fieldDescriptionLength" : 7,
+  "inputSeconds" : 0.63739412500217441,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.ABC",
+  "observedLength" : 0,
+  "passed" : false,
+  "pid" : 1492,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : false,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.ABC\nРезультат последней операции не подтверждён. Проверьте текст перед продолжением",
+  "textMatches" : false,
+  "windowTitleLength" : 36
+}

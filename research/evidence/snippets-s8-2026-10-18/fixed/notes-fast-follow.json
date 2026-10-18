@@ -1,0 +1,20 @@
+{
+  "bundle" : "com.apple.Notes",
+  "caretMatches" : true,
+  "events" : 46,
+  "inputSeconds" : 1.2244861250001122,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : true,
+  "observedInputSource" : "com.apple.keylayout.RussianWin",
+  "observedLength" : 13,
+  "passed" : true,
+  "pid" : 20689,
+  "returnEvents" : 0,
+  "sourceMatches" : true,
+  "statusFlagMatches" : true,
+  "statusSourceMatches" : true,
+  "statusTooltip" : "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+  "testTextCleared" : true,
+  "textMatches" : true,
+  "windowTitleLength" : 28
+}

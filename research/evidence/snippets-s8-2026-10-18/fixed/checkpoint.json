@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "4af15f7765463a0601facc0c01cc802a9e098376",
+  "result": "PARTIAL; stopped on Chrome empty multiline paste",
+  "knownFixed": "Telegram LF/U+2028: native multiline regression PASS; native undo extra attempt driver modifier release failure, not PASS",
+  "textedit": "10 completed cases + stream10/10 + clipboard text/image 4 cases",
+  "notes": "10 observations including literal ;flh negative",
+  "chrome": "5 observations including literal ;flh negative; multiline empty+mutation-uncertain",
+  "safari": "NOT_RUN on this binary",
+  "telegramFullRepeat": "NOT_RUN on this binary; targeted multiline passed",
+  "clipboard": "text and image all representations preserved/restored; {{буфер}} with image refused",
+  "authorizationForChromeFix": "user authorized fix and repeat"
+}

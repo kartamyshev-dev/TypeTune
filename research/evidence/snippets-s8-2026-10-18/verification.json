@@ -1,0 +1,39 @@
+{
+  "sourceCommit": "4af15f7765463a0601facc0c01cc802a9e098376",
+  "appSHA256": "04476538f2b349a1f3a69bd984bac9eec8771049872a414ab7f5fc43a438e27c",
+  "result": "PARTIAL; S8 NOT_ACCEPTED",
+  "kind": "agent native, user-authorized; TextEdit NativeProbe",
+  "ciRun": 39164537323,
+  "ciLinuxAndMacOS": "success",
+  "offlineInvariants": "1643/1643",
+  "controllerChecks": "101/101",
+  "corpus": "4420/4420",
+  "redRegressionFailures": 3,
+  "textedit": {
+    "completedCases": 24,
+    "streamRequestedIntervalMS": 10,
+    "streamExact": "10/10",
+    "clipboardTextAndImageRestored": true,
+    "imageClipboardVariableRefused": true,
+    "undo": "PASS"
+  },
+  "notes": "10/10 exact observations, including ;flh negative",
+  "chrome": "5 exact observations, then FAIL: multiline paste left empty field, mutation-uncertain",
+  "telegram": "targeted multiline PASS with U+2028; extra native undo NOT_RUN (driver modifier_release_not_settled)",
+  "safari": "NOT_RUN on fixed binary; previous binary separate",
+  "maccy": "zero stored content matches for synthetic signature and clipboard nonce prefix",
+  "literalEnglishAbbreviation": "$flh is physical equivalent of ;адр in RussianWin; ;flh is a negative case",
+  "notRun": [
+    "remaining Chrome cases after multiline",
+    "Safari repeat on fixed binary",
+    "full Telegram repeat on fixed binary",
+    "Slack",
+    "VS Code",
+    "Word",
+    "Terminal/sudo",
+    "typed-password E2E",
+    "four-hour acceptance"
+  ],
+  "restoration": "state-after.json; snippets initially absent and absent again; original 3 rules reloaded; settings equal excluding statistics; clipboard equals recorded checkpoint; source ABC; ready and queue counts 0",
+  "next": "User authorized Chrome fix; complete modifier-frame candidate prepared, native NOT_RUN"
+}

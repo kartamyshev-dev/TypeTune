@@ -1,0 +1,27 @@
+{
+  "TextEdit": {
+    "CFBundleIdentifier": "com.apple.TextEdit",
+    "CFBundleShortVersionString": "1.21",
+    "CFBundleVersion": "419"
+  },
+  "Notes": {
+    "CFBundleIdentifier": "com.apple.Notes",
+    "CFBundleShortVersionString": "4.13",
+    "CFBundleVersion": "3195"
+  },
+  "Safari": {
+    "CFBundleIdentifier": "com.apple.Safari",
+    "CFBundleShortVersionString": "27.0.1",
+    "CFBundleVersion": "22625.1.29.11.28"
+  },
+  "Chrome": {
+    "CFBundleIdentifier": "com.google.Chrome",
+    "CFBundleShortVersionString": "155.0.8059.82",
+    "CFBundleVersion": "8059.82"
+  },
+  "Telegram": {
+    "CFBundleIdentifier": "com.tdesktop.Telegram",
+    "CFBundleShortVersionString": "7.3.1",
+    "CFBundleVersion": "7.3.1"
+  }
+}

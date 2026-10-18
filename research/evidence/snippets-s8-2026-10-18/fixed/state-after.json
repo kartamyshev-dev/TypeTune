@@ -1,0 +1,29 @@
+{
+  "snippetsInitiallyExisted": false,
+  "snippetsFinallyExists": false,
+  "originalMigratedLibraryLoadedBeforeRemoval": true,
+  "originalLibraryCount": 3,
+  "temporarySnippetsRemovedFromMemory": true,
+  "settingsEqualExcludingStatistics": true,
+  "changedDefaultsKeys": [
+    "statistics.v1"
+  ],
+  "inputSourceBefore": "com.apple.keylayout.ABC",
+  "originalCarambaRunning": false,
+  "retainedTestEventDiscardedAfterTrace": true,
+  "installedAppSHA256": "04476538f2b349a1f3a69bd984bac9eec8771049872a414ab7f5fc43a438e27c",
+  "appState": "ready after restart with original library",
+  "telegramTestDraftCleared": true,
+  "chromeTestFieldEmpty": true,
+  "clipboardAllRepresentationsEqualToCheckpoint": true,
+  "clipboardCheckpointScope": "after initial TextEdit/Notes groups",
+  "inputSourceAfter": "com.apple.keylayout.ABC",
+  "inputSourceRestored": true,
+  "modifierFlagsAfter": 536870912,
+  "modifierKeysNeutral": true,
+  "countsAfter": {
+    "outstanding": 0,
+    "pending": 0,
+    "uncertainDeliveries": 0
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "axReadErrors": {},
+  "axReadTiming": {},
+  "error": "initial_modifiers_not_neutral",
+  "finalModifierFlags": 537919496,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "29c7a0f4817bfce4bb0022ed75602141f8ee6f7e4ee3d2fdc8e764588d5de20a",
+    "targetBinarySha256": "04476538f2b349a1f3a69bd984bac9eec8771049872a414ab7f5fc43a438e27c",
+    "probeSourceSha256": "1dc1861c85df0e76046e1cf88c08bc8fbe2910be3ab0fa09366d08a7296cccfc",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "7cfd545deabb5e4b2761fd0d31427103f124810c795d2fc4d70072558ec425e8",
+    "targetProcess": {
+      "pid": 56738,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 23:46:27 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 56984,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 23:48:09 2026"
+  },
+  "processExitCode": 2,
+  "helperWallSeconds": 0.07202229199901922,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "29c7a0f4817bfce4bb0022ed75602141f8ee6f7e4ee3d2fdc8e764588d5de20a",
+    "targetBinarySha256": "04476538f2b349a1f3a69bd984bac9eec8771049872a414ab7f5fc43a438e27c",
+    "probeSourceSha256": "1dc1861c85df0e76046e1cf88c08bc8fbe2910be3ab0fa09366d08a7296cccfc",
+    "clipboardLeaseSourceSha256": "534c5458b2fdfc9c43edce58eb2c8b001316fa1328116ad305fef44778d76e84",
+    "probeBinarySha256": "7cfd545deabb5e4b2761fd0d31427103f124810c795d2fc4d70072558ec425e8",
+    "targetProcess": {
+      "pid": 56738,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 23:46:27 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 56738,
+  "sourceCommit": "4af15f7765463a0601facc0c01cc802a9e098376",
+  "sourceDirty": true,
+  "probeStartUptime": 25044.979382791,
+  "probeEndUptime": 25045.109173708,
+  "caseFileSha256": "ab02397a65d85603e85a9f2a4520c2994c9a667fea5417bb4a4415e3b054a9df",
+  "validationError": "helper_exit_not_verified"
+}

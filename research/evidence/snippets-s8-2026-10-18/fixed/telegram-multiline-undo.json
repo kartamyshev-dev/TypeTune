@@ -1,0 +1,11 @@
+{
+  "error" : "modifier_release_not_settled",
+  "events" : 19,
+  "fieldDescriptionLength" : 0,
+  "inputSourceRestored" : true,
+  "modifiersNeutral" : false,
+  "passed" : false,
+  "returnEvents" : 0,
+  "undoPreconditionVerified" : true,
+  "windowTitleLength" : 42
+}

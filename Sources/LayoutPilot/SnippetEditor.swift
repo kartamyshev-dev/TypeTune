@@ -21,9 +21,26 @@ enum SnippetEditor {
         case posted(ClipboardSwap.Saved?)
     }
 
+    static func pasteEvents(source: CGEventSource) -> [CGEvent]? {
+        guard let commandDown = CGEvent(keyboardEventSource: source, virtualKey: 55, keyDown: true),
+              let vDown = CGEvent(keyboardEventSource: source, virtualKey: vKey, keyDown: true),
+              let vUp = CGEvent(keyboardEventSource: source, virtualKey: vKey, keyDown: false),
+              let commandUp = CGEvent(keyboardEventSource: source, virtualKey: 55, keyDown: false) else { return nil }
+        commandDown.type = .flagsChanged; commandUp.type = .flagsChanged
+        let held = CGEventFlags(rawValue: CGEventFlags.maskCommand.rawValue | 0x8)
+        for event in [commandDown, vDown, vUp] { event.flags = held }
+        commandUp.flags = []
+        return [commandDown, vDown, vUp, commandUp]
+    }
+
     static func perform(_ plan: SnippetEditPlan, pid: pid_t) -> Outcome {
         guard CGPreflightPostEventAccess(), !IsSecureEventInputEnabled(), pid > 0,
               let source = CGEventSource(stateID: .privateState) else { return .notPosted }
+        var pasteFrame: [CGEvent] = []
+        if plan.insertion == .paste {
+            guard let events = pasteEvents(source: source) else { return .notPosted }
+            pasteFrame = events
+        }
         var postedAny = false
         func post(_ event: CGEvent?, flags: CGEventFlags = []) -> Bool {
             guard let event else { return false }
@@ -56,7 +73,10 @@ enum SnippetEditor {
             case .paste:
                 // Never type a line break as Return (DECISIONS п. 28): paste the whole text.
                 guard let placed = ClipboardSwap.place(plan.insertText) else { return failed }
-                guard press(vKey, flags: .maskCommand) else { _ = ClipboardSwap.restore(placed); return .partial }
+                // Chromium needs a complete modifier frame, as in pastePlainNative.
+                for event in pasteFrame {
+                    guard post(event, flags: event.flags) else { _ = ClipboardSwap.restore(placed); return .partial }
+                }
                 saved = placed
             }
         }

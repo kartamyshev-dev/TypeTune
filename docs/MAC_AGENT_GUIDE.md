@@ -277,7 +277,16 @@ S8 на GUI `e862b158`/`4cf6030`: многострочная подпись вс
 исправить и повторить S8. Ожидаемое AX-представление меняется только у сниппетов Telegram,
 включая preflight отмены; другие приложения, барьер и secure guards не меняются.
 [Evidence](../research/evidence/snippets-s8-2026-10-18/initial-verification.json).
-Исправленный GUI/native пока NOT_RUN.
+На `4af15f7` / GUI `04476538` targeted multiline native PASS; полная S8 не закрыта.
+
+### P11. Chrome: многострочная вставка оставила пустое поле
+
+На `4af15f7` / GUI `04476538`: после удаления сокращения подпись не появилась,
+`snippet-result confirmed=false`, `mutation-uncertain`, pending1. Только пустой локальный
+fixture. [Trace](../research/evidence/snippets-s8-2026-10-18/fixed/chrome-fault-report.json).
+Пользователь разрешил исправление и повтор. Кандидат использует полный кадр Command/V,
+как `pastePlainNative`; offline контроллер102/102. Native кандидата NOT_RUN, историческая
+причина пустого paste не доказана. После установки сначала этот сценарий, затем S8.
 
 ### Новые проблемы
 

@@ -9,7 +9,7 @@
 - `main` = `universal-input` (перемотка 2026-10-18, DECISIONS п. 32): универсальный режим в `main`,
   U8 частичная — пропуски перечислены в п. 32. Дальнейшая работа универсального режима — в `main`.
 - `snippets`: сниппеты S1–S7 готовы — ядро на Linux, приложение в CI на macOS (сборка, пробник с
-  настоящим Store 8/8); **native S8 NOT_RUN**. Тестовая сборка `TypeTune-test-ebd4e9e…`. [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
+  настоящим Store 8/8); **native S8 PARTIAL**, остановлена на пустой multiline-вставке Chrome; Telegram U+2028 исправлен. [S8 evidence](../research/evidence/snippets-s8-2026-10-18/verification.json). Тестовая сборка `TypeTune-test-ebd4e9e…`. [SNIPPETS_PLAN](SNIPPETS_PLAN.md).
 
 ## Mac agent — текущая точка продолжения
 

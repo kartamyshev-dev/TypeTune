@@ -359,6 +359,12 @@ final class InputDiagnostics {
             checks["snippets_damaged_file_never_overwritten"] = !broken.snippetsStorageAvailable &&
                 (try? Data(contentsOf: file)) == Data("{".utf8)
         }
+        if let source = CGEventSource(stateID: .privateState), let events = SnippetEditor.pasteEvents(source: source) {
+            checks["snippet_paste_complete_modifier_frame"] = events.map(\.type) == [.flagsChanged, .keyDown, .keyUp, .flagsChanged] &&
+                events.map { $0.getIntegerValueField(.keyboardEventKeycode) } == [55, 9, 9, 55] &&
+                events.prefix(3).allSatisfy { $0.flags.rawValue == CGEventFlags.maskCommand.rawValue | 0x8 } &&
+                events.last?.flags.rawValue == 0
+        } else { checks["snippet_paste_complete_modifier_frame"] = false }
         checks["settings_bytes_preserved"] = defaults.data(forKey: "settings.v1") == settings
         let passed = checks.values.allSatisfy { $0 }
         let output: [String: Any] = ["passed": passed, "checks": checks,

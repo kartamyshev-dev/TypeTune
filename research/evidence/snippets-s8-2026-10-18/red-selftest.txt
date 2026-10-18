@@ -1,0 +1,4 @@
+1640/1643 offline invariants passed; 3 failures. No runtime input claim.
+FAIL: snippet edit plan: Telegram line separator confirms paste
+FAIL: snippet edit plan: Telegram line separator permits undo
+FAIL: snippet edit plan: Telegram expects its exact AX representation

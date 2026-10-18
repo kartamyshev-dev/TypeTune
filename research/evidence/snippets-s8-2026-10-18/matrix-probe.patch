@@ -1,0 +1,51 @@
+--- Tools/MatrixInputProbe.swift
++++ MatrixInputProbe.swift
+@@ -94,7 +94,7 @@
+             try require(allowed.contains(item.bundle) || item.bundle.hasPrefix("com.google.Chrome.app."), "bundle_not_in_matrix")
+             let keys: [Character: CGKeyCode] = ["a":0,"s":1,"d":2,"f":3,"h":4,"g":5,"z":6,"x":7,"c":8,"v":9,"b":11,
+                 "q":12,"w":13,"e":14,"r":15,"y":16,"t":17,"1":18,"2":19,"3":20,"4":21,"6":22,"5":23,"9":25,
+-                "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,"/":44,"n":45,"m":46,".":47," ":49]
++                "7":26,"8":28,"0":29,"o":31,"u":32,"i":34,"p":35,"l":37,"j":38,"k":40,";":41,"$":21,"C":8,"/":44,"n":45,"m":46,".":47," ":49]
+             try require((!item.text.isEmpty || ["singleShift", "focus"].contains(item.gesture)) && item.text.count <= 128 && item.text.allSatisfy { keys[$0] != nil }, "bounded_ascii_keys_required")
+             try require(["none", "doubleShift", "selectedDoubleShift", "singleShift", "middleOfWord", "undo", "focus", "inlineSpace"].contains(item.gesture), "unsupported_gesture")
+             try require((0...item.expected.utf16.count).contains(item.expectedCaret ?? item.expected.utf16.count), "invalid_expected_caret")
+@@ -264,8 +264,11 @@
+             }
+             let start = ProcessInfo.processInfo.systemUptime
+             for character in item.text {
++                let shifted = character == "$" || character == "C"
++                if shifted { try emit(56, down: true, modifier: true) }
+                 try emit(keys[character]!, down: true)
+                 try emit(keys[character]!, down: false)
++                if shifted { try emit(56, down: false, modifier: true) }
+                 pause(0.080)
+             }
+             if item.gesture == "inlineSpace" {
+@@ -326,7 +329,26 @@
+                 result["undoPreconditionVerified"] = true
+                 try emit(55, down: true, modifier: true); try emit(58, down: true, modifier: true)
+                 try emit(6, down: true); try emit(6, down: false)
+-                try emit(58, down: false, modifier: true); try emit(55, down: false, modifier: true)
++                // Release the whole owned chord before waiting: the app may buffer its releases.
++                try require(ownedModifierKeys == Set([CGKeyCode(55), CGKeyCode(58)]), "undo_chord_not_owned")
++                for (key, flags): (CGKeyCode, CGEventFlags) in [(58, CGEventFlags(rawValue: CGEventFlags.maskCommand.rawValue | 0x8)), (55, [])] {
++                    try authenticate()
++                    guard let event = CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: false) else { throw Failure(reason: "event_creation_failed") }
++                    event.type = .flagsChanged; event.flags = flags
++                    event.setIntegerValueField(.eventSourceUserData, value: 0x4c505052)
++                    event.post(tap: .cghidEventTap); events += 1; pause(0.012)
++                }
++                let releaseDeadline = ProcessInfo.processInfo.systemUptime + 1
++                while true {
++                    try authenticate()
++                    if [CGEventSourceStateID.hidSystemState, .combinedSessionState].allSatisfy({
++                        CGEventSource.flagsState($0).rawValue & ownedModifiers.rawValue == 0 &&
++                        !CGEventSource.keyState($0, key: 55) && !CGEventSource.keyState($0, key: 58)
++                    }) { break }
++                    try require(ProcessInfo.processInfo.systemUptime < releaseDeadline, "modifier_release_not_settled")
++                    pause(0.005)
++                }
++                ownedModifiers = []; ownedModifierKeys = []
+                 pause(1)
+             }
+             let final = try snapshot()
