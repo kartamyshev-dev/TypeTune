@@ -442,6 +442,7 @@ func runSelfTests() -> Int {
     for (passed, label) in layoutMappingChecks() { check(passed, label) }
     for (passed, label) in mutationSessionChecks() { check(passed, label) }
     for (passed, label) in typedWordBufferChecks() { check(passed, label) }
+    for (passed, label) in keystrokeEditPlanChecks() { check(passed, label) }
     print("\(count - failures)/\(count) offline invariants passed; \(failures) failures. No runtime input claim.")
     return failures
 }

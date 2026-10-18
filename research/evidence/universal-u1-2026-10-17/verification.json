@@ -1,0 +1,19 @@
+{
+  "kind": "Linux offline (Core + CLI); no GUI change",
+  "date": "2026-10-17",
+  "baseCommit": "35ccbe0321f7f86d86cf8053d8b9a0ccc9f8f132",
+  "results": {
+    "ciCore": "scripts/ci_core.sh exit 0",
+    "selftest": "1385/1385 (30 KeystrokeEditPlan invariants)"
+  },
+  "semantics": [
+    "before = typed token + boundary ending at the caret; after = replacement + kept literal suffix + boundary",
+    "only the changed tail is deleted and retyped (shared leading characters kept)",
+    "inverse plan for ⌘⌥Z; expects(textBeforeCaret:anchored:) for AX verification; applied(to:) predicts the result",
+    "control characters and non-whitespace boundaries are rejected"
+  ],
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/KeystrokeEditPlan.swift": "19e538fdbe33905bfc4aba087f9403e6ba095205a0815d7c0a11e34f4b4d4136",
+    "Sources/LayoutPilotCLI/KeystrokeEditPlanChecks.swift": "2ea63882b9b7a97a104d289c89d161da93407739a2ad746348f117847bf3f072"
+  }
+}

@@ -40,7 +40,7 @@
 - [x] **U0. `TypedWordBuffer` (Core)** — [evidence](../research/evidence/universal-u0-2026-10-17/verification.json). Текст, набранный подряд после последнего сброса:
   вставка, Backspace, сброс с причиной. Текущий токен, последний завершённый токен
   с разделителем (для Double Shift и отмены), предел длины, признак доверия.
-- [ ] **U1. `KeystrokeEditPlan` (Core).** По решению движка вычисляет:
+- [x] **U1. `KeystrokeEditPlan` (Core)** — [evidence](../research/evidence/universal-u1-2026-10-17/verification.json). По решению движка вычисляет:
   - число Backspace для токена и разделителя;
   - текст для повторного набора;
   - обратный план для ⌘⌥Z;
