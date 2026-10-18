@@ -176,8 +176,12 @@ func currentSource() -> String { TISCopyCurrentKeyboardInputSource().map { ident
             if item.gesture == "middleOfWord" {
                 for character in "abcdef" { try emit(keys[character]!, down: true); try emit(keys[character]!, down: false) }
                 for _ in 0..<4 { try emit(123, down: true); try emit(123, down: false) }
-                let middle = try snapshot()
-                try require(middle.0 == "abcdef" && middle.1.location == 2 && middle.1.length == 0, "middle_fixture_not_confirmed")
+                let deadline = ProcessInfo.processInfo.systemUptime + 0.3
+                var middle = try snapshot()
+                while middle.0 != "abcdef" || middle.1.location != 2 || middle.1.length != 0 {
+                    try require(ProcessInfo.processInfo.systemUptime < deadline, "middle_fixture_not_confirmed")
+                    pause(0.015); middle = try snapshot()
+                }
             }
             var imageLease: ClipboardLease?
             defer {
