@@ -50,7 +50,7 @@
 - [x] **U2. Цель ввода без AX (Core)** — `InputTarget`; `MutationSession` уже обобщена и не меняется — [evidence](../research/evidence/universal-u2-2026-10-17/verification.json). `MutationSession` работает с `InputTarget`:
   pid и окно, AX-снимок необязателен. Проверка цели при воспроизведении
   использует AX, если он доступен.
-- [ ] **U3. Наполнение буфера (GUI).** `handle()` ведёт буфер по нажатиям через
+- [x] **U3. Наполнение буфера (GUI)** — сборка и 7 проверок через настоящий `handle()` в CI на macOS; native NOT_RUN — [evidence](../research/evidence/universal-u3-2026-10-17/verification.json). `handle()` ведёт буфер по нажатиям через
   `InputSources.insertionText` и сбрасывает его по правилам из таблицы рисков.
   На этом шаге буфер ещё не используется для замен.
 - [ ] **U4. Отправка правки (GUI).** Внутри барьера:

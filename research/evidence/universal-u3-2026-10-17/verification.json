@@ -1,0 +1,21 @@
+{
+  "kind": "CI on macOS 15 (build + RuntimeRecoveryProbe through production handle()); not native input",
+  "date": "2026-10-17",
+  "run": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39089459396",
+  "headSha": "638468a",
+  "conclusion": "success",
+  "probeChecks": {
+    "typed_arrow_resets": true,
+    "typed_backspace_removes_letter": true,
+    "typed_click_resets": true,
+    "typed_key_up_and_scroll_keep_buffer": true,
+    "typed_letter_follows_current_layout": true,
+    "typed_return_resets_and_anchors": true,
+    "typed_shortcut_resets": true
+  },
+  "probePassed": true,
+  "notRun": [
+    "typing in real applications",
+    "replayed-event tracking during a real barrier"
+  ]
+}
