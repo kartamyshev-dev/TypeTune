@@ -17,7 +17,7 @@ CI `39143449199` Linux/macOS успешен.
   replay-event-rejected; уточнена в `3244c81`. Обе сохранённые очереди восстановлены,
   текст и каретка не изменились. Причина системной задержки свыше 50 мс не доказана.
 - Текущий GUI: полный поток 80 мс 12/12 (192 слова), точные текст/каретка/source;
-  TextEdit short smoke 11/11 (без plain paste/undo-learning), Chrome input S1/S3/S4/S7 PASS.
+  TextEdit полный smoke 13/13, review 12/12 (после сброса буфера пробника), Chrome input S1/S3/S4/S7 PASS.
   [Вердикт потока](../research/evidence/mac-agent-p8-2026-10-18/second-full-verdict.json).
   После потока UI «Работает», pending/outstanding/uncertain=0. Последние 1000 записей
   trace — 0 faults и route/event rejected; ранние записи могли вытесниться.
@@ -35,10 +35,16 @@ CI `39143449199` Linux/macOS успешен.
 Продолжение: оставшиеся клетки [матрицы](../research/evidence/mac-agent-p8-2026-10-18/matrix.json).
 Safari input/address PASS, Telegram S7 × 10 PASS, Notes S7 LIMIT при unreadable первом слове.
 AionUi PWA S1–S4/S6–S9/S11 PASS, S5 byte gate PASS; S10 18/18 переходов между 6 приложениями.
+Смешанный поток 80 мс: Chrome/Telegram/Notes/AionUi 4/4 PASS (32 слова);
+[mixed evidence](../research/evidence/mac-agent-p8-2026-10-18/mixed-stream-verification.json).
+Review TextEdit после исправления сброса буфера пробника: 12/12 PASS;
+два предыдущих 11/12 сохранены отдельно, не засчитаны. GUI не менялся.
 Notes S13 с включённой автозаменой macOS PASS, настройка восстановлена. P8 прошёл два полных потока
 на `3244c81`; при новом отказе сохранить trace до любых действий. При втором неуспешном исправлении P8 остановиться по §2.7 и спросить.
 Нельзя перезапускать приложение с pending input. NativeProbe разрешён пользователем
 для всей матрицы с сохранением защит; ничего не отправлять. Локальная fixture — порт 18763.
+Universal off: TextEdit исправляет, Notes не исправляет — PASS; настройка восстановлена.
+Google warm: пробник остановлен при переходе AX-фокуса на подсказку; собственного текста не потеряно, очищено.
 Полное восстановление статистики/временных настроек и закрытие тестовых окон ещё требуется.
 
 ## Версии

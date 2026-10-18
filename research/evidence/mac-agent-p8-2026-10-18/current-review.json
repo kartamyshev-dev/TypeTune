@@ -1,0 +1,141 @@
+{
+  "activeCase": "punct-period-ru",
+  "activeCaseEvents": 2,
+  "activeCaseIndex": 0,
+  "autoResume": false,
+  "axReadErrors": {
+    "AXFocusedUIElement:-25204": 1,
+    "AXFocusedWindow:-25204": 1,
+    "AXSubrole:-25205": 7
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 7,
+      "maxMilliseconds": 0.13804166519548744,
+      "totalMilliseconds": 0.5314583286235575
+    },
+    "AXFocusedUIElement:-25204": {
+      "count": 1,
+      "maxMilliseconds": 147.76366666592367,
+      "totalMilliseconds": 147.76366666592367
+    },
+    "AXFocusedUIElement:0": {
+      "count": 7,
+      "maxMilliseconds": 0.07683333205932286,
+      "totalMilliseconds": 0.3364583353686612
+    },
+    "AXFocusedWindow:-25204": {
+      "count": 1,
+      "maxMilliseconds": 155.0282916668948,
+      "totalMilliseconds": 155.0282916668948
+    },
+    "AXFocusedWindow:0": {
+      "count": 7,
+      "maxMilliseconds": 20.360541666377685,
+      "totalMilliseconds": 20.92474999881233
+    },
+    "AXRole:0": {
+      "count": 7,
+      "maxMilliseconds": 0.04279166751075536,
+      "totalMilliseconds": 0.1975833329197485
+    },
+    "AXSelectedTextRange:0": {
+      "count": 2,
+      "maxMilliseconds": 0.04283333328203298,
+      "totalMilliseconds": 0.0743750006222399
+    },
+    "AXSubrole:-25205": {
+      "count": 7,
+      "maxMilliseconds": 0.1325416669715196,
+      "totalMilliseconds": 0.5920416660956107
+    },
+    "AXValue:0": {
+      "count": 2,
+      "maxMilliseconds": 0.02470833351253532,
+      "totalMilliseconds": 0.047083334720809944
+    },
+    "AXWindow:0": {
+      "count": 7,
+      "maxMilliseconds": 0.07987500066519715,
+      "totalMilliseconds": 0.390166667784797
+    }
+  },
+  "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/F3A91300-5A89-44BE-AF6A-EC784721060F.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 0,
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/F3A91300-5A89-44BE-AF6A-EC784721060F.txt",
+  "error": "focused_window_unverified",
+  "finalModifierFlags": 536870912,
+  "persistedCompleted": 0,
+  "requestedCases": 12,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "594597da8ef2616f717b9a6eb9b1ab293611ae2abfaee89dc03023aa814651cf",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "4eaa1668602dbe9a5f9521003ff689a818c3c7ee102bb109fba4275ac4c0f4cb",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 25772,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 20:24:04 2026"
+  },
+  "processExitCode": 2,
+  "helperWallSeconds": 1.541182791999745,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "5b440f7dbe34fdcaf9699ee8891da0480032895133174186d7d9378ea1c2315b",
+    "targetBinarySha256": "806525181a5b395642a664f067ec82151bf056e1c0e833ebc58902d208a2eec7",
+    "probeSourceSha256": "594597da8ef2616f717b9a6eb9b1ab293611ae2abfaee89dc03023aa814651cf",
+    "clipboardLeaseSourceSha256": "060083f5758e2c1097a43e88f9116354be9ca6a7c09a4fcec898ee4f5359a4c6",
+    "probeBinarySha256": "4eaa1668602dbe9a5f9521003ff689a818c3c7ee102bb109fba4275ac4c0f4cb",
+    "targetProcess": {
+      "pid": 19030,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 19:07:18 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 19030,
+  "sourceCommit": "3d6659e49b24c78d47455cfa5e6b6a639bfea134",
+  "sourceDirty": true,
+  "probeStartUptime": 12800.557989541,
+  "probeEndUptime": 12802.160271375,
+  "caseFileSha256": "8b832a9624bb761af97d2815eec909956feaf1d79bc9e92f56c0cb940d792b64",
+  "validationError": "helper_exit_not_verified",
+  "savedCheckpoint": {
+    "activeCase": "punct-period-ru",
+    "activeCaseEvents": 2,
+    "activeCaseIndex": 0,
+    "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/F3A91300-5A89-44BE-AF6A-EC784721060F.results.json",
+    "completed": 0,
+    "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/F3A91300-5A89-44BE-AF6A-EC784721060F.txt",
+    "error": "focused_window_unverified",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "initialReadback": {
+      "selection": {
+        "length": 0,
+        "location": 0
+      },
+      "text": ""
+    },
+    "notice": "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+    "requestedCases": 12,
+    "results": [],
+    "schemaVersion": 1,
+    "status": "failed",
+    "totalEventsCompletedCases": 0
+  }
+}

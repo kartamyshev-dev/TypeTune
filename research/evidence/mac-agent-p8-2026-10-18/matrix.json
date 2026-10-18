@@ -563,10 +563,14 @@
     "appVersion": "155.0.8059.82",
     "field": "input",
     "scenario": "S10",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "3 круга переходов, 0 клавиатурных событий, фактический флаг совпадает с TIS",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "bound/focus-1-chrome.json",
+      "bound/focus-2-chrome.json",
+      "bound/focus-3-chrome.json"
+    ]
   },
   {
     "app": "Google Chrome",
@@ -703,30 +707,30 @@
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S2",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s2.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S3",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s3.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S4",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s4.json"
   },
   {
     "app": "Google Chrome",
@@ -734,59 +738,63 @@
     "field": "Chrome web app",
     "scenario": "S5",
     "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "observed": "Выделение и неизменность байтов картинки PASS; буквальная вставка картинки ещё NOT_RUN",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s5.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S6",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s6.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S7",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s7.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S8",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s8.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S9",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/aion-s9.json"
   },
   {
     "app": "Google Chrome",
     "appVersion": "155.0.8059.82",
     "field": "Chrome web app",
     "scenario": "S10",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "3 круга переходов, 0 клавиатурных событий, фактический флаг совпадает с TIS",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": [
+      "bound/focus-1-aion.json",
+      "bound/focus-2-aion.json",
+      "bound/focus-3-aion.json"
+    ]
   },
   {
     "app": "Google Chrome",
@@ -1448,10 +1456,14 @@
     "appVersion": "1.21",
     "field": "новый synthetic document",
     "scenario": "S10",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "3 круга переходов, 0 клавиатурных событий, фактический флаг совпадает с TIS",
+    "statusText": "",
+    "reportFile": [
+      "bound/focus-1-textedit.json",
+      "bound/focus-2-textedit.json",
+      "bound/focus-3-textedit.json"
+    ]
   },
   {
     "app": "TextEdit",
@@ -1505,10 +1517,10 @@
     "appVersion": "4.13",
     "field": "новая synthetic note",
     "scenario": "S2",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/notes-s2.json"
   },
   {
     "app": "Заметки",
@@ -1550,19 +1562,19 @@
     "field": "новая synthetic note",
     "scenario": "S5",
     "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "observed": "Выделение и неизменность байтов картинки PASS; буквальная вставка картинки ещё NOT_RUN",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/notes-s5.json"
   },
   {
     "app": "Заметки",
     "appVersion": "4.13",
     "field": "новая synthetic note",
     "scenario": "S6",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/notes-s6.json"
   },
   {
     "app": "Заметки",
@@ -1583,10 +1595,10 @@
     "appVersion": "4.13",
     "field": "новая synthetic note",
     "scenario": "S13",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "Точные текст/каретка/source и флаг; собственный текст очищен",
+    "statusText": "TypeTune · com.apple.keylayout.RussianWin\nОбработчик готов. Double Shift — исправить; ⌘⌥Z — отменить",
+    "reportFile": "bound/notes-s13.json"
   },
   {
     "app": "Word",
@@ -1853,20 +1865,20 @@
     "appVersion": null,
     "field": "TextEdit",
     "scenario": "S1",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "TextEdit исправляет; Notes не исправляет; переключатель и все настройки восстановлены",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nВ активном приложении исправления не поддерживаются",
+    "reportFile": "universal-off-verdict.json"
   },
   {
     "app": "Выключенный universal mode",
     "appVersion": null,
     "field": "Заметки",
     "scenario": "S1",
-    "result": "NOT_RUN",
-    "observed": "На текущем GUI не выполнено",
-    "statusText": "Не снят отдельно для каждого случая",
-    "reportFile": null
+    "result": "PASS",
+    "observed": "TextEdit исправляет; Notes не исправляет; переключатель и все настройки восстановлены",
+    "statusText": "TypeTune · com.apple.keylayout.ABC\nВ активном приложении исправления не поддерживаются",
+    "reportFile": "universal-off-verdict.json"
   },
   {
     "app": "Safari",

@@ -753,6 +753,13 @@ func runProbe() throws {
             let cleared = try probe.snapshot()
             try require(cleared.0.isEmpty, "probe_clear_not_verified")
         }
+        if index == 0 && item.firstWordAfterFocus != true && args.initialText.isEmpty {
+            // Programmatic same-app document creation emits no pointer/shortcut buffer reset.
+            try probe.tap(123)
+            let reset = try probe.snapshot()
+            try require(reset.0.isEmpty && reset.1["location"] == 0 && reset.1["length"] == 0,
+                        "initial_navigation_reset_not_verified")
+        }
         let wanted = "com.apple.keylayout." + item.source
         guard let desired = sources.first(where: { sourceID($0) == wanted }) else { throw ProbeFailure(message: "requested_source_not_enabled") }
         _ = try probe.verifiedField()
