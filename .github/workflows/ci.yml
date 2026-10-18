@@ -34,6 +34,8 @@ jobs:
         run: scripts/ci_core.sh
       - name: Recovery controller probe (test hooks, no permissions, no event tap)
         run: scripts/runtime_recovery_probe.sh
+      - name: Diagnostic probes compile
+        run: scripts/ax_focus_probe.sh --build-only
       - name: Test build for manual checks (release arm64, ad-hoc signature)
         run: |
           scripts/build.sh
