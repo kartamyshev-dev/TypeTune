@@ -118,6 +118,14 @@ func mutationSessionChecks() -> [(Bool, String)] {
     drainedSuspend.suspendReplay(recoveryTarget: "f", sourceID: "en")
     check(drainedSuspend.recoveryTarget == nil && !drainedSuspend.hasPendingInput, "suspending a drained replay needs no recovery")
 
+    // A context reset invalidates the identity proof and lease, never the queue.
+    var reset = Session(); reset.beginMutation("f", deadline: nil); _ = reset.intercept(1); _ = reset.intercept(2)
+    _ = reset.finish(.verified, expected: "f", sourceID: "en", contextMatches: true); _ = reset.startReplay(target: "f")
+    let staleIdentity = reset.beginIdentityCheck()
+    reset.resetDeliveryProof()
+    check(reset.identityCheckTarget(staleIdentity) == nil && reset.routeLease == nil && reset.queue.count == 2 && reset.replaying,
+          "reset drops the identity proof but keeps replay and pending input")
+    guard case .next = reset.drainStep() else { check(false, "replay continues after a reset"); return checks }
     // Pending limit while replaying.
     var limited = Session(); limited.beginMutation("f", deadline: nil); _ = limited.intercept(0)
     _ = limited.finish(.verified, expected: "f", sourceID: "en", contextMatches: true); _ = limited.startReplay(target: "f")

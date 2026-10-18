@@ -278,7 +278,7 @@ final class KeyboardService {
         lastKeyDownTime = 0
         gestures.reset()
         replayProjection = nil; replayProjectionSource = nil; replayAllowsPartial = false; replayReadbackNonce = UUID()
-        replayIdentityNonce = nil; replayRouteLease = nil
+        session.resetDeliveryProof()
     }
     private func allowedFrontmost() -> Bool {
         guard store.settingsStorageAvailable, !sleeping, !IsSecureEventInputEnabled(), conflictingApp() == nil, let app = NSWorkspace.shared.frontmostApplication,
@@ -338,15 +338,15 @@ final class KeyboardService {
         if let gate = mutationGate {
             if NSWorkspace.shared.frontmostApplication?.processIdentifier == gate.pid, !IsSecureEventInputEnabled() {
                 if !preservesContext(event) { sourceAfterReplay = nil; transaction = nil; cachedSnapshot = nil }
-                inputReplay.append(event.copy() ?? event); bufferedEventCount += 1
-                if inputReplay.count == InputReplayQueue<CGEvent>.pendingLimit {
+                let interception = session.intercept(event.copy() ?? event); bufferedEventCount += 1
+                if interception.cancelWrites {
                     // Cancel further AX writes; retain input until rollback completes.
                     revision += 1
                     InputDiagnostics.shared.fault(reason: "replay-buffer-limit", revision: revision, counts: recoveryCounts)
                 }
                 // Typing faster than verified replay: stop draining and keep everything
                 // for explicit recovery instead of growing the barrier without bound.
-                if replaying && inputReplay.reachedPendingLimit { suspendReplay(target: gate) }
+                if interception.suspendReplay { suspendReplay(target: gate) }
                 return true
             }
             revision += 1 // external focus/secure change cancels mutation; never intercept the new app's input
@@ -1094,10 +1094,8 @@ final class KeyboardService {
             InputDiagnostics.shared.record("mutation-gate", revision: expectedRevision, checks: checks,
                 elapsed: ProcessInfo.processInfo.systemUptime - began)
             cancelGestureStateForInterception()
-            mutationGate = before
             let deadline = ProcessInfo.processInfo.systemUptime + 0.2
-            mutationDeadline = deadline
-            let nonce = UUID(); mutationNonce = nonce
+            let nonce = session.beginMutation(before, deadline: deadline)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
                 guard let self, self.mutationNonce == nonce, !self.replaying, self.revision == expectedRevision else { return }
                 InputDiagnostics.shared.record("mutation-soft-deadline", revision: expectedRevision,
@@ -1554,7 +1552,7 @@ final class KeyboardService {
         let field = AXUIElementCreateApplication(-1)
         let snapshot = EditorSnapshot(element: field, window: nil, document: nil, pid: -1,
             application: "com.apple.TextEdit", text: "fixture", selection: NSRange(location: 7, length: 0))
-        for _ in 0..<pending { inputReplay.append(CGEvent(source: nil)!) }
+        for _ in 0..<pending { _ = session.intercept(CGEvent(source: nil)!) }
         let result: AccessibilityEditor.ReplacementResult
         switch completion {
         case .verified: result = .verified(snapshot)
@@ -1566,9 +1564,11 @@ final class KeyboardService {
     func testingStartOutstanding(pendingAfter: Int = 0) {
         precondition(!observesSystem)
         testingFinish(.notApplied, pending: 1)
-        mutationGate = recoveryTarget; mutationDeadline = nil; recoveryTarget = nil; replaying = true
-        _ = inputReplay.takeBatch(limit: 1)
-        for _ in 0..<pendingAfter { inputReplay.append(CGEvent(source: nil)!) }
+        // The retained fixture event becomes one posted, unacknowledged delivery.
+        if let target = recoveryTarget, session.startReplay(target: target) == .started {
+            _ = session.dispatchNext(revision: revision, sourceID: "test-source", issuedAt: 0, leaseDuration: 0)
+        }
+        for _ in 0..<pendingAfter { _ = session.intercept(CGEvent(source: nil)!) }
         updateServiceStatus()
     }
     func testingDeliveryTimeout() { precondition(!observesSystem); deliveryTimedOut() }

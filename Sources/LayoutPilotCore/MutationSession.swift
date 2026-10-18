@@ -126,6 +126,10 @@ public struct MutationSession<Target, Event> {
 
     public mutating func clearIdentityCheck() { identityNonce = nil }
 
+    /// A context reset invalidates an in-flight identity query and the routing lease;
+    /// pending and outstanding input are untouched.
+    public mutating func resetDeliveryProof() { identityNonce = nil; routeLease = nil }
+
     /// Takes one event for delivery and binds it to a short routing lease.
     public mutating func dispatchNext(revision: Int, sourceID: String, issuedAt: Double,
                                       leaseDuration: Double) -> (batch: InputReplayQueue<Event>.Batch, batchNonce: UUID)? {
