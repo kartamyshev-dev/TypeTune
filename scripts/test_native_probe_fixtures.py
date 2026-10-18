@@ -14,6 +14,34 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class NativeProbeFixtureTests(unittest.TestCase):
+    def test_apple_russian_and_recovery_remain_explicitly_bounded(self):
+        case = dict(id='recovery', text='ghbdtn hello', source='ABC', boundary=False, gesture='recover')
+        self.assertEqual(self.validate([case]).returncode, 0)
+        self.assertEqual(self.validate([dict(case, source='Russian', gesture='none')]).returncode, 0)
+        for source in ['RussianTypo', '../Russian', 'US']:
+            self.assertNotEqual(self.validate([dict(case, source=source)]).returncode, 0)
+
+    def test_interrupted_recovery_is_one_exact_synthetic_case(self):
+        case = dict(id='interrupt', text='ghbdtn he', source='ABC', boundary=False,
+                    gesture='interruptRecover', preGestureDelayMilliseconds=0)
+        self.assertEqual(self.validate([case]).returncode, 0)
+        for change in [dict(text='anything'), dict(source='RussianWin'), dict(boundary=True),
+                       dict(preGestureDelayMilliseconds=1), dict(selectAllBeforeGesture=True)]:
+            self.assertNotEqual(self.validate([dict(case, **change)]).returncode, 0)
+
+    def test_scroll_is_bounded_inside_test_text(self):
+        case = dict(id='scroll', text='ghbdtn', source='ABC', scrollAfterCharacters=3)
+        self.assertEqual(self.validate([case]).returncode, 0)
+        for count in [-1, 0, 6, 7, True, 1.5]:
+            with self.subTest(count=count):
+                self.assertNotEqual(self.validate([dict(case, scrollAfterCharacters=count)]).returncode, 0)
+
+    def test_drag_requires_exact_single_word_fixture(self):
+        case = dict(id='drag', text='ghbdtn', source='ABC', boundary=False, gesture='dragDoubleShift')
+        self.assertEqual(self.validate([case]).returncode, 0)
+        for change in [dict(text='hello'), dict(boundary=True), dict(selectAllBeforeGesture=True)]:
+            self.assertNotEqual(self.validate([dict(case, **change)]).returncode, 0)
+
     def setUp(self):
         self.fixtures = json.loads((ROOT/'corpus/native-stability-regressions-v1.json').read_text())
         self.temp = tempfile.TemporaryDirectory()

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "pc-shift-grave-native",
+    "text": "~",
+    "source": "RussianWin",
+    "boundary": false,
+    "expected": "Ë"
+  },
+  {
+    "id": "pc-shift-grave-manual",
+    "text": "~",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "cmdoptspace",
+    "expected": "Ë"
+  }
+]

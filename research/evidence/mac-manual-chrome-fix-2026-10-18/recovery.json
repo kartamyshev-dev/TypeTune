@@ -1,0 +1,148 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 34
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 34,
+      "maxMilliseconds": 0.23133333888836205,
+      "totalMilliseconds": 3.491750030661933
+    },
+    "AXFocusedUIElement:0": {
+      "count": 34,
+      "maxMilliseconds": 0.8145416650222614,
+      "totalMilliseconds": 3.151666634948924
+    },
+    "AXFocusedWindow:0": {
+      "count": 34,
+      "maxMilliseconds": 29.668374991160817,
+      "totalMilliseconds": 102.36299998359755
+    },
+    "AXRole:0": {
+      "count": 34,
+      "maxMilliseconds": 0.0917083234526217,
+      "totalMilliseconds": 1.3415416615316644
+    },
+    "AXSelectedTextRange:0": {
+      "count": 5,
+      "maxMilliseconds": 0.0882500025909394,
+      "totalMilliseconds": 0.2878749946830794
+    },
+    "AXSubrole:-25205": {
+      "count": 34,
+      "maxMilliseconds": 0.2721666678553447,
+      "totalMilliseconds": 3.692791680805385
+    },
+    "AXValue:0": {
+      "count": 5,
+      "maxMilliseconds": 0.07516666664741933,
+      "totalMilliseconds": 0.23000001965556294
+    },
+    "AXWindow:0": {
+      "count": 34,
+      "maxMilliseconds": 0.13195833889767528,
+      "totalMilliseconds": 2.045583343715407
+    }
+  },
+  "cases": 1,
+  "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/9765CE1E-A642-46B6-BC22-B6B8491BA78A.results.json",
+  "completed": 1,
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/9765CE1E-A642-46B6-BC22-B6B8491BA78A.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "idleEvents": 0,
+  "idleSegmentSeconds": 0,
+  "initialInputSource": "com.apple.keylayout.ABC",
+  "inputSegmentSeconds": 2.3771867916657357,
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "requiredIdleSeconds": 0,
+  "results": [
+    {
+      "beforeGesture": {
+        "inputSource": "com.apple.keylayout.ABC",
+        "selection": {
+          "length": 6,
+          "location": 0
+        },
+        "text": "ghbdtn "
+      },
+      "boundary": false,
+      "boundaryObservation": {
+        "performed": false
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/9765CE1E-A642-46B6-BC22-B6B8491BA78A.txt",
+      "elapsedSeconds": 2.1621453749976354,
+      "events": 24,
+      "gesture": "interruptRecover",
+      "gestureIntermediate": {
+        "beforeRecoverySelection": {
+          "length": 0,
+          "location": 7
+        },
+        "beforeRecoveryText": "ghbdtn ",
+        "inputSource": "com.apple.keylayout.ABC"
+      },
+      "id": "interrupted-recovery",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn he",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 9
+      },
+      "text": "ghbdtn he",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "gestureAfterTypingMilliseconds": 447.76604165963363,
+        "preGestureDelayMilliseconds": 0
+      }
+    }
+  ],
+  "totalEvents": 24,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "88b52826ef73f9440cbf6dfd0020803ada1e86e0d9cb06a41825e0aea8f98fde",
+    "targetBinarySha256": "6f1d9cc51ab5bdf62efafb510948aba3c9d93234dfafd737de2759a94b396703",
+    "probeSourceSha256": "6295fe5a26560012dccfbc77b8b557e80b3b97c6e557def9bf1b67721645bf31",
+    "probeBinarySha256": "e524b6cee4e1fa123f1e0c3aed52b3ef6fa6958826a203bbc113a56b5220f5a7",
+    "targetProcess": {
+      "pid": 3386,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 15:21:44 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 3414,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 15:21:49 2026"
+  },
+  "processExitCode": 0,
+  "helperWallSeconds": 3.1461869170016143,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "88b52826ef73f9440cbf6dfd0020803ada1e86e0d9cb06a41825e0aea8f98fde",
+    "targetBinarySha256": "6f1d9cc51ab5bdf62efafb510948aba3c9d93234dfafd737de2759a94b396703",
+    "probeSourceSha256": "6295fe5a26560012dccfbc77b8b557e80b3b97c6e557def9bf1b67721645bf31",
+    "probeBinarySha256": "e524b6cee4e1fa123f1e0c3aed52b3ef6fa6958826a203bbc113a56b5220f5a7",
+    "targetProcess": {
+      "pid": 3386,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 15:21:44 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 3386,
+  "sourceCommit": "bcaf82a297be2abc03f71cf4dc13f56129c00ba3",
+  "sourceDirty": true,
+  "probeStartUptime": 85832.98629025,
+  "probeEndUptime": 85836.185134208,
+  "caseFileSha256": "6e3e69792120746901c0558f936ef420d07ad9749a6c3c836af3503f82388f3f"
+}

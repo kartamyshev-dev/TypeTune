@@ -1,0 +1,13 @@
+{
+  "preferencesAndStatisticsExactPlistEquality": true,
+  "diagnosticDelayRemoved": true,
+  "enabledSourcesRestored": true,
+  "inputSource": "com.apple.keylayout.RussianWin",
+  "inputSourceTimestampOnlyChanged": true,
+  "inputMenuRestoredExactly": true,
+  "modifiersNeutralHIDAndSession": true,
+  "allSwitchersStopped": true,
+  "testChromeTabClosed": true,
+  "localFixtureServerStopped": true,
+  "terminalWindowsNotOpened": true
+}

@@ -1,0 +1,34 @@
+{
+  "dev.layoutpilot.mac": {
+    "exactlyEqual": true,
+    "changedKeys": []
+  },
+  "com.apple.HIToolbox": {
+    "exactlyEqual": false,
+    "changedKeys": [
+      "AppleInputSourceUpdateTime"
+    ]
+  },
+  "com.apple.TextInputMenu": {
+    "exactlyEqual": true,
+    "changedKeys": []
+  },
+  "nativeStatus": {
+    "accessibilityTrusted": true,
+    "axReadErrors": {},
+    "axReadTiming": {},
+    "events": 0,
+    "finalModifierFlags": 536870912,
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "modifierFlags": 536870912,
+    "postEventAccess": true,
+    "secureInput": false,
+    "statusOnly": true
+  },
+  "switchersStopped": true,
+  "diagnosticDelayRemoved": true,
+  "testChromeTabClosed": true,
+  "testServerStopped": true,
+  "settingsSemanticEqualityBeforeRestoration": true,
+  "fourHourRun": "NOT_RUN"
+}

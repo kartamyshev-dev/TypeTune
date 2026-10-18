@@ -1,0 +1,14 @@
+Building for debugging...
+[Planning deferred tasks]
+[4 / 16] LayoutPilotCore
+[15 / 27] LayoutPilotCore
+[19 / 24] LayoutPilotCore
+[29 / 35] layoutpilot-cli-product
+[31 / 35] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[33 / 36] layoutpilot-cli-product
+[35 / 36] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+Build complete! (2,20 с)
+{"cases":17,"failures":[],"notice":"Production replace entry point; current-check sentinel always denies all AX work. No live Codex reproduction or native TextEdit acceptance."}

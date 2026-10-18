@@ -1,0 +1,55 @@
+{
+  "passed": 8,
+  "total": 8,
+  "bindingVerified": true,
+  "checks": [
+    {
+      "id": "apple-auto-en-ru",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-auto-ru-en",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-manual-yo",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-manual-Yo",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-manual-grave",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-manual-tilde",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-physical-yo",
+      "text": true,
+      "caret": true,
+      "source": true
+    },
+    {
+      "id": "apple-physical-Yo",
+      "text": true,
+      "caret": true,
+      "source": true
+    }
+  ]
+}

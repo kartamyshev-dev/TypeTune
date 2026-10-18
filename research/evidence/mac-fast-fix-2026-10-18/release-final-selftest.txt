@@ -1,0 +1,1 @@
+1336/1336 offline invariants passed; 0 failures. No runtime input claim.

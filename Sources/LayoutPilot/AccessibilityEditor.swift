@@ -36,6 +36,12 @@ enum AccessibilityEditor {
         case notApplied
         case verified(EditorSnapshot)
         case uncertain
+
+        func settledSnapshot(read: () -> EditorSnapshot?) -> EditorSnapshot? {
+            // A verified result already contains the exact final text/caret readback.
+            if case .verified(let after) = self { return after }
+            return read()
+        }
     }
     static func attribute(_ element: AXUIElement, _ key: String) -> CFTypeRef? {
         let (status, value) = readAttribute(element, key)
@@ -417,9 +423,18 @@ enum AccessibilityEditor {
             guard let current = read(), isCurrent(), ProcessInfo.processInfo.systemUptime < deadline,
                   sameTarget(before, current) else { return nil }
             if current.text.utf16.elementsEqual(edit.expectedText.utf16), current.selection == insertionCaret { return current }
-            let pendingOriginal = current.text.utf16.elementsEqual(before.text.utf16) && current.selection == range
+            // Chrome can publish the insertion caret before its AX text; this only permits a bounded reread.
+            let pendingOriginal = current.text.utf16.elementsEqual(before.text.utf16) &&
+                (current.selection == range || (before.application == "com.google.Chrome" && current.selection == insertionCaret))
             let pendingInsertion = current.text.utf16.elementsEqual(edit.expectedText.utf16) &&
                 (current.selection == range || current.selection == before.selection)
+            InputDiagnostics.shared.record("insertion-observation", revision: -1, checks: [
+                "originalText": current.text.utf16.elementsEqual(before.text.utf16),
+                "expectedText": current.text.utf16.elementsEqual(edit.expectedText.utf16),
+                "insertionCaret": current.selection == insertionCaret,
+                "originalSelection": current.selection == before.selection,
+                "replacementSelection": current.selection == range,
+                "pending": pendingOriginal || pendingInsertion])
             guard pendingOriginal || pendingInsertion else { return nil }
             Thread.sleep(forTimeInterval: min(0.003, max(0, deadline - ProcessInfo.processInfo.systemUptime)))
         }
@@ -436,9 +451,13 @@ enum AccessibilityEditor {
         defer { InputDiagnostics.shared.record("replacement-stage", revision: -1,
             checks: ["deadlineExpired": ProcessInfo.processInfo.systemUptime >= budget.deadline],
             reason: stage) }
-        guard EditorSupport.permitsTextReplacement(applicationID: before.application),
-              isCurrent(), let now = capture(deadline: budget.stage(now: ProcessInfo.processInfo.systemUptime).deadline,
-                  isCurrent: isCurrent).snapshot, sameTarget(before, now), before.matchesContent(now),
+        guard EditorSupport.permitsTextReplacement(applicationID: before.application), isCurrent() else { return .notApplied }
+        let initial = capture(deadline: budget.stage(now: ProcessInfo.processInfo.systemUptime).deadline, isCurrent: isCurrent)
+        InputDiagnostics.shared.record("replacement-preflight", revision: -1, checks: [
+            "snapshot": initial.snapshot != nil,
+            "target": initial.snapshot.map { sameTarget(before, $0) } ?? false,
+            "content": initial.snapshot.map { before.matchesContent($0) } ?? false], reason: initial.failure?.diagnosticCode)
+        guard let now = initial.snapshot, sameTarget(before, now), before.matchesContent(now),
               let edit = TextEdit(text: now.text, selection: range, replacement: replacement),
               !now.addressBar || (EditorSupport.permitsAddressBarCorrection(now.text) &&
                   EditorSupport.permitsAddressBarCorrection(edit.expectedText)) else { return .notApplied }

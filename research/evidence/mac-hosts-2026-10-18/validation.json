@@ -1,0 +1,143 @@
+{
+  "guiSHA256": "f1d7539f9d4531767706567979a25a51535dc4d7a0012ec55279940f709efbfe",
+  "installedBundleMatchesDist": true,
+  "sourceIdentityUnchanged": true,
+  "codesignVerify": true,
+  "fourHourRun": "NOT_RUN",
+  "recovery": {
+    "completed": 1,
+    "passed": 1,
+    "total": 1,
+    "cases": [
+      {
+        "id": "interrupted-recovery",
+        "passed": true
+      }
+    ],
+    "retainedEventsBefore": 4,
+    "acknowledgedReplayEvents": 7,
+    "drained": true
+  },
+  "apple-russian": {
+    "completed": 8,
+    "passed": 7,
+    "total": 8,
+    "cases": [
+      {
+        "id": "apple-auto-en-ru",
+        "passed": true
+      },
+      {
+        "id": "apple-auto-ru-en",
+        "passed": true
+      },
+      {
+        "id": "apple-manual-yo",
+        "passed": true
+      },
+      {
+        "id": "apple-manual-Yo",
+        "passed": true
+      },
+      {
+        "id": "apple-manual-grave",
+        "passed": false
+      },
+      {
+        "id": "apple-manual-tilde",
+        "passed": true
+      },
+      {
+        "id": "apple-physical-yo",
+        "passed": true
+      },
+      {
+        "id": "apple-physical-Yo",
+        "passed": true
+      }
+    ]
+  },
+  "apple-russian-repeat": {
+    "completed": 8,
+    "passed": 6,
+    "total": 8,
+    "cases": [
+      {
+        "id": "apple-auto-en-ru",
+        "passed": true
+      },
+      {
+        "id": "apple-auto-ru-en",
+        "passed": true
+      },
+      {
+        "id": "apple-manual-yo",
+        "passed": true
+      },
+      {
+        "id": "apple-manual-Yo",
+        "passed": false
+      },
+      {
+        "id": "apple-manual-grave",
+        "passed": true
+      },
+      {
+        "id": "apple-manual-tilde",
+        "passed": false
+      },
+      {
+        "id": "apple-physical-yo",
+        "passed": true
+      },
+      {
+        "id": "apple-physical-Yo",
+        "passed": true
+      }
+    ]
+  },
+  "chrome": {
+    "passed": 7,
+    "total": 8,
+    "cases": [
+      {
+        "file": "chrome-plain-auto.json",
+        "passed": true
+      },
+      {
+        "file": "chrome-plain-manual.json",
+        "passed": true
+      },
+      {
+        "file": "chrome-rich-auto.json",
+        "passed": true
+      },
+      {
+        "file": "chrome-rich-manual.json",
+        "passed": true
+      },
+      {
+        "file": "chrome-rich-stream.json",
+        "passed": false
+      },
+      {
+        "file": "chrome-single-auto.json",
+        "passed": true
+      },
+      {
+        "file": "chrome-single-correct.json",
+        "passed": true
+      },
+      {
+        "file": "chrome-single-manual.json",
+        "passed": true
+      }
+    ],
+    "scope": "Exact text and caret; helpers restore starting source, final source not independently asserted"
+  },
+  "terminal": {
+    "native": "BLOCKED_BY_TOOL_POLICY",
+    "zshPTYMock": "6/6",
+    "dispatchMock": "36/36"
+  }
+}

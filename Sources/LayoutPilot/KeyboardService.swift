@@ -61,6 +61,7 @@ final class KeyboardService {
     private var replayProjectionSource: String?
     private var replayAllowsPartial = false
     private var replayReadbackNonce = UUID()
+    private var streamReadback: (anchor: EditorSnapshot, projection: ReplayInsertionProjection, source: String, learnSingle: Bool)?
     private enum SourceChange {
         case language(Language), restore(String)
         func apply() -> Bool {
@@ -81,6 +82,7 @@ final class KeyboardService {
     private var tap: CFMachPort?
     private var runLoopSource: CFRunLoopSource?
     private var timer: Timer?
+    private var contextTimer: Timer?
     private var revision = 0
     private var observer: NSObjectProtocol?
     private var sleepObserver: NSObjectProtocol?
@@ -95,6 +97,11 @@ final class KeyboardService {
     private var shiftTask: DispatchWorkItem?
     private var pendingNativePaste: (id: UUID, revision: Int, handshake: NativePasteReleaseHandshake)?
     private var cachedSnapshot: (revision: Int, value: EditorSnapshot)?
+    // A failed refresh may retain a proposal for explicit actions, never for automatic prediction.
+    private var explicitAnchor: (revision: Int, value: EditorSnapshot)?
+    private var manualSnapshot: EditorSnapshot? {
+        [cachedSnapshot, explicitAnchor].compactMap { $0 }.first { $0.revision == revision }?.value
+    }
     private var contextCaptureRevision: Int?
     private var pendingKeyRead: (revision: Int, pid: pid_t?, sourceID: String, keyCode: Int, inserted: String, deadline: TimeInterval)?
     #if LAYOUTPILOT_TESTING
@@ -124,10 +131,18 @@ final class KeyboardService {
             self?.sleeping = false; self?.tapRecovery.reset(); self?.refresh(); self?.captureAfterEvent()
         }
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in self?.refresh() }
+        contextTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
+            guard let self, self.store.running, self.streamReadback == nil,
+                  self.mutationGate == nil, self.recoveryTarget == nil, !self.recovery.requiresReview,
+                  ProcessInfo.processInfo.systemUptime - self.lastKeyDownTime > 0.150 else { return }
+            // Window changes inside one application do not send didActivateApplication.
+            self.captureAfterEvent()
+        }
         refresh()
     }
     deinit {
         timer?.invalidate()
+        contextTimer?.invalidate()
         for value in [observer, sleepObserver, wakeObserver].compactMap({ $0 }) + applicationObservers {
             NSWorkspace.shared.notificationCenter.removeObserver(value)
         }
@@ -270,6 +285,7 @@ final class KeyboardService {
         tap = nil; runLoopSource = nil; store.running = false
     }
     private func resetTransient() {
+        streamReadback = nil
         // Cancel an identity query without orphaning its still-pending FIFO.
         if replaying, replayIdentityNonce != nil, let target = mutationGate { suspendReplay(target: target) }
         revision += 1; cachedSnapshot = nil; pendingKeyRead = nil; transaction = nil; shiftTask?.cancel(); shiftTask = nil
@@ -327,6 +343,13 @@ final class KeyboardService {
                 if inputReplay.outstanding == 0 { DispatchQueue.main.async { [weak self] in self?.drainReplay() } }
                 return false
             case .retain:
+                InputDiagnostics.shared.record("replay-event-rejected", revision: revision, checks: [
+                    "leasePresent": lease != nil, "token": lease?.token == batchToken,
+                    "revision": lease?.revision == revision, "source": lease?.sourceID == InputSources.identifier,
+                    "leaseFresh": lease.map { ProcessInfo.processInfo.systemUptime <= $0.deadline } ?? false,
+                    "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+                    "allowed": allowedFrontmost(), "trusted": AXIsProcessTrusted(),
+                    "posting": CGPreflightPostEventAccess()])
                 suspendReplay(target: target)
                 return true
             case .suppress:
@@ -416,20 +439,23 @@ final class KeyboardService {
             return false
         }
         let key = Int(event.getIntegerValueField(.keyboardEventKeycode))
-        if type == .flagsChanged { replayReadbackNonce = UUID(); captureAfterEvent(); handleModifier(key, event.flags); return false }
+        if type == .flagsChanged { streamReadback = nil; replayReadbackNonce = UUID(); captureAfterEvent(); handleModifier(key, event.flags); return false }
         let now = ProcessInfo.processInfo.systemUptime
         let continuousInsertion = now - lastKeyDownTime <= 0.15
         lastKeyDownTime = now
+        let explicitPrevious = manualSnapshot
         let previous = cachedSnapshot.flatMap { $0.revision == revision ? $0.value : nil }
+        if !continuousInsertion && streamReadback?.projection.hasUnfinishedTail == true { streamReadback = nil }
         cachedSnapshot = nil
         pendingKeyRead = nil
         revision += 1
         gestures.keyUsed()
         shiftTask?.cancel()
         let flags = event.flags.intersection([.maskCommand, .maskControl, .maskAlternate, .maskShift])
+        if !flags.intersection([.maskCommand, .maskControl, .maskAlternate]).isEmpty { streamReadback = nil }
         if key == 49 && flags == [.maskCommand, .maskAlternate] {
             InputDiagnostics.shared.record("manual", revision: revision, checks: ["previous": previous != nil])
-            enqueue(boundTo: previous) { $0.manual($1) }; return true
+            enqueue(boundTo: explicitPrevious) { $0.manual($1) }; return true
         }
         if key == 6 && flags == [.maskCommand, .maskAlternate] {
             enqueue(boundTo: transaction?.after) { service, _ in if !service.undo() { service.skipped("Нет актуального исправления для отмены") } }; return true
@@ -479,6 +505,32 @@ final class KeyboardService {
         // Keep event whitespace/control semantics, but never substitute a stale
         // event/AppKit character when current-layout insertion cannot be decoded.
         guard let translated = boundary ? value : layoutText else { captureAfterEvent(); return false }
+        if !store.earlyCorrection, event.getIntegerValueField(.keyboardEventAutorepeat) == 0,
+           TextEdit.insertionPrediction(text: "", selection: NSRange(location: 0, length: 0),
+               characters: translated, keyCode: key) != nil {
+            // Observe the first insertion after idle: rich editors may remove an empty placeholder newline.
+            if streamReadback == nil, boundary || continuousInsertion, let previous, !previous.addressBar {
+                let projection: ReplayInsertionProjection?
+                if boundary {
+                    projection = .completingToken(text: previous.text, selection: previous.selection)
+                } else if TextEdit.wordBeforeCursor(in: previous.text, cursor: previous.selection.location, skipTrailingSpace: false) == nil {
+                    projection = ReplayInsertionProjection(anchorText: previous.text, selection: previous.selection)
+                } else { projection = nil }
+                if let projection { streamReadback = (previous, projection, sourceID, true) }
+            }
+            if var stream = streamReadback, stream.source == sourceID, stream.anchor.pid == pid {
+                stream.projection.consume(.insertion(translated))
+                if stream.projection.isValid {
+                    streamReadback = stream
+                    var predicted = stream.anchor
+                    predicted.text = stream.projection.expectedText; predicted.selection = stream.projection.expectedSelection
+                    cachedSnapshot = (expectedRevision, predicted)
+                    scheduleStreamReadback()
+                    return false
+                }
+            }
+        }
+        streamReadback = nil
         if !boundary, continuousInsertion, var pinned = previous,
            translated.unicodeScalars.allSatisfy({ $0.isASCII || (0x0400...0x052f).contains($0.value) }),
            let predicted = TextEdit.insertionPrediction(text: pinned.text, selection: pinned.selection,
@@ -700,11 +752,16 @@ final class KeyboardService {
             cachedSnapshot = (expectedRevision, snapshot); contextFailure = nil
             updateServiceStatus()
         } else if let failure = result.failure {
+            if failure.retryable {
+                if let cachedSnapshot { explicitAnchor = cachedSnapshot }
+            } else { explicitAnchor = nil }
+            cachedSnapshot = nil
             reportContextFailure(failure)
         }
     }
     private func enqueue(boundTo before: EditorSnapshot?, _ operation: @escaping (KeyboardService, EditorSnapshot) -> Void) {
         let expectedRevision = revision
+        let sourceID = InputSources.identifier
         InputDiagnostics.shared.record("explicit-enqueue", revision: expectedRevision, checks: ["anchor": before != nil])
         guard let before else { captureAfterEvent(); skipped("Контекст ещё не подтверждён; повторите действие после паузы"); return }
         axQueue.async { [weak self] in
@@ -715,7 +772,8 @@ final class KeyboardService {
                 func checked(_ name: String, _ value: @autoclosure () -> Bool) -> Bool {
                     let result = value(); checks[name] = result; return result
                 }
-                guard checked("revision", self.revision == expectedRevision), checked("allowed", self.allowedFrontmost()), let current,
+                guard checked("revision", self.revision == expectedRevision), checked("allowed", self.allowedFrontmost()),
+                      checked("source", InputSources.identifier == sourceID), let current,
                       checked("sameTarget", AccessibilityEditor.sameTarget(before, current)), checked("sameText", before.text.utf16.elementsEqual(current.text.utf16)),
                       checked("sameSelection", before.selection == current.selection) else {
                     checks["accepted"] = false
@@ -770,7 +828,7 @@ final class KeyboardService {
                 if EditorSupport.permitsTerminalIntegration(applicationID: NSWorkspace.shared.frontmostApplication?.bundleIdentifier) {
                     guard terminalPolicyPermitsAction else { return }
                     terminalBridge.perform("manual")
-                } else { enqueue(boundTo: cachedSnapshot?.value) { $0.manual($1) } }
+                } else { enqueue(boundTo: manualSnapshot) { $0.manual($1) } }
             case .toggleAutomatic:
                 revision += 1; cachedSnapshot = nil; transaction = nil
                 store.settings.paused.toggle()
@@ -866,6 +924,7 @@ final class KeyboardService {
         guard !before.addressBar || (!partial && EditorSupport.permitsAddressBarCorrection(before.text)) else {
             skipped("Адрес сохранён: исправляются только обычные поисковые слова"); return
         }
+        streamReadback = nil
         InputDiagnostics.shared.record("apply-enqueued", revision: revision)
         if let language = decision.targetLanguage, !InputSources.isAvailable(language) {
             skipped("Добавьте нужную русскую или английскую раскладку в macOS"); return
@@ -875,14 +934,15 @@ final class KeyboardService {
         axQueue.async { [weak self] in
             guard let self else { return }
             let (result, settled, gated) = self.mutate(before, range: range, replacement: decision.replacement,
-                keepSelection: keepSelection, expectedRevision: expectedRevision)
+                keepSelection: keepSelection, expectedRevision: expectedRevision, expectedSource: sourceID)
             let verified: Bool
             if case .verified = result { verified = true } else { verified = false }
             InputDiagnostics.shared.record("apply-result", revision: expectedRevision, checks: ["verified": verified, "gated": gated])
             DispatchQueue.main.async {
                 var finishHere = true
-                defer { if gated && finishHere { self.finishMutation(result, before: before, settled: settled,
-                    allowAutomaticReplay: decision.reason != .manual) } }
+                defer { if gated && finishHere { self.finishMutation(result, before: before,
+                    settled: self.revision == expectedRevision ? settled : nil,
+                    allowAutomaticReplay: decision.reason != .manual, recoverySource: sourceID) } }
                 guard case .verified(let after) = result else {
                     self.skipped("Замена пропущена или прервана: проверьте текст поля"); return
                 }
@@ -893,7 +953,7 @@ final class KeyboardService {
                     // observed pending input, not future OS/event delivery timing.
                     finishHere = false
                     self.rollbackPartial(before: before, after: after, range: range,
-                        decision: decision, expectedRevision: expectedRevision)
+                        decision: decision, expectedRevision: expectedRevision, sourceID: sourceID)
                     return
                 }
                 for item in statisticsDecisions ?? [decision] {
@@ -918,14 +978,14 @@ final class KeyboardService {
     /// Invert a partial replacement only while the existing mutation gate owns
     /// the FIFO. No second mutate()/timer, no source change, and no automatic retry.
     private func rollbackPartial(before: EditorSnapshot, after: EditorSnapshot, range: NSRange,
-                                 decision: Decision, expectedRevision: Int) {
+                                 decision: Decision, expectedRevision: Int, sourceID: String) {
         transaction = nil; cachedSnapshot = nil; sourceAfterReplay = nil
         guard let deadline = mutationDeadline,
             let plan = PartialMutationRollbackPlan(isPartial: true, hasQueuedEditingInput: true,
             beforeText: before.text, beforeSelection: before.selection, replacementRange: range,
             decision: decision, afterText: after.text, afterSelection: after.selection) else {
             InputDiagnostics.shared.record("partial-rollback-plan-rejected", revision: expectedRevision)
-            finishMutation(.uncertain, before: before, settled: nil)
+            finishMutation(.uncertain, before: before, settled: nil, recoverySource: sourceID)
             return
         }
         axQueue.async { [weak self] in
@@ -934,9 +994,9 @@ final class KeyboardService {
             // and permissions/current revision before its own AX writes.
             let reverted = AccessibilityEditor.replace(after, range: plan.edit.range,
                 replacement: plan.edit.replacement, keepSelection: false, deadline: deadline,
-                isCurrent: { self.isCurrent(expectedRevision) })
+                isCurrent: { self.isCurrent(expectedRevision, pid: before.pid, sourceID: sourceID) })
             let readback = AccessibilityEditor.capture(deadline: deadline,
-                isCurrent: { self.isCurrent(expectedRevision) }).snapshot
+                isCurrent: { self.isCurrent(expectedRevision, pid: before.pid, sourceID: sourceID) }).snapshot
             DispatchQueue.main.async {
                 let verified: Bool
                 if case .verified(let value) = reverted {
@@ -952,7 +1012,7 @@ final class KeyboardService {
                 // coincidental snapshot looks original. Keep all pending input
                 // for explicit recovery; never blindly repeat the inverse.
                 self.finishMutation(verified ? .notApplied : .uncertain, before: before, settled: verified ? readback : nil,
-                    allowPartialReplay: verified)
+                    allowPartialReplay: verified, recoverySource: sourceID)
                 if verified { self.store.lastStatus = "Раннее исправление отложено: ввод продолжается" }
             }
         }
@@ -961,13 +1021,15 @@ final class KeyboardService {
         guard let value = transaction else { return false }
         transaction = nil
         let expectedRevision = revision
+        let sourceID = InputSources.identifier
         let range = NSRange(location: value.range.location, length: value.decision.replacement.utf16.count)
         axQueue.async { [weak self] in
             guard let self else { return }
             let (result, settled, gated) = self.mutate(value.after, range: range, replacement: value.decision.original,
-                keepSelection: value.before.selection.length > 0, expectedRevision: expectedRevision)
+                keepSelection: value.before.selection.length > 0, expectedRevision: expectedRevision, expectedSource: sourceID)
             DispatchQueue.main.async {
-                defer { if gated { self.finishMutation(result, before: value.after, settled: settled) } }
+                defer { if gated { self.finishMutation(result, before: value.after,
+                    settled: self.revision == expectedRevision ? settled : nil, recoverySource: sourceID) } }
                 guard case .verified(let after) = result, after.text.utf16.elementsEqual(value.before.text.utf16) else {
                     self.skipped("Отмена пропущена или прервана: проверьте текст"); return
                 }
@@ -1038,15 +1100,17 @@ final class KeyboardService {
     }
     private func pastePlain(_ current: EditorSnapshot, text: String, clipboardChangeCount: Int) -> Bool {
         let expectedRevision = revision
+        let sourceID = InputSources.identifier
         transaction = nil
         axQueue.async { [weak self] in
             guard let self else { return }
             let (result, settled, gated) = self.mutate(current, range: current.selection, replacement: text,
-                keepSelection: false, expectedRevision: expectedRevision,
+                keepSelection: false, expectedRevision: expectedRevision, expectedSource: sourceID,
                 nativePaste: EditorSupport.insertionBackend(applicationID: current.application) == .keyboardEvents,
                 clipboardChangeCount: clipboardChangeCount)
             DispatchQueue.main.async {
-                defer { if gated { self.finishMutation(result, before: current, settled: settled) } }
+                defer { if gated { self.finishMutation(result, before: current,
+                    settled: self.revision == expectedRevision ? settled : nil, recoverySource: sourceID) } }
                 if case .verified(let after) = result {
                     if self.revision == expectedRevision { self.cachedSnapshot = (expectedRevision, after) }
                     self.store.lastStatus = "Вставлен текст без форматирования"
@@ -1057,12 +1121,12 @@ final class KeyboardService {
     }
     /// All calls occur on axQueue. Only the brief gate transitions touch the main loop.
     private func mutate(_ before: EditorSnapshot, range: NSRange, replacement: String,
-                        keepSelection: Bool, expectedRevision: Int, nativePaste: Bool = false,
+                        keepSelection: Bool, expectedRevision: Int, expectedSource: String, nativePaste: Bool = false,
                         clipboardChangeCount: Int? = nil) -> (AccessibilityEditor.ReplacementResult, EditorSnapshot?, Bool) {
         let began = ProcessInfo.processInfo.systemUptime
         func traceResult(_ result: AccessibilityEditor.ReplacementResult, gated: Bool) {
             guard InputDiagnostics.shared.enabled else { return }
-            var checks = ["nativePaste": nativePaste, "gated": gated, "current": isCurrent(expectedRevision),
+            var checks = ["nativePaste": nativePaste, "gated": gated, "current": isCurrent(expectedRevision, pid: before.pid, sourceID: expectedSource),
                 "notApplied": false, "uncertain": false, "verified": false]
             switch result {
             case .notApplied: checks["notApplied"] = true
@@ -1072,7 +1136,7 @@ final class KeyboardService {
             InputDiagnostics.shared.record("mutation-result", revision: expectedRevision, checks: checks,
                 elapsed: ProcessInfo.processInfo.systemUptime - began)
         }
-        let current = isCurrent(expectedRevision)
+        let current = isCurrent(expectedRevision, pid: before.pid, sourceID: expectedSource)
         InputDiagnostics.shared.record("mutation-initial", revision: expectedRevision,
             checks: ["nativePaste": nativePaste, "current": current], elapsed: ProcessInfo.processInfo.systemUptime - began)
         guard current else { traceResult(.notApplied, gated: false); return (.notApplied, nil, false) }
@@ -1081,7 +1145,7 @@ final class KeyboardService {
             func checked(_ name: String, _ predicate: @autoclosure () -> Bool) -> Bool {
                 let value = predicate(); checks[name] = value; return value
             }
-            guard checked("revision", revision == expectedRevision), checked("allowedFrontmost", allowedFrontmost()),
+            guard checked("revision", revision == expectedRevision), checked("source", InputSources.identifier == expectedSource), checked("allowedFrontmost", allowedFrontmost()),
                   checked("replaySource", replaySource != nil), checked("postAccess", CGPreflightPostEventAccess()),
                   checked("noMutation", mutationGate == nil), checked("noRecovery", recoveryTarget == nil && !recovery.requiresReview),
                   checked("noReplay", inputReplay.isEmpty) else {
@@ -1110,15 +1174,18 @@ final class KeyboardService {
         if nativePaste {
             result = AccessibilityEditor.pastePlainNative(before, text: replacement,
                 clipboardChangeCount: clipboardChangeCount, deadline: operationDeadline,
-                isCurrent: { self.isCurrent(expectedRevision) })
+                isCurrent: { self.isCurrent(expectedRevision, pid: before.pid, sourceID: expectedSource) })
         } else {
             result = AccessibilityEditor.replace(before, range: range, replacement: replacement,
                 keepSelection: keepSelection, testSelectionDelay: delay, deadline: operationDeadline,
-                isCurrent: { self.isCurrent(expectedRevision) })
+                isCurrent: { self.isCurrent(expectedRevision, pid: before.pid, sourceID: expectedSource) })
         }
         traceResult(result, gated: true)
-        return (result, AccessibilityEditor.capture(deadline: operationDeadline,
-            isCurrent: { self.isCurrent(expectedRevision) }).snapshot, true)
+        let settled = result.settledSnapshot {
+            AccessibilityEditor.capture(deadline: operationDeadline,
+                isCurrent: { self.isCurrent(expectedRevision, pid: before.pid, sourceID: expectedSource) }).snapshot
+        }
+        return (result, settled, true)
     }
     private func finishMutation(_ result: AccessibilityEditor.ReplacementResult, before: EditorSnapshot, settled: EditorSnapshot?,
                                 allowAutomaticReplay: Bool = false, allowPartialReplay: Bool = false,
@@ -1132,13 +1199,22 @@ final class KeyboardService {
         case .uncertain: completion = .uncertain
         }
         let safe = settled.map { AccessibilityEditor.sameTarget(expected, $0) && expected.matchesContent($0) } ?? false
-        let contextMatches = safe && NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid && !IsSecureEventInputEnabled()
+        let sourceMatches = recoverySource == nil || recoverySource == InputSources.identifier
+        let contextMatches = safe && sourceMatches && NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid && !IsSecureEventInputEnabled()
         switch session.finish(completion, expected: expected, sourceID: recoverySource ?? InputSources.identifier,
                               contextMatches: contextMatches) {
         case .resume:
             if !contextMatches {
                 resetTransient()
                 captureAfterEvent()
+            }
+            // Commit the pinned-source proof before our own requested source change.
+            if contextMatches, let source = sourceAfterReplay {
+                sourceAfterReplay = nil
+                if allowedFrontmost(), AXIsProcessTrusted(), source.change.apply() {
+                    store.inputSource = InputSources.identifier
+                    store.lastStatus = source.change.status
+                }
             }
             InputDiagnostics.shared.record("recovery-empty-resume", revision: revision, counts: recoveryCounts)
         case .replay:
@@ -1177,7 +1253,7 @@ final class KeyboardService {
         drainReplay()
     }
     private func selectSource(_ change: SourceChange, pid: pid_t) -> Bool {
-        if inputReplay.isEmpty {
+        if inputReplay.isEmpty && mutationGate == nil {
             let selected = change.apply()
             InputDiagnostics.shared.record("source-selection", revision: revision,
                 checks: ["selected": selected, "deferred": false])
@@ -1241,17 +1317,32 @@ final class KeyboardService {
     /// A tap acknowledgement precedes editor insertion. Publish a replay cache or
     /// propose corrections only after exact full-text/caret readback, never from
     /// the first potentially stale AX snapshot.
+    private func scheduleStreamReadback() {
+        guard let stream = streamReadback else { return }
+        let expectedRevision = revision, nonce = UUID()
+        replayReadbackNonce = nonce
+        // Let a continuous word stream settle; predictions never authorize writes.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.150) { [weak self] in
+            guard let self, self.revision == expectedRevision, self.replayReadbackNonce == nonce else { return }
+            self.captureAfterReplay(anchor: stream.anchor, projection: stream.projection, sourceID: stream.source,
+                nonce: nonce, revision: expectedRevision, deadline: ProcessInfo.processInfo.systemUptime + 0.060,
+                learnSingle: stream.learnSingle)
+        }
+    }
     private func captureAfterReplay(anchor: EditorSnapshot, projection: ReplayInsertionProjection,
                                     sourceID: String, nonce: UUID, revision expectedRevision: Int,
-                                    deadline: TimeInterval, allowPartialReplay: Bool = false) {
+                                    deadline: TimeInterval, allowPartialReplay: Bool = false, learnSingle: Bool = false) {
         axQueue.asyncAfter(deadline: .now() + 0.005) { [weak self] in
             guard let self, self.isCurrent(expectedRevision) else { return }
             let current = AccessibilityEditor.capture(deadline: deadline, isCurrent: { self.isCurrent(expectedRevision) }).snapshot
             DispatchQueue.main.async {
-                guard self.replayReadbackNonce == nonce, self.revision == expectedRevision,
-                      self.allowedFrontmost(), !self.replaying, self.mutationGate == nil,
+                guard self.replayReadbackNonce == nonce, self.revision == expectedRevision else { return }
+                guard self.allowedFrontmost(), !self.replaying, self.mutationGate == nil,
                       self.recoveryTarget == nil, self.inputReplay.isEmpty,
-                      self.pendingNativePaste == nil, sourceID == InputSources.identifier else { return }
+                      self.pendingNativePaste == nil, sourceID == InputSources.identifier else {
+                    self.streamReadback = nil; self.cachedSnapshot = nil
+                    return
+                }
                 let sameTarget = current.map { AccessibilityEditor.sameTarget(anchor, $0) } ?? false
                 let matched = current.map { projection.matchesObserved(text: $0.text, selection: $0.selection,
                     ownsAnchor: sameTarget) } ?? false
@@ -1262,14 +1353,16 @@ final class KeyboardService {
                         "partialReplay": allowPartialReplay])
                 guard matched, let current else {
                     self.cachedSnapshot = nil
+                    if !inTime || (current != nil && !sameTarget) { self.streamReadback = nil }
                     if inTime, current == nil || sameTarget {
                         self.captureAfterReplay(anchor: anchor, projection: projection, sourceID: sourceID,
                             nonce: nonce, revision: expectedRevision, deadline: deadline,
-                            allowPartialReplay: allowPartialReplay)
+                            allowPartialReplay: allowPartialReplay, learnSingle: learnSingle)
                     }
                     return
                 }
-                guard inTime else { self.cachedSnapshot = nil; return }
+                guard inTime else { self.cachedSnapshot = nil; self.streamReadback = nil; return }
+                self.streamReadback = nil
                 self.cachedSnapshot = (expectedRevision, current)
                 guard !self.stopRequested else { return }
                 if allowPartialReplay {
@@ -1283,10 +1376,25 @@ final class KeyboardService {
                     else { self.automatic(current) }
                     return
                 }
+                let language: (String) -> Language? = { self.engine.completedTokenLanguage($0, context: self.context(current)) }
                 guard let batch = projection.finish(observedText: current.text, selection: current.selection,
-                        ownsAnchor: true, decide: { self.completedTokenDecision($0, context: self.context(current)) }) else { return }
-                self.apply(current, range: batch.edit.range, decision: batch.decision,
-                    statisticsDecisions: batch.tokens, learnOnUndo: false)
+                        ownsAnchor: true, language: language,
+                        decide: { self.completedTokenDecision($0, context: self.context(current)) }) else {
+                    if let target = projection.lastCompletedToken.flatMap(language), InputSources.language != target {
+                        _ = self.selectSource(.language(target), pid: current.pid)
+                        self.store.inputSource = InputSources.identifier
+                        self.streamReadback = nil
+                    }
+                    return
+                }
+                var decision = batch.decision
+                let learnsWord = learnSingle && batch.tokens.count == 1
+                if learnsWord {
+                    decision = batch.tokens[0]
+                    decision.targetLanguage = batch.decision.targetLanguage
+                }
+                self.apply(current, range: batch.edit.range, decision: decision,
+                    statisticsDecisions: batch.tokens, learnOnUndo: learnsWord)
             }
         }
     }
@@ -1313,6 +1421,15 @@ final class KeyboardService {
             }
             if let anchor, let projection, projection.isValid, let projectionSource,
                projectionSource == InputSources.identifier, !stopRequested {
+                if !allowPartialReplay {
+                    streamReadback = (anchor, projection, projectionSource, false)
+                    var predicted = anchor
+                    predicted.text = projection.expectedText; predicted.selection = projection.expectedSelection
+                    cachedSnapshot = (revision, predicted)
+                    scheduleStreamReadback()
+                    updateServiceStatus()
+                    return
+                }
                 let nonce = UUID(); replayReadbackNonce = nonce
                 captureAfterReplay(anchor: anchor, projection: projection, sourceID: projectionSource,
                     nonce: nonce, revision: revision, deadline: ProcessInfo.processInfo.systemUptime + 0.060,
@@ -1333,18 +1450,21 @@ final class KeyboardService {
         let identityNonce = session.beginIdentityCheck()
         axQueue.async { [weak self] in
             guard let self else { return }
-            let identityMatches = self.replayIdentityMatches(target)
+            let identityMatches = self.replayIdentityMatches(target, expectedRevision: expectedRevision)
             let checkedAt = ProcessInfo.processInfo.systemUptime
             DispatchQueue.main.async { [self] in
                 guard let active = self.session.identityCheckTarget(identityNonce),
                       AccessibilityEditor.sameTarget(active, target) else { return }
                 self.session.clearIdentityCheck()
-                guard identityMatches, self.revision == expectedRevision,
-                      self.allowedFrontmost(), AXIsProcessTrusted(), CGPreflightPostEventAccess(),
-                      NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
-                      sourceID == InputSources.identifier,
-                      ProcessInfo.processInfo.systemUptime - checkedAt <= 0.050,
-                      let source = self.replaySource else {
+                let checks = ["identity": identityMatches, "revision": self.revision == expectedRevision,
+                    "allowed": self.allowedFrontmost(), "trusted": AXIsProcessTrusted(),
+                    "posting": CGPreflightPostEventAccess(),
+                    "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+                    "source": sourceID == InputSources.identifier,
+                    "leaseFresh": ProcessInfo.processInfo.systemUptime - checkedAt <= 0.050,
+                    "replaySource": self.replaySource != nil]
+                guard checks.values.allSatisfy({ $0 }), let source = self.replaySource else {
+                    InputDiagnostics.shared.record("replay-route-rejected", revision: expectedRevision, checks: checks)
                     self.suspendReplay(target: target); return
                 }
                 guard let delivery = self.session.dispatchNext(revision: expectedRevision, sourceID: sourceID,
@@ -1378,47 +1498,74 @@ final class KeyboardService {
             "Доставка одного события не подтверждена: сохранён только подтверждённый префикс; проверьте текст" :
             "Доставка не подтверждена; контекст после команд неизвестен — восстановление требует точного исходного текста"
     }
-    /// Identity only: no AXValue/selection/text read. A fixed number of IPC calls,
-    /// each with a short messaging timeout; macOS does not promise a hard deadline
-    /// or atomic focus ownership between this check and event delivery.
-    private func replayIdentityMatches(_ target: EditorSnapshot) -> Bool {
-        guard AXIsProcessTrusted(), !IsSecureEventInputEnabled(),
-              NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
-              let expectedWindow = target.window else { return false }
-        func attribute(_ element: AXUIElement, _ name: String) -> (AXError, CFTypeRef?) {
-            var value: CFTypeRef?
-            let status = AXUIElementCopyAttributeValue(element, name as CFString, &value)
-            return (status, value)
+    /// Retry only transient AX failure, with the same pinned target and per-call limit.
+    private func replayIdentityMatches(_ target: EditorSnapshot, expectedRevision: Int) -> Bool {
+        let deadline = ProcessInfo.processInfo.systemUptime + 0.150
+        var failure: EditorSnapshotFailure = .staleContext
+        func matches() -> Bool {
+            guard AXIsProcessTrusted(), !IsSecureEventInputEnabled(),
+                  NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+                  let expectedWindow = target.window else { return false }
+            var stage = "focused-field"
+            var accepted = false
+            defer { InputDiagnostics.shared.record("replay-identity", revision: -1,
+                checks: ["accepted": accepted], reason: stage) }
+            func attribute(_ element: AXUIElement, _ name: String) -> (AXError, CFTypeRef?) {
+                let remaining = deadline - ProcessInfo.processInfo.systemUptime
+                guard remaining > 0 else { failure = .deadlineExceeded; return (.cannotComplete, nil) }
+                AXUIElementSetMessagingTimeout(element, Float(min(0.030, remaining)))
+                var value: CFTypeRef?
+                let status = AXUIElementCopyAttributeValue(element, name as CFString, &value)
+                if status == .cannotComplete { failure = .axCannotComplete }
+                if status != .success && status != .noValue && status != .attributeUnsupported {
+                    InputDiagnostics.shared.record("replay-identity-ax", revision: -1,
+                        checks: ["cannotComplete": status == .cannotComplete], reason: stage)
+                }
+                return (status, value)
+            }
+            let app = AXUIElementCreateApplication(target.pid)
+            let (fieldStatus, rawField) = attribute(app, kAXFocusedUIElementAttribute)
+            guard fieldStatus == .success, let rawField,
+                  CFGetTypeID(rawField) == AXUIElementGetTypeID() else { return false }
+            let field = rawField as! AXUIElement
+            stage = "field-equality"
+            guard CFEqual(field, target.element) else { return false }
+            stage = "field-window"
+            let (windowStatus, rawWindow) = attribute(field, kAXWindowAttribute)
+            guard windowStatus == .success, let rawWindow,
+                  CFGetTypeID(rawWindow) == AXUIElementGetTypeID() else { return false }
+            let window = rawWindow as! AXUIElement
+            stage = "window-equality"
+            guard CFEqual(window, expectedWindow) else { return false }
+            stage = "window-document"
+            let (documentStatus, rawDocument) = attribute(window, kAXDocumentAttribute)
+            let document: String?
+            if documentStatus == .success {
+                guard let value = rawDocument as? String else { return false }
+                document = value
+            } else if documentStatus == .noValue || documentStatus == .attributeUnsupported {
+                document = nil
+            } else { return false }
+            stage = "document-equality"
+            guard document == target.document else { return false }
+            // Recheck the focused element after querying its window/document. This
+            // reduces the lease gap, but cannot make AX-check → event delivery atomic.
+            stage = "final-focused-field"
+            let (finalStatus, finalField) = attribute(app, kAXFocusedUIElementAttribute)
+            accepted = finalStatus == .success && finalField.map { CFEqual($0, target.element) } == true &&
+                AXIsProcessTrusted() && !IsSecureEventInputEnabled() &&
+                NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+            return accepted
         }
-        let app = AXUIElementCreateApplication(target.pid)
-        AXUIElementSetMessagingTimeout(app, 0.030)
-        let (fieldStatus, rawField) = attribute(app, kAXFocusedUIElementAttribute)
-        guard fieldStatus == .success, let rawField,
-              CFGetTypeID(rawField) == AXUIElementGetTypeID() else { return false }
-        let field = rawField as! AXUIElement
-        guard CFEqual(field, target.element) else { return false }
-        AXUIElementSetMessagingTimeout(field, 0.030)
-        let (windowStatus, rawWindow) = attribute(field, kAXWindowAttribute)
-        guard windowStatus == .success, let rawWindow,
-              CFGetTypeID(rawWindow) == AXUIElementGetTypeID() else { return false }
-        let window = rawWindow as! AXUIElement
-        guard CFEqual(window, expectedWindow) else { return false }
-        AXUIElementSetMessagingTimeout(window, 0.030)
-        let (documentStatus, rawDocument) = attribute(window, kAXDocumentAttribute)
-        let document: String?
-        if documentStatus == .success {
-            guard let value = rawDocument as? String else { return false }
-            document = value
-        } else if documentStatus == .noValue || documentStatus == .attributeUnsupported {
-            document = nil
-        } else { return false }
-        guard document == target.document else { return false }
-        // Recheck the focused element after querying its window/document. This
-        // reduces the lease gap, but cannot make AX-check → event delivery atomic.
-        let (finalStatus, finalField) = attribute(app, kAXFocusedUIElementAttribute)
-        return finalStatus == .success && finalField.map { CFEqual($0, target.element) } == true &&
-            AXIsProcessTrusted() && !IsSecureEventInputEnabled() &&
-            NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        let result = EditorSnapshotBudget(deadline: deadline).retry(
+            now: { ProcessInfo.processInfo.systemUptime },
+            isCurrent: { self.isCurrent(expectedRevision) },
+            pause: { Thread.sleep(forTimeInterval: $0) }) {
+                failure = .staleContext
+                return matches() ? .success(true) : .failure(failure)
+            }
+        if case .success(true) = result { return true }
+        return false
     }
 
     private func suspendReplay(target: EditorSnapshot) {
@@ -1527,6 +1674,7 @@ final class KeyboardService {
     }
     var testingRequestedContextRevisions: [Int] { testingContextRequests }
     var testingHasCurrentContext: Bool { cachedSnapshot?.revision == revision }
+    var testingHasManualProposal: Bool { manualSnapshot != nil }
     var testingContextCapturePending: Bool { contextCaptureRevision == revision }
     func testingInvalidateContext() { precondition(!observesSystem); resetTransient() }
     func testingCompleteContextCapture(revision: Int, contextMatches: Bool = true,

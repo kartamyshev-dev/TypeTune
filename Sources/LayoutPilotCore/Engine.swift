@@ -115,6 +115,13 @@ public struct Engine: Sendable {
     public init(settings: Settings = Settings(), lexicon: Lexicon = .bundled, mapping: Layout.Mapping = .standardPC) {
         self.settings = settings; self.lexicon = lexicon; self.mapping = mapping
     }
+    public func completedTokenLanguage(_ word: String, context: InputContext = InputContext()) -> Language? {
+        guard settings.automatic, settings.automaticChangesAllowed(in: context.application),
+              !context.secure, context.reliable, !settings.excludedApps.contains(context.application),
+              !settings.excludes(word), !Layout.isMixed(word), word.allSatisfy({ $0.isLetter }),
+              lexicon.contains(word) else { return nil }
+        return Layout.language(of: word)
+    }
     public func decide(_ word: String, context: InputContext = InputContext()) -> Decision? {
         guard !context.secure, context.reliable, settings.automaticChangesAllowed(in: context.application),
               !settings.excludedApps.contains(context.application), !word.isEmpty else { return nil }

@@ -1,0 +1,8 @@
+{
+  "guiSHA256": "f1d7539f9d4531767706567979a25a51535dc4d7a0012ec55279940f709efbfe",
+  "bundleDigest": "729ca63cc1b221d4129e2445ee53e53754a0594a5ea8bb9c7b8cf67bf0dd7ae7",
+  "installedBundleMatchesDist": true,
+  "currentSourcesMatchBuildIdentity": true,
+  "codesignVerify": true,
+  "path": "/Applications/TypeTune.app"
+}

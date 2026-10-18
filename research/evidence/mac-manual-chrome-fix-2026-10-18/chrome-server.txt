@@ -1,0 +1,4 @@
+127.0.0.1 - - [18/Oct/2026 15:14:15] "GET /?fixture=LP-CODEX-001 HTTP/1.1" 304 -
+Serving HTTP on 127.0.0.1 port 18763 (http://127.0.0.1:18763/) ...
+
+Keyboard interrupt received, exiting.

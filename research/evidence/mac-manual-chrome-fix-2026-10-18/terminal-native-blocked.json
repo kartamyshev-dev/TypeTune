@@ -1,0 +1,12 @@
+{
+  "userAuthorized": true,
+  "hosts": [
+    "com.apple.Terminal",
+    "com.mitchellh.ghostty"
+  ],
+  "attempt": "cua.getApp",
+  "result": "Computer Use is not allowed to use the app for safety reasons",
+  "nativeEventsPosted": 0,
+  "nativeAcceptance": "BLOCKED_BY_TOOL",
+  "bypassAttempted": false
+}

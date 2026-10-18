@@ -1,0 +1,26 @@
+{
+  "preferencesExact": true,
+  "diagnosticKeyAbsent": true,
+  "inputStatus": {
+    "accessibilityTrusted": true,
+    "axReadErrors": {},
+    "axReadTiming": {},
+    "events": 0,
+    "finalModifierFlags": 536870912,
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "modifierFlags": 536870912,
+    "postEventAccess": true,
+    "secureInput": false,
+    "statusOnly": true
+  },
+  "allSwitchersStopped": true,
+  "inputMenuHiddenVerifiedInUI": true,
+  "enabledSourcesRestoredInUI": [
+    "ABC",
+    "RussianWin"
+  ],
+  "installedMatchesDist": true,
+  "compiledSourcesMatchBuildIdentity": true,
+  "guiSha256": "0f6d2a79a8690e5f183c9808ef2400d14752b0a2724a7c1279d32b80a13c4738",
+  "fourHourRun": "NOT_RUN"
+}

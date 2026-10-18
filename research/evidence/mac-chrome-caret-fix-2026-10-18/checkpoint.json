@@ -1,0 +1,11 @@
+{
+  "phase": "short_verification_completed",
+  "guiSHA256": "bdecb08fa24991ab1e19856736c59fe08fb433a4f0ded4886b93ce5b821befed",
+  "guiRunning": false,
+  "chromePassed": 48,
+  "chromeTotal": 48,
+  "fullAcceptance": false,
+  "settingsRestored": true,
+  "fourHourRun": "NOT_RUN",
+  "next": "Remaining PLAN acceptance; do not transfer prior binary native results"
+}

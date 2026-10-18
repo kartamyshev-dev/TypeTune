@@ -34,12 +34,31 @@ public struct ReplayInsertionProjection: Sendable {
     public var isValid: Bool { invalidationReason == nil }
     public var insertedRange: NSRange { NSRange(location: anchorSelection.location, length: insertion.utf16.count) }
     public var hasUnfinishedTail: Bool { !insertion.isEmpty && insertion.last != " " }
+    public var lastCompletedToken: String? {
+        guard isValid, !hasUnfinishedTail, let last = completedTokenRanges.last,
+              let range = TextEdit.validatedRange(last, in: expectedText) else { return nil }
+        return String(expectedText[range])
+    }
 
     private let prefix: String
     private let suffix: String
     private var insertion = ""
     private var tokenStart: Int?
     private var awaitingFirstBoundary: Bool
+
+    /// Ordinary delimiter semantics: carry the current word into a later exact readback.
+    /// Replay itself must keep using init, which excludes pre-existing partial words.
+    public static func completingToken(text: String, selection: NSRange) -> Self? {
+        guard selection.length == 0 else { return nil }
+        guard let word = TextEdit.wordBeforeCursor(in: text, cursor: selection.location, skipTrailingSpace: false) else {
+            return Self(anchorText: text, selection: selection)
+        }
+        guard let range = TextEdit.validatedRange(word, in: text),
+              let removal = TextEdit(text: text, selection: word, replacement: ""),
+              var projection = Self(anchorText: removal.expectedText, selection: NSRange(location: word.location, length: 0)) else { return nil }
+        projection.consume(.insertion(String(text[range])))
+        return projection.isValid ? projection : nil
+    }
 
     public init?(anchorText: String, selection: NSRange,
                  maxInsertedUTF16: Int = 2048, maxCompletedTokens: Int = 64) {
@@ -106,6 +125,7 @@ public struct ReplayInsertionProjection: Sendable {
     /// No callbacks or edits on a mismatched/unowned observation. A pending AX view may be
     /// reread by the caller within its bounded deadline; this method never guesses missing text.
     public func finish(observedText: String, selection: NSRange, ownsAnchor: Bool,
+                       language: (String) -> Language? = { _ in nil },
                        decide: (String) -> Decision?) -> CorrectionBatch? {
         guard matchesObserved(text: observedText, selection: selection, ownsAnchor: ownsAnchor) else { return nil }
         var changes: [(range: NSRange, decision: Decision)] = []
@@ -138,7 +158,7 @@ public struct ReplayInsertionProjection: Sendable {
             replacement.replaceSubrange(range, with: change.decision.replacement)
         }
         guard let edit = TextEdit(text: observedText, selection: aggregateRange, replacement: replacement) else { return nil }
-        let target = !hasUnfinishedTail && lastCompletedChanged ? last.decision.targetLanguage : nil
+        let target = hasUnfinishedTail ? nil : (lastCompletedChanged ? last.decision.targetLanguage : lastCompletedToken.flatMap(language))
         let aggregate = Decision(original: original, replacement: replacement, reason: last.decision.reason, targetLanguage: target)
         return CorrectionBatch(edit: edit, decision: aggregate, tokens: changes.map(\.decision), undoLearning: .none)
     }

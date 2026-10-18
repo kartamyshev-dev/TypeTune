@@ -1,0 +1,85 @@
+Building for production...
+[Planning deferred tasks]
+[25 / 37]
+[26 / 38] LayoutPilotCore
+[38 / 90]
+[45 / 90]
+[47 / 90]
+[51 / 90]
+[54 / 90]
+[59 / 90]
+[60 / 90]
+[61 / 90]
+[62 / 90]
+[68 / 90]
+[69 / 90]
+[73 / 90]
+[74 / 90]
+[76 / 90]
+[78 / 90]
+[79 / 90] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[86 / 91] LayoutPilot-product
+[98 / 202]
+[101 / 202]
+[109 / 202]
+[112 / 202]
+[118 / 202]
+[121 / 202]
+[129 / 202]
+[134 / 202]
+[135 / 202]
+[148 / 202]
+[150 / 202]
+[154 / 202]
+[155 / 202]
+[156 / 202]
+[162 / 202]
+[164 / 202]
+[170 / 202]
+[171 / 202]
+[174 / 202]
+[176 / 202]
+[185 / 202]
+[186 / 202]
+[190 / 202]
+[195 / 202]
+[196 / 202]
+[197 / 202]
+[198 / 202] LayoutPilot-product
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[200 / 202] LayoutPilot-product
+[201 / 202] LayoutPilot-product
+Build complete! (46,18 с)
+Another instance of SwiftPM (PID: 66791) is already running using '/Users/kartamyshev/git/TypeTune/.build', waiting until that process has finished execution...Building for production...
+[Planning deferred tasks]
+[7 / 19]
+[8 / 20] LayoutPilotCore
+[20 / 72]
+[25 / 72]
+[28 / 72]
+[29 / 72]
+[33 / 72]
+[36 / 72]
+[41 / 72]
+[43 / 72]
+[44 / 72]
+[50 / 72]
+[51 / 72]
+[55 / 72]
+[56 / 72]
+[58 / 72]
+[60 / 72]
+[61 / 72] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[66 / 71] layoutpilot-cli-product
+[68 / 72] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[70 / 72] layoutpilot-cli-product
+[72 / 72] layoutpilot-cli-product
+Build complete! (28,91 с)
+Another instance of SwiftPM (PID: 67222) is already running using '/Users/kartamyshev/git/TypeTune/.build', waiting until that process has finished execution.../Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app

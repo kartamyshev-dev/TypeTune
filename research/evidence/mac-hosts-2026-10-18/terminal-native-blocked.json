@@ -1,0 +1,8 @@
+{
+  "Terminal": "Computer Use is not allowed to use the app com.apple.Terminal for safety reasons.",
+  "Ghostty": "Computer Use is not allowed to use the app com.mitchellh.ghostty for safety reasons.",
+  "nativeEventsSent": 0,
+  "status": "BLOCKED_BY_TOOL_POLICY",
+  "bypassAttempted": false,
+  "scope": "No native terminal window acceptance; PTY/mock and dispatch checks are separate."
+}

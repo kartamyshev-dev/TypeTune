@@ -75,6 +75,7 @@ struct ProbeCase: Decodable {
     var pasteText: String?
     var firstWordAfterFocus: Bool? = nil
     var preGestureDelayMilliseconds: Int? = nil
+    var scrollAfterCharacters: Int? = nil
 }
 func validateText(_ text: String) throws {
     try require(text.count <= 128 && text.unicodeScalars.allSatisfy { (32...126).contains($0.value) }, "bounded_printable_ascii_required")
@@ -82,17 +83,30 @@ func validateText(_ text: String) throws {
 func validateCase(_ item: ProbeCase) throws {
     try validateText(item.text)
     try require(!item.id.isEmpty && item.id.count <= 80 && item.id.unicodeScalars.allSatisfy { (32...126).contains($0.value) }, "invalid_case_id")
-    try require(["ABC", "RussianWin"].contains(item.source), "unsupported_source")
+    try require(["ABC", "RussianWin", "Russian"].contains(item.source), "unsupported_source")
     let gesture = item.gesture ?? "none"
-    try require(["none", "manual", "cmdoptspace", "undo", "cmdoptz", "doubleShift", "singleShift", "chord", "plainPaste", "optionTap", "nativeUndo", "manualUndo", "backspace", "doubleBackspace"].contains(gesture), "unsupported_gesture")
+    if let count = item.scrollAfterCharacters {
+        try require(count > 0 && count < item.text.count && item.firstWordAfterFocus != true,
+                    "scroll_requires_internal_word_position")
+    }
+    try require(["none", "manual", "cmdoptspace", "undo", "cmdoptz", "recover", "interruptRecover", "doubleShift", "dragDoubleShift", "singleShift", "chord", "plainPaste", "optionTap", "nativeUndo", "manualUndo", "backspace", "doubleBackspace"].contains(gesture), "unsupported_gesture")
+    if gesture == "dragDoubleShift" {
+        try require(item.boundary == false && item.selectAllBeforeGesture != true && item.text == "ghbdtn",
+                    "drag_requires_single_test_word")
+    }
     if let text = item.pasteText { try validateText(text); try require(gesture == "plainPaste", "paste_text_requires_plainPaste") }
     if gesture == "plainPaste" { try require(item.pasteText != nil, "plainPaste_requires_synthetic_paste_text") }
     if item.firstWordAfterFocus == true {
         try require(item.text == "ghbdtn" && item.source == "ABC" && gesture == "none" && (item.boundary ?? true) &&
                     item.selectAllBeforeGesture != true && item.pasteText == nil, "first_word_requires_plain_ghbdtn_fixture")
     }
+    if gesture == "interruptRecover" {
+        try require(item.text == "ghbdtn he" && item.source == "ABC" && item.boundary == false &&
+                    item.preGestureDelayMilliseconds == 0 && item.selectAllBeforeGesture != true &&
+                    item.pasteText == nil, "interrupted_recovery_requires_exact_fixture")
+    }
     if let delay = item.preGestureDelayMilliseconds {
-        try require((0...1000).contains(delay) && gesture == "doubleShift" && item.boundary == false &&
+        try require((0...1000).contains(delay) && (gesture == "doubleShift" || gesture == "interruptRecover") && item.boundary == false &&
                     item.selectAllBeforeGesture != true && item.pasteText == nil, "gesture_delay_requires_unselected_double_shift_fixture")
     }
 }
@@ -564,6 +578,60 @@ final class Probe {
             try emit(code, down: false, flags: held, modifier: true)
         }
     }
+    func scroll() throws {
+        try require(events < 600, "event_limit")
+        let bounds = try characterBounds(0)
+        _ = try verifiedField()
+        guard let event = CGEvent(scrollWheelEvent2Source: source, units: .line,
+                                  wheelCount: 1, wheel1: 1, wheel2: 0, wheel3: 0) else {
+            throw ProbeFailure(message: "scroll_event_creation_failed")
+        }
+        event.location = CGPoint(x: bounds.midX, y: bounds.midY)
+        event.setIntegerValueField(.eventSourceUserData, value: Self.eventTag)
+        event.post(tap: .cghidEventTap)
+        events += 1
+        settle(0.012)
+    }
+    func characterBounds(_ location: Int) throws -> CGRect {
+            let field = try verifiedField()
+            var range = CFRange(location: location, length: 1)
+            let parameter = AXValueCreate(.cfRange, &range)!
+            var value: CFTypeRef?
+            try require(AXUIElementCopyParameterizedAttributeValue(field,
+                kAXBoundsForRangeParameterizedAttribute as CFString, parameter, &value) == .success,
+                "drag_range_bounds_unavailable")
+            guard let value, CFGetTypeID(value) == AXValueGetTypeID() else {
+                throw ProbeFailure(message: "drag_range_bounds_invalid")
+            }
+            var rect = CGRect.zero
+            try require(AXValueGetValue(value as! AXValue, .cgRect, &rect) && !rect.isEmpty,
+                        "drag_range_bounds_invalid")
+            return rect
+    }
+    func dragTestWord() throws {
+        let initial = try snapshot()
+        try require(initial.0 == "ghbdtn", "drag_test_word_mismatch")
+        let first = try characterBounds(0), last = try characterBounds(5)
+        try require(abs(first.midY - last.midY) < 1 && last.maxX > first.minX,
+                    "drag_requires_single_line")
+        for (type, point) in [(CGEventType.leftMouseDown, CGPoint(x: first.minX, y: first.midY)),
+                              (.leftMouseDragged, CGPoint(x: last.maxX, y: last.midY)),
+                              (.leftMouseUp, CGPoint(x: last.maxX, y: last.midY))] {
+            try require(events < 600, "event_limit")
+            _ = try verifiedField()
+            guard let event = CGEvent(mouseEventSource: source, mouseType: type,
+                                      mouseCursorPosition: point, mouseButton: .left) else {
+                throw ProbeFailure(message: "drag_event_creation_failed")
+            }
+            event.setIntegerValueField(.eventSourceUserData, value: Self.eventTag)
+            event.post(tap: .cghidEventTap)
+            events += 1
+            settle(0.05)
+        }
+        let selected = try snapshot()
+        try require(selected.0 == initial.0 && selected.1 == ["location": 0, "length": 6],
+                    "drag_selection_not_verified")
+    }
     func type(_ text: String, interval: TimeInterval, waitAfterLast: Bool = true) throws {
         let map: [Character: CGKeyCode] = ["a":0,"s":1,"d":2,"f":3,"h":4,"g":5,"z":6,"x":7,"c":8,"v":9,"b":11,"q":12,"w":13,"e":14,"r":15,"y":16,"t":17,"1":18,"2":19,"3":20,"4":21,"6":22,"5":23,"=":24,"9":25,"7":26,"-":27,"8":28,"0":29,"]":30,"o":31,"u":32,"[":33,"i":34,"p":35,"l":37,"j":38,"'":39,"k":40,";":41,"\\":42,",":43,"/":44,"n":45,"m":46,".":47,"`":50," ":49]
         let shifted = Dictionary(uniqueKeysWithValues: zip(Array("!@#$%^&*()_+{}|:\"<>?~"), Array("1234567890-= []\\;' ,./`".replacingOccurrences(of: " ", with: ""))))
@@ -595,6 +663,31 @@ final class Probe {
     func gesture(_ name: String) throws {
         switch name {
         case "none": return
+        case "recover": try tap(15, flags: [.maskCommand, .maskAlternate])
+        case "interruptRecover":
+            guard let sources = TISCreateInputSourceList(nil, false)?.takeRetainedValue() as? [TISInputSource],
+                  let abc = sources.first(where: { sourceID($0) == "com.apple.keylayout.ABC" }),
+                  let russian = sources.first(where: { sourceID($0) == "com.apple.keylayout.RussianWin" }) else {
+                throw ProbeFailure(message: "recovery_sources_unavailable")
+            }
+            _ = try verifiedField()
+            try require(sourceID(currentSource()) == sourceID(abc), "recovery_initial_source_mismatch")
+            defer { _ = TISSelectInputSource(abc) }
+            try require(TISSelectInputSource(russian) == noErr, "source_selection_failed")
+            settle(0.3)
+            _ = try verifiedField()
+            try require(TISSelectInputSource(abc) == noErr, "source_selection_failed")
+            settle(0.1)
+            let before = try snapshot()
+            gestureIntermediate = ["beforeRecoveryText": before.0, "beforeRecoverySelection": before.1,
+                "inputSource": sourceID(currentSource())]
+            try require(before.0 == "ghbdtn " && before.1 == ["location": 7, "length": 0] &&
+                        sourceID(currentSource()) == sourceID(abc), "recovery_prefix_not_confirmed")
+            try tap(15, flags: [.maskCommand, .maskAlternate])
+        case "dragDoubleShift":
+            try dragTestWord()
+            settle(0.15)
+            try gesture("doubleShift")
         case "manual", "cmdoptspace": try tap(49, flags: [.maskCommand, .maskAlternate])
         case "undo", "cmdoptz": try tap(6, flags: [.maskCommand, .maskAlternate])
         case "nativeUndo": try tap(6, flags: .maskCommand)
@@ -785,7 +878,18 @@ func main() throws {
         try require(sourceID(currentSource()) == wanted, "source_selection_not_verified")
         let started = ProcessInfo.processInfo.systemUptime
         probe.firstEventUptime = nil
-        try probe.type(item.text, interval: args.interval, waitAfterLast: item.preGestureDelayMilliseconds != 0)
+        if item.gesture == "interruptRecover" {
+            // The exact bounded fixture must enter the 150 ms quiet-period mutation before its tail.
+            try probe.type("ghbdtn ", interval: args.interval)
+            settle(0.170)
+            try probe.type("he", interval: args.interval, waitAfterLast: false)
+        } else if let count = item.scrollAfterCharacters {
+            try probe.type(String(item.text.prefix(count)), interval: args.interval)
+            try probe.scroll()
+            try probe.type(String(item.text.dropFirst(count)), interval: args.interval)
+        } else {
+            try probe.type(item.text, interval: args.interval, waitAfterLast: item.preGestureDelayMilliseconds != 0)
+        }
         let firstTypingEvent = probe.firstEventUptime, lastTypingEvent = probe.lastEventUptime
         var observation: [String: Any] = ["performed": false]
         if item.boundary ?? true {

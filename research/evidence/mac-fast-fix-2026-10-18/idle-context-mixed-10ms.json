@@ -1,0 +1,292 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 313
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 313,
+      "maxMilliseconds": 2.298999999766238,
+      "totalMilliseconds": 36.485458447714336
+    },
+    "AXFocusedUIElement:0": {
+      "count": 313,
+      "maxMilliseconds": 1.5137916634557769,
+      "totalMilliseconds": 21.922333471593447
+    },
+    "AXFocusedWindow:0": {
+      "count": 313,
+      "maxMilliseconds": 30.65262500604149,
+      "totalMilliseconds": 331.1813332984457
+    },
+    "AXRole:0": {
+      "count": 313,
+      "maxMilliseconds": 9.92525000765454,
+      "totalMilliseconds": 36.95883337059058
+    },
+    "AXSelectedTextRange:0": {
+      "count": 61,
+      "maxMilliseconds": 0.11529166658874601,
+      "totalMilliseconds": 3.92404172453098
+    },
+    "AXSubrole:-25205": {
+      "count": 313,
+      "maxMilliseconds": 9.027249994687736,
+      "totalMilliseconds": 45.433249935740605
+    },
+    "AXValue:0": {
+      "count": 61,
+      "maxMilliseconds": 0.10758332791738212,
+      "totalMilliseconds": 3.2998333626892418
+    },
+    "AXWindow:0": {
+      "count": 313,
+      "maxMilliseconds": 8.669791670399718,
+      "totalMilliseconds": 33.16708315105643
+    }
+  },
+  "cases": 6,
+  "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.results.json",
+  "completed": 6,
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "idleEvents": 0,
+  "idleSegmentSeconds": 0,
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "inputSegmentSeconds": 19.92532000000938,
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "requiredIdleSeconds": 0,
+  "results": [
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.13813262499752454,
+        "firstChangeSeconds": 0.030951624998124316,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+      "elapsedSeconds": 3.0141950833349256,
+      "events": 40,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-mixed-0",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn hello ghbdtn",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 20
+      },
+      "text": "привет hello привет ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 1000
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14994820833089761,
+        "firstChangeSeconds": 0.03710487499483861,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+      "elapsedSeconds": 2.8996098750067176,
+      "events": 44,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-mixed-1",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "hello ghbdtn hello",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 19
+      },
+      "text": "hello привет hello ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 1000
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1381450416665757,
+        "firstChangeSeconds": 0.029172208334784955,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+      "elapsedSeconds": 3.055595625002752,
+      "events": 50,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-mixed-2",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn/ hello ghbdtn/",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 22
+      },
+      "text": "привет. hello привет. ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 1000
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14208829167182557,
+        "firstChangeSeconds": 0.030583166677388363,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+      "elapsedSeconds": 3.022499541664729,
+      "events": 46,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-mixed-3",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "hello ghbdtn/ hello",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 20
+      },
+      "text": "hello привет. hello ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 1000
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1424714166787453,
+        "firstChangeSeconds": 0.029397500009508803,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+      "elapsedSeconds": 2.614316333332681,
+      "events": 30,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "unchanged-english",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "hello hello",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 12
+      },
+      "text": "hello hello ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 1000
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.14074012500350364,
+        "firstChangeSeconds": 0.03131179166666698,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/7876A328-3396-4EA6-A6E8-1090343F3FCF.txt",
+      "elapsedSeconds": 2.693253541656304,
+      "events": 34,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "unchanged-russian",
+      "inputSource": "com.apple.keylayout.RussianWin",
+      "physicalASCII": "ghbdtn ghbdtn",
+      "requestedSource": "com.apple.keylayout.RussianWin",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 14
+      },
+      "text": "привет привет ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 1000
+      }
+    }
+  ],
+  "totalEvents": 244,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "d50000e8fb7bbe51ec46fe09a950a3f3f403ff6243f5687241023d3cadd7c9ae",
+    "targetBinarySha256": "f627f304bfc0d56a52893cfc2b46f8130f0a466be2b08a26555b73c2291a1ec1",
+    "probeSourceSha256": "21d0fd6ec797a74cbd92d5be83f5387a4f27b7cc4881db8437d1f94bf22d0653",
+    "probeBinarySha256": "895a8d2245e9971a90190df74e6f60ccd73d015145dfc42aac1e8d6b0300c9e0",
+    "targetProcess": {
+      "pid": 87652,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 14:15:46 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 88129,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 14:17:14 2026"
+  },
+  "processExitCode": 0,
+  "helperWallSeconds": 20.710188041994115,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "d50000e8fb7bbe51ec46fe09a950a3f3f403ff6243f5687241023d3cadd7c9ae",
+    "targetBinarySha256": "f627f304bfc0d56a52893cfc2b46f8130f0a466be2b08a26555b73c2291a1ec1",
+    "probeSourceSha256": "21d0fd6ec797a74cbd92d5be83f5387a4f27b7cc4881db8437d1f94bf22d0653",
+    "probeBinarySha256": "895a8d2245e9971a90190df74e6f60ccd73d015145dfc42aac1e8d6b0300c9e0",
+    "targetProcess": {
+      "pid": 87652,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 14:15:46 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 87652,
+  "sourceCommit": "bcaf82a297be2abc03f71cf4dc13f56129c00ba3",
+  "sourceDirty": true,
+  "probeStartUptime": 81957.650496458,
+  "probeEndUptime": 81978.409935416,
+  "caseFileSha256": "68ad2588f585180785285d3f7235756dba81aa04212f49e1e41276a81dbef2b2"
+}

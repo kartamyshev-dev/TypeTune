@@ -1,0 +1,37 @@
+Building for production...
+[3 / 6] LayoutPilotCore
+[5 / 7] LayoutPilotCore
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilotCore: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[10 / 13] LayoutPilot-product
+[11 / 56]
+[17 / 56]
+[19 / 56]
+[24 / 56]
+[25 / 56]
+[26 / 56]
+[29 / 56]
+[31 / 56]
+[40 / 56]
+[41 / 56]
+[45 / 56]
+[50 / 56]
+[51 / 56]
+[52 / 56]
+[53 / 56] LayoutPilot-product
+[55 / 56] LayoutPilot-product
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: LayoutPilot-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[56 / 56] LayoutPilot-product
+Build complete! (34,32 с)
+Building for production...
+[3 / 6] layoutpilot-cli-product
+[4 / 7] layoutpilot-cli-product
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/kartamyshev/git/TypeTune/Package.swift: layoutpilot-cli-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[6 / 7] layoutpilot-cli-product
+[9 / 9] layoutpilot-cli-product
+Build complete! (9,06 с)
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app: replacing existing signature
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app/Contents/MacOS/LayoutPilot: Mach-O 64-bit executable arm64
+/Users/kartamyshev/git/TypeTune/dist/LayoutPilot.app

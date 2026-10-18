@@ -1,0 +1,104 @@
+[
+  {
+    "id": "apple-auto-en-ru",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "expected": "привет ",
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-auto-ru-en",
+    "text": "hello",
+    "source": "Russian",
+    "expected": "hello ",
+    "expectedSource": "com.apple.keylayout.ABC",
+    "expectedSelection": {
+      "location": 6,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-manual-yo",
+    "text": "\\;br",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "manual",
+    "expected": "ёжик",
+    "selectAllBeforeGesture": true,
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-manual-Yo",
+    "text": "|;br",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "manual",
+    "expected": "Ёжик",
+    "selectAllBeforeGesture": true,
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 4,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-manual-grave",
+    "text": "ghbdtn`",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "manual",
+    "expected": "привет]",
+    "selectAllBeforeGesture": true,
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-manual-tilde",
+    "text": "ghbdtn~",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "manual",
+    "expected": "привет[",
+    "selectAllBeforeGesture": true,
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 7,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-physical-yo",
+    "text": "\\",
+    "source": "Russian",
+    "boundary": false,
+    "expected": "ё",
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 1,
+      "length": 0
+    }
+  },
+  {
+    "id": "apple-physical-Yo",
+    "text": "|",
+    "source": "Russian",
+    "boundary": false,
+    "expected": "Ё",
+    "expectedSource": "com.apple.keylayout.Russian",
+    "expectedSelection": {
+      "location": 1,
+      "length": 0
+    }
+  }
+]

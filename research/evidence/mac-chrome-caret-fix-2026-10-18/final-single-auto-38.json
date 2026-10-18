@@ -1,0 +1,81 @@
+{
+  "after": {
+    "length": 0,
+    "location": 8,
+    "text": "привет  "
+  },
+  "afterFirstSpace": {
+    "length": 0,
+    "location": 7,
+    "text": "привет "
+  },
+  "before": {
+    "length": 0,
+    "location": 0,
+    "text": ""
+  },
+  "beforeFirstSpace": {
+    "length": 0,
+    "location": 6,
+    "text": "ghbdtn"
+  },
+  "emitted": [
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 5,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": "g"
+    },
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 4,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": "h"
+    },
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 11,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": "b"
+    },
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 2,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": "d"
+    },
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 17,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": "t"
+    },
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 45,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": "n"
+    },
+    {
+      "eventSourceState": 272312086,
+      "keyCode": 49,
+      "source": "com.apple.keylayout.ABC",
+      "unicode": " "
+    }
+  ],
+  "expected": "привет  ",
+  "field": "LP-CODEX-001 single",
+  "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+  "mode": "type-wrong",
+  "passed": true,
+  "selectedSource": "com.apple.keylayout.ABC",
+  "typingSource": "com.apple.keylayout.ABC",
+  "guiSHA256": "bdecb08fa24991ab1e19856736c59fe08fb433a4f0ded4886b93ce5b821befed",
+  "guiBundleSHA256": "ff835918fbe4aff607f610170c2b999576445d7bbb6a48c0142722ef72a352f3",
+  "guiIdentityUnchanged": true,
+  "guiPID": 8895,
+  "helperSHA256": "b3d7a0ec04f58d21a774bfe3c025ddb73fc2f7ae0de1f8018bcfe33747a13959",
+  "exitCode": 0,
+  "startedUptime": 87352.77597425,
+  "endedUptime": 87355.598159583
+}

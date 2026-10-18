@@ -125,5 +125,39 @@ func replayProjectionChecks() -> [(Bool, String)] {
     check(ReplayInsertionProjection(anchorText: "😀", selection: NSRange(location: 1, length: 0)) == nil, "reject anchor inside surrogate pair")
     check(ReplayInsertionProjection(anchorText: "e\u{0301}", selection: NSRange(location: 1, length: 0)) == nil, "reject anchor inside grapheme")
     check(ReplayInsertionProjection(anchorText: "abc", selection: NSRange(location: 0, length: 1)) == nil, "selection replacement is not an ordinary insertion anchor")
+    var stream = ReplayInsertionProjection(anchorText: "", selection: NSRange(location: 0, length: 0))!
+    for character in "ghbdtn hello ghbdtn hello " { stream.consume(.insertion(String(character))) }
+    let streamBatch = stream.finish(observedText: stream.expectedText, selection: stream.expectedSelection,
+        ownsAnchor: true, language: { Engine().completedTokenLanguage($0) }, decide: evaluate)
+    check(streamBatch?.edit.expectedText == "привет hello привет hello ", "continued stream corrects every completed token")
+    check(streamBatch?.decision.targetLanguage == .english, "known unchanged final word determines source after aggregate")
+    check(stream.finish(observedText: stream.expectedText + "x", selection: stream.expectedSelection,
+        ownsAnchor: true, language: { Engine().completedTokenLanguage($0) }, decide: evaluate) == nil,
+        "new language policy cannot bypass full text proof")
+    stream.consume(.insertion("h"))
+    check(stream.lastCompletedToken == nil, "unfinished next word never authorizes a source change")
+    check(Engine().completedTokenLanguage("hello") == .english && Engine().completedTokenLanguage("привет") == .russian,
+        "known completed words identify both sources")
+    for word in ["unknownfixture", "hello.txt", "user@example.test", "hеllo", "123", ""] {
+        check(Engine().completedTokenLanguage(word) == nil, "unknown/code/mixed tokens cannot switch source: " + word)
+    }
+    var paused = Settings(); paused.paused = true
+    check(Engine(settings: paused).completedTokenLanguage("hello") == nil, "pause prevents source-only changes")
+    paused.paused = false; paused.automatic = false
+    check(Engine(settings: paused).completedTokenLanguage("hello") == nil, "layout switch disabled prevents source-only changes")
+    paused.automatic = true; paused.learnedWords = ["hello"]
+    check(Engine(settings: paused).completedTokenLanguage("hello") == nil, "learned exclusion prevents source-only changes")
+    check(Engine().completedTokenLanguage("hello", context: InputContext(secure: true)) == nil,
+        "secure context prevents source-only changes")
+    var firstWord = ReplayInsertionProjection.completingToken(text: "prefix ghbdtn suffix", selection: NSRange(location: 13, length: 0))!
+    firstWord.consume(.insertion(" hello "))
+    let firstBatch = firstWord.finish(observedText: firstWord.expectedText, selection: firstWord.expectedSelection,
+        ownsAnchor: true, language: { Engine().completedTokenLanguage($0) }, decide: evaluate)
+    check(firstBatch?.edit.expectedText == "prefix привет hello  suffix", "ordinary delimiter survives later input without losing first word")
+    check(firstBatch?.decision.targetLanguage == .english, "continued first word uses final known word source")
+    check(!firstWord.matchesObserved(text: firstWord.expectedText, selection: firstWord.expectedSelection, ownsAnchor: false),
+        "ordinary completion cannot transfer to a different field")
+    check(ReplayInsertionProjection.completingToken(text: "ghbdtn", selection: NSRange(location: 0, length: 6)) == nil,
+        "ordinary completion refuses selections")
     return results
 }

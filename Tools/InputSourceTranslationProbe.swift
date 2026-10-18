@@ -1,6 +1,7 @@
 import AppKit
 import Carbon
 import Foundation
+import LayoutPilotCore
 
 /// Calls the production decoder with enabled layouts and events constructed in
 /// memory. Never selects an input source, posts an event or reads an AX field.
@@ -10,6 +11,20 @@ import Foundation
         let sources = TISCreateInputSourceList(nil, false)!.takeRetainedValue() as! [TISInputSource]
         var checks: [String: Bool] = [:]
         var observations: [[String: Any]] = []
+        let allSources = TISCreateInputSourceList(nil, true)!.takeRetainedValue() as! [TISInputSource]
+        for source in allSources {
+            guard let id = InputSources.property(source, kTISPropertyInputSourceID),
+                  InputSources.russianIDs.contains(id),
+                  let pointer = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData) else { continue }
+            let data = Unmanaged<CFData>.fromOpaque(pointer).takeUnretainedValue()
+            for key: CGKeyCode in [10, 42, 50] {
+                for (label, flags) in [("plain", CGEventFlags()), ("shift", .maskShift)] {
+                    observations.append(["fixture": id + "_key_" + String(key) + "_" + label,
+                        "actual": InputSources.insertionText(keyCode: key, flags: flags, sourceID: id,
+                            layoutData: data, keyboardType: UInt32(LMGetKbdType())) as Any? ?? NSNull()])
+                }
+            }
+        }
         func event(_ key: CGKeyCode = 5, flags: CGEventFlags = [], payload: String? = nil) -> CGEvent {
             let value = CGEvent(keyboardEventSource: nil, virtualKey: key, keyDown: true)!
             value.flags = flags
@@ -89,11 +104,23 @@ import Foundation
         checks["current_wrapper_unknown_id_has_no_fallback"] = InputSources.insertionText(for: event(payload: "g"), sourceID: "probe.unsupported") == nil
         let after = InputSources.identifier
         checks["input_source_preserved"] = before == after
+        if before == "com.apple.keylayout.RussianWin",
+           sources.contains(where: { InputSources.property($0, kTISPropertyInputSourceID) == "com.apple.keylayout.ABC" }) {
+            checks["current_pc_mapping_matches_authored_table"] = InputSources.mapping == .standardPC
+            let actual = InputSources.mapping.toRussian, expected = Layout.Mapping.standardPC.toRussian
+            for key in Set(actual.keys).union(expected.keys).sorted() where actual[key] != expected[key] {
+                observations.append(["fixture": "pc_mapping_" + String(key),
+                                     "actual": actual[key].map(String.init) ?? "unchanged",
+                                     "expected": expected[key].map(String.init) ?? "unchanged"])
+            }
+        }
         let failures = checks.filter { !$0.value }.map(\.key).sorted()
         let report: [String: Any] = [
             "passed": checks.count - failures.count, "total": checks.count, "failures": failures,
             "checks": checks, "fixtureObservations": observations, "sourceBefore": before, "sourceAfter": after,
             "productionInputSourcesUsed": true, "eventsPosted": 0, "inputSourceChanges": 0, "AXReads": 0,
+            "enabledLayoutIDs": sources.compactMap { InputSources.property($0, kTISPropertyInputSourceID) },
+            "keyboardType": UInt32(LMGetKbdType()),
             "nativeAcceptance": false,
             "notice": "Synthetic in-memory event translation only; no live source-transition or keyboard delivery acceptance."
         ]

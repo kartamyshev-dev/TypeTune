@@ -1,0 +1,91 @@
+{
+  "attempts": [
+    {
+      "file": "chrome-plain-auto.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-plain-manual.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-rich-auto.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-rich-manual.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-rich-stream-repeat.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-rich-stream.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-auto-repeat2.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-auto-repeat3.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-auto-repeat4.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-auto-retry.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-auto.json",
+      "passed": false,
+      "exitCode": 2,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-correct.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-manual-retry.json",
+      "passed": true,
+      "exitCode": 0,
+      "identityUnchanged": true
+    },
+    {
+      "file": "chrome-single-manual.json",
+      "passed": false,
+      "exitCode": 2,
+      "identityUnchanged": true
+    }
+  ],
+  "scope": "Exact text/caret on local fixture, no final source claim",
+  "passCount": 12,
+  "attemptCount": 14
+}

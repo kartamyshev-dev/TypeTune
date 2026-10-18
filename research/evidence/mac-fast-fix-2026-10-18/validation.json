@@ -1,0 +1,41 @@
+{
+  "fast-10ms": {
+    "passed": 10,
+    "total": 10,
+    "textCaretSourceExact": true,
+    "identityUnchanged": true
+  },
+  "fast-10ms-repeat": {
+    "passed": 10,
+    "total": 10,
+    "textCaretSourceExact": true,
+    "identityUnchanged": true
+  },
+  "mixed-10ms": {
+    "passed": 6,
+    "total": 6,
+    "textCaretSourceExact": true,
+    "identityUnchanged": true
+  },
+  "mac-review": {
+    "passed": 7,
+    "total": 7,
+    "textCaretSourceExact": true,
+    "identityUnchanged": true
+  },
+  "undo": {
+    "passed": 1,
+    "total": 1,
+    "textCaretSourceExact": true,
+    "identityUnchanged": true
+  },
+  "guiSHA256": "f1d7539f9d4531767706567979a25a51535dc4d7a0012ec55279940f709efbfe",
+  "controllerHooks": 65,
+  "offlineCLI": 1336,
+  "offlineCorpus": 4420,
+  "editorGuardDenials": 17,
+  "auditGates": 4,
+  "nativeFixtures": 8,
+  "fourHourRun": "NOT_RUN",
+  "scope": "Synthetic new local TextEdit documents only; 10ms is requested harness interval plus target checks"
+}
