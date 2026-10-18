@@ -74,6 +74,15 @@ func keystrokeEditPlanChecks() -> [(Bool, String)] {
     check(hello.applied(to: "Скажи ghbdtn ") == "Скажи привет ", "the expected result after the edit")
     check(hello.applied(to: "nope") == nil, "no expected result for a mismatching field")
 
+    // Unicode chunks for keyboard events.
+    check(hello.unicodeChunks().map { $0.count } == [7] && String(utf16CodeUnits: hello.unicodeChunks()[0], count: 7) == "привет ",
+          "a short insertion is one chunk")
+    let long = KeystrokeEditPlan(token: "a", boundary: "", decision: Decision(original: "a", replacement: String(repeating: "б", count: 40), reason: .manual))!
+    check(long.unicodeChunks().map { $0.count } == [16, 16, 8], "long insertions are split into 16-unit chunks")
+    let emoji = KeystrokeEditPlan(token: "a", boundary: "", decision: Decision(original: "a", replacement: String(repeating: "x", count: 15) + "😀", reason: .manual))!
+    check(emoji.unicodeChunks().map { $0.count } == [15, 2], "a surrogate pair is never split across chunks")
+    check(long.unicodeChunks().flatMap { $0 } == Array(long.insertText.utf16), "chunks concatenate to the insertion")
+
     // Buffer and plan stay consistent after the edit.
     var typed = buffer("ghbdtn ")
     check(typed.replaceSuffix(hello.before, with: hello.after) && typed.text == "привет ", "buffer records the applied edit")

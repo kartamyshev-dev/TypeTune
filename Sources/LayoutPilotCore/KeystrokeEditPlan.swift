@@ -57,6 +57,19 @@ public struct KeystrokeEditPlan: Equatable, Sendable {
         return String(text.dropLast(before.count)) + after
     }
 
+    /// `insertText` as UTF-16 chunks of at most `limit` units, split only at Character
+    /// boundaries (some applications accept short Unicode strings per keyboard event).
+    public func unicodeChunks(limit: Int = 16) -> [[UInt16]] {
+        var result: [[UInt16]] = [], current: [UInt16] = []
+        for character in insertText {
+            let units = Array(String(character).utf16)
+            if !current.isEmpty && current.count + units.count > limit { result.append(current); current = [] }
+            current += units
+        }
+        if !current.isEmpty { result.append(current) }
+        return result
+    }
+
     private static func containsControl(_ value: String) -> Bool {
         value.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) })
     }

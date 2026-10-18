@@ -34,6 +34,9 @@ final class Store: ObservableObject {
     @Published var customSoundPath: String { didSet { defaults.set(customSoundPath, forKey: "customSoundPath") } }
     @Published var useSystemDictionary: Bool { didSet { defaults.set(useSystemDictionary, forKey: "useSystemDictionary") } }
     @Published var earlyCorrection: Bool { didSet { defaults.set(earlyCorrection, forKey: "earlyCorrection") } }
+    /// Universal mode (experimental): automatic correction in every application by
+    /// Backspace and retyping, verified with Accessibility where the field is readable.
+    @Published var universalInput: Bool { didSet { defaults.set(universalInput, forKey: "universalInput") } }
     @Published private(set) var headerImagePath: String { didSet { defaults.set(headerImagePath, forKey: "headerImagePath") } }
     @Published private(set) var headerImage: NSImage?
     private let defaults: UserDefaults
@@ -43,6 +46,7 @@ final class Store: ObservableObject {
         testSelectionDelay = Double(max(0, min(150, defaults.integer(forKey: "test.axSelectionDelayMilliseconds")))) / 1000
         useSystemDictionary = defaults.bool(forKey: "useSystemDictionary")
         earlyCorrection = defaults.bool(forKey: "earlyCorrection")
+        universalInput = defaults.bool(forKey: "universalInput")
         customSoundPath = defaults.string(forKey: "customSoundPath") ?? ""
         headerImagePath = defaults.string(forKey: "headerImagePath") ?? ""
         headerImage = nil

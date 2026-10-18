@@ -12,9 +12,17 @@ struct EditorSnapshot {
     var text: String
     var selection: NSRange
     var addressBar = false
+    /// Universal mode: the target is identified by its process only and is edited with
+    /// keystrokes; `element` is the application element and the field is not pinned.
+    var keystrokes = false
 
     func matchesContent(_ other: EditorSnapshot) -> Bool {
         selection == other.selection && text.utf16.elementsEqual(other.text.utf16)
+    }
+
+    static func keystrokeTarget(pid: pid_t, application: String) -> EditorSnapshot {
+        EditorSnapshot(element: AXUIElementCreateApplication(pid), window: nil, document: nil, pid: pid,
+                       application: application, text: "", selection: NSRange(location: 0, length: 0), keystrokes: true)
     }
 }
 
@@ -58,6 +66,38 @@ enum AccessibilityEditor {
         return (status, value)
     }
     static func snapshot() -> EditorSnapshot? { capture().snapshot }
+
+    /// Universal mode, read-only and for any application: the text before a collapsed
+    /// caret in the focused field of `pid`, when Accessibility exposes it.
+    enum FieldObservation: Equatable {
+        /// No readable value or caret (many custom editors); the caller may type blind.
+        case unreadable
+        /// A password field: universal mode must not touch it.
+        case secure
+        case textBeforeCaret(String)
+    }
+    static func observeTextBeforeCaret(pid: pid_t) -> FieldObservation {
+        guard AXIsProcessTrusted() else { return .unreadable }
+        guard !IsSecureEventInputEnabled() else { return .secure }
+        let app = AXUIElementCreateApplication(pid)
+        AXUIElementSetMessagingTimeout(app, 0.050)
+        guard let raw = attribute(app, kAXFocusedUIElementAttribute), CFGetTypeID(raw) == AXUIElementGetTypeID() else {
+            return .unreadable
+        }
+        let field = raw as! AXUIElement
+        AXUIElementSetMessagingTimeout(field, 0.050)
+        if attribute(field, kAXSubroleAttribute) as? String == "AXSecureTextField" { return .secure }
+        guard let text = attribute(field, kAXValueAttribute) as? String, text.utf16.count <= 65_536,
+              let rawRange = attribute(field, kAXSelectedTextRangeAttribute), CFGetTypeID(rawRange) == AXValueGetTypeID() else {
+            return .unreadable
+        }
+        var range = CFRange()
+        guard AXValueGetValue(rawRange as! AXValue, .cfRange, &range), range.length == 0,
+              let prefix = TextEdit.validatedRange(NSRange(location: 0, length: range.location), in: text) else {
+            return .unreadable
+        }
+        return .textBeforeCaret(String(text[prefix]))
+    }
 
     private static func checkedTimeout(_ budget: EditorSnapshotBudget, isCurrent: () -> Bool) throws -> Float {
         guard AXIsProcessTrusted() else { throw EditorSnapshotFailure.accessibilityDenied }
@@ -183,7 +223,8 @@ enum AccessibilityEditor {
         }
     }
     static func sameTarget(_ a: EditorSnapshot, _ b: EditorSnapshot) -> Bool {
-        guard a.pid == b.pid, a.addressBar == b.addressBar, CFEqual(a.element, b.element), a.document == b.document else { return false }
+        guard a.pid == b.pid, a.keystrokes == b.keystrokes, a.addressBar == b.addressBar,
+              CFEqual(a.element, b.element), a.document == b.document else { return false }
         switch (a.window, b.window) {
         case (nil, nil): return true
         case let (first?, second?): return CFEqual(first, second)

@@ -11,7 +11,8 @@ swiftc -parse-as-library -swift-version 5 -D LAYOUTPILOT_TESTING \
  -module-cache-path .build/runtime-recovery-module-cache -I "$runtime_module_dir" \
  Tools/RuntimeRecoveryProbe.swift Sources/LayoutPilot/KeyboardService.swift Sources/LayoutPilot/Store.swift \
  Sources/LayoutPilot/AccessibilityEditor.swift Sources/LayoutPilot/InputSources.swift \
- Sources/LayoutPilot/SystemVocabulary.swift Sources/LayoutPilot/TerminalBridge.swift "$@" \
+ Sources/LayoutPilot/SystemVocabulary.swift Sources/LayoutPilot/TerminalBridge.swift \
+ Sources/LayoutPilot/KeystrokeEditor.swift "$@" \
  -framework AppKit -framework ApplicationServices -framework Carbon -framework ImageIO \
  -framework Combine -framework ServiceManagement -o .build/runtime-recovery-probe
 exec .build/runtime-recovery-probe

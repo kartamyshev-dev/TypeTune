@@ -261,6 +261,18 @@ final class InputDiagnostics {
                 checks["typed_key_up_and_scroll_keep_buffer"] = keyboard.testingTyped == before
             }
         }
+        do {
+            // Universal mode U4: keystroke targets are identified by process only.
+            let first = EditorSnapshot.keystrokeTarget(pid: 4242, application: "dev.example")
+            let second = EditorSnapshot.keystrokeTarget(pid: 4242, application: "dev.example")
+            checks["keystroke_targets_same_process_match"] = AccessibilityEditor.sameTarget(first, second)
+            checks["keystroke_targets_other_process_differ"] =
+                !AccessibilityEditor.sameTarget(first, .keystrokeTarget(pid: 4243, application: "dev.example"))
+            var pinned = first; pinned.keystrokes = false
+            checks["keystroke_target_never_matches_pinned_field"] = !AccessibilityEditor.sameTarget(first, pinned)
+            let keyboard = service()
+            checks["universal_mode_off_by_default"] = !keyboard.store.universalInput
+        }
         checks["settings_bytes_preserved"] = defaults.data(forKey: "settings.v1") == settings
         let passed = checks.values.allSatisfy { $0 }
         let output: [String: Any] = ["passed": passed, "checks": checks,

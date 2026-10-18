@@ -8,11 +8,11 @@ final class KeyboardService {
     let store: Store
     private lazy var vocabulary = MainActor.assumeIsolated { SystemVocabulary() }
     private lazy var terminalBridge = TerminalBridge(permits: { [weak self] host in
-        guard let self else { return false }
+        guard let self, !self.store.universalInput else { return false }
         return self.allowedFrontmost() && self.terminalPolicyPermitsAction && InputSources.language != nil &&
             NSWorkspace.shared.frontmostApplication?.bundleIdentifier == host
     }, decide: { [weak self] word, manual, host in
-        guard let self, self.allowedFrontmost(), self.terminalPolicyPermitsAction, InputSources.language != nil,
+        guard let self, !self.store.universalInput, self.allowedFrontmost(), self.terminalPolicyPermitsAction, InputSources.language != nil,
               NSWorkspace.shared.frontmostApplication?.bundleIdentifier == host else { return nil }
         let context = InputContext(application: host)
         let decision = manual ? self.engine.manual(word, context: context) :
@@ -302,6 +302,116 @@ final class KeyboardService {
     private func conflictingApp() -> String? {
         cachedConflict
     }
+    /// Universal mode: plain key-downs never use the per-application AX path. A typed
+    /// whitespace that completes a token may start one keystroke correction; the
+    /// whitespace itself is delivered unchanged and new input waits behind the barrier.
+    private func universalKeyDown(_ event: CGEvent) {
+        revision += 1; cachedSnapshot = nil; pendingKeyRead = nil; transaction = nil
+        gestures.keyUsed(); shiftTask?.cancel()
+        guard event.getIntegerValueField(.keyboardEventAutorepeat) == 0,
+              let typedNow = InputSources.insertionText(for: event, sourceID: InputSources.identifier),
+              !typedNow.isEmpty, typedNow.allSatisfy({ $0.isWhitespace }),
+              let completed = typed.completedToken, completed.boundary == typedNow,
+              let target = universalTarget(), InputSources.language != nil else { return }
+        let context = InputContext(application: target.application, secure: IsSecureEventInputEnabled())
+        guard let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
+                  isKnownWord: { self.isKnownWord($0) }),
+              let plan = KeystrokeEditPlan(token: completed.token, boundary: completed.boundary, decision: decision) else { return }
+        if let language = decision.targetLanguage, !InputSources.isAvailable(language) {
+            skipped("Добавьте нужную русскую или английскую раскладку в macOS"); return
+        }
+        applyKeystrokes(plan, target: target, anchored: typed.tokenIsAnchored(boundaryLength: completed.boundary.count))
+    }
+    private func universalTarget() -> EditorSnapshot? {
+        guard store.settingsStorageAvailable, !sleeping, !IsSecureEventInputEnabled(), conflictingApp() == nil,
+              session.permitsMutation, let app = NSWorkspace.shared.frontmostApplication,
+              app.processIdentifier != ProcessInfo.processInfo.processIdentifier,
+              let id = app.bundleIdentifier, !store.settings.excludedApps.contains(id) else { return nil }
+        return .keystrokeTarget(pid: app.processIdentifier, application: id)
+    }
+    /// Holds the barrier, verifies the field when Accessibility can read it, then edits.
+    private func applyKeystrokes(_ plan: KeystrokeEditPlan, target: EditorSnapshot, anchored: Bool) {
+        cancelGestureStateForInterception()
+        let expectedRevision = revision, sourceID = InputSources.identifier
+        session.beginMutation(target, deadline: ProcessInfo.processInfo.systemUptime + 0.3)
+        InputDiagnostics.shared.record("universal-begin", revision: expectedRevision, checks: ["anchored": anchored])
+        axQueue.async { [weak self] in
+            guard let self else { return }
+            // The boundary was just delivered; Accessibility may still report the text before it.
+            let deadline = ProcessInfo.processInfo.systemUptime + 0.080
+            var observation = AccessibilityEditor.observeTextBeforeCaret(pid: target.pid)
+            while case .textBeforeCaret(let text) = observation, !plan.expects(textBeforeCaret: text),
+                  ProcessInfo.processInfo.systemUptime < deadline {
+                Thread.sleep(forTimeInterval: 0.005)
+                observation = AccessibilityEditor.observeTextBeforeCaret(pid: target.pid)
+            }
+            DispatchQueue.main.async {
+                self.performKeystrokes(plan, target: target, anchored: anchored, observation: observation,
+                                       revision: expectedRevision, sourceID: sourceID)
+            }
+        }
+    }
+    private func performKeystrokes(_ plan: KeystrokeEditPlan, target: EditorSnapshot, anchored: Bool,
+                                   observation: AccessibilityEditor.FieldObservation,
+                                   revision expectedRevision: Int, sourceID: String) {
+        let readable: Bool, fieldMatches: Bool
+        switch observation {
+        case .secure: readable = false; fieldMatches = false
+        // Blind editing only for a token the buffer knows to start a word.
+        case .unreadable: readable = false; fieldMatches = anchored
+        case .textBeforeCaret(let text): readable = true; fieldMatches = plan.expects(textBeforeCaret: text, anchored: !anchored)
+        }
+        let current = revision == expectedRevision && sourceID == InputSources.identifier && !IsSecureEventInputEnabled() &&
+            NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        InputDiagnostics.shared.record("universal-verify", revision: expectedRevision,
+            checks: ["readable": readable, "fieldMatches": fieldMatches, "current": current, "anchored": anchored])
+        guard fieldMatches, current else {
+            // A readable field that disagrees means the buffer no longer describes it.
+            if readable { typed.reset(.untrackedKey) }
+            finishMutation(.notApplied, before: target, settled: current ? target : nil)
+            if readable && !fieldMatches { skipped("Исправление пропущено: текст поля не совпал с набранным") }
+            return
+        }
+        let result = KeystrokeEditor.perform(plan, pid: target.pid)
+        guard result.posted else {
+            typed.reset(.untrackedKey)
+            finishMutation(result.partial ? .uncertain : .notApplied, before: target, settled: result.partial ? nil : target)
+            skipped("Исправление не отправлено: нет разрешения на ввод")
+            return
+        }
+        typed.replaceSuffix(plan.before, with: plan.after)
+        axQueue.async { [weak self] in
+            guard let self else { return }
+            var confirmed = !readable // an unreadable field cannot confirm; blind edits count as sent
+            if readable {
+                let deadline = ProcessInfo.processInfo.systemUptime + 0.150
+                repeat {
+                    if case .textBeforeCaret(let text) = AccessibilityEditor.observeTextBeforeCaret(pid: target.pid),
+                       text.hasSuffix(plan.after) { confirmed = true; break }
+                    Thread.sleep(forTimeInterval: 0.005)
+                } while ProcessInfo.processInfo.systemUptime < deadline
+            }
+            DispatchQueue.main.async { self.finishKeystrokes(plan, target: target, confirmed: confirmed, readable: readable) }
+        }
+    }
+    private func finishKeystrokes(_ plan: KeystrokeEditPlan, target: EditorSnapshot, confirmed: Bool, readable: Bool) {
+        let current = !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        InputDiagnostics.shared.record("universal-result", revision: revision,
+            checks: ["confirmed": confirmed, "readable": readable, "current": current])
+        guard confirmed else {
+            // Sent but the readable field does not show the result: the user must check it.
+            typed.reset(.untrackedKey)
+            finishMutation(.uncertain, before: target, settled: nil)
+            return
+        }
+        store.recordCorrection(category: statisticsCategory(plan.decision))
+        let selected = plan.decision.targetLanguage.map { selectSource(.language($0), pid: target.pid) } ?? true
+        store.inputSource = InputSources.identifier
+        store.lastStatus = selected ? (readable ? "Текст исправлен" : "Текст исправлен без проверки поля") :
+            (sourceAfterReplay != nil ? "Текст исправлен; смена раскладки ожидает завершения ввода" : "Текст исправлен, раскладка не переключена")
+        if store.settings.sound { store.playCorrectionSound() }
+        finishMutation(.verified(target), before: target, settled: current ? target : nil)
+    }
     /// Maintains `typed` from one delivered event. Anything the buffer cannot follow
     /// resets it; what lies before the caret after a reset is unknown.
     private func trackTyping(_ type: CGEventType, _ event: CGEvent) {
@@ -425,6 +535,10 @@ final class KeyboardService {
                 pendingNativePaste = nil
                 skipped("Вставка отменена: ввод изменился до отпускания сочетания")
             }
+        }
+        if store.universalInput, type == .keyDown,
+           event.flags.intersection([.maskCommand, .maskControl, .maskAlternate]).isEmpty {
+            universalKeyDown(event); return false
         }
         if type == .keyUp {
             // A startup AX failure can leave every key-down without an anchor.
@@ -1417,6 +1531,10 @@ final class KeyboardService {
     /// each with a short messaging timeout; macOS does not promise a hard deadline
     /// or atomic focus ownership between this check and event delivery.
     private func replayIdentityMatches(_ target: EditorSnapshot) -> Bool {
+        if target.keystrokes {
+            return AXIsProcessTrusted() && !IsSecureEventInputEnabled() &&
+                NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        }
         guard AXIsProcessTrusted(), !IsSecureEventInputEnabled(),
               NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
               let expectedWindow = target.window else { return false }
@@ -1485,13 +1603,24 @@ final class KeyboardService {
             guard let self else { return }
             // No recovery write moves a changed caret. Match the acknowledged
             // prefix exactly; an unacknowledged event may already have arrived.
-            let current = self.isCurrent(expectedRevision) ? AccessibilityEditor.snapshot() : nil
+            let current: EditorSnapshot?
+            if expected.keystrokes {
+                // No field identity was pinned; the gated process must be front again.
+                current = DispatchQueue.main.sync {
+                    self.revision == expectedRevision && !IsSecureEventInputEnabled() &&
+                        NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid
+                } ? expected : nil
+            } else {
+                current = self.isCurrent(expectedRevision) ? AccessibilityEditor.snapshot() : nil
+            }
             let matched = current.map { AccessibilityEditor.sameTarget(expected, $0) &&
                 expected.text.utf16.elementsEqual($0.text.utf16) && expected.selection == $0.selection } ?? false
             let sourceMatches = DispatchQueue.main.sync {
                 expectedSource == nil || expectedSource == InputSources.identifier
             }
-            let settled = matched && sourceMatches && self.isCurrent(expectedRevision) ? current : nil
+            let stillCurrent = expected.keystrokes ? DispatchQueue.main.sync { self.revision == expectedRevision } :
+                self.isCurrent(expectedRevision)
+            let settled = matched && sourceMatches && stillCurrent ? current : nil
             DispatchQueue.main.async {
                 let sourceStillMatches = expectedSource == nil || expectedSource == InputSources.identifier
                 self.finishMutation(.notApplied, before: expected,
