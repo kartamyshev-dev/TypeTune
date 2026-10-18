@@ -37,6 +37,7 @@ jobs:
       - name: Test build for manual checks (release arm64, ad-hoc signature)
         run: |
           scripts/build.sh
+          find dist/LayoutPilot.app -maxdepth 4 | sort
           dist/layoutpilot-cli selftest
           short=$(git rev-parse --short=7 HEAD)
           ditto dist/LayoutPilot.app "dist/TypeTune.app"

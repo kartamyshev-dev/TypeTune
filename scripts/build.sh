@@ -30,7 +30,14 @@ cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'
 <key>NSHumanReadableCopyright</key><string>Independent experimental prototype</string>
 </dict></plist>
 PLIST
-codesign --force --sign - "$APP_DIR/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle"
+RESOURCES="$APP_DIR/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle"
+# Some SwiftPM versions emit the resource bundle without Info.plist; codesign rejects it as
+# a bundle, and the app signature then seals its files as ordinary resources.
+if [ -f "$RESOURCES/Info.plist" ] || [ -f "$RESOURCES/Contents/Info.plist" ]; then
+  codesign --force --sign - "$RESOURCES"
+else
+  echo "resource bundle without Info.plist: sealed by the app signature"
+fi
 codesign --force --sign - "$APP_DIR"
 codesign --verify --deep --strict "$APP_DIR"
 python3 - <<'PY'
