@@ -1,0 +1,50 @@
+{
+  "shortAttempts": [
+    {
+      "file": "recovery-short.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    },
+    {
+      "file": "recovery-short-2.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет he"
+    },
+    {
+      "file": "recovery-short-3.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    },
+    {
+      "file": "recovery-short-4.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    },
+    {
+      "file": "recovery-short-5.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    },
+    {
+      "file": "recovery-short-6.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    },
+    {
+      "file": "recovery-short-7.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    },
+    {
+      "file": "recovery-short-8.json",
+      "textUnchangedByRecovery": true,
+      "text": "привет hello"
+    }
+  ],
+  "longBoundIdentity": true,
+  "positiveRecovery": "FAIL_REPLAY_SUSPENDED",
+  "positiveRecoveryTextUnchanged": true,
+  "queueBefore": 10,
+  "queueAfterRetry": 14,
+  "fourHourRun": "NOT_RUN"
+}

@@ -1,0 +1,262 @@
+{
+  "checks": [
+    {
+      "file": "apple-russian.json",
+      "id": "apple-auto-en-ru",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-auto-ru-en",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-manual-yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-manual-Yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-manual-grave",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-manual-tilde",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-physical-yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian.json",
+      "id": "apple-physical-Yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-auto-en-ru",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-auto-ru-en",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-manual-yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-manual-Yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-manual-grave",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-manual-tilde",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-physical-yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "apple-russian-repeat.json",
+      "id": "apple-physical-Yo",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-00",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-01",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-02",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-03",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-04",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-05",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-06",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-07",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-08",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "fast-10ms.json",
+      "id": "fast-stream-09",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "mixed-10ms.json",
+      "id": "fast-mixed-0",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "mixed-10ms.json",
+      "id": "fast-mixed-1",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "mixed-10ms.json",
+      "id": "fast-mixed-2",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "mixed-10ms.json",
+      "id": "fast-mixed-3",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "mixed-10ms.json",
+      "id": "unchanged-english",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    },
+    {
+      "file": "mixed-10ms.json",
+      "id": "unchanged-russian",
+      "text": true,
+      "selection": true,
+      "source": true,
+      "identityUnchanged": true
+    }
+  ],
+  "passed": true,
+  "count": 32
+}

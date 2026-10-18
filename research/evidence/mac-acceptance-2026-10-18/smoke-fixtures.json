@@ -1,0 +1,29 @@
+[
+  {
+    "id": "punctuation-en",
+    "text": "ghbdtn/",
+    "source": "ABC",
+    "expected": "привет. "
+  },
+  {
+    "id": "punctuation-ru",
+    "text": "hello.",
+    "source": "RussianWin",
+    "expected": "hello. "
+  },
+  {
+    "id": "acronym-IDs",
+    "text": "IDs",
+    "source": "ABC",
+    "expected": "IDs "
+  },
+  {
+    "id": "double-shift-selection",
+    "text": "ghbdtn",
+    "source": "ABC",
+    "boundary": false,
+    "gesture": "doubleShift",
+    "selectAllBeforeGesture": true,
+    "expected": "привет"
+  }
+]

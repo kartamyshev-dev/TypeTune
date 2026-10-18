@@ -1,0 +1,16 @@
+{
+  "accessibilityTrusted" : true,
+  "axReadErrors" : {
+
+  },
+  "axReadTiming" : {
+
+  },
+  "events" : 0,
+  "finalModifierFlags" : 256,
+  "inputSource" : "com.apple.keylayout.RussianWin",
+  "modifierFlags" : 256,
+  "postEventAccess" : true,
+  "secureInput" : false,
+  "statusOnly" : true
+}

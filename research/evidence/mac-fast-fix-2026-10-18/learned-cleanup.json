@@ -1,0 +1,6 @@
+{
+  "onlyTestRuleRemoved": "ghbdtn",
+  "method": "TypeTune Rules UI",
+  "settingsSemanticEquality": true,
+  "normalization": "missing paused defaults to false in Settings decoder; raw preferences restored separately"
+}

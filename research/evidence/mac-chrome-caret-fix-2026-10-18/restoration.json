@@ -1,0 +1,11 @@
+{
+  "settingsSemanticallyUnchanged": true,
+  "preferencesAndStatisticsExactReadback": true,
+  "inputPreferencesEqualIgnoringUpdateTime": {
+    "com.apple.HIToolbox": true,
+    "com.apple.TextInputMenu": true
+  },
+  "allSwitchersStopped": true,
+  "testServerStopped": true,
+  "testTabClosed": true
+}

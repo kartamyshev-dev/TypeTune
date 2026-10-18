@@ -1,0 +1,127 @@
+{
+  "activeCase": "interrupted-recovery",
+  "activeCaseEvents": 18,
+  "activeCaseIndex": 0,
+  "autoResume": false,
+  "axReadErrors": {
+    "AXSubrole:-25205": 27
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 27,
+      "maxMilliseconds": 19.56249999057036,
+      "totalMilliseconds": 22.389541612938046
+    },
+    "AXFocusedUIElement:0": {
+      "count": 27,
+      "maxMilliseconds": 15.909833338810131,
+      "totalMilliseconds": 17.93420837202575
+    },
+    "AXFocusedWindow:0": {
+      "count": 27,
+      "maxMilliseconds": 85.48174999305047,
+      "totalMilliseconds": 139.08999995328486
+    },
+    "AXRole:0": {
+      "count": 27,
+      "maxMilliseconds": 22.227083332836628,
+      "totalMilliseconds": 23.541125032352284
+    },
+    "AXSelectedTextRange:0": {
+      "count": 4,
+      "maxMilliseconds": 0.05908333696424961,
+      "totalMilliseconds": 0.1920416543725878
+    },
+    "AXSubrole:-25205": {
+      "count": 27,
+      "maxMilliseconds": 3.5558750096242875,
+      "totalMilliseconds": 7.149791679694317
+    },
+    "AXValue:0": {
+      "count": 4,
+      "maxMilliseconds": 0.05508333561010659,
+      "totalMilliseconds": 0.17304165521636605
+    },
+    "AXWindow:0": {
+      "count": 27,
+      "maxMilliseconds": 19.18308333551977,
+      "totalMilliseconds": 22.00374996755272
+    }
+  },
+  "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/01BDAD64-6017-41A6-97B2-8BB3299FD498.results.json",
+  "checkpointWriteFailed": false,
+  "completed": 0,
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/01BDAD64-6017-41A6-97B2-8BB3299FD498.txt",
+  "error": "recovery_prefix_not_confirmed",
+  "finalModifierFlags": 536870912,
+  "persistedCompleted": 0,
+  "requestedCases": 1,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "1b66031f352662e1aff08509b3ae0d29d6760c3ab8ddd0f74eeba6392193dc38",
+    "targetBinarySha256": "0f6d2a79a8690e5f183c9808ef2400d14752b0a2724a7c1279d32b80a13c4738",
+    "probeSourceSha256": "21d0fd6ec797a74cbd92d5be83f5387a4f27b7cc4881db8437d1f94bf22d0653",
+    "probeBinarySha256": "895a8d2245e9971a90190df74e6f60ccd73d015145dfc42aac1e8d6b0300c9e0",
+    "targetProcess": {
+      "pid": 81301,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 13:41:35 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": true,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 81332,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 13:41:40 2026"
+  },
+  "processExitCode": 2,
+  "helperWallSeconds": 2.062778709005215,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "1b66031f352662e1aff08509b3ae0d29d6760c3ab8ddd0f74eeba6392193dc38",
+    "targetBinarySha256": "0f6d2a79a8690e5f183c9808ef2400d14752b0a2724a7c1279d32b80a13c4738",
+    "probeSourceSha256": "21d0fd6ec797a74cbd92d5be83f5387a4f27b7cc4881db8437d1f94bf22d0653",
+    "probeBinarySha256": "895a8d2245e9971a90190df74e6f60ccd73d015145dfc42aac1e8d6b0300c9e0",
+    "targetProcess": {
+      "pid": 81301,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 13:41:35 2026"
+    }
+  },
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 81301,
+  "sourceCommit": "bcaf82a297be2abc03f71cf4dc13f56129c00ba3",
+  "sourceDirty": true,
+  "probeStartUptime": 79824.117163291,
+  "probeEndUptime": 79826.23153225,
+  "caseFileSha256": "6e3e69792120746901c0558f936ef420d07ad9749a6c3c836af3503f82388f3f",
+  "validationError": "helper_exit_not_verified",
+  "savedCheckpoint": {
+    "activeCase": "interrupted-recovery",
+    "activeCaseEvents": 18,
+    "activeCaseIndex": 0,
+    "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/01BDAD64-6017-41A6-97B2-8BB3299FD498.results.json",
+    "completed": 0,
+    "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/01BDAD64-6017-41A6-97B2-8BB3299FD498.txt",
+    "error": "recovery_prefix_not_confirmed",
+    "initialInputSource": "com.apple.keylayout.ABC",
+    "initialReadback": {
+      "selection": {
+        "length": 0,
+        "location": 0
+      },
+      "text": ""
+    },
+    "notice": "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+    "requestedCases": 1,
+    "results": [],
+    "schemaVersion": 1,
+    "status": "failed",
+    "totalEventsCompletedCases": 0
+  }
+}

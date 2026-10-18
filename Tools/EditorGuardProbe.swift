@@ -34,6 +34,41 @@ struct EditorGuardProbe {
                 reads += 1; return reads < 3 ? pending : inserted
             })
         if observed == nil || reads != 3 { failures.append("delayed AX acknowledgement must settle") }
+        var caretAhead = pending; caretAhead.selection = inserted.selection
+        reads = 0
+        let settledCaretAhead = AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: {
+                reads += 1; return reads == 1 ? caretAhead : inserted
+            })
+        if settledCaretAhead == nil || reads != 2 { failures.append("Chrome caret ahead of text must wait for exact text") }
+        reads = 0
+        let unconfirmedCaret = AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.012, isCurrent: { true }, read: { reads += 1; return caretAhead })
+        if unconfirmedCaret != nil || reads < 2 { failures.append("caret alone must never confirm insertion and must expire") }
+        var wrongCaret = caretAhead; wrongCaret.selection = NSRange(location: 1, length: 0)
+        reads = 0
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: { reads += 1; return wrongCaret }) != nil || reads != 1 {
+            failures.append("unrelated caret must stop immediately")
+        }
+        var wrongTarget = caretAhead; wrongTarget.pid += 1
+        reads = 0
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: { reads += 1; return wrongTarget }) != nil || reads != 1 {
+            failures.append("caret ahead in another target must stop immediately")
+        }
+        var nonChrome = original; nonChrome.application = "com.apple.TextEdit"
+        reads = 0
+        if AccessibilityEditor.awaitInsertion(in: nonChrome, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: { reads += 1; return caretAhead }) != nil || reads != 1 {
+            failures.append("caret ahead policy must stay Chrome only")
+        }
+        var textAhead = inserted; textAhead.selection = range
+        reads = 0
+        if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
+            deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: {
+                reads += 1; return reads == 1 ? textAhead : inserted
+            }) == nil || reads != 2 { failures.append("text alone must wait for exact caret") }
         var other = inserted; other.pid += 1
         if AccessibilityEditor.awaitInsertion(in: original, range: range, edit: edit,
             deadline: ProcessInfo.processInfo.systemUptime + 0.15, isCurrent: { true }, read: { other }) != nil {
@@ -68,7 +103,7 @@ struct EditorGuardProbe {
                 failures.append(application + ": host guard order")
             }
         }
-        let report: [String: Any] = ["cases": blocked.count + supported.count + 10, "failures": failures,
+        let report: [String: Any] = ["cases": blocked.count + supported.count + 16, "failures": failures,
             "notice": "Production replace entry point; current-check sentinel always denies all AX work. No live Codex reproduction or native TextEdit acceptance."]
         print(String(decoding: try! JSONSerialization.data(withJSONObject: report, options: [.sortedKeys]), as: UTF8.self))
         if !failures.isEmpty { exit(1) }

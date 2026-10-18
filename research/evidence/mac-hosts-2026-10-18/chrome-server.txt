@@ -1,0 +1,6 @@
+127.0.0.1 - - [18/Oct/2026 14:55:00] "GET /?fixture=LP-CODEX-001 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Oct/2026 14:55:00] code 404, message File not found
+127.0.0.1 - - [18/Oct/2026 14:55:00] "GET /favicon.ico HTTP/1.1" 404 -
+Serving HTTP on 127.0.0.1 port 18763 (http://127.0.0.1:18763/) ...
+
+Keyboard interrupt received, exiting.

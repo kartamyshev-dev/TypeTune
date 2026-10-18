@@ -1,0 +1,139 @@
+{
+  "AXReads" : 0,
+  "checks" : {
+    "abc_caps_letter" : true,
+    "abc_command_rejected" : true,
+    "abc_command_shift_rejected" : true,
+    "abc_control_caps_rejected" : true,
+    "abc_control_key_36_rejected" : true,
+    "abc_control_key_48_rejected" : true,
+    "abc_control_key_51_rejected" : true,
+    "abc_control_key_53_rejected" : true,
+    "abc_control_key_76_rejected" : true,
+    "abc_control_key_115_rejected" : true,
+    "abc_control_key_116_rejected" : true,
+    "abc_control_key_117_rejected" : true,
+    "abc_control_key_119_rejected" : true,
+    "abc_control_key_121_rejected" : true,
+    "abc_control_key_123_rejected" : true,
+    "abc_control_key_124_rejected" : true,
+    "abc_control_key_125_rejected" : true,
+    "abc_control_key_126_rejected" : true,
+    "abc_control_rejected" : true,
+    "abc_enabled_source_available" : true,
+    "abc_invalid_physical_key_rejected" : true,
+    "abc_missing_layout_has_no_unicode_fallback" : true,
+    "abc_negative_key_rejected" : true,
+    "abc_option_rejected" : true,
+    "abc_option_shift_caps_rejected" : true,
+    "abc_plain_letter" : true,
+    "abc_shift_caps_letter" : true,
+    "abc_shift_letter" : true,
+    "abc_space" : true,
+    "abc_stale_unicode_fixture_present" : true,
+    "abc_stale_unicode_ignored_for_verified_layout" : true,
+    "abc_truncated_layout_rejected" : true,
+    "abc_unknown_source_rejected" : true,
+    "current_wrapper_ignores_stale_unicode" : true,
+    "current_wrapper_rejects_other_enabled_layout" : true,
+    "current_wrapper_unknown_id_has_no_fallback" : true,
+    "input_source_preserved" : true,
+    "russian_caps_letter" : true,
+    "russian_command_rejected" : true,
+    "russian_command_shift_rejected" : true,
+    "russian_control_caps_rejected" : true,
+    "russian_control_key_36_rejected" : true,
+    "russian_control_key_48_rejected" : true,
+    "russian_control_key_51_rejected" : true,
+    "russian_control_key_53_rejected" : true,
+    "russian_control_key_76_rejected" : true,
+    "russian_control_key_115_rejected" : true,
+    "russian_control_key_116_rejected" : true,
+    "russian_control_key_117_rejected" : true,
+    "russian_control_key_119_rejected" : true,
+    "russian_control_key_121_rejected" : true,
+    "russian_control_key_123_rejected" : true,
+    "russian_control_key_124_rejected" : true,
+    "russian_control_key_125_rejected" : true,
+    "russian_control_key_126_rejected" : true,
+    "russian_control_rejected" : true,
+    "russian_enabled_source_available" : true,
+    "russian_invalid_physical_key_rejected" : true,
+    "russian_missing_layout_has_no_unicode_fallback" : true,
+    "russian_negative_key_rejected" : true,
+    "russian_option_rejected" : true,
+    "russian_option_shift_caps_rejected" : true,
+    "russian_plain_letter" : true,
+    "russian_shift_caps_letter" : true,
+    "russian_shift_letter" : true,
+    "russian_space" : true,
+    "russian_stale_unicode_fixture_present" : true,
+    "russian_stale_unicode_ignored_for_verified_layout" : true,
+    "russian_truncated_layout_rejected" : true,
+    "russian_unknown_source_rejected" : true
+  },
+  "eventsPosted" : 0,
+  "failures" : [
+
+  ],
+  "fixtureObservations" : [
+    {
+      "actual" : "g",
+      "expected" : "g",
+      "fixture" : "abc_plain"
+    },
+    {
+      "actual" : "G",
+      "expected" : "G",
+      "fixture" : "abc_shift"
+    },
+    {
+      "actual" : "G",
+      "expected" : "G",
+      "fixture" : "abc_caps"
+    },
+    {
+      "actual" : "G",
+      "expected" : "G",
+      "fixture" : "abc_shift_caps"
+    },
+    {
+      "fieldReadback" : 0,
+      "fixture" : "abc_oversized_event_field",
+      "requested" : 65536
+    },
+    {
+      "actual" : "п",
+      "expected" : "п",
+      "fixture" : "russian_plain"
+    },
+    {
+      "actual" : "П",
+      "expected" : "П",
+      "fixture" : "russian_shift"
+    },
+    {
+      "actual" : "П",
+      "expected" : "П",
+      "fixture" : "russian_caps"
+    },
+    {
+      "actual" : "П",
+      "expected" : "П",
+      "fixture" : "russian_shift_caps"
+    },
+    {
+      "fieldReadback" : 0,
+      "fixture" : "russian_oversized_event_field",
+      "requested" : 65536
+    }
+  ],
+  "inputSourceChanges" : 0,
+  "nativeAcceptance" : false,
+  "notice" : "Synthetic in-memory event translation only; no live source-transition or keyboard delivery acceptance.",
+  "passed" : 70,
+  "productionInputSourcesUsed" : true,
+  "sourceAfter" : "com.apple.keylayout.RussianWin",
+  "sourceBefore" : "com.apple.keylayout.RussianWin",
+  "total" : 70
+}

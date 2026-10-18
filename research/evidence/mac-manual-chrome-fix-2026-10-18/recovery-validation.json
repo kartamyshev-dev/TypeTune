@@ -1,0 +1,10 @@
+{
+  "text": true,
+  "selection": true,
+  "source": true,
+  "identityUnchanged": true,
+  "pendingFourObserved": true,
+  "forwardAcknowledgements": 7,
+  "lastForwardQueueEmpty": true,
+  "drainedObserved": true
+}

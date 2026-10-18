@@ -1,0 +1,199 @@
+{
+  "after": {
+    "length": 0,
+    "location": 8,
+    "text": "привет  "
+  },
+  "afterManual": {
+    "length": 0,
+    "location": 6,
+    "text": "привет"
+  },
+  "before": {
+    "length": 0,
+    "location": 0,
+    "text": ""
+  },
+  "clipboardUsed": false,
+  "emittedFrames": [
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 51,
+      "uptime": 85466.74136500001
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 51,
+      "uptime": 85466.76991195834
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 5,
+      "uptime": 85467.10654866668
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 5,
+      "uptime": 85467.13892166667
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 4,
+      "uptime": 85467.16949725001
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 4,
+      "uptime": 85467.20424608333
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 11,
+      "uptime": 85467.23458204167
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 11,
+      "uptime": 85467.26490095834
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 2,
+      "uptime": 85467.29435416668
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 2,
+      "uptime": 85467.32321754168
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 17,
+      "uptime": 85467.35244195834
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 17,
+      "uptime": 85467.38166708333
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 45,
+      "uptime": 85467.41097754167
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 45,
+      "uptime": 85467.44213254168
+    },
+    {
+      "down": true,
+      "flags": 537001986,
+      "flagsChanged": true,
+      "keyCode": 56,
+      "uptime": 85467.79466162501
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": true,
+      "keyCode": 56,
+      "uptime": 85467.865867875
+    },
+    {
+      "down": true,
+      "flags": 537001986,
+      "flagsChanged": true,
+      "keyCode": 56,
+      "uptime": 85467.96901554168
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": true,
+      "keyCode": 56,
+      "uptime": 85468.042124
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 49,
+      "uptime": 85468.678227625
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 49,
+      "uptime": 85468.7087975
+    },
+    {
+      "down": true,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 49,
+      "uptime": 85468.73559737501
+    },
+    {
+      "down": false,
+      "flags": 536870912,
+      "flagsChanged": false,
+      "keyCode": 49,
+      "uptime": 85468.76518466667
+    }
+  ],
+  "finalModifiersNeutral": true,
+  "fixtureURL": "http://127.0.0.1:18763/?fixture=LP-CODEX-001",
+  "intermediatePassed": true,
+  "mode": "type-manual",
+  "passed": true,
+  "pid": 31816,
+  "returnEvents": 0,
+  "selected": {
+    "length": 6,
+    "location": 0,
+    "text": "ghbdtn"
+  },
+  "typed": {
+    "length": 0,
+    "location": 6,
+    "text": "ghbdtn"
+  },
+  "guiSHA256": "6f1d9cc51ab5bdf62efafb510948aba3c9d93234dfafd737de2759a94b396703",
+  "guiBundleSHA256": "88b52826ef73f9440cbf6dfd0020803ada1e86e0d9cb06a41825e0aea8f98fde",
+  "guiIdentityUnchanged": true,
+  "guiPID": 1392,
+  "helperSHA256": "97e9800f7a930b860454a32abfa1c228531761a4c4fdee29eb9f859cb1d15003",
+  "exitCode": 0,
+  "startedUptime": 85465.970732583,
+  "endedUptime": 85469.337642833
+}

@@ -1,0 +1,12 @@
+{
+  "observationMethod": "CUA accessibility UI",
+  "testDocument": "57E9694B-FE20-46B2-B575-6A28F418052B.txt",
+  "diagnosticSelectionDelayMilliseconds": 150,
+  "pendingSyntheticEvents": 10,
+  "recoveryChordInChangedDocument": "No text change observed; positive recovery not established",
+  "cancelDiscardRetainedEvents": 10,
+  "confirmDiscardRemovedRecoveryUI": true,
+  "postDiscardStatus": "Ожидает поле ввода",
+  "diagnosticKeyRemoved": true,
+  "notice": "UI observation; not NativeProbe event-by-event evidence for the recovery chord."
+}

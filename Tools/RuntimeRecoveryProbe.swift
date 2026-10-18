@@ -178,7 +178,13 @@ final class InputDiagnostics {
                 keyboard.store.pendingInput == 0 && keyboard.store.outstandingInput == 0
             keyboard.testingReleaseKey()
             checks["release_preserves_existing_anchor_without_another_read"] = keyboard.testingRequestedContextRevisions.count == 1 && keyboard.testingHasCurrentContext
+            keyboard.testingCompleteContextCapture(revision: first, failure: .deadlineExceeded)
+            checks["failed_refresh_invalidates_previous_anchor"] = !keyboard.testingHasCurrentContext
+            checks["transient_refresh_keeps_only_manual_proposal"] = keyboard.testingHasManualProposal && !keyboard.hasPendingInput
+            keyboard.testingCompleteContextCapture(revision: first, failure: .deadlineExceeded)
+            checks["repeated_timeout_keeps_manual_proposal"] = keyboard.testingHasManualProposal
             keyboard.testingInvalidateContext()
+            checks["revision_change_invalidates_manual_proposal"] = !keyboard.testingHasManualProposal
             keyboard.testingPrepareKeyRead(deadline: .greatestFiniteMagnitude)
             keyboard.testingReleaseKey()
             let next = keyboard.testingRequestedContextRevisions.last ?? -1
@@ -272,6 +278,28 @@ final class InputDiagnostics {
             checks["keystroke_target_never_matches_pinned_field"] = !AccessibilityEditor.sameTarget(first, pinned)
             let keyboard = service()
             checks["universal_mode_on_by_default"] = keyboard.store.universalInput
+        }
+        do {
+            let after = EditorSnapshot(element: AXUIElementCreateApplication(-1), window: nil,
+                document: nil, pid: -1, application: "com.apple.TextEdit", text: "привет ",
+                selection: NSRange(location: 7, length: 0))
+            var reads = 0
+            let result = AccessibilityEditor.ReplacementResult.verified(after).settledSnapshot {
+                reads += 1; return nil // The old operation's read budget is exhausted.
+            }
+            checks["verified_readback_survives_exhausted_second_read_budget"] = reads == 0 &&
+                result.map { after.matchesContent($0) && AccessibilityEditor.sameTarget(after, $0) } == true
+            let missing = AccessibilityEditor.ReplacementResult.notApplied.settledSnapshot { reads += 1; return nil }
+            checks["unverified_result_still_requires_fresh_read"] = reads == 1 && missing == nil
+        }
+        do {
+            let keyboard = service()
+            keyboard.testingPrepareKeyRead(deadline: .greatestFiniteMagnitude)
+            keyboard.testingCompleteContextCapture(revision: 0)
+            keyboard.testingCompleteContextCapture(revision: 0, failure: .deadlineExceeded)
+            checks["manual_timeout_proposal_present"] = keyboard.testingHasManualProposal
+            keyboard.testingCompleteContextCapture(revision: 0, failure: .secureInput)
+            checks["secure_failure_removes_manual_proposal"] = !keyboard.testingHasManualProposal
         }
         checks["settings_bytes_preserved"] = defaults.data(forKey: "settings.v1") == settings
         let passed = checks.values.allSatisfy { $0 }

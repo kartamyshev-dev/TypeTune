@@ -1,0 +1,18 @@
+{
+  "preferencesExact": true,
+  "diagnosticKeyAbsent": true,
+  "inputStatus": {
+    "accessibilityTrusted": true,
+    "axReadErrors": {},
+    "axReadTiming": {},
+    "events": 0,
+    "finalModifierFlags": 536870912,
+    "inputSource": "com.apple.keylayout.RussianWin",
+    "modifierFlags": 536870912,
+    "postEventAccess": true,
+    "secureInput": false,
+    "statusOnly": true
+  },
+  "candidateStopped": true,
+  "guiSha256": "bff09d98ebab7e97f1172c0e623a6e870ae8046af2aa0196115364ab0b532668"
+}

@@ -1,0 +1,748 @@
+{
+  "axReadErrors": {
+    "AXSubrole:-25205": 2267
+  },
+  "axReadTiming": {
+    "AXDocument:0": {
+      "count": 2267,
+      "maxMilliseconds": 4.264291666913778,
+      "totalMilliseconds": 333.3997077133972
+    },
+    "AXFocusedUIElement:0": {
+      "count": 2267,
+      "maxMilliseconds": 8.039083331823349,
+      "totalMilliseconds": 1025.9299169410951
+    },
+    "AXFocusedWindow:0": {
+      "count": 2267,
+      "maxMilliseconds": 25.911666671163402,
+      "totalMilliseconds": 6456.447749413201
+    },
+    "AXRole:0": {
+      "count": 2267,
+      "maxMilliseconds": 3.1676666694693267,
+      "totalMilliseconds": 122.90649971691892
+    },
+    "AXSelectedTextRange:0": {
+      "count": 101,
+      "maxMilliseconds": 0.1775833370629698,
+      "totalMilliseconds": 7.513458331231959
+    },
+    "AXSubrole:-25205": {
+      "count": 2267,
+      "maxMilliseconds": 1.051166676916182,
+      "totalMilliseconds": 305.3429170831805
+    },
+    "AXValue:0": {
+      "count": 101,
+      "maxMilliseconds": 0.19012499251402915,
+      "totalMilliseconds": 6.405958280083723
+    },
+    "AXWindow:0": {
+      "count": 2267,
+      "maxMilliseconds": 3.4760833368636668,
+      "totalMilliseconds": 195.51350017718505
+    }
+  },
+  "cases": 10,
+  "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.results.json",
+  "completed": 10,
+  "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+  "eventTag": 1280331858,
+  "finalModifierFlags": 536870912,
+  "idleEvents": 0,
+  "idleSegmentSeconds": 0,
+  "initialInputSource": "com.apple.keylayout.RussianWin",
+  "inputSegmentSeconds": 133.88432195833593,
+  "notice": "Bounded synthetic TextEdit probe only; not original parity or latency p95. Initial source restored by defer.",
+  "requiredIdleSeconds": 0,
+  "results": [
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1505486250098329,
+        "firstChangeSeconds": 0.03721254167612642,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 13.235973875009222,
+      "events": 210,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-00",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1671116666693706,
+        "firstChangeSeconds": 0.049872791656525806,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 12.73860266666452,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-01",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.15752008333220147,
+        "firstChangeSeconds": 0.043204291665460914,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 13.032320250000339,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-02",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1433941249997588,
+        "firstChangeSeconds": 0.03795199999876786,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 13.04299912499846,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-03",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1548227916646283,
+        "firstChangeSeconds": 0.0374875833367696,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 13.034875416662544,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-04",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1556728750001639,
+        "firstChangeSeconds": 0.040372833333094604,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 13.018712208344368,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-05",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.15470604167785496,
+        "firstChangeSeconds": 0.03755525000451598,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 12.918389375001425,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-06",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.1430969999928493,
+        "firstChangeSeconds": 0.028980291666812263,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 12.87936383332999,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-07",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello ghbdtn hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.15135987500252668,
+        "firstChangeSeconds": 0.03155887499451637,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 12.769227916665841,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-08",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    },
+    {
+      "beforeGesture": {},
+      "boundary": true,
+      "boundaryObservation": {
+        "elapsedSeconds": 0.15328016666171607,
+        "firstChangeSeconds": 0.03754516666231211,
+        "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+        "performed": true,
+        "textTransitionsObserved": 1
+      },
+      "clipboardRestore": "not_used",
+      "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+      "elapsedSeconds": 12.780752749997191,
+      "events": 216,
+      "gesture": "none",
+      "gestureIntermediate": {},
+      "id": "fast-stream-09",
+      "inputSource": "com.apple.keylayout.ABC",
+      "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+      "requestedSource": "com.apple.keylayout.ABC",
+      "selectAllBeforeGesture": false,
+      "selection": {
+        "length": 0,
+        "location": 105
+      },
+      "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+      "timing": {
+        "firstWordAfterFocus": false,
+        "preGestureDelayMilliseconds": 100
+      }
+    }
+  ],
+  "totalEvents": 2154,
+  "identityBefore": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "224b8da6ca70d4755a24ef92028ff0ade40945cf6359be2d313566c982d4e313",
+    "targetBinarySha256": "bff09d98ebab7e97f1172c0e623a6e870ae8046af2aa0196115364ab0b532668",
+    "probeSourceSha256": "fa77ce6a5aa86d0faa838826a594d28f369bfce40bd8d64456adf892e5d85c6d",
+    "probeBinarySha256": "8b90442686015c4d27f58c25865543dffd7b177312cde7b2d761bd47cc8651df",
+    "targetProcess": {
+      "pid": 69227,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 12:51:09 2026"
+    }
+  },
+  "helperExecutable": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+  "identityUnchanged": false,
+  "helperChildWaitVerified": true,
+  "helperProcess": {
+    "pid": 69657,
+    "command": "/Users/kartamyshev/git/TypeTune/.build/native-probe",
+    "started": "Sun Oct 18 12:52:32 2026"
+  },
+  "processExitCode": 0,
+  "helperWallSeconds": 134.658300125011,
+  "identityAfter": {
+    "schemaVersion": 1,
+    "bundleHashAlgorithm": "paths-files-modes-symlinks-v1",
+    "targetBundleSha256": "224b8da6ca70d4755a24ef92028ff0ade40945cf6359be2d313566c982d4e313",
+    "targetBinarySha256": "bff09d98ebab7e97f1172c0e623a6e870ae8046af2aa0196115364ab0b532668",
+    "probeSourceSha256": "517569cbf8b31690678828bab38182a398955c5bab64658c0b7010e9a48764e2",
+    "probeBinarySha256": "8b90442686015c4d27f58c25865543dffd7b177312cde7b2d761bd47cc8651df",
+    "targetProcess": {
+      "pid": 69227,
+      "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+      "started": "Sun Oct 18 12:51:09 2026"
+    }
+  },
+  "error": "identity_changed_during_run",
+  "target": "prototype",
+  "app": "/Applications/TypeTune.app",
+  "pid": 69227,
+  "sourceCommit": "bcaf82a297be2abc03f71cf4dc13f56129c00ba3",
+  "sourceDirty": true,
+  "probeStartUptime": 76876.322187541,
+  "probeEndUptime": 77011.036253083,
+  "caseFileSha256": "fa8933321aeeb73d2c4ebbca28c1158809e2aa2f05b22abfc1971e7273937791",
+  "validationError": "identity_not_verified",
+  "savedCheckpoint": {
+    "checkpoint": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.results.json",
+    "completed": 10,
+    "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+    "initialInputSource": "com.apple.keylayout.RussianWin",
+    "initialReadback": {
+      "selection": {
+        "length": 0,
+        "location": 0
+      },
+      "text": ""
+    },
+    "notice": "Only completed authenticated synthetic cases. Partial current case is not a result; never auto-resume.",
+    "requestedCases": 10,
+    "results": [
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.1505486250098329,
+          "firstChangeSeconds": 0.03721254167612642,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 13.235973875009222,
+        "events": 210,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-00",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.1671116666693706,
+          "firstChangeSeconds": 0.049872791656525806,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 12.73860266666452,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-01",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.15752008333220147,
+          "firstChangeSeconds": 0.043204291665460914,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 13.032320250000339,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-02",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.1433941249997588,
+          "firstChangeSeconds": 0.03795199999876786,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 13.04299912499846,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-03",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.1548227916646283,
+          "firstChangeSeconds": 0.0374875833367696,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 13.034875416662544,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-04",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.1556728750001639,
+          "firstChangeSeconds": 0.040372833333094604,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 13.018712208344368,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-05",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.15470604167785496,
+          "firstChangeSeconds": 0.03755525000451598,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 12.918389375001425,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-06",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.1430969999928493,
+          "firstChangeSeconds": 0.028980291666812263,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 12.87936383332999,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-07",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello ghbdtn hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.15135987500252668,
+          "firstChangeSeconds": 0.03155887499451637,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 12.769227916665841,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-08",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      },
+      {
+        "beforeGesture": {},
+        "boundary": true,
+        "boundaryObservation": {
+          "elapsedSeconds": 0.15328016666171607,
+          "firstChangeSeconds": 0.03754516666231211,
+          "notice": "Includes delimiter insertion and AX readback; not correction-only latency or original p95.",
+          "performed": true,
+          "textTransitionsObserved": 1
+        },
+        "clipboardRestore": "not_used",
+        "document": "/Users/kartamyshev/git/TypeTune/research/private/probes/94289E2A-477B-46B5-84E0-80A63EAD7079.txt",
+        "elapsedSeconds": 12.780752749997191,
+        "events": 216,
+        "gesture": "none",
+        "gestureIntermediate": {},
+        "id": "fast-stream-09",
+        "inputSource": "com.apple.keylayout.ABC",
+        "physicalASCII": "ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ghbdtn hello ",
+        "requestedSource": "com.apple.keylayout.ABC",
+        "selectAllBeforeGesture": false,
+        "selection": {
+          "length": 0,
+          "location": 105
+        },
+        "text": "привет hello привет hello привет hello привет hello привет hello привет hello привет hello привет hello  ",
+        "timing": {
+          "firstWordAfterFocus": false,
+          "preGestureDelayMilliseconds": 100
+        }
+      }
+    ],
+    "schemaVersion": 1,
+    "status": "completed",
+    "totalEventsCompletedCases": 2154
+  }
+}

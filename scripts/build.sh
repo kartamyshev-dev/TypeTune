@@ -21,8 +21,8 @@ cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'
 <key>CFBundleDisplayName</key><string>TypeTune</string>
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.1.3</string>
-<key>CFBundleVersion</key><string>9</string>
+<key>CFBundleShortVersionString</key><string>0.1.4</string>
+<key>CFBundleVersion</key><string>10</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>LSUIElement</key><true/>
 <key>NSPrincipalClass</key><string>NSApplication</string>

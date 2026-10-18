@@ -1,0 +1,13 @@
+[
+  {
+    "id": "pc-shift-grave-authored-expectation",
+    "text": "~",
+    "source": "RussianWin",
+    "boundary": false,
+    "expected": "Ё",
+    "observed": "Ë",
+    "keyboardType": 91,
+    "status": "OPEN: actual macOS physical output differs from authored PC expectation",
+    "evidence": "research/evidence/mac-acceptance-2026-10-18/native-pc-key.json"
+  }
+]
