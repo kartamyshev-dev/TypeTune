@@ -477,12 +477,15 @@ final class KeyboardService {
         // («yf ghbdtn» → «на привет») are converted with it; only typed characters are edited.
         var token = completed.token, anchored = typed.tokenIsAnchored(boundaryLength: completed.boundary.count)
         if decision.reason == .layout, let language = decision.targetLanguage,
-           let prefix = engine.shortWordPrefix(before: String(typed.text.dropLast(token.count + completed.boundary.count)),
-                                               anchoredStart: typed.anchoredStart, target: language) {
+           case let before = String(typed.text.dropLast(token.count + completed.boundary.count)),
+           // A short word at the start of the buffer is accepted too (DECISIONS п. 34); a readable
+           // field still has to show a boundary before it.
+           let prefix = engine.shortWordPrefix(before: before, anchoredStart: true, target: language) {
             decision = Decision(original: prefix.typed + decision.original, replacement: prefix.replacement + decision.replacement,
                                 reason: decision.reason, targetLanguage: language, learnAs: decision.learnAs ?? decision.original)
             token = prefix.typed + token
-            anchored = true // shortWordPrefix accepts a word only after a known boundary
+            // Known when typed whitespace precedes the first short word inside the buffer.
+            anchored = prefix.typed.count < before.count || typed.anchoredStart
             checks["shortWords"] = true
         }
         guard let plan = KeystrokeEditPlan(token: token, boundary: completed.boundary, decision: decision) else { return }
@@ -686,7 +689,10 @@ final class KeyboardService {
         let target = operation.target, plan = operation.plan
         let readable = verification == .matches || verification == .mismatch
         // Blind editing only for a token the buffer knows to start a word.
-        let fieldMatches = verification == .matches || (verification == .unreadable && operation.anchored)
+        // DECISIONS п. 34: every field but passwords. A readable field must show the expected
+        // text (and a word boundary when the buffer does not prove one); an unreadable field is
+        // edited blind, deleting only the characters this process saw typed at the caret.
+        let fieldMatches = verification == .matches || verification == .unreadable
         let current = revision == expectedRevision && sourceID == InputSources.identifier && !IsSecureEventInputEnabled() &&
             NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
         InputDiagnostics.shared.record("universal-verify", revision: expectedRevision,
@@ -696,9 +702,6 @@ final class KeyboardService {
             if verification == .mismatch { typed.reset(.untrackedKey) }
             finishMutation(.notApplied, before: target, settled: current ? target : nil)
             if verification == .mismatch { skipped("Исправление пропущено: текст поля не совпал с набранным") }
-            else if verification == .unreadable, case .manual = operation.purpose {
-                skipped("Без доступа к полю преобразуется только слово, набранное после пробела, или выделение")
-            }
             return
         }
         let result = KeystrokeEditor.perform(plan, pid: target.pid)
@@ -811,7 +814,10 @@ final class KeyboardService {
                                 revision expectedRevision: Int, sourceID: String, deletionText: String?) {
         let target = operation.target, plan = operation.plan
         let readable = verification == .matches || verification == .mismatch
-        let fieldMatches = verification == .matches || (verification == .unreadable && operation.anchored)
+        // DECISIONS п. 34: every field but passwords. A readable field must show the expected
+        // text (and a word boundary when the buffer does not prove one); an unreadable field is
+        // edited blind, deleting only the characters this process saw typed at the caret.
+        let fieldMatches = verification == .matches || verification == .unreadable
         let current = revision == expectedRevision && sourceID == InputSources.identifier && !IsSecureEventInputEnabled() &&
             NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
         InputDiagnostics.shared.record("snippet-verify", revision: expectedRevision, checks: [
@@ -821,7 +827,6 @@ final class KeyboardService {
             finishMutation(.notApplied, before: target, settled: current ? target : nil)
             if !released { skipped("Сниппет не вставлен: отпустите клавиши-модификаторы") }
             else if verification == .mismatch { skipped("Сниппет не вставлен: текст поля не совпал с набранным") }
-            else if verification == .unreadable { skipped("Сниппет не вставлен: поле недоступно, а перед сокращением нет пробела") }
             return
         }
         guard let deletionText else { postSnippet(operation, readable: readable); return }
