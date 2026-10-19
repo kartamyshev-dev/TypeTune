@@ -449,6 +449,7 @@ func runSelfTests() -> Int {
     for (passed, label) in snippetTemplateChecks() { check(passed, label) }
     for (passed, label) in snippetMatcherChecks() { check(passed, label) }
     for (passed, label) in snippetEditPlanChecks() { check(passed, label) }
+    for (passed, label) in shortWordContextChecks() { check(passed, label) }
     print("\(count - failures)/\(count) offline invariants passed; \(failures) failures. No runtime input claim.")
     return failures
 }

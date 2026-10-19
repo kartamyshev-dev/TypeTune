@@ -455,13 +455,24 @@ final class KeyboardService {
         let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
                                                      isKnownWord: { self.isKnownWord($0) })
         checks["decision"] = decision != nil
-        guard let decision,
-              let plan = KeystrokeEditPlan(token: completed.token, boundary: completed.boundary, decision: decision) else { return }
+        guard var decision else { return }
+        // Short words typed right before a converted word in the same wrong layout
+        // («yf ghbdtn» → «на привет») are converted with it; only typed characters are edited.
+        var token = completed.token, anchored = typed.tokenIsAnchored(boundaryLength: completed.boundary.count)
+        if decision.reason == .layout, let language = decision.targetLanguage,
+           let prefix = engine.shortWordPrefix(before: String(typed.text.dropLast(token.count + completed.boundary.count)),
+                                               anchoredStart: typed.anchoredStart, target: language) {
+            decision = Decision(original: prefix.typed + decision.original, replacement: prefix.replacement + decision.replacement,
+                                reason: decision.reason, targetLanguage: language, learnAs: decision.learnAs ?? decision.original)
+            token = prefix.typed + token
+            anchored = true // shortWordPrefix accepts a word only after a known boundary
+            checks["shortWords"] = true
+        }
+        guard let plan = KeystrokeEditPlan(token: token, boundary: completed.boundary, decision: decision) else { return }
         if let language = decision.targetLanguage, !InputSources.isAvailable(language) {
             skipped("Добавьте нужную русскую или английскую раскладку в macOS"); return
         }
-        runKeystrokes(KeystrokeOperation(plan: plan, target: target,
-            anchored: typed.tokenIsAnchored(boundaryLength: completed.boundary.count),
+        runKeystrokes(KeystrokeOperation(plan: plan, target: target, anchored: anchored,
             purpose: .automatic, sourceBefore: InputSources.identifier))
     }
 

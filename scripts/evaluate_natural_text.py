@@ -39,6 +39,16 @@ def eligible(token, language):
     return len(word) >= 3 and all(c in LETTERS[language] for c in word)
 
 
+def short_word(token, language):
+    """A one- or two-letter word with optional trailing sentence punctuation."""
+    word = token.rstrip('.,!?;:')
+    return 1 <= len(word) <= 2 and all(c in LETTERS[language] for c in word)
+
+
+def without_yo(text):
+    return text.replace('ё', 'е').replace('Ё', 'Е')
+
+
 def evaluate(cli, path, language, examples):
     text = path.read_text(encoding='utf-8-sig').replace('\r\n', '\n')
     tokens = text.split()
@@ -58,9 +68,16 @@ def evaluate(cli, path, language, examples):
     wrong = wrong_text.split()
     restored = rewrite(cli, wrong_text).split()
     assert len(wrong) == len(restored) == len(tokens), path
-    total = recovered = 0
+    total = recovered = recovered_yo = short_total = short_recovered = 0
     misses = collections.Counter()
+    short_misses = collections.Counter()
     for original, typed, result in zip(tokens, wrong, restored):
+        if short_word(original, language):
+            short_total += 1
+            if result == original:
+                short_recovered += 1
+            else:
+                short_misses[original.rstrip('.,!?;:').lower()] += 1
         if not eligible(original, language):
             continue
         total += 1
@@ -68,6 +85,9 @@ def evaluate(cli, path, language, examples):
             recovered += 1
         else:
             misses[original.rstrip('.,!?;:').lower()] += 1
+        # Restoring ё (еще → ещё) is a feature, not a miss.
+        if without_yo(result) == without_yo(original):
+            recovered_yo += 1
     return {
         'file': path.name, 'language': language, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
         'tokens': len(tokens),
@@ -80,7 +100,11 @@ def evaluate(cli, path, language, examples):
         'yoExamples': [f'{a} → {b} ×{n}' for (a, b), n in by_kind['yo'].most_common(10)],
         'eligibleWrongLayoutTokens': total, 'recovered': recovered,
         'recall': round(recovered / max(1, total), 4),
+        'recoveredIgnoringYo': recovered_yo, 'recallIgnoringYo': round(recovered_yo / max(1, total), 4),
+        'shortWordTokens': short_total, 'shortRecovered': short_recovered,
+        'shortRecall': round(short_recovered / max(1, short_total), 4),
         'topMissedWords': [f'{w} ×{n}' for w, n in misses.most_common(examples)],
+        'topMissedShortWords': [f'{w} ×{n}' for w, n in short_misses.most_common(examples)],
     }
 
 
@@ -111,7 +135,11 @@ def main():
                             'yoRestorations': sum(r['yoRestorations'] for r in part),
                             'falsePer100kTokens': round(false * 100000 / max(1, tokens), 2),
                             'eligibleWrongLayoutTokens': total, 'recovered': recovered,
-                            'recall': round(recovered / max(1, total), 4)}
+                            'recall': round(recovered / max(1, total), 4),
+                            'recallIgnoringYo': round(sum(r['recoveredIgnoringYo'] for r in part) / max(1, total), 4),
+                            'shortWordTokens': sum(r['shortWordTokens'] for r in part),
+                            'shortRecall': round(sum(r['shortRecovered'] for r in part) /
+                                                 max(1, sum(r['shortWordTokens'] for r in part)), 4)}
     report = {'schemaVersion': 1, 'label': args.label,
               'kind': 'offline natural-text check through layoutpilot-cli rewrite; not native, not original parity',
               'lexiconSha256': hashlib.sha256(lexicon.read_bytes()).hexdigest(),

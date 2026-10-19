@@ -1,0 +1,24 @@
+{
+  "kind": "Linux offline (Core + CLI, Swift 6.0.3); app compiled only in CI; no native claim",
+  "date": "2026-10-19",
+  "trigger": "user report 7E84616C (v0.1.6): 24 boundaries needed a correction; 20 anchored ones were all confirmed, 4 unanchored first words in an unreadable field were skipped (DECISIONS 26/30); short words are never decided",
+  "baseCommit": "90303f8",
+  "results": {
+    "selftest": "1665/1665 (17 short-word invariants); mutation of the 'valid as typed' and boundary rules fails 2 checks",
+    "naturalText": {
+      "method": "scripts/evaluate_natural_text.py, same 7 texts as stage 6 (hashes match), baseline CLI from 90303f8 vs CLI with the rule",
+      "shortRecallRu": "0 -> 0.557 (50306 tokens)",
+      "shortRecallEn": "0 -> 0.7634 (104498 tokens)",
+      "recall3PlusLetters": "unchanged: RU 0.6865 (0.6889 ignoring ё), EN 0.9182",
+      "falseCorrections": "unchanged: RU 33, EN 26",
+      "note": "the whole text is retyped in the wrong layout; in the app the layout switches after a correction, so words typed after it are usually right already"
+    }
+  },
+  "rule": "1-2 letter words directly before a word converted to language L (at most two, separated by spaces only) are converted with it when each is a known short word of L (lexicon or one-letter list), not a known short word as typed, not mixed, not excluded, and preceded by a known boundary",
+  "sourceHashes": {
+    "Sources/LayoutPilotCore/ShortWordContext.swift": "1c5ba7bed5b568959d96187f8209c9c3064993611922774f4e3d997bcfb1add0",
+    "Sources/LayoutPilotCLI/ShortWordContextChecks.swift": "a817a13cc800124f8c5995e65d9c6961d8021f24f37f33ed5bd30b1dae2150f1",
+    "Sources/LayoutPilot/KeyboardService.swift": "924c071778fe6d584a576f31d7300fb019eb6337647627daaaa752bd1e91ea71",
+    "scripts/evaluate_natural_text.py": "3815b9c8dbef493ca8c90e2ce59d6f00f239dfbf450cac0896263f9cf426c8c2"
+  }
+}

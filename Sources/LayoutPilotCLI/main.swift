@@ -53,6 +53,11 @@ func rewrite(_ text: String, engine: Engine = Engine()) -> String {
     func flush() {
         guard !token.isEmpty else { return }
         if let decision = engine.completedTokenDecision(token, decide: { engine.decide($0) }) {
+            // Short words typed right before a converted word follow it (as in the app).
+            if decision.reason == .layout, let target = decision.targetLanguage,
+               let prefix = engine.shortWordPrefix(before: output, anchoredStart: true, target: target) {
+                output = String(output.dropLast(prefix.typed.count)) + prefix.replacement
+            }
             output += decision.replacement + token.dropFirst(decision.original.count)
         } else { output += token }
         token = ""
