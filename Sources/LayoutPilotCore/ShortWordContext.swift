@@ -1,10 +1,11 @@
 import Foundation
 
-/// Short words (one or two letters: «в», «на», «не», `a`, `is`) are never converted on their
-/// own: too many are valid in both layouts or are abbreviations. In running text they are
-/// about a fifth of Russian words, so typing «yf ghbdtn» left «yf привет». When the next word
-/// is converted to a language, the short words typed right before it in the other layout are
-/// converted with it, if each is a known word of that language and not a word as typed.
+/// Short words (one or two letters: «в», «на», «не», `a`, `is`) are about a fifth of Russian
+/// text. `Engine.decide` converts one at its own boundary (DECISIONS п. 35); this context rule
+/// remains for the words that rule leaves alone, such as a short word at a buffer start that
+/// was not decided alone. When the next word is converted to a language, the short words
+/// typed right before it in the other layout are converted with it, if each is a known word of
+/// that language and not a word as typed.
 public extension Engine {
     /// One-letter words; the lexicon holds words of two letters or more.
     static let oneLetterWords: [Language: Set<String>] = [

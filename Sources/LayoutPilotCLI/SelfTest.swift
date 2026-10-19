@@ -173,7 +173,7 @@ func runSelfTests() -> Int {
     check(Engine().decide("Руддщ")?.replacement == "Hello", "title correction")
     check(Engine().decide("helllo")?.reason == .typo, "typo reason")
     check(Engine().decide("Елка")?.replacement == "Ёлка", "yo correction")
-    for token in ["hello", "привет", "ghbdtn123", "helloМир", "https://ghbdtn.test", "a@ghbdtn.test", "foo_bar", "<ghbdtn>", "f", "я", "zzznotaword", "все"] {
+    for token in ["hello", "привет", "ghbdtn123", "helloМир", "https://ghbdtn.test", "a@ghbdtn.test", "foo_bar", "<ghbdtn>", "я", "zzznotaword", "все"] {
         check(Engine().decide(token) == nil, "preserve " + token)
     }
     for context in [InputContext(secure: true), InputContext(reliable: false)] {

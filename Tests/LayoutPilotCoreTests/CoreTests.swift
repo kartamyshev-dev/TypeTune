@@ -42,7 +42,7 @@ final class CoreTests: XCTestCase {
         XCTAssertEqual(Engine().decide("Елка")?.replacement, "Ёлка")
     }
     func testConservativeBoundaries() {
-        for token in ["hello", "привет", "ghbdtn123", "helloМир", "https://ghbdtn.test", "a@ghbdtn.test", "foo_bar", "<ghbdtn>", "f", "я", "zzznotaword"] {
+        for token in ["hello", "привет", "ghbdtn123", "helloМир", "https://ghbdtn.test", "a@ghbdtn.test", "foo_bar", "<ghbdtn>", "я", "zzznotaword"] {
             XCTAssertNil(Engine().decide(token), token)
         }
         // Ambiguous forms must not be normalized blindly.

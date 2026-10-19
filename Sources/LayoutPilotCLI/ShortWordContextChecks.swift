@@ -25,5 +25,29 @@ func shortWordContextChecks() -> [(Bool, String)] {
     var excluding = Settings(); excluding.excludedWords = ["yf"]
     check(prefix("yf ", .russian, engine: Engine(settings: excluding)) == nil, "an excluded word stays")
     check(engine.shortWordConversion("ns", to: .russian) == "ты", "conversion of a single short word")
+
+    // A short word alone, at its own boundary (DECISIONS п. 35).
+    let alone = Engine()
+    for (typed, expected) in [("d", "в"), ("z", "я"), ("f", "а"), ("yf", "на"), ("ns", "ты"), ("D", "В"), ("Yf", "На"),
+                              ("ш", "i"), ("ф", "a"), ("шы", "is")] {
+        check(alone.decide(typed)?.replacement == expected && alone.decide(typed)?.reason == .layout,
+              "converted at once: \(typed) → \(expected)")
+    }
+    for typed in ["a", "i", "is", "на", "в", "я", "ку", "ne", "re", "ex", "qq", "zq", "ab/", "x", "1", "d1"] {
+        check(alone.decide(typed) == nil, "short word stays: \(typed)")
+    }
+    for typed in ["РФ", "TV", "RU", "CD", "AB", "T.", "V.", "T,"] {
+        check(alone.decide(typed) == nil, "abbreviation or sign stays: \(typed)")
+    }
+    check(alone.completedTokenDecision("ab/", decide: { alone.decide($0) }) == nil, "a short start with a sign is a path, not a word")
+    check(alone.completedTokenDecision("d,", decide: { alone.decide($0) }) == nil, "a short word with a sign is left alone")
+    check(Engine(settings: { var s = Settings(); s.automatic = false; return s }()).decide("d") == nil, "layout correction off: no short words")
+    check(Engine(settings: { var s = Settings(); s.paused = true; return s }()).decide("d") == nil, "paused: no short words")
+    check(alone.decide("d", context: InputContext(secure: true)) == nil, "secure input: no short words")
+    check(alone.decide("d", context: InputContext(reliable: false)) == nil, "unreliable context: no short words")
+    check(Engine(settings: { var s = Settings(); s.excludedWords = ["d"]; return s }()).decide("d") == nil, "excluded word stays")
+    check(Engine(settings: { var s = Settings(); s.learnedWords = ["yf"]; return s }()).decide("yf") == nil, "learned (undone) word stays")
+    check(Engine(settings: { var s = Settings(); s.rules = [UserRule(source: "d", replacement: "дэ")]; return s }()).decide("d")?.replacement == "дэ",
+          "a user rule wins over the short-word conversion")
     return checks
 }

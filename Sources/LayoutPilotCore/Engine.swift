@@ -134,6 +134,16 @@ public struct Engine: Sendable {
             return value == word ? nil : Decision(original: word, replacement: value, reason: .userRule,
                                                    targetLanguage: Layout.language(of: value))
         }
+        // One- and two-letter words (в, на, я; DECISIONS п. 35): converted at once when the other
+        // layout gives a known short word and the typed form is not one.
+        // Letters only (not `T.`), and a two-letter word in capitals is an abbreviation (РФ, TV, CD).
+        if automatic, word.count < 3, word.allSatisfy(\.isLetter),
+           word.count == 1 || word != word.uppercased() || word == word.lowercased(),
+           let source = Layout.language(of: word),
+           let converted = shortWordConversion(word, to: source == .russian ? .english : .russian) {
+            return Decision(original: word, replacement: converted, reason: .layout,
+                            targetLanguage: Layout.language(of: converted))
+        }
         let converted = Layout.convert(word, mapping: mapping)
         // Physical US punctuation keys can represent Russian letters (компьютер, пожалуйста).
         // A candidate must be a known all-letter word; paths, digits and mixed scripts stay intact.
@@ -197,13 +207,14 @@ public struct Engine: Sendable {
         if physical > 0, physical < original.count, converted.count == original.count,
            !(isKnownWord ?? { lexicon.contains($0) })(token) {
             let prefix = String(token.dropLast(physical))
-            if let value = decide(prefix), value.reason == .layout {
+            // A one- or two-letter start is a path or code (`ab/`), not a word followed by a sign.
+            if prefix.count >= 3, let value = decide(prefix), value.reason == .layout {
                 return Decision(original: token, replacement: value.replacement + String(converted.suffix(physical)),
                                 reason: .layout, targetLanguage: value.targetLanguage, learnAs: value.learnAs ?? prefix)
             }
         }
         let suffix = token.reversed().prefix(while: { ".,!?;:".contains($0) }).count
-        guard suffix > 0, suffix < token.count else { return nil }
+        guard suffix > 0, suffix < token.count, token.count - suffix >= 3 else { return nil }
         return decide(String(token.dropLast(suffix)))
     }
 
