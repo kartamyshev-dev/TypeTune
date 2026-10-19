@@ -178,6 +178,15 @@ final class KeyboardService {
         store.listening = CGPreflightListenEventAccess()
         store.posting = CGPreflightPostEventAccess()
         store.secure = IsSecureEventInputEnabled()
+        let owner = store.secure ? SecureInputOwner.application() : nil
+        let ownerName = owner.map { $0.localizedName ?? $0.bundleIdentifier ?? "PID \($0.processIdentifier)" }
+        if store.secureInputOwner != ownerName {
+            store.secureInputOwner = ownerName
+            // The owner's bundle ID is an application, not user text; dots become dashes.
+            let id = owner?.bundleIdentifier?.replacingOccurrences(of: ".", with: "-")
+            InputDiagnostics.shared.record("secure-input-owner", revision: revision,
+                checks: ["known": owner != nil], reason: id.map { String($0.prefix(96)) })
+        }
         store.inputSource = InputSources.identifier
         let permissions = [store.trusted, store.listening, store.posting, store.secure,
                            store.settingsStorageAvailable, conflictingApp() == nil, sleeping]
@@ -455,7 +464,15 @@ final class KeyboardService {
         let decision = engine.completedTokenDecision(completed.token, decide: { decide($0, context: context) },
                                                      isKnownWord: { self.isKnownWord($0) })
         checks["decision"] = decision != nil
-        guard var decision else { return }
+        guard var decision else {
+            // Why no correction, without the text: lets reports tell dictionary misses apart.
+            let token = completed.token
+            checks["lettersOnly"] = token.allSatisfy(\.isLetter)
+            checks["short"] = token.count <= 2
+            checks["knownAsTyped"] = engine.lexicon.contains(token)
+            checks["convertedKnown"] = engine.lexicon.contains(Layout.convert(token, mapping: InputSources.mapping))
+            return
+        }
         // Short words typed right before a converted word in the same wrong layout
         // («yf ghbdtn» → «на привет») are converted with it; only typed characters are edited.
         var token = completed.token, anchored = typed.tokenIsAnchored(boundaryLength: completed.boundary.count)
@@ -640,6 +657,7 @@ final class KeyboardService {
                 let kind: String
                 switch observation {
                 case .textBeforeCaret: kind = "text"
+                case .valueWithoutCaret: kind = "value-without-caret"
                 case .selection: kind = "selection"
                 case .unreadable: kind = "unreadable"
                 case .secure: kind = "secure"
@@ -650,6 +668,8 @@ final class KeyboardService {
                 switch observation {
                 case .textBeforeCaret(let text):
                     verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .mismatch
+                case .valueWithoutCaret(let text):
+                    verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .unreadable
                 // Readable, but Backspace would remove the selection first: never edit blind.
                 case .selection: verification = .mismatch
                 case .unreadable: verification = .unreadable
@@ -703,7 +723,7 @@ final class KeyboardService {
                     switch AccessibilityEditor.observeTextBeforeCaret(pid: target.pid) {
                     case .textBeforeCaret(let value): text = value
                     // An autocompletion selected after the inserted text does not hide it.
-                    case .selection(let value): text = value
+                    case .selection(let value), .valueWithoutCaret(let value): text = value
                     case .unreadable, .secure: text = nil
                     }
                     if let text, text.hasSuffix(plan.after) { outcome = .confirmed; break }
@@ -775,6 +795,8 @@ final class KeyboardService {
                 if application == "com.google.Chrome", plan.insertion == .paste {
                     deletionText = plan.textAfterDeletion(from: text, application: application)
                 }
+            case .valueWithoutCaret(let text):
+                verification = plan.expects(textBeforeCaret: text, anchored: !anchored, application: application) ? .matches : .unreadable
             case .selection: verification = .mismatch
             case .unreadable: verification = .unreadable
             case .secure: verification = .secure
@@ -863,7 +885,7 @@ final class KeyboardService {
                     let text: String?
                     switch AccessibilityEditor.observeTextBeforeCaret(pid: target.pid) {
                     case .textBeforeCaret(let value): text = value
-                    case .selection(let value): text = value
+                    case .selection(let value), .valueWithoutCaret(let value): text = value
                     case .unreadable, .secure: text = nil
                     }
                     if let text, plan.confirms(textBeforeCaret: text, application: target.application) { outcome = .confirmed; break }

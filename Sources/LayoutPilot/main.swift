@@ -77,7 +77,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ])
         title.append(NSAttributedString(string: suffix, attributes: [.font: NSFont.menuBarFont(ofSize: 0)]))
         statusItem.button?.attributedTitle = title
-        statusItem.button?.toolTip = "TypeTune · \(InputSources.identifier)\n\(store.serviceStatus.message)"
+        let owner = store.secure ? store.secureInputOwner.map { "\nВключило: \($0)" } ?? "" : ""
+        statusItem.button?.toolTip = "TypeTune · \(InputSources.identifier)\n\(store.serviceStatus.message)" + owner
     }
     @objc func toggleAutomatic() {
         guard store.settingsStorageAvailable else { return }

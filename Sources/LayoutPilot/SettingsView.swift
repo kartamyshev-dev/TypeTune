@@ -78,7 +78,9 @@ struct SettingsView: View {
                     .font(.caption).padding(10).background(.orange.opacity(0.10))
             }
             if store.secure {
-                Label("Защищённый ввод включён. Исправления приостановлены.", systemImage: "lock.fill").padding(10)
+                Label("Защищённый ввод включён" + (store.secureInputOwner.map { " — его включило «\($0)»" } ?? "") +
+                      ". Исправления приостановлены, пока он не выключится. Обычно его включают поле пароля, менеджер паролей или «Защищённая клавиатура» в Terminal.",
+                      systemImage: "lock.fill").padding(10)
             }
             if store.bufferedEvents > 0 {
                 Text("Сохранено нажатий во время исправлений: \(store.bufferedEvents)").font(.caption).padding(4)

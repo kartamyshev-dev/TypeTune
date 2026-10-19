@@ -20,6 +20,8 @@ final class Store: ObservableObject {
     @Published var trusted = false
     @Published var listening = false
     @Published var secure = false
+    /// The application that turned Secure Input on, when macOS reveals it.
+    @Published var secureInputOwner: String?
     @Published var inputSource = "—"
     @Published var launchAtLogin = false
     @Published var bufferedEvents = 0

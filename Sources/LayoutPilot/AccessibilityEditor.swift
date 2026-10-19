@@ -86,11 +86,15 @@ enum AccessibilityEditor {
         /// character, so this is never treated as unreadable or edited blind. Carries the
         /// text before the selection, which can still confirm an edit already made.
         case selection(textBeforeSelection: String)
+        /// The field gives its whole text but no caret. Typing usually appends at the end, so a
+        /// text ending with the expected state may stand in for the text before the caret; it can
+        /// only allow an edit the blind rules would refuse, never refuse one they allow.
+        case valueWithoutCaret(String)
 
         func needsAnotherRead(expects: (String) -> Bool) -> Bool {
             switch self {
             case .unreadable: return true
-            case .textBeforeCaret(let text): return !expects(text)
+            case .textBeforeCaret(let text), .valueWithoutCaret(let text): return !expects(text)
             case .secure, .selection: return false
             }
         }
@@ -154,9 +158,10 @@ enum AccessibilityEditor {
         let field = raw as! AXUIElement
         AXUIElementSetMessagingTimeout(field, 0.050)
         if attribute(field, kAXSubroleAttribute) as? String == "AXSecureTextField" { return .secure }
-        guard let text = attribute(field, kAXValueAttribute) as? String, text.utf16.count <= 65_536,
-              let rawRange = attribute(field, kAXSelectedTextRangeAttribute), CFGetTypeID(rawRange) == AXValueGetTypeID() else {
-            return .unreadable
+        guard let text = attribute(field, kAXValueAttribute) as? String, text.utf16.count <= 65_536 else { return .unreadable }
+        guard let rawRange = attribute(field, kAXSelectedTextRangeAttribute), CFGetTypeID(rawRange) == AXValueGetTypeID() else {
+            // Some text areas give their text but no caret (AXTextArea in user reports).
+            return .valueWithoutCaret(text)
         }
         var range = CFRange()
         guard AXValueGetValue(rawRange as! AXValue, .cfRange, &range),
