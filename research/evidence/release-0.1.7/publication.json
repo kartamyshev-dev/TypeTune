@@ -1,0 +1,13 @@
+{
+  "kind": "CI release on macOS from tag (no native input claim on the release bundle)",
+  "date": "2026-10-20",
+  "tag": "v0.1.7",
+  "commit": "874fd297f633c3c03fba497cae68651d03b861e0",
+  "release": "https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.7",
+  "ci": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39400920268",
+  "workflow": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39401298799",
+  "steps": "tag matches version 0.1.7 (13) and RELEASE_0.1.7.md; ci_core (selftest 1707/1707); runtime_recovery_probe; scripts/package.sh from clean tag; codesign verify, packaged CLI selftest, packaged app alive 8 s without .build; prerelease published",
+  "assets": {"TypeTune-0.1.7-874fd297f633-arm64.zip": "a0a4b5ba229f4c2af8c7c31b04477e564ac6b5f12f128102778b524c5a154237"},
+  "downloadCheck": "both assets downloaded from GitHub; zip SHA-256 equals the published .sha256; 103 entries; MANIFEST sourceCommit and Info.plist 0.1.7 (13) match; lexicon inside the app bundle",
+  "userCheck": "user manual on build 99c015a: 'нормально работает'"
+}
