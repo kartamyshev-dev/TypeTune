@@ -101,13 +101,14 @@ enum SettingsRenderer {
             .frame(width: size.width, height: size.height)
             .background(Color(nsColor: .windowBackgroundColor))
             .environment(\.colorScheme, theme == "dark" ? .dark : .light))
-        let window = NSWindow(contentRect: NSRect(origin: NSPoint(x: -20000, y: -20000), size: size),
+        let window = SettingsRenderWindow(contentRect: NSRect(origin: NSPoint(x: -20000, y: -20000), size: size),
                               styleMask: [.titled], backing: .buffered, defer: false)
         window.isReleasedWhenClosed = false
         window.appearance = NSAppearance(named: theme == "dark" ? .darkAqua : .aqua)
         hosting.appearance = window.appearance
         window.contentView = hosting
         hosting.frame = NSRect(origin: .zero, size: size)
+        window.setFrameOrigin(NSPoint(x: -20000, y: -20000))
         window.orderBack(nil)
         defer { window.orderOut(nil); window.close() }
         hosting.layoutSubtreeIfNeeded()
@@ -126,5 +127,12 @@ enum SettingsRenderer {
         }
         try png.write(to: url, options: .atomic)
     }
+}
+
+/// AppKit normally constrains titled windows back onto a display.
+private final class SettingsRenderWindow: NSWindow {
+    override var canBecomeKey: Bool { false }
+    override var canBecomeMain: Bool { false }
+    override func constrainFrameRect(_ frameRect: NSRect, to screen: NSScreen?) -> NSRect { frameRect }
 }
 #endif
