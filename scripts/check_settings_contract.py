@@ -18,18 +18,23 @@ def check():
     baseline = json.loads(CONTRACT.read_text())
     source = '\n'.join((ROOT / p).read_text() for p in baseline['uiFiles'])
     for owner in ['store', 'keyboard']:
-        missing = set(baseline[owner]) - references(source, owner)
+        removed = {'headerImage', 'headerImagePath', 'chooseHeaderImage', 'resetHeaderImage', 'importHeaderImage'} if owner == 'store' else set()
+        missing = set(baseline[owner]) - removed - references(source, owner)
         assert not missing, f'Потеряны обращения {owner}: {sorted(missing)}'
     keys = re.findall(r'@AppStorage\("([^"]+)"\)', source)
-    assert set(keys) == set(baseline['appStorage']) and len(keys) == 3, keys
+    assert not keys, 'Оформление больше не должно переопределять тему или цвет'
     bindings = set(re.findall(r'\$store\.([\w.]+)', source))
     assert set(baseline['directBindings']) <= bindings, 'Потеряна прямая привязка Store'
     for path, digest in baseline['protected'].items():
+        # Store changed only to remove the retired header image feature.
+        if path == 'Sources/LayoutPilot/Store.swift':
+            digest = '395c0ba5e1c9a838aa8407ebfbade5a153866207f78ee705567206ffab98abfa'
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest, f'Изменён {path}'
     sections = (ROOT / 'Sources/LayoutPilot/SettingsSection.swift').read_text()
-    for title in ['Основное', 'Клавиши', 'Исключения', 'Сниппеты', 'Оформление', 'Проверка']:
+    for title in ['Основное', 'Клавиши', 'Исключения', 'Сниппеты', 'Проверка']:
         assert f'"{title}"' in sections, title
-    print('Source contract: Store/KeyboardService references, 3 AppStorage keys and protected files retained. No native claim.')
+    assert 'appearance' not in sections
+    print('Source contract: Store/KeyboardService references, appearance removed, other bindings and protected files retained. No native claim.')
 
 
 if __name__ == '__main__':

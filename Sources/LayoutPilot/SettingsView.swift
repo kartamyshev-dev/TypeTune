@@ -4,38 +4,11 @@ import SwiftUI
 import UniformTypeIdentifiers
 import LayoutPilotCore
 
-/// Independent palette for LayoutPilot; no original artwork or color tables.
-private enum HeaderPalette: String, CaseIterable, Identifiable {
-    case blue, green, violet, orange, neutral
-    var id: String { rawValue }
-    var title: String {
-        switch self {
-        case .blue: return "Синий"
-        case .green: return "Зелёный"
-        case .violet: return "Фиолетовый"
-        case .orange: return "Оранжевый"
-        case .neutral: return "Нейтральный"
-        }
-    }
-    var color: Color {
-        switch self {
-        case .blue: return .blue
-        case .green: return .green
-        case .violet: return .purple
-        case .orange: return .orange
-        case .neutral: return .gray
-        }
-    }
-}
-
 struct SettingsView: View {
     @ObservedObject var store: Store
     let keyboard: KeyboardService
     @StateObject private var form = SettingsForm()
     @State private var selection: SettingsSection? = .main
-    @AppStorage("theme") private var theme = "system"
-    @AppStorage("headerColor") private var headerColorName = HeaderPalette.blue.rawValue
-    @AppStorage("headerLightText") private var headerLightText = true
 
     init(store: Store, keyboard: KeyboardService) {
         self.store = store
@@ -47,12 +20,6 @@ struct SettingsView: View {
         _selection = State(initialValue: renderSection)
     }
     #endif
-    private var headerPalette: Binding<HeaderPalette> {
-        Binding(get: { HeaderPalette(rawValue: headerColorName) ?? .blue },
-                set: { headerColorName = $0.rawValue })
-    }
-    private var headerColor: Color { (HeaderPalette(rawValue: headerColorName) ?? .blue).color }
-
     var body: some View {
         HSplitView {
             VStack(alignment: .leading, spacing: 0) {
@@ -98,7 +65,6 @@ struct SettingsView: View {
             .background(Color(nsColor: .controlBackgroundColor))
         }
         .frame(minWidth: 920, idealWidth: 1000, minHeight: 640, idealHeight: 740)
-        .preferredColorScheme(theme == "dark" ? .dark : theme == "light" ? .light : nil)
     }
 
     @ViewBuilder private var sectionContent: some View {
@@ -107,11 +73,6 @@ struct SettingsView: View {
         case .keys: Form { Section("Клавиши") { keyControls } }.formStyle(.grouped).controlSize(.small)
         case .exceptions: exceptions
         case .snippets: rules
-        case .appearance:
-            Form {
-                Section("Оформление") { appearanceControls }
-                Section("Предпросмотр компактной шапки") { headerPreview }
-            }.formStyle(.grouped).controlSize(.small)
         case .diagnostics: lab
         }
     }
@@ -198,50 +159,6 @@ struct SettingsView: View {
                 store.lastStatus = SMAppService.mainApp.status == .requiresApproval ? "Подтвердите автозапуск в Системных настройках" : "Настройка автозапуска сохранена"
             } catch { store.lastStatus = "Не удалось изменить автозапуск: \(error.localizedDescription)" }
         }))
-    }
-    @ViewBuilder private var appearanceControls: some View {
-        Picker("Оформление", selection: $theme) {
-            Text("Как в системе").tag("system"); Text("Светлое").tag("light"); Text("Тёмное").tag("dark")
-        }
-        Picker("Цвет заголовка", selection: headerPalette) {
-            ForEach(HeaderPalette.allCases) { value in Text(value.title).tag(value) }
-        }
-        Toggle("Светлая надпись заголовка", isOn: $headerLightText)
-        HStack {
-            Text(store.headerImage != nil ? "Изображение заголовка" :
-                (store.headerImagePath.isEmpty ? "Однотонный фон" : "Изображение недоступно"))
-            Spacer()
-            Button("Выбрать изображение…") { store.chooseHeaderImage() }
-            if !store.headerImagePath.isEmpty { Button("Убрать изображение") { store.resetHeaderImage() } }
-        }
-    }
-    private var headerPreview: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: "keyboard").accessibilityHidden(true)
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("TypeTune").font(.headline)
-                    Text("Чтобы мысли не спотыкались о клавиши").font(.caption)
-                }
-                Spacer()
-                Text(store.serviceStatus.title).font(.caption)
-            }
-            .foregroundStyle(headerLightText ? Color.white : Color.black)
-            .padding(14).background {
-                ZStack {
-                    headerColor
-                    if let image = store.headerImage { Image(nsImage: image).resizable().scaledToFill() }
-                }
-            }.clipShape(RoundedRectangle(cornerRadius: 8))
-            .overlay {
-                RoundedRectangle(cornerRadius: 8).strokeBorder(form.headerDropTargeted ? Color.accentColor : .clear, lineWidth: 3)
-            }
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel("Образец оформления TypeTune, область для перетаскивания изображения")
-            .onDrop(of: [.fileURL, .tiff], isTargeted: $form.headerDropTargeted, perform: acceptHeaderImage)
-            Text("Перетащите изображение на образец. Цвет, изображение и светлая надпись сохраняются; крупная шапка не занимает место в настройках.")
-                .font(.caption).foregroundStyle(.secondary)
-        }
     }
     private var general: some View {
         Form {
@@ -432,28 +349,6 @@ struct SettingsView: View {
         panel.directoryURL = URL(fileURLWithPath: "/Applications")
         if panel.runModal() == .OK, let url = panel.url, let id = Bundle(url: url)?.bundleIdentifier { addAutoApp(id) }
     }
-    private func acceptHeaderImage(_ providers: [NSItemProvider]) -> Bool {
-        if let provider = providers.first(where: { $0.canLoadObject(ofClass: NSURL.self) }) {
-            provider.loadObject(ofClass: NSURL.self) { value, _ in
-                let url = value as? URL
-                DispatchQueue.main.async {
-                    if let url { store.importHeaderImage(from: url) }
-                    else { store.lastStatus = "Не удалось прочитать изображение" }
-                }
-            }
-            return true
-        }
-        if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.tiff.identifier) }) {
-            provider.loadDataRepresentation(forTypeIdentifier: UTType.tiff.identifier) { data, _ in
-                DispatchQueue.main.async {
-                    if let data { store.importHeaderImage(data: data) }
-                    else { store.lastStatus = "Не удалось прочитать изображение" }
-                }
-            }
-            return true
-        }
-        return false
-    }
     private func chooseApp() {
         let panel = NSOpenPanel(); panel.allowedContentTypes = [.application]
         panel.directoryURL = URL(fileURLWithPath: "/Applications")
@@ -471,5 +366,4 @@ final class SettingsForm: ObservableObject {
     @Published var selectedApp: String?
     @Published var selectedAutoApp: String?
     @Published var selectedLearnedWord: String?
-    @Published var headerDropTargeted = false
 }

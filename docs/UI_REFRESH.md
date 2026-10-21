@@ -21,9 +21,7 @@ macOS 14+, Swift language mode v5. Пользователь выбрал А; р�
 
 ### Окно, шапка, баннеры и нижняя строка
 
-- [ ] Шесть разделов боковой панели (`SettingsSection`); все функции прежних четырёх вкладок доступны.
-- [ ] Заголовок/подзаголовок; цвет (`@AppStorage headerColor`), светлая надпись (`headerLightText`).
-- [ ] Изображение (`store.headerImage/headerImagePath`), drop fileURL/TIFF → `acceptHeaderImage` → `importHeaderImage`; индикатор `form.headerDropTargeted`.
+- [ ] Пять разделов боковой панели (`SettingsSection`); все функции прежних четырёх вкладок доступны.
 - [ ] Статус: `serviceStatus.title`, `running`, `recoveryRequired`.
 - [ ] Нет AX/мониторинга: `trusted/listening`, «Разрешить доступ» → `keyboard.requestPermission()`.
 - [ ] Ошибка чтения: `settingsStorageAvailable`; объяснение сохранности данных; разделы заблокированы.
@@ -55,7 +53,6 @@ macOS 14+, Swift language mode v5. Пользователь выбрал А; р�
 - [ ] Два Shift → `settings.shiftChordPause`.
 - [ ] ⌘⇧V → `settings.plainPaste`, экспериментальный статус.
 - [ ] Автозапуск → `SMAppService.mainApp.register/unregister`, readback `launchAtLogin`, ошибки и requiresApproval в `lastStatus`.
-- [ ] Тема → `@AppStorage theme`: system/light/dark; `preferredColorScheme`.
 - [ ] Палитра → `headerColor`: blue/green/violet/orange/neutral, прежние ключи и значения.
 - [ ] Контраст → `headerLightText`.
 - [ ] Выбрать изображение → `chooseHeaderImage()`, убрать → `resetHeaderImage()`; условные состояния отсутствия/ошибки/наличия.
@@ -236,3 +233,13 @@ Source-контракт проверяет прежние привязки и н
 сохранён. Меню назначается status item только на время отслеживания правого клика,
 чтобы AppKit не перехватывал обычный. Защита выхода при pending input неизменна.
 Native-проверка кликов NOT_RUN; пункт UI9 обновлён.
+
+### Удаление оформления — 2026-10-21
+
+По запросу пользователя удалены раздел «Оформление», выбор темы/цвета/контраста,
+образец шапки и загрузка/перетаскивание/сброс изображений. Осталось пять разделов.
+Приложение следует системной теме. Удалены также palette, drop-state и код загрузки,
+проверки и хранения изображений в Store. Прежние ключи defaults и пользовательские
+файлы не удаляются; они больше не читаются и не влияют на интерфейс.
+Исходный контракт сохранён как историческая база; guard явно исключает только
+снятые функции и фиксирует новый hash Store. Остальные защищённые файлы прежние.

@@ -20,7 +20,6 @@ enum SettingsRenderer {
         for theme in ["light", "dark"] {
             for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings", "buffering", "outstanding", "review-outstanding", "empty", "crowded", "snippets-unavailable"] {
                 defaults.removePersistentDomain(forName: suite)
-                defaults.set(theme, forKey: "theme")
                 if state == "settings" { defaults.set(Data("invalid".utf8), forKey: "settings.v1") }
                 let snippetsURL = temporary.appendingPathComponent("\(theme)-\(state).json")
                 if state == "snippets-unavailable" { try Data("invalid".utf8).write(to: snippetsURL) }
