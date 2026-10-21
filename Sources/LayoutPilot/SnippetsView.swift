@@ -10,6 +10,7 @@ struct SnippetsTab: View {
     @State private var query = ""
     @State private var editing: Snippet?
     @State private var deleting: Snippet?
+    @State private var selection: UUID?
 
     private var filtered: [Snippet] {
         let all = store.snippets.snippets
@@ -24,7 +25,6 @@ struct SnippetsTab: View {
                 Spacer()
                 Button("Импорт…") { importFile() }.disabled(!store.snippetsStorageAvailable)
                 Button("Экспорт…") { exportFile() }.disabled(store.snippets.snippets.isEmpty)
-                Button("Добавить") { editing = Snippet(abbreviation: "", text: "") }.disabled(!store.snippetsStorageAvailable)
             }
             Text("Сокращение заменяется текстом во всех приложениях. Со знаком в начале (;адр) — сразу, словом (спс) — после пробела. Срабатывает и в другой раскладке. ⌘⌥Z сразу после вставки возвращает сокращение.")
                 .font(.caption).foregroundStyle(.secondary)
@@ -36,18 +36,39 @@ struct SnippetsTab: View {
                     .font(.caption).foregroundStyle(.orange)
             }
             TextField("Поиск по сокращению и тексту", text: $query)
-            List(filtered) { snippet in
+            List(filtered, selection: $selection) { snippet in
                 HStack(spacing: 8) {
                     Toggle("", isOn: Binding(get: { snippet.enabled }, set: { store.setSnippet(snippet.id, enabled: $0) }))
-                        .labelsHidden().disabled(!store.snippetsStorageAvailable)
+                        .labelsHidden().accessibilityLabel("Включить сниппет " + snippet.abbreviation)
+                        .disabled(!store.snippetsStorageAvailable)
                     Text(snippet.abbreviation).font(.body.monospaced())
                     Image(systemName: "arrow.right").foregroundStyle(.secondary)
                     Text(Self.summary(snippet.text)).lineLimit(1).foregroundStyle(.secondary)
                     Spacer()
                     Text(snippet.trigger == .immediate ? "сразу" : "по пробелу").font(.caption).foregroundStyle(.secondary)
-                    Button("Изменить") { editing = snippet }.disabled(!store.snippetsStorageAvailable)
-                    Button("Удалить") { deleting = snippet }.disabled(!store.snippetsStorageAvailable)
-                }.accessibilityElement(children: .contain)
+                }.accessibilityElement(children: .contain).tag(snippet.id)
+            }.listStyle(.inset).accessibilityLabel("Сниппеты")
+            .overlay {
+                if filtered.isEmpty {
+                    VStack(spacing: 4) {
+                        Text(query.isEmpty ? "Нет сниппетов" : "Ничего не найдено").font(.headline)
+                        Text(query.isEmpty ? "Добавьте сокращение кнопкой «+»." : "Измените поисковый запрос.")
+                            .font(.caption).foregroundStyle(.secondary)
+                    }.allowsHitTesting(false)
+                }
+            }
+            HStack(spacing: 8) {
+                Button("Добавить", systemImage: "plus") { editing = Snippet(abbreviation: "", text: "") }
+                    .labelStyle(.iconOnly).help("Добавить сниппет").accessibilityLabel("Добавить сниппет")
+                    .disabled(!store.snippetsStorageAvailable)
+                Button("Изменить", systemImage: "pencil") { editing = selectedSnippet }
+                    .labelStyle(.iconOnly).help("Изменить сниппет").accessibilityLabel("Изменить сниппет")
+                    .disabled(!store.snippetsStorageAvailable || selectedSnippet == nil)
+                Button("Удалить", systemImage: "minus") { deleting = selectedSnippet }
+                    .labelStyle(.iconOnly).help("Удалить сниппет").accessibilityLabel("Удалить сниппет")
+                    .disabled(!store.snippetsStorageAvailable || selectedSnippet == nil)
+                Spacer()
+                Text("Всего: \(store.snippets.snippets.count)").font(.caption).foregroundStyle(.secondary)
             }
             Text("Сниппеты хранятся на диске без шифрования — не храните в них пароли.").font(.caption).foregroundStyle(.secondary)
         }
@@ -58,6 +79,8 @@ struct SnippetsTab: View {
             Button("Отмена", role: .cancel) {}
         } message: { snippet in Text(snippet.abbreviation) }
     }
+
+    private var selectedSnippet: Snippet? { filtered.first { $0.id == selection } }
 
     static func summary(_ text: String) -> String {
         let line = text.split(separator: "\n", omittingEmptySubsequences: false).first.map(String.init) ?? ""

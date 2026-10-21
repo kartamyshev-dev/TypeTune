@@ -317,20 +317,24 @@ struct SettingsView: View {
         }.formStyle(.grouped).controlSize(.small)
     }
     private var rules: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Former rules are snippets now; Settings.rules is derived from them.
-            SnippetsTab(store: store).frame(minHeight: 360)
-            Text("Исключения после отмены").font(.headline)
-            Text("Автоматически изменённое слово можно вернуть через ⌘⌥Z. После этого оно больше не меняется автоматически.")
-                .font(.caption).foregroundStyle(.secondary)
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(store.settings.learnedWords, id: \.self) { value in
-                        HStack { Text(value); Spacer(); Button("Снова исправлять") { store.settings.learnedWords.removeAll { $0 == value } } }
-                    }
-                }
-            }.frame(height: 100)
-        }.padding(18)
+        VStack(alignment: .leading, spacing: 16) {
+            SnippetsTab(store: store).frame(minHeight: 220)
+            GroupBox("Исключения после отмены") {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Автоматически изменённое слово можно вернуть через ⌘⌥Z. После этого оно больше не меняется автоматически.")
+                        .font(.caption).foregroundStyle(.secondary)
+                    List(store.settings.learnedWords, id: \.self, selection: $form.selectedLearnedWord) { value in
+                        Text(value).tag(value)
+                    }.frame(height: 70).overlay {
+                        if store.settings.learnedWords.isEmpty { Text("Нет исключений после отмены").foregroundStyle(.secondary) }
+                    }.accessibilityLabel("Исключения после отмены")
+                    Button("Снова исправлять", systemImage: "minus") {
+                        guard let value = form.selectedLearnedWord else { return }
+                        store.settings.learnedWords.removeAll { $0 == value }; form.selectedLearnedWord = nil
+                    }.help("Снова исправлять выбранное слово").disabled(form.selectedLearnedWord == nil)
+                }.padding(8)
+            }
+        }.padding(20).controlSize(.small)
     }
     private var lab: some View {
         ScrollView {
@@ -453,5 +457,6 @@ final class SettingsForm: ObservableObject {
     @Published var selectedWord: String?
     @Published var selectedApp: String?
     @Published var selectedAutoApp: String?
+    @Published var selectedLearnedWord: String?
     @Published var headerDropTargeted = false
 }
