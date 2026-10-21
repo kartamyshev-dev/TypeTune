@@ -9,6 +9,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     let store = Store()
     var keyboard: KeyboardService!
     var statusItem: NSStatusItem!
+    private var statusMenu = NSMenu()
     var window: NSWindow?
     var cancellables = Set<AnyCancellable>()
     /// The input source the flag shows. macOS may switch the source per application or
@@ -26,6 +27,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         keyboard = KeyboardService(store: store)
         keyboard.onRecoveryNeeded = { [weak self] in self?.showSettings() }
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem.button?.target = self
+        statusItem.button?.action = #selector(statusItemClicked)
+        statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
         rebuildMenu()
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(updateStatusItem),
             name: Notification.Name(kTISNotifySelectedKeyboardInputSourceChanged as String), object: nil)
@@ -65,17 +69,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         automatic.target = self; automatic.state = store.settings.paused ? .off : .on
         automatic.isEnabled = store.settingsStorageAvailable; menu.addItem(automatic)
         menu.addItem(.separator())
-        let settings = NSMenuItem(title: "Настройки…", action: #selector(showSettings), keyEquivalent: ",")
-        settings.target = self; menu.addItem(settings)
-        menu.addItem(.separator())
         let quit = NSMenuItem(title: "Выйти из TypeTune", action: #selector(quit), keyEquivalent: "q")
-        quit.target = self; menu.addItem(quit); statusItem.menu = menu
+        quit.target = self; menu.addItem(quit); statusMenu = menu
         updateStatusItem()
+    }
+    @objc func statusItemClicked() {
+        guard NSApp.currentEvent?.type == .rightMouseUp else {
+            showSettings(); return
+        }
+        // Attach only while tracking: a permanent menu intercepts the ordinary click.
+        statusItem.menu = statusMenu
+        defer { statusItem.menu = nil }
+        statusItem.button?.performClick(nil)
     }
     @objc func updateStatusItem() {
         shownSource = InputSources.identifier
         let layout = InputSources.language == .russian ? "Русская" : InputSources.language == .english ? "ABC" : shownSource
-        statusItem.menu?.item(withTag: 1001)?.title = "Раскладка: " + layout
+        statusMenu.item(withTag: 1001)?.title = "Раскладка: " + layout
         let flag = InputSources.language == .russian ? "🇷🇺" : (InputSources.language == .english ? "🇺🇸" : "🌐")
         let suffix = store.recoveryRequired || store.serviceStatus == .tapFailed ? " !" : (store.settings.paused ? " Ⅱ" : "")
         let title = NSMutableAttributedString(string: flag, attributes: [

@@ -1,5 +1,9 @@
 # Аналог Caramba Switcher Pro для macOS Apple Silicon
 
+Дополнение UI refresh, 2026-10-21: обычный клик по значку открывает основное окно,
+правый — короткое меню состояния, автоисправлений и выхода. GUI debug build и
+source-контракт прошли; native-проверка кликов ещё NOT_RUN.
+
 UI refresh, 2026-10-21: вариант А реализован в `ui-refresh`, исходники `01b42fc`,
 установлен локально. [Карта и границы проверки](UI_REFRESH.md),
 [evidence](../research/evidence/ui-implementation-2026-10-21/verification.json).
