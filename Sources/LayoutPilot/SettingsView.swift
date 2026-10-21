@@ -236,65 +236,11 @@ struct SettingsView: View {
     }
     private var general: some View {
         Form {
-            Section("Исправление текста") {
-                Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused)
-                Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
-                Toggle("Исправлять во всех приложениях", isOn: $store.universalInput)
-                if !store.universalInput { Text("Исправления выполняются только в TextEdit, Chrome и Codex, а в Terminal и Ghostty — через интеграцию с zsh.").font(.caption).foregroundStyle(.secondary) }
-                if store.universalInput { Text("Слово стирается и набирается заново. Где текст поля доступен, он сверяется перед правкой. Выделение, недоступное через Универсальный доступ, копируется через буфер обмена; его прежнее содержимое возвращается.").font(.caption).foregroundStyle(.secondary) }
-                Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
-                if store.earlyCorrection { Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.").font(.caption).foregroundStyle(.secondary) }
-                Toggle("Исправлять известные опечатки", isOn: $store.settings.typos)
-                Toggle("Восстанавливать «ё» в однозначных словах", isOn: $store.settings.yo)
-                Toggle("Расширять словарь средствами macOS", isOn: $store.useSystemDictionary)
-                Toggle("Звук при исправлении", isOn: $store.settings.sound)
-                HStack {
-                    Text(store.customSoundPath.isEmpty ? "Стандартный звук" : "Собственный звук")
-                    Spacer()
-                    Button("Выбрать звук…") { store.chooseSound() }
-                    if !store.customSoundPath.isEmpty { Button("Стандартный") { store.customSoundPath = "" } }
-                }
-            }
-            Section("Клавиши") {
-                HStack {
-                    Text("Текущая раскладка")
-                    Spacer()
-                    Button("ABC") { _ = InputSources.select(.english); keyboard.refresh() }
-                    Button("Русская") { _ = InputSources.select(.russian); keyboard.refresh() }
-                }
-                Toggle("Одиночный Shift — сменить раскладку", isOn: $store.settings.singleShift)
-                Text("Двойной Shift или ⌘⌥Space — преобразовать слово или выделение. ⌘⌥Z — отменить и запомнить исключение.")
-                    .font(.caption).foregroundStyle(.secondary)
-                Toggle("Одиночный Option — преобразовать слово или выделение", isOn: $store.settings.optionCorrection)
-                Toggle("Левый + правый Shift — пауза автоисправлений", isOn: $store.settings.shiftChordPause)
-                Toggle("⌘⇧V — вставить текст без форматирования (экспериментально)", isOn: $store.settings.plainPaste)
-            }
-            Section("Приложение") {
-                Toggle("Запускать при входе в систему", isOn: Binding(get: {
-                    store.launchAtLogin
-                }, set: { enabled in
-                    do {
-                        if enabled { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
-                        store.launchAtLogin = SMAppService.mainApp.status == .enabled
-                        store.lastStatus = SMAppService.mainApp.status == .requiresApproval ? "Подтвердите автозапуск в Системных настройках" : "Настройка автозапуска сохранена"
-                    } catch { store.lastStatus = "Не удалось изменить автозапуск: \(error.localizedDescription)" }
-                }))
-                Picker("Оформление", selection: $theme) {
-                    Text("Как в системе").tag("system"); Text("Светлое").tag("light"); Text("Тёмное").tag("dark")
-                }
-                Picker("Цвет заголовка", selection: headerPalette) {
-                    ForEach(HeaderPalette.allCases) { value in Text(value.title).tag(value) }
-                }
-                Toggle("Светлая надпись заголовка", isOn: $headerLightText)
-                HStack {
-                    Text(store.headerImage != nil ? "Изображение заголовка" :
-                        (store.headerImagePath.isEmpty ? "Однотонный фон" : "Изображение недоступно"))
-                    Spacer()
-                    Button("Выбрать изображение…") { store.chooseHeaderImage() }
-                    if !store.headerImagePath.isEmpty { Button("Убрать изображение") { store.resetHeaderImage() } }
-                }
-            }
-        }.formStyle(.grouped)
+            Section("Исправление текста") { correctionControls }
+            Section("Звук") { soundControls }
+            Section("Приложение") { startupControl }
+            Section { DisclosureGroup("Как выполняется исправление") { correctionExplanation } }
+        }.formStyle(.grouped).controlSize(.small)
     }
     private var exceptions: some View {
         ScrollView {
