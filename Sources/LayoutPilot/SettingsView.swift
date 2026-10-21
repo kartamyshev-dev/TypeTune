@@ -345,40 +345,44 @@ struct SettingsView: View {
         }.padding(20).controlSize(.small)
     }
     private var lab: some View {
-        ScrollView {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("Проверить преобразование").font(.headline)
-            Text("Это предварительный просмотр. Проверка ввода в других программах выполняется отдельно.").foregroundStyle(.secondary)
-            TextField("Текст для проверки", text: $form.sample)
-            HStack {
-                Button("Преобразовать раскладку") { form.preview = Layout.convert(form.sample, mapping: InputSources.mapping) }
-                Button("Проверить автоматическое правило") {
-                    form.preview = keyboard.decide(form.sample)?.replacement ?? "Без изменения"
+        Form {
+            Section("Проверить преобразование") {
+                Text("Это предварительный просмотр. Проверка ввода в других программах выполняется отдельно.")
+                    .font(.caption).foregroundStyle(.secondary)
+                TextField("Текст для проверки", text: $form.sample).textFieldStyle(.roundedBorder)
+                HStack {
+                    Button("Преобразовать раскладку") { form.preview = Layout.convert(form.sample, mapping: InputSources.mapping) }
+                    Button("Проверить автоматическое правило") {
+                        form.preview = keyboard.decide(form.sample)?.replacement ?? "Без изменения"
+                    }
+                }
+                Text(form.preview.isEmpty ? "Результат появится здесь" : form.preview).textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            Section("Подключение") {
+                LabeledContent("Раскладка", value: store.inputSource)
+                LabeledContent("Универсальный доступ", value: store.trusted ? "Разрешён" : "Не разрешён")
+                LabeledContent("Мониторинг ввода", value: store.listening ? "Разрешён" : "Не разрешён")
+                LabeledContent("Отправка клавиш", value: store.posting ? "Разрешена" : "Не разрешена")
+                LabeledContent("Обработчик клавиатуры", value: store.tapActive ? "Подключён" : "Не подключён")
+                LabeledContent("Последний отказ поля", value: store.lastContextFailure)
+            }
+            Section("Статистика") {
+                LabeledContent("Исправления", value: "\(store.corrected)")
+                statisticsSummary
+            }
+            Section("Диагностика") {
+                LabeledContent("Пропущенные операции", value: "\(store.skipped)")
+                LabeledContent("События клавиатуры в текущем сеансе", value: "\(store.keyEvents)")
+                Text("На этом Mac сохраняются только технические состояния и последние сбои (до трёх отчётов). Текст, сами нажатия и буфер обмена не записываются. Отчёты никуда не отправляются.")
+                    .font(.caption).foregroundStyle(.secondary)
+                HStack {
+                    Button("Обновить состояние") { keyboard.refresh() }
+                    Button("Повторить подключение") { keyboard.retryConnection() }
+                    Button("Сохранить отчёт…") { keyboard.saveDiagnosticReport() }
                 }
             }
-            Text(form.preview.isEmpty ? "Результат появится здесь" : form.preview).font(.title3).textSelection(.enabled)
-                .frame(maxWidth: .infinity, alignment: .leading).padding().background(.quaternary, in: RoundedRectangle(cornerRadius: 10))
-            Divider()
-            LabeledContent("Раскладка", value: store.inputSource)
-            LabeledContent("Универсальный доступ", value: store.trusted ? "Разрешён" : "Не разрешён")
-            LabeledContent("Мониторинг ввода", value: store.listening ? "Разрешён" : "Не разрешён")
-            LabeledContent("Отправка клавиш", value: store.posting ? "Разрешена" : "Не разрешена")
-            LabeledContent("Обработчик клавиатуры", value: store.tapActive ? "Подключён" : "Не подключён")
-            LabeledContent("Последний отказ поля", value: store.lastContextFailure)
-            LabeledContent("Исправления", value: "\(store.corrected)")
-            statisticsSummary
-            LabeledContent("Пропущенные операции", value: "\(store.skipped)")
-            LabeledContent("События клавиатуры в текущем сеансе", value: "\(store.keyEvents)")
-            Text("На этом Mac сохраняются только технические состояния и последние сбои (до трёх отчётов). Текст, сами нажатия и буфер обмена не записываются. Отчёты никуда не отправляются.")
-                .font(.caption).foregroundStyle(.secondary)
-            Spacer()
-            HStack {
-                Button("Обновить состояние") { keyboard.refresh() }
-                Button("Повторить подключение") { keyboard.retryConnection() }
-                Button("Сохранить отчёт…") { keyboard.saveDiagnosticReport() }
-            }
-        }.padding(18)
-        }
+        }.formStyle(.grouped).controlSize(.small)
     }
     private var statisticsSummary: some View {
         VStack(alignment: .leading, spacing: 8) {
