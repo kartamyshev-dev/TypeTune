@@ -1,0 +1,11 @@
+{
+  "source_commit": "40ae78923189c8efbecf75c706a0281bc1019eb2",
+  "installed_gui_sha256": "5bcbfddc736d9e2a77a2be42a337020dd9792350a5fc926c8506edf9207ad682",
+  "candidate_installed_manifest_equal": true,
+  "signature_verified": true,
+  "backup": "/Users/kartamyshev/git/TypeTune/research/private/ui-status-click-2026-10-21/TypeTune-before.app",
+  "debug_release_build": "PASS",
+  "source_contract": "PASS",
+  "native_clicks": "NOT_RUN; awaiting user permissions refresh; app left stopped",
+  "release_selftest": "1707/1707 offline invariants passed; 0 failures. No runtime input claim."
+}

@@ -2343,3 +2343,10 @@ Release собран один раз после финальных исходн�
 статус/раскладка, пауза, выход и защита незавершённого ввода сохранены.
 GUI debug build (SDK26.5), source-контракт и diff whitespace прошли.
 Native-проверка кликов NOT_RUN; старые результаты на этот код не переносятся.
+
+Код `40ae789` собран debug/release. Release CLI1707/1707. Установлен GUI
+`5bcbfddc736d9e2a77a2be42a337020dd9792350a5fc926c8506edf9207ad682`;
+подпись и полный manifest совпали. Прежний bundle сохранён в private evidence,
+snippets.json неизменён. Приложение штатно завершено и оставлено остановленным
+до обновления разрешений по §3 MAC_AGENT_GUIDE. Native clicks NOT_RUN.
+[Evidence](../research/evidence/ui-status-click-2026-10-21/verification.json).
