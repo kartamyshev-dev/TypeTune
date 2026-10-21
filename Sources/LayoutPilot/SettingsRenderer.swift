@@ -18,7 +18,7 @@ enum SettingsRenderer {
         app.setActivationPolicy(.prohibited)
         app.finishLaunching()
         for theme in ["light", "dark"] {
-            for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings"] {
+            for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings", "buffering", "outstanding", "review-outstanding"] {
                 defaults.removePersistentDomain(forName: suite)
                 defaults.set(theme, forKey: "theme")
                 if state == "settings" { defaults.set(Data("invalid".utf8), forKey: "settings.v1") }
@@ -34,14 +34,20 @@ enum SettingsRenderer {
                     state == "accessibility" ? .accessibilityDenied : state == "listening" ? .listeningDenied :
                     state == "recovery" ? .uncertainResult : .ready
                 store.inputSource = "com.apple.keylayout.ABC"
-                store.lastStatus = "Демонстрационные данные — обработчик не запущен"
-                if state == "recovery" {
+                store.lastStatus = "Исправлена раскладка"
+                if state == "recovery" || state == "review-outstanding" {
                     store.running = false
                     store.recoveryRequired = true
                     store.textReviewRequired = true
                     store.uncertainInput = 2
                     store.pendingInput = 4
                     store.bufferedEvents = 4
+                }
+                if state == "buffering" { store.bufferedEvents = 4 }
+                if state == "outstanding" || state == "review-outstanding" {
+                    store.running = false
+                    store.outstandingInput = 3
+                    if state == "outstanding" { store.serviceStatus = .recoveryPending }
                 }
                 if store.settingsStorageAvailable {
                     store.settings.excludedWords = ["пример"]

@@ -117,7 +117,7 @@ struct SettingsView: View {
     }
 
     @ViewBuilder private var safetyNotice: some View {
-        if !store.settingsStorageAvailable || !store.trusted || !store.listening || store.secure || store.recoveryRequired || store.outstandingInput > 0 {
+        if !store.settingsStorageAvailable || !store.trusted || !store.listening || store.secure || store.recoveryRequired || store.textReviewRequired || store.pendingInput > 0 || store.outstandingInput > 0 || store.bufferedEvents > 0 {
             VStack(alignment: .leading, spacing: 8) {
                 if !store.settingsStorageAvailable {
                     Label("Не удалось прочитать настройки", systemImage: "exclamationmark.triangle")
@@ -126,7 +126,7 @@ struct SettingsView: View {
                 if !store.trusted || !store.listening {
                     Label(!store.trusted ? "Нужен Универсальный доступ" : "Нужен Мониторинг ввода", systemImage: "hand.raised")
                     Text("Разрешите доступ в Системных настройках. Подключение проверяется автоматически.").font(.caption)
-                    Button("Разрешить доступ") { keyboard.requestPermission() }
+                    Button("Разрешить доступ") { keyboard.requestPermission() }.buttonStyle(.borderedProminent)
                 }
                 if store.secure {
                     Label("Защищённый ввод включён" + (store.secureInputOwner.map { " — его включило «\($0)»" } ?? ""), systemImage: "lock")
@@ -135,11 +135,12 @@ struct SettingsView: View {
                 if store.textReviewRequired {
                     Label("Результат последней операции не подтверждён", systemImage: "exclamationmark.triangle")
                     Text("Проверьте последнее изменённое поле. Повторная отправка не выполняется. Неподтверждённых событий: \(store.uncertainInput). Обработка приостановлена.").font(.caption)
-                    Button("Текст проверен — продолжить") { keyboard.confirmTextReviewed() }.disabled(store.outstandingInput > 0)
+                    Button("Текст проверен — продолжить") { keyboard.confirmTextReviewed() }
+                        .buttonStyle(.borderedProminent).disabled(store.outstandingInput > 0)
                 }
                 if store.pendingInput > 0 {
                     Text("Сохранено нажатий: \(store.pendingInput). Новый ввод проходит в активное окно. Для восстановления вернитесь в исходное поле и нажмите ⌘⌥R; текст и каретка должны совпадать.").font(.caption)
-                    Button("Отбросить сохранённые нажатия…") { keyboard.discardPendingInput() }
+                    Button("Отбросить сохранённые нажатия…", role: .destructive) { keyboard.discardPendingInput() }
                 }
                 if store.bufferedEvents > 0 { Text("Сохранено нажатий во время исправлений: \(store.bufferedEvents)").font(.caption) }
                 if store.outstandingInput > 0 { Text("Ожидается подтверждение доставки: \(store.outstandingInput)").font(.caption) }
@@ -147,7 +148,7 @@ struct SettingsView: View {
             .frame(maxWidth: .infinity, alignment: .leading).padding(14)
             .background(Color.orange.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.orange.opacity(0.25)))
-            .padding(.horizontal, 20).padding(.bottom, 8)
+            .padding(.horizontal, 20).padding(.bottom, 8).accessibilityElement(children: .contain)
         }
     }
     @ViewBuilder private var correctionControls: some View {
