@@ -184,15 +184,21 @@ struct SnippetEditorSheet: View {
                     ForEach(Array(messages.enumerated()), id: \.offset) { _, message in
                         Label(message, systemImage: "exclamationmark.circle").font(.caption).foregroundStyle(.red)
                     }
+                }
+            }.formStyle(.grouped).controlSize(.small)
+            Divider()
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    if let message = messages.first {
+                        Label(message, systemImage: "exclamationmark.circle").font(.caption).foregroundStyle(.red)
+                            .help("Полный список ошибок — в предпросмотре")
+                    }
                     if draft.trigger == .immediate, draft.abbreviation.first.map({ $0.isLetter || $0.isNumber }) == true {
                         Label("Сокращение похоже на слово и сработает сразу после набора, даже внутри обычного текста.", systemImage: "exclamationmark.triangle")
                             .font(.caption).foregroundStyle(.orange)
                     }
-                }
-            }.formStyle(.grouped).controlSize(.small)
-            Divider()
-            HStack {
-                Spacer()
+                }.lineLimit(2).frame(maxWidth: .infinity, alignment: .leading)
+                Spacer(minLength: 0)
                 Button("Отмена") { dismiss() }.keyboardShortcut(.cancelAction)
                 Button("Сохранить") { if store.saveSnippet(draft).isEmpty { dismiss() } }
                     .keyboardShortcut(.defaultAction).disabled(!issues.isEmpty)
