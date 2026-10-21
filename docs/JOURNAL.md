@@ -2363,3 +2363,11 @@ native-проверка нового поведения значка остаё�
 разделы, настройки и native-input исходники сохранены. Source guard обновлён
 с явным исключением только снятых функций и новым hash Store; исходный baseline
 не переписан. GUI debug build и source guard прошли; renderer проверяется отдельно.
+
+Итог удаления оформления: код `46b0b04`, debug/release build, source guard,
+136 offline PNG и release CLI1707/1707 прошли. Основной light-снимок просмотрен:
+пять разделов, без оформления. Native-взаимодействия NOT_RUN. Установлен GUI
+`7c3a7866d3ca74ad14d084ba641f2135815016042509de0ed39467568a8f5d20`;
+подпись и manifest совпали, предыдущий bundle сохранён, snippets.json неизменён.
+Приложение штатно завершено и оставлено остановленным до TCC update по §3.
+[Evidence](../research/evidence/ui-no-appearance-2026-10-21/verification.json).
