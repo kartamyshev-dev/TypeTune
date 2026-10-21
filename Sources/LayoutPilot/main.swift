@@ -18,6 +18,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var sourceTimer: Timer?
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
+        configureApplicationMenu()
         // Decode the ~60k-word lexicon and its prefix index off the main thread, so the
         // first keystroke does not pay the one-time load (static lets are initialized once).
         DispatchQueue.global(qos: .utility).async { _ = Lexicon.bundled; _ = PartialLayoutDetector.bundled }
@@ -57,10 +58,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         guard statusItem != nil else { return }
         let menu = NSMenu()
         let title = NSMenuItem(title: "TypeTune · " + store.serviceStatus.title.lowercased(), action: nil, keyEquivalent: "")
-        menu.addItem(title); menu.addItem(.separator())
+        menu.addItem(title)
+        let layout = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+        layout.tag = 1001; menu.addItem(layout); menu.addItem(.separator())
         let automatic = NSMenuItem(title: "Автоисправления", action: #selector(toggleAutomatic), keyEquivalent: "")
         automatic.target = self; automatic.state = store.settings.paused ? .off : .on
         automatic.isEnabled = store.settingsStorageAvailable; menu.addItem(automatic)
+        menu.addItem(.separator())
         let settings = NSMenuItem(title: "Настройки…", action: #selector(showSettings), keyEquivalent: ",")
         settings.target = self; menu.addItem(settings)
         menu.addItem(.separator())
@@ -70,6 +74,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     @objc func updateStatusItem() {
         shownSource = InputSources.identifier
+        let layout = InputSources.language == .russian ? "Русская" : InputSources.language == .english ? "ABC" : shownSource
+        statusItem.menu?.item(withTag: 1001)?.title = "Раскладка: " + layout
         let flag = InputSources.language == .russian ? "🇷🇺" : (InputSources.language == .english ? "🇺🇸" : "🌐")
         let suffix = store.recoveryRequired || store.serviceStatus == .tapFailed ? " !" : (store.settings.paused ? " Ⅱ" : "")
         let title = NSMutableAttributedString(string: flag, attributes: [
@@ -80,6 +86,33 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let owner = store.secure ? store.secureInputOwner.map { "\nВключило: \($0)" } ?? "" : ""
         statusItem.button?.toolTip = "TypeTune · \(InputSources.identifier)\n\(store.serviceStatus.message)" + owner
     }
+    private func configureApplicationMenu() {
+        let bar = NSMenu()
+        let application = NSMenu(title: "TypeTune")
+        let appItem = NSMenuItem(title: "TypeTune", action: nil, keyEquivalent: "")
+        appItem.submenu = application; bar.addItem(appItem)
+        application.addItem(withTitle: "Настройки…", action: #selector(showSettings), keyEquivalent: ",").target = self
+        application.addItem(.separator())
+        application.addItem(withTitle: "Выйти из TypeTune", action: #selector(quit), keyEquivalent: "q").target = self
+        let edit = NSMenu(title: "Правка")
+        let editItem = NSMenuItem(title: "Правка", action: nil, keyEquivalent: "")
+        editItem.submenu = edit; bar.addItem(editItem)
+        edit.addItem(withTitle: "Отменить", action: Selector(("undo:")), keyEquivalent: "z")
+        let redo = edit.addItem(withTitle: "Повторить", action: Selector(("redo:")), keyEquivalent: "z")
+        redo.keyEquivalentModifierMask = [.command, .shift]
+        edit.addItem(.separator())
+        edit.addItem(withTitle: "Вырезать", action: #selector(NSText.cut(_:)), keyEquivalent: "x")
+        edit.addItem(withTitle: "Копировать", action: #selector(NSText.copy(_:)), keyEquivalent: "c")
+        edit.addItem(withTitle: "Вставить", action: #selector(NSText.paste(_:)), keyEquivalent: "v")
+        edit.addItem(withTitle: "Выбрать всё", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a")
+        let windows = NSMenu(title: "Окно")
+        let windowItem = NSMenuItem(title: "Окно", action: nil, keyEquivalent: "")
+        windowItem.submenu = windows; bar.addItem(windowItem)
+        windows.addItem(withTitle: "Закрыть", action: #selector(NSWindow.performClose(_:)), keyEquivalent: "w")
+        windows.addItem(withTitle: "Свернуть", action: #selector(NSWindow.performMiniaturize(_:)), keyEquivalent: "m")
+        NSApp.mainMenu = bar; NSApp.windowsMenu = windows
+    }
+
     @objc func toggleAutomatic() {
         guard store.settingsStorageAvailable else { return }
         store.settings.paused.toggle(); rebuildMenu()

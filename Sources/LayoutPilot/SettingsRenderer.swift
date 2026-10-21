@@ -112,6 +112,7 @@ enum SettingsRenderer {
         defer { window.orderOut(nil); window.close() }
         hosting.layoutSubtreeIfNeeded()
         RunLoop.current.run(until: Date().addingTimeInterval(0.08))
+        precondition(window.frame.maxX < 0 && window.frame.maxY < 0, "Окно отрисовки должно оставаться за экраном")
         window.displayIfNeeded()
         hosting.displayIgnoringOpacity(hosting.bounds)
         guard let bitmap = hosting.bitmapImageRepForCachingDisplay(in: hosting.bounds) else {
