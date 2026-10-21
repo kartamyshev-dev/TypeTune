@@ -217,10 +217,13 @@ struct SettingsView: View {
     private var headerPreview: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Image(systemName: "keyboard")
-                Text("TypeTune").font(.headline)
+                Image(systemName: "keyboard").accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("TypeTune").font(.headline)
+                    Text("Чтобы мысли не спотыкались о клавиши").font(.caption)
+                }
                 Spacer()
-                Text("Работает").font(.caption)
+                Text(store.serviceStatus.title).font(.caption)
             }
             .foregroundStyle(headerLightText ? Color.white : Color.black)
             .padding(14).background {
@@ -229,6 +232,11 @@ struct SettingsView: View {
                     if let image = store.headerImage { Image(nsImage: image).resizable().scaledToFill() }
                 }
             }.clipShape(RoundedRectangle(cornerRadius: 8))
+            .overlay {
+                RoundedRectangle(cornerRadius: 8).strokeBorder(form.headerDropTargeted ? Color.accentColor : .clear, lineWidth: 3)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Образец оформления TypeTune, область для перетаскивания изображения")
             .onDrop(of: [.fileURL, .tiff], isTargeted: $form.headerDropTargeted, perform: acceptHeaderImage)
             Text("Перетащите изображение на образец. Цвет, изображение и светлая надпись сохраняются; крупная шапка не занимает место в настройках.")
                 .font(.caption).foregroundStyle(.secondary)
