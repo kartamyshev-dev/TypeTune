@@ -31,8 +31,8 @@ GUI/CLI build, CLI selftest debug/release1707/1707, корпус4420/4420 и162 
 Текущая установка: код `40ae789`, GUI SHA-256
 `5bcbfddc736d9e2a77a2be42a337020dd9792350a5fc926c8506edf9207ad682`.
 Подпись и полный manifest кандидата/установки совпали, предыдущая сборка сохранена.
-Приложение остановлено до обновления пользователем только его TCC-разрешений (§3
-MAC_AGENT_GUIDE). Debug/release build, release CLI selftest1707/1707 и source-контракт
+Пользователь сообщил об обновлении разрешений; приложение запущено обычным способом,
+наблюдался один экземпляр PID59516. Debug/release build, release CLI selftest1707/1707 и source-контракт
 прошли. Сниппеты неизменны. Native-клики на этом бинарнике NOT_RUN.
 [Установка](../research/evidence/ui-status-click-2026-10-21/verification.json).
 Следующее: [ручная проверка UI1–UI11](MAC_MANUAL_CHECK.md) и согласованные проверки

@@ -6,6 +6,10 @@
   "backup": "/Users/kartamyshev/git/TypeTune/research/private/ui-status-click-2026-10-21/TypeTune-before.app",
   "debug_release_build": "PASS",
   "source_contract": "PASS",
-  "native_clicks": "NOT_RUN; awaiting user permissions refresh; app left stopped",
-  "release_selftest": "1707/1707 offline invariants passed; 0 failures. No runtime input claim."
+  "native_clicks": "NOT_RUN",
+  "release_selftest": "1707/1707 offline invariants passed; 0 failures. No runtime input claim.",
+  "user_reported_permissions_updated": true,
+  "launch": "Started via open /Applications/TypeTune.app",
+  "observed_pid": 59516,
+  "observed_single_switcher": true
 }
