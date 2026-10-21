@@ -1,5 +1,11 @@
 # Аналог Caramba Switcher Pro для macOS Apple Silicon
 
+UI refresh, 2026-10-21: вариант А реализован в `ui-refresh`, исходники `01b42fc`,
+установлен локально. [Карта и границы проверки](UI_REFRESH.md),
+[evidence](../research/evidence/ui-implementation-2026-10-21/verification.json).
+Source/build/offline прошли; окно открыто, user manual UI1–UI11 ещё NOT_RUN.
+Прежняя native-приёмка на этот бинарник не переносится.
+
 Текущая короткая native-проверка кандидата `bdecb08f`: [отчёт](MAC_CHROME_CARET_FIX_2026-10-18.md).
 Chrome 48/48, в том числе single-auto 40/40; причина single-field insertion-readback
 исправлена и покрыта offline red/green. Apple/10 мс/⌘⌥R на этом бинарнике не повторены.

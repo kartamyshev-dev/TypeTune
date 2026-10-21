@@ -1,0 +1,16 @@
+{
+  "source_commit": "01b42fc01602c555714675318cbcd51ab8d196b4",
+  "kind": "installation identity",
+  "installed": "/Applications/TypeTune.app",
+  "candidate_installed_file_manifest_equal": true,
+  "signature_verified": true,
+  "installed_gui_sha256": "163f9db1375843275089b78d63241eafe215c941c994f3ce10c8779c7133c3f5",
+  "previous_gui_sha256": "0109fb16c565b7c545a889c282c79018310ab28265f7e4f2bf4ce8ef310394ba",
+  "previous_backup": "/Users/kartamyshev/git/TypeTune/research/private/ui-2026-10-21/implementation/TypeTune-replaced.app",
+  "native_user_manual": "NOT_RUN",
+  "user_reported_permissions_updated": true,
+  "observed_process_pid": 55343,
+  "observed_single_switcher": true,
+  "window_capture": "research/private/ui-2026-10-21/implementation/installed-settings.png",
+  "window_observation": "Settings window opened; six-section sidebar and status Работает visible; no interaction or input test"
+}
