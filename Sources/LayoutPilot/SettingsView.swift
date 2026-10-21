@@ -31,18 +31,20 @@ private enum HeaderPalette: String, CaseIterable, Identifiable {
 struct SettingsView: View {
     @ObservedObject var store: Store
     let keyboard: KeyboardService
-    @ObservedObject private var form = SettingsForm()
+    @StateObject private var form = SettingsForm()
+    @State private var selection: SettingsSection? = .main
     @AppStorage("theme") private var theme = "system"
     @AppStorage("headerColor") private var headerColorName = HeaderPalette.blue.rawValue
     @AppStorage("headerLightText") private var headerLightText = true
+
     init(store: Store, keyboard: KeyboardService) {
         self.store = store
         self.keyboard = keyboard
     }
     #if DEBUG
-    init(store: Store, keyboard: KeyboardService, renderTab: Int) {
+    init(store: Store, keyboard: KeyboardService, renderSection: SettingsSection) {
         self.init(store: store, keyboard: keyboard)
-        form.tab = renderTab
+        _selection = State(initialValue: renderSection)
     }
     #endif
     private var headerPalette: Binding<HeaderPalette> {
@@ -50,152 +52,106 @@ struct SettingsView: View {
                 set: { headerColorName = $0.rawValue })
     }
     private var headerColor: Color { (HeaderPalette(rawValue: headerColorName) ?? .blue).color }
-    #if DEBUG
-    private var conceptSection: ConceptSection?
-    private var concept: SettingsConcept = .system
-    init(store: Store, keyboard: KeyboardService, conceptSection: ConceptSection, concept: SettingsConcept) {
-        self.init(store: store, keyboard: keyboard)
-        self.conceptSection = conceptSection
-        self.concept = concept
-    }
-    #endif
-    @ViewBuilder var body: some View {
-        #if DEBUG
-        if let conceptSection { conceptContent(conceptSection) }
-        else { currentBody }
-        #else
-        currentBody
-        #endif
-    }
-    private var currentBody: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 12) {
-                Image(systemName: "keyboard.badge.ellipsis").font(.system(size: 34)).foregroundStyle(headerLightText ? Color.white : Color.black)
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("TypeTune").font(.title2.bold()).foregroundStyle(headerLightText ? Color.white : Color.black)
-                    Text("Чтобы мысли не спотыкались о клавиши").foregroundStyle((headerLightText ? Color.white : Color.black).opacity(0.85))
-                }
-                Spacer()
-                Label(store.serviceStatus.title, systemImage: store.running && !store.recoveryRequired ? "checkmark.circle.fill" : "pause.circle")
-                    .foregroundStyle(store.running && !store.recoveryRequired ? .green : .orange)
-                    .padding(.horizontal, 10).padding(.vertical, 6).background(.background, in: Capsule())
-            }.padding(22).background {
-                ZStack {
-                    headerColor.opacity(0.85)
-                    if let image = store.headerImage { Image(nsImage: image).resizable().scaledToFill() }
-                }
-            }.clipped()
-            .overlay(alignment: .bottom) {
-                if form.headerDropTargeted { Rectangle().fill(Color.accentColor).frame(height: 3) }
+
+    var body: some View {
+        HSplitView {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("TypeTune").font(.headline).padding(.horizontal, 18).padding(.top, 22).padding(.bottom, 16)
+                List(SettingsSection.allCases, selection: $selection) { section in
+                    Label {
+                        Text(section.title)
+                    } icon: {
+                        Image(systemName: section.symbol).foregroundStyle(Color.secondary).frame(width: 20)
+                    }.padding(.vertical, 5).tag(section)
+                }.listStyle(.sidebar).accessibilityLabel("Разделы настроек")
+                Divider()
+                VStack(alignment: .leading, spacing: 7) {
+                    Label(store.serviceStatus.title, systemImage: store.running && !store.recoveryRequired ? "checkmark.circle.fill" : "pause.circle")
+                        .font(.caption).foregroundStyle(store.running && !store.recoveryRequired ? Color.green : Color.secondary)
+                    Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev") · экспериментальная")
+                        .font(.caption2).foregroundStyle(.secondary)
+                    Button("Выйти") { NSApp.terminate(nil) }.controlSize(.small)
+                }.padding(16)
             }
-            .onDrop(of: [.fileURL, .tiff], isTargeted: $form.headerDropTargeted, perform: acceptHeaderImage)
-            Divider()
-            if !store.trusted || !store.listening {
+            .frame(minWidth: 188, idealWidth: 204, maxWidth: 220)
+            .background(Color(nsColor: .windowBackgroundColor))
+            VStack(spacing: 0) {
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text(!store.trusted ? "Нужен Универсальный доступ" : "Нужен Мониторинг ввода").font(.headline)
-                        Text("Разрешите доступ в Системных настройках. Подключение проверяется автоматически.").font(.caption)
-                    }
+                    Text((selection ?? .main).title).font(.title2.bold())
                     Spacer()
-                    Button("Разрешить доступ") { keyboard.requestPermission() }.buttonStyle(.borderedProminent)
-                }.padding().background(.orange.opacity(0.10))
-            }
-            if !store.settingsStorageAvailable {
-                Text("Не удалось прочитать настройки. Обработка и изменение настроек остановлены; исходные данные сохранены. Восстановите настройки из резервной копии и перезапустите приложение.")
-                    .font(.caption).padding(10).background(.orange.opacity(0.10))
-            }
-            if store.secure {
-                Label("Защищённый ввод включён" + (store.secureInputOwner.map { " — его включило «\($0)»" } ?? "") +
-                      ". Исправления приостановлены, пока он не выключится. Обычно его включают поле пароля, менеджер паролей или «Защищённая клавиатура» в Terminal.",
-                      systemImage: "lock.fill").padding(10)
-            }
-            if store.bufferedEvents > 0 {
-                Text("Сохранено нажатий во время исправлений: \(store.bufferedEvents)").font(.caption).padding(4)
-            }
-            if store.recoveryRequired || store.outstandingInput > 0 {
-                VStack(alignment: .leading, spacing: 6) {
-                    if store.textReviewRequired {
-                        Text("Результат последней операции не подтверждён. Проверьте последнее изменённое поле. Повторная отправка не выполняется.").font(.caption)
-                        if store.uncertainInput > 0 { Text("Неподтверждённых событий: \(store.uncertainInput)").font(.caption) }
-                        Button("Текст проверен — продолжить") { keyboard.confirmTextReviewed() }
-                            .disabled(store.outstandingInput > 0)
+                }.padding(.horizontal, 24).padding(.vertical, 22)
+                safetyNotice
+                sectionContent
+                    .disabled(!store.settingsStorageAvailable)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).clipped()
+                Divider()
+                HStack {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(store.serviceStatus.message).font(.caption).lineLimit(2)
+                        Text("Последнее событие: " + store.lastStatus).font(.caption2).foregroundStyle(.secondary).lineLimit(2)
                     }
-                    if store.pendingInput > 0 {
-                        Text("Сохранено нажатий: \(store.pendingInput). Новый ввод проходит в активное окно. Для восстановления вернитесь в исходное поле и нажмите ⌘⌥R; текст и каретка должны совпадать.").font(.caption)
-                        Button("Отбросить сохранённые нажатия…") { keyboard.discardPendingInput() }
-                    }
-                    if store.outstandingInput > 0 { Text("Ожидается подтверждение доставки: \(store.outstandingInput)").font(.caption) }
-                }.padding(10)
+                    Spacer(minLength: 12)
+                    Button("Сохранить отчёт…") { keyboard.saveDiagnosticReport() }.controlSize(.small)
+                }.padding(.horizontal, 20).padding(.vertical, 12)
             }
-            TabView(selection: $form.tab) {
-                general.tabItem { Label("Основное", systemImage: "keyboard") }.tag(0)
-                exceptions.tabItem { Label("Исключения", systemImage: "hand.raised") }.tag(1)
-                rules.tabItem { Label("Сниппеты", systemImage: "text.badge.plus") }.tag(2)
-                lab.tabItem { Label("Проверка", systemImage: "checkmark.circle") }.tag(3)
-            }.padding(.horizontal, 16).padding(.top, 12).disabled(!store.settingsStorageAvailable)
-            Divider()
-            HStack {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(store.serviceStatus.message).font(.caption).lineLimit(2)
-                    Text("Последнее событие: " + store.lastStatus).font(.caption2).foregroundStyle(.secondary).lineLimit(2)
-                }
-                Spacer()
-                Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev") · экспериментальная").font(.caption2).foregroundStyle(.secondary)
-                Button("Выйти") { NSApp.terminate(nil) }.font(.caption)
-            }.padding(14)
+            .frame(minWidth: 680, maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(nsColor: .controlBackgroundColor))
         }
-        .frame(width: 740, height: 690)
+        .frame(minWidth: 920, idealWidth: 1000, minHeight: 640, idealHeight: 740)
         .preferredColorScheme(theme == "dark" ? .dark : theme == "light" ? .light : nil)
     }
 
-    #if DEBUG
-    @ViewBuilder private func conceptContent(_ section: ConceptSection) -> some View {
-        switch section {
-        case .main:
-            if concept == .compact {
-                VStack(alignment: .leading) {
-                    Form {
-                        Section("Исправление текста") { conceptCorrectionControls }
-                        DisclosureGroup("Как выполняется исправление") { conceptCorrectionExplanation }
-                    }.formStyle(.columns).toggleStyle(.checkbox).controlSize(.small)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 0)
-                }.padding(24)
-            } else {
-                Form {
-                    Section("Исправление текста") { conceptCorrectionControls }
-                    if concept == .progressive {
-                        Section {
-                            DisclosureGroup("Клавиши и сочетания") { conceptKeyControls }
-                            DisclosureGroup("Звук и запуск приложения") { conceptSoundControls; conceptStartupControl }
-                            DisclosureGroup("Оформление") { conceptAppearanceControls; conceptHeaderPreview }
-                            DisclosureGroup("Как выполняется исправление") { conceptCorrectionExplanation }
-                        }
-                    } else {
-                        Section("Звук") { conceptSoundControls }
-                        Section("Приложение") { conceptStartupControl }
-                        Section { DisclosureGroup("Как выполняется исправление") { conceptCorrectionExplanation } }
-                    }
-                }.formStyle(.grouped).controlSize(.small)
-            }
-        case .keys:
-            Form { Section("Клавиши") { conceptKeyControls } }.formStyle(.grouped).controlSize(.small)
-        case .sound:
-            Form { Section("Звук") { conceptSoundControls } }.formStyle(.grouped).controlSize(.small)
-        case .application:
-            Form { Section("Приложение") { conceptStartupControl } }.formStyle(.grouped).controlSize(.small)
-        case .appearance:
-            Form {
-                Section("Оформление") { conceptAppearanceControls }
-                Section("Предпросмотр компактной шапки") { conceptHeaderPreview }
-            }.formStyle(.grouped).controlSize(.small)
+    @ViewBuilder private var sectionContent: some View {
+        switch selection ?? .main {
+        case .main: general
+        case .keys: Form { Section("Клавиши") { keyControls } }.formStyle(.grouped).controlSize(.small)
         case .exceptions: exceptions
         case .snippets: rules
+        case .appearance:
+            Form {
+                Section("Оформление") { appearanceControls }
+                Section("Предпросмотр компактной шапки") { headerPreview }
+            }.formStyle(.grouped).controlSize(.small)
         case .diagnostics: lab
         }
     }
-    @ViewBuilder private var conceptCorrectionControls: some View {
-        if concept != .progressive { Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused) }
+
+    @ViewBuilder private var safetyNotice: some View {
+        if !store.settingsStorageAvailable || !store.trusted || !store.listening || store.secure || store.recoveryRequired || store.outstandingInput > 0 {
+            VStack(alignment: .leading, spacing: 8) {
+                if !store.settingsStorageAvailable {
+                    Label("Не удалось прочитать настройки", systemImage: "exclamationmark.triangle")
+                    Text("Обработка и изменение настроек остановлены; исходные данные сохранены. Восстановите настройки из резервной копии и перезапустите приложение.").font(.caption)
+                }
+                if !store.trusted || !store.listening {
+                    Label(!store.trusted ? "Нужен Универсальный доступ" : "Нужен Мониторинг ввода", systemImage: "hand.raised")
+                    Text("Разрешите доступ в Системных настройках. Подключение проверяется автоматически.").font(.caption)
+                    Button("Разрешить доступ") { keyboard.requestPermission() }
+                }
+                if store.secure {
+                    Label("Защищённый ввод включён" + (store.secureInputOwner.map { " — его включило «\($0)»" } ?? ""), systemImage: "lock")
+                    Text("Исправления приостановлены, пока он не выключится. Обычно его включают поле пароля, менеджер паролей или «Защищённая клавиатура» в Terminal.").font(.caption)
+                }
+                if store.textReviewRequired {
+                    Label("Результат последней операции не подтверждён", systemImage: "exclamationmark.triangle")
+                    Text("Проверьте последнее изменённое поле. Повторная отправка не выполняется. Неподтверждённых событий: \(store.uncertainInput). Обработка приостановлена.").font(.caption)
+                    Button("Текст проверен — продолжить") { keyboard.confirmTextReviewed() }.disabled(store.outstandingInput > 0)
+                }
+                if store.pendingInput > 0 {
+                    Text("Сохранено нажатий: \(store.pendingInput). Новый ввод проходит в активное окно. Для восстановления вернитесь в исходное поле и нажмите ⌘⌥R; текст и каретка должны совпадать.").font(.caption)
+                    Button("Отбросить сохранённые нажатия…") { keyboard.discardPendingInput() }
+                }
+                if store.bufferedEvents > 0 { Text("Сохранено нажатий во время исправлений: \(store.bufferedEvents)").font(.caption) }
+                if store.outstandingInput > 0 { Text("Ожидается подтверждение доставки: \(store.outstandingInput)").font(.caption) }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading).padding(14)
+            .background(Color.orange.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
+            .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.orange.opacity(0.25)))
+            .padding(.horizontal, 20).padding(.bottom, 8)
+        }
+    }
+    @ViewBuilder private var correctionControls: some View {
+        Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused)
         Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
         Toggle("Исправлять во всех приложениях", isOn: $store.universalInput)
         Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
@@ -204,11 +160,11 @@ struct SettingsView: View {
         Toggle("Восстанавливать «ё» в однозначных словах", isOn: $store.settings.yo)
         Toggle("Расширять словарь средствами macOS", isOn: $store.useSystemDictionary)
     }
-    @ViewBuilder private var conceptCorrectionExplanation: some View {
+    @ViewBuilder private var correctionExplanation: some View {
         if !store.universalInput { Text("Исправления выполняются только в TextEdit, Chrome и Codex, а в Terminal и Ghostty — через интеграцию с zsh.").font(.caption).foregroundStyle(.secondary) }
         if store.universalInput { Text("Слово стирается и набирается заново. Где текст поля доступен, он сверяется перед правкой. Выделение, недоступное через Универсальный доступ, копируется через буфер обмена; его прежнее содержимое возвращается.").font(.caption).foregroundStyle(.secondary) }
     }
-    @ViewBuilder private var conceptKeyControls: some View {
+    @ViewBuilder private var keyControls: some View {
         HStack {
             Text("Текущая раскладка")
             Spacer()
@@ -222,7 +178,7 @@ struct SettingsView: View {
         Toggle("Левый + правый Shift — пауза автоисправлений", isOn: $store.settings.shiftChordPause)
         Toggle("⌘⇧V — вставить текст без форматирования (экспериментально)", isOn: $store.settings.plainPaste)
     }
-    @ViewBuilder private var conceptSoundControls: some View {
+    @ViewBuilder private var soundControls: some View {
         Toggle("Звук при исправлении", isOn: $store.settings.sound)
         HStack {
             Text(store.customSoundPath.isEmpty ? "Стандартный звук" : "Собственный звук")
@@ -231,7 +187,7 @@ struct SettingsView: View {
             if !store.customSoundPath.isEmpty { Button("Стандартный") { store.customSoundPath = "" } }
         }
     }
-    @ViewBuilder private var conceptStartupControl: some View {
+    @ViewBuilder private var startupControl: some View {
         Toggle("Запускать при входе в систему", isOn: Binding(get: {
             store.launchAtLogin
         }, set: { enabled in
@@ -242,7 +198,7 @@ struct SettingsView: View {
             } catch { store.lastStatus = "Не удалось изменить автозапуск: \(error.localizedDescription)" }
         }))
     }
-    @ViewBuilder private var conceptAppearanceControls: some View {
+    @ViewBuilder private var appearanceControls: some View {
         Picker("Оформление", selection: $theme) {
             Text("Как в системе").tag("system"); Text("Светлое").tag("light"); Text("Тёмное").tag("dark")
         }
@@ -258,7 +214,7 @@ struct SettingsView: View {
             if !store.headerImagePath.isEmpty { Button("Убрать изображение") { store.resetHeaderImage() } }
         }
     }
-    private var conceptHeaderPreview: some View {
+    private var headerPreview: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "keyboard")
@@ -278,8 +234,6 @@ struct SettingsView: View {
                 .font(.caption).foregroundStyle(.secondary)
         }
     }
-    #endif
-
     private var general: some View {
         Form {
             Section("Исправление текста") {
@@ -525,6 +479,5 @@ final class SettingsForm: ObservableObject {
     @Published var autoBundleID = ""
     @Published var sample = "ghbdtn"
     @Published var preview = ""
-    @Published var tab = 0
     @Published var headerDropTargeted = false
 }

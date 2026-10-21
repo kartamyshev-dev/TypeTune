@@ -50,26 +50,16 @@ enum SettingsRenderer {
                     store.settings.learnedWords = ["тест"]
                     _ = store.saveSnippet(Snippet(abbreviation: ";адр", text: "Пример адреса"))
                 }
-                for tab in 0..<4 {
-                    let view = SettingsView(store: store, keyboard: keyboard, renderTab: tab).defaultAppStorage(defaults)
-                    try snapshot(view, size: NSSize(width: 740, height: 690), theme: theme,
-                                 to: directory.appendingPathComponent("\(theme)-\(state)-tab\(tab).png"))
+                for section in SettingsSection.allCases {
+                    let view = SettingsView(store: store, keyboard: keyboard, renderSection: section).defaultAppStorage(defaults)
+                    try snapshot(view, size: NSSize(width: 1000, height: 740), theme: theme,
+                                 to: directory.appendingPathComponent("\(theme)-\(state)-\(section.rawValue).png"))
                 }
                 if state == "ready" {
                     let editor = SnippetEditorSheet(store: store, original: Snippet(abbreviation: ";спс", text: "Спасибо! {{курсор}}"))
                         .defaultAppStorage(defaults)
                     try snapshot(editor, size: NSSize(width: 636, height: 620), theme: theme,
                                  to: directory.appendingPathComponent("\(theme)-snippet-editor.png"))
-                }
-                store.lastStatus = "Последнее событие: исправлена раскладка"
-                for concept in SettingsConcept.allCases {
-                    let sections: [ConceptSection] = state == "ready" ? concept.sections : [.main]
-                    for section in sections {
-                        let view = SettingsConceptView(store: store, keyboard: keyboard, concept: concept, section: section)
-                            .defaultAppStorage(defaults)
-                        try snapshot(view, size: concept.size, theme: theme,
-                                     to: directory.appendingPathComponent("concept-\(concept.rawValue)-\(theme)-\(state)-\(section.rawValue).png"))
-                    }
                 }
                 precondition(!store.tapActive && store.keyEvents == 0, "Отрисовка не должна запускать ввод")
             }
