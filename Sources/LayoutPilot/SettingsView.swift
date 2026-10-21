@@ -243,53 +243,78 @@ struct SettingsView: View {
         }.formStyle(.grouped).controlSize(.small)
     }
     private var exceptions: some View {
-        ScrollView {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Слова, которые не нужно исправлять").font(.headline)
-            HStack {
-                TextField("Слово", text: $form.word).onSubmit(addWord)
-                Button("Добавить", action: addWord).disabled(form.word.trimmingCharacters(in: .whitespaces).isEmpty)
-            }
-            List {
-                ForEach(store.settings.excludedWords, id: \.self) { value in
-                    HStack { Text(value); Spacer(); Button("Убрать") { store.settings.excludedWords.removeAll { $0 == value } } }.accessibilityElement(children: .contain)
-                }
-            }.frame(height: 120)
-            Text("Программы без обработки клавиатуры").font(.headline)
-            HStack {
-                TextField("Идентификатор программы, например com.apple.Terminal", text: $form.bundleID)
-                Button("Добавить") { addApp(form.bundleID) }.disabled(form.bundleID.isEmpty)
-                Button("Выбрать…", action: chooseApp)
-            }
-            List {
-                ForEach(store.settings.excludedApps, id: \.self) { value in
-                    HStack { Text(value); Spacer(); Button("Убрать") { store.settings.excludedApps.removeAll { $0 == value } } }.accessibilityElement(children: .contain)
-                }
-            }.frame(height: 90)
-            Text("Автоисправления в программах").font(.headline)
-            Text("«Выключено» отключает все автоматические изменения в программе: раскладку, опечатки, «ё», регистр и правила. Ручное преобразование работает. Общая пауза и полный запрет обработки имеют приоритет.")
-                .font(.caption).foregroundStyle(.secondary)
-            HStack {
-                TextField("Идентификатор программы для автоисправлений", text: $form.autoBundleID)
-                Button("Добавить правило") { addAutoApp(form.autoBundleID) }.disabled(form.autoBundleID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                Button("Выбрать программу…", action: chooseAutoApp)
-            }
-            ForEach(store.settings.appAutomatic.keys.sorted(), id: \.self) { id in
+        Form {
+            Section("Слова, которые не нужно исправлять") {
                 HStack {
-                    Text(id).textSelection(.enabled)
-                    Spacer()
-                    Picker("Автоисправления", selection: Binding(get: { store.settings.appAutomatic[id] ?? true },
-                        set: { store.settings.appAutomatic[id] = $0 })) {
-                        Text("Выключено").tag(false)
-                        Text("Включено").tag(true)
-                    }.frame(width: 245)
-                    Button("Убрать правило") { store.settings.appAutomatic.removeValue(forKey: id) }
-                }.accessibilityElement(children: .contain)
+                    TextField("Слово", text: $form.word).onSubmit(addWord)
+                    Button("Добавить", systemImage: "plus", action: addWord).labelStyle(.iconOnly)
+                        .help("Добавить слово").accessibilityLabel("Добавить слово")
+                        .disabled(form.word.trimmingCharacters(in: .whitespaces).isEmpty)
+                }
+                List(store.settings.excludedWords, id: \.self, selection: $form.selectedWord) { value in
+                    Text(value).tag(value)
+                }.frame(height: 100).overlay {
+                    if store.settings.excludedWords.isEmpty { Text("Нет исключений для слов").foregroundStyle(.secondary) }
+                }.accessibilityLabel("Исключённые слова")
+                Button("Убрать", systemImage: "minus") {
+                    guard let value = form.selectedWord else { return }
+                    store.settings.excludedWords.removeAll { $0 == value }; form.selectedWord = nil
+                }.labelStyle(.iconOnly).help("Убрать выбранное слово").accessibilityLabel("Убрать выбранное слово")
+                    .disabled(form.selectedWord == nil)
             }
-            Text("В защищённых полях обработка всегда отключена. В неподдерживаемых редакторах замена пропускается.")
-                .font(.caption).foregroundStyle(.secondary)
-        }.padding(18)
-        }
+            Section("Программы без обработки клавиатуры") {
+                HStack {
+                    TextField("Идентификатор программы, например com.apple.Terminal", text: $form.bundleID)
+                        .onSubmit { addApp(form.bundleID) }
+                    Button("Добавить", systemImage: "plus") { addApp(form.bundleID) }.labelStyle(.iconOnly)
+                        .help("Добавить приложение").accessibilityLabel("Добавить приложение").disabled(form.bundleID.isEmpty)
+                    Button("Выбрать…", action: chooseApp)
+                }
+                List(store.settings.excludedApps, id: \.self, selection: $form.selectedApp) { value in
+                    Text(value).tag(value)
+                }.frame(height: 90).overlay {
+                    if store.settings.excludedApps.isEmpty { Text("Нет исключённых приложений").foregroundStyle(.secondary) }
+                }.accessibilityLabel("Программы без обработки")
+                Button("Убрать", systemImage: "minus") {
+                    guard let value = form.selectedApp else { return }
+                    store.settings.excludedApps.removeAll { $0 == value }; form.selectedApp = nil
+                }.labelStyle(.iconOnly).help("Убрать выбранное приложение").accessibilityLabel("Убрать выбранное приложение")
+                    .disabled(form.selectedApp == nil)
+            }
+            Section("Автоисправления в программах") {
+                Text("«Выключено» отключает все автоматические изменения в программе: раскладку, опечатки, «ё», регистр и правила. Ручное преобразование работает. Общая пауза и полный запрет обработки имеют приоритет.")
+                    .font(.caption).foregroundStyle(.secondary)
+                HStack {
+                    TextField("Идентификатор программы для автоисправлений", text: $form.autoBundleID)
+                        .onSubmit { addAutoApp(form.autoBundleID) }
+                    Button("Добавить правило", systemImage: "plus") { addAutoApp(form.autoBundleID) }.labelStyle(.iconOnly)
+                        .help("Добавить правило").accessibilityLabel("Добавить правило")
+                        .disabled(form.autoBundleID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    Button("Выбрать программу…", action: chooseAutoApp)
+                }
+                List(store.settings.appAutomatic.keys.sorted(), id: \.self, selection: $form.selectedAutoApp) { id in
+                    HStack {
+                        Text(id).textSelection(.enabled)
+                        Spacer()
+                        Picker("Автоисправления", selection: Binding(get: { store.settings.appAutomatic[id] ?? true },
+                            set: { store.settings.appAutomatic[id] = $0 })) {
+                            Text("Выключено").tag(false); Text("Включено").tag(true)
+                        }.frame(width: 220).accessibilityLabel("Автоисправления в " + id)
+                    }.tag(id)
+                }.frame(height: 90).overlay {
+                    if store.settings.appAutomatic.isEmpty { Text("Нет отдельных правил для программ").foregroundStyle(.secondary) }
+                }.accessibilityLabel("Правила автоисправлений в программах")
+                Button("Убрать правило", systemImage: "minus") {
+                    guard let id = form.selectedAutoApp else { return }
+                    store.settings.appAutomatic.removeValue(forKey: id); form.selectedAutoApp = nil
+                }.labelStyle(.iconOnly).help("Убрать выбранное правило").accessibilityLabel("Убрать выбранное правило")
+                    .disabled(form.selectedAutoApp == nil)
+            }
+            Section {
+                Text("В защищённых полях обработка всегда отключена. В неподдерживаемых редакторах замена пропускается.")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+        }.formStyle(.grouped).controlSize(.small)
     }
     private var rules: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -425,5 +450,8 @@ final class SettingsForm: ObservableObject {
     @Published var autoBundleID = ""
     @Published var sample = "ghbdtn"
     @Published var preview = ""
+    @Published var selectedWord: String?
+    @Published var selectedApp: String?
+    @Published var selectedAutoApp: String?
     @Published var headerDropTargeted = false
 }
