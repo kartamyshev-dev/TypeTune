@@ -1,0 +1,429 @@
+{
+  "base": "99333f2",
+  "kind": "offline-отрисовка",
+  "result": "READY_FOR_SELECTION",
+  "concept_png_count": 66,
+  "baseline_png_count": 50,
+  "images": [
+    {
+      "file": "concept-A-dark-accessibility-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "53f548ca5c0687e7e19ebe7ae4fe92cf4ac2c89cd225f490a638cc9140111f83"
+    },
+    {
+      "file": "concept-A-dark-listening-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "af0d7c8e6e7fff394ee37fb954f58630c97f88200726d793d3d9e7c85ee93bbe"
+    },
+    {
+      "file": "concept-A-dark-ready-appearance.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "993408f2889b207475d76c78ce90cb64112eb8b3c1358e610b40ed7926aba826"
+    },
+    {
+      "file": "concept-A-dark-ready-diagnostics.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "f5ca0b3ef4002edd24c3581883848262f2bb1ac37bd983c52b874a7d99f592f3"
+    },
+    {
+      "file": "concept-A-dark-ready-exceptions.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "3385625069246003d504b462f29784426c3563f69736660faff7d0776f063ae2"
+    },
+    {
+      "file": "concept-A-dark-ready-keys.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "ee00f3a9e6f5b0da967106b39a7cd7e485367821280b572252e09ec50e79744b"
+    },
+    {
+      "file": "concept-A-dark-ready-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "e74ffb6233fd96a93f1bcb41493088f63c581c873436d0b7982f44f53f132b2c"
+    },
+    {
+      "file": "concept-A-dark-ready-snippets.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "d178eb775f1cd796af8c2d658be2353a2c832574dfaf9077224c232b9e7be684"
+    },
+    {
+      "file": "concept-A-dark-recovery-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "7aa3cd8e54322d86469527a7882f09cf66a0307d7c8f91ae11d655a5c159b334"
+    },
+    {
+      "file": "concept-A-dark-secure-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "257b447bdbf231c38cb272795f0dc41f947a7cfae94b48722ecbcd7464c2274c"
+    },
+    {
+      "file": "concept-A-dark-settings-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "5d3d4342d18304ac331f9afd5a2d0d0a409f7f3b7a71f3670cec094247411432"
+    },
+    {
+      "file": "concept-A-light-accessibility-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "85fb466c5ef8c49b3a8f54b88376b37d27a394547c3a30dcbd0ace3445c8a681"
+    },
+    {
+      "file": "concept-A-light-listening-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "0dc3ebc62928f9e7001e9d1a53ac799f66eaa5a99db86a4eeee4d9871faf1130"
+    },
+    {
+      "file": "concept-A-light-ready-appearance.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "3b452107f8f57d726e99e39fe3dec8b240cf5e6d76c8d34c25252b81dc746297"
+    },
+    {
+      "file": "concept-A-light-ready-diagnostics.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "e219577025070269edf1820ae917c5750c008c73bdbabb3bc4c57faf64f7dd6c"
+    },
+    {
+      "file": "concept-A-light-ready-exceptions.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "e176e1148a887a250a2014ba82990009d7b76aa54d45f6441c8016c8387a37c9"
+    },
+    {
+      "file": "concept-A-light-ready-keys.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "4088f1cfeb5c8072b92c0b540e3a6b7c630c6ef9f9e021a0fbc4c504ff81a271"
+    },
+    {
+      "file": "concept-A-light-ready-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "93057dc3a07971d4625d5dbcd817a4574c9512fad189048fa29ae39466683774"
+    },
+    {
+      "file": "concept-A-light-ready-snippets.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "eb035f0bc1079877b46b5ddbc3e3b014876f6b858d183f431521b108a34e4db4"
+    },
+    {
+      "file": "concept-A-light-recovery-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "216622226cf8413dbcf53f8664b0226304def7c16be2d02e40c5f396db429761"
+    },
+    {
+      "file": "concept-A-light-secure-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "dc0e12a796ffcc65991da93d0f08a5d67941cc7fefdc24a8c66e63f783a495ba"
+    },
+    {
+      "file": "concept-A-light-settings-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "9f65d212a3473de73f12543b93e3c6ebd26c9d0ad0e24a8648a2a0f2c1ad54a3"
+    },
+    {
+      "file": "concept-B-dark-accessibility-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "54da2937fd48f1ec45bdec19d91fc62019034172568e68e5c7374af3ea9c3342"
+    },
+    {
+      "file": "concept-B-dark-listening-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "b6d3cf0afcee0c6a9afb9139cdf3ed2a1238520819b5601348e108c261f8280b"
+    },
+    {
+      "file": "concept-B-dark-ready-appearance.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "17f56e4058b1bc45f9f809641952543b3d8de72f4b2945eecf06b1485f429da2"
+    },
+    {
+      "file": "concept-B-dark-ready-application.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "86c07af622c23c975d3a70799904ce358678f2224299eab33f4a372d88558a63"
+    },
+    {
+      "file": "concept-B-dark-ready-diagnostics.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "4181967a71cc4c346351d1bee1c615af17e3f1cc72a28dd35f0020468ec7b715"
+    },
+    {
+      "file": "concept-B-dark-ready-exceptions.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "258116efeca801b161f4a77e7302d30de066ace58a958b7fbd062437d63c68bf"
+    },
+    {
+      "file": "concept-B-dark-ready-keys.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "c8f70b833d293f32e4bceb889098f179a95427c93cc40f3c698c46a82beb6d40"
+    },
+    {
+      "file": "concept-B-dark-ready-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "7738665040ec66c3eed6d68e3938780aa6bade59dca092105360a353023e8420"
+    },
+    {
+      "file": "concept-B-dark-ready-snippets.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "260411fb83a279c2d5f6f42a8a480184c9b52ca1b88585081116a1aec8a7df47"
+    },
+    {
+      "file": "concept-B-dark-ready-sound.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "87bffb4a6191b11eae22c39d9cfb323e153561a3c52aabc33a3e5314d9db3f0d"
+    },
+    {
+      "file": "concept-B-dark-recovery-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "437bc874f9d5611373f8a9eb9f11d42c117d26e835d90bc686711f55c3c07666"
+    },
+    {
+      "file": "concept-B-dark-secure-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "cc2217fa984d06467a61c5fcf7ed05f8fe549c3e8a94e4e2747f4315eacb8dbc"
+    },
+    {
+      "file": "concept-B-dark-settings-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "9ee8c755408f142c601b68a000563e157616288e7a5ddb5d7db3be762cf65ba1"
+    },
+    {
+      "file": "concept-B-light-accessibility-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "bf2377c8f770c4359c3b0657a50c2766c5c78772e078087d9526aa6081878260"
+    },
+    {
+      "file": "concept-B-light-listening-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "6742b4ef52f702e54140dd521f49b3ae68e155e1e338119412407a98095d31c1"
+    },
+    {
+      "file": "concept-B-light-ready-appearance.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "8d6985721527db77b924cd2f8c221b43efc1166ad4225b430a50d3320a51111b"
+    },
+    {
+      "file": "concept-B-light-ready-application.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "6fde27772538bdf8a222cd58024b9c798d44d5e559184ae824b34855090b53b5"
+    },
+    {
+      "file": "concept-B-light-ready-diagnostics.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "bec2bea37a009a22af8b7d7f3071370109e21f58d8090b7aae57939a7357076b"
+    },
+    {
+      "file": "concept-B-light-ready-exceptions.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "cda2e24356b16eb8d9e77676499ad361f93296ab20e3d4fdd9c2acdfbb6b626b"
+    },
+    {
+      "file": "concept-B-light-ready-keys.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "ca348b26377f16c719b313c9d6c8807c6e58a45e31bf2a94feb21768d32ee0af"
+    },
+    {
+      "file": "concept-B-light-ready-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "d7fa6cd45262034be409a371b2a2aec9dec9dc353ed07f5c833369d1fb038f86"
+    },
+    {
+      "file": "concept-B-light-ready-snippets.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "d97a81288cdd40d0251173fd1d51820b25f356ab3edd54ecb0f89bae4c196e16"
+    },
+    {
+      "file": "concept-B-light-ready-sound.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "cfeb9d608b504d7430a6dc6fe0d9b60b02acdd4af4d6597e4c8271a592fd961b"
+    },
+    {
+      "file": "concept-B-light-recovery-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "2c064ff3816c2aec49bf1eb3133d06d82acef3a3de1341033d23a608fcdc8dbc"
+    },
+    {
+      "file": "concept-B-light-secure-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "7c71624aaf386693d08134faebbfd6ed5a724a32ef9fcb3cbc51bf1e6303a05a"
+    },
+    {
+      "file": "concept-B-light-settings-main.png",
+      "width": 1880,
+      "height": 1320,
+      "sha256": "bc17a3ed0439b18a3dfdcbb9517968d7ceed114d153352332e472bfe901e1e09"
+    },
+    {
+      "file": "concept-C-dark-accessibility-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "c50549c22c931ac4efcb8a5ef18c37f7525051eef890ed0605f8484f6b2fa598"
+    },
+    {
+      "file": "concept-C-dark-listening-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "01539f752be9b0b7e530804d6d692e6076ef429b88226983060301384fbb048c"
+    },
+    {
+      "file": "concept-C-dark-ready-diagnostics.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "1783423a76e5a860f73192bf99131dca69c9046e87fe0832743b3c7cb20611a2"
+    },
+    {
+      "file": "concept-C-dark-ready-exceptions.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "c995b209f55e702afd1fc97b40cc47492a8b2a3587c96e273261305f53230d85"
+    },
+    {
+      "file": "concept-C-dark-ready-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "97e04a3e941b01a66a46af0b8ca3e17e0d957ca0eedd86216fc61d7961352bc8"
+    },
+    {
+      "file": "concept-C-dark-ready-snippets.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "a73b97762812c84e603aa171904466e2f6aa09c07836819d580cf015bd8b12b8"
+    },
+    {
+      "file": "concept-C-dark-recovery-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "cab0856dc245e76a616c31614f4d054d8f06e214d4f90463db60647f12e1695a"
+    },
+    {
+      "file": "concept-C-dark-secure-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "ffdcc875ea58294ddc9f04935d5a27188c8cd3e123a5df18aecb98673c4b1404"
+    },
+    {
+      "file": "concept-C-dark-settings-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "6aa83840db63b15315bc2ff8a7837f11f30177b17c423596d906822c4c187188"
+    },
+    {
+      "file": "concept-C-light-accessibility-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "1df33bb1c0fd0e360102c1e129edc92dc7a42453ffd4d5308e3af46e9cc27190"
+    },
+    {
+      "file": "concept-C-light-listening-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "1982ded2ea6ab8d3db4fe3754935b6b89fb76a11b6b49fa4d7f7d142777024ce"
+    },
+    {
+      "file": "concept-C-light-ready-diagnostics.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "b10515f5be9c8ae51e28814c90cb949916ec31cdbd99533278fd960e865afc17"
+    },
+    {
+      "file": "concept-C-light-ready-exceptions.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "eaab5c3417053cb15e9c111cbb53dc90b8649a554d65079a9e585faf1006a466"
+    },
+    {
+      "file": "concept-C-light-ready-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "7f1913dfacf0c3d0f7a1d1d18fb66041249fd514ca5ce44618c7095cc2304320"
+    },
+    {
+      "file": "concept-C-light-ready-snippets.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "2c914ea67e17095393e9f38a487c80c543861825dcf2753c9d55b5aa8c154568"
+    },
+    {
+      "file": "concept-C-light-recovery-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "77e7354b7a33deaf1e92476677d8d9f30a7faaad145adabf183b99f6d613b787"
+    },
+    {
+      "file": "concept-C-light-secure-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "621695f883a7b62d9987006e68ea2dbd3f2a9e934dfcf881e3e48805e13c16ef"
+    },
+    {
+      "file": "concept-C-light-settings-main.png",
+      "width": 2000,
+      "height": 1480,
+      "sha256": "6d29e4b393fc33ce0d616a37479b76fcd115d81e29fa585b1a5973a420275100"
+    }
+  ],
+  "binary_sha256": "738b463e5beff20bd3a210ce5c3f88e6f17dbca71170c449b090a70090457724",
+  "sources": {
+    "Sources/LayoutPilot/SettingsView.swift": "602d6c66251af8c15f49cf8e5a02be59d41c7bd6ef0e9ceadbf4e7c0511527e8",
+    "Sources/LayoutPilot/SettingsConcept.swift": "d35382e16c1e2481cd2f9cd36187427eaf0898f2d24aa82a9c4bf4ad6c000d85",
+    "Sources/LayoutPilot/SettingsRenderer.swift": "e26d58031ef276ef5b0156e4c0ace60b18ef606ea6c2d4ce5843d7df23dc241a"
+  },
+  "checks": {
+    "expected_images_and_dimensions": true,
+    "original_form_sections_unchanged": true,
+    "protected_files_unchanged": true,
+    "user_defaults_semantically_equal": true,
+    "input_source_unchanged": true,
+    "gui_debug_build": true,
+    "cli_debug_build": true,
+    "cli_selftest": "1707/1707",
+    "corpus": "4420/4420"
+  },
+  "visual_review": "Representative light/dark main screens, snippet/appearance screens, recovery and Secure Input reviewed. Not every scroll position or state was visually accepted.",
+  "limitations": [
+    "DEBUG prototypes only; no selected production design",
+    "Native actions, keyboard focus, VoiceOver, resizing, image drop and user manual NOT_RUN",
+    "Original TabView snapshots remain PARTIAL; no PASS transferred from baseline"
+  ],
+  "private_directory": "/Users/kartamyshev/git/TypeTune/research/private/ui-2026-10-21/concepts"
+}

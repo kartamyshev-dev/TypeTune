@@ -50,7 +50,24 @@ struct SettingsView: View {
                 set: { headerColorName = $0.rawValue })
     }
     private var headerColor: Color { (HeaderPalette(rawValue: headerColorName) ?? .blue).color }
-    var body: some View {
+    #if DEBUG
+    private var conceptSection: ConceptSection?
+    private var concept: SettingsConcept = .system
+    init(store: Store, keyboard: KeyboardService, conceptSection: ConceptSection, concept: SettingsConcept) {
+        self.init(store: store, keyboard: keyboard)
+        self.conceptSection = conceptSection
+        self.concept = concept
+    }
+    #endif
+    @ViewBuilder var body: some View {
+        #if DEBUG
+        if let conceptSection { conceptContent(conceptSection) }
+        else { currentBody }
+        #else
+        currentBody
+        #endif
+    }
+    private var currentBody: some View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 Image(systemName: "keyboard.badge.ellipsis").font(.system(size: 34)).foregroundStyle(headerLightText ? Color.white : Color.black)
@@ -130,6 +147,139 @@ struct SettingsView: View {
         .frame(width: 740, height: 690)
         .preferredColorScheme(theme == "dark" ? .dark : theme == "light" ? .light : nil)
     }
+
+    #if DEBUG
+    @ViewBuilder private func conceptContent(_ section: ConceptSection) -> some View {
+        switch section {
+        case .main:
+            if concept == .compact {
+                VStack(alignment: .leading) {
+                    Form {
+                        Section("Исправление текста") { conceptCorrectionControls }
+                        DisclosureGroup("Как выполняется исправление") { conceptCorrectionExplanation }
+                    }.formStyle(.columns).toggleStyle(.checkbox).controlSize(.small)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 0)
+                }.padding(24)
+            } else {
+                Form {
+                    Section("Исправление текста") { conceptCorrectionControls }
+                    if concept == .progressive {
+                        Section {
+                            DisclosureGroup("Клавиши и сочетания") { conceptKeyControls }
+                            DisclosureGroup("Звук и запуск приложения") { conceptSoundControls; conceptStartupControl }
+                            DisclosureGroup("Оформление") { conceptAppearanceControls; conceptHeaderPreview }
+                            DisclosureGroup("Как выполняется исправление") { conceptCorrectionExplanation }
+                        }
+                    } else {
+                        Section("Звук") { conceptSoundControls }
+                        Section("Приложение") { conceptStartupControl }
+                        Section { DisclosureGroup("Как выполняется исправление") { conceptCorrectionExplanation } }
+                    }
+                }.formStyle(.grouped).controlSize(.small)
+            }
+        case .keys:
+            Form { Section("Клавиши") { conceptKeyControls } }.formStyle(.grouped).controlSize(.small)
+        case .sound:
+            Form { Section("Звук") { conceptSoundControls } }.formStyle(.grouped).controlSize(.small)
+        case .application:
+            Form { Section("Приложение") { conceptStartupControl } }.formStyle(.grouped).controlSize(.small)
+        case .appearance:
+            Form {
+                Section("Оформление") { conceptAppearanceControls }
+                Section("Предпросмотр компактной шапки") { conceptHeaderPreview }
+            }.formStyle(.grouped).controlSize(.small)
+        case .exceptions: exceptions
+        case .snippets: rules
+        case .diagnostics: lab
+        }
+    }
+    @ViewBuilder private var conceptCorrectionControls: some View {
+        if concept != .progressive { Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused) }
+        Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
+        Toggle("Исправлять во всех приложениях", isOn: $store.universalInput)
+        Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
+        if store.earlyCorrection { Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.").font(.caption).foregroundStyle(.secondary) }
+        Toggle("Исправлять известные опечатки", isOn: $store.settings.typos)
+        Toggle("Восстанавливать «ё» в однозначных словах", isOn: $store.settings.yo)
+        Toggle("Расширять словарь средствами macOS", isOn: $store.useSystemDictionary)
+    }
+    @ViewBuilder private var conceptCorrectionExplanation: some View {
+        if !store.universalInput { Text("Исправления выполняются только в TextEdit, Chrome и Codex, а в Terminal и Ghostty — через интеграцию с zsh.").font(.caption).foregroundStyle(.secondary) }
+        if store.universalInput { Text("Слово стирается и набирается заново. Где текст поля доступен, он сверяется перед правкой. Выделение, недоступное через Универсальный доступ, копируется через буфер обмена; его прежнее содержимое возвращается.").font(.caption).foregroundStyle(.secondary) }
+    }
+    @ViewBuilder private var conceptKeyControls: some View {
+        HStack {
+            Text("Текущая раскладка")
+            Spacer()
+            Button("ABC") { _ = InputSources.select(.english); keyboard.refresh() }
+            Button("Русская") { _ = InputSources.select(.russian); keyboard.refresh() }
+        }
+        Toggle("Одиночный Shift — сменить раскладку", isOn: $store.settings.singleShift)
+        Text("Двойной Shift или ⌘⌥Space — преобразовать слово или выделение. ⌘⌥Z — отменить и запомнить исключение.")
+            .font(.caption).foregroundStyle(.secondary)
+        Toggle("Одиночный Option — преобразовать слово или выделение", isOn: $store.settings.optionCorrection)
+        Toggle("Левый + правый Shift — пауза автоисправлений", isOn: $store.settings.shiftChordPause)
+        Toggle("⌘⇧V — вставить текст без форматирования (экспериментально)", isOn: $store.settings.plainPaste)
+    }
+    @ViewBuilder private var conceptSoundControls: some View {
+        Toggle("Звук при исправлении", isOn: $store.settings.sound)
+        HStack {
+            Text(store.customSoundPath.isEmpty ? "Стандартный звук" : "Собственный звук")
+            Spacer()
+            Button("Выбрать звук…") { store.chooseSound() }
+            if !store.customSoundPath.isEmpty { Button("Стандартный") { store.customSoundPath = "" } }
+        }
+    }
+    @ViewBuilder private var conceptStartupControl: some View {
+        Toggle("Запускать при входе в систему", isOn: Binding(get: {
+            store.launchAtLogin
+        }, set: { enabled in
+            do {
+                if enabled { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
+                store.launchAtLogin = SMAppService.mainApp.status == .enabled
+                store.lastStatus = SMAppService.mainApp.status == .requiresApproval ? "Подтвердите автозапуск в Системных настройках" : "Настройка автозапуска сохранена"
+            } catch { store.lastStatus = "Не удалось изменить автозапуск: \(error.localizedDescription)" }
+        }))
+    }
+    @ViewBuilder private var conceptAppearanceControls: some View {
+        Picker("Оформление", selection: $theme) {
+            Text("Как в системе").tag("system"); Text("Светлое").tag("light"); Text("Тёмное").tag("dark")
+        }
+        Picker("Цвет заголовка", selection: headerPalette) {
+            ForEach(HeaderPalette.allCases) { value in Text(value.title).tag(value) }
+        }
+        Toggle("Светлая надпись заголовка", isOn: $headerLightText)
+        HStack {
+            Text(store.headerImage != nil ? "Изображение заголовка" :
+                (store.headerImagePath.isEmpty ? "Однотонный фон" : "Изображение недоступно"))
+            Spacer()
+            Button("Выбрать изображение…") { store.chooseHeaderImage() }
+            if !store.headerImagePath.isEmpty { Button("Убрать изображение") { store.resetHeaderImage() } }
+        }
+    }
+    private var conceptHeaderPreview: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: "keyboard")
+                Text("TypeTune").font(.headline)
+                Spacer()
+                Text("Работает").font(.caption)
+            }
+            .foregroundStyle(headerLightText ? Color.white : Color.black)
+            .padding(14).background {
+                ZStack {
+                    headerColor
+                    if let image = store.headerImage { Image(nsImage: image).resizable().scaledToFill() }
+                }
+            }.clipShape(RoundedRectangle(cornerRadius: 8))
+            .onDrop(of: [.fileURL, .tiff], isTargeted: $form.headerDropTargeted, perform: acceptHeaderImage)
+            Text("Перетащите изображение на образец. Цвет, изображение и светлая надпись сохраняются; крупная шапка не занимает место в настройках.")
+                .font(.caption).foregroundStyle(.secondary)
+        }
+    }
+    #endif
+
     private var general: some View {
         Form {
             Section("Исправление текста") {

@@ -61,6 +61,16 @@ enum SettingsRenderer {
                     try snapshot(editor, size: NSSize(width: 636, height: 620), theme: theme,
                                  to: directory.appendingPathComponent("\(theme)-snippet-editor.png"))
                 }
+                store.lastStatus = "Последнее событие: исправлена раскладка"
+                for concept in SettingsConcept.allCases {
+                    let sections: [ConceptSection] = state == "ready" ? concept.sections : [.main]
+                    for section in sections {
+                        let view = SettingsConceptView(store: store, keyboard: keyboard, concept: concept, section: section)
+                            .defaultAppStorage(defaults)
+                        try snapshot(view, size: concept.size, theme: theme,
+                                     to: directory.appendingPathComponent("concept-\(concept.rawValue)-\(theme)-\(state)-\(section.rawValue).png"))
+                    }
+                }
                 precondition(!store.tapActive && store.keyEvents == 0, "Отрисовка не должна запускать ввод")
             }
         }
