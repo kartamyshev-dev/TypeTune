@@ -105,6 +105,7 @@ struct SnippetEditorSheet: View {
     /// Until the user picks a trigger, it follows the abbreviation (DECISIONS п. 28).
     @State private var triggerChosen: Bool
     @State private var bundleID = ""
+    @State private var selectedApplication: String?
     @Environment(\.dismiss) private var dismiss
 
     init(store: Store, original: Snippet) {
@@ -118,66 +119,85 @@ struct SnippetEditorSheet: View {
     private var isNew: Bool { !store.snippets.snippets.contains { $0.id == original.id } }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(isNew ? "Новый сниппет" : "Сниппет").font(.headline)
+        VStack(spacing: 0) {
             HStack {
-                TextField("Сокращение, например ;адр или спс", text: $draft.abbreviation).font(.body.monospaced())
-                Picker("", selection: Binding(get: { draft.trigger }, set: { draft.trigger = $0; triggerChosen = true })) {
-                    Text("сразу").tag(Snippet.Trigger.immediate)
-                    Text("после пробела").tag(Snippet.Trigger.boundary)
-                }.labelsHidden().frame(width: 160)
-            }
-            .onChange(of: draft.abbreviation) { _, value in
-                if !triggerChosen { draft.trigger = Snippet.defaultTrigger(for: value) }
-            }
-            Text("Текст").font(.subheadline)
-            TextEditor(text: $draft.text).font(.body.monospaced()).frame(minHeight: 120)
-                .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.secondary.opacity(0.3)))
-            HStack {
-                Text("Вставить:").font(.caption)
-                ForEach(["{{дата}}", "{{время}}", "{{буфер}}", "{{курсор}}"], id: \.self) { variable in
-                    Button(variable) { draft.text += variable }.font(.caption)
+                Text(isNew ? "Новый сниппет" : "Сниппет").font(.headline)
+                Spacer()
+            }.padding(20)
+            Divider()
+            Form {
+                Section("Сокращение") {
+                    HStack {
+                        TextField("Сокращение, например ;адр или спс", text: $draft.abbreviation)
+                            .font(.body.monospaced()).labelsHidden().textFieldStyle(.roundedBorder)
+                        Picker("Когда вставлять сниппет", selection: Binding(get: { draft.trigger }, set: { draft.trigger = $0; triggerChosen = true })) {
+                            Text("сразу").tag(Snippet.Trigger.immediate)
+                            Text("после пробела").tag(Snippet.Trigger.boundary)
+                        }.labelsHidden().frame(width: 160)
+                    }
+                    .onChange(of: draft.abbreviation) { _, value in
+                        if !triggerChosen { draft.trigger = Snippet.defaultTrigger(for: value) }
+                    }
                 }
-            }
-            Text("Формат: {{дата:d MMMM yyyy}}, {{время:HH:mm:ss}}. {{буфер}} — текст из буфера обмена, {{курсор}} — где встанет каретка. Буквальные скобки — \\{{.")
-                .font(.caption).foregroundStyle(.secondary)
-            HStack {
-                Toggle("И в другой раскладке", isOn: $draft.otherLayout)
-                Toggle("Переносить регистр", isOn: $draft.matchCase)
-                Toggle("Включён", isOn: $draft.enabled)
-            }
-            Picker("Приложения", selection: $draft.applications.mode) {
-                Text("все").tag(ApplicationFilter.Mode.all)
-                Text("только выбранные").tag(ApplicationFilter.Mode.only)
-                Text("кроме выбранных").tag(ApplicationFilter.Mode.except)
-            }.pickerStyle(.segmented)
-            if draft.applications.mode != .all {
-                ForEach(draft.applications.applications, id: \.self) { id in
-                    HStack { Text(id).font(.caption.monospaced()); Spacer()
-                        Button("Убрать") { draft.applications.applications.removeAll { $0 == id } }.font(.caption) }
+                Section("Текст") {
+                    TextEditor(text: $draft.text).font(.body.monospaced()).frame(height: 120)
+                        .accessibilityLabel("Текст сниппета")
+                    HStack {
+                        Text("Вставить:").font(.caption)
+                        ForEach(["{{дата}}", "{{время}}", "{{буфер}}", "{{курсор}}"], id: \.self) { variable in
+                            Button(variable) { draft.text += variable }.font(.caption)
+                        }
+                    }
+                    Text("Формат: {{дата:d MMMM yyyy}}, {{время:HH:mm:ss}}. {{буфер}} — текст из буфера обмена, {{курсор}} — где встанет каретка. Буквальные скобки — \\{{.")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
-                HStack {
-                    TextField("Bundle ID", text: $bundleID)
-                    Button("Добавить") { addApplication(bundleID) }.disabled(bundleID.isEmpty)
-                    Button("Выбрать приложение…") { chooseApplication() }
+                Section("Параметры") {
+                    Toggle("И в другой раскладке", isOn: $draft.otherLayout)
+                    Toggle("Переносить регистр", isOn: $draft.matchCase)
+                    Toggle("Включён", isOn: $draft.enabled)
                 }
-            }
-            Text("Предпросмотр: " + preview).font(.caption).lineLimit(3)
-            ForEach(Array(messages.enumerated()), id: \.offset) { _, message in
-                Text(message).font(.caption).foregroundStyle(.red)
-            }
-            if draft.trigger == .immediate, draft.abbreviation.first.map({ $0.isLetter || $0.isNumber }) == true {
-                Text("Сокращение похоже на слово и сработает сразу после набора, даже внутри обычного текста.")
-                    .font(.caption).foregroundStyle(.orange)
-            }
+                Section("Приложения") {
+                    Picker("Приложения", selection: $draft.applications.mode) {
+                        Text("все").tag(ApplicationFilter.Mode.all)
+                        Text("только выбранные").tag(ApplicationFilter.Mode.only)
+                        Text("кроме выбранных").tag(ApplicationFilter.Mode.except)
+                    }
+                    if draft.applications.mode != .all {
+                        List(draft.applications.applications, id: \.self, selection: $selectedApplication) { id in
+                            Text(id).font(.caption.monospaced()).tag(id).help(id)
+                        }.frame(height: 90).accessibilityLabel("Приложения сниппета")
+                        Button("Убрать", systemImage: "minus") {
+                            guard let id = selectedApplication else { return }
+                            draft.applications.applications.removeAll { $0 == id }; selectedApplication = nil
+                        }.labelStyle(.iconOnly).help("Убрать выбранное приложение")
+                            .accessibilityLabel("Убрать выбранное приложение").disabled(selectedApplication == nil)
+                        HStack {
+                            TextField("Bundle ID", text: $bundleID).textFieldStyle(.roundedBorder)
+                                .onSubmit { addApplication(bundleID) }
+                            Button("Добавить") { addApplication(bundleID) }.disabled(bundleID.isEmpty)
+                            Button("Выбрать приложение…") { chooseApplication() }
+                        }
+                    }
+                }
+                Section("Предпросмотр") {
+                    Text("Предпросмотр: " + preview).font(.caption).lineLimit(3).textSelection(.enabled)
+                    ForEach(Array(messages.enumerated()), id: \.offset) { _, message in
+                        Label(message, systemImage: "exclamationmark.circle").font(.caption).foregroundStyle(.red)
+                    }
+                    if draft.trigger == .immediate, draft.abbreviation.first.map({ $0.isLetter || $0.isNumber }) == true {
+                        Label("Сокращение похоже на слово и сработает сразу после набора, даже внутри обычного текста.", systemImage: "exclamationmark.triangle")
+                            .font(.caption).foregroundStyle(.orange)
+                    }
+                }
+            }.formStyle(.grouped).controlSize(.small)
+            Divider()
             HStack {
                 Spacer()
                 Button("Отмена") { dismiss() }.keyboardShortcut(.cancelAction)
                 Button("Сохранить") { if store.saveSnippet(draft).isEmpty { dismiss() } }
                     .keyboardShortcut(.defaultAction).disabled(!issues.isEmpty)
-            }
-        }
-        .padding(18).frame(width: 600)
+            }.padding(16)
+        }.frame(width: 660, height: 660)
     }
 
     private var preview: String {

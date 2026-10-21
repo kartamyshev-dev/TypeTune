@@ -18,21 +18,23 @@ enum SettingsRenderer {
         app.setActivationPolicy(.prohibited)
         app.finishLaunching()
         for theme in ["light", "dark"] {
-            for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings", "buffering", "outstanding", "review-outstanding"] {
+            for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings", "buffering", "outstanding", "review-outstanding", "empty", "crowded", "snippets-unavailable"] {
                 defaults.removePersistentDomain(forName: suite)
                 defaults.set(theme, forKey: "theme")
                 if state == "settings" { defaults.set(Data("invalid".utf8), forKey: "settings.v1") }
-                let store = Store(defaults: defaults, snippetsURL: temporary.appendingPathComponent("\(theme)-\(state).json"))
+                let snippetsURL = temporary.appendingPathComponent("\(theme)-\(state).json")
+                if state == "snippets-unavailable" { try Data("invalid".utf8).write(to: snippetsURL) }
+                let store = Store(defaults: defaults, snippetsURL: snippetsURL)
                 let keyboard = KeyboardService(store: store, startAutomatically: false)
                 store.trusted = state != "accessibility"
                 store.listening = state != "listening"
                 store.posting = true
-                store.running = state == "ready"
+                store.running = ["ready", "empty", "crowded", "buffering", "snippets-unavailable"].contains(state)
                 store.secure = state == "secure"
                 store.secureInputOwner = store.secure ? "Тестовое приложение" : nil
                 store.serviceStatus = state == "secure" ? .secureInput : state == "settings" ? .settingsUnavailable :
                     state == "accessibility" ? .accessibilityDenied : state == "listening" ? .listeningDenied :
-                    state == "recovery" ? .uncertainResult : .ready
+                    (state == "recovery" || state == "review-outstanding") ? .uncertainResult : .ready
                 store.inputSource = "com.apple.keylayout.ABC"
                 store.lastStatus = "Исправлена раскладка"
                 if state == "recovery" || state == "review-outstanding" {
@@ -49,12 +51,19 @@ enum SettingsRenderer {
                     store.outstandingInput = 3
                     if state == "outstanding" { store.serviceStatus = .recoveryPending }
                 }
-                if store.settingsStorageAvailable {
+                if store.settingsStorageAvailable && state != "empty" {
                     store.settings.excludedWords = ["пример"]
                     store.settings.excludedApps = ["com.example.editor"]
                     store.settings.appAutomatic = ["com.example.notes": false]
                     store.settings.learnedWords = ["тест"]
                     _ = store.saveSnippet(Snippet(abbreviation: ";адр", text: "Пример адреса"))
+                }
+                if state == "crowded" {
+                    store.settings.excludedWords = (1...100).map { "исключение-\($0)" }
+                    store.settings.excludedApps = (1...50).map { "com.example.приложение\($0)" }
+                    store.settings.appAutomatic = Dictionary(uniqueKeysWithValues: store.settings.excludedApps.map { ($0, false) })
+                    store.settings.learnedWords = store.settings.excludedWords
+                    for i in 1...20 { _ = store.saveSnippet(Snippet(abbreviation: ";пример\(i)", text: "Пример длинного текста для проверки списка сниппетов \(i)")) }
                 }
                 for section in SettingsSection.allCases {
                     let view = SettingsView(store: store, keyboard: keyboard, renderSection: section).defaultAppStorage(defaults)
@@ -62,10 +71,25 @@ enum SettingsRenderer {
                                  to: directory.appendingPathComponent("\(theme)-\(state)-\(section.rawValue).png"))
                 }
                 if state == "ready" {
+                    for section in SettingsSection.allCases {
+                        let view = SettingsView(store: store, keyboard: keyboard, renderSection: section).defaultAppStorage(defaults)
+                        try snapshot(view, size: NSSize(width: 920, height: 640), theme: theme,
+                                     to: directory.appendingPathComponent("\(theme)-minimum-\(section.rawValue).png"))
+                    }
                     let editor = SnippetEditorSheet(store: store, original: Snippet(abbreviation: ";спс", text: "Спасибо! {{курсор}}"))
                         .defaultAppStorage(defaults)
-                    try snapshot(editor, size: NSSize(width: 636, height: 620), theme: theme,
+                    try snapshot(editor, size: NSSize(width: 660, height: 660), theme: theme,
                                  to: directory.appendingPathComponent("\(theme)-snippet-editor.png"))
+                }
+                if state == "ready" {
+                    for (name, snippet) in [
+                        ("invalid", Snippet(abbreviation: "", text: "")),
+                        ("applications", Snippet(abbreviation: ";тест", text: "Здравствуйте!\n{{курсор}}", applications: ApplicationFilter(mode: .only, applications: ["com.example.editor"])))
+                    ] {
+                        let editor = SnippetEditorSheet(store: store, original: snippet).defaultAppStorage(defaults)
+                        try snapshot(editor, size: NSSize(width: 660, height: 660), theme: theme,
+                                     to: directory.appendingPathComponent("\(theme)-snippet-editor-\(name).png"))
+                    }
                 }
                 precondition(!store.tapActive && store.keyEvents == 0, "Отрисовка не должна запускать ввод")
             }
