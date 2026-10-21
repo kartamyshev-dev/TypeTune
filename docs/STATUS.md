@@ -38,8 +38,8 @@ GUI/CLI build, CLI selftest debug/release1707/1707, корпус4420/4420 и162 
 Debug/release build, source guard, release selftest1707/1707 и136 offline снимков
 прошли. Прежние изображения/defaults не удалены, snippets.json неизменён.
 Подпись и полный manifest установки совпали с кандидатом; предыдущий bundle сохранён.
-Приложение остановлено до обновления только его TCC-разрешений пользователем
-согласно MAC_AGENT_GUIDE §3. Native-приёмка этого бинарника NOT_RUN.
+Пользователь сообщил об обновлении разрешений; TypeTune запущен обычным способом.
+Наблюдался один переключатель PID65900. Native-приёмка этого бинарника NOT_RUN.
 [Evidence](../research/evidence/ui-no-appearance-2026-10-21/verification.json).
 Следующее: [ручная проверка UI1–UI11](MAC_MANUAL_CHECK.md) и согласованные проверки
 в новом документе TextEdit. User manual/полная native-приёмка NOT_RUN.

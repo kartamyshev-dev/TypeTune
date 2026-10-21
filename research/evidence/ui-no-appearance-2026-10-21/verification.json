@@ -147,5 +147,9 @@
   },
   "release_selftest": "1707/1707 offline invariants passed; 0 failures. No runtime input claim.",
   "user_data": "No old appearance files or defaults deleted; snippets unchanged",
-  "native": "NOT_RUN; app left stopped pending TCC update under MAC_AGENT_GUIDE §3"
+  "native": "Click/input acceptance NOT_RUN",
+  "user_reported_permissions_updated": true,
+  "launch": "Started via open /Applications/TypeTune.app",
+  "observed_pid": 65900,
+  "observed_single_switcher": true
 }
