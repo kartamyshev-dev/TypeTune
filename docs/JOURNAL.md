@@ -2151,3 +2151,31 @@ leaseFresh=false. Почему истекли 50 мс и связь остано
 не перезапускалось, очередь не очищалась, тестовый документ сохранён.
 Evidence: mac-agent-p3-2026-10-18/stream-stopped-analysis.json и stream-diagnostics.json.
 Вся матрица остаётся открытой; восстановление исходного состояния ещё требуется.
+
+
+## UI refresh: безопасная offline-отрисовка — 2026-10-21
+
+Ветка `ui-refresh` создана от обновлённой `main` `2f31167`, рабочая копия до начала чистая.
+Изменение: DEBUG `--render-settings` до блокировки/делегата, изолированный suite
+`dev.layoutpilot.ui-render`, Store с временными сниппетами, KeyboardService(false),
+NSHostingView → bitmapImageRepForCachingDisplay/cacheDisplay → PNG. DEBUG начальная вкладка.
+Контракт всех элементов и source-доказательство отсутствия event tap/AX:
+[UI_REFRESH](UI_REFRESH.md). Продуктовый дизайн, ядро, KeyboardService и AccessibilityEditor
+не менялись. Системные разрешения/установка/синтетический ввод не выполнялись.
+
+Вид проверки: **offline-отрисовка**, общий результат **PARTIAL**.
+50 PNG: 4 вкладки × 2 темы × 6 состояний + 2 редактора. Реальные Toggle/Picker/List
+видны; репрезентативные снимки просмотрены моделью. cacheDisplay неверно захватывает
+сегментированные вкладки; у части снимков содержимое выходит за рамку 740×690.
+Фон/NSAppearance и titled-window не устранили артефакт вкладок. Это ограничение захвата,
+не доказанный native-дефект. Полная визуальная приёмка не заявлена.
+Снимки приватные: `research/private/ui-2026-10-21/before/`, в Git только их хеши.
+
+GUI/CLI debug build на SDK26.5 успешны (у default SDK27 отсутствует SwiftUIMacros).
+CLI **1707/1707**, corpus **4420/4420**, shell syntax/invalid label checks успешны.
+Настройки пользователя семантически равны исходным, раскладка не менялась;
+изолированный suite очищен и удалён. Installed TypeTune не заменён и не перезапущен.
+[Evidence](../research/evidence/ui-refresh-2026-10-21/verification.json).
+Коммит этой записи определяется через `git log -- docs/UI_REFRESH.md`.
+Выбор дизайна ещё не получен; native/user manual NOT_RUN. Следующий шаг — замечания
+пользователя по «до», затем 2–3 концепции и явный выбор перед реализацией.

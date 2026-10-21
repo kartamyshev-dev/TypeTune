@@ -35,6 +35,16 @@ struct SettingsView: View {
     @AppStorage("theme") private var theme = "system"
     @AppStorage("headerColor") private var headerColorName = HeaderPalette.blue.rawValue
     @AppStorage("headerLightText") private var headerLightText = true
+    init(store: Store, keyboard: KeyboardService) {
+        self.store = store
+        self.keyboard = keyboard
+    }
+    #if DEBUG
+    init(store: Store, keyboard: KeyboardService, renderTab: Int) {
+        self.init(store: store, keyboard: keyboard)
+        form.tab = renderTab
+    }
+    #endif
     private var headerPalette: Binding<HeaderPalette> {
         Binding(get: { HeaderPalette(rawValue: headerColorName) ?? .blue },
                 set: { headerColorName = $0.rawValue })

@@ -97,6 +97,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func quit() { NSApp.terminate(nil) }
 }
 
+#if DEBUG
+if CommandLine.arguments.contains("--render-settings") {
+    do {
+        guard CommandLine.arguments.count == 3, CommandLine.arguments[1] == "--render-settings" else {
+            throw NSError(domain: "UIRender", code: 1, userInfo: [NSLocalizedDescriptionKey: "Использование: LayoutPilot --render-settings <каталог>"])
+        }
+        try SettingsRenderer.render(to: URL(fileURLWithPath: CommandLine.arguments[2], isDirectory: true))
+        exit(0)
+    } catch {
+        FileHandle.standardError.write(Data(("Ошибка отрисовки: \(error.localizedDescription)\n").utf8))
+        exit(1)
+    }
+}
+#endif
+
 let instanceLock: SingleInstance
 do {
     let support = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,

@@ -1,0 +1,324 @@
+{
+  "base": "2f31167",
+  "kind": "offline-отрисовка",
+  "result": "PARTIAL",
+  "binary_sha256": "9f6a050daba1c2391ce6f82ffcfa4db94f5d730a094f5e55def9e6d716ebf8af",
+  "png_count": 50,
+  "images": [
+    {
+      "file": "dark-accessibility-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "04b5d6f38e9e81d51bb1c5e89c45349f0e58ad53d956cc35b3568b4d49b43742"
+    },
+    {
+      "file": "dark-accessibility-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "f350f47c16a93fcd442290d8da58f9ec56d25a0ff4041cdb0151fbcf1eb974cd"
+    },
+    {
+      "file": "dark-accessibility-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "4021164ad685551b16c6670a1d7c053cb8f0445dcf2bd81c60c2e77c786f94a4"
+    },
+    {
+      "file": "dark-accessibility-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "a785e5ba4e9bb55c61e1262f0669b9a4c98c1dcf3502ff0d40cef656fb27c329"
+    },
+    {
+      "file": "dark-listening-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "0ca3a10262e8be75cd4b373b40bde47f421a77912fd7466344d063d3db8a019e"
+    },
+    {
+      "file": "dark-listening-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "04ca566c6eaa55597472dbcb42a8d4b2d3c14450bf4563b0b889efd3b9e9471b"
+    },
+    {
+      "file": "dark-listening-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "7d9ab7a4592bff64b7d672b3b052d7a9b78f0387b404cd87c31313249a6dbdde"
+    },
+    {
+      "file": "dark-listening-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "9b113bb1b2e18c359d4e1b669ee691261616ec1c556dbb749eedcd71796d834a"
+    },
+    {
+      "file": "dark-ready-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "895dd0aa8e18ec1d8d530a4e2171bb96c0bd35f0441436e960fc92c850b98c37"
+    },
+    {
+      "file": "dark-ready-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "9416752fb49700848a06f89516c279c03d197828a95925f5660a654ad8c9d812"
+    },
+    {
+      "file": "dark-ready-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "0a41958d5064c7eb05e3c4a09964ce40256412e369224718b8a37fa72b40ea2a"
+    },
+    {
+      "file": "dark-ready-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "f790bb0a586317051a3e4372ea6a16c1ed19d2d4e236fff7d4bf26ce52bf99c8"
+    },
+    {
+      "file": "dark-recovery-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "47a16b85710782715d0c409c0647c7f6d6b0bd1194b6f6f21685ddd15841a5f1"
+    },
+    {
+      "file": "dark-recovery-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "34b72066eb2d15dad6d05a24908d0f26d40f019ad7213cc47e96935a3f7fe3f5"
+    },
+    {
+      "file": "dark-recovery-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "dcb1b91d1960fd5daaf6aee7644e1606756815f521746dcef48689cc988d24d8"
+    },
+    {
+      "file": "dark-recovery-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "533bd781d67c4bdb0f31a40809f22b6005dafe6a6ea83e11feffa2e8257989eb"
+    },
+    {
+      "file": "dark-secure-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "7777a88ec0e697dd58439e46273e4ace12f748d6b52b9e808ed530a470a57f53"
+    },
+    {
+      "file": "dark-secure-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "de825dcc3ae6529be42d86c2ea69ab561813f298cbf6388856b4ca7eadae8af9"
+    },
+    {
+      "file": "dark-secure-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "7b6a3e0f595fe4038565a672703090521eafd1a9d570a903f9a5921d5a891ba8"
+    },
+    {
+      "file": "dark-secure-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "625fd9b671509505d58b5eddc11f54fa110a7b3931f9576d34d8c4aa48376fed"
+    },
+    {
+      "file": "dark-settings-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "d96c30b5123d418b1f3f5499287a3c49a0af5f9d82f3813222ae3cc201f6876a"
+    },
+    {
+      "file": "dark-settings-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "82a5f9fd94b7fc659840a1ed7b7b544f3de54cb0132074423ec05855c981c9eb"
+    },
+    {
+      "file": "dark-settings-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "44de3db0d7114a9731a92aa4d566d39ae2ee3b7c3710e6e74a7b35e605b1393c"
+    },
+    {
+      "file": "dark-settings-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "f64ca0659e585f45a9416d0a8e36371816047eec0b8b59b2336891028f4e0757"
+    },
+    {
+      "file": "dark-snippet-editor.png",
+      "width": 1272,
+      "height": 1240,
+      "sha256": "354fced807f02d676356a831843d30bc8b09f8ab3425eea0a56aa97c7ba4990a"
+    },
+    {
+      "file": "light-accessibility-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "6c3cd0bfb51264ae5677d5df18a8ec7e031c53ab964e5d51b22ed3e96fc1f0a4"
+    },
+    {
+      "file": "light-accessibility-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "18e677bf31c40183dd7c5dd6b952361bae353dc48e5e3528f2c5e03d43f70547"
+    },
+    {
+      "file": "light-accessibility-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "a4087cfbe575e8b3d1598332c3ccc75297898a64c30e881c4ae914360f530852"
+    },
+    {
+      "file": "light-accessibility-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "7420f8d7e19fba8cb02251c873a32e67346dc8601858473c1f3a158f1af98bb3"
+    },
+    {
+      "file": "light-listening-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "0f1d7aa5e99f93f90770d0e87c53fce8d3f1a46d6a8b446b3dbe840216b184d1"
+    },
+    {
+      "file": "light-listening-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "3a10c70c4ae13da2f336ea264418feb548cc469843af58f35b80304f7d81b987"
+    },
+    {
+      "file": "light-listening-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "03cde322a1a19e813a0b6997d1a1e8c678a95219c67fc2d4b8dddbbb5f7ec9da"
+    },
+    {
+      "file": "light-listening-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "bf65effc7da60ea08790f1614159710092abb6a7dd18c4b60bd72876e78ce44d"
+    },
+    {
+      "file": "light-ready-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "c3d3bd5ddf36484444ff3c8af96ffb03504b6006b2f95533010c280404cd6121"
+    },
+    {
+      "file": "light-ready-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "cc3ac101caf179fadadcb7b10b14ffb99670f26ee30dbc5a0e67e82b62753471"
+    },
+    {
+      "file": "light-ready-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "7df8d890cc2a320fee975afda5653ceb8803d88a58d7c8447191c3b40681fd49"
+    },
+    {
+      "file": "light-ready-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "93711d60c972b079fce01baf3197d9a94449fbb79a66623660acf6c92da59b76"
+    },
+    {
+      "file": "light-recovery-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "f9cd714a5a50c719cc6e2782d29733f27d0f3f2faab2105594fe02002c566c22"
+    },
+    {
+      "file": "light-recovery-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "fcd7ee05d5e783f7d0f7f3a884c28fbde9d54b5655ec5289eccba143e21f2256"
+    },
+    {
+      "file": "light-recovery-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "2444dd1de2ed09e3d3a60b592f6990653955b105ae589558a8d9c688eef95c6a"
+    },
+    {
+      "file": "light-recovery-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "e757da552e18c8e076990b803107569d7ca34567727964a0b3a3927ee4648fd7"
+    },
+    {
+      "file": "light-secure-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "e8add1bc07bfe39e51c01476b1c49f036d5854b546f8f334189989bcf7e61b86"
+    },
+    {
+      "file": "light-secure-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "93a082b98585b0fa0a4f9578d3f4345d588c25cde1937bfca992dafebdb78511"
+    },
+    {
+      "file": "light-secure-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "5ad5fc0ed3f21a213e1a402b24634ca23fbf32ca0bb51951a57a7d2b566e5835"
+    },
+    {
+      "file": "light-secure-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "1b75e29cf7c9a7539eb735eeaf1207ef2b42486c742755c7549e198c0e1dd6b6"
+    },
+    {
+      "file": "light-settings-tab0.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "a4f3f7a2e41c0e711512da37aa642da081dc19c03535654c156214572f3faaae"
+    },
+    {
+      "file": "light-settings-tab1.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "53c96fe18d58133a8fb5c67245ebcdd08b87df4d4497e49169c55c8a9d8a2ca1"
+    },
+    {
+      "file": "light-settings-tab2.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "b0fb3789795118be544a225e4e4b9aeb272cc27f5b28464566e8609c86e26938"
+    },
+    {
+      "file": "light-settings-tab3.png",
+      "width": 1480,
+      "height": 1380,
+      "sha256": "dba7cc358ff2e082ae8002284dcff0c284cc517a944cf45d4134c18a18723aea"
+    },
+    {
+      "file": "light-snippet-editor.png",
+      "width": 1272,
+      "height": 1240,
+      "sha256": "5b04222e80d041d48fab255c89472c5a5b18824d51a3041be2ca800f360aaa72"
+    }
+  ],
+  "checks": {
+    "gui_build": true,
+    "cli_selftest": "1707/1707",
+    "corpus": "4420/4420",
+    "user_defaults_semantically_equal": true,
+    "input_source_equal": true,
+    "invalid_label_rejected": true
+  },
+  "limitations": [
+    "Native actions, keyboard navigation and VoiceOver NOT_RUN",
+    "cacheDisplay does not faithfully capture segmented TabView labels on this Mac; some content overflows the fixed window",
+    "Only representative images visually inspected; full snapshot visual acceptance OPEN"
+  ],
+  "sdk": "macOS 26.5 (CLT 27 default lacks SwiftUIMacros)",
+  "private_directory": "/Users/kartamyshev/git/TypeTune/research/private/ui-2026-10-21/before"
+}
