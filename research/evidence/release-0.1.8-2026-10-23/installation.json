@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-10-23T16:43:10.770858+00:00",
+  "sourceCommit": "22f598186e0b8afaddd953fc36a54fe26ec62edf",
+  "path": "/Applications/TypeTune.app",
+  "version": "0.1.8",
+  "build": "14",
+  "binarySha256": "ec7fdf404340a879d231ab33e8af1418233e150ead53ad483cd6a21df8c9d679",
+  "bundleManifestSha256": "1621f95a84cb82b282a191882be0559f26420cde07fd2dfbd0633a784a7ecadc",
+  "matchesPublishedBundle": true,
+  "signatureVerified": true,
+  "settingsUnchanged": true,
+  "snippetsUnchanged": true,
+  "backupsCreated": false,
+  "previousInstalledApp": "removed per user instruction",
+  "downloadedArchiveAndExtraction": "removed after installation",
+  "launch": "RUNNING_AFTER_USER_CONFIRMED_TCC_UPDATE",
+  "runningSwitcherCount": 1,
+  "process": {
+    "pid": 12986,
+    "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+    "started": "Fri Oct 23 19:44:42 2026"
+  },
+  "userConfirmedTCCUpdate": true,
+  "observedStatus": "Работает · Обработчик готов",
+  "windowScreenshot": "research/private/release-0.1.8-2026-10-23/installed-release.png",
+  "windowScreenshotSha256": "9e0ccda1a8ab9598942240d2fe990ce30aedc59146a0ee3e6dad82ee8601a26f",
+  "agentInputSent": false,
+  "nativeInputAcceptance": "NOT_RUN"
+}

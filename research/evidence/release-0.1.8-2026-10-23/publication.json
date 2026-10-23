@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-23",
+  "tag": "v0.1.8",
+  "sourceCommit": "22f598186e0b8afaddd953fc36a54fe26ec62edf",
+  "releaseUrl": "https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.8",
+  "publishedAt": "2026-10-23T16:40:18Z",
+  "prerelease": false,
+  "draft": false,
+  "latest": true,
+  "releaseWorkflow": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39988335931",
+  "tagCI": "https://github.com/kartamyshev-dev/TypeTune/actions/runs/39988335693",
+  "releaseWorkflowResult": "success",
+  "tagCIResult": "success",
+  "assets": {
+    "TypeTune-0.1.8-22f598186e0b-arm64.zip": "018dd15260666ef7b03f8fa731510e352ea1ed0348da9d4d540df9f780d84ed5",
+    "TypeTune-0.1.8-22f598186e0b-arm64.zip.sha256": "6300271bd5fdb91af3fc04a3fef6ca27e1ad72432138c6be7dff3168625c7a64"
+  },
+  "downloadedAssetDigestsMatchGitHub": true,
+  "shaFileMatchesZip": true,
+  "manifestFilesVerified": 93,
+  "bundleVersion": "0.1.8",
+  "bundleBuild": "14",
+  "codesignStrictDeep": true,
+  "binarySha256": "ec7fdf404340a879d231ab33e8af1418233e150ead53ad483cd6a21df8c9d679",
+  "bundleManifestSha256": "1621f95a84cb82b282a191882be0559f26420cde07fd2dfbd0633a784a7ecadc",
+  "downloadedCLI": "1707/1707 offline invariants passed; 0 failures. No runtime input claim.",
+  "nativeReleaseInput": "NOT_RUN",
+  "longAcceptance": "EXCLUDED_BY_USER_DECISION; NOT_RUN",
+  "notarization": "NOT_RUN"
+}

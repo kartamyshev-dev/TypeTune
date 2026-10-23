@@ -1,0 +1,9 @@
+{
+  "authorization": "User explicitly requested removing obsolete TypeTune copies without backups or restoration checks.",
+  "duplicateBundlesRemoved": 55,
+  "removedPathsCount": 85,
+  "keptApp": "/Applications/TypeTune.app",
+  "backupPolicy": "No new backups; temporary archives and verification extractions removed.",
+  "cleanupVerification": "No further restoration checks by user request.",
+  "sourcesAndUserSettings": "Not targeted."
+}

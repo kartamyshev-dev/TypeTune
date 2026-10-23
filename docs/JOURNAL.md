@@ -2513,3 +2513,32 @@ bundle и после обновления TCC пользователем ост�
 не затрагивались. Новые резервные копии не создаются. Приватный список выполненных
 удалений: research/private/release-0.1.8-2026-10-23/cleanup.json; исторические пути
 распакованных bundle теперь отсутствуют. Это уборка по явному указанию, не приёмка.
+
+## 2026-10-23 — опубликована и запущена 0.1.8 (14), обычный релиз
+
+Тег `v0.1.8` → `22f598186e0b8afaddd953fc36a54fe26ec62edf`, включён в main.
+GitHub: [релиз](https://github.com/kartamyshev-dev/TypeTune/releases/tag/v0.1.8),
+draft=false, prerelease=false, latest=true. [CI тега](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39988335693)
+Linux/macOS и [Release](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39988335931)
+завершились success. CI проверил запуск упакованного приложения8с без `.build`;
+это короткий контроль упаковки, не отменённая пользователем длительная приёмка.
+
+Оба опубликованных файла скачаны. ZIP SHA-256
+`018dd15260666ef7b03f8fa731510e352ea1ed0348da9d4d540df9f780d84ed5`
+совпал с GitHub asset digest и .sha256. После распаковки через ditto совпали93
+файла MANIFEST, sourceCommit, bundle0.1.8 (14); подпись deep/strict прошла,
+скачанный CLI1707/1707. [Evidence публикации](../research/evidence/release-0.1.8-2026-10-23/publication.json).
+
+Прежнее приложение завершено штатно. Установлен именно опубликованный bundle
+без создания резервной копии; старая установленная копия удалена. Defaults
+сравнены в памяти (не экспортированы в backup), snippets неизменны. Установочный
+ZIP, распакованный delivery и staging удалены. GUI SHA-256
+`ec7fdf404340a879d231ab33e8af1418233e150ead53ad483cd6a21df8c9d679`.
+
+Пользователь подтвердил «Разрешения обновил, запускай». Запущен один TypeTune
+PID12986 из `/Applications/TypeTune.app`. Снимок без кликов показывает
+«Работает · Обработчик готов». Агент ввод не посылал. [Установка](../research/evidence/release-0.1.8-2026-10-23/installation.json),
+[уборка](../research/evidence/release-0.1.8-2026-10-23/cleanup.json).
+Native-ввод и полный user manual на релизе NOT_RUN; длительная приёмка исключена
+по решению пользователя, нотаризации Apple нет. Установленное приложение оставлено
+работающим, текущая ветка main; новый продуктовый код после релизного тега не менялся.
