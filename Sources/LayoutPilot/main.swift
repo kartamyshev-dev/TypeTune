@@ -132,10 +132,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             let view = SettingsView(store: store, keyboard: keyboard)
             let controller = NSHostingController(rootView: view)
             let result = NSWindow(contentViewController: controller)
-            result.appearance = NSAppearance(named: .darkAqua)
             result.title = "TypeTune"; result.styleMask = [.titled, .closable, .miniaturizable, .resizable]
             result.contentMinSize = NSSize(width: 760, height: 560)
-            result.setContentSize(NSSize(width: 760, height: 560))
+            result.setContentSize(NSSize(width: 820, height: 620))
             result.isReleasedWhenClosed = false; result.center(); window = result
         }
         window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)

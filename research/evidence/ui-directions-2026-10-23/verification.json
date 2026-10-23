@@ -1,0 +1,148 @@
+{
+  "kind": "browser prototype only",
+  "checks": [
+    {
+      "variant": "Редактор",
+      "interactions": "PASS",
+      "sizes": [
+        {
+          "scheme": "light",
+          "width": 992,
+          "scrollWidth": 990,
+          "height": 670
+        },
+        {
+          "scheme": "light",
+          "width": 728,
+          "scrollWidth": 726,
+          "height": 670
+        },
+        {
+          "scheme": "light",
+          "width": 328,
+          "scrollWidth": 326,
+          "height": 800
+        },
+        {
+          "scheme": "dark",
+          "width": 992,
+          "scrollWidth": 990,
+          "height": 670
+        },
+        {
+          "scheme": "dark",
+          "width": 728,
+          "scrollWidth": 726,
+          "height": 670
+        },
+        {
+          "scheme": "dark",
+          "width": 328,
+          "scrollWidth": 326,
+          "height": 800
+        }
+      ]
+    },
+    {
+      "variant": "Студия",
+      "interactions": "PASS",
+      "sizes": [
+        {
+          "scheme": "light",
+          "width": 992,
+          "scrollWidth": 990,
+          "height": 670
+        },
+        {
+          "scheme": "light",
+          "width": 728,
+          "scrollWidth": 726,
+          "height": 670
+        },
+        {
+          "scheme": "light",
+          "width": 328,
+          "scrollWidth": 326,
+          "height": 800
+        },
+        {
+          "scheme": "dark",
+          "width": 992,
+          "scrollWidth": 990,
+          "height": 670
+        },
+        {
+          "scheme": "dark",
+          "width": 728,
+          "scrollWidth": 726,
+          "height": 670
+        },
+        {
+          "scheme": "dark",
+          "width": 328,
+          "scrollWidth": 326,
+          "height": 800
+        }
+      ]
+    },
+    {
+      "variant": "Инспектор",
+      "interactions": "PASS",
+      "sizes": [
+        {
+          "scheme": "light",
+          "width": 992,
+          "scrollWidth": 990,
+          "height": 670
+        },
+        {
+          "scheme": "light",
+          "width": 728,
+          "scrollWidth": 726,
+          "height": 670
+        },
+        {
+          "scheme": "light",
+          "width": 328,
+          "scrollWidth": 326,
+          "height": 800
+        },
+        {
+          "scheme": "dark",
+          "width": 992,
+          "scrollWidth": 990,
+          "height": 670
+        },
+        {
+          "scheme": "dark",
+          "width": 728,
+          "scrollWidth": 726,
+          "height": 670
+        },
+        {
+          "scheme": "dark",
+          "width": 328,
+          "scrollWidth": 326,
+          "height": 800
+        }
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "productionChanged": false,
+  "base_commit": "254d67dc89985f7edcc70cd76d73c78896697424",
+  "source_sha256": "35a86f6715ab73999b17f0c8c8f458ecf181d80edf78a3928a98744e6c16c981",
+  "scope": "Only browser prototypes; no native acceptance, build, install, or user preference writes.",
+  "flows": [
+    "all six pages",
+    "automatic toggle",
+    "pause/resume",
+    "application rule selection",
+    "add/remove excluded word",
+    "snippet search/add/cancel/delete confirmation",
+    "diagnostic sample",
+    "inspector selection"
+  ],
+  "visual_inspection": "All three layouts inspected; representative light and dark screenshots. Width checks cover the initial correction page, not all secondary forms.",
+  "attempts": "Initial sandbox form submit blocked and fixed using local handlers. Browser connector became unavailable; final checks used a separate headless Chrome profile. No input sent to existing native documents."
+}

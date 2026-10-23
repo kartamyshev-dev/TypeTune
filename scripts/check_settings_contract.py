@@ -34,9 +34,14 @@ def check():
             digest = '395c0ba5e1c9a838aa8407ebfbade5a153866207f78ee705567206ffab98abfa'
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest, f'Изменён {path}'
     sections = (ROOT / 'Sources/LayoutPilot/SettingsSection.swift').read_text()
-    for title in ['Основное', 'Клавиши', 'Исключения', 'Сниппеты', 'Проверка']:
+    for title in ['Исправления', 'Клавиши', 'Приложения', 'Слова', 'Сниппеты', 'Приложение', 'Диагностика']:
         assert f'"{title}"' in sections, title
     assert 'appearance' not in sections
+    settings = (ROOT / 'Sources/LayoutPilot/SettingsView.swift').read_text()
+    assert 'case .words: words' in settings and 'case .application: application' in settings
+    assert 'selection = .diagnostics' in settings, 'Потерян переход к диагностике'
+    assert 'preferredColorScheme' not in source, 'Окно должно следовать теме системы'
+    assert 'result.appearance =' not in source, 'AppKit не должен фиксировать тему'
     print('Source contract: Store/KeyboardService references, appearance removed, other bindings and protected files retained. No native claim.')
 
 

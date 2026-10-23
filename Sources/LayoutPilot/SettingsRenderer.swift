@@ -17,7 +17,7 @@ enum SettingsRenderer {
         let app = NSApplication.shared
         app.setActivationPolicy(.prohibited)
         app.finishLaunching()
-        for theme in ["dark"] {
+        for theme in ["light", "dark"] {
             for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings", "buffering", "outstanding", "review-outstanding", "empty", "crowded", "snippets-unavailable"] {
                 defaults.removePersistentDomain(forName: suite)
                 if state == "settings" { defaults.set(Data("invalid".utf8), forKey: "settings.v1") }
@@ -66,7 +66,7 @@ enum SettingsRenderer {
                 }
                 for section in SettingsSection.allCases {
                     let view = SettingsView(store: store, keyboard: keyboard, renderSection: section).defaultAppStorage(defaults)
-                    try snapshot(view, size: NSSize(width: 760, height: 560), theme: theme,
+                    try snapshot(view, size: NSSize(width: 820, height: 620), theme: theme,
                                  to: directory.appendingPathComponent("\(theme)-\(state)-\(section.rawValue).png"))
                 }
                 if state == "ready" {
@@ -99,7 +99,8 @@ enum SettingsRenderer {
         let hosting = NSHostingView(rootView: view
             .frame(width: size.width, height: size.height)
             .background(Color(nsColor: .windowBackgroundColor))
-            .environment(\.colorScheme, theme == "dark" ? .dark : .light))
+            .environment(\.colorScheme, theme == "dark" ? .dark : .light)
+            .environment(\.controlActiveState, .active))
         let window = SettingsRenderWindow(contentRect: NSRect(origin: NSPoint(x: -20000, y: -20000), size: size),
                               styleMask: [.titled], backing: .buffered, defer: false)
         window.isReleasedWhenClosed = false

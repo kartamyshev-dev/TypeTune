@@ -1,10 +1,10 @@
 # Аналог Caramba Switcher Pro для macOS Apple Silicon
 
-UI refresh, 2026-10-23: выбран и реализован №5 «Пульт», код `025861f`.
-Пять верхних разделов, окно760×560, графит/оранжевый акцент, настройки сохранены.
-[Карта](UI_REFRESH.md), [evidence](../research/evidence/ui-pult-2026-10-23/verification.json).
-Build/source/offline прошли; установлен и остановлен до TCC update.
-Native/user manual этой сборки NOT_RUN; прежние результаты не переносятся.
+UI refresh, 2026-10-23: пользователь выбрал «Редактор» после интерактивных макетов.
+Реализация в `ui-refresh`: шесть разделов слева, системная тема, отдельные слова/приложения,
+диагностика внутри «Приложения». Настройки и защитные действия сохраняются.
+Текущие результаты и точный код — [STATUS](STATUS.md), карта — [UI_REFRESH](UI_REFRESH.md).
+Native/user manual нового интерфейса NOT_RUN; прежние результаты не переносятся.
 
 Текущая короткая native-проверка кандидата `bdecb08f`: [отчёт](MAC_CHROME_CARET_FIX_2026-10-18.md).
 Chrome 48/48, в том числе single-auto 40/40; причина single-field insertion-readback
