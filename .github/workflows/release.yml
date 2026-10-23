@@ -1,6 +1,6 @@
 name: Release
 
-# A pushed tag vX.Y.Z builds, checks and publishes a prerelease on macOS. No Mac at hand
+# A pushed tag vX.Y.Z builds, checks and publishes a release on macOS. No Mac at hand
 # is needed: the archive comes from scripts/package.sh on a clean checkout of the tag.
 on:
   push:
@@ -41,12 +41,12 @@ jobs:
           else code=0; wait "$pid" || code=$?; echo "app exited with $code"; cat /tmp/app.log; status=1; fi
           mv .build-hidden .build
           exit $status
-      - name: Publish prerelease
+      - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           version="${GITHUB_REF_NAME#v}"
           build=$(sed -n 's|.*<key>CFBundleVersion</key><string>\([0-9]*\)</string>.*|\1|p' scripts/build.sh)
-          gh release create "$GITHUB_REF_NAME" --prerelease --verify-tag \
+          gh release create "$GITHUB_REF_NAME" --latest --verify-tag \
             --title "TypeTune $version ($build)" --notes-file "docs/RELEASE_$version.md" \
             dist/TypeTune-"$version"-*-arm64.zip dist/TypeTune-"$version"-*-arm64.zip.sha256
