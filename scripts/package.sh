@@ -39,7 +39,7 @@ root = pathlib.Path(sys.argv[1])
 entries = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
            for p in sorted(root.rglob('*')) if p.is_file() and p.name != 'MANIFEST.json'}
 manifest = {'sourceCommit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
-            'notice': 'File hashes for this local experimental delivery; no notarization or full acceptance claim.',
+            'notice': 'File hashes for this delivery; ad-hoc signature, no notarization or full native acceptance claim.',
             'files': entries}
 (root / 'MANIFEST.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
 MANIFEST

@@ -66,7 +66,7 @@ struct SettingsView: View {
                 Spacer(minLength: 6)
                 Menu("Отчёт, версия и выход", systemImage: "ellipsis.circle") {
                     Button("Сохранить отчёт…") { keyboard.saveDiagnosticReport() }
-                    Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev") · экспериментальная")
+                    Text("Версия \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev")")
                     Button("Выйти из TypeTune") { NSApp.terminate(nil) }
                 }.labelStyle(.iconOnly).menuStyle(.borderlessButton).fixedSize()
                     .help("Отчёт, версия и выход")
@@ -253,7 +253,7 @@ struct SettingsView: View {
                     Text("Разрешения, проверка раскладки, статистика и отчёт.").font(.caption).foregroundStyle(.secondary)
                 }
                 settingsGroup("TypeTune") {
-                    Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev") · экспериментальная версия")
+                    Text("Версия \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev")")
                         .font(.caption).foregroundStyle(.secondary)
                     Button("Выйти из TypeTune") { NSApp.terminate(nil) }
                 }

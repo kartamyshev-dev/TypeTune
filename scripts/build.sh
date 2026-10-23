@@ -27,7 +27,7 @@ cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'
 <key>LSUIElement</key><true/>
 <key>NSPrincipalClass</key><string>NSApplication</string>
 <key>NSHighResolutionCapable</key><true/>
-<key>NSHumanReadableCopyright</key><string>Independent experimental prototype</string>
+<key>NSHumanReadableCopyright</key><string>Independent application</string>
 </dict></plist>
 PLIST
 RESOURCES="$APP_DIR/Contents/Resources/LayoutPilot_LayoutPilotCore.bundle"
