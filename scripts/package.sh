@@ -7,7 +7,7 @@ test -z "$(git ls-files --others --exclude-standard)" || { echo 'Commit all sour
 REVISION=$(git rev-parse HEAD)
 SHORT_REVISION=$(git rev-parse --short=12 HEAD)
 DELIVERY="dist/delivery-$SHORT_REVISION"
-ARCHIVE="dist/TypeTune-0.1.7-$SHORT_REVISION-arm64.zip"
+ARCHIVE="dist/TypeTune-0.1.8-$SHORT_REVISION-arm64.zip"
 test ! -e "$DELIVERY" && test ! -e "$ARCHIVE" || { echo "Delivery already exists" >&2; exit 1; }
 if [ "$#" -eq 0 ]; then
   scripts/build.sh
