@@ -17,7 +17,7 @@ enum SettingsRenderer {
         let app = NSApplication.shared
         app.setActivationPolicy(.prohibited)
         app.finishLaunching()
-        for theme in ["light", "dark"] {
+        for theme in ["dark"] {
             for state in ["ready", "accessibility", "listening", "secure", "recovery", "settings", "buffering", "outstanding", "review-outstanding", "empty", "crowded", "snippets-unavailable"] {
                 defaults.removePersistentDomain(forName: suite)
                 if state == "settings" { defaults.set(Data("invalid".utf8), forKey: "settings.v1") }
@@ -66,13 +66,13 @@ enum SettingsRenderer {
                 }
                 for section in SettingsSection.allCases {
                     let view = SettingsView(store: store, keyboard: keyboard, renderSection: section).defaultAppStorage(defaults)
-                    try snapshot(view, size: NSSize(width: 1000, height: 740), theme: theme,
+                    try snapshot(view, size: NSSize(width: 760, height: 560), theme: theme,
                                  to: directory.appendingPathComponent("\(theme)-\(state)-\(section.rawValue).png"))
                 }
                 if state == "ready" {
                     for section in SettingsSection.allCases {
                         let view = SettingsView(store: store, keyboard: keyboard, renderSection: section).defaultAppStorage(defaults)
-                        try snapshot(view, size: NSSize(width: 920, height: 640), theme: theme,
+                        try snapshot(view, size: NSSize(width: 760, height: 560), theme: theme,
                                      to: directory.appendingPathComponent("\(theme)-minimum-\(section.rawValue).png"))
                     }
                     let editor = SnippetEditorSheet(store: store, original: Snippet(abbreviation: ";спс", text: "Спасибо! {{курсор}}"))

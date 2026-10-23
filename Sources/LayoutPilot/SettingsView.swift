@@ -20,51 +20,60 @@ struct SettingsView: View {
         _selection = State(initialValue: renderSection)
     }
     #endif
+    private let accent = Color(red: 1, green: 0.45, blue: 0.24)
+    private let graphite = Color(red: 0.12, green: 0.13, blue: 0.15)
+
     var body: some View {
-        HSplitView {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("TypeTune").font(.headline).padding(.horizontal, 18).padding(.top, 22).padding(.bottom, 16)
-                List(SettingsSection.allCases, selection: $selection) { section in
-                    Label {
-                        Text(section.title)
-                    } icon: {
-                        Image(systemName: section.symbol).foregroundStyle(Color.secondary).frame(width: 20)
-                    }.padding(.vertical, 5).tag(section)
-                }.listStyle(.sidebar).accessibilityLabel("Разделы настроек")
-                Divider()
-                VStack(alignment: .leading, spacing: 7) {
-                    Label(store.serviceStatus.title, systemImage: store.running && !store.recoveryRequired ? "checkmark.circle.fill" : "pause.circle")
-                        .font(.caption).foregroundStyle(store.running && !store.recoveryRequired ? Color.green : Color.secondary)
-                    Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev") · экспериментальная")
-                        .font(.caption2).foregroundStyle(.secondary)
-                    Button("Выйти") { NSApp.terminate(nil) }.controlSize(.small)
-                }.padding(16)
-            }
-            .frame(minWidth: 188, idealWidth: 204, maxWidth: 220)
-            .background(Color(nsColor: .windowBackgroundColor))
-            VStack(spacing: 0) {
-                HStack {
-                    Text((selection ?? .main).title).font(.title2.bold())
-                    Spacer()
-                }.padding(.horizontal, 24).padding(.vertical, 22)
-                safetyNotice
-                sectionContent
-                    .disabled(!store.settingsStorageAvailable)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).clipped()
-                Divider()
-                HStack {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(store.serviceStatus.message).font(.caption).lineLimit(2)
-                        Text("Последнее событие: " + store.lastStatus).font(.caption2).foregroundStyle(.secondary).lineLimit(2)
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 18) {
+                HStack(spacing: 10) {
+                    Text("typetune").font(.system(size: 24, weight: .black, design: .rounded)).tracking(-1)
+                    Text("/ ПУЛЬТ НАБОРА").font(.system(size: 9, design: .monospaced)).foregroundStyle(.secondary)
+                    Spacer(minLength: 8)
+                    Label(store.serviceStatus.title, systemImage: store.running && !store.recoveryRequired ? "circle.fill" : "exclamationmark.circle")
+                        .font(.caption).foregroundStyle(store.running && !store.recoveryRequired ? accent : .secondary)
+                    Button { store.settings.paused.toggle() } label: {
+                        Image(systemName: store.settings.paused ? "play.fill" : "pause.fill")
+                    }.accessibilityLabel(store.settings.paused ? "Продолжить автоисправления" : "Приостановить автоисправления")
+                        .help(store.settings.paused ? "Продолжить автоисправления" : "Приостановить автоисправления")
+                        .disabled(!store.settingsStorageAvailable)
+                }
+                HStack(spacing: 20) {
+                    ForEach(SettingsSection.allCases) { section in
+                        Button { selection = section } label: {
+                            Text(section.title).font(.system(size: 12, weight: selection == section ? .bold : .regular))
+                                .foregroundStyle(selection == section ? accent : Color.secondary)
+                                .padding(.vertical, 5)
+                        }.buttonStyle(.plain).accessibilityAddTraits(selection == section ? .isSelected : [])
                     }
-                    Spacer(minLength: 12)
-                    Button("Сохранить отчёт…") { keyboard.saveDiagnosticReport() }.controlSize(.small)
-                }.padding(.horizontal, 20).padding(.vertical, 12)
+                    Spacer(minLength: 0)
+                }.accessibilityLabel("Разделы настроек")
+            }.padding(.horizontal, 26).padding(.top, 20).padding(.bottom, 12)
+            if needsSafetyNotice {
+                ScrollView { safetyNotice }.frame(height: 150)
             }
-            .frame(minWidth: 680, maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(nsColor: .controlBackgroundColor))
+            sectionContent
+                .disabled(!store.settingsStorageAvailable)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).clipped()
+            Divider().padding(.horizontal, 26)
+            HStack(spacing: 14) {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(store.serviceStatus.message).font(.system(size: 10)).lineLimit(2)
+                    Text("Последнее событие: " + store.lastStatus).font(.system(size: 9)).foregroundStyle(.secondary).lineLimit(1)
+                }.help(store.serviceStatus.message + "\n" + store.lastStatus)
+                Spacer(minLength: 6)
+                Menu {
+                    Button("Сохранить отчёт…") { keyboard.saveDiagnosticReport() }
+                    Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "dev") · экспериментальная")
+                    Button("Выйти из TypeTune") { NSApp.terminate(nil) }
+                } label: { Image(systemName: "ellipsis.circle") }
+                .menuStyle(.borderlessButton).fixedSize().help("Отчёт, версия и выход")
+                .accessibilityLabel("Отчёт, версия и выход")
+            }.padding(.horizontal, 26).padding(.vertical, 10)
         }
-        .frame(minWidth: 920, idealWidth: 1000, minHeight: 640, idealHeight: 740)
+        .frame(minWidth: 760, idealWidth: 760, minHeight: 560, idealHeight: 560)
+        .background(graphite).tint(accent).environment(\.colorScheme, .dark).preferredColorScheme(.dark)
+        .toggleStyle(.switch).controlSize(.small)
     }
 
     @ViewBuilder private var sectionContent: some View {
@@ -77,8 +86,10 @@ struct SettingsView: View {
         }
     }
 
+    private var needsSafetyNotice: Bool { !store.settingsStorageAvailable || !store.trusted || !store.listening || store.secure || store.recoveryRequired || store.textReviewRequired || store.pendingInput > 0 || store.outstandingInput > 0 || store.bufferedEvents > 0 }
+
     @ViewBuilder private var safetyNotice: some View {
-        if !store.settingsStorageAvailable || !store.trusted || !store.listening || store.secure || store.recoveryRequired || store.textReviewRequired || store.pendingInput > 0 || store.outstandingInput > 0 || store.bufferedEvents > 0 {
+        if needsSafetyNotice {
             VStack(alignment: .leading, spacing: 8) {
                 if !store.settingsStorageAvailable {
                     Label("Не удалось прочитать настройки", systemImage: "exclamationmark.triangle")
@@ -111,16 +122,6 @@ struct SettingsView: View {
             .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.orange.opacity(0.25)))
             .padding(.horizontal, 20).padding(.bottom, 8).accessibilityElement(children: .contain)
         }
-    }
-    @ViewBuilder private var correctionControls: some View {
-        Toggle("Пауза всех автоисправлений", isOn: $store.settings.paused)
-        Toggle("Автоматически исправлять раскладку RU/EN", isOn: $store.settings.automatic)
-        Toggle("Исправлять во всех приложениях", isOn: $store.universalInput)
-        Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
-        if store.earlyCorrection { Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.").font(.caption).foregroundStyle(.secondary) }
-        Toggle("Исправлять известные опечатки", isOn: $store.settings.typos)
-        Toggle("Восстанавливать «ё» в однозначных словах", isOn: $store.settings.yo)
-        Toggle("Расширять словарь средствами macOS", isOn: $store.useSystemDictionary)
     }
     @ViewBuilder private var correctionExplanation: some View {
         if !store.universalInput { Text("Исправления выполняются только в TextEdit, Chrome и Codex, а в Terminal и Ghostty — через интеграцию с zsh.").font(.caption).foregroundStyle(.secondary) }
@@ -161,12 +162,72 @@ struct SettingsView: View {
         }))
     }
     private var general: some View {
-        Form {
-            Section("Исправление текста") { correctionControls }
-            Section("Звук") { soundControls }
-            Section("Приложение") { startupControl }
-            Section { DisclosureGroup("Как выполняется исправление") { correctionExplanation } }
-        }.formStyle(.grouped).controlSize(.small)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 14) {
+                        panelHeading("01 / РАСКЛАДКА")
+                        HStack(spacing: 9) {
+                            keycap("A", color: .primary)
+                            Text("↔").font(.title2).foregroundStyle(accent)
+                            keycap("Я", color: accent)
+                        }.accessibilityHidden(true)
+                        Text("RU / EN").font(.system(size: 12, weight: .medium, design: .monospaced))
+                        Text("ghbdtn → привет").font(.system(size: 11, design: .monospaced)).foregroundStyle(.secondary)
+                        panelToggle("Исправлять раскладку", isOn: $store.settings.automatic).font(.system(size: 11))
+                    }.padding(18).frame(width: 260, alignment: .leading)
+                        .background(Color.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 14))
+                    VStack(alignment: .leading, spacing: 14) {
+                        panelHeading("02 / ТОЧНОСТЬ")
+                        panelToggle("Опечатки", isOn: $store.settings.typos).help("Исправлять известные опечатки")
+                        panelToggle("Буква «ё»", isOn: $store.settings.yo).help("Восстанавливать «ё» в однозначных словах")
+                        panelToggle("Словарь macOS", isOn: $store.useSystemDictionary).help("Расширять словарь средствами macOS")
+                        Divider()
+                        Text("Исправления по словарю. Неизвестные слова остаются без изменений.")
+                            .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                    }.font(.system(size: 13)).padding(18).frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 14))
+                }
+                DisclosureGroup("Приложения, звук и автозапуск") {
+                    VStack(alignment: .leading, spacing: 14) {
+                        Toggle("Исправлять во всех приложениях", isOn: $store.universalInput)
+                        correctionExplanation
+                        Divider()
+                        soundControls
+                        Divider()
+                        startupControl
+                    }.padding(.top, 12)
+                }
+                DisclosureGroup("Дополнительные параметры") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Toggle("Раннее исправление раскладки (экспериментально)", isOn: $store.earlyCorrection)
+                        if store.earlyCorrection {
+                            Text("Исправляет известные начала слов до пробела. Неизвестные имена и незавершённые адреса могут распознаваться неточно.")
+                                .font(.caption).foregroundStyle(.secondary)
+                        }
+                    }.padding(.top, 12)
+                }
+                Text("Double Shift — исправить · ⌘⌥Z — отменить")
+                    .font(.system(size: 10, design: .monospaced)).foregroundStyle(.secondary)
+            }.padding(.horizontal, 26).padding(.vertical, 12)
+        }
+    }
+    private func panelToggle(_ title: String, isOn: Binding<Bool>) -> some View {
+        HStack {
+            Text(title)
+            Spacer(minLength: 8)
+            Toggle(title, isOn: isOn).labelsHidden()
+        }
+    }
+    private func panelHeading(_ title: String) -> some View {
+        Text(title).font(.system(size: 9, weight: .bold, design: .monospaced)).foregroundStyle(.secondary)
+    }
+    private func keycap(_ title: String, color: Color) -> some View {
+        Text(title).font(.system(size: 34, weight: .semibold, design: .rounded))
+            .foregroundStyle(color).frame(width: 72, height: 68)
+            .background(LinearGradient(colors: [Color.white.opacity(0.09), Color.white.opacity(0.025)],
+                                        startPoint: .top, endPoint: .bottom), in: RoundedRectangle(cornerRadius: 12))
+            .overlay(RoundedRectangle(cornerRadius: 12).strokeBorder(Color.white.opacity(0.08)))
     }
     private var exceptions: some View {
         Form {

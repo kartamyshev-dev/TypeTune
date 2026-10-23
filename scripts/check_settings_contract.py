@@ -24,7 +24,10 @@ def check():
     keys = re.findall(r'@AppStorage\("([^"]+)"\)', source)
     assert not keys, 'Оформление больше не должно переопределять тему или цвет'
     bindings = set(re.findall(r'\$store\.([\w.]+)', source))
-    assert set(baseline['directBindings']) <= bindings, 'Потеряна прямая привязка Store'
+    # Pause moved to the header button, with the same Store setting.
+    required = set(baseline['directBindings']) - {'settings.paused'}
+    assert required <= bindings, 'Потеряна прямая привязка Store'
+    assert 'store.settings.paused.toggle()' in source, 'Потеряна пауза'
     for path, digest in baseline['protected'].items():
         # Store changed only to remove the retired header image feature.
         if path == 'Sources/LayoutPilot/Store.swift':
