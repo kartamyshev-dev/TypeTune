@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-10-23T16:17:22.656596+00:00",
+  "sourceCommit": "cdabeda47e31d5fe8086aa37be54cc53c33b37c2",
+  "installedPath": "/Applications/TypeTune.app",
+  "binarySha256": "3988a3b38857a8bf52a41fe9a63dcc0a520b640f3467ebaf9ee21848e8408438",
+  "bundleManifestSha256": "1abfe9ddfc5410fe612e3990bdd950b31baa9d3a7d63c1036a13baed5e03b650",
+  "candidateInstalledBundleEqual": true,
+  "codesignStrictDeep": true,
+  "defaultsSemanticEquality": true,
+  "snippetsByteEquality": true,
+  "selectedInputSourcesEquality": true,
+  "runningSwitcherCount": 0,
+  "launch": "NOT_RUN_PENDING_USER_TCC",
+  "backup": "research/private/ui-editor-2026-10-23/TypeTune-replaced.app",
+  "notice": "Installation integrity and local state only; no native input acceptance.",
+  "postPermissionLaunch": {
+    "userConfirmedTCCUpdate": true,
+    "pid": 7362,
+    "command": "/Applications/TypeTune.app/Contents/MacOS/LayoutPilot",
+    "started": "Fri Oct 23 19:18:56 2026",
+    "oneSwitcher": true,
+    "unchangedInstalledBundle": true,
+    "window": "TypeTune; shown by launch/reopen, no agent UI clicks",
+    "screenshot": "research/private/ui-editor-2026-10-23/installed-editor.png",
+    "screenshotSha256": "c474f2d3d5ea3d56f6625dd8b83c46e0df87e5a8f0e53172524132d98cefbc00",
+    "observedStatus": "Работает · Обработчик готов",
+    "visualScope": "Read-only capture of existing Keys page; native input scenarios and manual settings checks NOT_RUN",
+    "captureTool": "peekaboo see --no-elements (image removed in v4)"
+  }
+}

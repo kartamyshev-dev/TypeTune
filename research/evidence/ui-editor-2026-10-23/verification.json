@@ -1,0 +1,1581 @@
+{
+  "sourceCommit": "cdabeda47e31d5fe8086aa37be54cc53c33b37c2",
+  "branch": "ui-refresh",
+  "concept": "Редактор",
+  "build": "debug GUI/CLI and release GUI/CLI completed",
+  "offlineSelftests": {
+    "debug": {
+      "passed": 1707,
+      "failed": 0
+    },
+    "release": {
+      "passed": 1707,
+      "failed": 0
+    }
+  },
+  "corpus": {
+    "train": {
+      "corrections": 1134,
+      "count": 3094,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 3094
+    },
+    "holdout": {
+      "corrections": 484,
+      "count": 1326,
+      "falseCorrections": 0,
+      "misses": 0,
+      "originalCompared": 0,
+      "originalMatches": 0,
+      "passed": 1326
+    }
+  },
+  "sourceContract": "PASS; retained Store/KeyboardService references, direct bindings and protected source hashes",
+  "safetyNoticesUnchanged": true,
+  "dataMutationHelpersUnchanged": true,
+  "offlineRendering": {
+    "directory": "research/private/ui-2026-10-23/editor-final",
+    "count": 188,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "reviewedFinal": [
+      "dark-ready-main.png",
+      "light-minimum-snippets.png",
+      "light-ready-diagnostics.png",
+      "dark-settings-main.png"
+    ],
+    "reviewedEarlierSameCode": [
+      "light-ready-main.png",
+      "light-ready-exceptions.png",
+      "dark-ready-application.png",
+      "dark-minimum-keys.png",
+      "light-recovery-main.png"
+    ],
+    "notice": "Offscreen NSHostingView; controls can render inactive. File count and dimensions are not interaction acceptance.",
+    "images": [
+      {
+        "name": "dark-accessibility-application.png",
+        "sha256": "477a56088b023964de82fb506cc3058fb7366a02e8deb114816aee25e0d0e3c0",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-accessibility-diagnostics.png",
+        "sha256": "cd5a76e51dd9c75fe20046c68308d34ba2c235fa1102627dcfc9b25d4f4fc6fe",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-accessibility-exceptions.png",
+        "sha256": "c02a65bd64a67cbefc9ca1845b70dfbda8944c4775d4c2ae6398bed6fd1bd2e5",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-accessibility-keys.png",
+        "sha256": "87b4f7e5378e77cc8caf3bd409150aea96abea3f5213b0a1db93bc8ac358455b",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-accessibility-main.png",
+        "sha256": "5f7443e1c0059ad5cd4183ba863b7419d46c32710ff0317d241c85aa12be6fd6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-accessibility-snippets.png",
+        "sha256": "c69cdd658bc697836092aa5a72d5a9049176e51e2acd6b985b344e5189588e85",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-accessibility-words.png",
+        "sha256": "a5219f332cd73f8a76af1130d836197e71a81b8a88f6c18ece8e98e41aa53276",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-application.png",
+        "sha256": "f83de76cb3f00d621d1ff1ae24bec17fb78d065b40a4fa2cf5c73c6430978964",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-diagnostics.png",
+        "sha256": "63ba91a188b4797c40b24dd6118bca6fce8fd89bb6a476ac022088d0ef94b607",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-exceptions.png",
+        "sha256": "3001f99a58165219d52b8cbf2e38586751799fe9c6b191cb34aafcb2a3eed91a",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-keys.png",
+        "sha256": "f948a4fe22cb065ae627c22544ea2f2f5d723f9c4b1a9075bd685016cce5826e",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-main.png",
+        "sha256": "6989dc796f0b3d721608859968b7388f50fbca65d101dc88926b8bf16208409e",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-snippets.png",
+        "sha256": "05617ca05577417872ccc818c5e5ea645609f4979564d5907305d62c93ba8f20",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-buffering-words.png",
+        "sha256": "daabb17febe1dc741ac8f3a197ba249633531b8d4a48fa216144f09a37e12502",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-application.png",
+        "sha256": "c72292fc56117889e8bcae78fbc55cb0d1cbc6419a7b34375072fd151a802927",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-diagnostics.png",
+        "sha256": "6b92262422d28fa907099da86d46a3a51012d1827281605ca56344d713a03c2c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-exceptions.png",
+        "sha256": "b4dc7dfe7716440e852396d334a4eb8b4e43bb21fa981cef60e611e25afe12fe",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-keys.png",
+        "sha256": "e9fc131460f9f646fd96c1c7b6ff780dc0efc514dcef8548066cfc552b91bf94",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-main.png",
+        "sha256": "0cc6443d22471f29801a7584941cd6ef018fdf296eacc22cba458f7365628c58",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-snippets.png",
+        "sha256": "b91390cdbf246257303862a190106189762fb933fd412bc8e9da4130b15f29fd",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-crowded-words.png",
+        "sha256": "363de07efa98c5d2be85908d020f0e51e7fda33fc4a178aa65ff1362417e84d2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-application.png",
+        "sha256": "c72292fc56117889e8bcae78fbc55cb0d1cbc6419a7b34375072fd151a802927",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-diagnostics.png",
+        "sha256": "6b92262422d28fa907099da86d46a3a51012d1827281605ca56344d713a03c2c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-exceptions.png",
+        "sha256": "61df48c0d7975766f61136d695bc7bb16b308a6e2060935f899e198b6a51632c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-keys.png",
+        "sha256": "e9fc131460f9f646fd96c1c7b6ff780dc0efc514dcef8548066cfc552b91bf94",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-main.png",
+        "sha256": "0cc6443d22471f29801a7584941cd6ef018fdf296eacc22cba458f7365628c58",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-snippets.png",
+        "sha256": "07003e3b87c2e0a9dc22b8d9e4c2045fd1ddd52d32970b9a0f930cc357b0f433",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-empty-words.png",
+        "sha256": "843de4c2d1b3a6afb8edfb0569d490fd92af104c9ddfd9ade71cd8703bda75a2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-application.png",
+        "sha256": "8c7e056c4c231866fc9ed623dcde9fdb57aec8533c49bb4c663bb1e9b0f486a6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-diagnostics.png",
+        "sha256": "b8a872a76990d3fd345c00bca6744c87249e4ab3c994bab3fe9f9de6a0fa22c0",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-exceptions.png",
+        "sha256": "07b12fa3ede3de25866183bfa951f6e2608c6cf0dcf8d62bab55c5a45499d2b8",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-keys.png",
+        "sha256": "366b40ffef1b85aa277823f7b2a308dada63c82f78921a3bf3be825810b9c801",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-main.png",
+        "sha256": "ea12bcd6b3fe6a703ba8af4503cdc53d23ba1935f3a7381458138027660b13c3",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-snippets.png",
+        "sha256": "2d43cc363517fa49b2bc158c7d8391d6136217c7d776af996536793e44eca665",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-listening-words.png",
+        "sha256": "b924aa01511c7f0694251c828e59aa8e948ab2397b19bae68d10f7ea5190c773",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-minimum-application.png",
+        "sha256": "2f17c426c311f3a14e0133cfd0cbee92d51094238e5683f7d34ea4b741ff0089",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-minimum-diagnostics.png",
+        "sha256": "145d366fd13ae4bcccf271f4f436834838f5032f6fb3171e8792f77e25bbd154",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-minimum-exceptions.png",
+        "sha256": "d42700d34fde619e657e7e523e82f883dac175e1338856829e96c61a5a6ceeb6",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-minimum-keys.png",
+        "sha256": "fa8014e1ad95cd8f027de33ea93355c6bab20f7e5d5879b46ad90d104db6fe02",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-minimum-main.png",
+        "sha256": "ae6771dfc813e470720dc67c2b86416108d4eab35ac36203eb8b3b721f17c861",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-minimum-snippets.png",
+        "sha256": "7f6846f3c72c75ee1dd3d2d01053464e41ef9cb254f3ffd4c918cdbc286236fb",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-minimum-words.png",
+        "sha256": "2fcf75d0f665f101bce7dfa32e5758d3d3c07c11585038455812119785ff0b4d",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "dark-outstanding-application.png",
+        "sha256": "c98d7b37de17ead5e1c7a267f1ec0b15416c5c2c082331da2a8789ab58c1bef3",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-outstanding-diagnostics.png",
+        "sha256": "517c48eaf9927f35ba22183ef47779113fed2101d9add3a5c5dc4664e56afacb",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-outstanding-exceptions.png",
+        "sha256": "72bba103dbf470ed48b61f025c1e8baef33440d56300d90d2792b3d077944eb0",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-outstanding-keys.png",
+        "sha256": "6e65d6f9dac8964f37d7980b5dd9d4d4f3dfb38d18b2ffd0780d127c43385532",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-outstanding-main.png",
+        "sha256": "5c70dc5d5e2d7eec96b1e6be83da427101e750065454e7b8433e1d210a0fae81",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-outstanding-snippets.png",
+        "sha256": "a63f7df3e4c49f9521fdb76584a85be699d149ee565e31fd76c17fe0c9865f0f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-outstanding-words.png",
+        "sha256": "7ea56af391c01a009306c9edd65c76c21d2fe253816f1f5fb67bcc080f730b41",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-application.png",
+        "sha256": "c72292fc56117889e8bcae78fbc55cb0d1cbc6419a7b34375072fd151a802927",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-diagnostics.png",
+        "sha256": "6b92262422d28fa907099da86d46a3a51012d1827281605ca56344d713a03c2c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-exceptions.png",
+        "sha256": "b0aec05f05f57b80b88cbb0e962539d0845050f056bf19d798d9ca8d4847f0d7",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-keys.png",
+        "sha256": "e9fc131460f9f646fd96c1c7b6ff780dc0efc514dcef8548066cfc552b91bf94",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-main.png",
+        "sha256": "0cc6443d22471f29801a7584941cd6ef018fdf296eacc22cba458f7365628c58",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-snippets.png",
+        "sha256": "e48f3aa290cc98d04e9294f34ae0a80aeab24b49a6185ddf4918bd56b2380e50",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-ready-words.png",
+        "sha256": "941f04bc8f673029a2690ec0effc6e88398077ca2a7e50d7d80a61ff4af0169d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-application.png",
+        "sha256": "72bfd6e3d5b0290f1669566f389a3e9305fbc0960cd731033d440e5be2480164",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-diagnostics.png",
+        "sha256": "e96b74a77a5be015a9a62f65c8cceb56222a5864bb504ec1f5ca1b63c2d2110c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-exceptions.png",
+        "sha256": "a4db7b51874b68352c75c057ea46e222c2a4ee05796278b41f4197c00bd8785f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-keys.png",
+        "sha256": "e5e52e3255830bc606c77b3ed6a24f1c44209b478ca3e6400229e8b678a5501d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-main.png",
+        "sha256": "93a7490716d58e5d3e3d6ddc99b3b3d790d08968645523f057deeb5b233ae85f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-snippets.png",
+        "sha256": "2e31aee6bff9956cb5e3955a84f5641f7d3d6bbe7bdfe0462bdd8fb4d99ffaff",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-recovery-words.png",
+        "sha256": "d06a54835b1646ad9dc3999f68446ff88211f4292fc176473b153040056ee341",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-application.png",
+        "sha256": "f593fb268aca7699f5d5aa1e12e4e72cc61c5bde2f848dd81f915d4bdcd185d2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-diagnostics.png",
+        "sha256": "407aea7da4caa43bb506cfb04ac72782d92c8806469c506222984db0c695515d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-exceptions.png",
+        "sha256": "f3c6d7d19df7cd7561098ecd7672aa5e95e40e2fbc89573abfd53bd514988b9e",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-keys.png",
+        "sha256": "25fef7c02ea3c7da3fb886e7b74fb540921286113745936c160327c540218a36",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-main.png",
+        "sha256": "84f7359dd8791a47b12b2bff4cd4645db13f3a9781dca3143bc648a51dd6f5f2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-snippets.png",
+        "sha256": "b710ae36ea214fd4b9e9887deb73d4ccada88fa8e05aadc988054f2164074429",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-review-outstanding-words.png",
+        "sha256": "9cc7e41e4a64bc7b183f52314b0258ca1fad92c42e0e02fd034ef7194908403d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-application.png",
+        "sha256": "92f41aeb636e4e5f0caaa942d72df45ca2589e764be03c71cc7048ee2cb42928",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-diagnostics.png",
+        "sha256": "27e3b06c507150ee4c8cd108483f7f5e79e41c0d716754292c51cd03aaff9799",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-exceptions.png",
+        "sha256": "c696526c48fd2a20757c1e197f0c3bf9f733d78e6935236142f53311c4fe6bcc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-keys.png",
+        "sha256": "0c51e97563929ceae37458679faf3063964e19da37a8d45b98b74be3076b2771",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-main.png",
+        "sha256": "c328083ad636f4c930f1345f1783120296799becbedecd661cbf4d64d7ecd0a9",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-snippets.png",
+        "sha256": "87909cca165483e3a5217db33e6e1502d606aa5e3c154a7b53b16e5bf6965fec",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-secure-words.png",
+        "sha256": "f6315fb3d46785f8873d6680750a9994bf16bdb4df29f81dedcd6fe254a40b83",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-application.png",
+        "sha256": "ce0295c5c2a7f098e19749cafa9d5609cb87617c87c6f25ee9277ba439185c05",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-diagnostics.png",
+        "sha256": "957753de717930ed3c8576a0c11b0681cab3bc983dbe95a681ef854a6c89bda6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-exceptions.png",
+        "sha256": "a6f47194711b184cbd0235e52ca486257ca7f632a70b41340118308668f0ab53",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-keys.png",
+        "sha256": "cd51b16a426109753993e9561d4b87398bac5a544e3536c51c32fb5ae2822d0c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-main.png",
+        "sha256": "df659682249af11cb666ad4f3e0c9b5fb4f161c0c03b71dba312a5da903faf7b",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-snippets.png",
+        "sha256": "3b01aefa38061bb625f412c61d432e4f7fa831840e17895d701589ee99531e40",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-settings-words.png",
+        "sha256": "4fe99a1abdd127095db73d30390527f2d8696e8d51568e1fea37a14cb0ccd19b",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippet-editor-applications.png",
+        "sha256": "bb6a6e48ab14b6c00bea23bcfbf8aa2cbee9e06d10f203e5cc52df8e7a27beef",
+        "pixels": [
+          1320,
+          1320
+        ]
+      },
+      {
+        "name": "dark-snippet-editor-invalid.png",
+        "sha256": "7e594444eb278ea38a9f73d146b13789f6a0c138278e89f32ab0b2fdcb16eadc",
+        "pixels": [
+          1320,
+          1320
+        ]
+      },
+      {
+        "name": "dark-snippet-editor.png",
+        "sha256": "ed57f9534ca466c4b10ea3edd26c968aaf934c6c319da4acc45315ff16e6fdf0",
+        "pixels": [
+          1320,
+          1320
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-application.png",
+        "sha256": "c72292fc56117889e8bcae78fbc55cb0d1cbc6419a7b34375072fd151a802927",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-diagnostics.png",
+        "sha256": "6b92262422d28fa907099da86d46a3a51012d1827281605ca56344d713a03c2c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-exceptions.png",
+        "sha256": "b0aec05f05f57b80b88cbb0e962539d0845050f056bf19d798d9ca8d4847f0d7",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-keys.png",
+        "sha256": "e9fc131460f9f646fd96c1c7b6ff780dc0efc514dcef8548066cfc552b91bf94",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-main.png",
+        "sha256": "0cc6443d22471f29801a7584941cd6ef018fdf296eacc22cba458f7365628c58",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-snippets.png",
+        "sha256": "008e81c4681f6c34f4555b2d40af1ac41d9d3277e7e5a0d617f4a259664c2566",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "dark-snippets-unavailable-words.png",
+        "sha256": "941f04bc8f673029a2690ec0effc6e88398077ca2a7e50d7d80a61ff4af0169d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-application.png",
+        "sha256": "5f3d8c85eee142a2682ef7084485ce9a171103549d8fd8009c47a986b29315d3",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-diagnostics.png",
+        "sha256": "3b24193dbcd2d3d3b23889e73759cb7916c89f6987c6a98c68d55474f20732e1",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-exceptions.png",
+        "sha256": "01a5f80def97866387f15b094e692c10f0d6e0a391628e2feb1d83192c744b63",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-keys.png",
+        "sha256": "75e1f96498e186a16e2eb7a44da071ad9881f9c2d88a72f1bbf6f83037222942",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-main.png",
+        "sha256": "b6996e96d5b8340751de4ebc68a3556b800403037038ea8f4f1d46e7ab931b50",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-snippets.png",
+        "sha256": "2c7dda7fa3e929a253a0affa3ffe4cbe3dcb0cdae457f661e3b11ca4d2c4688f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-accessibility-words.png",
+        "sha256": "06e63ea734ea9937ba5fbb998b22e493e73f994ea6eee3c50e911c35666403bc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-application.png",
+        "sha256": "ca3c14385d69e6f3f84daa9cbee00e9649ae37ac224ded45f12545eb5eac1bdf",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-diagnostics.png",
+        "sha256": "247e9a0718a1b890f8534c67ca21e71b17555568a2fafae8ec63acbe2edf6872",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-exceptions.png",
+        "sha256": "6b6d92044ebac167c2ac920f2b07f00418d973b2749dba3da673844184aa1b47",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-keys.png",
+        "sha256": "af31e14ef00c41e79964d7a701c5893be609da4180aae8cbf3609ce12319d980",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-main.png",
+        "sha256": "c4bd23d49e80a12090c284cf7beba6f2d1ef8f70a7ebc0f6eb0fb348d11245fb",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-snippets.png",
+        "sha256": "79192f7e20cb10fb713b0017d90e5b55c58e9c1e2112dc46602ac4df90010cf5",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-buffering-words.png",
+        "sha256": "71284814e2a74c90f78d39c0ea46cfcca761fd75633c1d06ff3c590ce692fd65",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-application.png",
+        "sha256": "5798e4c86c82b74fb2d967281a457073a0c185968f04feb752faa4b7162b289a",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-diagnostics.png",
+        "sha256": "ab97f0771ed25f4c43f335591d6681ef90a487b0360c6456b56d2770a9231fa2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-exceptions.png",
+        "sha256": "fe618a95fe5e600f6b169e67bf3952975c66495f11ebccb69716d71722d827b2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-keys.png",
+        "sha256": "1494152fbc45fcb76487730568f34017554b11b7f86a3298a0f744361ece03dc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-main.png",
+        "sha256": "22d3f049fc6bd656c933cc620bc02dc16035da0b077fe48dabca16c0f73779fe",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-snippets.png",
+        "sha256": "932027b137e911845c0ce41c10bc07433197c103b691ed7b3275fd8b15d081b1",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-crowded-words.png",
+        "sha256": "9951cfa0f1a9c9b6c52b778541b6a0e25467599203de6aecd27ab094f33f3f6d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-application.png",
+        "sha256": "5798e4c86c82b74fb2d967281a457073a0c185968f04feb752faa4b7162b289a",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-diagnostics.png",
+        "sha256": "ab97f0771ed25f4c43f335591d6681ef90a487b0360c6456b56d2770a9231fa2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-exceptions.png",
+        "sha256": "d5a2a0747eba9e2ee452bfeb7ccf766b02af0a8fcca88e2b233bf6936f8ccc60",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-keys.png",
+        "sha256": "1494152fbc45fcb76487730568f34017554b11b7f86a3298a0f744361ece03dc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-main.png",
+        "sha256": "22d3f049fc6bd656c933cc620bc02dc16035da0b077fe48dabca16c0f73779fe",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-snippets.png",
+        "sha256": "97b433e14d1ca06c6f3cedd3d6b703f81af981e92835cdbb63545093bd0e5261",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-empty-words.png",
+        "sha256": "a0cfb4db270da8e66ebcd73cbe79d0ed155f4c73158722a152af14aa996b984d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-application.png",
+        "sha256": "a4cb9aeb4ee11dcd413e5eec0e1113e3afedf390ae15ab1ed0a0027e867c8548",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-diagnostics.png",
+        "sha256": "9825d6a12fedf0dbac7be04bd1132f7a01715c6d9a64b79be9d594c3f324aded",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-exceptions.png",
+        "sha256": "1d33c247f13f499edfbdf012f82b480620b89be4c86e39596e5e0bf9919760fb",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-keys.png",
+        "sha256": "db8ec6cb14294bb2099a5877c44bd69b2465272e475f6d573baefc48d324e29d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-main.png",
+        "sha256": "b7d34c1c3b483c0e58b992f88a2b5c413b69eec51488e1366da08fc269bf6a54",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-snippets.png",
+        "sha256": "32071bd5520fe898c798f73e662c9f1d16881219a01a94f480981d8aeec5c09e",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-listening-words.png",
+        "sha256": "44efe8e7a89eba8157753cb741bfd66cd11502a2c9010feebc0440e16aa58fdc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-minimum-application.png",
+        "sha256": "539ab82a76e4556eca25744f3827a3f7e713d83d23676a7dfa84d681e551005b",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-minimum-diagnostics.png",
+        "sha256": "aeb669f38b790ff47f94559e66a56f7d6a790e6db203ad4240ff7cded74d01a2",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-minimum-exceptions.png",
+        "sha256": "9433a37944507991e6766a677bba8c4cb93f2017ac442cad96968abc9b5806f8",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-minimum-keys.png",
+        "sha256": "997cb89068424ab34dac7b285fb3003e1ebd75ff7fc5869fbfd06256f4e828a0",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-minimum-main.png",
+        "sha256": "066084b1a525054c632aaff25654e4f87f873608b4652e5f1af10ca0bc693b26",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-minimum-snippets.png",
+        "sha256": "cf130641ef8eaf96106fe480fb095947864057f83bec869cac28f3f061ee6c32",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-minimum-words.png",
+        "sha256": "71477a6c13de33ae9d334e29ef04faca79120b7e04189556a26c50323f2f887f",
+        "pixels": [
+          1520,
+          1120
+        ]
+      },
+      {
+        "name": "light-outstanding-application.png",
+        "sha256": "c9bab3a0b9a3166298443555e9e9e3af704b43af25fb54829874d9db6df09427",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-outstanding-diagnostics.png",
+        "sha256": "2178bea751b9a27bca383f890fba7f8db99fde57923e0c0c729adbf6333e7056",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-outstanding-exceptions.png",
+        "sha256": "65ce94cf63afb37c8c0e7c3ea1ae08a0f2a1ff6d5e609ceb0f35aa2e8cab4b62",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-outstanding-keys.png",
+        "sha256": "d41d004efd9bfc92465808dc078709cc2755a2f73e6b61cd3f8e36fd325f0e47",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-outstanding-main.png",
+        "sha256": "21d6b83fc89b9ef5528d494dae9c6e01050e85f8bd75c4249398e38bde3a5be8",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-outstanding-snippets.png",
+        "sha256": "7a6fae4e693554cfb7712f29ac7267dc220a94cb7b0f99b9453c709dca4467ea",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-outstanding-words.png",
+        "sha256": "c5a2ed2b54f7efe72db902558b240211319d380e8a308bcc9640a614383eecd6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-application.png",
+        "sha256": "5798e4c86c82b74fb2d967281a457073a0c185968f04feb752faa4b7162b289a",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-diagnostics.png",
+        "sha256": "ab97f0771ed25f4c43f335591d6681ef90a487b0360c6456b56d2770a9231fa2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-exceptions.png",
+        "sha256": "a356b1b7ff80ed8d2f074a434df1453eecd56d7c0371cd0d6e9be49a7e3b73af",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-keys.png",
+        "sha256": "1494152fbc45fcb76487730568f34017554b11b7f86a3298a0f744361ece03dc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-main.png",
+        "sha256": "22d3f049fc6bd656c933cc620bc02dc16035da0b077fe48dabca16c0f73779fe",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-snippets.png",
+        "sha256": "98fb1b7be346020d7bdc3204dc90275b6f2602d000d8fd949d24a3f5bcbfa90f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-ready-words.png",
+        "sha256": "f0ebdaa29f145f38b01a0c723da74c4f1dce5c49a4ad29e7e8c3cd98924cd9a1",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-application.png",
+        "sha256": "8088215a02c198c0e3abdb1f698536b575d9ec7cdf2ea012d9d47537be1c2e83",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-diagnostics.png",
+        "sha256": "d91a9cb4217dfa7c6ea4282bf4321a429963ee37f674973bb1e2b91fac8eaf1d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-exceptions.png",
+        "sha256": "a388d4366f7a6e5f8aba887dba3a670ded0fec156b755698c470ee400911ca78",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-keys.png",
+        "sha256": "d85574ae00c6dc97a0e066fdbb4dbc3d70aff9d8510087901c4b8a3156a8baa7",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-main.png",
+        "sha256": "ccb45aa07759a74c389629aed90f025f734b689dae6773aa76d1063b18ec1ef8",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-snippets.png",
+        "sha256": "5ea9eff5e0e59b49bfc00f43d7855388a795cb3127c294e9fd5668c4138ebedf",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-recovery-words.png",
+        "sha256": "694204a7f4c826c5f8d9400075d792469c016039e8ea26886a64a8b69c0f7f5c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-application.png",
+        "sha256": "f0e74341515415e82023da2dc77a8280b4fcdfd5c61a141bdf737af48cdd3a3d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-diagnostics.png",
+        "sha256": "55b7a3e3258db496f2ec4d8978660cf1498d52bd23f8681fe249390ff95224a6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-exceptions.png",
+        "sha256": "b0ac1011082b4d2bb9de7f33dc9030d39a435f089702a403df64ced668015b2f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-keys.png",
+        "sha256": "b33e99c40b6c24220138f26b7e69acf7d6fbc71be08fb9164220a6628d4cbe8b",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-main.png",
+        "sha256": "f2d66d1736e9f8c01b48b9164fc1c0db1a5d3e20235a7c3f021829a3de018f16",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-snippets.png",
+        "sha256": "646d5b1958c678b4f8246b3b0ae6d4624fb194770def98cd744d6f1ed5ab0948",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-review-outstanding-words.png",
+        "sha256": "c089c4a8f1ad926c8fb4d5483d36139d30700b2c1a49000d893cd9c4c5e2582c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-application.png",
+        "sha256": "16ab7c1305ab7afe8c5e29ad98486332c0917716bff2e137ecab14bc0405d2e9",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-diagnostics.png",
+        "sha256": "7e029689dd026c5bbe0a634751b41080bc6372c8a3fa4ac0792ab18e434e38eb",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-exceptions.png",
+        "sha256": "208924db7b355e49eb39da73c727cbe138b2eba5e03829484d28310a842383e6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-keys.png",
+        "sha256": "d7e8a7ba00a536bb7af594690c5df19539eb3dfdaf90a798c7361d3dcf9b5186",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-main.png",
+        "sha256": "299ebcfd3736979b17660461df4e2536f1cc3b838602d9c5a8b9c2b6065abf3f",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-snippets.png",
+        "sha256": "469a7aac64a9dd797b5b8cd58b151b13fd241616c4e83bbe4a30fa31609e036c",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-secure-words.png",
+        "sha256": "70c2cafd3bd16101ea96f8ce5bb5d6465e56875173dba6d41bea050670279ed6",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-application.png",
+        "sha256": "d67174bd69e56308876a5b437786ad9435ab8488ea7c5336c6bce43f671c8e82",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-diagnostics.png",
+        "sha256": "13222524fbabb5b7e1a99f059b319e55f9c81f53c6156166b8d586ddfb53788e",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-exceptions.png",
+        "sha256": "845c5b2c7c2f17ccb1aec1dd075f379591975c94252c449b47f8ed2c88703771",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-keys.png",
+        "sha256": "8d64cad0ee7741ef42bdccd766f42630315ba97500181d04ca653bdcc9007d26",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-main.png",
+        "sha256": "434364e26fc2ee0079b0db7829c0330ba25046abca4ff18bd4946d174053d095",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-snippets.png",
+        "sha256": "10df6804913c1689ae259b9cdd932a0fec67155ee2d2223bd6024a07eb185867",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-settings-words.png",
+        "sha256": "c5e30880b91176113dc80669f4a06c04a4acf9f56b54c914113a9cb792fc4f5d",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippet-editor-applications.png",
+        "sha256": "01fcb3cba17a8c84c48d9f07a3a0913f5331bc65f1ca8ed547f6bbaee0b33d3b",
+        "pixels": [
+          1320,
+          1320
+        ]
+      },
+      {
+        "name": "light-snippet-editor-invalid.png",
+        "sha256": "da783549a8f3a5f8f13004f4b32cab7eb46b3a817d0863cb66818ed881ba5c26",
+        "pixels": [
+          1320,
+          1320
+        ]
+      },
+      {
+        "name": "light-snippet-editor.png",
+        "sha256": "5bc682bb5f761ca80a3486eff0bef38073a6ae3c88e1317f6cc253b2d0e78f4a",
+        "pixels": [
+          1320,
+          1320
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-application.png",
+        "sha256": "5798e4c86c82b74fb2d967281a457073a0c185968f04feb752faa4b7162b289a",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-diagnostics.png",
+        "sha256": "ab97f0771ed25f4c43f335591d6681ef90a487b0360c6456b56d2770a9231fa2",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-exceptions.png",
+        "sha256": "a356b1b7ff80ed8d2f074a434df1453eecd56d7c0371cd0d6e9be49a7e3b73af",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-keys.png",
+        "sha256": "1494152fbc45fcb76487730568f34017554b11b7f86a3298a0f744361ece03dc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-main.png",
+        "sha256": "22d3f049fc6bd656c933cc620bc02dc16035da0b077fe48dabca16c0f73779fe",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-snippets.png",
+        "sha256": "7429a457f2fc84692c389921aa86411200f0913dd56d8c0d5f114f88bcb833fc",
+        "pixels": [
+          1640,
+          1240
+        ]
+      },
+      {
+        "name": "light-snippets-unavailable-words.png",
+        "sha256": "f0ebdaa29f145f38b01a0c723da74c4f1dce5c49a4ad29e7e8c3cd98924cd9a1",
+        "pixels": [
+          1640,
+          1240
+        ]
+      }
+    ]
+  },
+  "renderSuiteRemoved": true,
+  "renderSuiteCleanup": "Renderer removed values but left an empty plist; defaults delete reported domain not found. Verified empty dictionary, removed that file, verified domain/file absent.",
+  "installationEvidence": "installation.json",
+  "installedWindowReadOnly": "Observed launched Keys page; status Работает · Обработчик готов; no agent clicks or input",
+  "manualSettingsAndTextEdit": "NOT_RUN; user checklist remains open",
+  "nativeInputAcceptance": "NOT_RUN",
+  "mainMergeAndRelease": "NOT_REQUESTED",
+  "privateLogSha256": {
+    "final-cli-build.log": "eeee034805977a674255dd26aef7bb68e1ff45f0a0cc9b9015428d38c68eda4a",
+    "final-corpus.log": "b0385957c150fec3a9104141fa7eb47d784002ae2eb683ab507ba2b840bbff23",
+    "final-debug-build.log": "04679b4d17b632d5bae2aeb980b88b7af5ab7c8d1c917e40ec958994d1d4ad7f",
+    "final-release-build.log": "512adf73fa71f230a59fff6c325ec079ee1f13ed0d5e2d85eb8d129d803f837c",
+    "final-render.log": "972101775b9bcba53ae5472f20d731282fa42469aa2399057f3c55e5772863e7"
+  }
+}

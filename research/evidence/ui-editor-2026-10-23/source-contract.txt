@@ -1,0 +1,1 @@
+Source contract: Store/KeyboardService references, appearance removed, other bindings and protected files retained. No native claim.
