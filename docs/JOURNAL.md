@@ -2394,3 +2394,13 @@ sidebar и типографический горизонтальный вари�
 область предупреждения. Исправлены явным dark environment/appearance и условным
 созданием области предупреждения; длинные предупреждения прокручиваются отдельно.
 Просмотрены main/snippets/review-outstanding после исправления. Native NOT_RUN.
+
+Итог «Пульта», код `025861f`: source guard, debug/release build, release CLI1707/1707,
+68 offline PNG прошли. Просмотрены main/keys/exceptions/snippets/diagnostics и
+выбранные recovery-предупреждения; это не native-действия. Установлен GUI
+`c515cb8e49214fe19593e197aba441581989f74663912adac4b8feeed91c3fd1`;
+подпись и manifest совпали, прежний bundle сохранён. Настройки семантически равны,
+сниппеты побайтово прежние; живые corrected/manual+1 оставлены, ввод агент не посылал.
+Приложение штатно завершено и оставлено остановленным до обновления пользователем
+только его TCC-записей по §3 MAC_AGENT_GUIDE. Native NOT_RUN.
+[Evidence](../research/evidence/ui-pult-2026-10-23/verification.json).
