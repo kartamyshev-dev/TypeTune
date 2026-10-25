@@ -858,6 +858,8 @@ final class KeyboardService {
                 return
             }
             guard KeystrokeEditor.type(plan.insertText, pid: target.pid) else {
+                // The token is already deleted: type it back rather than leave the field short.
+                _ = KeystrokeEditor.type(plan.before, pid: target.pid)
                 DispatchQueue.main.async {
                     self.typed.reset(.untrackedKey)
                     self.finishMutation(.notApplied, before: target, settled: target,
