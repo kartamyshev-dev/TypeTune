@@ -1,0 +1,39 @@
+{
+  "evidence_id": "spotlight-frontmost-vs-focus-2026-10-26",
+  "kind": "user manual reproduction, read-only AX measurement",
+  "date": "2026-10-26",
+  "app": {
+    "name": "TypeTune",
+    "version": "0.1.8 (14)",
+    "pid": 12986,
+    "path": "/Applications/TypeTune.app"
+  },
+  "host": {
+    "name": "Spotlight (Cmd+Space)",
+    "frontmost_application_during_panel": "dev.warp.Warp-Stable (23317)",
+    "keyboard_focus_owner": "com.apple.campo / Siri (690)",
+    "focused_role": "AXTextField",
+    "focused_subrole": "AXSearchField",
+    "focused_settable": true,
+    "focused_value_length": 0
+  },
+  "observations": [
+    {"scenario": "autocorrect after space", "input": "ghbdtn ", "layout": "ABC",
+     "expected": "привет ", "observed": "осталось ghbdtn"},
+    {"scenario": "Double Shift on word", "input": "ghbdtn", "expected": "привет",
+     "observed": "осталось ghbdtn"},
+    {"scenario": "destination check", "observed": "после правки в Spotlight посторонний текст появился в поле ввода чата, то есть нажатия ушли frontmost-приложению"}
+  ],
+  "diagnostics_report": {
+    "source": "/Users/kartamyshev/Downloads/TypeTune-диагностика.json",
+    "relevant_phases": ["universal-boundary decision=true target=true",
+                        "unreadable-field focusedField=false",
+                        "universal-result confirmed=true readable=false"],
+    "excerpt": "report-tail.json"
+  },
+  "conclusion": "Keystrokes were posted to NSWorkspace.frontmostApplication, which is not the process that owns keyboard focus while Spotlight is open.",
+  "limitations": [
+    "one reproduction round, not the two-round UI criterion",
+    "no Chrome/TextEdit regression check in this round"
+  ]
+}

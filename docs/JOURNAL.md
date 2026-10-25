@@ -1,5 +1,54 @@
 # Журнал TypeTune
 
+## Spotlight: правка в неактивирующей панели — 2026-10-26
+
+Пользователь: в Spotlight не работают автоисправление и Double Shift. Проверка на
+установленной 0.1.8 (14), PID 12986: оба сценария оставляют `ghbdtn`; после попытки в
+Spotlight в поле чата появился посторонний текст. Отчёт диагностики: при правке
+`universal-boundary decision=true target=true`, затем `unreadable-field focusedField=false`
+и `universal-result confirmed=true readable=false`.
+
+Замер AX при открытом Spotlight (`scripts`-пробник в Terminal, только роли и pid):
+`front=dev.warp.Warp-Stable/23317`, `systemFocus=pid 690 com.apple.campo/Siri
+AXTextField/AXSearchField`, `appFocus=Warp AXTextArea`. Причина: клавиши отправлялись
+процессу `frontmostApplication`, а фокус был в поле другой программы; в чате текст был
+виден потому, что это приложение и было frontmost.
+[Разбор](SPOTLIGHT_FOCUS.md), [evidence](../research/evidence/spotlight-2026-10-26/reproduction.json).
+
+Исправление: `KeystrokeDestination` в Core + `AccessibilityEditor.focusedElement()`;
+универсальный режим перед правкой переадресует клавиши процессу системного фокуса, если
+это текстовый ввод запущенного приложения (не пароль, не хелпер, не исключённое). CLI
+selftest 1715/1715 (8 новых инвариантов), corpus 4420/4420, gate-тесты 4/4. Локальная
+сборка приложения на этом Mac невозможна: CLT без Xcode не содержит плагин
+`SwiftUIMacros` (`@State`), поэтому сборка — CI-артефакт. Native-проверка в Spotlight и
+регрессия TextEdit/Chrome — **NOT_RUN**.
+
+Сборка `5c0b99e` установлена (SHA `37d88fbf…` совпал с CI), TCC выданы заново. Native:
+в отчёте `focus-target retargeted=true, textInput=true`, `universal-observe text`,
+`universal-verify readable=true`, `universal-result confirmed=true` — клавиши дошли до
+поля Spotlight. Но поле съело одну Backspace: `ghbdtn ` → `gпривет`; подтверждение по
+суффиксу остаток принимало. Коммит `56bda63`: для читаемого поля удаление и вставка
+разделены, удаление сверяется с полем, недостающие Backspace-ы добираются (до двух
+повторов), при неудаче набранный хвост возвращается, итог сверяется точно. CLI
+selftest 1722/1722 (15 новых инвариантов). Проверка двухфазной сборки и регрессия
+TextEdit/Chrome — **NOT_RUN**.
+
+Сборка `f6deb2b` (двухфазная + возврат токена) установлена, SHA `434fcb87…` совпал с
+CI. Native: текст исправлен точно, но при быстром вводе приложение ушло в «Ожидает
+восстановления»: удержанная буква не могла быть доставлена, потому что drain требовал
+`frontmost == pid` панели. `735b114` ведёт повтор и проверки маршрута по системному
+элементу с фокусом (drain, identity check, приём повторов, отложенная раскладка,
+⌘⌥R/⌘⌥B). Сборка установлена (SHA `4c9d40fe…` совпал с CI), но native-проверку
+завершить не удалось: пользователь остановил итерации и попросил вернуть стабильный
+релиз.
+
+Возврат: установлена релизная 0.1.8 (14) из `/Users/kartamyshev/…` — резервная копия
+`.build/ci/previous-0.1.8.app`, бинарник `ec7fdf40…` совпал с
+[installation.json](../research/evidence/release-0.1.8-2026-10-23/installation.json).
+Приложение перезапущено (PID 72755). Ветка `spotlight-focus` с четырьмя коммитами
+осталась в GitHub, CI зелёный, в `main` и релиз не влита. Открыто: native дважды на
+`735b114`, регрессия TextEdit/Chrome.
+
 ## Опубликован v0.1.7 — 2026-10-20
 
 Тег `v0.1.7` → `874fd29`. CI на коммите ([39400920268](https://github.com/kartamyshev-dev/TypeTune/actions/runs/39400920268))

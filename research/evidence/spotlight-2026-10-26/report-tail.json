@@ -1,0 +1,457 @@
+{
+ "schemaVersion": 2,
+ "notice": "Last 1000 technical events only; no text, keycodes, document or clipboard data.",
+ "records": [
+  {
+   "checks": {
+    "anchored": true
+   },
+   "counts": {},
+   "phase": "universal-observe",
+   "reason": "unreadable",
+   "revision": 26357,
+   "uptime": 166803.90305583333
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "current": true,
+    "fieldMatches": true,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-verify",
+   "revision": 26357,
+   "uptime": 166803.90364270835
+  },
+  {
+   "checks": {
+    "confirmed": true,
+    "current": true,
+    "notShown": false,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-result",
+   "revision": 26357,
+   "uptime": 166803.90505658335
+  },
+  {
+   "checks": {
+    "deferred": true,
+    "pendingReplay": true,
+    "selected": false
+   },
+   "counts": {},
+   "phase": "source-selection",
+   "revision": 26357,
+   "uptime": 166803.90693637502
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "selection": false
+   },
+   "counts": {},
+   "phase": "universal-begin",
+   "revision": 26360,
+   "uptime": 166806.69002316668
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "boundaryMatches": true,
+    "decision": true,
+    "knownSource": true,
+    "target": true,
+    "tokenBuffered": true
+   },
+   "counts": {},
+   "phase": "universal-boundary",
+   "revision": 26360,
+   "uptime": 166806.690049
+  },
+  {
+   "checks": {
+    "focusedField": false
+   },
+   "counts": {},
+   "phase": "unreadable-field",
+   "revision": 26360,
+   "uptime": 166806.7749795
+  },
+  {
+   "checks": {
+    "anchored": true
+   },
+   "counts": {},
+   "phase": "universal-observe",
+   "reason": "unreadable",
+   "revision": 26360,
+   "uptime": 166806.77498762502
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "current": true,
+    "fieldMatches": true,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-verify",
+   "revision": 26360,
+   "uptime": 166806.775451625
+  },
+  {
+   "checks": {
+    "confirmed": true,
+    "current": true,
+    "notShown": false,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-result",
+   "revision": 26360,
+   "uptime": 166806.776079625
+  },
+  {
+   "checks": {
+    "deferred": true,
+    "pendingReplay": true,
+    "selected": false
+   },
+   "counts": {},
+   "phase": "source-selection",
+   "revision": 26360,
+   "uptime": 166806.77785220835
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "boundaryMatches": true,
+    "convertedKnown": false,
+    "decision": false,
+    "knownAsTyped": false,
+    "knownSource": true,
+    "lettersOnly": true,
+    "short": false,
+    "target": true,
+    "tokenBuffered": true
+   },
+   "counts": {},
+   "phase": "universal-boundary",
+   "revision": 26372,
+   "uptime": 166809.339271875
+  },
+  {
+   "checks": {
+    "anchored": false,
+    "selection": false
+   },
+   "counts": {},
+   "phase": "universal-begin",
+   "revision": 26385,
+   "uptime": 166819.3127805417
+  },
+  {
+   "checks": {
+    "anchored": false,
+    "boundaryMatches": true,
+    "decision": true,
+    "knownSource": true,
+    "target": true,
+    "tokenBuffered": true
+   },
+   "counts": {},
+   "phase": "universal-boundary",
+   "revision": 26385,
+   "uptime": 166819.31280525
+  },
+  {
+   "checks": {
+    "focusedField": false
+   },
+   "counts": {},
+   "phase": "unreadable-field",
+   "revision": 26385,
+   "uptime": 166819.39295783333
+  },
+  {
+   "checks": {
+    "anchored": false
+   },
+   "counts": {},
+   "phase": "universal-observe",
+   "reason": "unreadable",
+   "revision": 26385,
+   "uptime": 166819.39296312502
+  },
+  {
+   "checks": {
+    "anchored": false,
+    "current": true,
+    "fieldMatches": true,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-verify",
+   "revision": 26385,
+   "uptime": 166819.39313816666
+  },
+  {
+   "checks": {
+    "confirmed": true,
+    "current": true,
+    "notShown": false,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-result",
+   "revision": 26385,
+   "uptime": 166819.39372204168
+  },
+  {
+   "checks": {
+    "deferred": true,
+    "pendingReplay": true,
+    "selected": false
+   },
+   "counts": {},
+   "phase": "source-selection",
+   "revision": 26385,
+   "uptime": 166819.394502125
+  },
+  {
+   "checks": {
+    "anchored": false,
+    "selection": false
+   },
+   "counts": {},
+   "phase": "universal-begin",
+   "revision": 26404,
+   "uptime": 167014.633701
+  },
+  {
+   "checks": {
+    "anchored": false,
+    "boundaryMatches": true,
+    "decision": true,
+    "knownSource": true,
+    "target": true,
+    "tokenBuffered": true
+   },
+   "counts": {},
+   "phase": "universal-boundary",
+   "revision": 26404,
+   "uptime": 167014.63371525
+  },
+  {
+   "checks": {
+    "focusedField": false
+   },
+   "counts": {},
+   "phase": "unreadable-field",
+   "revision": 26404,
+   "uptime": 167014.71445608334
+  },
+  {
+   "checks": {
+    "anchored": false
+   },
+   "counts": {},
+   "phase": "universal-observe",
+   "reason": "unreadable",
+   "revision": 26404,
+   "uptime": 167014.71446012502
+  },
+  {
+   "checks": {
+    "anchored": false,
+    "current": true,
+    "fieldMatches": true,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-verify",
+   "revision": 26404,
+   "uptime": 167014.7147095
+  },
+  {
+   "checks": {
+    "confirmed": true,
+    "current": true,
+    "notShown": false,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-result",
+   "revision": 26404,
+   "uptime": 167014.71554366668
+  },
+  {
+   "checks": {
+    "deferred": true,
+    "pendingReplay": true,
+    "selected": false
+   },
+   "counts": {},
+   "phase": "source-selection",
+   "revision": 26404,
+   "uptime": 167014.71696091667
+  },
+  {
+   "checks": {
+    "allowed": true,
+    "correct": true,
+    "knownSource": true,
+    "switch": false,
+    "toggleAuto": false
+   },
+   "counts": {},
+   "phase": "gesture-action",
+   "revision": 26404,
+   "uptime": 167015.41680595835
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "selection": false
+   },
+   "counts": {},
+   "phase": "universal-begin",
+   "revision": 26404,
+   "uptime": 167015.417323375
+  },
+  {
+   "checks": {
+    "focusedField": false
+   },
+   "counts": {},
+   "phase": "unreadable-field",
+   "revision": 26404,
+   "uptime": 167015.4985635
+  },
+  {
+   "checks": {
+    "anchored": true
+   },
+   "counts": {},
+   "phase": "universal-observe",
+   "reason": "unreadable",
+   "revision": 26404,
+   "uptime": 167015.49856808333
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "current": true,
+    "fieldMatches": true,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-verify",
+   "revision": 26404,
+   "uptime": 167015.49889616668
+  },
+  {
+   "checks": {
+    "confirmed": true,
+    "current": true,
+    "notShown": false,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-result",
+   "revision": 26404,
+   "uptime": 167015.49952508335
+  },
+  {
+   "checks": {
+    "deferred": false,
+    "pendingReplay": true,
+    "selected": false
+   },
+   "counts": {},
+   "phase": "source-selection",
+   "revision": 26404,
+   "uptime": 167015.50126258333
+  },
+  {
+   "checks": {
+    "allowed": true,
+    "correct": true,
+    "knownSource": true,
+    "switch": false,
+    "toggleAuto": false
+   },
+   "counts": {},
+   "phase": "gesture-action",
+   "revision": 26405,
+   "uptime": 167015.88910070833
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "selection": false
+   },
+   "counts": {},
+   "phase": "universal-begin",
+   "revision": 26405,
+   "uptime": 167015.88918270834
+  },
+  {
+   "checks": {
+    "focusedField": false
+   },
+   "counts": {},
+   "phase": "unreadable-field",
+   "revision": 26405,
+   "uptime": 167015.97389225
+  },
+  {
+   "checks": {
+    "anchored": true
+   },
+   "counts": {},
+   "phase": "universal-observe",
+   "reason": "unreadable",
+   "revision": 26405,
+   "uptime": 167015.97389791667
+  },
+  {
+   "checks": {
+    "anchored": true,
+    "current": true,
+    "fieldMatches": true,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-verify",
+   "revision": 26405,
+   "uptime": 167015.974165625
+  },
+  {
+   "checks": {
+    "confirmed": true,
+    "current": true,
+    "notShown": false,
+    "readable": false
+   },
+   "counts": {},
+   "phase": "universal-result",
+   "revision": 26405,
+   "uptime": 167015.974727625
+  },
+  {
+   "checks": {
+    "deferred": false,
+    "pendingReplay": true,
+    "selected": false
+   },
+   "counts": {},
+   "phase": "source-selection",
+   "revision": 26405,
+   "uptime": 167015.97607645835
+  }
+ ]
+}
