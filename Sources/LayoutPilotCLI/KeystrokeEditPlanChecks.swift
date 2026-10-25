@@ -31,6 +31,21 @@ func keystrokeEditPlanChecks() -> [(Bool, String)] {
               "a shared prefix is not deleted")
     } else { check(false, "ПРивет plan") }
 
+    // Two-phase readable edit: the deletion is checked against the field before typing.
+    check(hello.textAfterDeletion(in: "hello ghbdtn ") == "hello ",
+          "deletion target keeps the text left of the token")
+    check(hello.textAfterDeletion(in: "ghbdtn") == nil, "deletion target needs the token at the caret")
+    check(hello.remainingBackspaces(current: "hello ghbdtn ", deleted: "hello ") == 7,
+          "an unchanged field needs the whole token deleted again")
+    check(hello.remainingBackspaces(current: "hello g", deleted: "hello ") == 1,
+          "a single leftover character needs exactly one more Backspace")
+    check(hello.remainingBackspaces(current: "hello ", deleted: "hello ") == 0,
+          "a confirmed deletion needs no more Backspaces")
+    check(hello.remainingBackspaces(current: "другое", deleted: "hello ") == nil,
+          "a diverged field never receives more Backspaces")
+    check(hello.remainingBackspaces(current: "hello ghbdtnx", deleted: "hello ") == nil,
+          "text that is not a tail of the token is never deleted")
+
     // Nothing to do.
     check(buffer("привет ").completedTokenEdit(automatic) == nil, "a correct word needs no edit")
     check(buffer("ghbdtn").completedTokenEdit(automatic) == nil, "no edit before the boundary")

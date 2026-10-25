@@ -71,6 +71,24 @@ public struct KeystrokeEditPlan: Equatable, Sendable {
         return String(text.dropLast(before.count)) + after
     }
 
+    /// The text before the caret after the deletion phase, given the text before the edit.
+    /// A readable field can be checked against it before anything is typed.
+    public func textAfterDeletion(in text: String) -> String? {
+        guard text.hasSuffix(before) else { return nil }
+        return String(text.dropLast(before.count))
+    }
+
+    /// Backspaces still needed when a readable field shows `current` while `deleted` is the
+    /// deletion target: only an un-deleted prefix of `before` may remain (Backspace removes
+    /// the tail). nil when the field diverged, because then no further Backspace is safe.
+    public func remainingBackspaces(current: String, deleted: String) -> Int? {
+        guard current.hasPrefix(deleted) else { return nil }
+        let rest = String(current.dropFirst(deleted.count))
+        if rest.isEmpty { return 0 }
+        guard before.hasPrefix(rest) else { return nil }
+        return rest.count
+    }
+
     /// `insertText` as UTF-16 chunks of at most `limit` units, split only at Character
     /// boundaries (some applications accept short Unicode strings per keyboard event).
     public func unicodeChunks(limit: Int = 16) -> [[UInt16]] { Self.unicodeChunks(of: insertText, limit: limit) }

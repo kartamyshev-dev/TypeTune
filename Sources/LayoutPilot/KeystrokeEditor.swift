@@ -23,6 +23,41 @@ enum KeystrokeEditor {
         }
         return true
     }
+    /// Backspace down/up pairs to one process; false before posting when not allowed.
+    static func backspaces(_ count: Int, pid: pid_t) -> Bool {
+        guard count > 0 else { return true }
+        guard CGPreflightPostEventAccess(), !IsSecureEventInputEnabled(), pid > 0,
+              let source = CGEventSource(stateID: .privateState) else { return false }
+        for _ in 0..<count {
+            for down in [true, false] {
+                guard let event = CGEvent(keyboardEventSource: source, virtualKey: backspaceKey, keyDown: down) else {
+                    return false
+                }
+                event.flags = []
+                event.setIntegerValueField(.eventSourceUserData, value: EditorSupport.syntheticEventTag)
+                event.postToPid(pid)
+            }
+        }
+        return true
+    }
+    /// Unicode key events to one process; false before posting when not allowed.
+    static func type(_ text: String, pid: pid_t) -> Bool {
+        guard CGPreflightPostEventAccess(), !IsSecureEventInputEnabled(), pid > 0,
+              EditorSupport.permitsKeyboardText(text) || text.isEmpty,
+              let source = CGEventSource(stateID: .privateState) else { return false }
+        for chunk in KeystrokeEditPlan.unicodeChunks(of: text) {
+            for down in [true, false] {
+                guard let event = CGEvent(keyboardEventSource: source, virtualKey: 0, keyDown: down) else { return false }
+                chunk.withUnsafeBufferPointer { buffer in
+                    event.keyboardSetUnicodeString(stringLength: buffer.count, unicodeString: buffer.baseAddress!)
+                }
+                event.flags = []
+                event.setIntegerValueField(.eventSourceUserData, value: EditorSupport.syntheticEventTag)
+                event.postToPid(pid)
+            }
+        }
+        return true
+    }
     /// Returns false before posting anything when posting is not allowed. A false
     /// return after some events were posted is reported as `partial`.
     static func perform(_ plan: KeystrokeEditPlan, pid: pid_t) -> (posted: Bool, partial: Bool) {

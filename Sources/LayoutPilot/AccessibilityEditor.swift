@@ -183,6 +183,12 @@ enum AccessibilityEditor {
             "characterCount": has(kAXNumberOfCharactersAttribute), "textMarker": has("AXSelectedTextMarkerRange"),
             "editableAncestor": has("AXEditableAncestor"), "children": children > 0])
     }
+    /// The text before a collapsed caret, when the field exposes it. nil for unreadable
+    /// fields, selections and values without a caret. Used to verify a deletion phase.
+    static func textBeforeCaret(pid: pid_t) -> String? {
+        if case .textBeforeCaret(let text) = observeTextBeforeCaret(pid: pid) { return text }
+        return nil
+    }
     static func observeTextBeforeCaret(pid: pid_t) -> FieldObservation {
         guard AXIsProcessTrusted() else { return .unreadable }
         guard !IsSecureEventInputEnabled() else { return .secure }

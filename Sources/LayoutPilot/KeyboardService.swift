@@ -679,6 +679,8 @@ final class KeyboardService {
                 reason: retargeted ? focus?.role : nil)
             let pid = operation.target.pid
             let verification: KeystrokeVerification
+            /// The exact text before the caret, when the field exposes a collapsed caret.
+            var beforeText: String?
             if let selected = plan.selection {
                 switch AccessibilityEditor.observeSelection(pid: pid) {
                 case .text(let text): verification = text == selected ? .matches : .mismatch
@@ -719,6 +721,7 @@ final class KeyboardService {
                     checks: ["anchored": anchored], reason: kind)
                 switch observation {
                 case .textBeforeCaret(let text):
+                    beforeText = text
                     verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .mismatch
                 case .valueWithoutCaret(let text):
                     verification = plan.expects(textBeforeCaret: text, anchored: !anchored) ? .matches : .unreadable
@@ -732,12 +735,13 @@ final class KeyboardService {
                 let focusCurrent = operation.target.focusTarget ?
                     AccessibilityEditor.focusedElement()?.pid == operation.target.pid : true
                 self.performKeystrokes(operation, verification: verification, revision: expectedRevision,
-                                       sourceID: sourceID, focusCurrent: focusCurrent)
+                                       sourceID: sourceID, focusCurrent: focusCurrent, beforeText: beforeText)
             }
         }
     }
     private func performKeystrokes(_ operation: KeystrokeOperation, verification: KeystrokeVerification,
-                                   revision expectedRevision: Int, sourceID: String, focusCurrent: Bool) {
+                                   revision expectedRevision: Int, sourceID: String, focusCurrent: Bool,
+                                   beforeText: String?) {
         let target = operation.target, plan = operation.plan
         let readable = verification == .matches || verification == .mismatch
         // Blind editing only for a token the buffer knows to start a word.
@@ -755,6 +759,14 @@ final class KeyboardService {
             finishMutation(.notApplied, before: target, settled: current ? target : nil,
                            contextCurrent: target.focusTarget ? current : nil)
             if verification == .mismatch { skipped("Исправление пропущено: текст поля не совпал с набранным") }
+            return
+        }
+        // A readable field gets the deletion and the insertion as two verified phases: some
+        // fields (Spotlight) swallow the first Backspace of a burst, and typing before the
+        // deletion is confirmed would leave a character of the old token in place.
+        if verification == .matches, plan.selection == nil, plan.deleteCount > 0,
+           let beforeText, let deleted = plan.textAfterDeletion(in: beforeText) {
+            performTwoPhaseKeystrokes(operation, deleted: deleted, revision: expectedRevision, sourceID: sourceID)
             return
         }
         let result = KeystrokeEditor.perform(plan, pid: target.pid)
@@ -793,6 +805,82 @@ final class KeyboardService {
             let focusAfter = target.focusTarget ? AccessibilityEditor.focusedElement()?.pid == target.pid : true
             DispatchQueue.main.async {
                 self.finishKeystrokes(operation, outcome: outcome, readable: readable, focusCurrent: focusAfter)
+            }
+        }
+    }
+    /// Deletes, verifies the deletion against the readable field, repairs a swallowed
+    /// Backspace and only then types the replacement. A field that lost part of the token
+    /// gets its tail typed back, so no half-deleted word is left behind.
+    private func performTwoPhaseKeystrokes(_ operation: KeystrokeOperation, deleted: String,
+                                           revision expectedRevision: Int, sourceID: String) {
+        let target = operation.target, plan = operation.plan
+        guard KeystrokeEditor.backspaces(plan.deleteCount, pid: target.pid) else {
+            typed.reset(.untrackedKey)
+            finishMutation(.notApplied, before: target, settled: target,
+                           contextCurrent: target.focusTarget ? true : nil)
+            skipped("Исправление не отправлено: нет разрешения на ввод")
+            return
+        }
+        axQueue.async { [weak self] in
+            guard let self else { return }
+            var repairs = 2
+            var confirmed = false
+            var lastText: String?
+            let deadline = ProcessInfo.processInfo.systemUptime + 0.300
+            while ProcessInfo.processInfo.systemUptime < deadline {
+                guard let text = AccessibilityEditor.textBeforeCaret(pid: target.pid) else { break }
+                lastText = text
+                if text == deleted { confirmed = true; break }
+                guard repairs > 0, let missing = plan.remainingBackspaces(current: text, deleted: deleted),
+                      missing > 0, KeystrokeEditor.backspaces(missing, pid: target.pid) else { break }
+                repairs -= 1
+                Thread.sleep(forTimeInterval: 0.020)
+            }
+            if !confirmed {
+                var restored = false
+                if let text = lastText, text.hasPrefix(deleted) {
+                    let leftover = String(text.dropFirst(deleted.count))
+                    let tail = String(plan.before.dropFirst(leftover.count))
+                    if plan.before.hasPrefix(leftover), !tail.isEmpty,
+                       KeystrokeEditor.type(tail, pid: target.pid) {
+                        restored = AccessibilityEditor.textBeforeCaret(pid: target.pid) == deleted + plan.before
+                    }
+                }
+                let focusAfter = target.focusTarget ? AccessibilityEditor.focusedElement()?.pid == target.pid : true
+                DispatchQueue.main.async {
+                    self.typed.reset(.untrackedKey)
+                    self.finishMutation(restored ? .notApplied : .uncertain, before: target,
+                                        settled: restored ? target : nil,
+                                        contextCurrent: target.focusTarget ? focusAfter : nil)
+                    self.skipped(restored ? "Поле не показало удаление; исправление отменено"
+                                          : "Поле изменилось во время исправления; проверьте текст")
+                }
+                return
+            }
+            guard KeystrokeEditor.type(plan.insertText, pid: target.pid) else {
+                DispatchQueue.main.async {
+                    self.typed.reset(.untrackedKey)
+                    self.finishMutation(.notApplied, before: target, settled: target,
+                                        contextCurrent: target.focusTarget ? true : nil)
+                    self.skipped("Исправление не отправлено: нет разрешения на ввод")
+                }
+                return
+            }
+            // The exact state after the edit: a leftover character is never accepted.
+            let expected = deleted + plan.after
+            var outcome: KeystrokeConfirmation = .unknown
+            let confirmationDeadline = ProcessInfo.processInfo.systemUptime + 0.600
+            repeat {
+                if let text = AccessibilityEditor.textBeforeCaret(pid: target.pid) {
+                    if text == expected { outcome = .confirmed; break }
+                    if text == deleted + plan.before { outcome = .notShown; break }
+                }
+                Thread.sleep(forTimeInterval: 0.010)
+            } while ProcessInfo.processInfo.systemUptime < confirmationDeadline
+            let focusAfter = target.focusTarget ? AccessibilityEditor.focusedElement()?.pid == target.pid : true
+            DispatchQueue.main.async {
+                if outcome == .confirmed { self.typed.replaceSuffix(plan.before, with: plan.after) }
+                self.finishKeystrokes(operation, outcome: outcome, readable: true, focusCurrent: focusAfter)
             }
         }
     }
