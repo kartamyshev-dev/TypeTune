@@ -631,6 +631,15 @@ final class KeyboardService {
             purpose: .undo(learn: learn, restoreSource: previous.sourceBefore), sourceBefore: InputSources.identifier))
     }
 
+    /// Whether the target still receives keyboard input. A panel target (Spotlight) owns the
+    /// system-wide focused element while the frontmost application stays behind it. Reads no
+    /// text; an Accessibility call, so not for the tap's per-event path.
+    private func receivesInput(_ target: EditorSnapshot) -> Bool {
+        if NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid { return true }
+        guard target.focusTarget else { return false }
+        return AccessibilityEditor.focusedElement()?.pid == target.pid
+    }
+
     /// Keystrokes go to the process owning the system-wide focused element: a non-activating
     /// panel (Spotlight) keeps the previous application frontmost. Never reads text and never
     /// moves a pinned Accessibility target.
@@ -1179,9 +1188,11 @@ final class KeyboardService {
             let batchToken = UInt32(truncatingIfNeeded: rawTag)
             guard replaying, let target = mutationGate else { return true }
             let lease = replayRouteLease
+            // A panel target keeps the previous application frontmost; its delivery proof is
+            // the fresh identity check on the system-wide focused element, not frontmost.
             let allowed = lease?.permits(token: batchToken, revision: revision, sourceID: InputSources.identifier,
                 now: ProcessInfo.processInfo.systemUptime) == true &&
-                NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid &&
+                (target.focusTarget || NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid) &&
                 allowedFrontmost(for: target) && AXIsProcessTrusted() && CGPreflightPostEventAccess()
             switch session.receiveReplay(token: batchToken, routingAllowed: allowed) {
             case .forward:
@@ -1199,7 +1210,7 @@ final class KeyboardService {
                     "leasePresent": lease != nil, "token": lease?.token == batchToken,
                     "revision": lease?.revision == revision, "source": lease?.sourceID == InputSources.identifier,
                     "leaseFresh": lease.map { ProcessInfo.processInfo.systemUptime <= $0.deadline } ?? false,
-                    "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+                    "frontmost": target.focusTarget || NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
                     "allowed": allowedFrontmost(for: target), "trusted": AXIsProcessTrusted(),
                     "posting": CGPreflightPostEventAccess()]
                 InputDiagnostics.shared.record("replay-event-rejected", revision: revision, checks: checks)
@@ -1215,7 +1226,10 @@ final class KeyboardService {
         tapRecovery.reset()
         if type == .keyDown { observedKeyEvents += 1 }
         if let gate = mutationGate {
-            if NSWorkspace.shared.frontmostApplication?.processIdentifier == gate.pid, !IsSecureEventInputEnabled() {
+            // A panel gate owns keyboard focus while another application stays frontmost:
+            // hold new input for it too, so replay keeps its order.
+            if gate.focusTarget || NSWorkspace.shared.frontmostApplication?.processIdentifier == gate.pid,
+               !IsSecureEventInputEnabled() {
                 if !preservesContext(event) { sourceAfterReplay = nil; transaction = nil; cachedSnapshot = nil }
                 let interception = session.intercept(event.copy() ?? event); bufferedEventCount += 1
                 if interception.cancelWrites {
@@ -1234,7 +1248,8 @@ final class KeyboardService {
         // ⌘/⌥ and only resets the buffer).
         trackTyping(type, event)
         if let target = recoveryTarget {
-            if NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid, !IsSecureEventInputEnabled() {
+            if target.focusTarget || NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+               !IsSecureEventInputEnabled() {
                 if type == .keyDown, event.getIntegerValueField(.keyboardEventKeycode) == 53,
                    event.flags.intersection([.maskCommand,.maskControl,.maskAlternate,.maskShift]) == [.maskCommand,.maskAlternate] {
                     onRecoveryNeeded?(); return true
@@ -2291,7 +2306,11 @@ final class KeyboardService {
             recoveryReplayProjection = nil; recoveryReplaySource = nil
             if let source = sourceAfterReplay {
                 sourceAfterReplay = nil
-                if NSWorkspace.shared.frontmostApplication?.processIdentifier == source.pid, AXIsProcessTrusted(),
+                // A panel target keeps the previous application frontmost; its own process
+                // still owns keyboard focus, so the deferred layout switch must not be lost.
+                let sourceCurrent = NSWorkspace.shared.frontmostApplication?.processIdentifier == source.pid ||
+                    (anchor?.focusTarget == true && AccessibilityEditor.focusedElement()?.pid == source.pid)
+                if sourceCurrent, AXIsProcessTrusted(),
                    anchor.map(allowedFrontmost(for:)) ?? allowedFrontmost(), source.change.apply() {
                     store.inputSource = InputSources.identifier
                     store.lastStatus = source.change.status
@@ -2321,7 +2340,9 @@ final class KeyboardService {
             updateServiceStatus()
             return
         }
-        guard NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+        // A panel target is verified by the system-wide focused element in the identity
+        // check below; the frontmost application stays behind it by design.
+        guard target.focusTarget || NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
               allowedFrontmost(for: target), AXIsProcessTrusted(), CGPreflightPostEventAccess() else {
             suspendReplay(target: target); return
         }
@@ -2341,7 +2362,7 @@ final class KeyboardService {
                 let checks = ["identity": identityMatches, "revision": self.revision == expectedRevision,
                     "allowed": self.allowedFrontmost(for: target), "trusted": AXIsProcessTrusted(),
                     "posting": CGPreflightPostEventAccess(),
-                    "frontmost": NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
+                    "frontmost": target.focusTarget || NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid,
                     "source": sourceID == InputSources.identifier,
                     "leaseFresh": ProcessInfo.processInfo.systemUptime - checkedAt <= 0.050,
                     "replaySource": self.replaySource != nil]
@@ -2398,9 +2419,12 @@ final class KeyboardService {
     /// Retry only transient AX failure, with the same pinned target and per-call limit.
     private func replayIdentityMatches(_ target: EditorSnapshot, expectedRevision: Int) -> Bool {
         // Universal mode: a keystroke target has no AX element; identity is the process.
+        // A panel target is identified by the system-wide focused element, because the
+        // frontmost application stays behind the panel.
         if target.keystrokes {
-            return AXIsProcessTrusted() && !IsSecureEventInputEnabled() &&
-                NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+            guard AXIsProcessTrusted(), !IsSecureEventInputEnabled() else { return false }
+            if NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid { return true }
+            return target.focusTarget && AccessibilityEditor.focusedElement()?.pid == target.pid
         }
         let deadline = ProcessInfo.processInfo.systemUptime + 0.150
         var failure: EditorSnapshotFailure = .staleContext
@@ -2486,7 +2510,7 @@ final class KeyboardService {
     }
     func recoverInput() {
         guard let expected = session.recoveryCandidate,
-              NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid,
+              receivesInput(expected),
               !IsSecureEventInputEnabled() else { return }
         if let source = recoverySourceID, source != InputSources.identifier {
             skipped("Для восстановления верните исходную раскладку"); return
@@ -2501,10 +2525,9 @@ final class KeyboardService {
             // prefix exactly; an unacknowledged event may already have arrived.
             let current: EditorSnapshot?
             if expected.keystrokes {
-                // No field identity was pinned; the gated process must be front again.
+                // No field identity was pinned; the gated process must receive input again.
                 current = DispatchQueue.main.sync {
-                    self.revision == expectedRevision && !IsSecureEventInputEnabled() &&
-                        NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid
+                    self.revision == expectedRevision && !IsSecureEventInputEnabled() && self.receivesInput(expected)
                 } ? expected : nil
             } else {
                 current = self.isCurrent(expectedRevision) ? AccessibilityEditor.snapshot() : nil
