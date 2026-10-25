@@ -15,6 +15,11 @@ struct EditorSnapshot {
     /// Universal mode: the target is identified by its process only and is edited with
     /// keystrokes; `element` is the application element and the field is not pinned.
     var keystrokes = false
+    /// The target was taken from the system-wide focused element, not from the frontmost
+    /// application: a non-activating panel (Spotlight) owns keyboard focus while the previous
+    /// application stays frontmost. Such a target is confirmed by the focused element's
+    /// process, never by `frontmostApplication`.
+    var focusTarget = false
 
     func matchesContent(_ other: EditorSnapshot) -> Bool {
         selection == other.selection && text.utf16.elementsEqual(other.text.utf16)
@@ -128,6 +133,37 @@ enum AccessibilityEditor {
         let app = AXUIElementCreateApplication(pid)
         AXUIElementSetMessagingTimeout(app, 0.050)
         return AXUIElementSetAttributeValue(app, "AXManualAccessibility" as CFString, kCFBooleanTrue)
+    }
+    /// The system-wide focused element, when Accessibility exposes it. Keystrokes go to the
+    /// process owning it, which is not always the frontmost application: Spotlight and other
+    /// non-activating panels keep the previous application frontmost while their own field
+    /// receives keys (docs/SPOTLIGHT_FOCUS.md). No text is read here.
+    struct FocusedElement {
+        let pid: pid_t
+        let application: String
+        let role: String
+        let isApplication: Bool
+        let isTextInput: Bool
+        let isSecure: Bool
+    }
+    private static let textInputRoles: Set<String> = ["AXTextField", "AXTextArea", "AXComboBox", "AXSearchField"]
+    static func focusedElement() -> FocusedElement? {
+        guard AXIsProcessTrusted(), !IsSecureEventInputEnabled() else { return nil }
+        let system = AXUIElementCreateSystemWide()
+        AXUIElementSetMessagingTimeout(system, 0.050)
+        guard let raw = attribute(system, kAXFocusedUIElementAttribute), CFGetTypeID(raw) == AXUIElementGetTypeID() else {
+            return nil
+        }
+        let element = raw as! AXUIElement
+        AXUIElementSetMessagingTimeout(element, 0.050)
+        var pid: pid_t = 0
+        guard AXUIElementGetPid(element, &pid) == .success, pid > 0 else { return nil }
+        let role = attribute(element, kAXRoleAttribute) as? String ?? ""
+        let subrole = attribute(element, kAXSubroleAttribute) as? String
+        let application = NSRunningApplication(processIdentifier: pid)
+        return FocusedElement(pid: pid, application: application?.bundleIdentifier ?? "", role: role,
+            isApplication: application != nil, isTextInput: textInputRoles.contains(role),
+            isSecure: subrole == "AXSecureTextField")
     }
     /// What an unreadable focused element offers, without its text: the AX role and
     /// which text attributes answer. For reports only.

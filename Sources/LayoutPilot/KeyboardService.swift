@@ -515,21 +515,26 @@ final class KeyboardService {
         }
         cancelGestureStateForInterception()
         let expectedRevision = revision
-        session.beginMutation(target, deadline: ProcessInfo.processInfo.systemUptime + 0.6)
+        // The rare selection path reads the field before the gate: a panel target must be
+        // resolved first, or the gate would pin the application behind Spotlight.
+        let selectionTarget = focusTarget(from: target, excludedApplications: store.settings.excludedApps)
+        session.beginMutation(selectionTarget, deadline: ProcessInfo.processInfo.systemUptime + 0.6)
         axQueue.async { [weak self] in
             guard let self else { return }
-            let observed = AccessibilityEditor.observeSelection(pid: target.pid)
+            let observed = AccessibilityEditor.observeSelection(pid: selectionTarget.pid)
             DispatchQueue.main.async {
                 switch observed {
                 case .secure:
-                    self.finishMutation(.notApplied, before: target, settled: nil)
+                    self.finishMutation(.notApplied, before: selectionTarget, settled: nil,
+                                        contextCurrent: selectionTarget.focusTarget ? true : nil)
                 case .none:
-                    self.finishMutation(.notApplied, before: target, settled: target)
+                    self.finishMutation(.notApplied, before: selectionTarget, settled: selectionTarget,
+                                        contextCurrent: selectionTarget.focusTarget ? true : nil)
                     self.skipped("Нет слова или выделения для преобразования")
                 case .text(let selected):
-                    self.convertSelection(selected, target: target, context: context)
+                    self.convertSelection(selected, target: selectionTarget, context: context)
                 case .unreadable:
-                    self.copySelection(target: target, context: context, revision: expectedRevision)
+                    self.copySelection(target: selectionTarget, context: context, revision: expectedRevision)
                 }
             }
         }
@@ -538,7 +543,8 @@ final class KeyboardService {
     private func convertSelection(_ selected: String, target: EditorSnapshot, context: InputContext) {
         guard let decision = engine.manual(selected, context: context),
               let plan = KeystrokeEditPlan(replacingSelection: selected, decision: decision) else {
-            finishMutation(.notApplied, before: target, settled: target)
+            finishMutation(.notApplied, before: target, settled: target,
+                           contextCurrent: target.focusTarget ? true : nil)
             skipped("Выделение не преобразуется: нет букв RU/EN или несколько строк")
             return
         }
@@ -554,7 +560,8 @@ final class KeyboardService {
         } ?? []
         let start = pasteboard.changeCount
         guard KeystrokeEditor.copy(pid: target.pid) else {
-            finishMutation(.notApplied, before: target, settled: target)
+            finishMutation(.notApplied, before: target, settled: target,
+                           contextCurrent: target.focusTarget ? true : nil)
             skipped("Выделение не удалось скопировать: нет разрешения на ввод"); return
         }
         let deadline = ProcessInfo.processInfo.systemUptime + 0.4
@@ -568,14 +575,18 @@ final class KeyboardService {
             if !items.isEmpty { pasteboard.writeObjects(items) }
         }
         func poll() {
+            // The panel target cannot be re-read cheaply on every poll; its revision and the
+            // absence of Secure Input are the available proof while it stays open.
             let current = revision == expectedRevision &&
-                NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+                (target.focusTarget ? !IsSecureEventInputEnabled()
+                                    : NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid)
             if pasteboard.changeCount != start {
                 let onlyOurCopy = pasteboard.changeCount == start + 1
                 let text = pasteboard.string(forType: .string)
                 if onlyOurCopy { restore() }
                 guard onlyOurCopy, current, let text, !text.isEmpty else {
-                    finishMutation(.notApplied, before: target, settled: current ? target : nil)
+                    finishMutation(.notApplied, before: target, settled: current ? target : nil,
+                                   contextCurrent: target.focusTarget ? current : nil)
                     skipped(onlyOurCopy ? "Нет выделенного текста" : "Буфер обмена изменился во время преобразования")
                     return
                 }
@@ -583,7 +594,8 @@ final class KeyboardService {
                 return
             }
             guard current, ProcessInfo.processInfo.systemUptime < deadline else {
-                finishMutation(.notApplied, before: target, settled: current ? target : nil)
+                finishMutation(.notApplied, before: target, settled: current ? target : nil,
+                               contextCurrent: target.focusTarget ? current : nil)
                 skipped("Нет выделенного текста"); return
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.010) { poll() }
@@ -602,7 +614,10 @@ final class KeyboardService {
                 return
             }
         }
-        guard let previous = keystrokeTransaction, let target = universalTarget(), target.pid == previous.target.pid,
+        // A focus target (Spotlight) keeps the frontmost application behind it; the undo
+        // goes to the process that received the original edit.
+        guard let previous = keystrokeTransaction, let front = universalTarget(),
+              front.pid == previous.target.pid || previous.target.focusTarget,
               typed.text.hasSuffix(previous.plan.after) else {
             keystrokeTransaction = nil
             skipped("Нет актуального исправления для отмены"); return
@@ -612,8 +627,22 @@ final class KeyboardService {
         if case .automatic = previous.purpose { learn = previous.plan.decision.learnAs ?? previous.plan.decision.original }
         else { learn = nil }
         // The undo replaces exactly what this process typed, so no word boundary is needed.
-        runKeystrokes(KeystrokeOperation(plan: previous.plan.inverse, target: target, anchored: true,
+        runKeystrokes(KeystrokeOperation(plan: previous.plan.inverse, target: previous.target, anchored: true,
             purpose: .undo(learn: learn, restoreSource: previous.sourceBefore), sourceBefore: InputSources.identifier))
+    }
+
+    /// Keystrokes go to the process owning the system-wide focused element: a non-activating
+    /// panel (Spotlight) keeps the previous application frontmost. Never reads text and never
+    /// moves a pinned Accessibility target.
+    private func focusTarget(from target: EditorSnapshot, excludedApplications: [String]) -> EditorSnapshot {
+        guard target.keystrokes, let focus = AccessibilityEditor.focusedElement() else { return target }
+        let candidate = KeystrokeDestination.Focus(pid: Int32(focus.pid), applicationID: focus.application,
+            isApplication: focus.isApplication, isTextInput: focus.isTextInput, isSecure: focus.isSecure)
+        guard KeystrokeDestination.retargets(frontmostPid: Int32(target.pid), focus: candidate,
+                                             excludedApplications: excludedApplications) else { return target }
+        var moved = EditorSnapshot.keystrokeTarget(pid: focus.pid, application: focus.application)
+        moved.focusTarget = true
+        return moved
     }
 
     /// Holds the barrier (unless already held), verifies the field when Accessibility can
@@ -624,11 +653,31 @@ final class KeyboardService {
             session.beginMutation(operation.target, deadline: ProcessInfo.processInfo.systemUptime + 0.3)
         }
         let expectedRevision = revision, sourceID = InputSources.identifier
-        let plan = operation.plan, pid = operation.target.pid, anchored = operation.anchored
+        let plan = operation.plan, anchored = operation.anchored
+        let excludedApplications = store.settings.excludedApps
         InputDiagnostics.shared.record("universal-begin", revision: expectedRevision,
             checks: ["anchored": anchored, "selection": plan.selection != nil])
         axQueue.async { [weak self] in
             guard let self else { return }
+            var operation = operation
+            // Spotlight and other non-activating panels keep the previous application
+            // frontmost while their own field receives keys: the focused element decides
+            // where the keystrokes land. Never reads text.
+            let focus = AccessibilityEditor.focusedElement()
+            let retargeted = KeystrokeDestination.retargets(frontmostPid: Int32(operation.target.pid),
+                focus: focus.map { .init(pid: Int32($0.pid), applicationID: $0.application,
+                    isApplication: $0.isApplication, isTextInput: $0.isTextInput, isSecure: $0.isSecure) },
+                excludedApplications: excludedApplications)
+            if retargeted, let focus {
+                var moved = EditorSnapshot.keystrokeTarget(pid: focus.pid, application: focus.application)
+                moved.focusTarget = true
+                operation = KeystrokeOperation(plan: operation.plan, target: moved, anchored: operation.anchored,
+                                               purpose: operation.purpose, sourceBefore: operation.sourceBefore)
+            }
+            InputDiagnostics.shared.record("focus-target", revision: expectedRevision,
+                checks: ["retargeted": retargeted, "textInput": focus?.isTextInput ?? false],
+                reason: retargeted ? focus?.role : nil)
+            let pid = operation.target.pid
             let verification: KeystrokeVerification
             if let selected = plan.selection {
                 switch AccessibilityEditor.observeSelection(pid: pid) {
@@ -680,12 +729,15 @@ final class KeyboardService {
                 }
             }
             DispatchQueue.main.async {
-                self.performKeystrokes(operation, verification: verification, revision: expectedRevision, sourceID: sourceID)
+                let focusCurrent = operation.target.focusTarget ?
+                    AccessibilityEditor.focusedElement()?.pid == operation.target.pid : true
+                self.performKeystrokes(operation, verification: verification, revision: expectedRevision,
+                                       sourceID: sourceID, focusCurrent: focusCurrent)
             }
         }
     }
     private func performKeystrokes(_ operation: KeystrokeOperation, verification: KeystrokeVerification,
-                                   revision expectedRevision: Int, sourceID: String) {
+                                   revision expectedRevision: Int, sourceID: String, focusCurrent: Bool) {
         let target = operation.target, plan = operation.plan
         let readable = verification == .matches || verification == .mismatch
         // Blind editing only for a token the buffer knows to start a word.
@@ -694,20 +746,22 @@ final class KeyboardService {
         // edited blind, deleting only the characters this process saw typed at the caret.
         let fieldMatches = verification == .matches || verification == .unreadable
         let current = revision == expectedRevision && sourceID == InputSources.identifier && !IsSecureEventInputEnabled() &&
-            NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+            (target.focusTarget ? focusCurrent : NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid)
         InputDiagnostics.shared.record("universal-verify", revision: expectedRevision,
             checks: ["readable": readable, "fieldMatches": fieldMatches, "current": current, "anchored": operation.anchored])
         guard fieldMatches, current else {
             // A readable field that disagrees means the buffer no longer describes it.
             if verification == .mismatch { typed.reset(.untrackedKey) }
-            finishMutation(.notApplied, before: target, settled: current ? target : nil)
+            finishMutation(.notApplied, before: target, settled: current ? target : nil,
+                           contextCurrent: target.focusTarget ? current : nil)
             if verification == .mismatch { skipped("Исправление пропущено: текст поля не совпал с набранным") }
             return
         }
         let result = KeystrokeEditor.perform(plan, pid: target.pid)
         guard result.posted else {
             typed.reset(.untrackedKey)
-            finishMutation(result.partial ? .uncertain : .notApplied, before: target, settled: result.partial ? nil : target)
+            finishMutation(result.partial ? .uncertain : .notApplied, before: target, settled: result.partial ? nil : target,
+                           contextCurrent: target.focusTarget ? current : nil)
             skipped("Исправление не отправлено: нет разрешения на ввод")
             return
         }
@@ -736,7 +790,10 @@ final class KeyboardService {
                     Thread.sleep(forTimeInterval: 0.010)
                 } while ProcessInfo.processInfo.systemUptime < deadline
             }
-            DispatchQueue.main.async { self.finishKeystrokes(operation, outcome: outcome, readable: readable) }
+            let focusAfter = target.focusTarget ? AccessibilityEditor.focusedElement()?.pid == target.pid : true
+            DispatchQueue.main.async {
+                self.finishKeystrokes(operation, outcome: outcome, readable: readable, focusCurrent: focusAfter)
+            }
         }
     }
     private enum KeystrokeConfirmation { case confirmed, notShown, unknown }
@@ -944,9 +1001,11 @@ final class KeyboardService {
             checks: ["accepted": status == .success, "unsupported": status == .attributeUnsupported], reason: trigger)
         return status == .success
     }
-    private func finishKeystrokes(_ operation: KeystrokeOperation, outcome: KeystrokeConfirmation, readable: Bool) {
+    private func finishKeystrokes(_ operation: KeystrokeOperation, outcome: KeystrokeConfirmation, readable: Bool,
+                                  focusCurrent: Bool) {
         let target = operation.target, decision = operation.plan.decision
-        let current = !IsSecureEventInputEnabled() && NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid
+        let current = !IsSecureEventInputEnabled() &&
+            (target.focusTarget ? focusCurrent : NSWorkspace.shared.frontmostApplication?.processIdentifier == target.pid)
         InputDiagnostics.shared.record("universal-result", revision: revision,
             checks: ["confirmed": outcome == .confirmed, "notShown": outcome == .notShown,
                      "readable": readable, "current": current])
@@ -956,7 +1015,8 @@ final class KeyboardService {
             // The field still shows exactly the text before the edit: nothing visible was
             // damaged, the keystrokes are late or were dropped. No undo, no blocking review.
             typed.reset(.untrackedKey); keystrokeTransaction = nil
-            finishMutation(.notApplied, before: target, settled: current ? target : nil)
+            finishMutation(.notApplied, before: target, settled: current ? target : nil,
+                           contextCurrent: target.focusTarget ? current : nil)
             skipped("Поле не показало исправление; проверьте последнее слово")
             return
         case .unknown:
@@ -980,7 +1040,8 @@ final class KeyboardService {
                 (sourceAfterReplay != nil ? "Текст восстановлен; смена раскладки ожидает завершения ввода" : "Текст восстановлен; прежняя раскладка недоступна")
         }
         store.inputSource = InputSources.identifier
-        finishMutation(.verified(target), before: target, settled: current ? target : nil)
+        finishMutation(.verified(target), before: target, settled: current ? target : nil,
+                       contextCurrent: target.focusTarget ? current : nil)
     }
     /// Maintains `typed` from one delivered event. Anything the buffer cannot follow
     /// resets it; what lies before the caret after a reset is unknown.
@@ -1912,7 +1973,7 @@ final class KeyboardService {
     }
     private func finishMutation(_ result: AccessibilityEditor.ReplacementResult, before: EditorSnapshot, settled: EditorSnapshot?,
                                 allowAutomaticReplay: Bool = false, allowPartialReplay: Bool = false,
-                                recoverySource: String? = nil) {
+                                recoverySource: String? = nil, contextCurrent: Bool? = nil) {
         let expected: EditorSnapshot
         if case .verified(let after) = result { expected = after } else { expected = before }
         let completion: InputRecovery.Completion
@@ -1923,7 +1984,10 @@ final class KeyboardService {
         }
         let safe = settled.map { AccessibilityEditor.sameTarget(expected, $0) && expected.matchesContent($0) } ?? false
         let sourceMatches = recoverySource == nil || recoverySource == InputSources.identifier
-        let contextMatches = safe && sourceMatches && NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid && !IsSecureEventInputEnabled()
+        // A panel target is confirmed by its focused element's process, not by the
+        // frontmost application, which stays behind the panel during the edit.
+        let targetCurrent = contextCurrent ?? (NSWorkspace.shared.frontmostApplication?.processIdentifier == expected.pid)
+        let contextMatches = safe && sourceMatches && targetCurrent && !IsSecureEventInputEnabled()
         switch session.finish(completion, expected: expected, sourceID: recoverySource ?? InputSources.identifier,
                               contextMatches: contextMatches) {
         case .resume:
